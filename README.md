@@ -1,2 +1,2 @@
 # articles
-笔记本, 博客
+博客, 见"Issue"
