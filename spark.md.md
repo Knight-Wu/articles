@@ -459,8 +459,7 @@ spark.sql("xxxsql").explain()
 > 使用 yarn logs -applicationId xxxId > tmp.log
 * executor log
 > 在下图目录下, 需要去hdfs 找applicationId下的目录
-在/tmp/logs/${usr}/logs/${applicationId}
-![yarn-log](79898B9FF10345A0892B26B69A8BDD7D)
+例如在/tmp/logs/${usr}/logs/${applicationId}
 
 
 * spark history server log
@@ -604,5 +603,5 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1MzM0MDE0M119
+eyJoaXN0b3J5IjpbLTk3Mzc2Nzg4MywtNjUzMzQwMTQzXX0=
 -->
