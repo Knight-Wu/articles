@@ -45,11 +45,6 @@ parent RDDs, which capture its lineage; a function for
 computing the RDD based on its parents; and metadata
 about its partitioning scheme and data placement.
 
-
-
-
-
-
 * dependencies between RDDs
   * narrow dependencies, where
 each partition of the child RDD depends on a constant
@@ -561,6 +556,6 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4NDA2MTEzMCwyMjg4MzYxOTIsLTY0OT
-Y3ODQ3MF19
+eyJoaXN0b3J5IjpbLTIwMjI0MDU0NzYsMjI4ODM2MTkyLC02ND
+k2Nzg0NzBdfQ==
 -->
