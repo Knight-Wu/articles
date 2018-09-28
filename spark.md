@@ -23,13 +23,12 @@ of the RDD. Once the final stage is finished in a job, the action is complete.
 1. stage里面的task = 当前RDD其依赖或上一次的RDD partition，若是从file生成的RDD依赖指定的partition数量
 2. task由scheduler 指定partition所在的node去执行, 等于说哪个节点保存这个partition, 由这个节点去计算task.
   
-> The number of tasks in a stage is the same as the number of partitions in the last RDD in the stage. The number of partitions in an RDD is the same as the number of partitions in the RDD on which it depends, with a couple exceptions: the coalesce transformation allows creating an RDD with fewer partitions than its parent RDD, the union transformation creates an RDD with the sum of its parents’ number of partitions, and cartesian(笛卡尔) creates an RDD with their product.
+ The number of tasks in a stage is the same as the number of partitions in the last RDD in the stage. The number of partitions in an RDD is the same as the number of partitions in the RDD on which it depends, with a couple exceptions: the coalesce transformation allows creating an RDD with fewer partitions than its parent RDD, the union transformation creates an RDD with the sum of its parents’ number of partitions, and cartesian(笛卡尔) creates an RDD with their product.
 
 
-> RDDs produced by textFile or hadoopFile have their partitions determined by the underlying MapReduce InputFormat that's used. Typically there will be a partition for each HDFS block being read. Partitions for RDDs produced by parallelize come from the parameter given by the user, or spark.default.parallelism if none is given.
+ RDDs produced by textFile or hadoopFile have their partitions determined by the underlying MapReduce InputFormat that's used. Typically there will be a partition for each HDFS block being read. Partitions for RDDs produced by parallelize come from the parameter given by the user, or spark.default.parallelism if none is given.
 
-
-* To determine the number of partitions in an RDD
+ To determine the number of partitions in an RDD
     rdd.partitions().size().
 
 
@@ -40,7 +39,7 @@ of the RDD. Once the final stage is finished in a job, the action is complete.
 
 
 #### lineage(血统)
-> each RDD has a set of partitions, which
+ each RDD has a set of partitions, which
 are atomic pieces of the dataset; a set of dependencies on
 parent RDDs, which capture its lineage; a function for
 computing the RDD based on its parents; and metadata
@@ -562,6 +561,6 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1NDUwOTI2NiwyMjg4MzYxOTIsLTY0OT
+eyJoaXN0b3J5IjpbLTQ4NDA2MTEzMCwyMjg4MzYxOTIsLTY0OT
 Y3ODQ3MF19
 -->
