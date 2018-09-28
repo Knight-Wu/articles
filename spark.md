@@ -1,5 +1,5 @@
 #### spark执行的大致流程
-> To summarize, the following phases occur during Spark execution: 
+ To summarize, the following phases occur during Spark execution: 
 > 1. User code defines a DAG (directed acyclic graph) of RDDs
 Operations on RDDs create new RDDs that refer back to their parents, thereby
 creating a graph.
@@ -562,5 +562,5 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0OTY3ODQ3MF19
+eyJoaXN0b3J5IjpbLTYxODY2Njg4MiwtNjQ5Njc4NDcwXX0=
 -->
