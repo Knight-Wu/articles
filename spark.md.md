@@ -467,7 +467,11 @@ yarn.nodemanager.remote-app-log-dir-suffix logs
 
 * spark history server log
 > 配置的路径
-spark.history.fs.logDirectory file:/
+```
+spark.history.fs.logDirectory 	file:/tmp/spark-events
+spark.eventLog.enabled 			true
+spark.eventLog.dir 			path/log
+```
 
 > 也可以去spark history server直接看, 但是可能会找不到, 需要看driver log
 
@@ -604,5 +608,5 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1MzQ4NTUzOSwtNjUzMzQwMTQzXX0=
+eyJoaXN0b3J5IjpbLTIwODgxNDU5ODAsLTY1MzM0MDE0M119
 -->
