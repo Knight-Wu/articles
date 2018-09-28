@@ -459,16 +459,17 @@ spark.sql("xxxsql").explain()
 > 使用 yarn logs -applicationId xxxId > tmp.log
 * executor log
 > 在下图目录下, 需要去hdfs 找applicationId下的目录
-例如在/tmp/logs/${usr}/logs/${applicationId}
-
+如下图在/tmp/logs/${usr}/logs/${applicationId}
+```
+yarn.nodemanager.remote-app-log-dir /tmp/logs
+yarn.nodemanager.remote-app-log-dir-suffix logs
+```
 
 * spark history server log
 > 配置的路径
+spark.history.fs.logDirectory file:/
 
-
-![history-server-log](F380A9E97D484A87ACAD4CEE6C34838F)
-> 也可以去spark history server直接看, 但是可能会找不到, 需要看配置. 包含了spark application执行的整个流程和rdd的细节.
-
+> 也可以去spark history server直接看, 但是可能会找不到, 需要看driver log
 
 
 
@@ -603,5 +604,5 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3Mzc2Nzg4MywtNjUzMzQwMTQzXX0=
+eyJoaXN0b3J5IjpbMTE1MzQ4NTUzOSwtNjUzMzQwMTQzXX0=
 -->
