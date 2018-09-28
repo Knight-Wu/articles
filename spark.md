@@ -10,7 +10,7 @@ RDDs. That job will have one or more stages, which are parallel waves of
 computation composed of tasks. Each stage will correspond to one or more RDDs in
 the DAG. A single stage can correspond to multiple RDDs due to pipelining.
 Tasks are scheduled and executed on a cluster
-> 3. Stages are processed in order, with individual tasks launching to compute segments
+ 3. Stages are processed in order, with individual tasks launching to compute segments
 of the RDD. Once the final stage is finished in a job, the action is complete.
 
 
@@ -562,6 +562,6 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjI4ODM2MTkyLC02MTg2NjY4ODIsLTY0OT
+eyJoaXN0b3J5IjpbMTM1NDUwOTI2NiwyMjg4MzYxOTIsLTY0OT
 Y3ODQ3MF19
 -->
