@@ -527,52 +527,6 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 
 ---
 ### 工作踩坑指南
-#### 生产问题
-#### exception : driver receive commonTree classNotFound exception 和 executor write datanode: block does not have enough number of replicas.
-> 记录一下这个排查了挺久的生产hive集群跑批问题, 使用场景是hive on spark, hive版本是2.2, 使用的原生社区的版本, spark版本是1.6, 使用的是cdh的spark. 
-
-
-> 大致场景是hive on spark每天晚上跑批的时候, 集群高峰时段偶尔会有任务卡主, 然后超时被我们的调度系统杀掉, 影响跑批的进度
-* 现象
-
-
-1. yarn logs收集到driver端的日志, 报错是 commonTree classNotFound exception
-![image](5E7F8E6F1D124D3A967478EA2AC9CD8A)
-
-
-2. executor端的同一时间点的也出现了异常, 
-
-
-![image](4EAD9DAF52C44189A5352BCAD1EC5C0D)
-![image](E6F84CDF0E854F61AB5BEE42C1611C45)
-![image](7CDE7A7C14524B93801F4BB7CB03A084)
-
-
- 
- 
- 
-
-
-
-
-
-
-然后定位到这个块花了三十多秒, nn才写好一个副本
-![image](2DB1D4A5E3084DFCAF80660D34E226B5)
-
-
-然后修改了配置, 增加了重试次数
-![image](D20927A20DC944CABF84468F11C1B9B4)
-第二天发现异常数减少, 然后查看tcp连接, 发现time_wait偏多, 应该是短连接过多导致
-![image](35F05E38B5A648289756CA89B7317CCB)
-> hdfs 写流程通讯
-![image](529BCB2C5DD949F2972DB8549DC58E5A)
-
-
-然后看这个方法能否查清楚内部的访问时序链, 发现应该是spark executor轮训nn, nn返回块是否写入完成, nn怎么知道dn写入完成呢, 后面查看日志, 发现同个节点的executor写dn的时候, 有 HAS_DONWSTREAM_IN_PIPELINE错误 ![image](B08C0F8215B744AAB95D284BB7ED609A)
-
-
-
 
 
 
@@ -608,5 +562,5 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTg4NDM2XX0=
+eyJoaXN0b3J5IjpbLTE3NzUwNzcyNDYsNTg4NDM2XX0=
 -->
