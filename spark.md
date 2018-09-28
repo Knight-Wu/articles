@@ -1,9 +1,9 @@
 #### spark执行的大致流程
  To summarize, the following phases occur during Spark execution: 
-> 1. User code defines a DAG (directed acyclic graph) of RDDs
+ 1. User code defines a DAG (directed acyclic graph) of RDDs
 Operations on RDDs create new RDDs that refer back to their parents, thereby
 creating a graph.
-> 2. Actions force translation of the DAG to an execution plan
+ 2. Actions force translation of the DAG to an execution plan
 When you call an action on an RDD it must be computed. This requires computing
 its parent RDDs as well. Spark’s scheduler submits a job to compute all needed
 RDDs. That job will have one or more stages, which are parallel waves of
@@ -562,5 +562,6 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxODY2Njg4MiwtNjQ5Njc4NDcwXX0=
+eyJoaXN0b3J5IjpbMjI4ODM2MTkyLC02MTg2NjY4ODIsLTY0OT
+Y3ODQ3MF19
 -->
