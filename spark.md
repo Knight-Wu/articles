@@ -72,13 +72,11 @@ that can short-circuit the computation of a parent RDD.
 
 ### fault-tolerant
 1. driver node fail
+若driver故障, 则所有executor的计算结果都会丢失
 2. executor node fail
-3. task compu
-> 若是上一个stage的map output result丢失, 则DAGScheduler会重试计算上一个stage数次.
 
-> 使用lineage (血统) 可以在其他节点并行计算failed partition of RDD, 如果有备份则可以直接计算,更快; 否则要根据上次计算的结果重新计算.
-
-> 若driver故障, 则所有executor的计算结果都会丢失
+3. task compute fail
+若是上一个stage的map output result丢失, 则DAGScheduler会重试计算上一个stage数次.
 
 >设置replication, 参考 [RDD Persistence](https://spark.apache.org/docs/latest/rdd-programming-guide.html) , 使用这个配置: MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.
 
@@ -559,8 +557,8 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzI4NzkzMzMsNTQyODg4MjU3LDQ4MT
-c4MjIyNiw4MDA5MDk4MDYsMTQ2NjI4NTczMywxMjA1MzI1MTAz
-LDkxODI2ODUxOSwtMjAyMjQwNTQ3NiwyMjg4MzYxOTIsLTY0OT
-Y3ODQ3MF19
+eyJoaXN0b3J5IjpbMjA2ODU0Mjk4NCwtMTkzMjg3OTMzMyw0OD
+E3ODIyMjYsODAwOTA5ODA2LDE0NjYyODU3MzMsMTIwNTMyNTEw
+Myw5MTgyNjg1MTksLTIwMjI0MDU0NzYsMjI4ODM2MTkyLC02ND
+k2Nzg0NzBdfQ==
 -->
