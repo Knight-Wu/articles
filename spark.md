@@ -77,7 +77,7 @@ that can short-circuit the computation of a parent RDD.
 
 3. task compute fail
 * some important config
-* 
+```
 spark.task.maxFailures  默认4   同一个
 
 若是上一个stage的map output result丢失, 则DAGScheduler会重试计算上一个stage数次.
@@ -561,8 +561,8 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwMDAxMzg0NSwyMDY4NTQyOTg0LC0xOT
-MyODc5MzMzLDQ4MTc4MjIyNiw4MDA5MDk4MDYsMTQ2NjI4NTcz
-MywxMjA1MzI1MTAzLDkxODI2ODUxOSwtMjAyMjQwNTQ3NiwyMj
-g4MzYxOTIsLTY0OTY3ODQ3MF19
+eyJoaXN0b3J5IjpbLTE1MjE0MTUzMzksLTgwMDAxMzg0NSwyMD
+Y4NTQyOTg0LC0xOTMyODc5MzMzLDQ4MTc4MjIyNiw4MDA5MDk4
+MDYsMTQ2NjI4NTczMywxMjA1MzI1MTAzLDkxODI2ODUxOSwtMj
+AyMjQwNTQ3NiwyMjg4MzYxOTIsLTY0OTY3ODQ3MF19
 -->
