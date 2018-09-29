@@ -47,6 +47,8 @@ about its partitioning scheme and data placement.
 
 * With [spark.logLineage](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd-lineage.html#spark_logLineage) property enabled, `toDebugString` is included when executing an action.
 
+
+
 * dependencies between RDDs
   * narrow dependencies, where
 each partition of the child RDD depends on a constant
@@ -78,13 +80,19 @@ that can short-circuit the computation of a parent RDD.
 3. task compute fail
 * some important config
 
-**spark.task.maxFailures**, 默认4, Number of failures of any particular task before giving up on the job. The total number of failures spread across different tasks will not cause the job to fail; a particular task has to fail this number of attempts. Should be greater than or equal to 1. Number of allowed retries = this value - 1.(同一个task最多失败的次数, 若失败超过这个次数则放弃)
+**spark.task.maxFailures**, 默认4, Number of failures of any particular task before giving up  * narrow dependency
+   >lost partition can be recomputed in parallel on othe job. The total number of failures spread across different tasks will not cause the job to fail; a particular task has to fail this number of attempts. Should be greater than or equal to 1. Number of allowed retries = this value - 1.(同一个task最多失败的次数, 若失败超过这个次数则放弃)
 
 若是上一个stage的map output result丢失, 则DAGScheduler会重试计算上一个stage数次.
 
 >设置replication, 参考 [RDD Persistence](https://spark.apache.org/docs/latest/rdd-programming-guide.html) , 使用这个配置: MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.
 
- * checkpoint
+r nodes
+  * wide dependency 
+   >node failure in the cluster may result in the loss
+of some slice of data from each parent RDD, requiring
+a full recomputation
+ on the * checkpoint
   >可以使用persist() 保存一个checkpoint, 不需要从血统的起点开始计算
 
 
@@ -561,8 +569,9 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NzAyNTA1NTEsLTg5NzQ1NDM4OSwyMD
-Y4NTQyOTg0LC0xOTMyODc5MzMzLDQ4MTc4MjIyNiw4MDA5MDk4
-MDYsMTQ2NjI4NTczMywxMjA1MzI1MTAzLDkxODI2ODUxOSwtMj
-AyMjQwNTQ3NiwyMjg4MzYxOTIsLTY0OTY3ODQ3MF19
+eyJoaXN0b3J5IjpbMjA5NDIyMDI1MCwtMTU3MDI1MDU1MSwtOD
+k3NDU0Mzg5LDIwNjg1NDI5ODQsLTE5MzI4NzkzMzMsNDgxNzgy
+MjI2LDgwMDkwOTgwNiwxNDY2Mjg1NzMzLDEyMDUzMjUxMDMsOT
+E4MjY4NTE5LC0yMDIyNDA1NDc2LDIyODgzNjE5MiwtNjQ5Njc4
+NDcwXX0=
 -->
