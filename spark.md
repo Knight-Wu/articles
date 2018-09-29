@@ -60,8 +60,8 @@ hash-partitioned)
 
 
 * stage
-1. 从narrow到wide dependency的时候需要产生新的stage
-2. 产生action动作的时候会产生新的stage
+参考[github-DAGScheduler.scala](https://github.com/apache/spark/blob/master/core/src/main/scala/org/apache/spark/scheduler/DAGScheduler.scala)
+> There are two types of stages: [[ResultStage]], for the final stage that executes an action, and [[ShuffleMapStage]], which writes map output files for a shuffle. Stages are often shared across multiple jobs, if these jobs reuse the same RDDs.
 
 
 > Each stage contains as many pipelined transformations
@@ -556,6 +556,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIwNTMyNTEwMyw5MTgyNjg1MTksLTIwMj
-I0MDU0NzYsMjI4ODM2MTkyLC02NDk2Nzg0NzBdfQ==
+eyJoaXN0b3J5IjpbMTQ2NjI4NTczMywxMjA1MzI1MTAzLDkxOD
+I2ODUxOSwtMjAyMjQwNTQ3NiwyMjg4MzYxOTIsLTY0OTY3ODQ3
+MF19
 -->
