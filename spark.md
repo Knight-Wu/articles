@@ -82,21 +82,17 @@ that can short-circuit the computation of a parent RDD.
 
 **spark.task.maxFailures**, 默认4, Number of failures of any particular task before giving up, lost partition can be recomputed in parallel on othe job. The total number of failures spread across different tasks will not cause the job to fail; a particular task has to fail this number of attempts. Should be greater than or equal to 1. Number of allowed retries = this value - 1.(同一个task最多失败的次数, 若失败超过这个次数则放弃)
 
-若是上一个stage的map output result丢失, 则DAGScheduler会重试计算上一个stage数次.
-
 >设置replication, 参考 [RDD Persistence](https://spark.apache.org/docs/latest/rdd-programming-guide.html) , 使用这个配置: MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.
  * narrow dependency
-r nodes
+lost partition can be recomputed in parallel on other nodes
   * wide dependency 
-   >node failure in the cluster may result in the loss
-of some slice of data from each parent RDD, requiring
-a full recomputation
- on the * checkpoint
-  >可以使用persist() 保存一个checkpoint, 不需要从血统的起点开始计算
+   node failure in the cluster may result in the loss of some slice of data from each parent RDD, requiring a full recomputation
+ * checkpoint
+ 可以使用persist() 保存一个checkpoint, 不需要从血统的起点开始计算
 
 
 * lineage与DAG的区别
-> lineage 描述的是RDD的依赖关系, 依赖链, 是一个逻辑执行计划 , 如图1; 而DAG 是有向无环图, 节点是rdd, 边是rdd的转化关系, 并能区分stage,是一个物理执行计划. 如图2
+lineage 描述的是RDD的依赖关系, 依赖链, 是一个逻辑执行计划 , 如图1; 而DAG 是有向无环图, 节点是rdd, 边是rdd的转化关系, 并能区分stage,是一个物理执行计划. 如图2
 
 
 
@@ -568,7 +564,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3NzcyNjIwMCwtMTU3MDI1MDU1MSwtOD
+eyJoaXN0b3J5IjpbLTE1NjYxMjQ0OCwtMTU3MDI1MDU1MSwtOD
 k3NDU0Mzg5LDIwNjg1NDI5ODQsLTE5MzI4NzkzMzMsNDgxNzgy
 MjI2LDgwMDkwOTgwNiwxNDY2Mjg1NzMzLDEyMDUzMjUxMDMsOT
 E4MjY4NTE5LC0yMDIyNDA1NDc2LDIyODgzNjE5MiwtNjQ5Njc4
