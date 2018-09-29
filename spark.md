@@ -67,8 +67,6 @@ with narrow dependencies as possible. The
 boundaries of the stages are the shuffle operations required
 for wide dependencies wide dependency or any cached partitions
 that can short-circuit the computation of a parent RDD.
-> 
-
 
 * fault-tolerant
   * narrow dependency
@@ -82,7 +80,7 @@ a full recomputation
 
 
 * lineage与DAG的区别
-> lineage 描述的是RDD的依赖关系, 依赖链, 是一个逻辑执行计划 , 如图1; 而DAG 是有向无环图, 节点是rdd, 边是rdd的转化关系, 并能区分stage, 如图2
+> lineage 描述的是RDD的依赖关系, 依赖链, 是一个逻辑执行计划 , 如图1; 而DAG 是有向无环图, 节点是rdd, 边是rdd的转化关系, 并能区分stage,是一个物理执行计划. 如图2
 
 
 
@@ -556,6 +554,6 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4NTgzNDcsLTIwMjI0MDU0NzYsMjI4OD
-M2MTkyLC02NDk2Nzg0NzBdfQ==
+eyJoaXN0b3J5IjpbOTE4MjY4NTE5LC0yMDIyNDA1NDc2LDIyOD
+gzNjE5MiwtNjQ5Njc4NDcwXX0=
 -->
