@@ -78,6 +78,7 @@ that can short-circuit the computation of a parent RDD.
 2. executor node fail
 
 3. some tasks  fail
+spark 采用event触发机制, DAGSchedulerEventProcessLoop去监听队列里面的event, 
 
 > some important config
 
@@ -567,9 +568,10 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0MDM0MTMxNywyMDI2NTc3NzkxLC0xMD
-MzOTY5NTIyLC0xNTcwMjUwNTUxLC04OTc0NTQzODksMjA2ODU0
-Mjk4NCwtMTkzMjg3OTMzMyw0ODE3ODIyMjYsODAwOTA5ODA2LD
-E0NjYyODU3MzMsMTIwNTMyNTEwMyw5MTgyNjg1MTksLTIwMjI0
-MDU0NzYsMjI4ODM2MTkyLC02NDk2Nzg0NzBdfQ==
+eyJoaXN0b3J5IjpbODMxMDI0MDg2LC0zNDAzNDEzMTcsMjAyNj
+U3Nzc5MSwtMTAzMzk2OTUyMiwtMTU3MDI1MDU1MSwtODk3NDU0
+Mzg5LDIwNjg1NDI5ODQsLTE5MzI4NzkzMzMsNDgxNzgyMjI2LD
+gwMDkwOTgwNiwxNDY2Mjg1NzMzLDEyMDUzMjUxMDMsOTE4MjY4
+NTE5LC0yMDIyNDA1NDc2LDIyODgzNjE5MiwtNjQ5Njc4NDcwXX
+0=
 -->
