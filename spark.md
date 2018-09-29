@@ -78,9 +78,11 @@ that can short-circuit the computation of a parent RDD.
 2. executor node fail
 
 3. task compute fail
-> some important config
+*> some important config
 
-**spark.task.maxFailures**, 默认4, Number of failures of any particular task before giving up the job, lost partition can be recomputed in parallel on othe job. The total number of failures spread across different tasks will not cause the job to fail; a particular task has to fail this number of attempts. Should be greater than or equal to 1. Number of allowed retries = this value - 1.(同一个task最多失败的次数, 若失败超过这个次数则放弃)
+**spark.task.maxFailures**, 默认4, Number of failures of any particular task before giving up on the job, lost partition can be recomputed in parallel on othe job. The total number of failures spread across different tasks will not cause the job to fail; a particular task has to fail this number of attempts. Should be greater than or equal to 1. Number of allowed retries = this value - 1.(同一个task最多失败的次数, 若失败超过这个次数则放弃)
+
+若是上一个stage的map output result丢失, 则DAGScheduler会重试计算上一个stage数次.
 
 >设置replication, 参考 [RDD Persistence](https://spark.apache.org/docs/latest/rdd-programming-guide.html) , 使用这个配置: MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.
  * narrow dependency
@@ -88,11 +90,11 @@ lost partition can be recomputed in parallel on other nodes
   * wide dependency 
    node failure in the cluster may result in the loss of some slice of data from each parent RDD, requiring a full recomputation
  * checkpoint
- 可以使用persist() 保存一个checkpoint, 不需要从血统的起点开始计算
+  >可以使用persist() 保存一个checkpoint, 不需要从血统的起点开始计算
 
 
 * lineage与DAG的区别
-lineage 描述的是RDD的依赖关系, 依赖链, 是一个逻辑执行计划 , 如图1; 而DAG 是有向无环图, 节点是rdd, 边是rdd的转化关系, 并能区分stage,是一个物理执行计划. 如图2
+> lineage 描述的是RDD的依赖关系, 依赖链, 是一个逻辑执行计划 , 如图1; 而DAG 是有向无环图, 节点是rdd, 边是rdd的转化关系, 并能区分stage,是一个物理执行计划. 如图2
 
 
 
@@ -564,9 +566,9 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMzM5Njk1MjIsLTE1NzAyNTA1NTEsLT
-g5NzQ1NDM4OSwyMDY4NTQyOTg0LC0xOTMyODc5MzMzLDQ4MTc4
-MjIyNiw4MDA5MDk4MDYsMTQ2NjI4NTczMywxMjA1MzI1MTAzLD
-kxODI2ODUxOSwtMjAyMjQwNTQ3NiwyMjg4MzYxOTIsLTY0OTY3
-ODQ3MF19
+eyJoaXN0b3J5IjpbMjAyNjU3Nzc5MSwtMTAzMzk2OTUyMiwtMT
+U3MDI1MDU1MSwtODk3NDU0Mzg5LDIwNjg1NDI5ODQsLTE5MzI4
+NzkzMzMsNDgxNzgyMjI2LDgwMDkwOTgwNiwxNDY2Mjg1NzMzLD
+EyMDUzMjUxMDMsOTE4MjY4NTE5LC0yMDIyNDA1NDc2LDIyODgz
+NjE5MiwtNjQ5Njc4NDcwXX0=
 -->
