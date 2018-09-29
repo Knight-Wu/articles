@@ -45,6 +45,8 @@ parent RDDs, which capture its lineage; a function for
 computing the RDD based on its parents; and metadata
 about its partitioning scheme and data placement.
 
+* With [spark.logLineage](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd-lineage.html#spark_logLineage) property enabled, `toDebugString` is included when executing an action.
+
 * dependencies between RDDs
   * narrow dependencies, where
 each partition of the child RDD depends on a constant
@@ -554,6 +556,6 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTE4MjY4NTE5LC0yMDIyNDA1NDc2LDIyOD
-gzNjE5MiwtNjQ5Njc4NDcwXX0=
+eyJoaXN0b3J5IjpbMTIwNTMyNTEwMyw5MTgyNjg1MTksLTIwMj
+I0MDU0NzYsMjI4ODM2MTkyLC02NDk2Nzg0NzBdfQ==
 -->
