@@ -71,6 +71,9 @@ for wide dependencies wide dependency or any cached partitions
 that can short-circuit the computation of a parent RDD.
 
 * fault-tolerant
+> 使用lineage (血统) 可以在其他节点并行计算failed partition of RDD, 如果有备份则可以直接计算,更快; 否则要根据上次计算的结果重新计算.
+> 若driver故障, 则所有executor的计算结果都会丢失
+>设置replication, 参考 [RDD Persistence](https://spark.apache.org/docs/latest/rdd-programming-guide.html) , 使用这个配置: MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.
   * narrow dependency
    >lost partition can be recomputed in parallel on other nodes
   * wide dependency 
@@ -125,9 +128,7 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 1. 在内存中计算, 内存中放不下遵循LRU(最近最少使用算法)将其余置换到disk
 2. 懒计算, 直到执行action 操作, 才会去计算RDD
 3. 容错性
-> 使用lineage (血统) 可以在其他节点并行计算failed partition of RDD, 如果有备份则可以直接计算,更快; 否则要根据上次计算的结果重新计算.
-> 若driver故障, 则所有executor的计算结果都会丢失
->设置replication, 参考 [RDD Persistence](https://spark.apache.org/docs/latest/rdd-programming-guide.html) , 使用这个配置: MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.
+
 
 
 4. 不可变性(Immutability)
@@ -556,7 +557,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2NjI4NTczMywxMjA1MzI1MTAzLDkxOD
-I2ODUxOSwtMjAyMjQwNTQ3NiwyMjg4MzYxOTIsLTY0OTY3ODQ3
-MF19
+eyJoaXN0b3J5IjpbLTE5OTg4MTAwNTcsMTQ2NjI4NTczMywxMj
+A1MzI1MTAzLDkxODI2ODUxOSwtMjAyMjQwNTQ3NiwyMjg4MzYx
+OTIsLTY0OTY3ODQ3MF19
 -->
