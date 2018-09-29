@@ -71,16 +71,11 @@ for wide dependencies wide dependency or any cached partitions
 that can short-circuit the computation of a parent RDD.
 
 * fault-tolerant
+> 若是上一个stage的map output result丢失, 则
 > 使用lineage (血统) 可以在其他节点并行计算failed partition of RDD, 如果有备份则可以直接计算,更快; 否则要根据上次计算的结果重新计算.
 > 若driver故障, 则所有executor的计算结果都会丢失
 >设置replication, 参考 [RDD Persistence](https://spark.apache.org/docs/latest/rdd-programming-guide.html) , 使用这个配置: MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.
-  * narrow dependency
-   >lost partition can be recomputed in parallel on other nodes
-  * wide dependency 
-   >node failure in the cluster may result in the loss
-of some slice of data from each parent RDD, requiring
-a full recomputation
-  * checkpoint
+ * checkpoint
   >可以使用persist() 保存一个checkpoint, 不需要从血统的起点开始计算
 
 
@@ -557,7 +552,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTg4MTAwNTcsMTQ2NjI4NTczMywxMj
-A1MzI1MTAzLDkxODI2ODUxOSwtMjAyMjQwNTQ3NiwyMjg4MzYx
-OTIsLTY0OTY3ODQ3MF19
+eyJoaXN0b3J5IjpbMTI0MDM5NTIwMiwxNDY2Mjg1NzMzLDEyMD
+UzMjUxMDMsOTE4MjY4NTE5LC0yMDIyNDA1NDc2LDIyODgzNjE5
+MiwtNjQ5Njc4NDcwXX0=
 -->
