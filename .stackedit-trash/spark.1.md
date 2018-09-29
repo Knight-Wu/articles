@@ -1,16 +1,16 @@
 #### spark执行的大致流程
-> To summarize, the following phases occur during Spark execution: 
-> 1. User code defines a DAG (directed acyclic graph) of RDDs
+ To summarize, the following phases occur during Spark execution: 
+ 1. User code defines a DAG (directed acyclic graph) of RDDs
 Operations on RDDs create new RDDs that refer back to their parents, thereby
 creating a graph.
-> 2. Actions force translation of the DAG to an execution plan
+ 2. Actions force translation of the DAG to an execution plan
 When you call an action on an RDD it must be computed. This requires computing
 its parent RDDs as well. Spark’s scheduler submits a job to compute all needed
 RDDs. That job will have one or more stages, which are parallel waves of
 computation composed of tasks. Each stage will correspond to one or more RDDs in
 the DAG. A single stage can correspond to multiple RDDs due to pipelining.
 Tasks are scheduled and executed on a cluster
-> 3. Stages are processed in order, with individual tasks launching to compute segments
+ 3. Stages are processed in order, with individual tasks launching to compute segments
 of the RDD. Once the final stage is finished in a job, the action is complete.
 
 
@@ -23,13 +23,12 @@ of the RDD. Once the final stage is finished in a job, the action is complete.
 1. stage里面的task = 当前RDD其依赖或上一次的RDD partition，若是从file生成的RDD依赖指定的partition数量
 2. task由scheduler 指定partition所在的node去执行, 等于说哪个节点保存这个partition, 由这个节点去计算task.
   
-> The number of tasks in a stage is the same as the number of partitions in the last RDD in the stage. The number of partitions in an RDD is the same as the number of partitions in the RDD on which it depends, with a couple exceptions: the coalesce transformation allows creating an RDD with fewer partitions than its parent RDD, the union transformation creates an RDD with the sum of its parents’ number of partitions, and cartesian(笛卡尔) creates an RDD with their product.
+ The number of tasks in a stage is the same as the number of partitions in the last RDD in the stage. The number of partitions in an RDD is the same as the number of partitions in the RDD on which it depends, with a couple exceptions: the coalesce transformation allows creating an RDD with fewer partitions than its parent RDD, the union transformation creates an RDD with the sum of its parents’ number of partitions, and cartesian(笛卡尔) creates an RDD with their product.
 
 
-> RDDs produced by textFile or hadoopFile have their partitions determined by the underlying MapReduce InputFormat that's used. Typically there will be a partition for each HDFS block being read. Partitions for RDDs produced by parallelize come from the parameter given by the user, or spark.default.parallelism if none is given.
+ RDDs produced by textFile or hadoopFile have their partitions determined by the underlying MapReduce InputFormat that's used. Typically there will be a partition for each HDFS block being read. Partitions for RDDs produced by parallelize come from the parameter given by the user, or spark.default.parallelism if none is given.
 
-
-* To determine the number of partitions in an RDD
+ To determine the number of partitions in an RDD
     rdd.partitions().size().
 
 
@@ -40,14 +39,13 @@ of the RDD. Once the final stage is finished in a job, the action is complete.
 
 
 #### lineage(血统)
-> each RDD has a set of partitions, which
+ each RDD has a set of partitions, which
 are atomic pieces of the dataset; a set of dependencies on
 parent RDDs, which capture its lineage; a function for
 computing the RDD based on its parents; and metadata
 about its partitioning scheme and data placement.
 
-
-
+* With [spark.logLineage](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd-lineage.html#spark_logLineage) property enabled, `toDebugString` is included when executing an action.
 
 
 
@@ -64,8 +62,8 @@ hash-partitioned)
 
 
 * stage
-1. 从narrow到wide dependency的时候需要产生新的stage
-2. 产生action动作的时候会产生新的stage
+参考[github-DAGScheduler.scala](https://github.com/apache/spark/blob/master/core/src/main/scala/org/apache/spark/scheduler/DAGScheduler.scala)
+> There are two types of stages: [[ResultStage]], for the final stage that executes an action, and [[ShuffleMapStage]], which writes map output files for a shuffle. Stages are often shared across multiple jobs, if these jobs reuse the same RDDs.
 
 
 > Each stage contains as many pipelined transformations
@@ -73,22 +71,30 @@ with narrow dependencies as possible. The
 boundaries of the stages are the shuffle operations required
 for wide dependencies wide dependency or any cached partitions
 that can short-circuit the computation of a parent RDD.
-> 
 
+### fault-tolerant
+1. driver node fail
+若driver故障, 则所有executor的计算结果都会丢失
+2. executor node fail
 
-* fault-tolerant
-  * narrow dependency
-   >lost partition can be recomputed in parallel on other nodes
+3. task compute fail
+*> some important config
+
+**spark.task.maxFailures**, 默认4, Number of failures of any particular task before giving up on the job, lost partition can be recomputed in parallel on othe job. The total number of failures spread across different tasks will not cause the job to fail; a particular task has to fail this number of attempts. Should be greater than or equal to 1. Number of allowed retries = this value - 1.(同一个task最多失败的次数, 若失败超过这个次数则放弃)
+
+若是上一个stage的map output result丢失, 则DAGScheduler会重试计算上一个stage数次.
+
+>设置replication, 参考 [RDD Persistence](https://spark.apache.org/docs/latest/rdd-programming-guide.html) , 使用这个配置: MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.
+ * narrow dependency
+lost partition can be recomputed in parallel on other nodes
   * wide dependency 
-   >node failure in the cluster may result in the loss
-of some slice of data from each parent RDD, requiring
-a full recomputation
-  * checkpoint
+   node failure in the cluster may result in the loss of some slice of data from each parent RDD, requiring a full recomputation
+ * checkpoint
   >可以使用persist() 保存一个checkpoint, 不需要从血统的起点开始计算
 
 
 * lineage与DAG的区别
-> lineage 描述的是RDD的依赖关系, 依赖链, 如图1; 而DAG 是有向无环图, 节点是rdd, 边是rdd的转化关系, 并能区分stage, 如图2
+> lineage 描述的是RDD的依赖关系, 依赖链, 是一个逻辑执行计划 , 如图1; 而DAG 是有向无环图, 节点是rdd, 边是rdd的转化关系, 并能区分stage,是一个物理执行计划. 如图2
 
 
 
@@ -131,9 +137,7 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 1. 在内存中计算, 内存中放不下遵循LRU(最近最少使用算法)将其余置换到disk
 2. 懒计算, 直到执行action 操作, 才会去计算RDD
 3. 容错性
-> 使用lineage (血统) 可以在其他节点并行计算failed partition of RDD, 如果有备份则可以直接计算,更快; 否则要根据上次计算的结果重新计算.
-> 若driver故障, 则所有executor的计算结果都会丢失
->设置replication, 参考 [RDD Persistence](https://spark.apache.org/docs/latest/rdd-programming-guide.html) , 使用这个配置: MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.
+
 
 
 4. 不可变性(Immutability)
@@ -562,5 +566,6 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0OTY3ODQ3MCwtMTc3NTA3NzI0Nl19
+eyJoaXN0b3J5IjpbMjAyNjU3Nzc5MSwtNjQ5Njc4NDcwLC0xNz
+c1MDc3MjQ2XX0=
 -->
