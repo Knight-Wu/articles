@@ -305,7 +305,7 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 
 > spark.memory.storageFraction
 
-上文的R, 在M中所占的比例, 默认是0.5, 给storage一直使用的,不会被execution抢占.sto
+上文的R, 在M中所占的比例, 默认是0.5, 给storage一直使用的,不会被execution抢占.可以看spark
 
 > executor memory
     
@@ -624,11 +624,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTI4OTA4NzMsMTM0MjM1MDk0MywtNz
-EyODY0MzU5LDg2MzE4NzMzLC0xOTE1MzI0MTUwLDE3OTMxMzI0
-NTEsLTE5OTA3ODU3MDAsLTc4NTQ3MzE5MCw5NjI3ODM4MzMsLT
-YxNTE2NjQwMywyMDMyMDM1NTksMTcxMzkyMDI0MCwxMTMxNDY0
-MTAsMTg4NTQ0OTg3Niw3MzYxMTA0NTgsODQwNTk3MDEwLDE5Nj
-M1OTA1NCwtOTQwNjA3OTIsLTEwMzE2ODQ0MTUsLTgyOTIxMjk2
-MF19
+eyJoaXN0b3J5IjpbLTE3NTE4MzAxNywtMTYxMjg5MDg3MywxMz
+QyMzUwOTQzLC03MTI4NjQzNTksODYzMTg3MzMsLTE5MTUzMjQx
+NTAsMTc5MzEzMjQ1MSwtMTk5MDc4NTcwMCwtNzg1NDczMTkwLD
+k2Mjc4MzgzMywtNjE1MTY2NDAzLDIwMzIwMzU1OSwxNzEzOTIw
+MjQwLDExMzE0NjQxMCwxODg1NDQ5ODc2LDczNjExMDQ1OCw4ND
+A1OTcwMTAsMTk2MzU5MDU0LC05NDA2MDc5MiwtMTAzMTY4NDQx
+NV19
 -->
