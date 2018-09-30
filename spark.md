@@ -200,7 +200,8 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 
 * 具体流程, 如下图所示
 ![image](https://user-images.githubusercontent.com/20329409/42148956-caa5b412-7e06-11e8-9e30-9e107ff9e1ea.png)
-[enter link description here](https://drive.google.com/open?id=1dU1KNWSPaHWyzVufVTgWDtjKbW0ixEhQ)
+![https://drive.google.com/uc?id=1dU1KNWSPaHWyzVufVTgWDtjKbW0ixEhQ](https://drive.google.com/uc?id=1dU1KNWSPaHWyzVufVTgWDtjKbW0ixEhQ)
+
 shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先介绍一下Hash-Based Shuffle, shuffle会产生两个stage, 分别对应 shuffle write和shuffle read
 
 > shuffle write 
@@ -217,6 +218,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 2. 文件句柄占用很多
 
 > Sorted-Based Shuffle
+相比于
 
 
 
@@ -582,7 +584,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxMDU3ODYzMSwtODI5MjEyOTYwLC04Mz
+eyJoaXN0b3J5IjpbLTQ2ODc4MDcyOCwtODI5MjEyOTYwLC04Mz
 kzNzk0ODQsLTg5NzkzMTA3MywxMTYwOTA1ODY3LDU3NTMzNjU5
 NSwyNDQyNTIxOTEsOTA2NTkyNDczLDEwMDA1NjMzMzgsLTE4Nz
 A3ODA0OTksODg3MjI0NzgzLDExNjk4MDUwNzcsMTAyMzExNjcz
