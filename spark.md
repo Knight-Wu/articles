@@ -166,7 +166,7 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 #### spark persist
 参考自 [https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md](https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md)
 * checkPoint
-分为reliable 和local 两种.
+一些运算量很大, 运算时间很长, 或者依赖很多RDD的RDD 则需要进行checkpoint, 分为reliable 和local 两种.
 > 1. reliable
 
 > SparkContext.setCheckpointDir(directory: String) to set the checkpoint directory, 目录必须是hdfs路径, 因为 checkPoint file实际上是保存在executor 机器上的.
@@ -570,11 +570,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzA3ODA0OTksODg3MjI0NzgzLDExNj
-k4MDUwNzcsMTAyMzExNjczOSwtNDQ1ODU1MDMwLDEzMjI1MDE0
-MDQsMTEwNDY0NTIzMywyMTE2ODA4Mjg4LDE2NDA2OTk5MTgsMT
-g5NjIyNTgyNCw4MzEwMjQwODYsLTM0MDM0MTMxNywyMDI2NTc3
-NzkxLC0xMDMzOTY5NTIyLC0xNTcwMjUwNTUxLC04OTc0NTQzOD
-ksMjA2ODU0Mjk4NCwtMTkzMjg3OTMzMyw0ODE3ODIyMjYsODAw
-OTA5ODA2XX0=
+eyJoaXN0b3J5IjpbMTAwMDU2MzMzOCwtMTg3MDc4MDQ5OSw4OD
+cyMjQ3ODMsMTE2OTgwNTA3NywxMDIzMTE2NzM5LC00NDU4NTUw
+MzAsMTMyMjUwMTQwNCwxMTA0NjQ1MjMzLDIxMTY4MDgyODgsMT
+Y0MDY5OTkxOCwxODk2MjI1ODI0LDgzMTAyNDA4NiwtMzQwMzQx
+MzE3LDIwMjY1Nzc3OTEsLTEwMzM5Njk1MjIsLTE1NzAyNTA1NT
+EsLTg5NzQ1NDM4OSwyMDY4NTQyOTg0LC0xOTMyODc5MzMzLDQ4
+MTc4MjIyNl19
 -->
