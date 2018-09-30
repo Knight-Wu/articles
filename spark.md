@@ -303,7 +303,7 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 > 避免创建重复RDD
 
 > 尽量重复使用RDD
-3.对多次使用的RDD持久化
+> 对多次使用的RDD持久化
 4.尽量避免shuffle类算子
 5.使用map端预聚合的算子, 类似于MR的combiner
 6.使用高性能算子
@@ -597,11 +597,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzODc5MDE4MCwyMDMyMDM1NTksMTcxMz
-kyMDI0MCwxMTMxNDY0MTAsMTg4NTQ0OTg3Niw3MzYxMTA0NTgs
-ODQwNTk3MDEwLDE5NjM1OTA1NCwtOTQwNjA3OTIsLTEwMzE2OD
-Q0MTUsLTgyOTIxMjk2MCwtODM5Mzc5NDg0LC04OTc5MzEwNzMs
-MTE2MDkwNTg2Nyw1NzUzMzY1OTUsMjQ0MjUyMTkxLDkwNjU5Mj
-Q3MywxMDAwNTYzMzM4LC0xODcwNzgwNDk5LDg4NzIyNDc4M119
-
+eyJoaXN0b3J5IjpbLTYxNTE2NjQwMywxMjM4NzkwMTgwLDIwMz
+IwMzU1OSwxNzEzOTIwMjQwLDExMzE0NjQxMCwxODg1NDQ5ODc2
+LDczNjExMDQ1OCw4NDA1OTcwMTAsMTk2MzU5MDU0LC05NDA2MD
+c5MiwtMTAzMTY4NDQxNSwtODI5MjEyOTYwLC04MzkzNzk0ODQs
+LTg5NzkzMTA3MywxMTYwOTA1ODY3LDU3NTMzNjU5NSwyNDQyNT
+IxOTEsOTA2NTkyNDczLDEwMDA1NjMzMzgsLTE4NzA3ODA0OTld
+fQ==
 -->
