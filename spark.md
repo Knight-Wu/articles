@@ -193,7 +193,7 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 
 #### spark shuffle
 参考自 [SparkInternals-shuffleDetails](https://github.com/JerryLead/SparkInternals/blob/master/markdown/4-shuffleDetails.md)
-* 简而言之, 是再次分布数据的过程.例如 reduceByKey(), 需要在所有的分区找到所有的key的所有value ,并把所有的value聚合到一起计算.
+* 简而言之, 是再次分布数据的过程.例如 reduceByKey(), 需要在所有的分区找到某个key的所有value ,并把所有的value聚合到一起计算.
 
 
 * 具体流程, 如下图所示
@@ -570,11 +570,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAwMDU2MzMzOCwtMTg3MDc4MDQ5OSw4OD
-cyMjQ3ODMsMTE2OTgwNTA3NywxMDIzMTE2NzM5LC00NDU4NTUw
-MzAsMTMyMjUwMTQwNCwxMTA0NjQ1MjMzLDIxMTY4MDgyODgsMT
-Y0MDY5OTkxOCwxODk2MjI1ODI0LDgzMTAyNDA4NiwtMzQwMzQx
-MzE3LDIwMjY1Nzc3OTEsLTEwMzM5Njk1MjIsLTE1NzAyNTA1NT
-EsLTg5NzQ1NDM4OSwyMDY4NTQyOTg0LC0xOTMyODc5MzMzLDQ4
-MTc4MjIyNl19
+eyJoaXN0b3J5IjpbOTA2NTkyNDczLDEwMDA1NjMzMzgsLTE4Nz
+A3ODA0OTksODg3MjI0NzgzLDExNjk4MDUwNzcsMTAyMzExNjcz
+OSwtNDQ1ODU1MDMwLDEzMjI1MDE0MDQsMTEwNDY0NTIzMywyMT
+E2ODA4Mjg4LDE2NDA2OTk5MTgsMTg5NjIyNTgyNCw4MzEwMjQw
+ODYsLTM0MDM0MTMxNywyMDI2NTc3NzkxLC0xMDMzOTY5NTIyLC
+0xNTcwMjUwNTUxLC04OTc0NTQzODksMjA2ODU0Mjk4NCwtMTkz
+Mjg3OTMzM119
 -->
