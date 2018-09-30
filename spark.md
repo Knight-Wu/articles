@@ -227,7 +227,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 3.  如果需要在分片内也进行排序的话，此时需要进行 Mapper 端和 Reducer 端的两次排序！
 4.  它要基于记录本身进行排序，这就是 Sort-Based Shuffle 最致命的性能消耗；
 
-> shuffleMapTask输出的w
+> shuffleMapTask输出的文件如何cunc
  
 
 > 问题
@@ -594,11 +594,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTc5MDM5NzYsMTk2MzU5MDU0LC05ND
-A2MDc5MiwtMTAzMTY4NDQxNSwtODI5MjEyOTYwLC04MzkzNzk0
-ODQsLTg5NzkzMTA3MywxMTYwOTA1ODY3LDU3NTMzNjU5NSwyND
-QyNTIxOTEsOTA2NTkyNDczLDEwMDA1NjMzMzgsLTE4NzA3ODA0
-OTksODg3MjI0NzgzLDExNjk4MDUwNzcsMTAyMzExNjczOSwtND
-Q1ODU1MDMwLDEzMjI1MDE0MDQsMTEwNDY0NTIzMywyMTE2ODA4
-Mjg4XX0=
+eyJoaXN0b3J5IjpbODQwNTk3MDEwLC0xODE3OTAzOTc2LDE5Nj
+M1OTA1NCwtOTQwNjA3OTIsLTEwMzE2ODQ0MTUsLTgyOTIxMjk2
+MCwtODM5Mzc5NDg0LC04OTc5MzEwNzMsMTE2MDkwNTg2Nyw1Nz
+UzMzY1OTUsMjQ0MjUyMTkxLDkwNjU5MjQ3MywxMDAwNTYzMzM4
+LC0xODcwNzgwNDk5LDg4NzIyNDc4MywxMTY5ODA1MDc3LDEwMj
+MxMTY3MzksLTQ0NTg1NTAzMCwxMzIyNTAxNDA0LDExMDQ2NDUy
+MzNdfQ==
 -->
