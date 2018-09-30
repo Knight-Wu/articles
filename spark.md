@@ -297,6 +297,7 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 
 #### spark 性能调优
 
+* nei
 [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
 > 使用kryo序列化, 需要预先注册, 并设置kryo的缓存大小
 
@@ -599,11 +600,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzgxNzI1OTUxLC0xOTkwNzg1NzAwLC03OD
-U0NzMxOTAsOTYyNzgzODMzLC02MTUxNjY0MDMsMjAzMjAzNTU5
-LDE3MTM5MjAyNDAsMTEzMTQ2NDEwLDE4ODU0NDk4NzYsNzM2MT
-EwNDU4LDg0MDU5NzAxMCwxOTYzNTkwNTQsLTk0MDYwNzkyLC0x
-MDMxNjg0NDE1LC04MjkyMTI5NjAsLTgzOTM3OTQ4NCwtODk3OT
-MxMDczLDExNjA5MDU4NjcsNTc1MzM2NTk1LDI0NDI1MjE5MV19
-
+eyJoaXN0b3J5IjpbMTc5MzEzMjQ1MSwzODE3MjU5NTEsLTE5OT
+A3ODU3MDAsLTc4NTQ3MzE5MCw5NjI3ODM4MzMsLTYxNTE2NjQw
+MywyMDMyMDM1NTksMTcxMzkyMDI0MCwxMTMxNDY0MTAsMTg4NT
+Q0OTg3Niw3MzYxMTA0NTgsODQwNTk3MDEwLDE5NjM1OTA1NCwt
+OTQwNjA3OTIsLTEwMzE2ODQ0MTUsLTgyOTIxMjk2MCwtODM5Mz
+c5NDg0LC04OTc5MzEwNzMsMTE2MDkwNTg2Nyw1NzUzMzY1OTVd
+fQ==
 -->
