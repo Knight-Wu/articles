@@ -218,7 +218,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 2. 文件句柄占用很多
 
 > Sorted-Based Shuffle
-相比于Hash-Based Shuffle 的主要改进是减小了大量shuffle的中间文件, 每一个shuffleMapTask只产生两个文件, 一个data文件, 一个index文件, 存储数据文件的partition信息.
+相比于Hash-Based Shuffle 的主要改进是减小了大量shuffle的中间文件, 每一个shuffleMapTask只产生两个文件, 一个data文件, 一个index文件, 存储数据文件的partition信息.但是
 
 
 
@@ -584,11 +584,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0MDYwNzkyLC0xMDMxNjg0NDE1LC04Mj
-kyMTI5NjAsLTgzOTM3OTQ4NCwtODk3OTMxMDczLDExNjA5MDU4
-NjcsNTc1MzM2NTk1LDI0NDI1MjE5MSw5MDY1OTI0NzMsMTAwMD
-U2MzMzOCwtMTg3MDc4MDQ5OSw4ODcyMjQ3ODMsMTE2OTgwNTA3
-NywxMDIzMTE2NzM5LC00NDU4NTUwMzAsMTMyMjUwMTQwNCwxMT
-A0NjQ1MjMzLDIxMTY4MDgyODgsMTY0MDY5OTkxOCwxODk2MjI1
-ODI0XX0=
+eyJoaXN0b3J5IjpbLTIwOTI5MDQ0NywtOTQwNjA3OTIsLTEwMz
+E2ODQ0MTUsLTgyOTIxMjk2MCwtODM5Mzc5NDg0LC04OTc5MzEw
+NzMsMTE2MDkwNTg2Nyw1NzUzMzY1OTUsMjQ0MjUyMTkxLDkwNj
+U5MjQ3MywxMDAwNTYzMzM4LC0xODcwNzgwNDk5LDg4NzIyNDc4
+MywxMTY5ODA1MDc3LDEwMjMxMTY3MzksLTQ0NTg1NTAzMCwxMz
+IyNTAxNDA0LDExMDQ2NDUyMzMsMjExNjgwODI4OCwxNjQwNjk5
+OTE4XX0=
 -->
