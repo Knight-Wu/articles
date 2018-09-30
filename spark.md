@@ -232,7 +232,8 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
  
 
 > 问题
-
+* spark.shuffle.spill 这个参数具体控制什么, 默认是什么
+* Sort-Based Shuffle的pa
 
 
 
@@ -595,11 +596,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzM2MTEwNDU4LDg0MDU5NzAxMCwxOTYzNT
-kwNTQsLTk0MDYwNzkyLC0xMDMxNjg0NDE1LC04MjkyMTI5NjAs
-LTgzOTM3OTQ4NCwtODk3OTMxMDczLDExNjA5MDU4NjcsNTc1Mz
-M2NTk1LDI0NDI1MjE5MSw5MDY1OTI0NzMsMTAwMDU2MzMzOCwt
-MTg3MDc4MDQ5OSw4ODcyMjQ3ODMsMTE2OTgwNTA3NywxMDIzMT
-E2NzM5LC00NDU4NTUwMzAsMTMyMjUwMTQwNCwxMTA0NjQ1MjMz
+eyJoaXN0b3J5IjpbLTExMDA3ODk4Nyw3MzYxMTA0NTgsODQwNT
+k3MDEwLDE5NjM1OTA1NCwtOTQwNjA3OTIsLTEwMzE2ODQ0MTUs
+LTgyOTIxMjk2MCwtODM5Mzc5NDg0LC04OTc5MzEwNzMsMTE2MD
+kwNTg2Nyw1NzUzMzY1OTUsMjQ0MjUyMTkxLDkwNjU5MjQ3Mywx
+MDAwNTYzMzM4LC0xODcwNzgwNDk5LDg4NzIyNDc4MywxMTY5OD
+A1MDc3LDEwMjMxMTY3MzksLTQ0NTg1NTAzMCwxMzIyNTAxNDA0
 XX0=
 -->
