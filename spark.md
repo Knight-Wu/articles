@@ -522,9 +522,8 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 ---
 #### 疑问
 * 还是要把本地windows环境起起来, spark如何指定 scala, hadoop
-* spark 序列化
+* spark 为什么要序列化 task, 可不可以直接传输二进制, 序列化发生在什么阶段
 * 基准测试 benchmark
-* spark集群容错, 如果没有保留中间结果, 则如何重新计算, 从哪里开始 ? 
 
 
 
@@ -568,10 +567,10 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5NjIyNTgyNCw4MzEwMjQwODYsLTM0MD
-M0MTMxNywyMDI2NTc3NzkxLC0xMDMzOTY5NTIyLC0xNTcwMjUw
-NTUxLC04OTc0NTQzODksMjA2ODU0Mjk4NCwtMTkzMjg3OTMzMy
-w0ODE3ODIyMjYsODAwOTA5ODA2LDE0NjYyODU3MzMsMTIwNTMy
-NTEwMyw5MTgyNjg1MTksLTIwMjI0MDU0NzYsMjI4ODM2MTkyLC
-02NDk2Nzg0NzBdfQ==
+eyJoaXN0b3J5IjpbMTY0OTUyNTQ4MCwxODk2MjI1ODI0LDgzMT
+AyNDA4NiwtMzQwMzQxMzE3LDIwMjY1Nzc3OTEsLTEwMzM5Njk1
+MjIsLTE1NzAyNTA1NTEsLTg5NzQ1NDM4OSwyMDY4NTQyOTg0LC
+0xOTMyODc5MzMzLDQ4MTc4MjIyNiw4MDA5MDk4MDYsMTQ2NjI4
+NTczMywxMjA1MzI1MTAzLDkxODI2ODUxOSwtMjAyMjQwNTQ3Ni
+wyMjg4MzYxOTIsLTY0OTY3ODQ3MF19
 -->
