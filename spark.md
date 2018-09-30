@@ -95,7 +95,7 @@ TaskSetFailed event会中止stage和job, 如果同一个stage失败次数没超�
 
 **spark.task.maxFailures**, 默认4, Number of failures of any particular task before giving up on the job, lost partition can be recomputed in parallel on othe job. The total number of failures spread across different tasks will not cause the job to fail; a particular task has to fail this number of attempts. Should be greater than or equal to 1. Number of allowed retries = this value - 1.(同一个task最多失败的次数, 若失败超过这个次数则放弃)
 
-
+若是上一个stage的map output result丢失, 则DAGScheduler会重试计算上一个stage数次.
 
 >设置replication, 参考 [RDD Persistence](https://spark.apache.org/docs/latest/rdd-programming-guide.html) , 使用这个配置: MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.
 
@@ -202,9 +202,9 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 ![image](https://user-images.githubusercontent.com/20329409/42148956-caa5b412-7e06-11e8-9e30-9e107ff9e1ea.png)
 ![https://drive.google.com/uc?id=1dU1KNWSPaHWyzVufVTgWDtjKbW0ixEhQ](https://drive.google.com/uc?id=1dU1KNWSPaHWyzVufVTgWDtjKbW0ixEhQ)
 
-shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先介绍一下Hash-Based Shuffle, shuffle会产生两个stage, 分别对应 shuffle write和shuffle read
+shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先介绍一下Hash-Based Shuffle,
 
-> shuffle write 
+> shuffle会产生两个stage, 分别对应 shuffle write和shuffle read shuffle write 
 
 可以当做mapper阶段, 这一步的task叫做shuffleMapTask , 假设mapper阶段的partition有m个, task中的每条记录, 通过 partitioner.partition(record.getKey())) (默认是HashPartitioner),  会被分散到 bucket上, 每个task 对应的bucket的数量 == reducer的数量 == 下一个stage的task的数量, 会首先写到内存里, 内存不够会写到磁盘.
 
@@ -244,6 +244,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
   * 提高shuffle操作的并行度
   spark.sql.shuffle.partitions 提高sparkSql中shuffle类操作的并行度, 默认是200, 对应200个shuffle read tasks
    
+* 这篇博文还需再看 [link](http://www.cnblogs.com/jcchoiling/p/6440102.html)
 
 
 #### spark 资源分配
@@ -332,11 +333,15 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 
 > 对多次使用的RDD持久化, rdd.checkpoint() 可以在多个application共用
 
-> 尽量避免shuffle类算子
+> [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
+> 1. 避免创建重复RDD
+2.尽量重复使用RDD
+3.对多次使用的RDD持久化
+4.尽量避免shuffle类算子
 
 > 使用map端预聚合的算子, 类似于MR的combiner
 
->使用高性能算子
+>6.使用高性能算子
 
 
 
@@ -627,11 +632,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjcyMDQ4ODU0LDEzMTYxMDIwMDcsLTIwNT
-g1NTUzODMsOTA4ODkzNDUxLDEzNDIzNTA5NDMsLTcxMjg2NDM1
-OSw4NjMxODczMywtMTkxNTMyNDE1MCwxNzkzMTMyNDUxLC0xOT
-kwNzg1NzAwLC03ODU0NzMxOTAsOTYyNzgzODMzLC02MTUxNjY0
-MDMsMjAzMjAzNTU5LDE3MTM5MjAyNDAsMTEzMTQ2NDEwLDE4OD
-U0NDk4NzYsNzM2MTEwNDU4LDg0MDU5NzAxMCwxOTYzNTkwNTRd
-fQ==
+eyJoaXN0b3J5IjpbLTMwNTc5NzYxMywyNzIwNDg4NTQsMTMxNj
+EwMjAwNywtMjA1ODU1NTM4Myw5MDg4OTM0NTEsMTM0MjM1MDk0
+MywtNzEyODY0MzU5LDg2MzE4NzMzLC0xOTE1MzI0MTUwLDE3OT
+MxMzI0NTEsLTE5OTA3ODU3MDAsLTc4NTQ3MzE5MCw5NjI3ODM4
+MzMsLTYxNTE2NjQwMywyMDMyMDM1NTksMTcxMzkyMDI0MCwxMT
+MxNDY0MTAsMTg4NTQ0OTg3Niw3MzYxMTA0NTgsODQwNTk3MDEw
+XX0=
 -->
