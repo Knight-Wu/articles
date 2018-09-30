@@ -292,6 +292,9 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 
 #### spark 性能调优
 * 内存
+> 内存概述
+
+由execution和storage组成, execution用于computation in shuffles, joins, sorts and aggregation, storage用于caching和传播内
 > executor memory
     
 the heap size can be controlled with the --executor-memory flag or the spark.executor.memory property
@@ -609,11 +612,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTUzMjQxNTAsMTc5MzEzMjQ1MSwtMT
-k5MDc4NTcwMCwtNzg1NDczMTkwLDk2Mjc4MzgzMywtNjE1MTY2
-NDAzLDIwMzIwMzU1OSwxNzEzOTIwMjQwLDExMzE0NjQxMCwxOD
-g1NDQ5ODc2LDczNjExMDQ1OCw4NDA1OTcwMTAsMTk2MzU5MDU0
-LC05NDA2MDc5MiwtMTAzMTY4NDQxNSwtODI5MjEyOTYwLC04Mz
-kzNzk0ODQsLTg5NzkzMTA3MywxMTYwOTA1ODY3LDU3NTMzNjU5
-NV19
+eyJoaXN0b3J5IjpbMTQ1NDY4Mzg2NiwtMTkxNTMyNDE1MCwxNz
+kzMTMyNDUxLC0xOTkwNzg1NzAwLC03ODU0NzMxOTAsOTYyNzgz
+ODMzLC02MTUxNjY0MDMsMjAzMjAzNTU5LDE3MTM5MjAyNDAsMT
+EzMTQ2NDEwLDE4ODU0NDk4NzYsNzM2MTEwNDU4LDg0MDU5NzAx
+MCwxOTYzNTkwNTQsLTk0MDYwNzkyLC0xMDMxNjg0NDE1LC04Mj
+kyMTI5NjAsLTgzOTM3OTQ4NCwtODk3OTMxMDczLDExNjA5MDU4
+NjddfQ==
 -->
