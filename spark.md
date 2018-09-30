@@ -300,7 +300,7 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 
 #### spark 性能调优
 [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
-> 使用kryo序列化, 需要预先注册, 并设置
+> 使用kryo序列化, 需要预先注册, 并设置kr
 
 > 避免创建重复RDD
 
@@ -603,11 +603,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwNjEzOTgyNyw5NjI3ODM4MzMsLTYxNT
-E2NjQwMywyMDMyMDM1NTksMTcxMzkyMDI0MCwxMTMxNDY0MTAs
-MTg4NTQ0OTg3Niw3MzYxMTA0NTgsODQwNTk3MDEwLDE5NjM1OT
-A1NCwtOTQwNjA3OTIsLTEwMzE2ODQ0MTUsLTgyOTIxMjk2MCwt
-ODM5Mzc5NDg0LC04OTc5MzEwNzMsMTE2MDkwNTg2Nyw1NzUzMz
-Y1OTUsMjQ0MjUyMTkxLDkwNjU5MjQ3MywxMDAwNTYzMzM4XX0=
+eyJoaXN0b3J5IjpbLTc4NTQ3MzE5MCwxMzA2MTM5ODI3LDk2Mj
+c4MzgzMywtNjE1MTY2NDAzLDIwMzIwMzU1OSwxNzEzOTIwMjQw
+LDExMzE0NjQxMCwxODg1NDQ5ODc2LDczNjExMDQ1OCw4NDA1OT
+cwMTAsMTk2MzU5MDU0LC05NDA2MDc5MiwtMTAzMTY4NDQxNSwt
+ODI5MjEyOTYwLC04MzkzNzk0ODQsLTg5NzkzMTA3MywxMTYwOT
+A1ODY3LDU3NTMzNjU5NSwyNDQyNTIxOTEsOTA2NTkyNDczXX0=
 
 -->
