@@ -218,9 +218,18 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 2. 文件句柄占用很多
 
 > Sorted-Based Shuffle
-相比于Hash-Based Shuffle 的主要改进是减小了大量shuffle的中间文件, 每一个shuffleMapTask只产生两个文件, 一个data文件, 一个index文件, 存储数据文件的partition信息.但是
+相比于Hash-Based Shuffle 的主要改进是减小了大量shuffle的中间文件, 每一个shuffleMapTask只产生两个文件, 一个data文件, 一个index文件, 存储数据文件的partition信息.
 
+>Sort-Based Shuffle 的弱点
 
+1.  如果 Mapper 中 Task 的数量过大，依旧会产生很多小文件，此时在 Shuffle 传数据的过程中到 Reducer 端，Reducer 会需要同时大量的记录来进行反序例化，导致大量内存消耗和GC 的巨大负担，造成系统缓慢甚至崩溃！
+2.  强制了在 Mapper 端必顺要排序，这里的前提是本身数据根本不需要排序的话；
+3.  如果需要在分片内也进行排序的话，此时需要进行 Mapper 端和 Reducer 端的两次排序！
+4.  它要基于记录本身进行排序，这就是 Sort-Based Shuffle 最致命的性能消耗；
+
+ 
+
+> 问题
 
 
 
@@ -584,11 +593,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTI5MDQ0NywtOTQwNjA3OTIsLTEwMz
-E2ODQ0MTUsLTgyOTIxMjk2MCwtODM5Mzc5NDg0LC04OTc5MzEw
-NzMsMTE2MDkwNTg2Nyw1NzUzMzY1OTUsMjQ0MjUyMTkxLDkwNj
-U5MjQ3MywxMDAwNTYzMzM4LC0xODcwNzgwNDk5LDg4NzIyNDc4
-MywxMTY5ODA1MDc3LDEwMjMxMTY3MzksLTQ0NTg1NTAzMCwxMz
-IyNTAxNDA0LDExMDQ2NDUyMzMsMjExNjgwODI4OCwxNjQwNjk5
-OTE4XX0=
+eyJoaXN0b3J5IjpbMTk2MzU5MDU0LC05NDA2MDc5MiwtMTAzMT
+Y4NDQxNSwtODI5MjEyOTYwLC04MzkzNzk0ODQsLTg5NzkzMTA3
+MywxMTYwOTA1ODY3LDU3NTMzNjU5NSwyNDQyNTIxOTEsOTA2NT
+kyNDczLDEwMDA1NjMzMzgsLTE4NzA3ODA0OTksODg3MjI0Nzgz
+LDExNjk4MDUwNzcsMTAyMzExNjczOSwtNDQ1ODU1MDMwLDEzMj
+I1MDE0MDQsMTEwNDY0NTIzMywyMTE2ODA4Mjg4LDE2NDA2OTk5
+MThdfQ==
 -->
