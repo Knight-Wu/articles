@@ -233,7 +233,9 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 
 > 问题
 * spark.shuffle.spill 这个参数具体控制什么, 默认是什么
-* Sort-Based Shuffle的排序分为几个, s
+* Sort-Based Shuffle的排序分为几个, 什么时候进行, 并且如何避免不必要的排序,
+* **如何提高shuffle的性能**, shuffle的map和reduce的数量如何控制
+* executor.core
 
 
 
@@ -596,11 +598,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjAyODkxNzIyLC0xMTAwNzg5ODcsNzM2MT
-EwNDU4LDg0MDU5NzAxMCwxOTYzNTkwNTQsLTk0MDYwNzkyLC0x
-MDMxNjg0NDE1LC04MjkyMTI5NjAsLTgzOTM3OTQ4NCwtODk3OT
-MxMDczLDExNjA5MDU4NjcsNTc1MzM2NTk1LDI0NDI1MjE5MSw5
-MDY1OTI0NzMsMTAwMDU2MzMzOCwtMTg3MDc4MDQ5OSw4ODcyMj
-Q3ODMsMTE2OTgwNTA3NywxMDIzMTE2NzM5LC00NDU4NTUwMzBd
-fQ==
+eyJoaXN0b3J5IjpbLTE1NDUxMTM4MjIsNjAyODkxNzIyLDczNj
+ExMDQ1OCw4NDA1OTcwMTAsMTk2MzU5MDU0LC05NDA2MDc5Miwt
+MTAzMTY4NDQxNSwtODI5MjEyOTYwLC04MzkzNzk0ODQsLTg5Nz
+kzMTA3MywxMTYwOTA1ODY3LDU3NTMzNjU5NSwyNDQyNTIxOTEs
+OTA2NTkyNDczLDEwMDA1NjMzMzgsLTE4NzA3ODA0OTksODg3Mj
+I0NzgzLDExNjk4MDUwNzcsMTAyMzExNjczOSwtNDQ1ODU1MDMw
+XX0=
 -->
