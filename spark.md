@@ -293,7 +293,7 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 #### spark 性能调优
 参考自
 1.  [https://spark.apache.org/docs/latest/tuning.html](https://spark.apache.org/docs/latest/tuning.html)
-
+2. [enter link description here](%5Bistribution_of_executors_cores_and_memory_for_spark_application%5D%28https://spoddutur.github.io/spark-notes/distribution_of_executors_cores_and_memory_for_spark_application.html%29)
 * 内存
 > 内存概述
 
@@ -301,11 +301,11 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 
 > spark.memory.fraction
 
-上文的M, 计算方式是(JVM heap space - 300MB) * (default 0.6).
+上文的M, 计算方式是(JVM heap space - 300MB) * (default 0.6).其余是留给: user data structures, internal metadata in Spark, and safeguarding
 
 > spark.memory.storageFraction
 
-上文的R, 在M中所占的比例, 默认是0.5, 给storage一直使用的,不会被execution抢占.可以看spark
+上文的R, 在M中所占的比例, 默认是0.5, 给storage一直使用的,不会被execution抢占.可以看spark-history-server中storage使用的情况, 如果很小, 可以把这个值调低.
 
 > executor memory
     
@@ -313,9 +313,8 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 > spark.yarn.executor.memoryOverhead
 
 指的是 off-heap memory per executor, 用来存储 VM overheads, interned strings, other native overheads, 默认值是 Max(384MB, 10% of spark.executor-memory), 所以每个executor的实际物理内存需要囊括spark.yarn.executor.memoryOverhead 和executor memory两部分.
-> spark memory model 
 
-[istribution_of_executors_cores_and_memory_for_spark_application](https://spoddutur.github.io/spark-notes/distribution_of_executors_cores_and_memory_for_spark_application.html)
+
 
 
 
@@ -624,11 +623,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTE4MzAxNywtMTYxMjg5MDg3MywxMz
-QyMzUwOTQzLC03MTI4NjQzNTksODYzMTg3MzMsLTE5MTUzMjQx
-NTAsMTc5MzEzMjQ1MSwtMTk5MDc4NTcwMCwtNzg1NDczMTkwLD
-k2Mjc4MzgzMywtNjE1MTY2NDAzLDIwMzIwMzU1OSwxNzEzOTIw
-MjQwLDExMzE0NjQxMCwxODg1NDQ5ODc2LDczNjExMDQ1OCw4ND
-A1OTcwMTAsMTk2MzU5MDU0LC05NDA2MDc5MiwtMTAzMTY4NDQx
-NV19
+eyJoaXN0b3J5IjpbMTUwNTYxMTcyMCwtMTc1MTgzMDE3LDEzND
+IzNTA5NDMsLTcxMjg2NDM1OSw4NjMxODczMywtMTkxNTMyNDE1
+MCwxNzkzMTMyNDUxLC0xOTkwNzg1NzAwLC03ODU0NzMxOTAsOT
+YyNzgzODMzLC02MTUxNjY0MDMsMjAzMjAzNTU5LDE3MTM5MjAy
+NDAsMTEzMTQ2NDEwLDE4ODU0NDk4NzYsNzM2MTEwNDU4LDg0MD
+U5NzAxMCwxOTYzNTkwNTQsLTk0MDYwNzkyLC0xMDMxNjg0NDE1
+XX0=
 -->
