@@ -293,8 +293,9 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 #### spark 性能调优
 参考自
 1.  [https://spark.apache.org/docs/latest/tuning.html](https://spark.apache.org/docs/latest/tuning.html)
-2. [[istribution_of_executors_cores_and_memory_for_spark_application](https://spoddutur.github.io/spark-notes/distribution_of_executors_cores_and_memory_for_spark_application.html)
+2. [[distribution_of_executors_cores_and_memory_for_spark_application](https://spoddutur.github.io/spark-notes/distribution_of_executors_cores_and_memory_for_spark_application.html)
 ](%5Bistribution_of_executors_cores_and_memory_for_spark_application%5D%28https://spoddutur.github.io/spark-notes/distribution_of_executors_cores_and_memory_for_spark_application.html%29)
+
 * 内存
 > 内存概述
 
@@ -624,11 +625,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTA4ODkzNDUxLDE1MDU2MTE3MjAsMTM0Mj
-M1MDk0MywtNzEyODY0MzU5LDg2MzE4NzMzLC0xOTE1MzI0MTUw
-LDE3OTMxMzI0NTEsLTE5OTA3ODU3MDAsLTc4NTQ3MzE5MCw5Nj
-I3ODM4MzMsLTYxNTE2NjQwMywyMDMyMDM1NTksMTcxMzkyMDI0
-MCwxMTMxNDY0MTAsMTg4NTQ0OTg3Niw3MzYxMTA0NTgsODQwNT
-k3MDEwLDE5NjM1OTA1NCwtOTQwNjA3OTIsLTEwMzE2ODQ0MTVd
-fQ==
+eyJoaXN0b3J5IjpbLTIwNTg1NTUzODMsOTA4ODkzNDUxLDEzND
+IzNTA5NDMsLTcxMjg2NDM1OSw4NjMxODczMywtMTkxNTMyNDE1
+MCwxNzkzMTMyNDUxLC0xOTkwNzg1NzAwLC03ODU0NzMxOTAsOT
+YyNzgzODMzLC02MTUxNjY0MDMsMjAzMjAzNTU5LDE3MTM5MjAy
+NDAsMTEzMTQ2NDEwLDE4ODU0NDk4NzYsNzM2MTEwNDU4LDg0MD
+U5NzAxMCwxOTYzNTkwNTQsLTk0MDYwNzkyLC0xMDMxNjg0NDE1
+XX0=
 -->
