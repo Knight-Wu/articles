@@ -79,7 +79,7 @@ that can short-circuit the computation of a parent RDD.
 
 3. some tasks  fail
 spark 采用event触发机制, DAGSchedulerEventProcessLoop去监听队列里面的event, 
-TaskSetFailed event会中止stage和job, 如果ResubmitFailedStages会再次提交失败的stage, 如果parent stage存在的话, 就可以再次计算task, 但是只会计算失败的task.
+TaskSetFailed event会中止stage和job, 如果同一个stage失败次数没超过默认的四次,(否则直接终止job) ResubmitFailedStages会再次提交失败的stage, 如果parent stage存在的话, 就可以再次计算task, 但是只会计算失败的task.
 > some important config
 
 **spark.task.maxFailures**, 默认4, Number of failures of any particular task before giving up on the job, lost partition can be recomputed in parallel on othe job. The total number of failures spread across different tasks will not cause the job to fail; a particular task has to fail this number of attempts. Should be greater than or equal to 1. Number of allowed retries = this value - 1.(同一个task最多失败的次数, 若失败超过这个次数则放弃)
@@ -567,10 +567,10 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0MDY5OTkxOCwxODk2MjI1ODI0LDgzMT
-AyNDA4NiwtMzQwMzQxMzE3LDIwMjY1Nzc3OTEsLTEwMzM5Njk1
-MjIsLTE1NzAyNTA1NTEsLTg5NzQ1NDM4OSwyMDY4NTQyOTg0LC
-0xOTMyODc5MzMzLDQ4MTc4MjIyNiw4MDA5MDk4MDYsMTQ2NjI4
-NTczMywxMjA1MzI1MTAzLDkxODI2ODUxOSwtMjAyMjQwNTQ3Ni
-wyMjg4MzYxOTIsLTY0OTY3ODQ3MF19
+eyJoaXN0b3J5IjpbMjExNjgwODI4OCwxNjQwNjk5OTE4LDE4OT
+YyMjU4MjQsODMxMDI0MDg2LC0zNDAzNDEzMTcsMjAyNjU3Nzc5
+MSwtMTAzMzk2OTUyMiwtMTU3MDI1MDU1MSwtODk3NDU0Mzg5LD
+IwNjg1NDI5ODQsLTE5MzI4NzkzMzMsNDgxNzgyMjI2LDgwMDkw
+OTgwNiwxNDY2Mjg1NzMzLDEyMDUzMjUxMDMsOTE4MjY4NTE5LC
+0yMDIyNDA1NDc2LDIyODgzNjE5MiwtNjQ5Njc4NDcwXX0=
 -->
