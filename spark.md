@@ -193,7 +193,7 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 
 #### spark shuffle
 参考自 
-1
+1. 
 2. [jcchoiling](http://www.cnblogs.com/jcchoiling/p/6440102.html)
 * 简而言之, 是再次分布数据的过程.例如 reduceByKey(), 需要在所有的分区找到某个key的所有value ,并把所有的value聚合到一起计算.
 
@@ -569,11 +569,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTY1ODI0NCwtMTM0ODEwNTEzOSwxMT
-YwOTA1ODY3LDU3NTMzNjU5NSwyNDQyNTIxOTEsOTA2NTkyNDcz
-LDEwMDA1NjMzMzgsLTE4NzA3ODA0OTksODg3MjI0NzgzLDExNj
-k4MDUwNzcsMTAyMzExNjczOSwtNDQ1ODU1MDMwLDEzMjI1MDE0
-MDQsMTEwNDY0NTIzMywyMTE2ODA4Mjg4LDE2NDA2OTk5MTgsMT
-g5NjIyNTgyNCw4MzEwMjQwODYsLTM0MDM0MTMxNywyMDI2NTc3
-NzkxXX0=
+eyJoaXN0b3J5IjpbMjAzOTgxNzU4MiwtMjA5NjU4MjQ0LDExNj
+A5MDU4NjcsNTc1MzM2NTk1LDI0NDI1MjE5MSw5MDY1OTI0NzMs
+MTAwMDU2MzMzOCwtMTg3MDc4MDQ5OSw4ODcyMjQ3ODMsMTE2OT
+gwNTA3NywxMDIzMTE2NzM5LC00NDU4NTUwMzAsMTMyMjUwMTQw
+NCwxMTA0NjQ1MjMzLDIxMTY4MDgyODgsMTY0MDY5OTkxOCwxOD
+k2MjI1ODI0LDgzMTAyNDA4NiwtMzQwMzQxMzE3LDIwMjY1Nzc3
+OTFdfQ==
 -->
