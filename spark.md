@@ -193,7 +193,7 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 
 #### spark shuffle
 参考自 
-1. 
+1. [https://github.com/JerryLead/SparkInternals/blob/master/markdown/4-shuffleDetails.md](https://github.com/JerryLead/SparkInternals/blob/master/markdown/4-shuffleDetails.md)
 2. [jcchoiling](http://www.cnblogs.com/jcchoiling/p/6440102.html)
 * 简而言之, 是再次分布数据的过程.例如 reduceByKey(), 需要在所有的分区找到某个key的所有value ,并把所有的value聚合到一起计算.
 
@@ -201,10 +201,18 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 * 具体流程, 如下图所示
 ![image](https://user-images.githubusercontent.com/20329409/42148956-caa5b412-7e06-11e8-9e30-9e107ff9e1ea.png)
 
-shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先介绍一下Hash-Based Shuffle
-> shuffle会产生两个stage, 分别对应 shuffle write和shuffle read
-> shuffle write: 可以当做mapper阶段, 这一步的task叫做shuffleMapTask , task中的每条记录, 通过 partitioner.partition(record.getKey())) (默认是HashPartitioner),  会被分散到 bucket上, 每个task 对应的bucket的数量 == reducer的数量 == 下一个stage的task的数量, 会首先写到内存里, 内存不够会写到磁盘.
-> shuffle read: 可以当做reducer阶段,会去driver 的MapOutputTrackerMaster询问shuffleMapTask 的数据输出的位置.
+shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先介绍一下Hash-Based Shuffle, shuffle会产生两个stage, 分别对应 shuffle write和shuffle read
+
+> shuffle write 
+
+可以当做mapper阶段, 这一步的task叫做shuffleMapTask , task中的每条记录, 通过 partitioner.partition(record.getKey())) (默认是HashPartitioner),  会被分散到 bucket上, 每个task 对应的bucket的数量 == reducer的数量 == 下一个stage的task的数量, 会首先写到内存里, 内存不够会写到磁盘.
+
+> shuffle read
+
+可以当做reducer阶段,会去driver 的MapOutputTrackerMaster询问shuffleMapTask 的数据输出的位置.
+ 
+> Hash-Based Shuffle 的不足
+> 
 
 
 
@@ -569,7 +577,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAzOTgxNzU4MiwtMjA5NjU4MjQ0LDExNj
+eyJoaXN0b3J5IjpbLTI2OTg1NDQyMCwyMDM5ODE3NTgyLDExNj
 A5MDU4NjcsNTc1MzM2NTk1LDI0NDI1MjE5MSw5MDY1OTI0NzMs
 MTAwMDU2MzMzOCwtMTg3MDc4MDQ5OSw4ODcyMjQ3ODMsMTE2OT
 gwNTA3NywxMDIzMTE2NzM5LC00NDU4NTUwMzAsMTMyMjUwMTQw
