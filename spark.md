@@ -259,10 +259,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 * num of executor
      --num-executors command-line flag or spark.executor.instances configuration property control the number of executors requested
     > Starting in CDH 5.4/Spark 1.3, you will be able to avoid setting this property by turning on dynamic allocation with the spark.dynamicAllocation.enabled property. Dynamic allocation enables a Spark application to request executors when there is a backlog of pending tasks and free up executors when idle.
-* yarn.nodemanager.resource.memory-mb 
-    controls the maximum sum of memory used by the containers on each node.
-* yarn.nodemanager.resource.cpu-vcores 
-    controls the maximum sum of cores used by the containers on each node.
+
 > YARN may round the requested memory up a little. YARN’s yarn.scheduler.minimum-allocation-mb and yarn.scheduler.increment-allocation-mb properties control the minimum and increment request values respectively.
 
 
@@ -299,6 +296,7 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 
 
 #### spark 性能调优
+
 [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
 > 使用kryo序列化, 需要预先注册, 并设置kryo的缓存大小
 
@@ -601,11 +599,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTA3ODU3MDAsLTc4NTQ3MzE5MCw5Nj
-I3ODM4MzMsLTYxNTE2NjQwMywyMDMyMDM1NTksMTcxMzkyMDI0
-MCwxMTMxNDY0MTAsMTg4NTQ0OTg3Niw3MzYxMTA0NTgsODQwNT
-k3MDEwLDE5NjM1OTA1NCwtOTQwNjA3OTIsLTEwMzE2ODQ0MTUs
-LTgyOTIxMjk2MCwtODM5Mzc5NDg0LC04OTc5MzEwNzMsMTE2MD
-kwNTg2Nyw1NzUzMzY1OTUsMjQ0MjUyMTkxLDkwNjU5MjQ3M119
+eyJoaXN0b3J5IjpbMzgxNzI1OTUxLC0xOTkwNzg1NzAwLC03OD
+U0NzMxOTAsOTYyNzgzODMzLC02MTUxNjY0MDMsMjAzMjAzNTU5
+LDE3MTM5MjAyNDAsMTEzMTQ2NDEwLDE4ODU0NDk4NzYsNzM2MT
+EwNDU4LDg0MDU5NzAxMCwxOTYzNTkwNTQsLTk0MDYwNzkyLC0x
+MDMxNjg0NDE1LC04MjkyMTI5NjAsLTgzOTM3OTQ4NCwtODk3OT
+MxMDczLDExNjA5MDU4NjcsNTc1MzM2NTk1LDI0NDI1MjE5MV19
 
 -->
