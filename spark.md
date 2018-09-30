@@ -91,8 +91,7 @@ TaskSetFailed event会中止stage和job, 如果同一个stage失败次数没超�
 lost partition can be recomputed in parallel on other nodes
   * wide dependency 
    node failure in the cluster may result in the loss of some slice of data from each parent RDD, requiring a full recomputation
- * checkpoint
-  >可以使用persist() 保存一个checkpoint, 不需要从血统的起点开始计算
+
 
 
 * lineage与DAG的区别
@@ -567,11 +566,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwNDY0NTIzMywyMTE2ODA4Mjg4LDE2ND
-A2OTk5MTgsMTg5NjIyNTgyNCw4MzEwMjQwODYsLTM0MDM0MTMx
-NywyMDI2NTc3NzkxLC0xMDMzOTY5NTIyLC0xNTcwMjUwNTUxLC
-04OTc0NTQzODksMjA2ODU0Mjk4NCwtMTkzMjg3OTMzMyw0ODE3
-ODIyMjYsODAwOTA5ODA2LDE0NjYyODU3MzMsMTIwNTMyNTEwMy
-w5MTgyNjg1MTksLTIwMjI0MDU0NzYsMjI4ODM2MTkyLC02NDk2
-Nzg0NzBdfQ==
+eyJoaXN0b3J5IjpbLTIxMTIyODA2ODYsMTEwNDY0NTIzMywyMT
+E2ODA4Mjg4LDE2NDA2OTk5MTgsMTg5NjIyNTgyNCw4MzEwMjQw
+ODYsLTM0MDM0MTMxNywyMDI2NTc3NzkxLC0xMDMzOTY5NTIyLC
+0xNTcwMjUwNTUxLC04OTc0NTQzODksMjA2ODU0Mjk4NCwtMTkz
+Mjg3OTMzMyw0ODE3ODIyMjYsODAwOTA5ODA2LDE0NjYyODU3Mz
+MsMTIwNTMyNTEwMyw5MTgyNjg1MTksLTIwMjI0MDU0NzYsMjI4
+ODM2MTkyXX0=
 -->
