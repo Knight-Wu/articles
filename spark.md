@@ -228,8 +228,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 4.  它要基于记录本身进行排序，这就是 Sort-Based Shuffle 最致命的性能消耗；
 
 > shuffleMapTask输出的文件如何存储
-先存储在内存, 如果超过spark.shuffle.memoryFraction,则存在disk 不够再存在disk.
- 
+
 
 > 问题
 * spark.shuffle.spill 这个参数具体控制什么, 默认是什么
@@ -241,8 +240,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 
 
 * 性能调优
-  * 提升shuffle的内存占比, 尽量避免shuffle的时候数据因为内存不够被刷写到磁盘中.
-   spark.shuffle.memoryFraction , shuffle可以使用executor的内存占比, 默认0.2 , 可适当提高该比例
+
   * 提高shuffle操作的并行度
   spark.sql.shuffle.partitions 提高sparkSql中shuffle类操作的并行度, 默认是200, 对应200个shuffle read tasks
    
@@ -302,8 +300,9 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 
 #### spark 性能调优
 [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
-> 1. 避免创建重复RDD
-2.尽量重复使用RDD
+> 避免创建重复RDD
+
+> 尽量重复使用RDD
 3.对多次使用的RDD持久化
 4.尽量避免shuffle类算子
 5.使用map端预聚合的算子, 类似于MR的combiner
@@ -598,11 +597,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAzMjAzNTU5LDE3MTM5MjAyNDAsMTEzMT
-Q2NDEwLDE4ODU0NDk4NzYsNzM2MTEwNDU4LDg0MDU5NzAxMCwx
-OTYzNTkwNTQsLTk0MDYwNzkyLC0xMDMxNjg0NDE1LC04MjkyMT
-I5NjAsLTgzOTM3OTQ4NCwtODk3OTMxMDczLDExNjA5MDU4Njcs
-NTc1MzM2NTk1LDI0NDI1MjE5MSw5MDY1OTI0NzMsMTAwMDU2Mz
-MzOCwtMTg3MDc4MDQ5OSw4ODcyMjQ3ODMsMTE2OTgwNTA3N119
+eyJoaXN0b3J5IjpbMTIzODc5MDE4MCwyMDMyMDM1NTksMTcxMz
+kyMDI0MCwxMTMxNDY0MTAsMTg4NTQ0OTg3Niw3MzYxMTA0NTgs
+ODQwNTk3MDEwLDE5NjM1OTA1NCwtOTQwNjA3OTIsLTEwMzE2OD
+Q0MTUsLTgyOTIxMjk2MCwtODM5Mzc5NDg0LC04OTc5MzEwNzMs
+MTE2MDkwNTg2Nyw1NzUzMzY1OTUsMjQ0MjUyMTkxLDkwNjU5Mj
+Q3MywxMDAwNTYzMzM4LC0xODcwNzgwNDk5LDg4NzIyNDc4M119
 
 -->
