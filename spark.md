@@ -316,7 +316,7 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 
 > spark.yarn.executor.memoryOverhead
 
-指的是 off-heap memory per executor, 用来存储 VM overheads, interned strings, other native overheads, 默认值是 Max(384MB, 10% of spark.executor-memory), 所以每个executor的实际物理内存需要囊括spark.yarn.executor.memoryOverhead 和executor memory两部分.
+指的是 off-heap memory per executor, 用来存储 VM overheads, interned strings, other native overheads, 默认值是 Max(384MB, 10% of spark.executor-memory), 所以每个executor使用的container的物理内存需要囊括spark.yarn.executor.memoryOverhead 和executor memory两部分.
 
 
 
@@ -627,11 +627,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzODc4MzExMywxMzE2MTAyMDA3LC0yMD
-U4NTU1MzgzLDkwODg5MzQ1MSwxMzQyMzUwOTQzLC03MTI4NjQz
-NTksODYzMTg3MzMsLTE5MTUzMjQxNTAsMTc5MzEzMjQ1MSwtMT
-k5MDc4NTcwMCwtNzg1NDczMTkwLDk2Mjc4MzgzMywtNjE1MTY2
-NDAzLDIwMzIwMzU1OSwxNzEzOTIwMjQwLDExMzE0NjQxMCwxOD
-g1NDQ5ODc2LDczNjExMDQ1OCw4NDA1OTcwMTAsMTk2MzU5MDU0
-XX0=
+eyJoaXN0b3J5IjpbMjcyMDQ4ODU0LDEzMTYxMDIwMDcsLTIwNT
+g1NTUzODMsOTA4ODkzNDUxLDEzNDIzNTA5NDMsLTcxMjg2NDM1
+OSw4NjMxODczMywtMTkxNTMyNDE1MCwxNzkzMTMyNDUxLC0xOT
+kwNzg1NzAwLC03ODU0NzMxOTAsOTYyNzgzODMzLC02MTUxNjY0
+MDMsMjAzMjAzNTU5LDE3MTM5MjAyNDAsMTEzMTQ2NDEwLDE4OD
+U0NDk4NzYsNzM2MTEwNDU4LDg0MDU5NzAxMCwxOTYzNTkwNTRd
+fQ==
 -->
