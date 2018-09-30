@@ -192,14 +192,16 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 
 
 #### spark shuffle
-参考自 [SparkInternals-shuffleDetails](https://github.com/JerryLead/SparkInternals/blob/master/markdown/4-shuffleDetails.md)
+参考自 
+1
+2. [jcchoiling](http://www.cnblogs.com/jcchoiling/p/6440102.html)
 * 简而言之, 是再次分布数据的过程.例如 reduceByKey(), 需要在所有的分区找到某个key的所有value ,并把所有的value聚合到一起计算.
 
 
 * 具体流程, 如下图所示
 ![image](https://user-images.githubusercontent.com/20329409/42148956-caa5b412-7e06-11e8-9e30-9e107ff9e1ea.png)
 
-shuffle 一开始是Hash-Based Shuffle,
+shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先介绍一下Hash-Based Shuffle
 > shuffle会产生两个stage, 分别对应 shuffle write和shuffle read
 > shuffle write: 可以当做mapper阶段, 这一步的task叫做shuffleMapTask , task中的每条记录, 通过 partitioner.partition(record.getKey())) (默认是HashPartitioner),  会被分散到 bucket上, 每个task 对应的bucket的数量 == reducer的数量 == 下一个stage的task的数量, 会首先写到内存里, 内存不够会写到磁盘.
 > shuffle read: 可以当做reducer阶段,会去driver 的MapOutputTrackerMaster询问shuffleMapTask 的数据输出的位置.
@@ -215,7 +217,6 @@ shuffle 一开始是Hash-Based Shuffle,
   * 提高shuffle操作的并行度
    * spark.sql.shuffle.partitions 提高sparkSql中shuffle类操作的并行度, 默认是200, 对应200个shuffle read tasks
    
-* 这篇博文还需再看 [link](http://www.cnblogs.com/jcchoiling/p/6440102.html)
 
 
 #### spark 资源分配
@@ -568,7 +569,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDgxMDUxMzksLTEwODI4OTU2OCwxMT
+eyJoaXN0b3J5IjpbLTIwOTY1ODI0NCwtMTM0ODEwNTEzOSwxMT
 YwOTA1ODY3LDU3NTMzNjU5NSwyNDQyNTIxOTEsOTA2NTkyNDcz
 LDEwMDA1NjMzMzgsLTE4NzA3ODA0OTksODg3MjI0NzgzLDExNj
 k4MDUwNzcsMTAyMzExNjczOSwtNDQ1ODU1MDMwLDEzMjI1MDE0
