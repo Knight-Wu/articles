@@ -218,7 +218,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 2. 文件句柄占用很多
 
 > Sorted-Based Shuffle
-相比于
+相比于ha
 
 
 
@@ -584,11 +584,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2ODc4MDcyOCwtODI5MjEyOTYwLC04Mz
-kzNzk0ODQsLTg5NzkzMTA3MywxMTYwOTA1ODY3LDU3NTMzNjU5
-NSwyNDQyNTIxOTEsOTA2NTkyNDczLDEwMDA1NjMzMzgsLTE4Nz
-A3ODA0OTksODg3MjI0NzgzLDExNjk4MDUwNzcsMTAyMzExNjcz
-OSwtNDQ1ODU1MDMwLDEzMjI1MDE0MDQsMTEwNDY0NTIzMywyMT
-E2ODA4Mjg4LDE2NDA2OTk5MTgsMTg5NjIyNTgyNCw4MzEwMjQw
-ODZdfQ==
+eyJoaXN0b3J5IjpbLTEwMzE2ODQ0MTUsLTQ2ODc4MDcyOCwtOD
+I5MjEyOTYwLC04MzkzNzk0ODQsLTg5NzkzMTA3MywxMTYwOTA1
+ODY3LDU3NTMzNjU5NSwyNDQyNTIxOTEsOTA2NTkyNDczLDEwMD
+A1NjMzMzgsLTE4NzA3ODA0OTksODg3MjI0NzgzLDExNjk4MDUw
+NzcsMTAyMzExNjczOSwtNDQ1ODU1MDMwLDEzMjI1MDE0MDQsMT
+EwNDY0NTIzMywyMTE2ODA4Mjg4LDE2NDA2OTk5MTgsMTg5NjIy
+NTgyNF19
 -->
