@@ -201,7 +201,7 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 
 
 > shuffle会产生两个stage, 分别对应 shuffle write和shuffle read
-> shuffle write: 可以当做mapper阶段, 第一个stage 中每个task中的记录, 通过 partitioner.partition(record.getKey())) (默认是HashPartitioner),  会被分散到 bucket上, 每个task 对应的bucket的数量 == reducer的数量 == 下一个stage的task的数量
+> shuffle write: 可以当做mapper阶段, 第一个stage 中每个task中的记录, 通过 partitioner.partition(record.getKey())) (默认是HashPartitioner),  会被分散到 bucket上, 每个task 对应的bucket的数量 == reducer的数量 == 下一个stage的task的数量, 会首先写到内存里, 内存不够会写到磁盘.
 > shuffle read: 可以当做reducer阶段, 第二个stage 中的task, 根据task的id 和mapper的id从远端或者本地的 bucket上面 fetch 记录进行reduce. 
 
 
@@ -570,11 +570,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTA2NTkyNDczLDEwMDA1NjMzMzgsLTE4Nz
-A3ODA0OTksODg3MjI0NzgzLDExNjk4MDUwNzcsMTAyMzExNjcz
-OSwtNDQ1ODU1MDMwLDEzMjI1MDE0MDQsMTEwNDY0NTIzMywyMT
-E2ODA4Mjg4LDE2NDA2OTk5MTgsMTg5NjIyNTgyNCw4MzEwMjQw
-ODYsLTM0MDM0MTMxNywyMDI2NTc3NzkxLC0xMDMzOTY5NTIyLC
-0xNTcwMjUwNTUxLC04OTc0NTQzODksMjA2ODU0Mjk4NCwtMTkz
-Mjg3OTMzM119
+eyJoaXN0b3J5IjpbLTQ3MjY0MTYsOTA2NTkyNDczLDEwMDA1Nj
+MzMzgsLTE4NzA3ODA0OTksODg3MjI0NzgzLDExNjk4MDUwNzcs
+MTAyMzExNjczOSwtNDQ1ODU1MDMwLDEzMjI1MDE0MDQsMTEwND
+Y0NTIzMywyMTE2ODA4Mjg4LDE2NDA2OTk5MTgsMTg5NjIyNTgy
+NCw4MzEwMjQwODYsLTM0MDM0MTMxNywyMDI2NTc3NzkxLC0xMD
+MzOTY5NTIyLC0xNTcwMjUwNTUxLC04OTc0NTQzODksMjA2ODU0
+Mjk4NF19
 -->
