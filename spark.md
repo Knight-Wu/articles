@@ -242,9 +242,9 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 
 * 性能调优
   * 提升shuffle的内存占比, 尽量避免shuffle的时候数据因为内存不够被刷写到磁盘中.
-  > spark.shuffle.memoryFraction , shuffle可以使用executor的内存占比, 默认0.2 , 可适当提高该比例
+   spark.shuffle.memoryFraction , shuffle可以使用executor的内存占比, 默认0.2 , 可适当提高该比例
   * 提高shuffle操作的并行度
-   * spark.sql.shuffle.partitions 提高sparkSql中shuffle类操作的并行度, 默认是200, 对应200个shuffle read tasks
+  spark.sql.shuffle.partitions 提高sparkSql中shuffle类操作的并行度, 默认是200, 对应200个shuffle read tasks
    
 
 
@@ -598,11 +598,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEzMTQ2NDEwLDE4ODU0NDk4NzYsNzM2MT
-EwNDU4LDg0MDU5NzAxMCwxOTYzNTkwNTQsLTk0MDYwNzkyLC0x
-MDMxNjg0NDE1LC04MjkyMTI5NjAsLTgzOTM3OTQ4NCwtODk3OT
-MxMDczLDExNjA5MDU4NjcsNTc1MzM2NTk1LDI0NDI1MjE5MSw5
-MDY1OTI0NzMsMTAwMDU2MzMzOCwtMTg3MDc4MDQ5OSw4ODcyMj
-Q3ODMsMTE2OTgwNTA3NywxMDIzMTE2NzM5LC00NDU4NTUwMzBd
+eyJoaXN0b3J5IjpbMTcxMzkyMDI0MCwxMTMxNDY0MTAsMTg4NT
+Q0OTg3Niw3MzYxMTA0NTgsODQwNTk3MDEwLDE5NjM1OTA1NCwt
+OTQwNjA3OTIsLTEwMzE2ODQ0MTUsLTgyOTIxMjk2MCwtODM5Mz
+c5NDg0LC04OTc5MzEwNzMsMTE2MDkwNTg2Nyw1NzUzMzY1OTUs
+MjQ0MjUyMTkxLDkwNjU5MjQ3MywxMDAwNTYzMzM4LC0xODcwNz
+gwNDk5LDg4NzIyNDc4MywxMTY5ODA1MDc3LDEwMjMxMTY3Mzld
 fQ==
 -->
