@@ -212,7 +212,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 可以当做reducer阶段,会去driver 的MapOutputTrackerMaster询问shuffleMapTask 的数据输出的位置.
  
 > Hash-Based Shuffle 的不足
-> 
+
 
 
 
@@ -577,7 +577,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2OTg1NDQyMCwyMDM5ODE3NTgyLDExNj
+eyJoaXN0b3J5IjpbLTg5MjkwMjk2NiwtMjY5ODU0NDIwLDExNj
 A5MDU4NjcsNTc1MzM2NTk1LDI0NDI1MjE5MSw5MDY1OTI0NzMs
 MTAwMDU2MzMzOCwtMTg3MDc4MDQ5OSw4ODcyMjQ3ODMsMTE2OT
 gwNTA3NywxMDIzMTE2NzM5LC00NDU4NTUwMzAsMTMyMjUwMTQw
