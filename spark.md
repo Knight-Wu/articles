@@ -48,7 +48,10 @@ about its partitioning scheme and data placement.
 * With [spark.logLineage](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/spark-rdd-lineage.html#spark_logLineage) property enabled, `toDebugString` is included when executing an action.
 
 
-
+ * narrow dependency
+lost partition can be recomputed in parallel on other nodes
+  * wide dependency 
+   node failure in the cluster may result in the loss of some slice of data from each parent RDD, requiring a full recomputation
 * dependencies between RDDs
   * narrow dependencies, where
 each partition of the child RDD depends on a constant
@@ -87,10 +90,7 @@ TaskSetFailed event会中止stage和job, 如果同一个stage失败次数没超�
 
 
 >设置replication, 参考 [RDD Persistence](https://spark.apache.org/docs/latest/rdd-programming-guide.html) , 使用这个配置: MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.
- * narrow dependency
-lost partition can be recomputed in parallel on other nodes
-  * wide dependency 
-   node failure in the cluster may result in the loss of some slice of data from each parent RDD, requiring a full recomputation
+
 
 
 
@@ -566,11 +566,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTIyODA2ODYsMTEwNDY0NTIzMywyMT
-E2ODA4Mjg4LDE2NDA2OTk5MTgsMTg5NjIyNTgyNCw4MzEwMjQw
-ODYsLTM0MDM0MTMxNywyMDI2NTc3NzkxLC0xMDMzOTY5NTIyLC
-0xNTcwMjUwNTUxLC04OTc0NTQzODksMjA2ODU0Mjk4NCwtMTkz
-Mjg3OTMzMyw0ODE3ODIyMjYsODAwOTA5ODA2LDE0NjYyODU3Mz
-MsMTIwNTMyNTEwMyw5MTgyNjg1MTksLTIwMjI0MDU0NzYsMjI4
-ODM2MTkyXX0=
+eyJoaXN0b3J5IjpbMTMyMjUwMTQwNCwxMTA0NjQ1MjMzLDIxMT
+Y4MDgyODgsMTY0MDY5OTkxOCwxODk2MjI1ODI0LDgzMTAyNDA4
+NiwtMzQwMzQxMzE3LDIwMjY1Nzc3OTEsLTEwMzM5Njk1MjIsLT
+E1NzAyNTA1NTEsLTg5NzQ1NDM4OSwyMDY4NTQyOTg0LC0xOTMy
+ODc5MzMzLDQ4MTc4MjIyNiw4MDA5MDk4MDYsMTQ2NjI4NTczMy
+wxMjA1MzI1MTAzLDkxODI2ODUxOSwtMjAyMjQwNTQ3NiwyMjg4
+MzYxOTJdfQ==
 -->
