@@ -302,7 +302,7 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
 > 使用kryo序列化, 需要预先注册, 并设置kryo的缓存大小
 
-> 尽量少使用类, 减少不必要的对象空间, 尽量使用基本数据类型,  
+> 尽量少使用类, 减少不必要的对象空间, 尽量使用基本数据类型
 
 > 对多次使用的RDD持久化, rdd.checkpoint() 可以在多个application共用
 
@@ -601,7 +601,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDczMjgyODYsLTc4NTQ3MzE5MCw5Nj
+eyJoaXN0b3J5IjpbLTE5OTA3ODU3MDAsLTc4NTQ3MzE5MCw5Nj
 I3ODM4MzMsLTYxNTE2NjQwMywyMDMyMDM1NTksMTcxMzkyMDI0
 MCwxMTMxNDY0MTAsMTg4NTQ0OTg3Niw3MzYxMTA0NTgsODQwNT
 k3MDEwLDE5NjM1OTA1NCwtOTQwNjA3OTIsLTEwMzE2ODQ0MTUs
