@@ -250,12 +250,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 * executor core 
     --executor-cores in shell(or in conf spark.executor.cores) 5 means that each executor can run a maximum of five tasks at the same time。
     > A rough guess is that at most five tasks per executor can achieve full write throughput, so it’s good to keep the number of cores per executor below that number
-* executor memory
-    the heap size can be controlled with the --executor-memory flag or the spark.executor.memory property
-* spark.yarn.executor.memoryOverhead
-指的是 off-heap memory per executor, 用来存储 VM overheads, interned strings, other native overheads, 默认值是 Max(384MB, 10% of spark.executor-memory), 所以每个executor的实际物理内存需要囊括spark.yarn.executor.memoryOverhead 和executor memory两部分.
-* spark memory model 
-[istribution_of_executors_cores_and_memory_for_spark_application](https://spoddutur.github.io/spark-notes/distribution_of_executors_cores_and_memory_for_spark_application.html)
+
 * num of executor
      --num-executors command-line flag or spark.executor.instances configuration property control the number of executors requested
     > Starting in CDH 5.4/Spark 1.3, you will be able to avoid setting this property by turning on dynamic allocation with the spark.dynamicAllocation.enabled property. Dynamic allocation enables a Spark application to request executors when there is a backlog of pending tasks and free up executors when idle.
@@ -296,8 +291,22 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 
 
 #### spark 性能调优
+* 内存
+> executor memory
+    
+the heap size can be controlled with the --executor-memory flag or the spark.executor.memory property
+> spark.yarn.executor.memoryOverhead
 
-* nei
+指的是 off-heap memory per executor, 用来存储 VM overheads, interned strings, other native overheads, 默认值是 Max(384MB, 10% of spark.executor-memory), 所以每个executor的实际物理内存需要囊括spark.yarn.executor.memoryOverhead 和executor memory两部分.
+> spark memory model 
+
+[istribution_of_executors_cores_and_memory_for_spark_application](https://spoddutur.github.io/spark-notes/distribution_of_executors_cores_and_memory_for_spark_application.html)
+
+
+
+
+
+
 [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
 > 使用kryo序列化, 需要预先注册, 并设置kryo的缓存大小
 
@@ -600,11 +609,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc5MzEzMjQ1MSwzODE3MjU5NTEsLTE5OT
-A3ODU3MDAsLTc4NTQ3MzE5MCw5NjI3ODM4MzMsLTYxNTE2NjQw
-MywyMDMyMDM1NTksMTcxMzkyMDI0MCwxMTMxNDY0MTAsMTg4NT
-Q0OTg3Niw3MzYxMTA0NTgsODQwNTk3MDEwLDE5NjM1OTA1NCwt
-OTQwNjA3OTIsLTEwMzE2ODQ0MTUsLTgyOTIxMjk2MCwtODM5Mz
-c5NDg0LC04OTc5MzEwNzMsMTE2MDkwNTg2Nyw1NzUzMzY1OTVd
-fQ==
+eyJoaXN0b3J5IjpbLTE5MTUzMjQxNTAsMTc5MzEzMjQ1MSwtMT
+k5MDc4NTcwMCwtNzg1NDczMTkwLDk2Mjc4MzgzMywtNjE1MTY2
+NDAzLDIwMzIwMzU1OSwxNzEzOTIwMjQwLDExMzE0NjQxMCwxOD
+g1NDQ5ODc2LDczNjExMDQ1OCw4NDA1OTcwMTAsMTk2MzU5MDU0
+LC05NDA2MDc5MiwtMTAzMTY4NDQxNSwtODI5MjEyOTYwLC04Mz
+kzNzk0ODQsLTg5NzkzMTA3MywxMTYwOTA1ODY3LDU3NTMzNjU5
+NV19
 -->
