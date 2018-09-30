@@ -199,7 +199,7 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 * 具体流程, 如下图所示
 ![image](https://user-images.githubusercontent.com/20329409/42148956-caa5b412-7e06-11e8-9e30-9e107ff9e1ea.png)
 
-
+shuffle 一开始是
 > shuffle会产生两个stage, 分别对应 shuffle write和shuffle read
 > shuffle write: 可以当做mapper阶段, 这一步的task叫做shuffleMapTask , task中的每条记录, 通过 partitioner.partition(record.getKey())) (默认是HashPartitioner),  会被分散到 bucket上, 每个task 对应的bucket的数量 == reducer的数量 == 下一个stage的task的数量, 会首先写到内存里, 内存不够会写到磁盘.
 > shuffle read: 可以当做reducer阶段,会去driver 的MapOutputTrackerMaster询问shuffleMapTask 的数据输出的位置.
@@ -568,11 +568,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2MDkwNTg2Nyw1NzUzMzY1OTUsMjQ0Mj
-UyMTkxLDkwNjU5MjQ3MywxMDAwNTYzMzM4LC0xODcwNzgwNDk5
-LDg4NzIyNDc4MywxMTY5ODA1MDc3LDEwMjMxMTY3MzksLTQ0NT
-g1NTAzMCwxMzIyNTAxNDA0LDExMDQ2NDUyMzMsMjExNjgwODI4
-OCwxNjQwNjk5OTE4LDE4OTYyMjU4MjQsODMxMDI0MDg2LC0zND
-AzNDEzMTcsMjAyNjU3Nzc5MSwtMTAzMzk2OTUyMiwtMTU3MDI1
-MDU1MV19
+eyJoaXN0b3J5IjpbLTEwODI4OTU2OCwxMTYwOTA1ODY3LDU3NT
+MzNjU5NSwyNDQyNTIxOTEsOTA2NTkyNDczLDEwMDA1NjMzMzgs
+LTE4NzA3ODA0OTksODg3MjI0NzgzLDExNjk4MDUwNzcsMTAyMz
+ExNjczOSwtNDQ1ODU1MDMwLDEzMjI1MDE0MDQsMTEwNDY0NTIz
+MywyMTE2ODA4Mjg4LDE2NDA2OTk5MTgsMTg5NjIyNTgyNCw4Mz
+EwMjQwODYsLTM0MDM0MTMxNywyMDI2NTc3NzkxLC0xMDMzOTY5
+NTIyXX0=
 -->
