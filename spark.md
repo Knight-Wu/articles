@@ -205,8 +205,6 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 > shuffle read: 可以当做reducer阶段,会去driver 的MapOutputTrackerMaster询问shuffleMapTask 的数据输出的位置.
 
 
-* reducer端如何进行fetch
-> 若是reduceByKey, 则只需要持有一个hashMap, key为record的key, val则按照 record的次数进行更新; 但若是groupByKey, 需要
 
 
 
@@ -570,11 +568,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTc1MzM2NTk1LDI0NDI1MjE5MSw5MDY1OT
-I0NzMsMTAwMDU2MzMzOCwtMTg3MDc4MDQ5OSw4ODcyMjQ3ODMs
-MTE2OTgwNTA3NywxMDIzMTE2NzM5LC00NDU4NTUwMzAsMTMyMj
-UwMTQwNCwxMTA0NjQ1MjMzLDIxMTY4MDgyODgsMTY0MDY5OTkx
-OCwxODk2MjI1ODI0LDgzMTAyNDA4NiwtMzQwMzQxMzE3LDIwMj
-Y1Nzc3OTEsLTEwMzM5Njk1MjIsLTE1NzAyNTA1NTEsLTg5NzQ1
-NDM4OV19
+eyJoaXN0b3J5IjpbMTE2MDkwNTg2Nyw1NzUzMzY1OTUsMjQ0Mj
+UyMTkxLDkwNjU5MjQ3MywxMDAwNTYzMzM4LC0xODcwNzgwNDk5
+LDg4NzIyNDc4MywxMTY5ODA1MDc3LDEwMjMxMTY3MzksLTQ0NT
+g1NTAzMCwxMzIyNTAxNDA0LDExMDQ2NDUyMzMsMjExNjgwODI4
+OCwxNjQwNjk5OTE4LDE4OTYyMjU4MjQsODMxMDI0MDg2LC0zND
+AzNDEzMTcsMjAyNjU3Nzc5MSwtMTAzMzk2OTUyMiwtMTU3MDI1
+MDU1MV19
 -->
