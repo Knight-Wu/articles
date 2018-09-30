@@ -228,7 +228,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 4.  它要基于记录本身进行排序，这就是 Sort-Based Shuffle 最致命的性能消耗；
 
 > shuffleMapTask输出的文件如何存储
-先存储在内存, 不够再存在disk.
+先存储在内存, 如果超过spark.shuffle.memoryFraction,则存在disk 不够再存在disk.
  
 
 > 问题
@@ -598,11 +598,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxMzkyMDI0MCwxMTMxNDY0MTAsMTg4NT
-Q0OTg3Niw3MzYxMTA0NTgsODQwNTk3MDEwLDE5NjM1OTA1NCwt
-OTQwNjA3OTIsLTEwMzE2ODQ0MTUsLTgyOTIxMjk2MCwtODM5Mz
-c5NDg0LC04OTc5MzEwNzMsMTE2MDkwNTg2Nyw1NzUzMzY1OTUs
-MjQ0MjUyMTkxLDkwNjU5MjQ3MywxMDAwNTYzMzM4LC0xODcwNz
-gwNDk5LDg4NzIyNDc4MywxMTY5ODA1MDc3LDEwMjMxMTY3Mzld
-fQ==
+eyJoaXN0b3J5IjpbMjAzMjAzNTU5LDE3MTM5MjAyNDAsMTEzMT
+Q2NDEwLDE4ODU0NDk4NzYsNzM2MTEwNDU4LDg0MDU5NzAxMCwx
+OTYzNTkwNTQsLTk0MDYwNzkyLC0xMDMxNjg0NDE1LC04MjkyMT
+I5NjAsLTgzOTM3OTQ4NCwtODk3OTMxMDczLDExNjA5MDU4Njcs
+NTc1MzM2NTk1LDI0NDI1MjE5MSw5MDY1OTI0NzMsMTAwMDU2Mz
+MzOCwtMTg3MDc4MDQ5OSw4ODcyMjQ3ODMsMTE2OTgwNTA3N119
+
 -->
