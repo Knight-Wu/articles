@@ -78,6 +78,7 @@ that can short-circuit the computation of a parent RDD.
 ### fault-tolerant
 1. driver node fail
 若driver故障, 则所有executor的计算结果都会丢失
+
 2. executor node fail
 会提交到其他executor重试.
 3. some tasks  fail
@@ -566,11 +567,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyMzExNjczOSwtNDQ1ODU1MDMwLDEzMj
-I1MDE0MDQsMTEwNDY0NTIzMywyMTE2ODA4Mjg4LDE2NDA2OTk5
-MTgsMTg5NjIyNTgyNCw4MzEwMjQwODYsLTM0MDM0MTMxNywyMD
-I2NTc3NzkxLC0xMDMzOTY5NTIyLC0xNTcwMjUwNTUxLC04OTc0
-NTQzODksMjA2ODU0Mjk4NCwtMTkzMjg3OTMzMyw0ODE3ODIyMj
-YsODAwOTA5ODA2LDE0NjYyODU3MzMsMTIwNTMyNTEwMyw5MTgy
-Njg1MTldfQ==
+eyJoaXN0b3J5IjpbMTE2OTgwNTA3NywxMDIzMTE2NzM5LC00ND
+U4NTUwMzAsMTMyMjUwMTQwNCwxMTA0NjQ1MjMzLDIxMTY4MDgy
+ODgsMTY0MDY5OTkxOCwxODk2MjI1ODI0LDgzMTAyNDA4NiwtMz
+QwMzQxMzE3LDIwMjY1Nzc3OTEsLTEwMzM5Njk1MjIsLTE1NzAy
+NTA1NTEsLTg5NzQ1NDM4OSwyMDY4NTQyOTg0LC0xOTMyODc5Mz
+MzLDQ4MTc4MjIyNiw4MDA5MDk4MDYsMTQ2NjI4NTczMywxMjA1
+MzI1MTAzXX0=
 -->
