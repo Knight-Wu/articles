@@ -299,7 +299,8 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 * 内存
 > 内存概述
 
-由execution和storage组成, execution用于computation in shuffles, joins, sorts and aggregation, storage用于caching和传播数据到集群中. execution和storage共享一块内存M, 当execution不使用它所用的内存时, storage可以抢占, 反之亦然; 只有当storage的内存使用量低于R时, execution 才能 evict storage, 并且R的内存使用量是会一直保持给storage使用的.
+
+spark.executor.由execution和storage组成, execution用于computation in shuffles, joins, sorts and aggregation, storage用于caching和传播数据到集群中. execution和storage共享一块内存M, 当execution不使用它所用的内存时, storage可以抢占, 反之亦然; 只有当storage的内存使用量低于R时, execution 才能 evict storage, 并且R的内存使用量是会一直保持给storage使用的.
 
 > spark.memory.fraction
 
@@ -625,11 +626,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTg1NTUzODMsOTA4ODkzNDUxLDEzND
-IzNTA5NDMsLTcxMjg2NDM1OSw4NjMxODczMywtMTkxNTMyNDE1
-MCwxNzkzMTMyNDUxLC0xOTkwNzg1NzAwLC03ODU0NzMxOTAsOT
-YyNzgzODMzLC02MTUxNjY0MDMsMjAzMjAzNTU5LDE3MTM5MjAy
-NDAsMTEzMTQ2NDEwLDE4ODU0NDk4NzYsNzM2MTEwNDU4LDg0MD
-U5NzAxMCwxOTYzNTkwNTQsLTk0MDYwNzkyLC0xMDMxNjg0NDE1
-XX0=
+eyJoaXN0b3J5IjpbMjExNjE1MjYzLC0yMDU4NTU1MzgzLDkwOD
+g5MzQ1MSwxMzQyMzUwOTQzLC03MTI4NjQzNTksODYzMTg3MzMs
+LTE5MTUzMjQxNTAsMTc5MzEzMjQ1MSwtMTk5MDc4NTcwMCwtNz
+g1NDczMTkwLDk2Mjc4MzgzMywtNjE1MTY2NDAzLDIwMzIwMzU1
+OSwxNzEzOTIwMjQwLDExMzE0NjQxMCwxODg1NDQ5ODc2LDczNj
+ExMDQ1OCw4NDA1OTcwMTAsMTk2MzU5MDU0LC05NDA2MDc5Ml19
+
 -->
