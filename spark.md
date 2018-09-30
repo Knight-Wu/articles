@@ -79,7 +79,7 @@ that can short-circuit the computation of a parent RDD.
 1. driver node fail
 若driver故障, 则所有executor的计算结果都会丢失
 2. executor node fail
-
+会提交到其他executor重试.
 3. some tasks  fail
 spark 采用event触发机制, DAGSchedulerEventProcessLoop去监听队列里面的event, 
 TaskSetFailed event会中止stage和job, 如果同一个stage失败次数没超过默认的四次,根据stageAttemptId作唯一标示, (否则直接终止job) ResubmitFailedStages会再次提交失败的stage, 如果parent stage存在的话, 就可以再次计算task, 但是只会计算失败的task.
@@ -566,11 +566,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ0NTg1NTAzMCwxMzIyNTAxNDA0LDExMD
-Q2NDUyMzMsMjExNjgwODI4OCwxNjQwNjk5OTE4LDE4OTYyMjU4
-MjQsODMxMDI0MDg2LC0zNDAzNDEzMTcsMjAyNjU3Nzc5MSwtMT
-AzMzk2OTUyMiwtMTU3MDI1MDU1MSwtODk3NDU0Mzg5LDIwNjg1
-NDI5ODQsLTE5MzI4NzkzMzMsNDgxNzgyMjI2LDgwMDkwOTgwNi
-wxNDY2Mjg1NzMzLDEyMDUzMjUxMDMsOTE4MjY4NTE5LC0yMDIy
-NDA1NDc2XX0=
+eyJoaXN0b3J5IjpbMTAyMzExNjczOSwtNDQ1ODU1MDMwLDEzMj
+I1MDE0MDQsMTEwNDY0NTIzMywyMTE2ODA4Mjg4LDE2NDA2OTk5
+MTgsMTg5NjIyNTgyNCw4MzEwMjQwODYsLTM0MDM0MTMxNywyMD
+I2NTc3NzkxLC0xMDMzOTY5NTIyLC0xNTcwMjUwNTUxLC04OTc0
+NTQzODksMjA2ODU0Mjk4NCwtMTkzMjg3OTMzMyw0ODE3ODIyMj
+YsODAwOTA5ODA2LDE0NjYyODU3MzMsMTIwNTMyNTEwMyw5MTgy
+Njg1MTldfQ==
 -->
