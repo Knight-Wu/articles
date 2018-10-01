@@ -405,8 +405,6 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 #### spark-submit
 * shell 脚本
 ```
-
-
 #!/bin/sh
 set -o nounset
 # 第一个错误, shell终止执行
@@ -478,8 +476,6 @@ ${lib_path}"cms-sparkintegration.jar" "$@" \
 spark.sql("xxxsql").queryExecution()
 spark.sql("xxxsql").explain()
 ```
-
-
 > 2. 使用Spark WebUI进行查看
 
 
@@ -629,11 +625,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MzE0NjQ5NDcsMzk0NzgxOTU5LC0yOD
-U2NjczNDAsLTE4OTU1MTE3MCwtMTQ5MTM2NzU1OCwtODUwOTUw
-MTAyLC04MDY0NjU0MTIsMTgyMDY1MzY3MSw2NzcxNDU2NjcsLT
-E1MDQzOTIwOTUsLTEzOTk0MzIyNDEsLTMwNTc5NzYxMywyNzIw
-NDg4NTQsMTMxNjEwMjAwNywtMjA1ODU1NTM4Myw5MDg4OTM0NT
-EsMTM0MjM1MDk0MywtNzEyODY0MzU5LDg2MzE4NzMzLC0xOTE1
-MzI0MTUwXX0=
+eyJoaXN0b3J5IjpbMTIzNDAzODE1NywtMTQzMTQ2NDk0NywzOT
+Q3ODE5NTksLTI4NTY2NzM0MCwtMTg5NTUxMTcwLC0xNDkxMzY3
+NTU4LC04NTA5NTAxMDIsLTgwNjQ2NTQxMiwxODIwNjUzNjcxLD
+Y3NzE0NTY2NywtMTUwNDM5MjA5NSwtMTM5OTQzMjI0MSwtMzA1
+Nzk3NjEzLDI3MjA0ODg1NCwxMzE2MTAyMDA3LC0yMDU4NTU1Mz
+gzLDkwODg5MzQ1MSwxMzQyMzUwOTQzLC03MTI4NjQzNTksODYz
+MTg3MzNdfQ==
 -->
