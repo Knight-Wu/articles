@@ -437,7 +437,7 @@ scala> sqlC.sql("select count(1) from crm_app.cust_group_detail").collect;
 #### spark on yarn 
 > 问题排查
 
-> 先看rm日志, 再看nm日志,再看nm的stdout, stderr, 
+ 先看rm日志, 再看nm日志,再看nm的stdout, stderr, 
 详细见 [https://community.mapr.com/docs/DOC-1323](https://community.mapr.com/docs/DOC-1323)
 
 
@@ -631,11 +631,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyNTQwODg0MCw3MDM4NjE0NjcsODQ4MD
-kxODg2LC0zODYzNjM5NzUsLTEyNDEwNjYyMCwyMDgxNTcyMzA3
-LDk4NzAxNTk1MCwtMTUyNzY2MTMwLC0xNjQ2OTI2MjMxLC0xND
-MxNDY0OTQ3LDM5NDc4MTk1OSwtMjg1NjY3MzQwLC0xODk1NTEx
-NzAsLTE0OTEzNjc1NTgsLTg1MDk1MDEwMiwtODA2NDY1NDEyLD
-E4MjA2NTM2NzEsNjc3MTQ1NjY3LC0xNTA0MzkyMDk1LC0xMzk5
-NDMyMjQxXX0=
+eyJoaXN0b3J5IjpbLTU4MDUyNDY0OCwtNTI1NDA4ODQwLDcwMz
+g2MTQ2Nyw4NDgwOTE4ODYsLTM4NjM2Mzk3NSwtMTI0MTA2NjIw
+LDIwODE1NzIzMDcsOTg3MDE1OTUwLC0xNTI3NjYxMzAsLTE2ND
+Y5MjYyMzEsLTE0MzE0NjQ5NDcsMzk0NzgxOTU5LC0yODU2Njcz
+NDAsLTE4OTU1MTE3MCwtMTQ5MTM2NzU1OCwtODUwOTUwMTAyLC
+04MDY0NjU0MTIsMTgyMDY1MzY3MSw2NzcxNDU2NjcsLTE1MDQz
+OTIwOTVdfQ==
 -->
