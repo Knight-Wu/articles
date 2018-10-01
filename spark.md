@@ -391,6 +391,8 @@ Spark prints the serialized size of each task on the master, so you can look at 
 
 
 ### spark monitor
+
+
 #### spark log
 > 分为三部分: driver log, executor log, spark history server log
 
@@ -405,14 +407,13 @@ yarn.nodemanager.remote-app-log-dir-suffix 	logs
 ```
 
 * spark history server log
-> 配置的路径
+注意不要搜完整的application name, 有些是未完成的, 会有后缀, 用
+grep:  hadoop fs -ls history-server-log-path |grep application-name
 ```
 spark.history.fs.logDirectory 	file:/tmp/spark-events
 spark.eventLog.enabled 			true
 spark.eventLog.dir 				path/log
 ```
-
-> 也可以去spark history server直接看, 但是可能会找不到, zhuyi
 
 
 
@@ -625,11 +626,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQ4MDkxODg2LC05MzkyNDkxMzcsLTM4Nj
-M2Mzk3NSwtMTI0MTA2NjIwLDIwODE1NzIzMDcsOTg3MDE1OTUw
-LC0xNTI3NjYxMzAsLTE2NDY5MjYyMzEsLTE0MzE0NjQ5NDcsMz
-k0NzgxOTU5LC0yODU2NjczNDAsLTE4OTU1MTE3MCwtMTQ5MTM2
-NzU1OCwtODUwOTUwMTAyLC04MDY0NjU0MTIsMTgyMDY1MzY3MS
-w2NzcxNDU2NjcsLTE1MDQzOTIwOTUsLTEzOTk0MzIyNDEsLTMw
-NTc5NzYxM119
+eyJoaXN0b3J5IjpbODM4MjQ5ODk0LDg0ODA5MTg4NiwtMzg2Mz
+YzOTc1LC0xMjQxMDY2MjAsMjA4MTU3MjMwNyw5ODcwMTU5NTAs
+LTE1Mjc2NjEzMCwtMTY0NjkyNjIzMSwtMTQzMTQ2NDk0NywzOT
+Q3ODE5NTksLTI4NTY2NzM0MCwtMTg5NTUxMTcwLC0xNDkxMzY3
+NTU4LC04NTA5NTAxMDIsLTgwNjQ2NTQxMiwxODIwNjUzNjcxLD
+Y3NzE0NTY2NywtMTUwNDM5MjA5NSwtMTM5OTQzMjI0MSwtMzA1
+Nzk3NjEzXX0=
 -->
