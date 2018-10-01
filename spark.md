@@ -412,7 +412,7 @@ spark.eventLog.enabled 			true
 spark.eventLog.dir 				path/log
 ```
 
-> 也可以去spark history server直接看, 但是可能会找不到, 
+> 也可以去spark history server直接看, 但是可能会找不到, zhuyi
 
 
 
@@ -625,11 +625,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzOTI0OTEzNywtMzg2MzYzOTc1LC0xMj
-QxMDY2MjAsMjA4MTU3MjMwNyw5ODcwMTU5NTAsLTE1Mjc2NjEz
-MCwtMTY0NjkyNjIzMSwtMTQzMTQ2NDk0NywzOTQ3ODE5NTksLT
-I4NTY2NzM0MCwtMTg5NTUxMTcwLC0xNDkxMzY3NTU4LC04NTA5
-NTAxMDIsLTgwNjQ2NTQxMiwxODIwNjUzNjcxLDY3NzE0NTY2Ny
-wtMTUwNDM5MjA5NSwtMTM5OTQzMjI0MSwtMzA1Nzk3NjEzLDI3
-MjA0ODg1NF19
+eyJoaXN0b3J5IjpbODQ4MDkxODg2LC05MzkyNDkxMzcsLTM4Nj
+M2Mzk3NSwtMTI0MTA2NjIwLDIwODE1NzIzMDcsOTg3MDE1OTUw
+LC0xNTI3NjYxMzAsLTE2NDY5MjYyMzEsLTE0MzE0NjQ5NDcsMz
+k0NzgxOTU5LC0yODU2NjczNDAsLTE4OTU1MTE3MCwtMTQ5MTM2
+NzU1OCwtODUwOTUwMTAyLC04MDY0NjU0MTIsMTgyMDY1MzY3MS
+w2NzcxNDU2NjcsLTE1MDQzOTIwOTUsLTEzOTk0MzIyNDEsLTMw
+NTc5NzYxM119
 -->
