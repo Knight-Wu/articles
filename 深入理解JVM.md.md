@@ -172,11 +172,11 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
 
 ### java heap 分代(基于jdk1.8)
 * 新生代(PSYoungGen)
-  > eden space , survivor(from space , to space) ,可设置比例,采用标记复制算法
+ eden space , survivor(from space , to space) ,可设置比例,采用标记复制算法
 * 老年代(ParOldGen)
->采用标记清除算法或标记整理算法
+采用标记清除算法或标记整理算法
 * Metaspace(方法区)
->存储类的信息
+存储类的信息
 
 ### GC回收过程
 *  对象优先在eden分配, 当eden没有足够空间时, 进行一次minorGC, 将存在GC root引用链的对象复制到survivor区域, 使用标记复制算法, 然后存活对象的年龄加一. 
@@ -482,5 +482,6 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzAxODU1ODBdfQ==
+eyJoaXN0b3J5IjpbLTE0NDc0ODE4MDIsLTEzMzAxODU1ODBdfQ
+==
 -->
