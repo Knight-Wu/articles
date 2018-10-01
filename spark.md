@@ -302,7 +302,9 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 
 由execution和storage组成, execution用于computation in shuffles, joins, sorts and aggregation, storage用于caching和传播数据到集群中. execution和storage共享一块内存M, 当execution不使用它所用的内存时, storage可以抢占, 反之亦然; 只有当storage的内存使用量低于R时, execution 才能 evict storage, 并且R的内存使用量是会一直保持给storage使用的.
 > 计算实际内存的消耗
-简单的方法是把RDD放到cache里, 然后看web UI
+
+简单的方法是把RDD放到cache里, 然后看web UI的storage的占用
+
 > spark.memory.fraction
 
 上文的M, 计算方式是(JVM heap space - 300MB) * (default 0.6).其余是留给: user data structures, internal metadata in Spark, and safeguarding
@@ -616,11 +618,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyMDY1MzY3MSwtMTg1NTA4ODAwNyw2Nz
-cxNDU2NjcsLTE1MDQzOTIwOTUsLTEzOTk0MzIyNDEsLTMwNTc5
-NzYxMywyNzIwNDg4NTQsMTMxNjEwMjAwNywtMjA1ODU1NTM4My
-w5MDg4OTM0NTEsMTM0MjM1MDk0MywtNzEyODY0MzU5LDg2MzE4
-NzMzLC0xOTE1MzI0MTUwLDE3OTMxMzI0NTEsLTE5OTA3ODU3MD
-AsLTc4NTQ3MzE5MCw5NjI3ODM4MzMsLTYxNTE2NjQwMywyMDMy
-MDM1NTldfQ==
+eyJoaXN0b3J5IjpbNjgzOTU5NjY0LDE4MjA2NTM2NzEsNjc3MT
+Q1NjY3LC0xNTA0MzkyMDk1LC0xMzk5NDMyMjQxLC0zMDU3OTc2
+MTMsMjcyMDQ4ODU0LDEzMTYxMDIwMDcsLTIwNTg1NTUzODMsOT
+A4ODkzNDUxLDEzNDIzNTA5NDMsLTcxMjg2NDM1OSw4NjMxODcz
+MywtMTkxNTMyNDE1MCwxNzkzMTMyNDUxLC0xOTkwNzg1NzAwLC
+03ODU0NzMxOTAsOTYyNzgzODMzLC02MTUxNjY0MDMsMjAzMjAz
+NTU5XX0=
 -->
