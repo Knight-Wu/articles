@@ -322,7 +322,8 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 指的是 off-heap memory per executor, 用来存储 VM overheads, interned strings, other native overheads, 默认值是 Max(384MB, 10% of spark.executor-memory), 所以每个executor使用的container的物理内存需要囊括spark.yarn.executor.memoryOverhead 和executor memory两部分.
 
 
-
+> 内存性能优化
+1. 尽量少使用类, 减少不必要的对象空间, 尽量使用基本数据类型
 
 
 
@@ -330,8 +331,6 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 
 [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
 > 使用kryo序列化, 需要预先注册, 并设置kryo的缓存大小
-
-> 尽量少使用类, 减少不必要的对象空间, 尽量使用基本数据类型
 
 > 对多次使用的RDD持久化, rdd.checkpoint() 可以在多个application共用
 
@@ -618,11 +617,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjgzOTU5NjY0LDE4MjA2NTM2NzEsNjc3MT
-Q1NjY3LC0xNTA0MzkyMDk1LC0xMzk5NDMyMjQxLC0zMDU3OTc2
-MTMsMjcyMDQ4ODU0LDEzMTYxMDIwMDcsLTIwNTg1NTUzODMsOT
-A4ODkzNDUxLDEzNDIzNTA5NDMsLTcxMjg2NDM1OSw4NjMxODcz
-MywtMTkxNTMyNDE1MCwxNzkzMTMyNDUxLC0xOTkwNzg1NzAwLC
-03ODU0NzMxOTAsOTYyNzgzODMzLC02MTUxNjY0MDMsMjAzMjAz
-NTU5XX0=
+eyJoaXN0b3J5IjpbLTE3MzMxMjQ3NCwxODIwNjUzNjcxLDY3Nz
+E0NTY2NywtMTUwNDM5MjA5NSwtMTM5OTQzMjI0MSwtMzA1Nzk3
+NjEzLDI3MjA0ODg1NCwxMzE2MTAyMDA3LC0yMDU4NTU1MzgzLD
+kwODg5MzQ1MSwxMzQyMzUwOTQzLC03MTI4NjQzNTksODYzMTg3
+MzMsLTE5MTUzMjQxNTAsMTc5MzEzMjQ1MSwtMTk5MDc4NTcwMC
+wtNzg1NDczMTkwLDk2Mjc4MzgzMywtNjE1MTY2NDAzLDIwMzIw
+MzU1OV19
 -->
