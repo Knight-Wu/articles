@@ -270,7 +270,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 * 如何设置并行度
 1. spark sql 
 >spark.sql.shuffle.partitions=[num_tasks]
-2. spark.defalut.parallelism , 只在shuffle的时候才生效, 
+2. spark.defalut.parallelism , 是全局默认的并行度
 ```
 val rdd2 = rdd1.reduceByKey()  //若设置 spark.defalut.parallelism=10, rdd2的分区数就是10
 ```
@@ -283,8 +283,7 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 再为每个split 创建一个task
 ```
 4. 可以repartition
-5. val rdd3 = rdd1.join（rdd2）  
-> rdd3里面partiiton的数量是由父RDD中最多的partition数量来决定，因此使用join算子的时候，增加父RDD中partition的数量
+5. For distributed shuffle operations like `reduceByKey`and `join`, the largest number of partitions in a parent RDD.
 
 
 
@@ -625,11 +624,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NDY5MjYyMzEsLTE0MzE0NjQ5NDcsMz
-k0NzgxOTU5LC0yODU2NjczNDAsLTE4OTU1MTE3MCwtMTQ5MTM2
-NzU1OCwtODUwOTUwMTAyLC04MDY0NjU0MTIsMTgyMDY1MzY3MS
-w2NzcxNDU2NjcsLTE1MDQzOTIwOTUsLTEzOTk0MzIyNDEsLTMw
-NTc5NzYxMywyNzIwNDg4NTQsMTMxNjEwMjAwNywtMjA1ODU1NT
-M4Myw5MDg4OTM0NTEsMTM0MjM1MDk0MywtNzEyODY0MzU5LDg2
-MzE4NzMzXX0=
+eyJoaXN0b3J5IjpbLTUyNTMzMjA1NSwtMTY0NjkyNjIzMSwtMT
+QzMTQ2NDk0NywzOTQ3ODE5NTksLTI4NTY2NzM0MCwtMTg5NTUx
+MTcwLC0xNDkxMzY3NTU4LC04NTA5NTAxMDIsLTgwNjQ2NTQxMi
+wxODIwNjUzNjcxLDY3NzE0NTY2NywtMTUwNDM5MjA5NSwtMTM5
+OTQzMjI0MSwtMzA1Nzk3NjEzLDI3MjA0ODg1NCwxMzE2MTAyMD
+A3LC0yMDU4NTU1MzgzLDkwODg5MzQ1MSwxMzQyMzUwOTQzLC03
+MTI4NjQzNTldfQ==
 -->
