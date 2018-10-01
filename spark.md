@@ -309,7 +309,7 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 
 ![enter image description here](https://drive.google.com/uc?id=1Hk4apOubApExzejHwMx96J5dAi9j4KQi)
 
-由execution和storage组成, execution用于computation in shuffles, joins, sorts and aggregation, storage用于caching和传播数据到集群中. execution和storage共享一块内存M, 当execution不使用它所用的内存时, storage可以抢占, 反之亦然; 只有当storage的内存使用量低于R时, execution 才能 evict storage, 并且R的内存使用量是会一直保持给storage使用的.
+spark-1.6 之后使用UnifiedMemoryManager, 之前使用StaticMemoryManager, 由配置**spark.memory.useLegacyMode** 指定, 由execution和storage组成, execution用于computation in shuffles, joins, sorts and aggregation, storage用于caching和传播数据到集群中. execution和storage共享一块内存M, 当execution不使用它所用的内存时, storage可以抢占, 反之亦然; 只有当storage的内存使用量低于R时, execution 才能 evict storage, 并且R的内存使用量是会一直保持给storage使用的.
 > 计算实际内存的消耗
 
 简单的方法是把RDD放到cache里, 然后看web UI的storage的占用
@@ -653,7 +653,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwOTMzODMxMyw5MjA5NDU0NjcsLTExMT
+eyJoaXN0b3J5IjpbLTY5NTYxODkxMSw5MjA5NDU0NjcsLTExMT
 U3NjQ3NjUsLTEwODE4NTcxMTMsNzU0MDg5OTc3LDE0ODQzNzc0
 NzIsMTYwNjIwNjEyNiwtMTMxNzE5Mjg2LDE1NTYzMTM0MjEsLT
 Y4NDM4Mjg5Niw3MDM4NjE0NjcsODQ4MDkxODg2LC0zODYzNjM5
