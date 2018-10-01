@@ -165,6 +165,8 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 > Dynamic Resource Allocation
 
 
+
+
 #### spark persist
 参考自 [https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md](https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md)
 * checkPoint
@@ -637,11 +639,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjg5MjM1OTMsMTU1NjMxMzQyMSwtNj
-g0MzgyODk2LDcwMzg2MTQ2Nyw4NDgwOTE4ODYsLTM4NjM2Mzk3
-NSwtMTI0MTA2NjIwLDIwODE1NzIzMDcsOTg3MDE1OTUwLC0xNT
-I3NjYxMzAsLTE2NDY5MjYyMzEsLTE0MzE0NjQ5NDcsMzk0Nzgx
-OTU5LC0yODU2NjczNDAsLTE4OTU1MTE3MCwtMTQ5MTM2NzU1OC
-wtODUwOTUwMTAyLC04MDY0NjU0MTIsMTgyMDY1MzY3MSw2Nzcx
-NDU2NjddfQ==
+eyJoaXN0b3J5IjpbLTE5NTk4MjEwOTMsLTExMjg5MjM1OTMsMT
+U1NjMxMzQyMSwtNjg0MzgyODk2LDcwMzg2MTQ2Nyw4NDgwOTE4
+ODYsLTM4NjM2Mzk3NSwtMTI0MTA2NjIwLDIwODE1NzIzMDcsOT
+g3MDE1OTUwLC0xNTI3NjYxMzAsLTE2NDY5MjYyMzEsLTE0MzE0
+NjQ5NDcsMzk0NzgxOTU5LC0yODU2NjczNDAsLTE4OTU1MTE3MC
+wtMTQ5MTM2NzU1OCwtODUwOTUwMTAyLC04MDY0NjU0MTIsMTgy
+MDY1MzY3MV19
 -->
