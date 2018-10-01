@@ -165,7 +165,7 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 参见
 1. [https://spark.apache.org/docs/latest/job-scheduling.html](https://spark.apache.org/docs/latest/job-scheduling.html)
 > Dynamic Resource Allocation
-当有等待的task在队列中, 会周期性的以2的b增加executor
+当有等待的task在队列中, 会周期性的以2的倍数增加executor; 当
 
 
 
@@ -644,7 +644,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjc1NjUwODcsMTk0NDI0MzIyMSwxNj
+eyJoaXN0b3J5IjpbMTQ4NDM3NzQ3MiwtMTEyNzU2NTA4NywxNj
 A2MjA2MTI2LC0xMzE3MTkyODYsMTU1NjMxMzQyMSwtNjg0Mzgy
 ODk2LDcwMzg2MTQ2Nyw4NDgwOTE4ODYsLTM4NjM2Mzk3NSwtMT
 I0MTA2NjIwLDIwODE1NzIzMDcsOTg3MDE1OTUwLC0xNTI3NjYx
