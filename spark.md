@@ -367,7 +367,7 @@ Spark prints the serialized size of each task on the master, so you can look at 
 
 
 * hash join
-> 将小表作为Build Table，大表作为Probe Table; 先将小表的join key, hash到bucket中, 构建hashtable, hashtable如果太大, 会放到磁盘上; 再讲大表的join key进行hash到同一个bucket中, 再判断两者的key是否相同. > 时间复杂度: O(a+b), 传统的笛卡尔积是 O(a*b)
+> 将小表作为Build Table，大表作为Probe Table; 先将小表的join key, hash到bucket中, 构建hashtable, hashtable如果太大, 会放到磁盘上; 再讲大表的join key进行hash到同一个bucket中, 再判断两者的key是否相同. 时间复杂度: O(a+b), 传统的笛卡尔积是 O(a*b)
 
 
 > 选择小表作为build table, 生成的hashTable比较小, 能够完全放到内存中.
@@ -647,11 +647,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODE4NTcxMTMsNzU0MDg5OTc3LDE0OD
-QzNzc0NzIsMTYwNjIwNjEyNiwtMTMxNzE5Mjg2LDE1NTYzMTM0
-MjEsLTY4NDM4Mjg5Niw3MDM4NjE0NjcsODQ4MDkxODg2LC0zOD
-YzNjM5NzUsLTEyNDEwNjYyMCwyMDgxNTcyMzA3LDk4NzAxNTk1
-MCwtMTUyNzY2MTMwLC0xNjQ2OTI2MjMxLC0xNDMxNDY0OTQ3LD
-M5NDc4MTk1OSwtMjg1NjY3MzQwLC0xODk1NTExNzAsLTE0OTEz
-Njc1NThdfQ==
+eyJoaXN0b3J5IjpbMTY5ODExODE1MywtMTA4MTg1NzExMyw3NT
+QwODk5NzcsMTQ4NDM3NzQ3MiwxNjA2MjA2MTI2LC0xMzE3MTky
+ODYsMTU1NjMxMzQyMSwtNjg0MzgyODk2LDcwMzg2MTQ2Nyw4ND
+gwOTE4ODYsLTM4NjM2Mzk3NSwtMTI0MTA2NjIwLDIwODE1NzIz
+MDcsOTg3MDE1OTUwLC0xNTI3NjYxMzAsLTE2NDY5MjYyMzEsLT
+E0MzE0NjQ5NDcsMzk0NzgxOTU5LC0yODU2NjczNDAsLTE4OTU1
+MTE3MF19
 -->
