@@ -332,20 +332,6 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 
 > 对多次使用的RDD持久化, rdd.checkpoint() 可以在多个application共用
 
-> [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
->  
-尽量使用
-对多次使用的RDD持久化.尽量避免shuffle类算子
-使用map端预聚合的算子, 类似于MR的combiner
-
->使用高性能算子
-
-
-
-
-
-
-
 
 #### 数据倾斜
 某个parttion的大小远大于其他parttion，stage执行的时间取决于task（parttion）中最慢的那个，导致某个stage执行过慢
@@ -629,11 +615,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDQzOTIwOTUsLTEzOTk0MzIyNDEsLT
-MwNTc5NzYxMywyNzIwNDg4NTQsMTMxNjEwMjAwNywtMjA1ODU1
-NTM4Myw5MDg4OTM0NTEsMTM0MjM1MDk0MywtNzEyODY0MzU5LD
-g2MzE4NzMzLC0xOTE1MzI0MTUwLDE3OTMxMzI0NTEsLTE5OTA3
-ODU3MDAsLTc4NTQ3MzE5MCw5NjI3ODM4MzMsLTYxNTE2NjQwMy
-wyMDMyMDM1NTksMTcxMzkyMDI0MCwxMTMxNDY0MTAsMTg4NTQ0
-OTg3Nl19
+eyJoaXN0b3J5IjpbNjc3MTQ1NjY3LC0xNTA0MzkyMDk1LC0xMz
+k5NDMyMjQxLC0zMDU3OTc2MTMsMjcyMDQ4ODU0LDEzMTYxMDIw
+MDcsLTIwNTg1NTUzODMsOTA4ODkzNDUxLDEzNDIzNTA5NDMsLT
+cxMjg2NDM1OSw4NjMxODczMywtMTkxNTMyNDE1MCwxNzkzMTMy
+NDUxLC0xOTkwNzg1NzAwLC03ODU0NzMxOTAsOTYyNzgzODMzLC
+02MTUxNjY0MDMsMjAzMjAzNTU5LDE3MTM5MjAyNDAsMTEzMTQ2
+NDEwXX0=
 -->
