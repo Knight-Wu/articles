@@ -165,7 +165,7 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 参见
 1. [https://spark.apache.org/docs/latest/job-scheduling.html](https://spark.apache.org/docs/latest/job-scheduling.html)
 > Dynamic Resource Allocation
-
+当有等待的task在队列中, 会周期性的以2的b增加executor
 
 
 
@@ -458,7 +458,8 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 > 作用
 
 * Spark系统在运行含shuffle过程的应用时，Executor进程除了运行task，还要负责写shuffle 数据，给其他Executor提供shuffle数据. 当Executor进程任务过重，导致GC而不能为其 他Executor提供shuffle数据时，会影响任务运行. 这里实际上是利用External Shuffle Service 来提升性能，External shuffle Service是长期存在于NodeManager进程中的一个辅助服务。 通过该服务 来抓取shuffle数据，减少了Executor的压力，在Executor GC的时候也不会影响其他 Executor的任务运行。
-* 当executor因为失败而退出, 或者在资源动态收集的情况下, 因为空闲而退出, 一些计算结果可能会因为无法获取而重新计算, 特别是shuffle的时候, map端executor计算的结果可能因为executor 退出而无法获取, 所以cishi
+* 当executor因为失败而退出, 或者在资源动态收集的情况下, 因为空闲而退出, 一些计算结果可能会因为无法获取而重新计算, 特别是shuffle的时候, map端executor计算的结果可能因为executor 退出而无法获取, 所以此时需要一个常驻的service 运行在nodemanager(使用yarn的情况)
+
 配置参见: 
 1.[http://zhm8.cn/2017/08/30/spark%20shuffle%20%E8%B0%83%E4%BC%98/](http://zhm8.cn/2017/08/30/spark%20shuffle%20%E8%B0%83%E4%BC%98/)
 5. [https://spark.apache.org/docs/latest/running-on-yarn.html](https://spark.apache.org/docs/latest/running-on-yarn.html)
@@ -643,11 +644,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0NDI0MzIyMSwyNzAxNjgxOCwxNjA2Mj
-A2MTI2LC0xMzE3MTkyODYsMTU1NjMxMzQyMSwtNjg0MzgyODk2
-LDcwMzg2MTQ2Nyw4NDgwOTE4ODYsLTM4NjM2Mzk3NSwtMTI0MT
-A2NjIwLDIwODE1NzIzMDcsOTg3MDE1OTUwLC0xNTI3NjYxMzAs
-LTE2NDY5MjYyMzEsLTE0MzE0NjQ5NDcsMzk0NzgxOTU5LC0yOD
-U2NjczNDAsLTE4OTU1MTE3MCwtMTQ5MTM2NzU1OCwtODUwOTUw
-MTAyXX0=
+eyJoaXN0b3J5IjpbLTExMjc1NjUwODcsMTk0NDI0MzIyMSwxNj
+A2MjA2MTI2LC0xMzE3MTkyODYsMTU1NjMxMzQyMSwtNjg0Mzgy
+ODk2LDcwMzg2MTQ2Nyw4NDgwOTE4ODYsLTM4NjM2Mzk3NSwtMT
+I0MTA2NjIwLDIwODE1NzIzMDcsOTg3MDE1OTUwLC0xNTI3NjYx
+MzAsLTE2NDY5MjYyMzEsLTE0MzE0NjQ5NDcsMzk0NzgxOTU5LC
+0yODU2NjczNDAsLTE4OTU1MTE3MCwtMTQ5MTM2NzU1OCwtODUw
+OTUwMTAyXX0=
 -->
