@@ -334,7 +334,7 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 2. 如果minor gc比较多, 则可以按照调大eden为原来估计的三分之四.
 3. Try the G1GC garbage collector with `-XX:+UseG1GC`. It can improve performance in some situations where garbage collection is a bottleneck. Note that with large executor heap sizes, it may be important to increase the [G1 region size](http://www.oracle.com/technetwork/articles/java/g1gc-1984535.html) with `-XX:G1HeapRegionSize`
 
-
+4. As an example, if your task is reading data from HDFS, the amount of memory used by the task can be estimated using the size of the data block read from HDFS. Note that the size of a decompressed block is often 2 or 3 times the size of the block. So if we wish to have 3 or 4 tasks’ worth of working space, and the HDFS block size is 128 MB, we can estimate size of Eden to be `4*3*128MB`.
 * 衡量GC
 使用参数: -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps
 
@@ -629,11 +629,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzk0NzgxOTU5LC0yODU2NjczNDAsLTE4OT
-U1MTE3MCwtMTQ5MTM2NzU1OCwtODUwOTUwMTAyLC04MDY0NjU0
-MTIsMTgyMDY1MzY3MSw2NzcxNDU2NjcsLTE1MDQzOTIwOTUsLT
-EzOTk0MzIyNDEsLTMwNTc5NzYxMywyNzIwNDg4NTQsMTMxNjEw
-MjAwNywtMjA1ODU1NTM4Myw5MDg4OTM0NTEsMTM0MjM1MDk0My
-wtNzEyODY0MzU5LDg2MzE4NzMzLC0xOTE1MzI0MTUwLDE3OTMx
-MzI0NTFdfQ==
+eyJoaXN0b3J5IjpbLTE0MzE0NjQ5NDcsMzk0NzgxOTU5LC0yOD
+U2NjczNDAsLTE4OTU1MTE3MCwtMTQ5MTM2NzU1OCwtODUwOTUw
+MTAyLC04MDY0NjU0MTIsMTgyMDY1MzY3MSw2NzcxNDU2NjcsLT
+E1MDQzOTIwOTUsLTEzOTk0MzIyNDEsLTMwNTc5NzYxMywyNzIw
+NDg4NTQsMTMxNjEwMjAwNywtMjA1ODU1NTM4Myw5MDg4OTM0NT
+EsMTM0MjM1MDk0MywtNzEyODY0MzU5LDg2MzE4NzMzLC0xOTE1
+MzI0MTUwXX0=
 -->
