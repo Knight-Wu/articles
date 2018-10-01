@@ -354,6 +354,98 @@ Spark prints the serialized size of each task on the master, so you can look at 
 1. 对多次使用的RDD持久化, rdd.checkpoint() 可以在多个application共用
 
 
+#### spark join
+> 分为 shuffle hash join、broadcast hash join以及sort merge join
+
+
+* hash join
+> 将小表作为Build Table，大表作为Probe Table; 先将小表的join key, hash到bucket中, 构建hashtable, hashtable如果太大, 会放到磁盘上; 再讲大表的join key进行hash到同一个bucket中, 再判断两者的key是否相同. > 时间复杂度: O(a+b), 传统的笛卡尔积是 O(a*b)
+
+
+> 选择小表作为build table, 生成的hashTable比较小, 能够完全放到内存中.
+
+
+* hash join的分布式改造
+1. broadcast hash join
+
+
+> 将小表广播到大表的所有节点上, 适用于小表很小的情况
+
+
+> SparkSQL规定broadcast hash join执行的基本条件为被广播小表必须小于参数spark.sql.autoBroadcastJoinThreshold，默认为10M。
+
+
+2. Shuffle Hash Join
+
+
+> 将两个表按照join key进行重分区(HashPartition) , 再在各个节点上进行hash join, 适用于一个大表,一个小表的情况. 
+
+
+3. Sort-Merge Join
+可以看下 [spark-join-pull过程](https://github.com/apache/spark/pull/3173)
+> 将两个表先进行shuffle, 再在各个分区节点的数据进行sort, 最后再根据join key 进行merge. 适用两个大表的情况, 因为spark的shuffle是 sort-based shuffle,shuffle之前就排序好了. 
+
+
+
+
+
+
+### spark monitor
+#### spark log
+> 分为三部分: driver log, executor log, spark history server log
+
+* driver log
+> 使用 yarn logs -applicationId xxxId > tmp.log
+* executor log
+> 在下图目录下, 需要去hdfs 找applicationId下的目录
+如下图在/tmp/logs/${usr}/logs/${applicationId}
+```
+yarn.nodemanager.remote-app-log-dir 		/tmp/logs
+yarn.nodemanager.remote-app-log-dir-suffix 	logs
+```
+
+* spark history server log
+> 配置的路径
+```
+spark.history.fs.logDirectory 	file:/tmp/spark-events
+spark.eventLog.enabled 			true
+spark.eventLog.dir 				path/log
+```
+
+> 也可以去spark history server直接看, 但是可能会找不到, 
+
+
+
+#### spark-shell 执行sparkSql
+```
+////创建HiveContext  
+scala> val sqlC = new org.apache.spark.sql.hive.HiveContext(sc)  
+sqlContext: org.apache.spark.sql.hive.HiveContext = org.apache.spark.sql.hive.HiveContext@42503a9b
+
+
+///显示当前数据库的表，是一个transformation操作，生成RDD  
+scala> sqlC.sql("select count(1) from crm_app.cust_group_detail").collect;
+
+
+
+
+```
+#### spark on yarn 
+> 先看rm日志, 再看nm日志,再看nm的stdout, stderr, 
+详细见 [https://community.mapr.com/docs/DOC-1323](https://community.mapr.com/docs/DOC-1323)
+
+
+* 避免每次spark on yarn 都把spark的jar包上传到yarn, 可以加配置spark.yarn.jars为hdfs目录或者本地目录, 例如: hdfs://path, local:/path.
+
+
+* jar包上传
+```
+spark.driver.extraClassPath=./antlr-runtime-3.4.jar
+spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/opt/cloudera/parcels/CDH-5.12.1-1.cdh5.12.1.p0.3/jars/antlr-runtime-3.4.jar
+
+```
+> 其中前两个引用的相对目录，指的是YARN 的container的进程的工作目录， 第三个配置就是把jar包上传到container的工作目录, 也可以引用hdfs的目录
+
 ### 数据倾斜
 某个parttion的大小远大于其他parttion，stage执行的时间取决于task（parttion）中最慢的那个，导致某个stage执行过慢
  * 情形暂定为两种
@@ -485,105 +577,6 @@ spark.sql("xxxsql").explain()
 ```
 > 2. 使用Spark WebUI进行查看
 
-
-#### spark join
-> 分为 shuffle hash join、broadcast hash join以及sort merge join
-
-
-* hash join
-> 将小表作为Build Table，大表作为Probe Table; 先将小表的join key, hash到bucket中, 构建hashtable, hashtable如果太大, 会放到磁盘上; 再讲大表的join key进行hash到同一个bucket中, 再判断两者的key是否相同. > 时间复杂度: O(a+b), 传统的笛卡尔积是 O(a*b)
-
-
-> 选择小表作为build table, 生成的hashTable比较小, 能够完全放到内存中.
-
-
-* hash join的分布式改造
-1. broadcast hash join
-
-
-> 将小表广播到大表的所有节点上, 适用于小表很小的情况
-
-
-> SparkSQL规定broadcast hash join执行的基本条件为被广播小表必须小于参数spark.sql.autoBroadcastJoinThreshold，默认为10M。
-
-
-2. Shuffle Hash Join
-
-
-> 将两个表按照join key进行重分区(HashPartition) , 再在各个节点上进行hash join, 适用于一个大表,一个小表的情况. 
-
-
-3. Sort-Merge Join
-可以看下 [spark-join-pull过程](https://github.com/apache/spark/pull/3173)
-> 将两个表先进行shuffle, 再在各个分区节点的数据进行sort, 最后再根据join key 进行merge. 适用两个大表的情况, 因为spark的shuffle是 sort-based shuffle,shuffle之前就排序好了. 
-
-
-
-
-
-
-#### spark log 
-> 分为三部分: driver log, executor log, spark history server log
-
-
-* driver log
-> 使用 yarn logs -applicationId xxxId > tmp.log
-* executor log
-> 在下图目录下, 需要去hdfs 找applicationId下的目录
-如下图在/tmp/logs/${usr}/logs/${applicationId}
-```
-yarn.nodemanager.remote-app-log-dir 		/tmp/logs
-yarn.nodemanager.remote-app-log-dir-suffix 	logs
-```
-
-* spark history server log
-> 配置的路径
-```
-spark.history.fs.logDirectory 	file:/tmp/spark-events
-spark.eventLog.enabled 			true
-spark.eventLog.dir 				path/log
-```
-
-> 也可以去spark history server直接看, 但是可能会找不到, 需要看driver log
-
-
-
-#### spark-shell 执行sparkSql
-```
-////创建HiveContext  
-scala> val sqlC = new org.apache.spark.sql.hive.HiveContext(sc)  
-sqlContext: org.apache.spark.sql.hive.HiveContext = org.apache.spark.sql.hive.HiveContext@42503a9b
-
-
-///显示当前数据库的表，是一个transformation操作，生成RDD  
-scala> sqlC.sql("select count(1) from crm_app.cust_group_detail").collect;
-
-
-
-
-```
-#### spark on yarn 
-> 先看rm日志, 再看nm日志,再看nm的stdout, stderr, 
-详细见 [https://community.mapr.com/docs/DOC-1323](https://community.mapr.com/docs/DOC-1323)
-
-
-* 避免每次spark on yarn 都把spark的jar包上传到yarn, 可以加配置spark.yarn.jars为hdfs目录或者本地目录, 例如: hdfs://path, local:/path.
-
-
-* jar包上传
-
-
-```
-spark.driver.extraClassPath=./antlr-runtime-3.4.jar
-spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/opt/cloudera/parcels/CDH-5.12.1-1.cdh5.12.1.p0.3/jars/antlr-runtime-3.4.jar
-
-
-```
-> 其中前两个引用的相对目录，指的是YARN 的container的进程的工作目录， 第三个配置就是把jar包上传到container的工作目录, 也可以引用hdfs的目录
-
-
-
-
 ---
 #### 疑问
 * 还是要把本地windows环境起起来, spark如何指定 scala, hadoop
@@ -632,11 +625,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM4NjM2Mzk3NSwtMTI0MTA2NjIwLDIwOD
-E1NzIzMDcsOTg3MDE1OTUwLC0xNTI3NjYxMzAsLTE2NDY5MjYy
-MzEsLTE0MzE0NjQ5NDcsMzk0NzgxOTU5LC0yODU2NjczNDAsLT
-E4OTU1MTE3MCwtMTQ5MTM2NzU1OCwtODUwOTUwMTAyLC04MDY0
-NjU0MTIsMTgyMDY1MzY3MSw2NzcxNDU2NjcsLTE1MDQzOTIwOT
-UsLTEzOTk0MzIyNDEsLTMwNTc5NzYxMywyNzIwNDg4NTQsMTMx
-NjEwMjAwN119
+eyJoaXN0b3J5IjpbLTkzOTI0OTEzNywtMzg2MzYzOTc1LC0xMj
+QxMDY2MjAsMjA4MTU3MjMwNyw5ODcwMTU5NTAsLTE1Mjc2NjEz
+MCwtMTY0NjkyNjIzMSwtMTQzMTQ2NDk0NywzOTQ3ODE5NTksLT
+I4NTY2NzM0MCwtMTg5NTUxMTcwLC0xNDkxMzY3NTU4LC04NTA5
+NTAxMDIsLTgwNjQ2NTQxMiwxODIwNjUzNjcxLDY3NzE0NTY2Ny
+wtMTUwNDM5MjA5NSwtMTM5OTQzMjI0MSwtMzA1Nzk3NjEzLDI3
+MjA0ODg1NF19
 -->
