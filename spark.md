@@ -343,6 +343,9 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 例如一个 static lookup table 可以把它作为广播变量, 
 Spark prints the serialized size of each task on the master, so you can look at that to decide whether your tasks are too large; in general tasks larger than about 20 KB are probably worth optimizing.
 
+> data locality
+
+最理想的情况是code和data在一个jvm ,其次是在一个node(需要一个node的不同进程间的通信), 最坏情况是不同机架的情况. spark是怎么做尽量保证data
 > 其他参考
 
 [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
@@ -627,11 +630,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTg3MDE1OTUwLC0xNzk3NTg0MzQ1LDk4Nz
-AxNTk1MCwtMTUyNzY2MTMwLC0xNjQ2OTI2MjMxLC0xNDMxNDY0
-OTQ3LDM5NDc4MTk1OSwtMjg1NjY3MzQwLC0xODk1NTExNzAsLT
-E0OTEzNjc1NTgsLTg1MDk1MDEwMiwtODA2NDY1NDEyLDE4MjA2
-NTM2NzEsNjc3MTQ1NjY3LC0xNTA0MzkyMDk1LC0xMzk5NDMyMj
-QxLC0zMDU3OTc2MTMsMjcyMDQ4ODU0LDEzMTYxMDIwMDcsLTIw
-NTg1NTUzODNdfQ==
+eyJoaXN0b3J5IjpbMTUxNDIyMjE2MCw5ODcwMTU5NTAsOTg3MD
+E1OTUwLC0xNTI3NjYxMzAsLTE2NDY5MjYyMzEsLTE0MzE0NjQ5
+NDcsMzk0NzgxOTU5LC0yODU2NjczNDAsLTE4OTU1MTE3MCwtMT
+Q5MTM2NzU1OCwtODUwOTUwMTAyLC04MDY0NjU0MTIsMTgyMDY1
+MzY3MSw2NzcxNDU2NjcsLTE1MDQzOTIwOTUsLTEzOTk0MzIyND
+EsLTMwNTc5NzYxMywyNzIwNDg4NTQsMTMxNjEwMjAwNywtMjA1
+ODU1NTM4M119
 -->
