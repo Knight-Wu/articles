@@ -339,7 +339,13 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 
 > spark on yarn 内存实际使用计算
 
-executor实际使用的内存是: spark.executor.memory + spark.yarn.executor.memoryOverhead
+executor实际使用的内存是: total = spark.executor.memory + spark.yarn.executor.memoryOverhead, 
+而yarn 实际分配的内存, 也就是executor所在container分配的内存: 
+```
+if(total <= yarn.scheduler.minimum-allocation-mb){
+	 total = 
+}
+```
 
 
 
@@ -655,11 +661,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzUwMzU4MzYsMTQ5MjkwMDUzMSwtNj
-gwMDQ0OTYxLDkyMDk0NTQ2NywtMTExNTc2NDc2NSwtMTA4MTg1
-NzExMyw3NTQwODk5NzcsMTQ4NDM3NzQ3MiwxNjA2MjA2MTI2LC
-0xMzE3MTkyODYsMTU1NjMxMzQyMSwtNjg0MzgyODk2LDcwMzg2
-MTQ2Nyw4NDgwOTE4ODYsLTM4NjM2Mzk3NSwtMTI0MTA2NjIwLD
-IwODE1NzIzMDcsOTg3MDE1OTUwLC0xNTI3NjYxMzAsLTE2NDY5
-MjYyMzFdfQ==
+eyJoaXN0b3J5IjpbLTgyODQzNTk0NSwxNDkyOTAwNTMxLC02OD
+AwNDQ5NjEsOTIwOTQ1NDY3LC0xMTE1NzY0NzY1LC0xMDgxODU3
+MTEzLDc1NDA4OTk3NywxNDg0Mzc3NDcyLDE2MDYyMDYxMjYsLT
+EzMTcxOTI4NiwxNTU2MzEzNDIxLC02ODQzODI4OTYsNzAzODYx
+NDY3LDg0ODA5MTg4NiwtMzg2MzYzOTc1LC0xMjQxMDY2MjAsMj
+A4MTU3MjMwNyw5ODcwMTU5NTAsLTE1Mjc2NjEzMCwtMTY0Njky
+NjIzMV19
 -->
