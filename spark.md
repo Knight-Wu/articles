@@ -354,7 +354,7 @@ Spark prints the serialized size of each task on the master, so you can look at 
 1. 对多次使用的RDD持久化, rdd.checkpoint() 可以在多个application共用
 
 
-#### 数据倾斜
+### 数据倾斜
 某个parttion的大小远大于其他parttion，stage执行的时间取决于task（parttion）中最慢的那个，导致某个stage执行过慢
  * 情形暂定为两种
    * 相同的key的数据量太大
@@ -632,11 +632,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNDEwNjYyMCwyMDgxNTcyMzA3LDk4Nz
-AxNTk1MCwtMTUyNzY2MTMwLC0xNjQ2OTI2MjMxLC0xNDMxNDY0
-OTQ3LDM5NDc4MTk1OSwtMjg1NjY3MzQwLC0xODk1NTExNzAsLT
-E0OTEzNjc1NTgsLTg1MDk1MDEwMiwtODA2NDY1NDEyLDE4MjA2
-NTM2NzEsNjc3MTQ1NjY3LC0xNTA0MzkyMDk1LC0xMzk5NDMyMj
-QxLC0zMDU3OTc2MTMsMjcyMDQ4ODU0LDEzMTYxMDIwMDcsLTIw
-NTg1NTUzODNdfQ==
+eyJoaXN0b3J5IjpbLTM4NjM2Mzk3NSwtMTI0MTA2NjIwLDIwOD
+E1NzIzMDcsOTg3MDE1OTUwLC0xNTI3NjYxMzAsLTE2NDY5MjYy
+MzEsLTE0MzE0NjQ5NDcsMzk0NzgxOTU5LC0yODU2NjczNDAsLT
+E4OTU1MTE3MCwtMTQ5MTM2NzU1OCwtODUwOTUwMTAyLC04MDY0
+NjU0MTIsMTgyMDY1MzY3MSw2NzcxNDU2NjcsLTE1MDQzOTIwOT
+UsLTEzOTk0MzIyNDEsLTMwNTc5NzYxMywyNzIwNDg4NTQsMTMx
+NjEwMjAwN119
 -->
