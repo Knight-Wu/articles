@@ -345,7 +345,9 @@ Spark prints the serialized size of each task on the master, so you can look at 
 
 > data locality
 
-最理想的情况是code和data在一个jvm ,其次是在一个node(需要一个node的不同进程间的通信), 最坏情况是不同机架的情况. spark是怎么做尽量保证data和code的本地化的呢
+最理想的情况是code和data在一个jvm ,其次是在一个node(需要一个node的不同进程间的通信), 最坏情况是不同机架的情况. spark是怎么做尽量保证data和code的本地化的呢? 先等本地的cpu一段时间, 如果超时仍然非空闲, 则会把task转移到其他executor 空闲的cpu
+
+
 > 其他参考
 
 [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
@@ -630,11 +632,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4MTU3MjMwNywxNTE0MjIyMTYwLDk4Nz
-AxNTk1MCwtMTUyNzY2MTMwLC0xNjQ2OTI2MjMxLC0xNDMxNDY0
-OTQ3LDM5NDc4MTk1OSwtMjg1NjY3MzQwLC0xODk1NTExNzAsLT
-E0OTEzNjc1NTgsLTg1MDk1MDEwMiwtODA2NDY1NDEyLDE4MjA2
-NTM2NzEsNjc3MTQ1NjY3LC0xNTA0MzkyMDk1LC0xMzk5NDMyMj
-QxLC0zMDU3OTc2MTMsMjcyMDQ4ODU0LDEzMTYxMDIwMDcsLTIw
-NTg1NTUzODNdfQ==
+eyJoaXN0b3J5IjpbLTE5MTc4NTU4MDAsMjA4MTU3MjMwNyw5OD
+cwMTU5NTAsLTE1Mjc2NjEzMCwtMTY0NjkyNjIzMSwtMTQzMTQ2
+NDk0NywzOTQ3ODE5NTksLTI4NTY2NzM0MCwtMTg5NTUxMTcwLC
+0xNDkxMzY3NTU4LC04NTA5NTAxMDIsLTgwNjQ2NTQxMiwxODIw
+NjUzNjcxLDY3NzE0NTY2NywtMTUwNDM5MjA5NSwtMTM5OTQzMj
+I0MSwtMzA1Nzk3NjEzLDI3MjA0ODg1NCwxMzE2MTAyMDA3LC0y
+MDU4NTU1MzgzXX0=
 -->
