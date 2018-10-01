@@ -331,14 +331,16 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 
 思想是减少java object所使用的比例, 尽量使用基本数据类型, 并且使用 MEMORY_ONLY_SER去存储对象, 此时对于每一个RDD的partition 只有一个object(a byte array)
 
+* 衡量GC
+使用参数: -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps
 
 
 
+> 其他参考
 
 [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
-> 使用kryo序列化, 需要预先注册, 并设置kryo的缓存大小
-
-> 对多次使用的RDD持久化, rdd.checkpoint() 可以在多个application共用
+1. 使用kryo序列化, 需要预先注册, 并设置kryo的缓存大小
+2. 对多次使用的RDD持久化, rdd.checkpoint() 可以在多个application共用
 
 
 #### 数据倾斜
@@ -623,11 +625,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQ4Njg3NjMsLTE0OTEzNjc1NTgsLTg1MD
-k1MDEwMiwtODA2NDY1NDEyLDE4MjA2NTM2NzEsNjc3MTQ1NjY3
-LC0xNTA0MzkyMDk1LC0xMzk5NDMyMjQxLC0zMDU3OTc2MTMsMj
-cyMDQ4ODU0LDEzMTYxMDIwMDcsLTIwNTg1NTUzODMsOTA4ODkz
-NDUxLDEzNDIzNTA5NDMsLTcxMjg2NDM1OSw4NjMxODczMywtMT
-kxNTMyNDE1MCwxNzkzMTMyNDUxLC0xOTkwNzg1NzAwLC03ODU0
-NzMxOTBdfQ==
+eyJoaXN0b3J5IjpbLTE4OTU1MTE3MCwtMTQ5MTM2NzU1OCwtOD
+UwOTUwMTAyLC04MDY0NjU0MTIsMTgyMDY1MzY3MSw2NzcxNDU2
+NjcsLTE1MDQzOTIwOTUsLTEzOTk0MzIyNDEsLTMwNTc5NzYxMy
+wyNzIwNDg4NTQsMTMxNjEwMjAwNywtMjA1ODU1NTM4Myw5MDg4
+OTM0NTEsMTM0MjM1MDk0MywtNzEyODY0MzU5LDg2MzE4NzMzLC
+0xOTE1MzI0MTUwLDE3OTMxMzI0NTEsLTE5OTA3ODU3MDAsLTc4
+NTQ3MzE5MF19
 -->
