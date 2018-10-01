@@ -331,7 +331,8 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 
 思想是减少java object所使用的比例, 尽量使用基本数据类型, 并且使用 MEMORY_ONLY_SER去存储对象, 此时对于每一个RDD的partition 只有一个object(a byte array)
 1. 如果经常full GC, 则说明内存太小了.需要调大
-2. 如果minor gc比较多, 则可以按照
+2. 如果minor gc比较多, 则可以按照调大eden为原来估计的三分之四.
+3. 
 * 衡量GC
 使用参数: -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps
 
@@ -626,7 +627,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4MjU3ODI3NCwtMjg1NjY3MzQwLC0xOD
+eyJoaXN0b3J5IjpbMTQzNjExMjYyNywtMjg1NjY3MzQwLC0xOD
 k1NTExNzAsLTE0OTEzNjc1NTgsLTg1MDk1MDEwMiwtODA2NDY1
 NDEyLDE4MjA2NTM2NzEsNjc3MTQ1NjY3LC0xNTA0MzkyMDk1LC
 0xMzk5NDMyMjQxLC0zMDU3OTc2MTMsMjcyMDQ4ODU0LDEzMTYx
