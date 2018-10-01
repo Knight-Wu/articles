@@ -454,7 +454,7 @@ Spark系统在运行含shuffle过程的应用时，Executor进程除了运行tas
 
 配置参见: 
 1.[http://zhm8.cn/2017/08/30/spark%20shuffle%20%E8%B0%83%E4%BC%98/](http://zhm8.cn/2017/08/30/spark%20shuffle%20%E8%B0%83%E4%BC%98/)
-
+2. [https://spark.apache.org/docs/latest/running-on-yarn.html](https://spark.apache.org/docs/latest/running-on-yarn.html)
 
 
 ### 数据倾斜
@@ -636,7 +636,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4NDM4Mjg5NiwxMTAzMzMzNDM4LDcwMz
+eyJoaXN0b3J5IjpbMTU1NjMxMzQyMSwtNjg0MzgyODk2LDcwMz
 g2MTQ2Nyw4NDgwOTE4ODYsLTM4NjM2Mzk3NSwtMTI0MTA2NjIw
 LDIwODE1NzIzMDcsOTg3MDE1OTUwLC0xNTI3NjYxMzAsLTE2ND
 Y5MjYyMzEsLTE0MzE0NjQ5NDcsMzk0NzgxOTU5LC0yODU2Njcz
