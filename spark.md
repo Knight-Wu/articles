@@ -328,7 +328,7 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 3. 把对象序列化存储, 使用MEMORY_ONLY_SER, 大大减少存储空间, 但是读的时候需要反序列化, 消耗cpu
 
 > spark GC 调优
-思想是减少java object所使用的比例, 尽量使用基本数据类型, 并且使用 MEMORY_ONLY_SER去存储对象, 此时只有一个ob
+思想是减少java object所使用的比例, 尽量使用基本数据类型, 并且使用 MEMORY_ONLY_SER去存储对象, 此时只有一个object, 就是
 
 
 
@@ -622,11 +622,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgyNjk5NjEwMCwtODUwOTUwMTAyLC04MD
-Y0NjU0MTIsMTgyMDY1MzY3MSw2NzcxNDU2NjcsLTE1MDQzOTIw
-OTUsLTEzOTk0MzIyNDEsLTMwNTc5NzYxMywyNzIwNDg4NTQsMT
-MxNjEwMjAwNywtMjA1ODU1NTM4Myw5MDg4OTM0NTEsMTM0MjM1
-MDk0MywtNzEyODY0MzU5LDg2MzE4NzMzLC0xOTE1MzI0MTUwLD
-E3OTMxMzI0NTEsLTE5OTA3ODU3MDAsLTc4NTQ3MzE5MCw5NjI3
-ODM4MzNdfQ==
+eyJoaXN0b3J5IjpbLTE0OTEzNjc1NTgsLTgyNjk5NjEwMCwtOD
+UwOTUwMTAyLC04MDY0NjU0MTIsMTgyMDY1MzY3MSw2NzcxNDU2
+NjcsLTE1MDQzOTIwOTUsLTEzOTk0MzIyNDEsLTMwNTc5NzYxMy
+wyNzIwNDg4NTQsMTMxNjEwMjAwNywtMjA1ODU1NTM4Myw5MDg4
+OTM0NTEsMTM0MjM1MDk0MywtNzEyODY0MzU5LDg2MzE4NzMzLC
+0xOTE1MzI0MTUwLDE3OTMxMzI0NTEsLTE5OTA3ODU3MDAsLTc4
+NTQ3MzE5MF19
 -->
