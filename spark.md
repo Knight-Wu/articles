@@ -163,7 +163,7 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 
 ### spark job scheduling
 参见
-1. [enter link description here](https://spark.apache.org/docs/latest/job-scheduling.html)
+1. [https://spark.apache.org/docs/latest/job-scheduling.html](https://spark.apache.org/docs/latest/job-scheduling.html)
 > Dynamic Resource Allocation
 
 
@@ -641,11 +641,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTcxOTI4NiwtMTk1OTgyMTA5MywxNT
-U2MzEzNDIxLC02ODQzODI4OTYsNzAzODYxNDY3LDg0ODA5MTg4
-NiwtMzg2MzYzOTc1LC0xMjQxMDY2MjAsMjA4MTU3MjMwNyw5OD
-cwMTU5NTAsLTE1Mjc2NjEzMCwtMTY0NjkyNjIzMSwtMTQzMTQ2
-NDk0NywzOTQ3ODE5NTksLTI4NTY2NzM0MCwtMTg5NTUxMTcwLC
-0xNDkxMzY3NTU4LC04NTA5NTAxMDIsLTgwNjQ2NTQxMiwxODIw
-NjUzNjcxXX0=
+eyJoaXN0b3J5IjpbMTYwNjIwNjEyNiwtMTMxNzE5Mjg2LDE1NT
+YzMTM0MjEsLTY4NDM4Mjg5Niw3MDM4NjE0NjcsODQ4MDkxODg2
+LC0zODYzNjM5NzUsLTEyNDEwNjYyMCwyMDgxNTcyMzA3LDk4Nz
+AxNTk1MCwtMTUyNzY2MTMwLC0xNjQ2OTI2MjMxLC0xNDMxNDY0
+OTQ3LDM5NDc4MTk1OSwtMjg1NjY3MzQwLC0xODk1NTExNzAsLT
+E0OTEzNjc1NTgsLTg1MDk1MDEwMiwtODA2NDY1NDEyLDE4MjA2
+NTM2NzFdfQ==
 -->
