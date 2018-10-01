@@ -340,6 +340,8 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 
 >  Broadcasting Large Variables
 
+
+
 > 其他参考
 
 [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
@@ -624,11 +626,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNjU0Njk5MTAsLTE2NDY5MjYyMzEsLT
-E0MzE0NjQ5NDcsMzk0NzgxOTU5LC0yODU2NjczNDAsLTE4OTU1
-MTE3MCwtMTQ5MTM2NzU1OCwtODUwOTUwMTAyLC04MDY0NjU0MT
-IsMTgyMDY1MzY3MSw2NzcxNDU2NjcsLTE1MDQzOTIwOTUsLTEz
-OTk0MzIyNDEsLTMwNTc5NzYxMywyNzIwNDg4NTQsMTMxNjEwMj
-AwNywtMjA1ODU1NTM4Myw5MDg4OTM0NTEsMTM0MjM1MDk0Mywt
-NzEyODY0MzU5XX0=
+eyJoaXN0b3J5IjpbLTE1Mjc2NjEzMCwtMTM2NTQ2OTkxMCwtMT
+Y0NjkyNjIzMSwtMTQzMTQ2NDk0NywzOTQ3ODE5NTksLTI4NTY2
+NzM0MCwtMTg5NTUxMTcwLC0xNDkxMzY3NTU4LC04NTA5NTAxMD
+IsLTgwNjQ2NTQxMiwxODIwNjUzNjcxLDY3NzE0NTY2NywtMTUw
+NDM5MjA5NSwtMTM5OTQzMjI0MSwtMzA1Nzk3NjEzLDI3MjA0OD
+g1NCwxMzE2MTAyMDA3LC0yMDU4NTU1MzgzLDkwODg5MzQ1MSwx
+MzQyMzUwOTQzXX0=
 -->
