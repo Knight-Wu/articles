@@ -165,7 +165,8 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 参见
 1. [https://spark.apache.org/docs/latest/job-scheduling.html](https://spark.apache.org/docs/latest/job-scheduling.html)
 > Dynamic Resource Allocation
-当有等待的task在队列中, 会周期性的以2的倍数增加executor; 当
+
+当有等待的task在队列中, 会周期性的以2的倍数增加executor; 当executor因为空闲而超过一定时间, 会退出.
 
 
 
@@ -644,11 +645,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4NDM3NzQ3MiwtMTEyNzU2NTA4NywxNj
-A2MjA2MTI2LC0xMzE3MTkyODYsMTU1NjMxMzQyMSwtNjg0Mzgy
-ODk2LDcwMzg2MTQ2Nyw4NDgwOTE4ODYsLTM4NjM2Mzk3NSwtMT
-I0MTA2NjIwLDIwODE1NzIzMDcsOTg3MDE1OTUwLC0xNTI3NjYx
-MzAsLTE2NDY5MjYyMzEsLTE0MzE0NjQ5NDcsMzk0NzgxOTU5LC
-0yODU2NjczNDAsLTE4OTU1MTE3MCwtMTQ5MTM2NzU1OCwtODUw
-OTUwMTAyXX0=
+eyJoaXN0b3J5IjpbNzU0MDg5OTc3LDE0ODQzNzc0NzIsMTYwNj
+IwNjEyNiwtMTMxNzE5Mjg2LDE1NTYzMTM0MjEsLTY4NDM4Mjg5
+Niw3MDM4NjE0NjcsODQ4MDkxODg2LC0zODYzNjM5NzUsLTEyND
+EwNjYyMCwyMDgxNTcyMzA3LDk4NzAxNTk1MCwtMTUyNzY2MTMw
+LC0xNjQ2OTI2MjMxLC0xNDMxNDY0OTQ3LDM5NDc4MTk1OSwtMj
+g1NjY3MzQwLC0xODk1NTExNzAsLTE0OTEzNjc1NTgsLTg1MDk1
+MDEwMl19
 -->
