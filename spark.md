@@ -455,11 +455,13 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 ```
 其中前两个引用的相对目录，指的是YARN 的container的进程的工作目录， 第三个配置就是把jar包上传到container的工作目录, 也可以引用hdfs的目录
 3. external shuffle service
-Spark系统在运行含shuffle过程的应用时，Executor进程除了运行task，还要负责写shuffle 数据，给其他Executor提供shuffle数据. 当Executor进程任务过重，导致GC而不能为其 他Executor提供shuffle数据时，会影响任务运行. 这里实际上是利用External Shuffle Service 来提升性能，External shuffle Service是长期存在于NodeManager进程中的一个辅助服务。 通过该服务 来抓取shuffle数据，减少了Executor的压力，在Executor GC的时候也不会影响其他 Executor的任务运行。
+> 作用
 
+* Spark系统在运行含shuffle过程的应用时，Executor进程除了运行task，还要负责写shuffle 数据，给其他Executor提供shuffle数据. 当Executor进程任务过重，导致GC而不能为其 他Executor提供shuffle数据时，会影响任务运行. 这里实际上是利用External Shuffle Service 来提升性能，External shuffle Service是长期存在于NodeManager进程中的一个辅助服务。 通过该服务 来抓取shuffle数据，减少了Executor的压力，在Executor GC的时候也不会影响其他 Executor的任务运行。
+* 当executor因为失败而
 配置参见: 
 1.[http://zhm8.cn/2017/08/30/spark%20shuffle%20%E8%B0%83%E4%BC%98/](http://zhm8.cn/2017/08/30/spark%20shuffle%20%E8%B0%83%E4%BC%98/)
-2. [https://spark.apache.org/docs/latest/running-on-yarn.html](https://spark.apache.org/docs/latest/running-on-yarn.html)
+5. [https://spark.apache.org/docs/latest/running-on-yarn.html](https://spark.apache.org/docs/latest/running-on-yarn.html)
 
 
 ### 数据倾斜
@@ -641,11 +643,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwNjIwNjEyNiwtMTMxNzE5Mjg2LDE1NT
-YzMTM0MjEsLTY4NDM4Mjg5Niw3MDM4NjE0NjcsODQ4MDkxODg2
-LC0zODYzNjM5NzUsLTEyNDEwNjYyMCwyMDgxNTcyMzA3LDk4Nz
-AxNTk1MCwtMTUyNzY2MTMwLC0xNjQ2OTI2MjMxLC0xNDMxNDY0
-OTQ3LDM5NDc4MTk1OSwtMjg1NjY3MzQwLC0xODk1NTExNzAsLT
-E0OTEzNjc1NTgsLTg1MDk1MDEwMiwtODA2NDY1NDEyLDE4MjA2
-NTM2NzFdfQ==
+eyJoaXN0b3J5IjpbMTk1MDMxODg0MywxNjA2MjA2MTI2LC0xMz
+E3MTkyODYsMTU1NjMxMzQyMSwtNjg0MzgyODk2LDcwMzg2MTQ2
+Nyw4NDgwOTE4ODYsLTM4NjM2Mzk3NSwtMTI0MTA2NjIwLDIwOD
+E1NzIzMDcsOTg3MDE1OTUwLC0xNTI3NjYxMzAsLTE2NDY5MjYy
+MzEsLTE0MzE0NjQ5NDcsMzk0NzgxOTU5LC0yODU2NjczNDAsLT
+E4OTU1MTE3MCwtMTQ5MTM2NzU1OCwtODUwOTUwMTAyLC04MDY0
+NjU0MTJdfQ==
 -->
