@@ -162,6 +162,8 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 > rdd属于最底层的抽象, 提供最复杂的操作; dataFrame, dataSet提供某些场景下定制化的api, 使代码更加明确和易用, 也提供了性能上的优化, 适用于半结构化的数据, 例如json; 而dataSet<T> 可以作为有类型的抽象, 将数据映射到java对象上,  对语法错误和解析错误提供编译时检查(说白了可以在编译时检查数据类型),  dataFrame可以当做是dataSet<Row> 是无类型的
 
 ### spark job scheduling
+参见
+1. [enter link description here](https://spark.apache.org/docs/latest/job-scheduling.html)
 > Dynamic Resource Allocation
 
 
@@ -639,11 +641,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTk4MjEwOTMsLTExMjg5MjM1OTMsMT
-U1NjMxMzQyMSwtNjg0MzgyODk2LDcwMzg2MTQ2Nyw4NDgwOTE4
-ODYsLTM4NjM2Mzk3NSwtMTI0MTA2NjIwLDIwODE1NzIzMDcsOT
-g3MDE1OTUwLC0xNTI3NjYxMzAsLTE2NDY5MjYyMzEsLTE0MzE0
-NjQ5NDcsMzk0NzgxOTU5LC0yODU2NjczNDAsLTE4OTU1MTE3MC
-wtMTQ5MTM2NzU1OCwtODUwOTUwMTAyLC04MDY0NjU0MTIsMTgy
-MDY1MzY3MV19
+eyJoaXN0b3J5IjpbLTEzMTcxOTI4NiwtMTk1OTgyMTA5MywxNT
+U2MzEzNDIxLC02ODQzODI4OTYsNzAzODYxNDY3LDg0ODA5MTg4
+NiwtMzg2MzYzOTc1LC0xMjQxMDY2MjAsMjA4MTU3MjMwNyw5OD
+cwMTU5NTAsLTE1Mjc2NjEzMCwtMTY0NjkyNjIzMSwtMTQzMTQ2
+NDk0NywzOTQ3ODE5NTksLTI4NTY2NzM0MCwtMTg5NTUxMTcwLC
+0xNDkxMzY3NTU4LC04NTA5NTAxMDIsLTgwNjQ2NTQxMiwxODIw
+NjUzNjcxXX0=
 -->
