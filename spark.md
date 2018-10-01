@@ -168,7 +168,9 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 
 当有等待的task在队列中, 会周期性的以2的倍数增加executor; 当executor因为空闲而超过一定时间, 会退出.
 
+> spark job pool
 
+待看
 
 #### spark persist
 参考自 [https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md](https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md)
@@ -645,11 +647,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzU0MDg5OTc3LDE0ODQzNzc0NzIsMTYwNj
-IwNjEyNiwtMTMxNzE5Mjg2LDE1NTYzMTM0MjEsLTY4NDM4Mjg5
-Niw3MDM4NjE0NjcsODQ4MDkxODg2LC0zODYzNjM5NzUsLTEyND
-EwNjYyMCwyMDgxNTcyMzA3LDk4NzAxNTk1MCwtMTUyNzY2MTMw
-LC0xNjQ2OTI2MjMxLC0xNDMxNDY0OTQ3LDM5NDc4MTk1OSwtMj
-g1NjY3MzQwLC0xODk1NTExNzAsLTE0OTEzNjc1NTgsLTg1MDk1
-MDEwMl19
+eyJoaXN0b3J5IjpbLTEwODE4NTcxMTMsNzU0MDg5OTc3LDE0OD
+QzNzc0NzIsMTYwNjIwNjEyNiwtMTMxNzE5Mjg2LDE1NTYzMTM0
+MjEsLTY4NDM4Mjg5Niw3MDM4NjE0NjcsODQ4MDkxODg2LC0zOD
+YzNjM5NzUsLTEyNDEwNjYyMCwyMDgxNTcyMzA3LDk4NzAxNTk1
+MCwtMTUyNzY2MTMwLC0xNjQ2OTI2MjMxLC0xNDMxNDY0OTQ3LD
+M5NDc4MTk1OSwtMjg1NjY3MzQwLC0xODk1NTExNzAsLTE0OTEz
+Njc1NThdfQ==
 -->
