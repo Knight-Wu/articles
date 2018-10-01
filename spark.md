@@ -335,6 +335,10 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 3. 把对象序列化存储, 使用MEMORY_ONLY_SER, 大大减少存储空间, 但是读的时候需要反序列化, 消耗cpu
 4. 使用kryo序列化, 需要预先注册, 并设置kryo的缓存大小
 
+> spark内存实际使用计算
+
+
+
 > spark GC 调优
 
 思想是减少java object所使用的比例, 尽量使用基本数据类型, 并且使用 MEMORY_ONLY_SER去存储对象, 此时对于每一个RDD的partition 只有一个object(a byte array)
@@ -647,11 +651,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTU3NjQ3NjUsLTEwODE4NTcxMTMsNz
-U0MDg5OTc3LDE0ODQzNzc0NzIsMTYwNjIwNjEyNiwtMTMxNzE5
-Mjg2LDE1NTYzMTM0MjEsLTY4NDM4Mjg5Niw3MDM4NjE0NjcsOD
-Q4MDkxODg2LC0zODYzNjM5NzUsLTEyNDEwNjYyMCwyMDgxNTcy
-MzA3LDk4NzAxNTk1MCwtMTUyNzY2MTMwLC0xNjQ2OTI2MjMxLC
-0xNDMxNDY0OTQ3LDM5NDc4MTk1OSwtMjg1NjY3MzQwLC0xODk1
-NTExNzBdfQ==
+eyJoaXN0b3J5IjpbOTIwOTQ1NDY3LC0xMTE1NzY0NzY1LC0xMD
+gxODU3MTEzLDc1NDA4OTk3NywxNDg0Mzc3NDcyLDE2MDYyMDYx
+MjYsLTEzMTcxOTI4NiwxNTU2MzEzNDIxLC02ODQzODI4OTYsNz
+AzODYxNDY3LDg0ODA5MTg4NiwtMzg2MzYzOTc1LC0xMjQxMDY2
+MjAsMjA4MTU3MjMwNyw5ODcwMTU5NTAsLTE1Mjc2NjEzMCwtMT
+Y0NjkyNjIzMSwtMTQzMTQ2NDk0NywzOTQ3ODE5NTksLTI4NTY2
+NzM0MF19
 -->
