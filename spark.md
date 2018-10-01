@@ -326,6 +326,7 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 1. 尽量少使用类, 减少不必要的对象空间, 尽量使用基本数据类型, The [fastutil](http://fastutil.di.unimi.it/) library provides convenient collection classes for primitive types that are compatible with the Java standard library.
 2. 尽量用int作为key, 而不是string
 3. 把对象序列化存储, 使用MEMORY_ONLY_SER, 大大减少存储空间, 但是读的时候需要反序列化, 消耗cpu
+4. 使用kryo序列化, 需要预先注册, 并设置kryo的缓存大小
 
 > spark GC 调优
 
@@ -343,8 +344,7 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 > 其他参考
 
 [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
-1. 使用kryo序列化, 需要预先注册, 并设置kryo的缓存大小
-2. 对多次使用的RDD持久化, rdd.checkpoint() 可以在多个application共用
+1. 对多次使用的RDD持久化, rdd.checkpoint() 可以在多个application共用
 
 
 #### 数据倾斜
@@ -625,11 +625,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzNDAzODE1NywtMTQzMTQ2NDk0NywzOT
-Q3ODE5NTksLTI4NTY2NzM0MCwtMTg5NTUxMTcwLC0xNDkxMzY3
-NTU4LC04NTA5NTAxMDIsLTgwNjQ2NTQxMiwxODIwNjUzNjcxLD
-Y3NzE0NTY2NywtMTUwNDM5MjA5NSwtMTM5OTQzMjI0MSwtMzA1
-Nzk3NjEzLDI3MjA0ODg1NCwxMzE2MTAyMDA3LC0yMDU4NTU1Mz
-gzLDkwODg5MzQ1MSwxMzQyMzUwOTQzLC03MTI4NjQzNTksODYz
-MTg3MzNdfQ==
+eyJoaXN0b3J5IjpbLTExNzgzNzQxOTcsLTE0MzE0NjQ5NDcsMz
+k0NzgxOTU5LC0yODU2NjczNDAsLTE4OTU1MTE3MCwtMTQ5MTM2
+NzU1OCwtODUwOTUwMTAyLC04MDY0NjU0MTIsMTgyMDY1MzY3MS
+w2NzcxNDU2NjcsLTE1MDQzOTIwOTUsLTEzOTk0MzIyNDEsLTMw
+NTc5NzYxMywyNzIwNDg4NTQsMTMxNjEwMjAwNywtMjA1ODU1NT
+M4Myw5MDg4OTM0NTEsMTM0MjM1MDk0MywtNzEyODY0MzU5LDg2
+MzE4NzMzXX0=
 -->
