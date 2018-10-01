@@ -343,7 +343,9 @@ executor实际使用的内存是: total = spark.executor.memory + spark.yarn.exe
 而yarn 实际分配的内存, 也就是executor所在container分配的内存: 
 ```
 if(total <= yarn.scheduler.minimum-allocation-mb){
-	 total =yarn.scheduler.minimum-allocation-mb 
+	 total =yarn.scheduler.minimum-allocation-mb(调度时一个container能够申请的最小资源，默认值为1024MB)
+}else{
+total = yarn.scheduler.minimum-allocation-mb+ yarn.scheduler.increment-allocation-mb的整数倍
 }
 ```
 
@@ -661,7 +663,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk1NzIwNDk2MywtODI4NDM1OTQ1LDE0OT
+eyJoaXN0b3J5IjpbMTEwOTcwNzU1OCwtOTU3MjA0OTYzLDE0OT
 I5MDA1MzEsLTY4MDA0NDk2MSw5MjA5NDU0NjcsLTExMTU3NjQ3
 NjUsLTEwODE4NTcxMTMsNzU0MDg5OTc3LDE0ODQzNzc0NzIsMT
 YwNjIwNjEyNiwtMTMxNzE5Mjg2LDE1NTYzMTM0MjEsLTY4NDM4
