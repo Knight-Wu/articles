@@ -325,7 +325,7 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 > 内存性能优化
 1. 尽量少使用类, 减少不必要的对象空间, 尽量使用基本数据类型, The [fastutil](http://fastutil.di.unimi.it/) library provides convenient collection classes for primitive types that are compatible with the Java standard library.
 2. 尽量用int作为key, 而不是string
-3. 把对象序列化存储, 使用MEMORY_ONLY_SER, 大大减少存储空间, 但是读的时候需要反序列化, 消耗
+3. 把对象序列化存储, 使用MEMORY_ONLY_SER, 大大减少存储空间, 但是读的时候需要反序列化, 消耗cpu
 
 
 
@@ -619,7 +619,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1MDk1MDEwMiwxMzEzODYwMTk5LC04MD
+eyJoaXN0b3J5IjpbLTI2MzA1MTUzNCwtODUwOTUwMTAyLC04MD
 Y0NjU0MTIsMTgyMDY1MzY3MSw2NzcxNDU2NjcsLTE1MDQzOTIw
 OTUsLTEzOTk0MzIyNDEsLTMwNTc5NzYxMywyNzIwNDg4NTQsMT
 MxNjEwMjAwNywtMjA1ODU1NTM4Myw5MDg4OTM0NTEsMTM0MjM1
