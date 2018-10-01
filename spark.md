@@ -333,7 +333,7 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 
 * 衡量GC
 使用参数: -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps
-
+*
 
 
 > 其他参考
@@ -625,11 +625,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTU1MTE3MCwtMTQ5MTM2NzU1OCwtOD
-UwOTUwMTAyLC04MDY0NjU0MTIsMTgyMDY1MzY3MSw2NzcxNDU2
-NjcsLTE1MDQzOTIwOTUsLTEzOTk0MzIyNDEsLTMwNTc5NzYxMy
-wyNzIwNDg4NTQsMTMxNjEwMjAwNywtMjA1ODU1NTM4Myw5MDg4
-OTM0NTEsMTM0MjM1MDk0MywtNzEyODY0MzU5LDg2MzE4NzMzLC
-0xOTE1MzI0MTUwLDE3OTMxMzI0NTEsLTE5OTA3ODU3MDAsLTc4
-NTQ3MzE5MF19
+eyJoaXN0b3J5IjpbMjA4MTMxMjM4MCwtMTg5NTUxMTcwLC0xND
+kxMzY3NTU4LC04NTA5NTAxMDIsLTgwNjQ2NTQxMiwxODIwNjUz
+NjcxLDY3NzE0NTY2NywtMTUwNDM5MjA5NSwtMTM5OTQzMjI0MS
+wtMzA1Nzk3NjEzLDI3MjA0ODg1NCwxMzE2MTAyMDA3LC0yMDU4
+NTU1MzgzLDkwODg5MzQ1MSwxMzQyMzUwOTQzLC03MTI4NjQzNT
+ksODYzMTg3MzMsLTE5MTUzMjQxNTAsMTc5MzEzMjQ1MSwtMTk5
+MDc4NTcwMF19
 -->
