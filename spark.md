@@ -392,6 +392,9 @@ Spark prints the serialized size of each task on the master, so you can look at 
 
 ### spark monitor
 
+> some tips
+1. To review per-container launch environment, increase `yarn.nodemanager.delete.debug-delay-sec` to a large value (e.g. `36000`), and then access the application cache through `yarn.nodemanager.local-dirs` on the nodes on which containers are launched. This directory contains the launch script, JARs, and all environment variables used for launching each container. This process is useful for debugging classpath problems in particular.
+
 
 #### spark log
 > 分为三部分: driver log, executor log, spark history server log
@@ -626,7 +629,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODM4MjQ5ODk0LDg0ODA5MTg4NiwtMzg2Mz
+eyJoaXN0b3J5IjpbNzAzODYxNDY3LDg0ODA5MTg4NiwtMzg2Mz
 YzOTc1LC0xMjQxMDY2MjAsMjA4MTU3MjMwNyw5ODcwMTU5NTAs
 LTE1Mjc2NjEzMCwtMTY0NjkyNjIzMSwtMTQzMTQ2NDk0NywzOT
 Q3ODE5NTksLTI4NTY2NzM0MCwtMTg5NTUxMTcwLC0xNDkxMzY3
