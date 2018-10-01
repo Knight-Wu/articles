@@ -323,7 +323,7 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 
 
 > 内存性能优化
-1. 尽量少使用类, 减少不必要的对象空间, 尽量使用基本数据类型
+1. 尽量少使用类, 减少不必要的对象空间, 尽量使用基本数据类型, The [fastutil](http://fastutil.di.unimi.it/) library provides convenient collection classes for primitive types that are compatible with the Java standard library.
 
 
 
@@ -617,11 +617,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MzMxMjQ3NCwxODIwNjUzNjcxLDY3Nz
-E0NTY2NywtMTUwNDM5MjA5NSwtMTM5OTQzMjI0MSwtMzA1Nzk3
-NjEzLDI3MjA0ODg1NCwxMzE2MTAyMDA3LC0yMDU4NTU1MzgzLD
-kwODg5MzQ1MSwxMzQyMzUwOTQzLC03MTI4NjQzNTksODYzMTg3
-MzMsLTE5MTUzMjQxNTAsMTc5MzEzMjQ1MSwtMTk5MDc4NTcwMC
-wtNzg1NDczMTkwLDk2Mjc4MzgzMywtNjE1MTY2NDAzLDIwMzIw
-MzU1OV19
+eyJoaXN0b3J5IjpbLTgwNjQ2NTQxMiwtMTczMzEyNDc0LDE4Mj
+A2NTM2NzEsNjc3MTQ1NjY3LC0xNTA0MzkyMDk1LC0xMzk5NDMy
+MjQxLC0zMDU3OTc2MTMsMjcyMDQ4ODU0LDEzMTYxMDIwMDcsLT
+IwNTg1NTUzODMsOTA4ODkzNDUxLDEzNDIzNTA5NDMsLTcxMjg2
+NDM1OSw4NjMxODczMywtMTkxNTMyNDE1MCwxNzkzMTMyNDUxLC
+0xOTkwNzg1NzAwLC03ODU0NzMxOTAsOTYyNzgzODMzLC02MTUx
+NjY0MDNdfQ==
 -->
