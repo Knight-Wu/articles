@@ -264,7 +264,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 
 
 * spark 的并行程度
-> 推荐 executor instances * core per executor 的两到三倍 = num of task , 避免cpu浪费(某些task 已经跑完了, 可以跑剩下的task)
+推荐 executor instances * core per executor 的两到三倍 = num of task , 避免cpu浪费(某些task 已经跑完了, 可以跑剩下的task)
 
 
 * 如何设置并行度
@@ -625,7 +625,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzgzNzQxOTcsLTE0MzE0NjQ5NDcsMz
+eyJoaXN0b3J5IjpbLTE2NDY5MjYyMzEsLTE0MzE0NjQ5NDcsMz
 k0NzgxOTU5LC0yODU2NjczNDAsLTE4OTU1MTE3MCwtMTQ5MTM2
 NzU1OCwtODUwOTUwMTAyLC04MDY0NjU0MTIsMTgyMDY1MzY3MS
 w2NzcxNDU2NjcsLTE1MDQzOTIwOTUsLTEzOTk0MzIyNDEsLTMw
