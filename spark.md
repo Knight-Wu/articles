@@ -451,6 +451,10 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 其中前两个引用的相对目录，指的是YARN 的container的进程的工作目录， 第三个配置就是把jar包上传到container的工作目录, 也可以引用hdfs的目录
 3. external shuffle service
 Spark系统在运行含shuffle过程的应用时，Executor进程除了运行task，还要负责写shuffle 数据，给其他Executor提供shuffle数据. 当Executor进程任务过重，导致GC而不能为其 他Executor提供shuffle数据时，会影响任务运行. 这里实际上是利用External Shuffle Service 来提升性能，External shuffle Service是长期存在于NodeManager进程中的一个辅助服务。 通过该服务 来抓取shuffle数据，减少了Executor的压力，在Executor GC的时候也不会影响其他 Executor的任务运行。
+
+
+
+
 ### 数据倾斜
 某个parttion的大小远大于其他parttion，stage执行的时间取决于task（parttion）中最慢的那个，导致某个stage执行过慢
  * 情形暂定为两种
@@ -630,11 +634,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTExNzg2NjI4MCwtNTgwNTI0NjQ4LDcwMz
-g2MTQ2Nyw4NDgwOTE4ODYsLTM4NjM2Mzk3NSwtMTI0MTA2NjIw
-LDIwODE1NzIzMDcsOTg3MDE1OTUwLC0xNTI3NjYxMzAsLTE2ND
-Y5MjYyMzEsLTE0MzE0NjQ5NDcsMzk0NzgxOTU5LC0yODU2Njcz
-NDAsLTE4OTU1MTE3MCwtMTQ5MTM2NzU1OCwtODUwOTUwMTAyLC
-04MDY0NjU0MTIsMTgyMDY1MzY3MSw2NzcxNDU2NjcsLTE1MDQz
-OTIwOTVdfQ==
+eyJoaXN0b3J5IjpbLTIwNDc4ODMxNTIsMTExNzg2NjI4MCw3MD
+M4NjE0NjcsODQ4MDkxODg2LC0zODYzNjM5NzUsLTEyNDEwNjYy
+MCwyMDgxNTcyMzA3LDk4NzAxNTk1MCwtMTUyNzY2MTMwLC0xNj
+Q2OTI2MjMxLC0xNDMxNDY0OTQ3LDM5NDc4MTk1OSwtMjg1NjY3
+MzQwLC0xODk1NTExNzAsLTE0OTEzNjc1NTgsLTg1MDk1MDEwMi
+wtODA2NDY1NDEyLDE4MjA2NTM2NzEsNjc3MTQ1NjY3LC0xNTA0
+MzkyMDk1XX0=
 -->
