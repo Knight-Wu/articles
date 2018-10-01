@@ -95,9 +95,10 @@ TaskSetFailed event会中止stage和job, 如果同一个stage失败次数没超�
 
 **spark.task.maxFailures**, 默认4, Number of failures of any particular task before giving up on the job, lost partition can be recomputed in parallel on othe job. The total number of failures spread across different tasks will not cause the job to fail; a particular task has to fail this number of attempts. Should be greater than or equal to 1. Number of allowed retries = this value - 1.(同一个task最多失败的次数, 若失败超过这个次数则放弃)
 
-若是上一个stage的map output result丢失, 则DAGScheduler会重试计算上一个stage数次.
+
 
 >设置replication, 参考 [RDD Persistence](https://spark.apache.org/docs/latest/rdd-programming-guide.html) , 使用这个配置: MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.
+
 
 
 
@@ -166,7 +167,7 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 #### spark persist
 参考自 [https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md](https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md)
 * checkPoint
-一些运算量很大, 运算时间很长, 或者依赖很多RDD的RDD 则需要进行checkpoint, 分为reliable 和local 两种.
+一些运算量很大, 运算时间很长, 或者依赖很多RDD的RDD 则需要进行checkpoint 分为reliable 和local 两种.
 > 1. reliable
 
 > SparkContext.setCheckpointDir(directory: String) to set the checkpoint directory, 目录必须是hdfs路径, 因为 checkPoint file实际上是保存在executor 机器上的.
@@ -195,7 +196,7 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 参考自 
 1. [https://github.com/JerryLead/SparkInternals/blob/master/markdown/4-shuffleDetails.md](https://github.com/JerryLead/SparkInternals/blob/master/markdown/4-shuffleDetails.md)
 2. [jcchoiling](http://www.cnblogs.com/jcchoiling/p/6440102.html)
-* 简而言之, 是再次分布数据的过程.例如 reduceByKey(), 需要在所有的分区找到某个key的所有value ,并把所有的value聚合到一起计算.
+* 简而言之, 是再次分布数据的过程.例如 reduceByKey(), 需要在所有的分区找到key的所有value ,并把所有的value聚合到一起计算.
 
 
 * 具体流程, 如下图所示
@@ -208,7 +209,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 
 可以当做mapper阶段, 这一步的task叫做shuffleMapTask , 假设mapper阶段的partition有m个, task中的每条记录, 通过 partitioner.partition(record.getKey())) (默认是HashPartitioner),  会被分散到 bucket上, 每个task 对应的bucket的数量 == reducer的数量 == 下一个stage的task的数量, 会首先写到内存里, 内存不够会写到磁盘.
 
-> shuffle read
+ shuffle read
 
 假设该阶段的partition的数量是r个, 
 可以当做reducer阶段,会去driver 的MapOutputTrackerMaster询问shuffleMapTask 的数据输出的位置.
@@ -244,7 +245,6 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
   * 提高shuffle操作的并行度
   spark.sql.shuffle.partitions 提高sparkSql中shuffle类操作的并行度, 默认是200, 对应200个shuffle read tasks
    
-* 这篇博文还需再看 [link](http://www.cnblogs.com/jcchoiling/p/6440102.html)
 
 
 #### spark 资源分配
@@ -334,14 +334,12 @@ the heap size can be controlled with the --executor-memory flag or the spark.exe
 > 对多次使用的RDD持久化, rdd.checkpoint() 可以在多个application共用
 
 > [美团点评spark基础篇](https://tech.meituan.com/spark-tuning-basic.html)
-> 1. 避免创建重复RDD
-2.尽量重复使用RDD
-3.对多次使用的RDD持久化
-4.尽量避免shuffle类算子
+>  
+尽量使用
+对多次使用的RDD持久化.尽量避免shuffle类算子
+使用map端预聚合的算子, 类似于MR的combiner
 
-> 使用map端预聚合的算子, 类似于MR的combiner
-
->6.使用高性能算子
+>使用高性能算子
 
 
 
@@ -632,11 +630,11 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMwNTc5NzYxMywyNzIwNDg4NTQsMTMxNj
-EwMjAwNywtMjA1ODU1NTM4Myw5MDg4OTM0NTEsMTM0MjM1MDk0
-MywtNzEyODY0MzU5LDg2MzE4NzMzLC0xOTE1MzI0MTUwLDE3OT
-MxMzI0NTEsLTE5OTA3ODU3MDAsLTc4NTQ3MzE5MCw5NjI3ODM4
-MzMsLTYxNTE2NjQwMywyMDMyMDM1NTksMTcxMzkyMDI0MCwxMT
-MxNDY0MTAsMTg4NTQ0OTg3Niw3MzYxMTA0NTgsODQwNTk3MDEw
-XX0=
+eyJoaXN0b3J5IjpbLTEzOTk0MzIyNDEsLTMwNTc5NzYxMywyNz
+IwNDg4NTQsMTMxNjEwMjAwNywtMjA1ODU1NTM4Myw5MDg4OTM0
+NTEsMTM0MjM1MDk0MywtNzEyODY0MzU5LDg2MzE4NzMzLC0xOT
+E1MzI0MTUwLDE3OTMxMzI0NTEsLTE5OTA3ODU3MDAsLTc4NTQ3
+MzE5MCw5NjI3ODM4MzMsLTYxNTE2NjQwMywyMDMyMDM1NTksMT
+cxMzkyMDI0MCwxMTMxNDY0MTAsMTg4NTQ0OTg3Niw3MzYxMTA0
+NThdfQ==
 -->
