@@ -314,7 +314,7 @@ spark-1.6 之后使用UnifiedMemoryManager, 之前使用StaticMemoryManager, 由
 > 抽象化的内存计算
 参见
 1. [内存有限的情况下 Spark 如何处理 T 级别的数据？](https://www.zhihu.com/question/23079001)
-实际上真实情况下大部分数据都可以加入进内存中, 或者数据的子集, 但是针对子集都无法加入到内存中的情况, spark使用iterator的方式, 流式处理数据, 将一小批数据从源数据读入, iterator应用算子计算后再落盘, 空间复杂度是O(1), 暂不考虑shuffle 中间结果保存的情况. 
+**实际上真实情况下大部分数据都可以加入进内存中, 或者数据的子集, 但是针对子集都无法加入到内存中的情况**, spark使用iterator的方式, 流式处理数据, 将一小批数据从源数据读入, iterator应用算子计算后再落盘, 空间复杂度是O(1), 暂不考虑shuffle 中间结果保存的情况. 
 
 
 
@@ -671,11 +671,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTg4NTMyMzgsLTc4OTAyODc1OSwxOT
-U5ODQ0NjMzLDE3NTQ5NjYwNDYsMTQxMTU5NjU0OSwxNDkyOTAw
-NTMxLC02ODAwNDQ5NjEsOTIwOTQ1NDY3LC0xMTE1NzY0NzY1LC
-0xMDgxODU3MTEzLDc1NDA4OTk3NywxNDg0Mzc3NDcyLDE2MDYy
-MDYxMjYsLTEzMTcxOTI4NiwxNTU2MzEzNDIxLC02ODQzODI4OT
-YsNzAzODYxNDY3LDg0ODA5MTg4NiwtMzg2MzYzOTc1LC0xMjQx
-MDY2MjBdfQ==
+eyJoaXN0b3J5IjpbMTkyODQzODUwLC0xNzU4ODUzMjM4LC03OD
+kwMjg3NTksMTk1OTg0NDYzMywxNzU0OTY2MDQ2LDE0MTE1OTY1
+NDksMTQ5MjkwMDUzMSwtNjgwMDQ0OTYxLDkyMDk0NTQ2NywtMT
+ExNTc2NDc2NSwtMTA4MTg1NzExMyw3NTQwODk5NzcsMTQ4NDM3
+NzQ3MiwxNjA2MjA2MTI2LC0xMzE3MTkyODYsMTU1NjMxMzQyMS
+wtNjg0MzgyODk2LDcwMzg2MTQ2Nyw4NDgwOTE4ODYsLTM4NjM2
+Mzk3NV19
 -->
