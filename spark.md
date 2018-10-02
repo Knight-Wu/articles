@@ -215,7 +215,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 
 > shuffle会产生两个stage, 分别对应 shuffle write和shuffle read shuffle write 
 
-可以当做mapper阶段, 这一步的task叫做shuffleMapTask , 假设mapper阶段的partition有m个, task中的每条记录, 通过 partitioner.partition(record.getKey())) (默认是HashPartitioner),  会被分散到 bucket上, 每个task 对应的bucket的数量 == reducer的数量 == 下一个stage的task的数量, 
+可以当做mapper阶段, 这一步的task叫做shuffleMapTask , 假设mapper阶段的partition有m个, task中的每条记录, 通过 partitioner.partition(record.getKey())) , 会被分散到 bucket上(可以当做, 每个task 对应的bucket的数量 == reducer的数量 == 下一个stage的task的数量, 
 
  shuffle read
 
@@ -671,11 +671,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQyNzg3OTU3LDE5Mjg0Mzg1MCwtMTc1OD
-g1MzIzOCwtNzg5MDI4NzU5LDE5NTk4NDQ2MzMsMTc1NDk2NjA0
-NiwxNDExNTk2NTQ5LDE0OTI5MDA1MzEsLTY4MDA0NDk2MSw5Mj
-A5NDU0NjcsLTExMTU3NjQ3NjUsLTEwODE4NTcxMTMsNzU0MDg5
-OTc3LDE0ODQzNzc0NzIsMTYwNjIwNjEyNiwtMTMxNzE5Mjg2LD
-E1NTYzMTM0MjEsLTY4NDM4Mjg5Niw3MDM4NjE0NjcsODQ4MDkx
-ODg2XX0=
+eyJoaXN0b3J5IjpbLTE4MTkxMDkwMDksMTkyODQzODUwLC0xNz
+U4ODUzMjM4LC03ODkwMjg3NTksMTk1OTg0NDYzMywxNzU0OTY2
+MDQ2LDE0MTE1OTY1NDksMTQ5MjkwMDUzMSwtNjgwMDQ0OTYxLD
+kyMDk0NTQ2NywtMTExNTc2NDc2NSwtMTA4MTg1NzExMyw3NTQw
+ODk5NzcsMTQ4NDM3NzQ3MiwxNjA2MjA2MTI2LC0xMzE3MTkyOD
+YsMTU1NjMxMzQyMSwtNjg0MzgyODk2LDcwMzg2MTQ2Nyw4NDgw
+OTE4ODZdfQ==
 -->
