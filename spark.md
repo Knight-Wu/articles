@@ -621,7 +621,7 @@ spark.sql("xxxsql").explain()
 * spark 为什么要序列化 task, 可不可以直接传输二进制, 序列化发生在什么阶段
 * 基准测试 benchmark
 * 手动尝试node fail, task fail等场景触发spark fail-tolerance
-
+ * spark 应用程序如何估算自己的所需的内存, 如果
 
 
 
@@ -663,11 +663,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1NDk2NjA0NiwxNDExNTk2NTQ5LDE0OT
-I5MDA1MzEsLTY4MDA0NDk2MSw5MjA5NDU0NjcsLTExMTU3NjQ3
-NjUsLTEwODE4NTcxMTMsNzU0MDg5OTc3LDE0ODQzNzc0NzIsMT
-YwNjIwNjEyNiwtMTMxNzE5Mjg2LDE1NTYzMTM0MjEsLTY4NDM4
-Mjg5Niw3MDM4NjE0NjcsODQ4MDkxODg2LC0zODYzNjM5NzUsLT
-EyNDEwNjYyMCwyMDgxNTcyMzA3LDk4NzAxNTk1MCwtMTUyNzY2
-MTMwXX0=
+eyJoaXN0b3J5IjpbOTM0NDQ1OTIxLDE3NTQ5NjYwNDYsMTQxMT
+U5NjU0OSwxNDkyOTAwNTMxLC02ODAwNDQ5NjEsOTIwOTQ1NDY3
+LC0xMTE1NzY0NzY1LC0xMDgxODU3MTEzLDc1NDA4OTk3NywxND
+g0Mzc3NDcyLDE2MDYyMDYxMjYsLTEzMTcxOTI4NiwxNTU2MzEz
+NDIxLC02ODQzODI4OTYsNzAzODYxNDY3LDg0ODA5MTg4NiwtMz
+g2MzYzOTc1LC0xMjQxMDY2MjAsMjA4MTU3MjMwNyw5ODcwMTU5
+NTBdfQ==
 -->
