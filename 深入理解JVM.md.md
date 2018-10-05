@@ -188,8 +188,8 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
 当某个年龄的对象的大小总和超过survivor的一半, 则大于或等于该年龄的所有对象都会进入老年代.
 * 空间分配担保
 minorGC之前会检查老年代最大的连续内存空间是否大于新生代所有对象的大小,  或者检查最大的老年代的连续内存是否大于历史平均进入老年代的对象大小, 满足一个就进行minorGC, 否则fullGC
-
-1. 对象
+> 新生代gc过程
+1. 对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然cun
 
 >无论是Minor GC还是CMS GC，都会’Stop-The-World’，即停止用户的一切线程，只留下gc线程回收垃圾对象。其中Minor GC的STW时间主要耗费在复制阶段，CMS GC的STW时间主要耗费在标示垃圾对象阶段
 
@@ -484,5 +484,5 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg3Mzc2MTM4OSwtMTMzMDE4NTU4MF19
+eyJoaXN0b3J5IjpbMTM2NDcxNTczMCwtMTMzMDE4NTU4MF19
 -->
