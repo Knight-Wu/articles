@@ -359,6 +359,10 @@ total = yarn.scheduler.minimum-allocation-mb+ yarn.scheduler.increment-allocatio
 }
 ```
 
+> 后续参考资料
+
+1. [https://wongxingjun.github.io/](https://wongxingjun.github.io/2016/05/26/Spark%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/)
+
 
 
 > spark GC 调优
@@ -673,11 +677,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTczODQ5MDk4Niw0OTA3Mjk4OTMsMTkyOD
-QzODUwLC0xNzU4ODUzMjM4LC03ODkwMjg3NTksMTk1OTg0NDYz
-MywxNzU0OTY2MDQ2LDE0MTE1OTY1NDksMTQ5MjkwMDUzMSwtNj
-gwMDQ0OTYxLDkyMDk0NTQ2NywtMTExNTc2NDc2NSwtMTA4MTg1
-NzExMyw3NTQwODk5NzcsMTQ4NDM3NzQ3MiwxNjA2MjA2MTI2LC
-0xMzE3MTkyODYsMTU1NjMxMzQyMSwtNjg0MzgyODk2LDcwMzg2
-MTQ2N119
+eyJoaXN0b3J5IjpbMTg5ODEzNDUyLC03Mzg0OTA5ODYsNDkwNz
+I5ODkzLDE5Mjg0Mzg1MCwtMTc1ODg1MzIzOCwtNzg5MDI4NzU5
+LDE5NTk4NDQ2MzMsMTc1NDk2NjA0NiwxNDExNTk2NTQ5LDE0OT
+I5MDA1MzEsLTY4MDA0NDk2MSw5MjA5NDU0NjcsLTExMTU3NjQ3
+NjUsLTEwODE4NTcxMTMsNzU0MDg5OTc3LDE0ODQzNzc0NzIsMT
+YwNjIwNjEyNiwtMTMxNzE5Mjg2LDE1NTYzMTM0MjEsLTY4NDM4
+Mjg5Nl19
 -->
