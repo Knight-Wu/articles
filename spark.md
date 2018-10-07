@@ -248,15 +248,6 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 * executor.core和rm.vcore和task的并行度和cpu的核数有什么关系
 
 
-
-
-* 性能调优
-
-  * 提高shuffle操作的并行度
-  spark.sql.shuffle.partitions 提高sparkSql中shuffle类操作的并行度, 默认是200, 对应200个shuffle read tasks
-   
-
-
 #### spark 资源分配
 * executor core 
     --executor-cores in shell(or in conf spark.executor.cores) 5 means that each executor can run a maximum of five tasks at the same time。
@@ -294,8 +285,7 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 ```
 4. 可以repartition
 5. For distributed shuffle operations like `reduceByKey`and `join`, the largest number of partitions in a parent RDD.
-
-
+   
 
 
 
@@ -677,11 +667,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5ODEzNDUyLC03Mzg0OTA5ODYsNDkwNz
-I5ODkzLDE5Mjg0Mzg1MCwtMTc1ODg1MzIzOCwtNzg5MDI4NzU5
-LDE5NTk4NDQ2MzMsMTc1NDk2NjA0NiwxNDExNTk2NTQ5LDE0OT
-I5MDA1MzEsLTY4MDA0NDk2MSw5MjA5NDU0NjcsLTExMTU3NjQ3
-NjUsLTEwODE4NTcxMTMsNzU0MDg5OTc3LDE0ODQzNzc0NzIsMT
-YwNjIwNjEyNiwtMTMxNzE5Mjg2LDE1NTYzMTM0MjEsLTY4NDM4
-Mjg5Nl19
+eyJoaXN0b3J5IjpbLTM4MTgzODI5NCwxODk4MTM0NTIsLTczOD
+Q5MDk4Niw0OTA3Mjk4OTMsMTkyODQzODUwLC0xNzU4ODUzMjM4
+LC03ODkwMjg3NTksMTk1OTg0NDYzMywxNzU0OTY2MDQ2LDE0MT
+E1OTY1NDksMTQ5MjkwMDUzMSwtNjgwMDQ0OTYxLDkyMDk0NTQ2
+NywtMTExNTc2NDc2NSwtMTA4MTg1NzExMyw3NTQwODk5NzcsMT
+Q4NDM3NzQ3MiwxNjA2MjA2MTI2LC0xMzE3MTkyODYsMTU1NjMx
+MzQyMV19
 -->
