@@ -242,7 +242,7 @@ shuffle 一开始是Hash-Based Shuffle, 1.6及之后的版本默认的sort-manag
 
 > spark和MR的shuffle的区别
 
-1. MR的combine和reduce 的records必须先sort. 
+1. MR的combine和reduce 的records必须先sort. 而且显式的分为 map(), spill, merge, shuffle, sort, reduce几个阶段.
 
 > 问题
 * spark.shuffle.spill 这个参数具体控制什么, 默认是什么
@@ -666,11 +666,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2NDM3OTE3LC05MzE1NzkzMzIsLTE4OD
-Q2OTM2MCwxNTAxNzIzOTQwLC0zODE4MzgyOTQsMTg5ODEzNDUy
-LC03Mzg0OTA5ODYsNDkwNzI5ODkzLDE5Mjg0Mzg1MCwtMTc1OD
-g1MzIzOCwtNzg5MDI4NzU5LDE5NTk4NDQ2MzMsMTc1NDk2NjA0
-NiwxNDExNTk2NTQ5LDE0OTI5MDA1MzEsLTY4MDA0NDk2MSw5Mj
-A5NDU0NjcsLTExMTU3NjQ3NjUsLTEwODE4NTcxMTMsNzU0MDg5
-OTc3XX0=
+eyJoaXN0b3J5IjpbLTk4ODE5NDAzMywtMzY0Mzc5MTcsLTkzMT
+U3OTMzMiwtMTg4NDY5MzYwLDE1MDE3MjM5NDAsLTM4MTgzODI5
+NCwxODk4MTM0NTIsLTczODQ5MDk4Niw0OTA3Mjk4OTMsMTkyOD
+QzODUwLC0xNzU4ODUzMjM4LC03ODkwMjg3NTksMTk1OTg0NDYz
+MywxNzU0OTY2MDQ2LDE0MTE1OTY1NDksMTQ5MjkwMDUzMSwtNj
+gwMDQ0OTYxLDkyMDk0NTQ2NywtMTExNTc2NDc2NSwtMTA4MTg1
+NzExM119
 -->
