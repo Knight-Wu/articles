@@ -239,7 +239,10 @@ shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manag
 3. [http://www.cnblogs.com/jcchoiling/p/6440102.html](http://www.cnblogs.com/jcchoiling/p/6440102.html)
 4. **Tungsten-Sorted Shuffle**的源码: UnsafeShuffleWriter.scala
 
-相比于Hash-Based Shuffle 的主要改进是减小了大量shuffle的中间文件, 每一个shuffleMapTask只产生两个文件, 一个data文件, 一个index文件用来存储数据文件的partition信息.spark-2.X版本中已经没有hashShuffle了, 只有sort和Tungsten-Sorted 两种shuffle. Tungsten的优化在于不会根据key进行sort, 减少了不必要的排序, 详情参见: [https://issues.apache.org/jira/browse/SPARK-7081](https://issues.apache.org/jira/browse/SPARK-7081)
+相比于Hash-Based Shuffle 的主要改进是减小了大量shuffle的中间文件, 每一个shuffleMapTask只产生两个文件, 一个data文件, 一个index文件用来存储数据文件的partition信息.spark-2.X版本中已经没有hashShuffle了, 只有sort和Tungsten-Sorted 两种shuffle. Tungsten详情参见: 
+1. [https://issues.apache.org/jira/browse/SPARK-7081](https://issues.apache.org/jira/browse/SPARK-7081)
+2. [https://0x0fff.com/spark-architecture-shuffle/](https://0x0fff.com/spark-architecture-shuffle/) 
+
 
 >Sort-Based Shuffle 的弱点
 
@@ -674,11 +677,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxNTQxODkzLC0xMTcyNzEyOTI2LDEzNj
-g1NjYyNjIsMjQyNTU2Mzg5LC0xMzg5NDA2Mjg4LC01NjM5ODEz
-NjMsNzQzMTEwNTQ3LC01Mjc2NTk5ODYsLTE5MTYzNDI3MjgsLT
-M2NDM3OTE3LC05MzE1NzkzMzIsLTE4ODQ2OTM2MCwxNTAxNzIz
-OTQwLC0zODE4MzgyOTQsMTg5ODEzNDUyLC03Mzg0OTA5ODYsND
-kwNzI5ODkzLDE5Mjg0Mzg1MCwtMTc1ODg1MzIzOCwtNzg5MDI4
-NzU5XX0=
+eyJoaXN0b3J5IjpbMTAxMDQ0NTY1MywxNTE1NDE4OTMsLTExNz
+I3MTI5MjYsMTM2ODU2NjI2MiwyNDI1NTYzODksLTEzODk0MDYy
+ODgsLTU2Mzk4MTM2Myw3NDMxMTA1NDcsLTUyNzY1OTk4NiwtMT
+kxNjM0MjcyOCwtMzY0Mzc5MTcsLTkzMTU3OTMzMiwtMTg4NDY5
+MzYwLDE1MDE3MjM5NDAsLTM4MTgzODI5NCwxODk4MTM0NTIsLT
+czODQ5MDk4Niw0OTA3Mjk4OTMsMTkyODQzODUwLC0xNzU4ODUz
+MjM4XX0=
 -->
