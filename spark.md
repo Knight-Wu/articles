@@ -211,7 +211,7 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 ![image](https://user-images.githubusercontent.com/20329409/42148956-caa5b412-7e06-11e8-9e30-9e107ff9e1ea.png)
 ![https://drive.google.com/uc?id=1dU1KNWSPaHWyzVufVTgWDtjKbW0ixEhQ](https://drive.google.com/uc?id=1dU1KNWSPaHWyzVufVTgWDtjKbW0ixEhQ)
 
-shuffle 一开始是Hash-Based Shuffle, 1.6及之后的版本默认的sort-manager 变成了Sorted-Based Shuffle, 先介绍一下Hash-Based Shuffle,
+shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manager 变成了Sorted-Based Shuffle, 先介绍一下Hash-Based Shuffle,
 
 > shuffle会产生两个stage, 分别对应 shuffle write和shuffle read shuffle write 
 
@@ -232,6 +232,8 @@ shuffle 一开始是Hash-Based Shuffle, 1.6及之后的版本默认的sort-manag
 2. 文件句柄占用很多
 
 > Sorted-Based Shuffle
+
+参见[https://issues.apache.org/jira/browse/SPARK-2045](https://issues.apache.org/jira/browse/SPARK-2045)
 相比于Hash-Based Shuffle 的主要改进是减小了大量shuffle的中间文件, 每一个shuffleMapTask只产生两个文件, 一个data文件, 一个index文件, 存储数据文件的partition信息.
 
 >Sort-Based Shuffle 的弱点
@@ -669,7 +671,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyNzM1MTU5Niw3NDMxMTA1NDcsLTUyNz
+eyJoaXN0b3J5IjpbLTU2Mzk4MTM2Myw3NDMxMTA1NDcsLTUyNz
 Y1OTk4NiwtMTkxNjM0MjcyOCwtMzY0Mzc5MTcsLTkzMTU3OTMz
 MiwtMTg4NDY5MzYwLDE1MDE3MjM5NDAsLTM4MTgzODI5NCwxOD
 k4MTM0NTIsLTczODQ5MDk4Niw0OTA3Mjk4OTMsMTkyODQzODUw
