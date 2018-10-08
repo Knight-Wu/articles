@@ -239,15 +239,7 @@ shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manag
 3. [http://www.cnblogs.com/jcchoiling/p/6440102.html](http://www.cnblogs.com/jcchoiling/p/6440102.html)
 4. **Tungsten-Sorted Shuffle**的源码: UnsafeShuffleWriter.scala
 
-相比于Hash-Based Shuffle 的主要改进是减小了大量shuffle的中间文件, 每一个shuffleMapTask只产生两个文件, 一个data文件, 一个index文件用来存储数据文件的partition信息.spark-2.X版本中已经没有hashShuffle了, 只有sort和Tungsten-Sorted 两种shuffle.
-再以下几种情况均满足的时候会采用tungsten-sort: 
--   The shuffle dependency specifies no aggregation or output ordering.
--   The shuffle serializer supports relocation of serialized values (this is currently supported  
-    by KryoSerializer and Spark SQL's custom serializers).
--   The shuffle produces fewer than 16777216 output partitions.
--   No individual record is larger than 128 MB when serialized.
-
-参见: [https://issues.apache.org/jira/browse/SPARK-7081](https://issues.apache.org/jira/browse/SPARK-7081)
+相比于Hash-Based Shuffle 的主要改进是减小了大量shuffle的中间文件, 每一个shuffleMapTask只产生两个文件, 一个data文件, 一个index文件用来存储数据文件的partition信息.spark-2.X版本中已经没有hashShuffle了, 只有sort和Tungsten-Sorted 两种shuffle. Tungsten的优化在于不会根据key进行sort, 减少了不必要的排序, 详情参见: [https://issues.apache.org/jira/browse/SPARK-7081](https://issues.apache.org/jira/browse/SPARK-7081)
 
 >Sort-Based Shuffle 的弱点
 
@@ -682,11 +674,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMDEzOTg4NiwtMTE3MjcxMjkyNiwxMz
-Y4NTY2MjYyLDI0MjU1NjM4OSwtMTM4OTQwNjI4OCwtNTYzOTgx
-MzYzLDc0MzExMDU0NywtNTI3NjU5OTg2LC0xOTE2MzQyNzI4LC
-0zNjQzNzkxNywtOTMxNTc5MzMyLC0xODg0NjkzNjAsMTUwMTcy
-Mzk0MCwtMzgxODM4Mjk0LDE4OTgxMzQ1MiwtNzM4NDkwOTg2LD
-Q5MDcyOTg5MywxOTI4NDM4NTAsLTE3NTg4NTMyMzgsLTc4OTAy
-ODc1OV19
+eyJoaXN0b3J5IjpbMTUxNTQxODkzLC0xMTcyNzEyOTI2LDEzNj
+g1NjYyNjIsMjQyNTU2Mzg5LC0xMzg5NDA2Mjg4LC01NjM5ODEz
+NjMsNzQzMTEwNTQ3LC01Mjc2NTk5ODYsLTE5MTYzNDI3MjgsLT
+M2NDM3OTE3LC05MzE1NzkzMzIsLTE4ODQ2OTM2MCwxNTAxNzIz
+OTQwLC0zODE4MzgyOTQsMTg5ODEzNDUyLC03Mzg0OTA5ODYsND
+kwNzI5ODkzLDE5Mjg0Mzg1MCwtMTc1ODg1MzIzOCwtNzg5MDI4
+NzU5XX0=
 -->
