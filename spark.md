@@ -405,7 +405,7 @@ Spark prints the serialized size of each task on the master, so you can look at 
 
 > Shuffle Hash Join
 
-> 将两个表按照join key进行重分区 , ze再在各个节点上进行hash join, 适用于一个大表,一个小表的情况. 
+> 将两个表按照join key进行重分区 , 则相同key再在各个节点上进行hash join, 适用于一个大表,一个小表的情况. 
 
 
 3. Sort-Merge Join
@@ -667,11 +667,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxMzgzNDYyNCwtMTYxNzA1NTI1LC0xMz
-g5NzMzNjI2LC0xMTI0MTc1MTM3LDE1NTQ5OTIzNjQsLTE0Mjgy
-NzA2NSwzMDg4NDEwMTEsMTAxMDQ0NTY1MywxNTE1NDE4OTMsLT
-ExNzI3MTI5MjYsMTM2ODU2NjI2MiwyNDI1NTYzODksLTEzODk0
-MDYyODgsLTU2Mzk4MTM2Myw3NDMxMTA1NDcsLTUyNzY1OTk4Ni
-wtMTkxNjM0MjcyOCwtMzY0Mzc5MTcsLTkzMTU3OTMzMiwtMTg4
-NDY5MzYwXX0=
+eyJoaXN0b3J5IjpbLTE0MTkxNjA3MjksMTgxMzgzNDYyNCwtMT
+M4OTczMzYyNiwtMTEyNDE3NTEzNywxNTU0OTkyMzY0LC0xNDI4
+MjcwNjUsMzA4ODQxMDExLDEwMTA0NDU2NTMsMTUxNTQxODkzLC
+0xMTcyNzEyOTI2LDEzNjg1NjYyNjIsMjQyNTU2Mzg5LC0xMzg5
+NDA2Mjg4LC01NjM5ODEzNjMsNzQzMTEwNTQ3LC01Mjc2NTk5OD
+YsLTE5MTYzNDI3MjgsLTM2NDM3OTE3LC05MzE1NzkzMzIsLTE4
+ODQ2OTM2MF19
 -->
