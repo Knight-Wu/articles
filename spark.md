@@ -242,7 +242,7 @@ shuffle 一开始是Hash-Based Shuffle, 1.6及之后的版本默认的sort-manag
 
 > spark和MR的shuffle的区别
 
-1. MR的combine和reduce 的records必须先sort. 而且显式的分为 map(), spill, merge, shuffle, sort, reduce几个阶段. 二s
+1. MR的combine和reduce 的records必须先sort. 而且显式的分为 map(), spill, merge, shuffle, sort, reduce几个阶段. 而spark 只有不同的 stage 和一系列的 transformation(), 说白了是编程模式的不同.
 
 > 问题
 * spark.shuffle.spill 这个参数具体控制什么, 默认是什么
@@ -666,7 +666,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTYzNDI3MjgsLTk4ODE5NDAzMywtMz
+eyJoaXN0b3J5IjpbLTUzNTE1MDkxOCwtMTkxNjM0MjcyOCwtMz
 Y0Mzc5MTcsLTkzMTU3OTMzMiwtMTg4NDY5MzYwLDE1MDE3MjM5
 NDAsLTM4MTgzODI5NCwxODk4MTM0NTIsLTczODQ5MDk4Niw0OT
 A3Mjk4OTMsMTkyODQzODUwLC0xNzU4ODUzMjM4LC03ODkwMjg3
