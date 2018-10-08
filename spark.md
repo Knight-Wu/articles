@@ -480,7 +480,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 3. external shuffle service
 > 作用
 
-* Spark系统在运行含shuffle过程的应用时，Executor进程除了运行task，还要负责写shuffle 数据，给其他Executor提供shuffle数据. 当Executor进程任务过重，导致GC而不能为其 他Executor提供shuffle数据时，会影响任务运行. 这里实际上是利用External Shuffle Service 来提升性能，External shuffle Service是长期存在于NodeManager进程中的一个辅助服务。 通过该服务 来抓取shuffle数据，减少了Executor的压力，在Executor GC的时候也不会影响其他 Executor的任务运行。
+* Spark系统在运行含shuffle过程的应用时，Executor进程除了运行task，还要负责写shuffle 数据，给其他Executor提供shuffle数据. 当Executor进程任务过重，导致GC而不能为其他Executor提供shuffle数据时，会影响任务运行. 这里实际上是利用External Shuffle Service 来提升性能，External shuffle Service是长期存在于NodeManager进程中的一个辅助服务。 通过该服务来抓取shuffle数据，减少了Executor的压力，在Executor GC的时候也不会影响其他 Executor的任务运行。
 * 当executor因为失败而退出, 或者在资源动态收集的情况下, 因为空闲而退出, 一些计算结果可能会因为无法获取而重新计算, 特别是shuffle的时候, map端executor计算的结果可能因为executor 退出而无法获取, 所以此时需要一个常驻的service 运行在nodemanager(使用yarn的情况)
 
 配置参见: 
@@ -667,11 +667,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNzU5MDM4NDMsLTU3MDMwMTg1NywxOT
-EwMDk3MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEyOTU1
-NCwtMTQxOTE2MDcyOSwtMTM4OTczMzYyNiwtMTEyNDE3NTEzNy
-wxNTU0OTkyMzY0LC0xNDI4MjcwNjUsMzA4ODQxMDExLDEwMTA0
-NDU2NTMsMTUxNTQxODkzLC0xMTcyNzEyOTI2LDEzNjg1NjYyNj
-IsMjQyNTU2Mzg5LC0xMzg5NDA2Mjg4LC01NjM5ODEzNjMsNzQz
-MTEwNTQ3XX0=
+eyJoaXN0b3J5IjpbMTgxNjg4NDIyOSwtMTA3NTkwMzg0MywtNT
+cwMzAxODU3LDE5MTAwOTcxNzQsLTczMTQzMTAzMCw4MTM5ODQ2
+NDcsMTUzMTI5NTU0LC0xNDE5MTYwNzI5LC0xMzg5NzMzNjI2LC
+0xMTI0MTc1MTM3LDE1NTQ5OTIzNjQsLTE0MjgyNzA2NSwzMDg4
+NDEwMTEsMTAxMDQ0NTY1MywxNTE1NDE4OTMsLTExNzI3MTI5Mj
+YsMTM2ODU2NjI2MiwyNDI1NTYzODksLTEzODk0MDYyODgsLTU2
+Mzk4MTM2M119
 -->
