@@ -211,7 +211,7 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 ![image](https://user-images.githubusercontent.com/20329409/42148956-caa5b412-7e06-11e8-9e30-9e107ff9e1ea.png)
 ![https://drive.google.com/uc?id=1dU1KNWSPaHWyzVufVTgWDtjKbW0ixEhQ](https://drive.google.com/uc?id=1dU1KNWSPaHWyzVufVTgWDtjKbW0ixEhQ)
 
-shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先介绍一下Hash-Based Shuffle,
+shuffle 一开始是Hash-Based Shuffle, 1.6及之后的版本默认的sort-manager 变成了Sorted-Based Shuffle, 先介绍一下Hash-Based Shuffle,
 
 > shuffle会产生两个stage, 分别对应 shuffle write和shuffle read shuffle write 
 
@@ -225,7 +225,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 可以当做reducer阶段,会去driver 的MapOutputTrackerMaster询问shuffleMapTask 的数据输出的位置.
  
 > Hash-Based Shuffle 的不足
-1. 会产生大量的小文件, 数量是m*r个, mapper端和reducer端的内存消耗变大
+1. 会产生大量的小文件, 数量是m*r个, mapper端和reducer端的内存消耗变大, 进而导致GC 压力很大
 2. 文件句柄占用很多
 
 > Sorted-Based Shuffle
@@ -663,11 +663,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODQ2OTM2MCwxNTAxNzIzOTQwLC0zOD
-E4MzgyOTQsMTg5ODEzNDUyLC03Mzg0OTA5ODYsNDkwNzI5ODkz
-LDE5Mjg0Mzg1MCwtMTc1ODg1MzIzOCwtNzg5MDI4NzU5LDE5NT
-k4NDQ2MzMsMTc1NDk2NjA0NiwxNDExNTk2NTQ5LDE0OTI5MDA1
-MzEsLTY4MDA0NDk2MSw5MjA5NDU0NjcsLTExMTU3NjQ3NjUsLT
-EwODE4NTcxMTMsNzU0MDg5OTc3LDE0ODQzNzc0NzIsMTYwNjIw
-NjEyNl19
+eyJoaXN0b3J5IjpbLTkzMTU3OTMzMiwtMTg4NDY5MzYwLDE1MD
+E3MjM5NDAsLTM4MTgzODI5NCwxODk4MTM0NTIsLTczODQ5MDk4
+Niw0OTA3Mjk4OTMsMTkyODQzODUwLC0xNzU4ODUzMjM4LC03OD
+kwMjg3NTksMTk1OTg0NDYzMywxNzU0OTY2MDQ2LDE0MTE1OTY1
+NDksMTQ5MjkwMDUzMSwtNjgwMDQ0OTYxLDkyMDk0NTQ2NywtMT
+ExNTc2NDc2NSwtMTA4MTg1NzExMyw3NTQwODk5NzcsMTQ4NDM3
+NzQ3Ml19
 -->
