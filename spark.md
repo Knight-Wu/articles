@@ -240,7 +240,14 @@ shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manag
 4. **Tungsten-Sorted Shuffle**的源码: UnsafeShuffleWriter.scala
 
 相比于Hash-Based Shuffle 的主要改进是减小了大量shuffle的中间文件, 每一个shuffleMapTask只产生两个文件, 一个data文件, 一个index文件用来存储数据文件的partition信息.spark-2.X版本中已经没有hashShuffle了, 只有sort和Tungsten-Sorted 两种shuffle.
-再以下jizh
+再以下几种情况均满足的时候会采用tungsten-sort: 
+-   The shuffle dependency specifies no aggregation or output ordering.
+-   The shuffle serializer supports relocation of serialized values (this is currently supported  
+    by KryoSerializer and Spark SQL's custom serializers).
+-   The shuffle produces fewer than 16777216 output partitions.
+-   No individual record is larger than 128 MB when serialized.
+
+参见: [https://issues.apache.org/jira/browse/SPARK-7081](https://issues.apache.org/jira/browse/SPARK-7081)
 
 >Sort-Based Shuffle 的弱点
 
@@ -675,7 +682,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzI3MTI5MjYsMTU4MzcyODAwNCwxMz
+eyJoaXN0b3J5IjpbLTEzMDEzOTg4NiwtMTE3MjcxMjkyNiwxMz
 Y4NTY2MjYyLDI0MjU1NjM4OSwtMTM4OTQwNjI4OCwtNTYzOTgx
 MzYzLDc0MzExMDU0NywtNTI3NjU5OTg2LC0xOTE2MzQyNzI4LC
 0zNjQzNzkxNywtOTMxNTc5MzMyLC0xODg0NjkzNjAsMTUwMTcy
