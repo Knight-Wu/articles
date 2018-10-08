@@ -233,11 +233,12 @@ shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manag
 
 > Sorted-Based Shuffle
 
-> 参考资料
+> 参考资料, 按优先级
 1. [https://issues.apache.org/jira/browse/SPARK-2045](https://issues.apache.org/jira/browse/SPARK-2045)
-2. [http://www.cnblogs.com/jcchoiling/p/6440102.html](http://www.cnblogs.com/jcchoiling/p/6440102.html)
-3. 源码: SortShuffleManager.scala 
-4. 
+2. 源码: SortShuffleManager.scala 
+3. [http://www.cnblogs.com/jcchoiling/p/6440102.html](http://www.cnblogs.com/jcchoiling/p/6440102.html)
+4. **Tungsten-Sorted Shuffle**的源码: UnsafeShuffleWriter.scala
+
 相比于Hash-Based Shuffle 的主要改进是减小了大量shuffle的中间文件, 每一个shuffleMapTask只产生两个文件, 一个data文件, 一个index文件, 存储数据文件的partition信息.
 
 >Sort-Based Shuffle 的弱点
@@ -675,11 +676,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzE4MjY0NTIwLDI0MjU1NjM4OSwtMTM4OT
-QwNjI4OCwtNTYzOTgxMzYzLDc0MzExMDU0NywtNTI3NjU5OTg2
-LC0xOTE2MzQyNzI4LC0zNjQzNzkxNywtOTMxNTc5MzMyLC0xOD
-g0NjkzNjAsMTUwMTcyMzk0MCwtMzgxODM4Mjk0LDE4OTgxMzQ1
-MiwtNzM4NDkwOTg2LDQ5MDcyOTg5MywxOTI4NDM4NTAsLTE3NT
-g4NTMyMzgsLTc4OTAyODc1OSwxOTU5ODQ0NjMzLDE3NTQ5NjYw
-NDZdfQ==
+eyJoaXN0b3J5IjpbMTM2ODU2NjI2MiwyNDI1NTYzODksLTEzOD
+k0MDYyODgsLTU2Mzk4MTM2Myw3NDMxMTA1NDcsLTUyNzY1OTk4
+NiwtMTkxNjM0MjcyOCwtMzY0Mzc5MTcsLTkzMTU3OTMzMiwtMT
+g4NDY5MzYwLDE1MDE3MjM5NDAsLTM4MTgzODI5NCwxODk4MTM0
+NTIsLTczODQ5MDk4Niw0OTA3Mjk4OTMsMTkyODQzODUwLC0xNz
+U4ODUzMjM4LC03ODkwMjg3NTksMTk1OTg0NDYzMywxNzU0OTY2
+MDQ2XX0=
 -->
