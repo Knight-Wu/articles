@@ -233,7 +233,7 @@ shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manag
 
 > Sorted-Based Shuffle
 
-> 参考资料, 按优先级
+ 参考资料, 按优先级
 1. [https://issues.apache.org/jira/browse/SPARK-2045](https://issues.apache.org/jira/browse/SPARK-2045)
 2. 源码: SortShuffleManager.scala 
 3. [http://www.cnblogs.com/jcchoiling/p/6440102.html](http://www.cnblogs.com/jcchoiling/p/6440102.html)
@@ -678,11 +678,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzA4ODQxMDExLDEwMTA0NDU2NTMsMTUxNT
-QxODkzLC0xMTcyNzEyOTI2LDEzNjg1NjYyNjIsMjQyNTU2Mzg5
-LC0xMzg5NDA2Mjg4LC01NjM5ODEzNjMsNzQzMTEwNTQ3LC01Mj
-c2NTk5ODYsLTE5MTYzNDI3MjgsLTM2NDM3OTE3LC05MzE1Nzkz
-MzIsLTE4ODQ2OTM2MCwxNTAxNzIzOTQwLC0zODE4MzgyOTQsMT
-g5ODEzNDUyLC03Mzg0OTA5ODYsNDkwNzI5ODkzLDE5Mjg0Mzg1
-MF19
+eyJoaXN0b3J5IjpbLTE0MjgyNzA2NSwzMDg4NDEwMTEsMTAxMD
+Q0NTY1MywxNTE1NDE4OTMsLTExNzI3MTI5MjYsMTM2ODU2NjI2
+MiwyNDI1NTYzODksLTEzODk0MDYyODgsLTU2Mzk4MTM2Myw3ND
+MxMTA1NDcsLTUyNzY1OTk4NiwtMTkxNjM0MjcyOCwtMzY0Mzc5
+MTcsLTkzMTU3OTMzMiwtMTg4NDY5MzYwLDE1MDE3MjM5NDAsLT
+M4MTgzODI5NCwxODk4MTM0NTIsLTczODQ5MDk4Niw0OTA3Mjk4
+OTNdfQ==
 -->
