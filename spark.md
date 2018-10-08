@@ -245,7 +245,6 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 * spark.shuffle.spill 这个参数具体控制什么, 默认是什么
 * Sort-Based Shuffle的排序分为几个, 什么时候进行, 并且如何避免不必要的排序,
 * **如何提高shuffle的性能**, shuffle的map和reduce的数量如何控制
-* executor.core和rm.vcore和task的并行度和cpu的核数有什么关系
 
 
 #### spark 资源分配
@@ -263,9 +262,6 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 * 跑批任务中(hive on spark, hive on mr)的资源分配
 > spark.executor.instance(实例数), spark. executor.memory(单个实例内存), 这两个参数可以根据实际情况进行相应调整。当处理数据量较大逻辑较为简单时可以增大实例数减小内存，提高批处理的并行数；当处理数据量不大但是逻辑较为复杂的任务时可以提高单个实例的内存，减小实例数，提升每个实例的处理能力。
 
-
-* spark 的并行程度
-推荐 executor instances * core per executor 的两到三倍 = num of task , 避免cpu浪费(某些task 已经跑完了, 可以跑剩下的task)
 
 
 * 如何设置并行度
@@ -285,7 +281,7 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 ```
 4. 可以repartition
 5. For distributed shuffle operations like `reduceByKey`and `join`, the largest number of partitions in a parent RDD.
-   
+6. 推荐 executor instances * core per executor 的两到三倍 = num of task , 避免cpu浪费(某些task 已经跑完了, 可以跑剩下的task)
 
 
 
@@ -667,11 +663,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM4MTgzODI5NCwxODk4MTM0NTIsLTczOD
-Q5MDk4Niw0OTA3Mjk4OTMsMTkyODQzODUwLC0xNzU4ODUzMjM4
-LC03ODkwMjg3NTksMTk1OTg0NDYzMywxNzU0OTY2MDQ2LDE0MT
-E1OTY1NDksMTQ5MjkwMDUzMSwtNjgwMDQ0OTYxLDkyMDk0NTQ2
-NywtMTExNTc2NDc2NSwtMTA4MTg1NzExMyw3NTQwODk5NzcsMT
-Q4NDM3NzQ3MiwxNjA2MjA2MTI2LC0xMzE3MTkyODYsMTU1NjMx
-MzQyMV19
+eyJoaXN0b3J5IjpbLTIwNzkwNiwtMzgxODM4Mjk0LDE4OTgxMz
+Q1MiwtNzM4NDkwOTg2LDQ5MDcyOTg5MywxOTI4NDM4NTAsLTE3
+NTg4NTMyMzgsLTc4OTAyODc1OSwxOTU5ODQ0NjMzLDE3NTQ5Nj
+YwNDYsMTQxMTU5NjU0OSwxNDkyOTAwNTMxLC02ODAwNDQ5NjEs
+OTIwOTQ1NDY3LC0xMTE1NzY0NzY1LC0xMDgxODU3MTEzLDc1ND
+A4OTk3NywxNDg0Mzc3NDcyLDE2MDYyMDYxMjYsLTEzMTcxOTI4
+Nl19
 -->
