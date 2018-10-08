@@ -243,6 +243,7 @@ shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manag
 1. [https://issues.apache.org/jira/browse/SPARK-7081](https://issues.apache.org/jira/browse/SPARK-7081)
 2. [https://0x0fff.com/spark-architecture-shuffle/](https://0x0fff.com/spark-architecture-shuffle/) 
 
+Sorted-Based Shuffle
 
 >Sort-Based Shuffle 的弱点
 
@@ -677,11 +678,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxMDQ0NTY1MywxNTE1NDE4OTMsLTExNz
-I3MTI5MjYsMTM2ODU2NjI2MiwyNDI1NTYzODksLTEzODk0MDYy
-ODgsLTU2Mzk4MTM2Myw3NDMxMTA1NDcsLTUyNzY1OTk4NiwtMT
-kxNjM0MjcyOCwtMzY0Mzc5MTcsLTkzMTU3OTMzMiwtMTg4NDY5
-MzYwLDE1MDE3MjM5NDAsLTM4MTgzODI5NCwxODk4MTM0NTIsLT
-czODQ5MDk4Niw0OTA3Mjk4OTMsMTkyODQzODUwLC0xNzU4ODUz
-MjM4XX0=
+eyJoaXN0b3J5IjpbNzM5NDAxMTU1LDEwMTA0NDU2NTMsMTUxNT
+QxODkzLC0xMTcyNzEyOTI2LDEzNjg1NjYyNjIsMjQyNTU2Mzg5
+LC0xMzg5NDA2Mjg4LC01NjM5ODEzNjMsNzQzMTEwNTQ3LC01Mj
+c2NTk5ODYsLTE5MTYzNDI3MjgsLTM2NDM3OTE3LC05MzE1Nzkz
+MzIsLTE4ODQ2OTM2MCwxNTAxNzIzOTQwLC0zODE4MzgyOTQsMT
+g5ODEzNDUyLC03Mzg0OTA5ODYsNDkwNzI5ODkzLDE5Mjg0Mzg1
+MF19
 -->
