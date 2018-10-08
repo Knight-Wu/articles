@@ -311,7 +311,7 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 
 ![enter image description here](https://drive.google.com/uc?id=1Hk4apOubApExzejHwMx96J5dAi9j4KQi)
 
-spark-1.6 之后使用UnifiedMemoryManager, 之前使用StaticMemoryManager, 由配置**spark.memory.useLegacyMode** 指定, UnifiedMemoryManager 由execution和storage, other以及system reserved组成, execution用于computation in shuffles, joins, sorts and aggregation, storage用于caching和传播数据到集群中. execution和storage共享一块内存M, 当execution不使用它所用的内存时, storage可以抢占, 反之亦然; 只有当storage的内存使用量低于R时, execution 才能 evict(驱逐) storage, 并且R的内存使用量是会一直保持给storage使用的.
+spark-1.6 之后使用UnifiedMemoryManager, 之前使用StaticMemoryManager, 由配置**spark.memory.useLegacyMode** 指定, UnifiedMemoryManager 由execution和storage, other以及system reserved组成, execution用于computation in shuffles, joins, sorts and aggregation, storage用于caching和传播数据到集群中. execution和storage共享一块内存M, 当execution不使用它所用的内存时, storage可以抢占, 反之亦然; 只有当storage的内存使用量低于R时, execution 才能 evict(驱逐) storage, 否则R的内存使用量是会一直保持给storage使用的.
 
 > 抽象化的内存计算
 
@@ -679,11 +679,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzA5MjUyNjMxLC0xNDI4MjcwNjUsMzA4OD
-QxMDExLDEwMTA0NDU2NTMsMTUxNTQxODkzLC0xMTcyNzEyOTI2
-LDEzNjg1NjYyNjIsMjQyNTU2Mzg5LC0xMzg5NDA2Mjg4LC01Nj
-M5ODEzNjMsNzQzMTEwNTQ3LC01Mjc2NTk5ODYsLTE5MTYzNDI3
-MjgsLTM2NDM3OTE3LC05MzE1NzkzMzIsLTE4ODQ2OTM2MCwxNT
-AxNzIzOTQwLC0zODE4MzgyOTQsMTg5ODEzNDUyLC03Mzg0OTA5
-ODZdfQ==
+eyJoaXN0b3J5IjpbMTU1NDk5MjM2NCwtMTQyODI3MDY1LDMwOD
+g0MTAxMSwxMDEwNDQ1NjUzLDE1MTU0MTg5MywtMTE3MjcxMjky
+NiwxMzY4NTY2MjYyLDI0MjU1NjM4OSwtMTM4OTQwNjI4OCwtNT
+YzOTgxMzYzLDc0MzExMDU0NywtNTI3NjU5OTg2LC0xOTE2MzQy
+NzI4LC0zNjQzNzkxNywtOTMxNTc5MzMyLC0xODg0NjkzNjAsMT
+UwMTcyMzk0MCwtMzgxODM4Mjk0LDE4OTgxMzQ1MiwtNzM4NDkw
+OTg2XX0=
 -->
