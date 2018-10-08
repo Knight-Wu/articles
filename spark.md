@@ -410,7 +410,7 @@ Spark prints the serialized size of each task on the master, so you can look at 
 
 3. Sort-Merge Join
 可以看下 [spark-join-pull过程](https://github.com/apache/spark/pull/3173)
-> 将两个表先进行shuffle, 再在各个分区节点的数据进行sort, 最后再根据join key 进行merge. 适用两个大表的情况, 因为spark的shuffle是 sort-based shuffle,shuffle之前就排序好了. 
+> 将两个表先进行shuffle,因为目前spark的shuffle后的数据是排序好的, 再根据join key 进行merge. 适用两个大表的情况
 
 > 问题
 1. spark sql join策略在什么情况会选哪个?
@@ -667,11 +667,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzMTI5NTU0LC0xNDE5MTYwNzI5LC0xMz
-g5NzMzNjI2LC0xMTI0MTc1MTM3LDE1NTQ5OTIzNjQsLTE0Mjgy
-NzA2NSwzMDg4NDEwMTEsMTAxMDQ0NTY1MywxNTE1NDE4OTMsLT
-ExNzI3MTI5MjYsMTM2ODU2NjI2MiwyNDI1NTYzODksLTEzODk0
-MDYyODgsLTU2Mzk4MTM2Myw3NDMxMTA1NDcsLTUyNzY1OTk4Ni
-wtMTkxNjM0MjcyOCwtMzY0Mzc5MTcsLTkzMTU3OTMzMiwtMTg4
-NDY5MzYwXX0=
+eyJoaXN0b3J5IjpbODEzOTg0NjQ3LDE1MzEyOTU1NCwtMTQxOT
+E2MDcyOSwtMTM4OTczMzYyNiwtMTEyNDE3NTEzNywxNTU0OTky
+MzY0LC0xNDI4MjcwNjUsMzA4ODQxMDExLDEwMTA0NDU2NTMsMT
+UxNTQxODkzLC0xMTcyNzEyOTI2LDEzNjg1NjYyNjIsMjQyNTU2
+Mzg5LC0xMzg5NDA2Mjg4LC01NjM5ODEzNjMsNzQzMTEwNTQ3LC
+01Mjc2NTk5ODYsLTE5MTYzNDI3MjgsLTM2NDM3OTE3LC05MzE1
+NzkzMzJdfQ==
 -->
