@@ -228,7 +228,7 @@ shuffle 一开始是Hash-Based Shuffle, 1.6及之后的版本默认的sort-manag
 1. 会产生大量的小文件, 数量是m*r个, mapper端和reducer端的内存消耗变大, 进而导致GC 压力很大, 可以通过 consolidateFiles的配置优化, 将文件数下降为 num(cores) * r.
 如下图: 
 ![enter image description here](https://drive.google.com/uc?id=1dU1KNWSPaHWyzVufVTgWDtjKbW0ixEhQ)
-ju
+具体参见
 2. 文件句柄占用很多
 
 > Sorted-Based Shuffle
@@ -669,11 +669,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjU0Mjc1MTcsLTUyNzY1OTk4NiwtMT
-kxNjM0MjcyOCwtMzY0Mzc5MTcsLTkzMTU3OTMzMiwtMTg4NDY5
-MzYwLDE1MDE3MjM5NDAsLTM4MTgzODI5NCwxODk4MTM0NTIsLT
-czODQ5MDk4Niw0OTA3Mjk4OTMsMTkyODQzODUwLC0xNzU4ODUz
-MjM4LC03ODkwMjg3NTksMTk1OTg0NDYzMywxNzU0OTY2MDQ2LD
-E0MTE1OTY1NDksMTQ5MjkwMDUzMSwtNjgwMDQ0OTYxLDkyMDk0
-NTQ2N119
+eyJoaXN0b3J5IjpbNzQzMTEwNTQ3LC0xNjY1NDI3NTE3LC01Mj
+c2NTk5ODYsLTE5MTYzNDI3MjgsLTM2NDM3OTE3LC05MzE1Nzkz
+MzIsLTE4ODQ2OTM2MCwxNTAxNzIzOTQwLC0zODE4MzgyOTQsMT
+g5ODEzNDUyLC03Mzg0OTA5ODYsNDkwNzI5ODkzLDE5Mjg0Mzg1
+MCwtMTc1ODg1MzIzOCwtNzg5MDI4NzU5LDE5NTk4NDQ2MzMsMT
+c1NDk2NjA0NiwxNDExNTk2NTQ5LDE0OTI5MDA1MzEsLTY4MDA0
+NDk2MV19
 -->
