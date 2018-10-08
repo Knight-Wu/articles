@@ -225,7 +225,7 @@ shuffle 一开始是Hash-Based Shuffle, 1.6及之后的版本默认的sort-manag
 可以当做reducer阶段,会去driver 的MapOutputTrackerMaster询问shuffleMapTask 的数据输出的位置.
  
 > Hash-Based Shuffle 的不足
-1. 会产生大量的小文件, 数量是m*r个, mapper端和reducer端的内存消耗变大, 进而导致GC 压力很大
+1. 会产生大量的小文件, 数量是m*r个, mapper端和reducer端的内存消耗变大, 进而导致GC 压力很大, 可以通过 consolidateFiles的配置优化, 将文件数下降为 num(cores) * r.
 2. 文件句柄占用很多
 
 > Sorted-Based Shuffle
@@ -666,7 +666,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzNTE1MDkxOCwtMTkxNjM0MjcyOCwtMz
+eyJoaXN0b3J5IjpbLTUyNzY1OTk4NiwtMTkxNjM0MjcyOCwtMz
 Y0Mzc5MTcsLTkzMTU3OTMzMiwtMTg4NDY5MzYwLDE1MDE3MjM5
 NDAsLTM4MTgzODI5NCwxODk4MTM0NTIsLTczODQ5MDk4Niw0OT
 A3Mjk4OTMsMTkyODQzODUwLC0xNzU4ODUzMjM4LC03ODkwMjg3
