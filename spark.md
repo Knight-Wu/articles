@@ -243,7 +243,7 @@ shuffle 一开始是Hash-Based Shuffle, 而后变成了Sorted-Based Shuffle, 先
 
 > 问题
 * spark.shuffle.spill 这个参数具体控制什么, 默认是什么
-* Sort-Based Shuffle的排序分为几个, 什么时候进行, 并且如何避免不必要的排序, 
+* Sort-Based Shuffle的排序分为几个, 什么时候进行, 并且如何避免不必要的排序, map端的聚合什么时候会出现, 为什么会出现, 有何作用
 * **如何提高shuffle的性能**, shuffle的map和reduce的数量如何控制
 
 
@@ -663,11 +663,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwMTcyMzk0MCwtMjA3OTA2LC0zODE4Mz
-gyOTQsMTg5ODEzNDUyLC03Mzg0OTA5ODYsNDkwNzI5ODkzLDE5
-Mjg0Mzg1MCwtMTc1ODg1MzIzOCwtNzg5MDI4NzU5LDE5NTk4ND
-Q2MzMsMTc1NDk2NjA0NiwxNDExNTk2NTQ5LDE0OTI5MDA1MzEs
-LTY4MDA0NDk2MSw5MjA5NDU0NjcsLTExMTU3NjQ3NjUsLTEwOD
-E4NTcxMTMsNzU0MDg5OTc3LDE0ODQzNzc0NzIsMTYwNjIwNjEy
-Nl19
+eyJoaXN0b3J5IjpbLTE4ODQ2OTM2MCwxNTAxNzIzOTQwLC0zOD
+E4MzgyOTQsMTg5ODEzNDUyLC03Mzg0OTA5ODYsNDkwNzI5ODkz
+LDE5Mjg0Mzg1MCwtMTc1ODg1MzIzOCwtNzg5MDI4NzU5LDE5NT
+k4NDQ2MzMsMTc1NDk2NjA0NiwxNDExNTk2NTQ5LDE0OTI5MDA1
+MzEsLTY4MDA0NDk2MSw5MjA5NDU0NjcsLTExMTU3NjQ3NjUsLT
+EwODE4NTcxMTMsNzU0MDg5OTc3LDE0ODQzNzc0NzIsMTYwNjIw
+NjEyNl19
 -->
