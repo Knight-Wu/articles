@@ -244,9 +244,7 @@ shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manag
 >Sort-Based Shuffle 的弱点
 
 1.  如果 Mapper 中 Task 的数量过大，依旧会产生很多小文件，此时在 Shuffle 传数据的过程中到 Reducer 端，Reducer 会需要同时大量的记录来进行反序例化，导致大量内存消耗和GC 的巨大负担，造成系统缓慢甚至崩溃！
-2.  强制了在 Mapper 端必顺要排序，这里的前提是本身数据根本不需要排序的话；
-3.  如果需要在分片内也进行排序的话，此时需要进行 Mapper 端和 Reducer 端的两次排序！
-4.  它要基于记录本身进行排序，这就是 Sort-Based Shuffle 最致命的性能消耗；
+2. 需要根据partitionId和key进行两次排序, 
 
 > shuffleMapTask输出的文件如何存储
 
@@ -676,7 +674,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NzU2NDQwNTksMTM2ODU2NjI2MiwyND
+eyJoaXN0b3J5IjpbLTE0MTk5ODkyNDYsMTM2ODU2NjI2MiwyND
 I1NTYzODksLTEzODk0MDYyODgsLTU2Mzk4MTM2Myw3NDMxMTA1
 NDcsLTUyNzY1OTk4NiwtMTkxNjM0MjcyOCwtMzY0Mzc5MTcsLT
 kzMTU3OTMzMiwtMTg4NDY5MzYwLDE1MDE3MjM5NDAsLTM4MTgz
