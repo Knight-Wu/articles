@@ -240,7 +240,7 @@ shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manag
 4. **Tungsten-Sorted Shuffle**的源码: UnsafeShuffleWriter.scala
 
 相比于Hash-Based Shuffle 的主要改进是减小了大量shuffle的中间文件, 每一个shuffleMapTask只产生两个文件, 一个data文件, 一个index文件用来存储数据文件的partition信息.spark-2.X版本中已经没有hashShuffle了, 只有sort和Tungsten-Sorted 两种shuffle.
-zai
+再以下jizh
 
 >Sort-Based Shuffle 的弱点
 
@@ -675,11 +675,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4MzcyODAwNCwxMzY4NTY2MjYyLDI0Mj
-U1NjM4OSwtMTM4OTQwNjI4OCwtNTYzOTgxMzYzLDc0MzExMDU0
-NywtNTI3NjU5OTg2LC0xOTE2MzQyNzI4LC0zNjQzNzkxNywtOT
-MxNTc5MzMyLC0xODg0NjkzNjAsMTUwMTcyMzk0MCwtMzgxODM4
-Mjk0LDE4OTgxMzQ1MiwtNzM4NDkwOTg2LDQ5MDcyOTg5MywxOT
-I4NDM4NTAsLTE3NTg4NTMyMzgsLTc4OTAyODc1OSwxOTU5ODQ0
-NjMzXX0=
+eyJoaXN0b3J5IjpbLTExNzI3MTI5MjYsMTU4MzcyODAwNCwxMz
+Y4NTY2MjYyLDI0MjU1NjM4OSwtMTM4OTQwNjI4OCwtNTYzOTgx
+MzYzLDc0MzExMDU0NywtNTI3NjU5OTg2LC0xOTE2MzQyNzI4LC
+0zNjQzNzkxNywtOTMxNTc5MzMyLC0xODg0NjkzNjAsMTUwMTcy
+Mzk0MCwtMzgxODM4Mjk0LDE4OTgxMzQ1MiwtNzM4NDkwOTg2LD
+Q5MDcyOTg5MywxOTI4NDM4NTAsLTE3NTg4NTMyMzgsLTc4OTAy
+ODc1OV19
 -->
