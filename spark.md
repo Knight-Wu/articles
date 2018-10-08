@@ -400,13 +400,12 @@ Spark prints the serialized size of each task on the master, so you can look at 
 > hash join 和 broadcast hash join
 
  将小表作为Build Table，大表作为Probe Table; 先将小表的join key, hash到bucket中, 构建hashtable, hashtable如果太大, 会放到磁盘上; 再讲大表的join key进行hash到同一个bucket中, 再判断两者的key是否相同. hash join的时间复杂度: O(a+b), 而传统的笛卡尔积是 O(a*b)
-,之所以选择小表作为build table, 生成的hashTable比较小, 能够完全放到内存中. 而broadcast hash join 则是将小表广播到大表的分区节点上, 和各个分区并发的进行hash join , 必须满足 : 被广播小表必须小于spark.sql.autoBroadcastJoinThreshold，默认为10M。所以
+,之所以选择小表作为build table, 生成的hashTable比较小, 能够完全放到内存中. 而broadcast hash join 则是将小表广播到大表的分区节点上, 和各个分区并发的进行hash join , 必须满足 : 被广播小表必须小于spark.sql.autoBroadcastJoinThreshold，默认为10M。经总结: 两张小表适用于hash join, 一张大表和一张极小表适用于broadcast hash join, 而一张大表和一张不太小表适用于  Shuffle Hash Join
 
 
 > Shuffle Hash Join
 
-
-> 将两个表按照join key进行重分区(HashPartition) , 再在各个节点上进行hash join, 适用于一个大表,一个小表的情况. 
+> 将两个表按照join key进行重分区 , ze再在各个节点上进行hash join, 适用于一个大表,一个小表的情况. 
 
 
 3. Sort-Merge Join
@@ -668,11 +667,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTcwNTUyNSw2Mzc3MzA4NjUsLTEzOD
-k3MzM2MjYsLTExMjQxNzUxMzcsMTU1NDk5MjM2NCwtMTQyODI3
-MDY1LDMwODg0MTAxMSwxMDEwNDQ1NjUzLDE1MTU0MTg5MywtMT
-E3MjcxMjkyNiwxMzY4NTY2MjYyLDI0MjU1NjM4OSwtMTM4OTQw
-NjI4OCwtNTYzOTgxMzYzLDc0MzExMDU0NywtNTI3NjU5OTg2LC
-0xOTE2MzQyNzI4LC0zNjQzNzkxNywtOTMxNTc5MzMyLC0xODg0
-NjkzNjBdfQ==
+eyJoaXN0b3J5IjpbMTgxMzgzNDYyNCwtMTYxNzA1NTI1LC0xMz
+g5NzMzNjI2LC0xMTI0MTc1MTM3LDE1NTQ5OTIzNjQsLTE0Mjgy
+NzA2NSwzMDg4NDEwMTEsMTAxMDQ0NTY1MywxNTE1NDE4OTMsLT
+ExNzI3MTI5MjYsMTM2ODU2NjI2MiwyNDI1NTYzODksLTEzODk0
+MDYyODgsLTU2Mzk4MTM2Myw3NDMxMTA1NDcsLTUyNzY1OTk4Ni
+wtMTkxNjM0MjcyOCwtMzY0Mzc5MTcsLTkzMTU3OTMzMiwtMTg4
+NDY5MzYwXX0=
 -->
