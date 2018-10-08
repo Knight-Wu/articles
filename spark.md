@@ -311,9 +311,10 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 
 ![enter image description here](https://drive.google.com/uc?id=1Hk4apOubApExzejHwMx96J5dAi9j4KQi)
 
-spark-1.6 之后使用UnifiedMemoryManager, 之前使用StaticMemoryManager, 由配置**spark.memory.useLegacyMode** 指定, UnifiedMemoryManager 由execution和storage, other以及system reserved组成, execution用于computation in shuffles, joins, sorts and aggregation, storage用于caching和传播数据到集群中. execution和storage共享一块内存M, 当execution不使用它所用的内存时, storage可以抢占, 反之亦然; 只有当storage的内存使用量低于R时, execution 才能 evict storage, 并且R的内存使用量是会一直保持给storage使用的.
+spark-1.6 之后使用UnifiedMemoryManager, 之前使用StaticMemoryManager, 由配置**spark.memory.useLegacyMode** 指定, UnifiedMemoryManager 由execution和storage, other以及system reserved组成, execution用于computation in shuffles, joins, sorts and aggregation, storage用于caching和传播数据到集群中. execution和storage共享一块内存M, 当execution不使用它所用的内存时, storage可以抢占, 反之亦然; 只有当storage的内存使用量低于R时, execution 才能 evict(驱逐) storage, 并且R的内存使用量是会一直保持给storage使用的.
 
 > 抽象化的内存计算
+
 参见
 1. [内存有限的情况下 Spark 如何处理 T 级别的数据？](https://www.zhihu.com/question/23079001)
 **实际上真实情况下大部分数据都可以加入进内存中, 或者数据的子集, 但是针对子集都无法加入到内存中的情况**, spark使用iterator的方式, 流式处理数据, 将一小批数据从源数据读入, iterator应用算子计算后再落盘, 空间复杂度是O(1), 暂不考虑shuffle 中间结果保存的情况. 
@@ -678,11 +679,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjgyNzA2NSwzMDg4NDEwMTEsMTAxMD
-Q0NTY1MywxNTE1NDE4OTMsLTExNzI3MTI5MjYsMTM2ODU2NjI2
-MiwyNDI1NTYzODksLTEzODk0MDYyODgsLTU2Mzk4MTM2Myw3ND
-MxMTA1NDcsLTUyNzY1OTk4NiwtMTkxNjM0MjcyOCwtMzY0Mzc5
-MTcsLTkzMTU3OTMzMiwtMTg4NDY5MzYwLDE1MDE3MjM5NDAsLT
-M4MTgzODI5NCwxODk4MTM0NTIsLTczODQ5MDk4Niw0OTA3Mjk4
-OTNdfQ==
+eyJoaXN0b3J5IjpbNzA5MjUyNjMxLC0xNDI4MjcwNjUsMzA4OD
+QxMDExLDEwMTA0NDU2NTMsMTUxNTQxODkzLC0xMTcyNzEyOTI2
+LDEzNjg1NjYyNjIsMjQyNTU2Mzg5LC0xMzg5NDA2Mjg4LC01Nj
+M5ODEzNjMsNzQzMTEwNTQ3LC01Mjc2NTk5ODYsLTE5MTYzNDI3
+MjgsLTM2NDM3OTE3LC05MzE1NzkzMzIsLTE4ODQ2OTM2MCwxNT
+AxNzIzOTQwLC0zODE4MzgyOTQsMTg5ODEzNDUyLC03Mzg0OTA5
+ODZdfQ==
 -->
