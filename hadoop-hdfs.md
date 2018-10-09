@@ -338,16 +338,14 @@ https://hadoop.apache.org/docs/r2.7.1/hadoop-project-dist/hadoop-hdfs/hdfs-defau
 
 #### 疑问
 
-2. FsImage, EditLog的具体结构和原理
-3. QJM的实现原理, 和paxos算法. JN和NN的协同工作的原理, 假设JN数量是n, 为什么只能容忍 (n-1)/ 2个错误
-4. 详细了解zkfc的原理
-5. 如何上传大文件到hdfs?
+
+* 如何上传大文件到hdfs?
   * flume, spark local file(解析本地文件的问题下次再看了), mapreduce
   * 可以把大文件分成多个小文件.
-
-* TCP 的time_wait 等几个状态
+  * 主要受限于带宽.
+* TCP 的time_wait 理解
 * client 写文件的时候, 不同 block 写到同一个dn上面是并行的吗 ?
-* client写文件失败的时候, 到底在默认配置下会尝试几个dn , 然后尝试了几次或者多长时间后, 仍然无法写入就抛异常? 
+答: 不是, 一个block到一个block
 
 
 
