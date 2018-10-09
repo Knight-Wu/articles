@@ -520,7 +520,7 @@ uuid time url result
 ```
 > 思路
 
-1.  将表A抽样百分之十, 
+1.  因为是热门网址的url, 故可以将表A抽样百分之十,  取这百分之十的最热门的top100个url.
 
 
 
@@ -684,7 +684,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTEzNDM1MTUsMTQ2MTg5ODg3MywxOD
+eyJoaXN0b3J5IjpbLTIwNTM0Mzc2MzUsMTQ2MTg5ODg3MywxOD
 E2ODg0MjI5LC0xMDc1OTAzODQzLC01NzAzMDE4NTcsMTkxMDA5
 NzE3NCwtNzMxNDMxMDMwLDgxMzk4NDY0NywxNTMxMjk1NTQsLT
 E0MTkxNjA3MjksLTEzODk3MzM2MjYsLTExMjQxNzUxMzcsMTU1
