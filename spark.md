@@ -521,6 +521,7 @@ uuid time url result
 > 思路
 
 1.  因为是热门网址的url, 故可以将表A抽样百分之十,  取这百分之十的最热门的top100个url, 生成表C
+2. 将表C作为小表广播, 与biao
 
 
 
@@ -684,7 +685,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwMzEwNDA1MywxNDYxODk4ODczLDE4MT
+eyJoaXN0b3J5IjpbLTc2NTQwMTAwOCwxNDYxODk4ODczLDE4MT
 Y4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1NywxOTEwMDk3
 MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEyOTU1NCwtMT
 QxOTE2MDcyOSwtMTM4OTczMzYyNiwtMTEyNDE3NTEzNywxNTU0
