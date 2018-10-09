@@ -520,7 +520,7 @@ uuid time url result
 ```
 > 思路
 
-1.  因为是热门网址的url, 故可以将表A抽样百分之十,  取这百分之十的最热门的top100个url.
+1.  因为是热门网址的url, 故可以将表A抽样百分之十,  取这百分之十的最热门的top100个url, 生成表C
 
 
 
@@ -684,11 +684,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTM0Mzc2MzUsMTQ2MTg5ODg3MywxOD
-E2ODg0MjI5LC0xMDc1OTAzODQzLC01NzAzMDE4NTcsMTkxMDA5
-NzE3NCwtNzMxNDMxMDMwLDgxMzk4NDY0NywxNTMxMjk1NTQsLT
-E0MTkxNjA3MjksLTEzODk3MzM2MjYsLTExMjQxNzUxMzcsMTU1
-NDk5MjM2NCwtMTQyODI3MDY1LDMwODg0MTAxMSwxMDEwNDQ1Nj
-UzLDE1MTU0MTg5MywtMTE3MjcxMjkyNiwxMzY4NTY2MjYyLDI0
-MjU1NjM4OV19
+eyJoaXN0b3J5IjpbMTYwMzEwNDA1MywxNDYxODk4ODczLDE4MT
+Y4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1NywxOTEwMDk3
+MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEyOTU1NCwtMT
+QxOTE2MDcyOSwtMTM4OTczMzYyNiwtMTEyNDE3NTEzNywxNTU0
+OTkyMzY0LC0xNDI4MjcwNjUsMzA4ODQxMDExLDEwMTA0NDU2NT
+MsMTUxNTQxODkzLC0xMTcyNzEyOTI2LDEzNjg1NjYyNjIsMjQy
+NTU2Mzg5XX0=
 -->
