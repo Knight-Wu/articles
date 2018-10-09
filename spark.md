@@ -621,8 +621,6 @@ spark.sql("xxxsql").explain()
 
 ---
 #### 疑问
-* 还是要把本地windows环境起起来, spark如何指定 scala, hadoop
-* spark 为什么要序列化 task, 可不可以直接传输二进制, 序列化发生在什么阶段
 * 基准测试 benchmark
 * 手动尝试node fail, task fail等场景触发spark fail-tolerance
  * spark 应用程序如何估算自己的所需的内存, 是否只能通过实际跑查看webUI才能看到.
