@@ -490,17 +490,18 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 
 ### 数据倾斜
 某个parttion的大小远大于其他parttion，stage执行的时间取决于task（parttion）中最慢的那个，导致某个stage执行过慢
- * 情形暂定为两种
-   * 相同的key的数据量太大
+情形暂定为两种
+   * 相同的key的数据量太大(一般都是因为这个)
    * 不同的key在同一个parttion的数据量太大
-> 由于同一个Stage内的所有Task执行相同的计算，在排除不同计算节点计算能力差异的前提下，不同Task之间耗时的差异主要由该Task所处理的数据量决定。
+
+> 解决办法
 * 提升并行程度,
 * 在hive端就去除倾斜的现象, 保证spark端使用的时效
 * 过滤少数导致数据倾斜的key
 *  将key添加随机前缀, 进行局部聚合,然后去掉随机前缀, 再进行全局聚合
 * 改变parttion的数量
 * 自定义parttion
-* 避免shuffle
+* 避免shuffle, 通过将小表广播到dab
 
 
 
@@ -665,11 +666,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxNjg4NDIyOSwtMTA3NTkwMzg0MywtNT
-cwMzAxODU3LDE5MTAwOTcxNzQsLTczMTQzMTAzMCw4MTM5ODQ2
-NDcsMTUzMTI5NTU0LC0xNDE5MTYwNzI5LC0xMzg5NzMzNjI2LC
-0xMTI0MTc1MTM3LDE1NTQ5OTIzNjQsLTE0MjgyNzA2NSwzMDg4
-NDEwMTEsMTAxMDQ0NTY1MywxNTE1NDE4OTMsLTExNzI3MTI5Mj
-YsMTM2ODU2NjI2MiwyNDI1NTYzODksLTEzODk0MDYyODgsLTU2
-Mzk4MTM2M119
+eyJoaXN0b3J5IjpbMTMxNjE5MTIsMTgxNjg4NDIyOSwtMTA3NT
+kwMzg0MywtNTcwMzAxODU3LDE5MTAwOTcxNzQsLTczMTQzMTAz
+MCw4MTM5ODQ2NDcsMTUzMTI5NTU0LC0xNDE5MTYwNzI5LC0xMz
+g5NzMzNjI2LC0xMTI0MTc1MTM3LDE1NTQ5OTIzNjQsLTE0Mjgy
+NzA2NSwzMDg4NDEwMTEsMTAxMDQ0NTY1MywxNTE1NDE4OTMsLT
+ExNzI3MTI5MjYsMTM2ODU2NjI2MiwyNDI1NTYzODksLTEzODk0
+MDYyODhdfQ==
 -->
