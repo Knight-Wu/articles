@@ -501,7 +501,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 *  将key添加随机前缀, 进行局部聚合,然后去掉随机前缀, 再进行全局聚合
 * 改变parttion的数量
 * 自定义parttion
-* 避免shuffle, 通过将小表广播到dab
+* 避免shuffle, 通过将小表广播到大表所在的节点
 
 
 
@@ -666,11 +666,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxNjE5MTIsMTgxNjg4NDIyOSwtMTA3NT
-kwMzg0MywtNTcwMzAxODU3LDE5MTAwOTcxNzQsLTczMTQzMTAz
-MCw4MTM5ODQ2NDcsMTUzMTI5NTU0LC0xNDE5MTYwNzI5LC0xMz
-g5NzMzNjI2LC0xMTI0MTc1MTM3LDE1NTQ5OTIzNjQsLTE0Mjgy
-NzA2NSwzMDg4NDEwMTEsMTAxMDQ0NTY1MywxNTE1NDE4OTMsLT
-ExNzI3MTI5MjYsMTM2ODU2NjI2MiwyNDI1NTYzODksLTEzODk0
-MDYyODhdfQ==
+eyJoaXN0b3J5IjpbLTE1ODg2NjMwOTMsMTgxNjg4NDIyOSwtMT
+A3NTkwMzg0MywtNTcwMzAxODU3LDE5MTAwOTcxNzQsLTczMTQz
+MTAzMCw4MTM5ODQ2NDcsMTUzMTI5NTU0LC0xNDE5MTYwNzI5LC
+0xMzg5NzMzNjI2LC0xMTI0MTc1MTM3LDE1NTQ5OTIzNjQsLTE0
+MjgyNzA2NSwzMDg4NDEwMTEsMTAxMDQ0NTY1MywxNTE1NDE4OT
+MsLTExNzI3MTI5MjYsMTM2ODU2NjI2MiwyNDI1NTYzODksLTEz
+ODk0MDYyODhdfQ==
 -->
