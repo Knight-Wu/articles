@@ -508,8 +508,14 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 
 腾讯大数据平台数据分析确切碰到的问题
 ```
-大表A
-uuid url 
+大表A(大概每天的增量数据有3T)
+uuid url time 
+url为用户每天访问的
+小表B(映射表数据为大概300GB)
+url result
+
+需要将A和B join, 生成结果保存在hive
+uuid time url 
 
 ```
 
@@ -675,11 +681,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg4MDcwMDgsMTQ2MTg5ODg3MywxODE2OD
-g0MjI5LC0xMDc1OTAzODQzLC01NzAzMDE4NTcsMTkxMDA5NzE3
-NCwtNzMxNDMxMDMwLDgxMzk4NDY0NywxNTMxMjk1NTQsLTE0MT
-kxNjA3MjksLTEzODk3MzM2MjYsLTExMjQxNzUxMzcsMTU1NDk5
-MjM2NCwtMTQyODI3MDY1LDMwODg0MTAxMSwxMDEwNDQ1NjUzLD
-E1MTU0MTg5MywtMTE3MjcxMjkyNiwxMzY4NTY2MjYyLDI0MjU1
-NjM4OV19
+eyJoaXN0b3J5IjpbMTQ2NzkxOTgyNiwxNDYxODk4ODczLDE4MT
+Y4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1NywxOTEwMDk3
+MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEyOTU1NCwtMT
+QxOTE2MDcyOSwtMTM4OTczMzYyNiwtMTEyNDE3NTEzNywxNTU0
+OTkyMzY0LC0xNDI4MjcwNjUsMzA4ODQxMDExLDEwMTA0NDU2NT
+MsMTUxNTQxODkzLC0xMTcyNzEyOTI2LDEzNjg1NjYyNjIsMjQy
+NTU2Mzg5XX0=
 -->
