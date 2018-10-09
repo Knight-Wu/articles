@@ -511,15 +511,16 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 大表A(大概每天的增量数据有3T)
 uuid url time 
 url为用户每天访问的url, 有些热门网址出现的次数就非常多了, 就有数据倾斜的问题
+
 小表B(映射表数据为大概300GB)
 url result
 
 需要将A和B join, 生成结果保存在hive
 uuid time url result
-
-
-
 ```
+> 思路
+
+1.  将表A抽样百分之十, 
 
 
 
@@ -683,11 +684,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyOTMzNTE2MywxNDYxODk4ODczLDE4MT
-Y4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1NywxOTEwMDk3
-MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEyOTU1NCwtMT
-QxOTE2MDcyOSwtMTM4OTczMzYyNiwtMTEyNDE3NTEzNywxNTU0
-OTkyMzY0LC0xNDI4MjcwNjUsMzA4ODQxMDExLDEwMTA0NDU2NT
-MsMTUxNTQxODkzLC0xMTcyNzEyOTI2LDEzNjg1NjYyNjIsMjQy
-NTU2Mzg5XX0=
+eyJoaXN0b3J5IjpbLTIwMTEzNDM1MTUsMTQ2MTg5ODg3MywxOD
+E2ODg0MjI5LC0xMDc1OTAzODQzLC01NzAzMDE4NTcsMTkxMDA5
+NzE3NCwtNzMxNDMxMDMwLDgxMzk4NDY0NywxNTMxMjk1NTQsLT
+E0MTkxNjA3MjksLTEzODk3MzM2MjYsLTExMjQxNzUxMzcsMTU1
+NDk5MjM2NCwtMTQyODI3MDY1LDMwODg0MTAxMSwxMDEwNDQ1Nj
+UzLDE1MTU0MTg5MywtMTE3MjcxMjkyNiwxMzY4NTY2MjYyLDI0
+MjU1NjM4OV19
 -->
