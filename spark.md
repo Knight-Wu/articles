@@ -504,6 +504,14 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 * 避免shuffle, 通过将小表广播到大表所在的节点, 进行hash-join
 * 通过抽样来
 
+> 例题
+
+腾讯大数据平台数据分析确切碰到的问题
+```
+大表A
+uuid url 
+
+```
 
 
 
@@ -667,11 +675,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2MTg5ODg3MywxODE2ODg0MjI5LC0xMD
-c1OTAzODQzLC01NzAzMDE4NTcsMTkxMDA5NzE3NCwtNzMxNDMx
-MDMwLDgxMzk4NDY0NywxNTMxMjk1NTQsLTE0MTkxNjA3MjksLT
-EzODk3MzM2MjYsLTExMjQxNzUxMzcsMTU1NDk5MjM2NCwtMTQy
-ODI3MDY1LDMwODg0MTAxMSwxMDEwNDQ1NjUzLDE1MTU0MTg5My
-wtMTE3MjcxMjkyNiwxMzY4NTY2MjYyLDI0MjU1NjM4OSwtMTM4
-OTQwNjI4OF19
+eyJoaXN0b3J5IjpbNDg4MDcwMDgsMTQ2MTg5ODg3MywxODE2OD
+g0MjI5LC0xMDc1OTAzODQzLC01NzAzMDE4NTcsMTkxMDA5NzE3
+NCwtNzMxNDMxMDMwLDgxMzk4NDY0NywxNTMxMjk1NTQsLTE0MT
+kxNjA3MjksLTEzODk3MzM2MjYsLTExMjQxNzUxMzcsMTU1NDk5
+MjM2NCwtMTQyODI3MDY1LDMwODg0MTAxMSwxMDEwNDQ1NjUzLD
+E1MTU0MTg5MywtMTE3MjcxMjkyNiwxMzY4NTY2MjYyLDI0MjU1
+NjM4OV19
 -->
