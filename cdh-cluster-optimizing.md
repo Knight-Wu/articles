@@ -1,3 +1,4 @@
+
 ### 一. 优化磁盘mount选项
 > cloudera给出的建议
 
@@ -19,6 +20,7 @@ Linux filesystems keep metadata that record when each file was accessed. This me
 However, using the  sync  option will lead to poor performance for services that write data to disks, such as HDFS, YARN, Kafka and Kudu. In CDH most writes are already replicated. Therefore, having synchronous writes to disks is unnecessary, expensive, and not worth the added safety it provides.
 * 操作步骤
 
+> 手动更改参数
 ```
 1. cat /etc/fstab 
 # 先查看当前的挂载点的选项, 默认如果是default, 等于rw,suid,dev,exec,auto,nouser,async，具体可查 man mount
@@ -32,6 +34,26 @@ However, using the  sync  option will lead to poor performance for services that
 # 重新挂载
 4. 或者可以通过命令行更改指定目录的文件选项,跟第二步是同样的效果: 
 mount -o rw,noatime,nodiratime,data=ordered,async /data
+
+```
+
+> 使用我提供的脚本修改
+
+```
+
+#!/bin/sh
+set -o nounset
+set -o errexit 
+echo 'change line $1 from $2 /etc/fstab/ '
+echo 'mount disk count :$3'
+# $1 和 $2 为 /etc/fstab需要修改的行数, 将 defaults 改为 defaults,noatime,nodiratime
+sed '$1,$2s/defaults/defaults,noatime,nodiratime/g' /etc/fstab
+sed -i '$1,$2s/defaults/defaults,noatime,nodiratime/g' /etc/fstab
+for i in $(seq 1 $3)
+do
+   mount -o remount /app$i 
+   #/app$i 为挂载路径
+done
 
 ```
 
@@ -103,3 +125,6 @@ This measures the duration taken to write to the next DN over a regular TCP sock
 
 具体操作排查手册可参考:  [https://cloud.tencent.com/developer/article/1158307](https://cloud.tencent.com/developer/article/1158307)
  
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbOTQyODIyNDM0XX0=
+-->
