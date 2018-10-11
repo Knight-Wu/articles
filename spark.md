@@ -545,7 +545,7 @@ uuid time url result
 
 
 ### hive on spark, hive on MR 和spark sql的区别
-1. hive on spark 和spark sql 计算引擎都是spark, 只是从sql翻译成执行计划不一样, 并且可以使用hive的一些对sql 的优化, 这方面hive 的经验更丰富, 历史更久, 相当于对用户提供了两个项目的优化特性, 
+1. hive on spark 和spark sql 计算引擎都是spark, 只是从sql翻译成执行计划不一样, 并且可以使用hive的一些优化特性, 特别是对sql的优化, 这方面hive 的经验更丰富, 历史更久, 相当于对用户提供了两个项目的优化特性, 
 2. hive on spark 最后启动一个spark session, 是一个常驻任务, 可以运行多次application
 3. 
 
@@ -686,11 +686,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2MDM1ODY0NywtMTM0NjUyNDA2NiwxMz
-AzNTg4MTkyLDE5NjIwODQyMiwxNDYxODk4ODczLDE4MTY4ODQy
-MjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1NywxOTEwMDk3MTc0LC
-03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEyOTU1NCwtMTQxOTE2
-MDcyOSwtMTM4OTczMzYyNiwtMTEyNDE3NTEzNywxNTU0OTkyMz
-Y0LC0xNDI4MjcwNjUsMzA4ODQxMDExLDEwMTA0NDU2NTMsMTUx
-NTQxODkzXX0=
+eyJoaXN0b3J5IjpbLTIxNDU4MDkzMTAsLTEzNDY1MjQwNjYsMT
+MwMzU4ODE5MiwxOTYyMDg0MjIsMTQ2MTg5ODg3MywxODE2ODg0
+MjI5LC0xMDc1OTAzODQzLC01NzAzMDE4NTcsMTkxMDA5NzE3NC
+wtNzMxNDMxMDMwLDgxMzk4NDY0NywxNTMxMjk1NTQsLTE0MTkx
+NjA3MjksLTEzODk3MzM2MjYsLTExMjQxNzUxMzcsMTU1NDk5Mj
+M2NCwtMTQyODI3MDY1LDMwODg0MTAxMSwxMDEwNDQ1NjUzLDE1
+MTU0MTg5M119
 -->
