@@ -5,7 +5,7 @@
 
 ### 一. 环境准备
 1. 安装scala环境, 需要从scala官网下载scala 压缩包, idea安装scala插件
-2. 下载hadoop 
+2. 下载hadoop windows编译好的包和spark 包, 
 
 
 
@@ -18,6 +18,6 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjUwOTU5NjI5LDQxODAxNTk3LC03ODgxMz
+eyJoaXN0b3J5IjpbNDg0ODE3NDYzLDQxODAxNTk3LC03ODgxMz
 gzOTNdfQ==
 -->
