@@ -1,9 +1,10 @@
 ### 前言
-老早就想在windows 搭建一个本地环境, 一拖再拖, 这次终于花了两三天零碎的时间搞定了. 本文属于搭建好之后的总结, 一些零碎和基础的点就没写, 只画重点和一些问题.
+老早就想在windows 搭建一个本地环境, 一拖再拖, 这次终于花了两三天零碎的时间搞定了. 本文属于搭建好之后的总结, 一些零碎和基础的点就没写, 只画重点和一些常见的问题. 
 
 ---
 
-### 一.
+### 一. 环境准备
+1. ide 安装scala环境, 需要从scala官网下载scala 压缩包
 
 
 
@@ -16,6 +17,6 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3NjI1MzkwMiw0MTgwMTU5NywtNzg4MT
-M4MzkzXX0=
+eyJoaXN0b3J5IjpbLTE4NTY0OTE3NjgsNDE4MDE1OTcsLTc4OD
+EzODM5M119
 -->
