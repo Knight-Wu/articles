@@ -9,7 +9,7 @@
 3.  从github 选择对应的分支, 下载spark的源码, 然后导入idea
 4. 测试hadoop 环境
 
-之前我天真的以为 spark 不强依赖hadoop, 直接用spark-shell 验证环境, 后面回想起来应该先验证hadoop, 
+	之前我天真的以为 spark 不强依赖hadoop, 直接用spark-shell 验证环境, 就碰到了这个错误: NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream when execute spark-shell 事后总结应该先验证hadoop, 可以cank
 
 
 
@@ -22,6 +22,6 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTczMDE2ODgwMiw0MTgwMTU5NywtNzg4MT
+eyJoaXN0b3J5IjpbLTM4MDM2NTYyOCw0MTgwMTU5NywtNzg4MT
 M4MzkzXX0=
 -->
