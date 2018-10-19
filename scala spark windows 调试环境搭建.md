@@ -30,15 +30,13 @@
 local 模式: 
 ```
 run-example --verbose --master local[*] SparkPi // verbose(打印额外的debug 信息)
-
+run-example --verbose --master yarn --deploy-mode cluster SparkPi // 
 spark-submit  // 查看一些常用的配置
 ```
 
-yarn 模式: 
-
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjcwMTg0MDcsLTE1MDcyNTQ2NTMsLT
-QzMDc2NDQ1NSwtMTcxMDM1NTcxOCwtNzM2MDgwMzgwLDQxODAx
-NTk3LC03ODgxMzgzOTNdfQ==
+eyJoaXN0b3J5IjpbLTE1NjY5MjExOCwtMTQyNzAxODQwNywtMT
+UwNzI1NDY1MywtNDMwNzY0NDU1LC0xNzEwMzU1NzE4LC03MzYw
+ODAzODAsNDE4MDE1OTcsLTc4ODEzODM5M119
 -->
