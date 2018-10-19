@@ -22,6 +22,8 @@
 
 > spark-env
 
+
+
 这一步还遇到一个javaHome配置的问题: 在bin/hadoop 路径下, cmd输入hadoop classpath出错, 详情见[# [Hadoop on Windows - “Error JAVA_HOME is incorrectly set.”](https://stackoverflow.com/questions/31621032/hadoop-on-windows-error-java-home-is-incorrectly-set)](Hadoop%20on%20Windows%20-%20%E2%80%9CError%20JAVA_HOME%20is%20incorrectly%20set.%E2%80%9D), 原因是JAVA_HOME 的路径包括有空格, 去掉空格即可.
 
 6. 测试spark 环境
@@ -34,6 +36,6 @@ run-example --master local[*] SparkPi // 先测试local模式
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxNTE3MTk3NiwtMTcxMDM1NTcxOCwtNz
-M2MDgwMzgwLDQxODAxNTk3LC03ODgxMzgzOTNdfQ==
+eyJoaXN0b3J5IjpbLTIwOTgxOTc5MTYsLTE3MTAzNTU3MTgsLT
+czNjA4MDM4MCw0MTgwMTU5NywtNzg4MTM4MzkzXX0=
 -->
