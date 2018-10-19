@@ -14,7 +14,9 @@ hive目录结构: /hive/warehouse/databaseName.db/tableName/
 
 
 
+
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAxNjA4NjgzXX0=
+eyJoaXN0b3J5IjpbMTE1NDg3OTgxNSwyMDE2MDg2ODNdfQ==
 -->
