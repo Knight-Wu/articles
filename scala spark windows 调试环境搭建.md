@@ -46,13 +46,13 @@ spark-submit  // 查看一些常用的配置
 
 具体的spark main方法可以借鉴 SPARK_HOME/examples/ 里面的代码.
 
-启动
+启动idea remote debug
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0NTg2MjE3MiwtNTExNTk0NDg0LC0xND
-I3MDE4NDA3LC0xNTA3MjU0NjUzLC00MzA3NjQ0NTUsLTE3MTAz
-NTU3MTgsLTczNjA4MDM4MCw0MTgwMTU5NywtNzg4MTM4MzkzXX
-0=
+eyJoaXN0b3J5IjpbMzIyODE2ODA2LC01MTE1OTQ0ODQsLTE0Mj
+cwMTg0MDcsLTE1MDcyNTQ2NTMsLTQzMDc2NDQ1NSwtMTcxMDM1
+NTcxOCwtNzM2MDgwMzgwLDQxODAxNTk3LC03ODgxMzgzOTNdfQ
+==
 -->
