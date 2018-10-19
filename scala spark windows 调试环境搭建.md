@@ -41,12 +41,14 @@ spark-submit  // 查看一些常用的配置
 
 > main 启动
 
-注意需要指定driver_extra_classpath, 不然
+注意需要指定driver_extra_classpath 为classes的目录, 加上package name可以找到 class, 不然会报class not found. 也可以用 java -cp xxxYourClasspath xxxclassName 来测试
 ![enter image description here](https://drive.google.com/uc?id=1uOwX_NLuD9w9LRG35_V85g6tGQ3dGLWT)
+
+
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0NTA5MDg5MywtNTExNTk0NDg0LC0xND
+eyJoaXN0b3J5IjpbLTI2OTkyNjY4MCwtNTExNTk0NDg0LC0xND
 I3MDE4NDA3LC0xNTA3MjU0NjUzLC00MzA3NjQ0NTUsLTE3MTAz
 NTU3MTgsLTczNjA4MDM4MCw0MTgwMTU5NywtNzg4MTM4MzkzXX
 0=
