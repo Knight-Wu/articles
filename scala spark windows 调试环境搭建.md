@@ -34,9 +34,14 @@ run-example --verbose --master yarn --deploy-mode cluster SparkPi //
 spark-submit  // 查看一些常用的配置
 ```
 
+
+7. ide 调试spark 程序
+
+使用local 模式
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjY5MjExOCwtMTQyNzAxODQwNywtMT
+eyJoaXN0b3J5IjpbLTUxMTU5NDQ4NCwtMTQyNzAxODQwNywtMT
 UwNzI1NDY1MywtNDMwNzY0NDU1LC0xNzEwMzU1NzE4LC03MzYw
 ODAzODAsNDE4MDE1OTcsLTc4ODEzODM5M119
 -->
