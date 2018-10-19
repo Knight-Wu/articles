@@ -46,13 +46,13 @@ spark-submit  // 查看一些常用的配置
 
 具体的spark main方法可以借鉴 SPARK_HOME/examples/ 里面的代码.
 
-启动idea remote debug
+启动idea remote debug, port: 5005是本地的监听端口, 自定义的, 只要不冲突就行. 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzIyODE2ODA2LC01MTE1OTQ0ODQsLTE0Mj
-cwMTg0MDcsLTE1MDcyNTQ2NTMsLTQzMDc2NDQ1NSwtMTcxMDM1
-NTcxOCwtNzM2MDgwMzgwLDQxODAxNTk3LC03ODgxMzgzOTNdfQ
-==
+eyJoaXN0b3J5IjpbLTEwMDg0ODUxOTAsLTUxMTU5NDQ4NCwtMT
+QyNzAxODQwNywtMTUwNzI1NDY1MywtNDMwNzY0NDU1LC0xNzEw
+MzU1NzE4LC03MzYwODAzODAsNDE4MDE1OTcsLTc4ODEzODM5M1
+19
 -->
