@@ -41,12 +41,13 @@ spark-submit  // 查看一些常用的配置
 
 > main 启动
 
-
+注意需要指定driver_extra_classpath, 不然
+![enter image description here](https://drive.google.com/uc?id=1uOwX_NLuD9w9LRG35_V85g6tGQ3dGLWT)
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExOTQxMjgzODYsLTUxMTU5NDQ4NCwtMT
-QyNzAxODQwNywtMTUwNzI1NDY1MywtNDMwNzY0NDU1LC0xNzEw
-MzU1NzE4LC03MzYwODAzODAsNDE4MDE1OTcsLTc4ODEzODM5M1
-19
+eyJoaXN0b3J5IjpbMjA0NTA5MDg5MywtNTExNTk0NDg0LC0xND
+I3MDE4NDA3LC0xNTA3MjU0NjUzLC00MzA3NjQ0NTUsLTE3MTAz
+NTU3MTgsLTczNjA4MDM4MCw0MTgwMTU5NywtNzg4MTM4MzkzXX
+0=
 -->
