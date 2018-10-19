@@ -11,7 +11,7 @@
 	hadoop的配置路径: ./etc/hadoop , spark的配置路径: ./conf, 因为公司用的cloudera 集群, 我直接从cloudera-manager 下载了yarn和hadoop的客户端配置
 5. 测试hadoop 环境
 
-	之前我天真的以为 spark 不强依赖hadoop, 直接用spark-shell 验证环境, 就碰到了这个错误: NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream when execute spark-shell 事后总结应该先验证hadoop, 可以参考这个链接的第一个回答: [NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream](%5BNoClassDefFoundError%20com.apache.hadoop.fs.FSDataInputStream%20when%20execute%20spark-shell%5D%28https://stackoverflow.com/questions/30906412/noclassdeffounderror-com-apache-hadoop-fs-fsdatainputstream-when-execute-spark-s%29), 
+	之前我天真的以为 spark 不强依赖hadoop, 直接用spark-shell 验证环境, 就碰到了这个错误: NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream when execute spark-shell 事后总结应该先验证hadoop, 可以参考这个链接的第一个回答: [NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream](%5BNoClassDefFoundError%20com.apache.hadoop.fs.FSDataInputStream%20when%20execute%20spark-shell%5D%28https://stackoverflow.com/questions/30906412/noclassdeffounderror-com-apache-hadoop-fs-fsdatainputstream-when-execute-spark-s%29),  总结一下: 目前spark可以灵活依赖hadoop版本, 不需要像1.4之前和hadoop一起build, 目前把 bin/hadoop classpath
 
 
 
@@ -24,6 +24,6 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTczNjA4MDM4MCw0MTgwMTU5NywtNzg4MT
-M4MzkzXX0=
+eyJoaXN0b3J5IjpbMjA5ODU4NzkwOCwtNzM2MDgwMzgwLDQxOD
+AxNTk3LC03ODgxMzgzOTNdfQ==
 -->
