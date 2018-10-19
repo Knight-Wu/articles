@@ -10,10 +10,12 @@
 4. 添加集群配置到hadoop 和spark的配置路径
 	hadoop的配置路径: ./etc/hadoop , spark的配置路径: ./conf, 因为公司用的cloudera 集群, 我直接从cloudera-manager 下载了yarn和hadoop的客户端配置
 
-5. 用命令hadoop fs -ls /
+5. 测试hadoop 环境
+
+	用命令 hadoop fs -ls /
 6. 测试spark 环境
 
-	之前我天真的以为 spark 不强依赖hadoop, 直接用spark-shell 验证环境, 就碰到了这个错误: NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream when execute spark-shell 事后总结应该先验证hadoop, 可以参考这个链接的第一个回答: [NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream](%5BNoClassDefFoundError%20com.apache.hadoop.fs.FSDataInputStream%20when%20execute%20spark-shell%5D%28https://stackoverflow.com/questions/30906412/noclassdeffounderror-com-apache-hadoop-fs-fsdatainputstream-when-execute-spark-s%29),  总结一下: 目前spark需要依赖Hadoop client libraries for HDFS and YARN,  但是可以灵活依赖hadoop版本, 不需要像1.4之前和hadoop一起build, 目前把 bin/hadoop classpath的输出配置到conf/spark-env.sh就可以了, windows是 conf/spark-env.cmd(没有就创建一个), 配置的加载逻辑可以看 spark-class脚本.
+	之前我天真的以为 spark 不强依赖hadoop, 直接用spark-shell 验证环境, 就碰到了这个错误: NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream when execute spark-shell 事后总结应该先验证hadoop, 可以参考这个链接的第一个回答: [NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream](%5BNoClassDefFoundError%20com.apache.hadoop.fs.FSDataInputStream%20when%20execute%20spark-shell%5D%28https://stackoverflow.com/questions/30906412/noclassdeffounderror-com-apache-hadoop-fs-fsdatainputstream-when-execute-spark-s%29),  总结一下: 目前spark需要依赖Hadoop client libraries for HDFS and YARN,  但是可以灵活依赖hadoop版本, 不需要像1.4之前和hadoop一起build, 目前把 bin/hadoop classpath的输出以及hadoopHome 配置到conf/spark-env.sh就可以了, windows是 conf/spark-env.cmd(没有就创建一个),如下图, 配置的加载逻辑可以看 spark-class脚本.
 >	bin/hadoop classpath input
 
 ![hadoop classpath](https://drive.google.com/uc?id=1Mjm78ZLoSMzIpoegwPIaaIdxb0JO0Pvx)
@@ -30,6 +32,6 @@ run-example --master local[*] SparkPi // 先测试local模式
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5MTEzOTM5NCwtMTcxMDM1NTcxOCwtNz
+eyJoaXN0b3J5IjpbMTc3ODg0MDU0MSwtMTcxMDM1NTcxOCwtNz
 M2MDgwMzgwLDQxODAxNTk3LC03ODgxMzgzOTNdfQ==
 -->
