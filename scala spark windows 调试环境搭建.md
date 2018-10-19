@@ -3,7 +3,7 @@
 
 ---
 
-### 一. 环境准备
+### 步骤
 1. 安装scala环境, 需要从scala官网下载scala 压缩包, idea安装scala插件
 2. 下载hadoop windows编译好的包和spark 包, hadoop 下载: [hadoop-2.6.0 windows](http://www.barik.net/archive/2015/01/19/172716/), 这个链接是从 [[NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream when execute spark-shell](https://stackoverflow.com/questions/30906412/noclassdeffounderror-com-apache-hadoop-fs-fsdatainputstream-when-execute-spark-s)这个回答里面找的; spark下载: [spark-download](https://spark.apache.org/downloads.html), 这个是官网地址, choose a package type: pre-build with user-provided apache hadoop , 因为我们之前已经从其他地方下载了hadoop, 也可以选择使用hadoop 编译的版本, 这个没有试过, 
 3.  从github 选择对应的分支, 下载spark的源码, 然后导入idea
@@ -40,6 +40,7 @@ spark-submit  // 查看一些常用的配置
 which contains the (client side) configuration files for the Hadoop cluster. These configs are used to write to HDFS and connect to the YARN ResourceManager
 其实只要在spark-env.cmd 里面指定 HADOOP_CONF_DIR 就可以了, HADOOP_CONF_DIR 路径下要包含yarn-site.xml.
 
+
 7. ide 调试spark 程序
 
 基于spark-2.2.0 , 使用local[*] 模式
@@ -71,7 +72,7 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 ```
 
 
-> 启动idea remote debug, port: 5005是本地的监听端口, 自定义的, 只要不冲突就行. 
+ 启动idea remote debug, port: 5005是本地的监听端口, 自定义的, 只要不冲突就行. 
 
 ![enter image description here](https://drive.google.com/uc?id=1OFfFTLlOSuTX6kgGGWqzK9GiFRZ5wAKn)
 然后使用debug模式启动remote jvm,  先监听端口, 待spark 程序起来后就会进入断点, 然后通过命令行启动spark-submit, 并把ide 里面remote jvm的配置写到--driver-java-options, 暂时不需要onthrow和onuncaught 参数, 即可进入断点
@@ -82,8 +83,8 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTczMDk0ODc4NCwzNTMyNTU0MTgsMTcwNz
-c0MDQ2LC01MTE1OTQ0ODQsLTE0MjcwMTg0MDcsLTE1MDcyNTQ2
-NTMsLTQzMDc2NDQ1NSwtMTcxMDM1NTcxOCwtNzM2MDgwMzgwLD
-QxODAxNTk3LC03ODgxMzgzOTNdfQ==
+eyJoaXN0b3J5IjpbLTE0NDI5NDEzNjgsMzUzMjU1NDE4LDE3MD
+c3NDA0NiwtNTExNTk0NDg0LC0xNDI3MDE4NDA3LC0xNTA3MjU0
+NjUzLC00MzA3NjQ0NTUsLTE3MTAzNTU3MTgsLTczNjA4MDM4MC
+w0MTgwMTU5NywtNzg4MTM4MzkzXX0=
 -->
