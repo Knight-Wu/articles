@@ -26,13 +26,18 @@
 
 这一步还遇到一个javaHome配置的问题: 在bin/hadoop 路径下, cmd输入hadoop classpath出错, 详情见[# [Hadoop on Windows - “Error JAVA_HOME is incorrectly set.”](https://stackoverflow.com/questions/31621032/hadoop-on-windows-error-java-home-is-incorrectly-set)](Hadoop%20on%20Windows%20-%20%E2%80%9CError%20JAVA_HOME%20is%20incorrectly%20set.%E2%80%9D), 原因是JAVA_HOME 的路径包括有空格, 去掉空格即可.
 
-在$SPARK_HOME/bin目录下执行, spark on yarn的配置
+在$SPARK_HOME/bin目录下执行, 
 
 ```
 run-example --verbose --master local[*] SparkPi // verbose(打印额外的debug 信息)
 run-example --verbose --master yarn --deploy-mode cluster SparkPi // 
 spark-submit  // 查看一些常用的配置
 ```
+
+> spark on yarn 配置
+
+> Ensure that `HADOOP_CONF_DIR` or `YARN_CONF_DIR` points to the directory 
+which contains the (client side) configuration files for the Hadoop cluster. These configs are used to write to HDFS and connect to the YARN ResourceManager
 
 
 7. ide 调试spark 程序
@@ -77,7 +82,7 @@ spark-submit  // 查看一些常用的配置
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDQxNjU5NiwzNTMyNTU0MTgsMTcwNz
+eyJoaXN0b3J5IjpbLTk2OTc1MTcyMCwzNTMyNTU0MTgsMTcwNz
 c0MDQ2LC01MTE1OTQ0ODQsLTE0MjcwMTg0MDcsLTE1MDcyNTQ2
 NTMsLTQzMDc2NDQ1NSwtMTcxMDM1NTcxOCwtNzM2MDgwMzgwLD
 QxODAxNTk3LC03ODgxMzgzOTNdfQ==
