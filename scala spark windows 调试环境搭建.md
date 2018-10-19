@@ -37,14 +37,17 @@ spark-submit  // 查看一些常用的配置
 
 7. ide 调试spark 程序
 
-基于spark-2.2.0 , 使用local 模式
+基于spark-2.2.0 , 使用local[*] 模式
 
-> main 启动
+> main 启动类
 
 注意需要指定driver_extra_classpath 为classes的目录, 加上package name可以找到 class, 不然会报class not found. 也可以用 java -cp xxxYourClasspath xxxclassName 来测试
 ![enter image description here](https://drive.google.com/uc?id=1uOwX_NLuD9w9LRG35_V85g6tGQ3dGLWT)
 
-具体的spark main方法可以借鉴 SPARK_HOME/examples/ 里面的代码.
+> 具体的spark main方法可以借鉴 SPARK_HOME/examples/ 里面的代码.
+
+> 编写 maven pom文件
+
 
 
 启动idea remote debug, port: 5005是本地的监听端口, 自定义的, 只要不冲突就行. 
@@ -58,7 +61,7 @@ spark-submit  // 查看一些常用的配置
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MTE0Nzk3MDQsMzUzMjU1NDE4LDE3MD
+eyJoaXN0b3J5IjpbLTE3Njg2NDQ1NTgsMzUzMjU1NDE4LDE3MD
 c3NDA0NiwtNTExNTk0NDg0LC0xNDI3MDE4NDA3LC0xNTA3MjU0
 NjUzLC00MzA3NjQ0NTUsLTE3MTAzNTU3MTgsLTczNjA4MDM4MC
 w0MTgwMTU5NywtNzg4MTM4MzkzXX0=
