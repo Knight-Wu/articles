@@ -47,9 +47,10 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 
 > main 启动类
 
-配置里 
+配置里 driver_extra_java_options 是从remote debug复制过来的, 具体后面会讲解.
+![enter image description here](https://drive.google.com/uc?id=1ymtejwlzml7ub5b6uYB0A_BmJqZEz9LS)
 
-> 具体的spark main方法可以借鉴 SPARK_HOME/examples/ 里面的代码.
+> 具体的spark main class 可以借鉴 SPARK_HOME/examples/ 里面的代码.
 
 > 编写 maven pom文件
 
@@ -74,7 +75,7 @@ which contains the (client side) configuration files for the Hadoop cluster. The
  启动idea remote debug, port: 5005是本地的监听端口, 自定义的, 只要不冲突就行. 
 
 ![enter image description here](https://drive.google.com/uc?id=1OFfFTLlOSuTX6kgGGWqzK9GiFRZ5wAKn)
-然后使用debug模式启动remote jvm,  先监听端口, 待spark 程序起来后就会进入断点, 然后再启动main 入口类
+然后使用debug模式启动remote jvm,  先监听端口, 待spark 程序起来后就会进入断点, 然后再启动main 入口类, 下图是spar
 
 ![](https://drive.google.com/uc?id=1EJmhS5q2AcLDxnpko7_MCg6J3GVKdpoB)
 
@@ -82,8 +83,8 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzI0ODczNDQsLTE0NDI5NDEzNjgsMz
-UzMjU1NDE4LDE3MDc3NDA0NiwtNTExNTk0NDg0LC0xNDI3MDE4
-NDA3LC0xNTA3MjU0NjUzLC00MzA3NjQ0NTUsLTE3MTAzNTU3MT
-gsLTczNjA4MDM4MCw0MTgwMTU5NywtNzg4MTM4MzkzXX0=
+eyJoaXN0b3J5IjpbLTg1NzIyNTQxNSwtMTQ0Mjk0MTM2OCwzNT
+MyNTU0MTgsMTcwNzc0MDQ2LC01MTE1OTQ0ODQsLTE0MjcwMTg0
+MDcsLTE1MDcyNTQ2NTMsLTQzMDc2NDQ1NSwtMTcxMDM1NTcxOC
+wtNzM2MDgwMzgwLDQxODAxNTk3LC03ODgxMzgzOTNdfQ==
 -->
