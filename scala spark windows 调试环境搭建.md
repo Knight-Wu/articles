@@ -23,11 +23,11 @@
 在$SPARK_HOME/bin目录下, 执行
 
 ```
-
+run-example --master local[*] SparkPi // 先测试local模式
 ```
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDM3NDcxMTIsLTczNjA4MDM4MCw0MT
+eyJoaXN0b3J5IjpbLTE3MTAzNTU3MTgsLTczNjA4MDM4MCw0MT
 gwMTU5NywtNzg4MTM4MzkzXX0=
 -->
