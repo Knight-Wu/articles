@@ -38,7 +38,7 @@ spark-submit  // 查看一些常用的配置
 
 > Ensure that `HADOOP_CONF_DIR` or `YARN_CONF_DIR` points to the directory 
 which contains the (client side) configuration files for the Hadoop cluster. These configs are used to write to HDFS and connect to the YARN ResourceManager
-
+其实指定了 HADOOP_HOME 就可以了, find-spark-home里面
 
 7. ide 调试spark 程序
 
@@ -82,8 +82,8 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2OTc1MTcyMCwzNTMyNTU0MTgsMTcwNz
-c0MDQ2LC01MTE1OTQ0ODQsLTE0MjcwMTg0MDcsLTE1MDcyNTQ2
-NTMsLTQzMDc2NDQ1NSwtMTcxMDM1NTcxOCwtNzM2MDgwMzgwLD
-QxODAxNTk3LC03ODgxMzgzOTNdfQ==
+eyJoaXN0b3J5IjpbOTUwNzY0ODMwLDM1MzI1NTQxOCwxNzA3Nz
+QwNDYsLTUxMTU5NDQ4NCwtMTQyNzAxODQwNywtMTUwNzI1NDY1
+MywtNDMwNzY0NDU1LC0xNzEwMzU1NzE4LC03MzYwODAzODAsND
+E4MDE1OTcsLTc4ODEzODM5M119
 -->
