@@ -7,7 +7,7 @@ hbase, hive
 * hbase
 
 
-hbase 目录结构: /hbase/data/default/tableName/regionName/columnFamilyName/
+hbase 目录结构: /hbase/data/default/tableName/regionName/columnFamilyName/hfile
 
 * hive 
 
@@ -19,6 +19,6 @@ hive目录结构: /hive/warehouse/databaseName.db/tableName/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzEzMzMwMDI0LDExNTQ4Nzk4MTUsMjAxNj
-A4NjgzXX0=
+eyJoaXN0b3J5IjpbLTEzNzAxMzc3OCwzMTMzMzAwMjQsMTE1ND
+g3OTgxNSwyMDE2MDg2ODNdfQ==
 -->
