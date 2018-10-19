@@ -56,7 +56,7 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 
 注意使用这个插件, 不然无法使用maven 编译scala 文件, ide 自带的build 还是可以编译的.
 ```
-		<plugin>
+		  <plugin>
                 <groupId>org.scala-tools</groupId>
                 <artifactId>maven-scala-plugin</artifactId>
                 <version>2.15.2</version>
@@ -83,8 +83,8 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDI5NDEzNjgsMzUzMjU1NDE4LDE3MD
-c3NDA0NiwtNTExNTk0NDg0LC0xNDI3MDE4NDA3LC0xNTA3MjU0
-NjUzLC00MzA3NjQ0NTUsLTE3MTAzNTU3MTgsLTczNjA4MDM4MC
-w0MTgwMTU5NywtNzg4MTM4MzkzXX0=
+eyJoaXN0b3J5IjpbLTkyNzE1ODMyLC0xNDQyOTQxMzY4LDM1Mz
+I1NTQxOCwxNzA3NzQwNDYsLTUxMTU5NDQ4NCwtMTQyNzAxODQw
+NywtMTUwNzI1NDY1MywtNDMwNzY0NDU1LC0xNzEwMzU1NzE4LC
+03MzYwODAzODAsNDE4MDE1OTcsLTc4ODEzODM5M119
 -->
