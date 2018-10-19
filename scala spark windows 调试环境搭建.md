@@ -34,9 +34,11 @@ run-example --verbose --master local[*] SparkPi // verbose(打印额外的debug 
 spark-submit  // 查看一些常用的配置
 ```
 
+yarn 模式: 
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDcyNTQ2NTMsLTQzMDc2NDQ1NSwtMT
-cxMDM1NTcxOCwtNzM2MDgwMzgwLDQxODAxNTk3LC03ODgxMzgz
-OTNdfQ==
+eyJoaXN0b3J5IjpbLTE0MjcwMTg0MDcsLTE1MDcyNTQ2NTMsLT
+QzMDc2NDQ1NSwtMTcxMDM1NTcxOCwtNzM2MDgwMzgwLDQxODAx
+NTk3LC03ODgxMzgzOTNdfQ==
 -->
