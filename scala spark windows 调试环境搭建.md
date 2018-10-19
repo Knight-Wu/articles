@@ -47,8 +47,7 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 
 > main 启动类
 
-注意需要指定driver_extra_classpath 为classes的目录, 加上package name可以找到 class, 不然会报class not found. 也可以用 java -cp xxxYourClasspath xxxclassName 来测试
-![enter image description here](https://drive.google.com/uc?id=1uOwX_NLuD9w9LRG35_V85g6tGQ3dGLWT)
+配置里 
 
 > 具体的spark main方法可以借鉴 SPARK_HOME/examples/ 里面的代码.
 
@@ -83,8 +82,8 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwOTEwMzc0NSwtMTQ0Mjk0MTM2OCwzNT
-MyNTU0MTgsMTcwNzc0MDQ2LC01MTE1OTQ0ODQsLTE0MjcwMTg0
-MDcsLTE1MDcyNTQ2NTMsLTQzMDc2NDQ1NSwtMTcxMDM1NTcxOC
-wtNzM2MDgwMzgwLDQxODAxNTk3LC03ODgxMzgzOTNdfQ==
+eyJoaXN0b3J5IjpbLTE1MzI0ODczNDQsLTE0NDI5NDEzNjgsMz
+UzMjU1NDE4LDE3MDc3NDA0NiwtNTExNTk0NDg0LC0xNDI3MDE4
+NDA3LC0xNTA3MjU0NjUzLC00MzA3NjQ0NTUsLTE3MTAzNTU3MT
+gsLTczNjA4MDM4MCw0MTgwMTU5NywtNzg4MTM4MzkzXX0=
 -->
