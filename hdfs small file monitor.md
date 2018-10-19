@@ -8,9 +8,13 @@ hbase, hive
 
 hbase数据结构
 
+* hive 
+
+hive目录结构: /hive/warehouse/databaseName.db/tableName/
+
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQyNjI3NDEwXX0=
+eyJoaXN0b3J5IjpbMjAxNjA4NjgzXX0=
 -->
