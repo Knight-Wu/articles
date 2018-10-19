@@ -29,11 +29,14 @@
 在$SPARK_HOME/bin目录下, 执行
 
 ```
-run-example --master local[*] SparkPi // 先测试local模式
+run-example --verbose --master local[*] SparkPi // 先测试local模式, verbose(打印详细配置)
+
+spark-submit --help // chak
 ```
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzMDc2NDQ1NSwtMTcxMDM1NTcxOCwtNz
-M2MDgwMzgwLDQxODAxNTk3LC03ODgxMzgzOTNdfQ==
+eyJoaXN0b3J5IjpbLTEzOTMwNzIxMTQsLTQzMDc2NDQ1NSwtMT
+cxMDM1NTcxOCwtNzM2MDgwMzgwLDQxODAxNTk3LC03ODgxMzgz
+OTNdfQ==
 -->
