@@ -75,7 +75,7 @@ which contains the (client side) configuration files for the Hadoop cluster. The
  启动idea remote debug, port: 5005是本地的监听端口, 自定义的, 只要不冲突就行. 
 
 ![enter image description here](https://drive.google.com/uc?id=1OFfFTLlOSuTX6kgGGWqzK9GiFRZ5wAKn)
-然后使用debug模式启动remote jvm,  先监听端口, 待spark 程序起来后就会进入断点, 然后通过命令行启动spark-submit, 并把ide 里面remote jvm的配置写到--driver-java-options, 暂时不需要onthrow和onuncaught 参数, 即可进入断点
+然后使用debug模式启动remote jvm,  先监听端口, 待spark 程序起来后就会进入断点, 然后再启动main 入口类
 
 ![](https://drive.google.com/uc?id=1EJmhS5q2AcLDxnpko7_MCg6J3GVKdpoB)
 
@@ -83,8 +83,8 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyNzE1ODMyLC0xNDQyOTQxMzY4LDM1Mz
-I1NTQxOCwxNzA3NzQwNDYsLTUxMTU5NDQ4NCwtMTQyNzAxODQw
-NywtMTUwNzI1NDY1MywtNDMwNzY0NDU1LC0xNzEwMzU1NzE4LC
-03MzYwODAzODAsNDE4MDE1OTcsLTc4ODEzODM5M119
+eyJoaXN0b3J5IjpbLTkwOTEwMzc0NSwtMTQ0Mjk0MTM2OCwzNT
+MyNTU0MTgsMTcwNzc0MDQ2LC01MTE1OTQ0ODQsLTE0MjcwMTg0
+MDcsLTE1MDcyNTQ2NTMsLTQzMDc2NDQ1NSwtMTcxMDM1NTcxOC
+wtNzM2MDgwMzgwLDQxODAxNTk3LC03ODgxMzgzOTNdfQ==
 -->
