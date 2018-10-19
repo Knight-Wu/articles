@@ -37,11 +37,15 @@ spark-submit  // 查看一些常用的配置
 
 7. ide 调试spark 程序
 
-基于spa使用local 模式
+基于spark-2.2.0 , 使用local 模式
+
+> main 启动
+
+
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTk5NTk1MDAsLTUxMTU5NDQ4NCwtMT
+eyJoaXN0b3J5IjpbLTExOTQxMjgzODYsLTUxMTU5NDQ4NCwtMT
 QyNzAxODQwNywtMTUwNzI1NDY1MywtNDMwNzY0NDU1LC0xNzEw
 MzU1NzE4LC03MzYwODAzODAsNDE4MDE1OTcsLTc4ODEzODM5M1
 19
