@@ -27,7 +27,7 @@
 这一步还遇到一个javaHome配置的问题: 在bin/hadoop 路径下, cmd输入hadoop classpath出错, 详情见[# [Hadoop on Windows - “Error JAVA_HOME is incorrectly set.”](https://stackoverflow.com/questions/31621032/hadoop-on-windows-error-java-home-is-incorrectly-set)](Hadoop%20on%20Windows%20-%20%E2%80%9CError%20JAVA_HOME%20is%20incorrectly%20set.%E2%80%9D), 原因是JAVA_HOME 的路径包括有空格, 去掉空格即可.
 
 在$SPARK_HOME/bin目录下, 执行
-local 模式: 
+
 ```
 run-example --verbose --master local[*] SparkPi // verbose(打印额外的debug 信息)
 run-example --verbose --master yarn --deploy-mode cluster SparkPi // 
@@ -48,9 +48,25 @@ spark-submit  // 查看一些常用的配置
 
 > 编写 maven pom文件
 
+注意使用这个插件, 不然无法使用maven 编译scala 文件, ide 自带的build 还是可以编译的.
+```
+		<plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+```
 
 
-启动idea remote debug, port: 5005是本地的监听端口, 自定义的, 只要不冲突就行. 
+> 启动idea remote debug, port: 5005是本地的监听端口, 自定义的, 只要不冲突就行. 
 
 ![enter image description here](https://drive.google.com/uc?id=1OFfFTLlOSuTX6kgGGWqzK9GiFRZ5wAKn)
 然后使用debug模式启动remote jvm,  先监听端口, 待spark 程序起来后就会进入断点, 然后通过命令行启动spark-submit, 并把ide 里面remote jvm的配置写到--driver-java-options, 暂时不需要onthrow和onuncaught 参数, 即可进入断点
@@ -61,8 +77,8 @@ spark-submit  // 查看一些常用的配置
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3Njg2NDQ1NTgsMzUzMjU1NDE4LDE3MD
-c3NDA0NiwtNTExNTk0NDg0LC0xNDI3MDE4NDA3LC0xNTA3MjU0
-NjUzLC00MzA3NjQ0NTUsLTE3MTAzNTU3MTgsLTczNjA4MDM4MC
-w0MTgwMTU5NywtNzg4MTM4MzkzXX0=
+eyJoaXN0b3J5IjpbOTY5MDg3NzUzLDM1MzI1NTQxOCwxNzA3Nz
+QwNDYsLTUxMTU5NDQ4NCwtMTQyNzAxODQwNywtMTUwNzI1NDY1
+MywtNDMwNzY0NDU1LC0xNzEwMzU1NzE4LC03MzYwODAzODAsND
+E4MDE1OTcsLTc4ODEzODM5M119
 -->
