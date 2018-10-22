@@ -1,6 +1,6 @@
 #### 目的 
 1. 分析: 分析现有hdfs 的文件系统, 得出哪些目录下的小文件数量较多
-2. 监控: z监控文件目录, 若某个目录的小文件数量增多, 则报告
+2. 监控: 周期性扫描文件目录, 若某个目录的小文件数量增多, 则上报
 
 #### 小文件的标准
 
@@ -25,6 +25,6 @@ hive目录结构: /hive/warehouse/databaseName.db/tableName/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0MzAzMjAzNywtMTM3MDEzNzc4LDMxMz
+eyJoaXN0b3J5IjpbMTM3MzY0NTIxNSwtMTM3MDEzNzc4LDMxMz
 MzMDAyNCwxMTU0ODc5ODE1LDIwMTYwODY4M119
 -->
