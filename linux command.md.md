@@ -170,6 +170,12 @@ hostnamectl set-hostname hostname
 > ctrl+R, 然后再搜索, 直接回车
 
 
+* nohup
+让进程忽略
+```
+
+```
+
 ---
 #### 搭建cdh测试环境总结
 1. 机器
@@ -217,5 +223,6 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyODQ2NjAzOSwtNjI2OTcxNTk0XX0=
+eyJoaXN0b3J5IjpbMTc1MzQ4NTUwNiwxMDI4NDY2MDM5LC02Mj
+Y5NzE1OTRdfQ==
 -->
