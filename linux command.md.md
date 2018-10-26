@@ -171,9 +171,13 @@ hostnamectl set-hostname hostname
 
 
 * nohup
-让进程忽略
-```
+让进程忽略hangup 信号, 而什么是hangup信号呢, 当用户注销（logout）或者网络断开时，终端会收到 HUP（hangup）信号从而关闭其所有子进程。
+其他长期运行进程的命令见 [https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html](https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html)
 
+
+```
+nohup command 最简单的模式
+nohup command & 进程有
 ```
 
 ---
@@ -223,6 +227,6 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1MzQ4NTUwNiwxMDI4NDY2MDM5LC02Mj
+eyJoaXN0b3J5IjpbLTUyMzg4OTI1MywxMDI4NDY2MDM5LC02Mj
 Y5NzE1OTRdfQ==
 -->
