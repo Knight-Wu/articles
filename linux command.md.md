@@ -176,8 +176,9 @@ hostnamectl set-hostname hostname
 
 
 ```
-nohup command 最简单的模式
-nohup command & 进程有
+nohup command & // 最简单的模式
+nohup command & // 命令执行完时打出信息到shell 屏幕上
+nohup command > myOutPut.out 2>&1 & // 把标准输入和输出重定向到自己的文件
 ```
 
 ---
@@ -227,6 +228,6 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyMzg4OTI1MywxMDI4NDY2MDM5LC02Mj
+eyJoaXN0b3J5IjpbMTAxMjYxODc1MiwxMDI4NDY2MDM5LC02Mj
 Y5NzE1OTRdfQ==
 -->
