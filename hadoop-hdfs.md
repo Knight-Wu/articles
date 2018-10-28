@@ -25,7 +25,7 @@
 如果默认的三份拷贝(replication factor is three), local rack(本地机架)有两份, 其他机架有一份, 机架失效相比于node失效的几率是非常小的, 所以将两份数据都放在同一个机架, 可以充分利用同一个机架的带宽大于不同机架间的带宽, 提高读写效率.
 
 #### The Persistence of File System Metadata
-![元数据的存储结构](98BBD49790F24E26AD3850EEDE075548)
+![enter image description here](https://drive.google.com/uc?id=17X7xruAMQESNNs6Ub9P4e2J9ZP4x1dng)
 
 > hdfs 在做文件系统变更的时候, 先把修改信息保存在EditLog中, 再更新内存中的fs. 并且会定期进行checkPoint, 将内存的fs持久化到磁盘上形成FSImage, FSImage的文件名例如: fsimage_${end_txid}, nn启动的时候会进行数据恢复, 加载内存fs, 先把FSImage加载, 再把end_txid后的editLog回放到内存的fs上.
 
@@ -449,5 +449,5 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4MjczNTM4NF19
+eyJoaXN0b3J5IjpbLTEwMzU4ODU1MywxMjgyNzM1Mzg0XX0=
 -->
