@@ -50,17 +50,17 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 按照第四点, 便一直寻找源码里的细节, 修改的两个配置为5,6两点
 
-5.  这个方法会返回所有可用的worker, , 红框标记如果使用 old assignment, 则会保持旧有的taskToWorker的分配策略不变, 在后续如果旧有的worker已经分配了足够的task的情况下, 不会再把task 分配到这些worker(removeWorkerFromSrcPool 方法), 否则如果采用new assignment, 则task 可能会分配到和之前不同的worker. 所以需要改配置
+5.  这个方法会返回所有可用的worker, , 红框标记如果使用 old assignment, 则会保持旧有的taskToWorker的分配策略不变, 在后续如果旧有的worker已经分配了足够的task的情况下, 不会再把task 分配到这些worker(removeWorkerFromSrcPool 方法), 否则如果采用new assignment, 则task 可能会分配到和之前不同的worker. 所以需要配置 use.old.assignment=true.
 ![](https://drive.google.com/uc?id=1TCioOqmnBdYzH_Np7mHqQrCD6uSX0Frx)
 
 ![enter image description here](https://drive.google.com/uc?id=1zFHfjxcDVKgF6-dL0VI_c0qhaAOje6SC)
 
-5. 
+6. 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0NjUzODU4MywtMTI2NDA1MjYwMSw5Nz
+eyJoaXN0b3J5IjpbLTE2NTk3NzI4NywtMTI2NDA1MjYwMSw5Nz
 E5MTAxNDUsODU1MjIwMTIsLTIwNjY3OTc1NzEsLTMzODM0MTY0
 NywtMTg4MTE1NzUwMyw4OTEwNDQwODksLTEzMzgzNDA3LC0xOD
 A4NjE2OTQwLC0xMDkxOTQyNjIwLDEwMzUxMjk2NjMsLTEwNDYz
