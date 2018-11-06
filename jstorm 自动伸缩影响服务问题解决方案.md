@@ -27,7 +27,7 @@ worker: topology的执行进程, 由各个执行线程task组成, 例如更新to
 
 首先是要深入了解JStorm的rebalance的过程, 我采取远程调试nimbus, 看日志, 看源码的三种方式结合
 
-1. 远程调试nimbus
+一. 远程调试nimbus
 一开始看源码还比较陌生, 就想通过远程调试测试服务器的方式, 能够看到一些关键变量的值, 排除一些看不懂的代码的干扰.
 jstorm使用 jstorm nimbus启动nimbus , 后面想到可以直接用 ps -ef|grep nimbus 的输出信息直接结合远程调试的命令启动, 如下图, 
 ![enter image description here](https://drive.google.com/uc?id=14DXapVXhDpSOK6bpzqdgdPmM9CMVeMKV)
@@ -36,7 +36,7 @@ idea的配置如下:
 
 nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时可以启动remote debug attach到a 进程进行调试
 
-2. 查看日志
+二. 查看日志
 日志主要看的是worker和nimbus两个, 都在jstormHome/logs下面, rebalance 的主要流程是nimbus 接受到客户端提交的rebalance的命令, 生成的新的assign, 并更新到zk, worker watch到对应的event, 根据task的变更, 有可能需要create或者shutdown task. 
 
 3. 源码解析
@@ -49,7 +49,7 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5OTM1NzgwLC0xMzM4MzQwNywtMTgwOD
-YxNjk0MCwtMTA5MTk0MjYyMCwxMDM1MTI5NjYzLC0xMDQ2MzQw
-Mzk0XX0=
+eyJoaXN0b3J5IjpbLTEzOTQ5MTM0NDcsLTEzMzgzNDA3LC0xOD
+A4NjE2OTQwLC0xMDkxOTQyNjIwLDEwMzUxMjk2NjMsLTEwNDYz
+NDAzOTRdfQ==
 -->
