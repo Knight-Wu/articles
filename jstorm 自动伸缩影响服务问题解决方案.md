@@ -21,11 +21,15 @@
 简单说下, 由nimbus, supervisor, worker, task 组成, topology和spout/bolt暂且不说, 跟这个问题关系不大. 
 nimbus: 相当于集群的领导者, 跟yarn的RM 地位一致, 处理客户端提交的请求, 例如命令行执行的各种命令; 处理supervisor, worker, task的分配策略等
 supervisor: 可以理解为yarn的NM, 负责管理各个工作节点, 分配worker
-worker: topology的执行进程, 由各个执行线程task组成, 例如更新topology的配置, 是由nimbus执行配置的更新, 并更新到zk的节点, worker watch到event的变化之后, geng
+worker: topology的执行进程, 由各个执行线程task组成, 例如更新topology的配置, 是由nimbus执行配置的更新, 并更新到zk的节点, worker watch到event的变化之后, 更新到具体的执行进程中去.
 
 > 解决步骤
 
-首先是要深入了解JStorm的rebalance的过程, 我采取远程调试ni
+首先是要深入了解JStorm的rebalance的过程, 我采取远程调试nimbus, 看日志, 看源码的三种方式结合
+
+1. 远程调试nimbus
+一开始看源码还比较陌生, 就想
+2. 
 
 
 
@@ -33,6 +37,6 @@ worker: topology的执行进程, 由各个执行线程task组成, 例如更新to
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2NzY0MDcyMSwtMTA5MTk0MjYyMCwxMD
+eyJoaXN0b3J5IjpbLTk2NzQzNzM3MSwtMTA5MTk0MjYyMCwxMD
 M1MTI5NjYzLC0xMDQ2MzQwMzk0XX0=
 -->
