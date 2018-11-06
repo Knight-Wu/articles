@@ -7,12 +7,12 @@
 
 > 带来的问题
 1. 一个系统对应一个集合的清洗规则, 对应一个spout, 对应一个kafka topic, 新增一个系统, 需要新增spout, 目前jstorm 不支持对一个topology新增spout和bolt, 只支持动态更改topology的配置, 并选择对哪些spout/bolt生效
-2. 一个系统对应一个kafka的topic, 若消息量突然增大, 则这个spout不能满足需求, 需要动态xin
+2. 一个系统对应一个kafka的topic, 若消息量突然增大, 则这个spout不能满足需求, 需要动态新增task和worker, 这个jstorm 本身是支持动态缩容的, [http://jstorm.io/ProgrammingGuide_cn/AdvancedUsage/DynamicAdjust/Parallel.html](http://jstorm.io/ProgrammingGuide_cn/AdvancedUsage/DynamicAdjust/Parallel.html), 但是经过我们初步生产测试会影响整个topology 的sendTPS
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTQ2NzE2NzMsLTEwNDYzNDAzOTRdfQ
+eyJoaXN0b3J5IjpbLTEyNDA2ODYyMDEsLTEwNDYzNDAzOTRdfQ
 ==
 -->
