@@ -10,11 +10,15 @@
 2. 一个系统对应一个kafka的topic, 若消息量突然增大, 则这个spout不能满足需求, 需要动态新增task和worker, 这个jstorm 本身是支持动态缩容的, [http://jstorm.io/ProgrammingGuide_cn/AdvancedUsage/DynamicAdjust/Parallel.html](http://jstorm.io/ProgrammingGuide_cn/AdvancedUsage/DynamicAdjust/Parallel.html), 但是经过我们初步生产测试会影响整个topology 的sendTPS, 就是会影响其他系统的关键图表, 造成抖动, 这个无法接收
 
 > 目标
-1. 针对问题2, 想深入了解并调优JStorm, 不影响topology的性能
+1. 针对问题2,  因为官网文档中介绍, 不加入 -r 参数是不会引起task的重分配的, 所以性能问题让我们很疑惑, 想深入了解并调优JStorm, 做到不影响topology的性能,
 
 > 解决思路
 
-之前不了解JStorm的时候走的弯路就不说了, 正确的解决思路应该如下:  task分配到worker的策略不能变, 老的task还是分配到原先的worker, 否则会造成旧有的task shutdown, 新的task create必然有性能消耗
+之前不了解JStorm的时候走的弯路就不说了, 正确的解决思路应该如下:  task分配到worker的策略不能变, 老的task还是分配到原先的worker, 否则会造成旧有的task shutdown, 新的task create必然有性能消耗. 
+
+> 解决步骤
+
+首先是要深入了解JStorm的rebalance的
 
 
 
@@ -22,5 +26,6 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzNTEyOTY2MywtMTA0NjM0MDM5NF19
+eyJoaXN0b3J5IjpbNjc2MjE5NjYyLDEwMzUxMjk2NjMsLTEwND
+YzNDAzOTRdfQ==
 -->
