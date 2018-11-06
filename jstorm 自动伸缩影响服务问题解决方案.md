@@ -39,8 +39,11 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 二. 查看日志
 日志主要看的是worker和nimbus两个, 都在jstormHome/logs下面, rebalance 的主要流程是nimbus 接受到客户端提交的rebalance的命令, 生成的新的assign, 并更新到zk, worker watch到对应的event, 根据task的变更, 有可能需要create或者shutdown task. 
 
-3. 源码解析
-不是关键的代码就一笔带过了, 
+三. 源码解析
+不是关键的代码就一笔带过了. 
+
+1. 客户端提交rebalance命令, rebalance.main 方法提交.
+2. 
 
 
 
@@ -49,7 +52,7 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTQ5MTM0NDcsLTEzMzgzNDA3LC0xOD
+eyJoaXN0b3J5IjpbLTExMzA5ODE0ODgsLTEzMzgzNDA3LC0xOD
 A4NjE2OTQwLC0xMDkxOTQyNjIwLDEwMzUxMjk2NjMsLTEwNDYz
 NDAzOTRdfQ==
 -->
