@@ -57,12 +57,14 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 6. 如果worker的数量小于10, 则不会给topology_master这个task单独分配一个worker, 会导致这个TMTask所在的worker的所有task重分配, 所以配置: topology.master.single.worker=true![enter image description here](https://drive.google.com/uc?id=1yBxa3tjTxO6fxhou-NwrSz1ZsilwMf1q)
 
-7. 经过5.6两点的p
+7. 经过5.6两点的配置, 在新增task的时候, 的确只有新增的taskId需要进行assign, 其他task保持不变.
+
+8. nimbus更新完topology的配置之后更新到zk, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxMzQ3ODA0NCwtMTI2NDA1MjYwMSw5Nz
-E5MTAxNDUsODU1MjIwMTIsLTIwNjY3OTc1NzEsLTMzODM0MTY0
-NywtMTg4MTE1NzUwMyw4OTEwNDQwODksLTEzMzgzNDA3LC0xOD
-A4NjE2OTQwLC0xMDkxOTQyNjIwLDEwMzUxMjk2NjMsLTEwNDYz
-NDAzOTRdfQ==
+eyJoaXN0b3J5IjpbMjUwNDI3ODYzLC0xMjY0MDUyNjAxLDk3MT
+kxMDE0NSw4NTUyMjAxMiwtMjA2Njc5NzU3MSwtMzM4MzQxNjQ3
+LC0xODgxMTU3NTAzLDg5MTA0NDA4OSwtMTMzODM0MDcsLTE4MD
+g2MTY5NDAsLTEwOTE5NDI2MjAsMTAzNTEyOTY2MywtMTA0NjM0
+MDM5NF19
 -->
