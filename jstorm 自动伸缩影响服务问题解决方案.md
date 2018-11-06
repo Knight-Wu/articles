@@ -40,7 +40,7 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 日志主要看的是worker和nimbus两个, 都在jstormHome/logs下面, rebalance 的主要流程是nimbus 接受到客户端提交的rebalance的命令, 生成的新的assign, 并更新到zk, worker watch到对应的event, 根据task的变更, 有可能需要create或者shutdown task. 
 
 三. 源码解析
-不是关键的代码就一笔带过了. 
+不是关键的代码就一笔带过了.  zhon
 
 1. thriftClient 客户端提交rebalance命令, rebalance.main 方法提交.
 2. nimbus 接受到状态变化, StatusTransition 初始化statusTransitionCallback, 关键是DoRebalanceTransitionCallback, 生成TopologyAssignEvent 推送到 TopologyAssign 处理
@@ -53,7 +53,7 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTc0ODYwMTMsODkxMDQ0MDg5LC0xMz
+eyJoaXN0b3J5IjpbLTE0OTA0ODIwNTAsODkxMDQ0MDg5LC0xMz
 M4MzQwNywtMTgwODYxNjk0MCwtMTA5MTk0MjYyMCwxMDM1MTI5
 NjYzLC0xMDQ2MzQwMzk0XX0=
 -->
