@@ -6,11 +6,12 @@
 日志监控只有一个topology, 如果有系统需要新增对日志的监控, 则通过配置页面配置一条清洗过滤的规则, 满足规则的日志被存储到opentsdb, 一个系统所有的清洗日志对应一个component, 具体来说是对应一个spout, 满足条件的再下发到bolt(opentsdb 处理), 这个架构的优劣暂且不谈, 历史原因, 还没重构.
 
 > 带来的问题
-
+1. 一个系统对应一个集合的清洗规则, 对应一个spout, 对应一个kafka topic, 新增一个系统, 需要新增spout, 目前jstorm 不支持对一个topology新增spout和bolt, 只支持动态
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDYzNDAzOTRdfQ==
+eyJoaXN0b3J5IjpbLTE2MzIyMTkyNjMsLTEwNDYzNDAzOTRdfQ
+==
 -->
