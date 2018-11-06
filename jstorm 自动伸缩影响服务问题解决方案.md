@@ -45,18 +45,18 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 1. thriftClient 客户端提交rebalance命令, rebalance.main 方法提交.
 2. nimbus 接受到状态变化, StatusTransition 初始化statusTransitionCallback, 关键是DoRebalanceTransitionCallback, 生成TopologyAssignEvent 推送到 TopologyAssign 处理
 3. 后续可以参考这篇文章 [[JStorm源码分析系列--02--拓扑分配TopologyAssign](https://segmentfault.com/a/1190000009083097), 
-4. **关键点来了**, 这个方法会返回所有可用的worker, 红框标记如果使用 old assignment, 则会保持旧有的taskToWorker的分配策略不变, 在后续如果旧有的worker已经分配了足够的task的情况下, 不会再把task 分配到这些worker(remo, 否则如果采用new assignment, 则task 可能会分配到和之前不同的worker. 
+4. **关键点来了**, 这个方法会返回所有可用的worker, 红框标记如果使用 old assignment, 则会保持旧有的taskToWorker的分配策略不变, 在后续如果旧有的worker已经分配了足够的task的情况下, 不会再把task 分配到这些worker(removeWorkerFromSrcPool 方法), 否则如果采用new assignment, 则task 可能会分配到和之前不同的worker. 
 ![](https://drive.google.com/uc?id=1TCioOqmnBdYzH_Np7mHqQrCD6uSX0Frx)
 
 ![enter image description here](https://drive.google.com/uc?id=1zFHfjxcDVKgF6-dL0VI_c0qhaAOje6SC)
 
-
+5. 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDk3MTA2OTc1LC0yMDY2Nzk3NTcxLC0zMz
-gzNDE2NDcsLTE4ODExNTc1MDMsODkxMDQ0MDg5LC0xMzM4MzQw
-NywtMTgwODYxNjk0MCwtMTA5MTk0MjYyMCwxMDM1MTI5NjYzLC
-0xMDQ2MzQwMzk0XX0=
+eyJoaXN0b3J5IjpbODU1MjIwMTIsLTIwNjY3OTc1NzEsLTMzOD
+M0MTY0NywtMTg4MTE1NzUwMyw4OTEwNDQwODksLTEzMzgzNDA3
+LC0xODA4NjE2OTQwLC0xMDkxOTQyNjIwLDEwMzUxMjk2NjMsLT
+EwNDYzNDAzOTRdfQ==
 -->
