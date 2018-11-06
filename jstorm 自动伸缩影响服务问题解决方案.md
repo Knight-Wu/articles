@@ -37,7 +37,7 @@ idea的配置如下:
 nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时可以启动remote debug attach到a 进程进行调试
 
 2. 查看日志
-日志主要看的是worker和nimbus两个, 
+日志主要看的是worker和nimbus两个, 主要流程是nimbus 接受到客户端提交的rebalance的命令, 生成的新的assign, 并更新到zk, worker watch到对应的event, 根据task的变更, 有可能需要create或者shutdown task
 
 
 
@@ -45,6 +45,7 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzgzNDA3LC0xODA4NjE2OTQwLC0xMD
-kxOTQyNjIwLDEwMzUxMjk2NjMsLTEwNDYzNDAzOTRdfQ==
+eyJoaXN0b3J5IjpbLTE3MjI5ODExODcsLTEzMzgzNDA3LC0xOD
+A4NjE2OTQwLC0xMDkxOTQyNjIwLDEwMzUxMjk2NjMsLTEwNDYz
+NDAzOTRdfQ==
 -->
