@@ -43,7 +43,7 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 不是关键的代码就一笔带过了. 
 
 1. thriftClient 客户端提交rebalance命令, rebalance.main 方法提交.
-2. nimbus 接受到状态变化, 触发statusTransitionCallback, 关键是DoRebalanceTransitionCallback
+2. nimbus 接受到状态变化, StatusTransition 初始化statusTransitionCallback, 关键是DoRebalanceTransitionCallback
 3. 
 
 
@@ -53,7 +53,7 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODkxMDQ0MDg5LC0xMzM4MzQwNywtMTgwOD
-YxNjk0MCwtMTA5MTk0MjYyMCwxMDM1MTI5NjYzLC0xMDQ2MzQw
-Mzk0XX0=
+eyJoaXN0b3J5IjpbLTE2NzIyMzA3LDg5MTA0NDA4OSwtMTMzOD
+M0MDcsLTE4MDg2MTY5NDAsLTEwOTE5NDI2MjAsMTAzNTEyOTY2
+MywtMTA0NjM0MDM5NF19
 -->
