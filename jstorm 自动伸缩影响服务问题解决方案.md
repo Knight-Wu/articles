@@ -55,20 +55,21 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 ![enter image description here](https://drive.google.com/uc?id=1zFHfjxcDVKgF6-dL0VI_c0qhaAOje6SC)
 
-6. 如果worker的数量小于10, 则不会给topology_master这个task单独分配一个worker, 会导致这个TMTask所在的worker的所有task重分配, 所以配置: topology.master.single.worker=true![enter image description here](https://drive.google.com/uc?id=1yBxa3tjTxO6fxhou-NwrSz1ZsilwMf1q)
+6. 如果worker的数量小于10, 则不会给topology_master这个task单独分配一个worker, 会导致这个TMTask所在的worker的所有task重分配, 所以配置: topology.master.single.worker=true, 让topology_master 独占一个worker, ![enter image description here](https://drive.google.com/uc?id=1yBxa3tjTxO6fxhou-NwrSz1ZsilwMf1q)
 
 7. 经过5.6两点的配置, 在新增task的时候, 的确只有新增的taskId需要进行assign, 其他task保持不变.
 
-8. nimbus更新完topology的配置之后更新到zk, 通过这个类来watch zk的event, 
+
+8. nimbus更新完topology的配置之后更新到zk,  通过这个类来watch zk的event, 
 
 ![enter image description here](https://drive.google.com/uc?id=1SsaWUq00ixwIfKgbk7gW8S5XEgJuFT1i)
 9. worker通过这个类来响应task的变化, 进行create或者shutdown
 
 ![enter image description here](https://drive.google.com/uc?id=1GbXicg4ehLpemJ-P5Gq1RNSOSu75yqKm)
-经过5.6两点的配置, 在worker响应task变化时, 也zhengshi 
+经过5.6两点的配置, 在worker响应task变化时, 也证实了只有新增的task发生了assign,  
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2ODk2ODU1NCwyNTA0Mjc4NjMsLTEyNj
+eyJoaXN0b3J5IjpbMTQ0MjY1MDMyMywyNTA0Mjc4NjMsLTEyNj
 QwNTI2MDEsOTcxOTEwMTQ1LDg1NTIyMDEyLC0yMDY2Nzk3NTcx
 LC0zMzgzNDE2NDcsLTE4ODExNTc1MDMsODkxMDQ0MDg5LC0xMz
 M4MzQwNywtMTgwODYxNjk0MCwtMTA5MTk0MjYyMCwxMDM1MTI5
