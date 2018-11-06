@@ -59,12 +59,12 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 7. 经过5.6两点的配置, 在新增task的时候, 的确只有新增的taskId需要进行assign, 其他task保持不变.
 
-8. nimbus更新完topology的配置之后更新到zk, 
+8. nimbus更新完topology的配置之后更新到zk, 通过这个类来watch zk的event, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjUwNDI3ODYzLC0xMjY0MDUyNjAxLDk3MT
-kxMDE0NSw4NTUyMjAxMiwtMjA2Njc5NzU3MSwtMzM4MzQxNjQ3
-LC0xODgxMTU3NTAzLDg5MTA0NDA4OSwtMTMzODM0MDcsLTE4MD
-g2MTY5NDAsLTEwOTE5NDI2MjAsMTAzNTEyOTY2MywtMTA0NjM0
-MDM5NF19
+eyJoaXN0b3J5IjpbLTIwNjk5NDcxMzMsMjUwNDI3ODYzLC0xMj
+Y0MDUyNjAxLDk3MTkxMDE0NSw4NTUyMjAxMiwtMjA2Njc5NzU3
+MSwtMzM4MzQxNjQ3LC0xODgxMTU3NTAzLDg5MTA0NDA4OSwtMT
+MzODM0MDcsLTE4MDg2MTY5NDAsLTEwOTE5NDI2MjAsMTAzNTEy
+OTY2MywtMTA0NjM0MDM5NF19
 -->
