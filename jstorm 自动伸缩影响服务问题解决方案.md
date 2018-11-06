@@ -43,7 +43,7 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 不是关键的代码就一笔带过了. 
 
 1. 客户端提交rebalance命令, rebalance.main 方法提交.
-2. 
+2. nimbus 
 
 
 
@@ -52,7 +52,7 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzA5ODE0ODgsLTEzMzgzNDA3LC0xOD
-A4NjE2OTQwLC0xMDkxOTQyNjIwLDEwMzUxMjk2NjMsLTEwNDYz
-NDAzOTRdfQ==
+eyJoaXN0b3J5IjpbODgwNTcyMTQ2LC0xMzM4MzQwNywtMTgwOD
+YxNjk0MCwtMTA5MTk0MjYyMCwxMDM1MTI5NjYzLC0xMDQ2MzQw
+Mzk0XX0=
 -->
