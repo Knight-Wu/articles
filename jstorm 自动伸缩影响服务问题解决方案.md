@@ -19,7 +19,7 @@
 > JStorm 架构
 
 简单说下, 由nimbus, supervisor, worker, task 组成, topology和spout/bolt暂且不说, 跟这个问题关系不大. 
-nimbus: 相当于集群的领导者, 跟NN地位一致, xiangdnag
+nimbus: 相当于集群的领导者, 跟NN地位一致, 处理客户端提交的请求, 例如命令行执行的各种命令,
 
 > 解决步骤
 
@@ -31,6 +31,6 @@ nimbus: 相当于集群的领导者, 跟NN地位一致, xiangdnag
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3Mzg5NDMwNSwxMDM1MTI5NjYzLC0xMD
-Q2MzQwMzk0XX0=
+eyJoaXN0b3J5IjpbLTEwOTE5NDI2MjAsMTAzNTEyOTY2MywtMT
+A0NjM0MDM5NF19
 -->
