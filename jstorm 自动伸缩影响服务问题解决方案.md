@@ -60,7 +60,7 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 7. 经过5.6两点的配置, 在新增task的时候, 的确只有新增的taskId需要进行assign, 其他task保持不变.
 
 
-8. nimbus更新完topology的配置之后更新到zk,  通过这个类来watch zk的event, 
+8. nimbus更新完topology的配置之后更新到zk,  JStorm 通过这个类来watch zk的event, 
 
 ![enter image description here](https://drive.google.com/uc?id=1SsaWUq00ixwIfKgbk7gW8S5XEgJuFT1i)
 9. worker通过这个类来响应task的变化, 进行create或者shutdown
@@ -69,9 +69,9 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 经过5.6两点的配置, 在worker响应task变化时, 也证实了只有新增的task发生了assign,  
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ0MjY1MDMyMywyNTA0Mjc4NjMsLTEyNj
-QwNTI2MDEsOTcxOTEwMTQ1LDg1NTIyMDEyLC0yMDY2Nzk3NTcx
-LC0zMzgzNDE2NDcsLTE4ODExNTc1MDMsODkxMDQ0MDg5LC0xMz
-M4MzQwNywtMTgwODYxNjk0MCwtMTA5MTk0MjYyMCwxMDM1MTI5
-NjYzLC0xMDQ2MzQwMzk0XX0=
+eyJoaXN0b3J5IjpbNzQzNjgxMjM2LDI1MDQyNzg2MywtMTI2ND
+A1MjYwMSw5NzE5MTAxNDUsODU1MjIwMTIsLTIwNjY3OTc1NzEs
+LTMzODM0MTY0NywtMTg4MTE1NzUwMyw4OTEwNDQwODksLTEzMz
+gzNDA3LC0xODA4NjE2OTQwLC0xMDkxOTQyNjIwLDEwMzUxMjk2
+NjMsLTEwNDYzNDAzOTRdfQ==
 -->
