@@ -29,7 +29,7 @@ worker: topology的执行进程, 由各个执行线程task组成, 例如更新to
 
 1. 远程调试nimbus
 一开始看源码还比较陌生, 就想通过远程调试测试服务器的方式, 能够看到一些关键变量的值, 排除一些看不懂的代码的干扰.
-jstorm使用 jstorm nimbus启动nimbus , 
+jstorm使用 jstorm nimbus启动nimbus , 后面想到可以直接用 ps -ef|grep nimbus 的输出信息直接结合远程调试的命令启动, 如下图, 
 2. 
 
 
@@ -38,6 +38,6 @@ jstorm使用 jstorm nimbus启动nimbus ,
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTc4MDU1MTEwLC0xMDkxOTQyNjIwLDEwMz
-UxMjk2NjMsLTEwNDYzNDAzOTRdfQ==
+eyJoaXN0b3J5IjpbLTE4MDg2MTY5NDAsLTEwOTE5NDI2MjAsMT
+AzNTEyOTY2MywtMTA0NjM0MDM5NF19
 -->
