@@ -30,8 +30,11 @@ worker: topology的执行进程, 由各个执行线程task组成, 例如更新to
 1. 远程调试nimbus
 一开始看源码还比较陌生, 就想通过远程调试测试服务器的方式, 能够看到一些关键变量的值, 排除一些看不懂的代码的干扰.
 jstorm使用 jstorm nimbus启动nimbus , 后面想到可以直接用 ps -ef|grep nimbus 的输出信息直接结合远程调试的命令启动, 如下图, 
-
+![enter image description here](https://drive.google.com/uc?id=14DXapVXhDpSOK6bpzqdgdPmM9CMVeMKV)
 idea的配置如下: 
+![enter image description here](https://drive.google.com/uc?id=1nKP1VbmsOfFf7kI7HoTSCkUYbHHws5tN)
+
+nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时可以启动remote debug attach到这个
 2. 
 
 
@@ -40,6 +43,6 @@ idea的配置如下:
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTI5Mjk4NjM3LC0xODA4NjE2OTQwLC0xMD
-kxOTQyNjIwLDEwMzUxMjk2NjMsLTEwNDYzNDAzOTRdfQ==
+eyJoaXN0b3J5IjpbLTE0NjY2MzUxNjgsLTE4MDg2MTY5NDAsLT
+EwOTE5NDI2MjAsMTAzNTEyOTY2MywtMTA0NjM0MDM5NF19
 -->
