@@ -34,8 +34,10 @@ jstorm使用 jstorm nimbus启动nimbus , 后面想到可以直接用 ps -ef|grep
 idea的配置如下: 
 ![enter image description here](https://drive.google.com/uc?id=1nKP1VbmsOfFf7kI7HoTSCkUYbHHws5tN)
 
-nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时可以启动remote debug attach到这个
-2. 
+nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时可以启动remote debug attach到a 进程进行调试
+
+2. 查看日志
+日志主要看的是worker和nimbus两个, 
 
 
 
@@ -43,6 +45,6 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjY2MzUxNjgsLTE4MDg2MTY5NDAsLT
-EwOTE5NDI2MjAsMTAzNTEyOTY2MywtMTA0NjM0MDM5NF19
+eyJoaXN0b3J5IjpbLTEzMzgzNDA3LC0xODA4NjE2OTQwLC0xMD
+kxOTQyNjIwLDEwMzUxMjk2NjMsLTEwNDYzNDAzOTRdfQ==
 -->
