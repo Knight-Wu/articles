@@ -19,7 +19,9 @@
 > JStorm 架构
 
 简单说下, 由nimbus, supervisor, worker, task 组成, topology和spout/bolt暂且不说, 跟这个问题关系不大. 
-nimbus: 相当于集群的领导者, 跟NN地位一致, 处理客户端提交的请求, 例如命令行执行的各种命令,
+nimbus: 相当于集群的领导者, 跟yarn的RM 地位一致, 处理客户端提交的请求, 例如命令行执行的各种命令; 处理supervisor, worker, task的分配策略等
+supervisor: 可以理解为yarn的NM, 负责管理各个工作节点, 分配worker
+worker: 执行进程
 
 > 解决步骤
 
@@ -31,6 +33,6 @@ nimbus: 相当于集群的领导者, 跟NN地位一致, 处理客户端提交的
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTE5NDI2MjAsMTAzNTEyOTY2MywtMT
-A0NjM0MDM5NF19
+eyJoaXN0b3J5IjpbMTY1OTI2NTQxNywtMTA5MTk0MjYyMCwxMD
+M1MTI5NjYzLC0xMDQ2MzQwMzk0XX0=
 -->
