@@ -16,9 +16,13 @@
 
 之前不了解JStorm的时候走的弯路就不说了, 正确的解决思路应该如下:  task分配到worker的策略不能变, 老的task还是分配到原先的worker, 否则会造成旧有的task shutdown, 新的task create必然有性能消耗. 
 
+> JStorm 架构
+
+
+
 > 解决步骤
 
-首先是要深入了解JStorm的rebalance的
+首先是要深入了解JStorm的rebalance的过程, 我采取远程调试ni
 
 
 
@@ -26,6 +30,6 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjc2MjE5NjYyLDEwMzUxMjk2NjMsLTEwND
-YzNDAzOTRdfQ==
+eyJoaXN0b3J5IjpbLTI3NDY2Mzc3NSwxMDM1MTI5NjYzLC0xMD
+Q2MzQwMzk0XX0=
 -->
