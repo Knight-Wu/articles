@@ -12,11 +12,13 @@
 > 目标
 1. 针对问题2, 想深入了解并调优JStorm, 不影响topology的性能
 
+> 解决思路
 
+之前不了解JStorm的时候走的弯路就不说了, 正确的解决思路应该如下: 
+1. task分配到worker的策略不能变, 老的task还是分配到原先的wor
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjI2NDE0NDIsLTEwNDYzNDAzOTRdfQ
-==
+eyJoaXN0b3J5IjpbMTYxODg2MCwtMTA0NjM0MDM5NF19
 -->
