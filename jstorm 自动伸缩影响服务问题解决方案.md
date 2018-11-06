@@ -28,7 +28,8 @@ worker: topology的执行进程, 由各个执行线程task组成, 例如更新to
 首先是要深入了解JStorm的rebalance的过程, 我采取远程调试nimbus, 看日志, 看源码的三种方式结合
 
 1. 远程调试nimbus
-一开始看源码还比较陌生, 就想
+一开始看源码还比较陌生, 就想通过远程调试测试服务器的方式, 能够看到一些关键变量的值, 排除一些看不懂的代码的干扰.
+jstorm使用 jstorm nimbus启动nimbus , 
 2. 
 
 
@@ -37,6 +38,6 @@ worker: topology的执行进程, 由各个执行线程task组成, 例如更新to
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2NzQzNzM3MSwtMTA5MTk0MjYyMCwxMD
-M1MTI5NjYzLC0xMDQ2MzQwMzk0XX0=
+eyJoaXN0b3J5IjpbNTc4MDU1MTEwLC0xMDkxOTQyNjIwLDEwMz
+UxMjk2NjMsLTEwNDYzNDAzOTRdfQ==
 -->
