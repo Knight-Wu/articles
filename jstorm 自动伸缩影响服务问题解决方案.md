@@ -71,15 +71,14 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 > 总结
 
-经过**源码解析** 5,6两点的配置, 只有新增的task发生了assign, 但是在生产上进行测试的时候还是发现大幅度影响了topology的SendTPS, TPS的图表呈现断崖式下跌, 后续还要再次确认一下其他task的状态是否发生了变化, 和新增task具体的流程有哪些
-
+经过**源码解析** 5,6两点的配置, 只有新增的task发生了assign, 但是在生产上进行测试的时候还是发现大幅度影响了topology的SendTPS, TPS的图表呈现断崖式下跌, **后续还要再次确认一下其他task的状态是否发生了变化, 和新增task具体的流程有哪些, more TODO**
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODE2MjQ4NjAsNzQzNjgxMjM2LDI1MD
-QyNzg2MywtMTI2NDA1MjYwMSw5NzE5MTAxNDUsODU1MjIwMTIs
-LTIwNjY3OTc1NzEsLTMzODM0MTY0NywtMTg4MTE1NzUwMyw4OT
-EwNDQwODksLTEzMzgzNDA3LC0xODA4NjE2OTQwLC0xMDkxOTQy
-NjIwLDEwMzUxMjk2NjMsLTEwNDYzNDAzOTRdfQ==
+eyJoaXN0b3J5IjpbMjc5MDk2Njg5LDc0MzY4MTIzNiwyNTA0Mj
+c4NjMsLTEyNjQwNTI2MDEsOTcxOTEwMTQ1LDg1NTIyMDEyLC0y
+MDY2Nzk3NTcxLC0zMzgzNDE2NDcsLTE4ODExNTc1MDMsODkxMD
+Q0MDg5LC0xMzM4MzQwNywtMTgwODYxNjk0MCwtMTA5MTk0MjYy
+MCwxMDM1MTI5NjYzLC0xMDQ2MzQwMzk0XX0=
 -->
