@@ -570,7 +570,9 @@ uuid time url result
 ```
 scala> spark.catalog.listDatabases.show(false) 
 如果结果是类似这样的， 
-+-------+----------------+--------------------------+ |name |description |locationUri | +-------+----------------+--------------------------+ |default|default database|file:/root/spark-warehouse| +-------+----------------+--------------------------+ 有可能是没有为Spark 启用依赖Hive服务
+name |description |locationUri
+default|default database|file:/root/spark-warehouse|
+有可能是没有为Spark 启用依赖Hive服务
 ```
 #### spark-submit
 * shell 脚本
@@ -694,7 +696,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3ODM2OTQ2OCwtMjE0NTgwOTMxMCwtMT
+eyJoaXN0b3J5IjpbMTYxMDcwMzI4NywtMjE0NTgwOTMxMCwtMT
 M0NjUyNDA2NiwxMzAzNTg4MTkyLDE5NjIwODQyMiwxNDYxODk4
 ODczLDE4MTY4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1Ny
 wxOTEwMDk3MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEy
