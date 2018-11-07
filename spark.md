@@ -563,6 +563,8 @@ uuid time url result
   [2014-benchmark](https://www.slideshare.net/hortonworks/hive-on-spark-is-blazing-fast-or-is-it-final), 
 总而言之, hive on spark在large join时性能突出, spark sql在map join时性能突出, hive on mr比较慢
 
+### hive on spark
+基于CDH-5.12.1, spark的配置需要依赖hive 服务, 若服务正常可以直接使用spark-shell, spark.sql("show databases").show 查询hive表
 
 #### spark-submit
 * shell 脚本
@@ -686,11 +688,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNDU4MDkzMTAsLTEzNDY1MjQwNjYsMT
-MwMzU4ODE5MiwxOTYyMDg0MjIsMTQ2MTg5ODg3MywxODE2ODg0
-MjI5LC0xMDc1OTAzODQzLC01NzAzMDE4NTcsMTkxMDA5NzE3NC
-wtNzMxNDMxMDMwLDgxMzk4NDY0NywxNTMxMjk1NTQsLTE0MTkx
-NjA3MjksLTEzODk3MzM2MjYsLTExMjQxNzUxMzcsMTU1NDk5Mj
-M2NCwtMTQyODI3MDY1LDMwODg0MTAxMSwxMDEwNDQ1NjUzLDE1
-MTU0MTg5M119
+eyJoaXN0b3J5IjpbLTI5MDA3ODMzOSwtMjE0NTgwOTMxMCwtMT
+M0NjUyNDA2NiwxMzAzNTg4MTkyLDE5NjIwODQyMiwxNDYxODk4
+ODczLDE4MTY4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1Ny
+wxOTEwMDk3MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEy
+OTU1NCwtMTQxOTE2MDcyOSwtMTM4OTczMzYyNiwtMTEyNDE3NT
+EzNywxNTU0OTkyMzY0LC0xNDI4MjcwNjUsMzA4ODQxMDExLDEw
+MTA0NDU2NTNdfQ==
 -->
