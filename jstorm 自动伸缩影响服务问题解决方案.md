@@ -67,11 +67,16 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 ![enter image description here](https://drive.google.com/uc?id=1GbXicg4ehLpemJ-P5Gq1RNSOSu75yqKm)
 经过5.6两点的配置, 在worker响应task变化时, 也证实了只有新增的task发生了assign,  
+
+
+> 总结
+
+经过**源码解析** 5,6两点的配置, 只有新增的task发生了assign, 但是在生产上进行测试的时候
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQzNjgxMjM2LDI1MDQyNzg2MywtMTI2ND
-A1MjYwMSw5NzE5MTAxNDUsODU1MjIwMTIsLTIwNjY3OTc1NzEs
-LTMzODM0MTY0NywtMTg4MTE1NzUwMyw4OTEwNDQwODksLTEzMz
-gzNDA3LC0xODA4NjE2OTQwLC0xMDkxOTQyNjIwLDEwMzUxMjk2
-NjMsLTEwNDYzNDAzOTRdfQ==
+eyJoaXN0b3J5IjpbMTk5MTk3MTY1Myw3NDM2ODEyMzYsMjUwND
+I3ODYzLC0xMjY0MDUyNjAxLDk3MTkxMDE0NSw4NTUyMjAxMiwt
+MjA2Njc5NzU3MSwtMzM4MzQxNjQ3LC0xODgxMTU3NTAzLDg5MT
+A0NDA4OSwtMTMzODM0MDcsLTE4MDg2MTY5NDAsLTEwOTE5NDI2
+MjAsMTAzNTEyOTY2MywtMTA0NjM0MDM5NF19
 -->
