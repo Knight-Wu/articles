@@ -576,6 +576,8 @@ default|default database|file:/root/spark-warehouse|
 ```
 
 > 调试spark-shell, 增加日志
+![enter image description here](https://drive.google.com/uc?id=1EMvPfK4EHC1TQDEScJWgOzV6vRM__vkq)
+
 #### spark-submit
 * shell 脚本
 ```
@@ -698,7 +700,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzM0MjcyNSwtMjE0NTgwOTMxMCwtMT
+eyJoaXN0b3J5IjpbLTkwOTM4MDM2MiwtMjE0NTgwOTMxMCwtMT
 M0NjUyNDA2NiwxMzAzNTg4MTkyLDE5NjIwODQyMiwxNDYxODk4
 ODczLDE4MTY4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1Ny
 wxOTEwMDk3MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEy
