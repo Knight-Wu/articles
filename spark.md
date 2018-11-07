@@ -574,6 +574,8 @@ name |description |locationUri
 default|default database|file:/root/spark-warehouse|
 有可能是没有为Spark 启用依赖Hive服务
 ```
+
+> 调试spark-shell, 增加日志
 #### spark-submit
 * shell 脚本
 ```
@@ -696,7 +698,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxMDcwMzI4NywtMjE0NTgwOTMxMCwtMT
+eyJoaXN0b3J5IjpbLTEyMzM0MjcyNSwtMjE0NTgwOTMxMCwtMT
 M0NjUyNDA2NiwxMzAzNTg4MTkyLDE5NjIwODQyMiwxNDYxODk4
 ODczLDE4MTY4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1Ny
 wxOTEwMDk3MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEy
