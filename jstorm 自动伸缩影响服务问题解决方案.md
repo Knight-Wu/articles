@@ -87,14 +87,13 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 > 后续方向
 * 看kafka的发送速率有没有下降
-* JStorm 的task新增之后是否影响worker 的性能
-
+* 关闭ack机制, 或者使用exactly-once
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDAzMDcwNjg0LDE2ODUyMTg5MzEsMjExNj
-M3NTE2LDI3OTA5NjY4OSw3NDM2ODEyMzYsMjUwNDI3ODYzLC0x
-MjY0MDUyNjAxLDk3MTkxMDE0NSw4NTUyMjAxMiwtMjA2Njc5Nz
-U3MSwtMzM4MzQxNjQ3LC0xODgxMTU3NTAzLDg5MTA0NDA4OSwt
-MTMzODM0MDcsLTE4MDg2MTY5NDAsLTEwOTE5NDI2MjAsMTAzNT
-EyOTY2MywtMTA0NjM0MDM5NF19
+eyJoaXN0b3J5IjpbMTI3MjUyOTEyMSw0MDMwNzA2ODQsMTY4NT
+IxODkzMSwyMTE2Mzc1MTYsMjc5MDk2Njg5LDc0MzY4MTIzNiwy
+NTA0Mjc4NjMsLTEyNjQwNTI2MDEsOTcxOTEwMTQ1LDg1NTIyMD
+EyLC0yMDY2Nzk3NTcxLC0zMzgzNDE2NDcsLTE4ODExNTc1MDMs
+ODkxMDQ0MDg5LC0xMzM4MzQwNywtMTgwODYxNjk0MCwtMTA5MT
+k0MjYyMCwxMDM1MTI5NjYzLC0xMDQ2MzQwMzk0XX0=
 -->
