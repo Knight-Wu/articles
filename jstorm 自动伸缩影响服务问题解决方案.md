@@ -86,13 +86,15 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 同一个consumer group下, 若有consumer 增加, 则会引起所有的consumer 进行reblance, 包括其他topic下面的, 只是改变某个topic repartition的数量, 只是引起当前topic 的consumer 进行rebalance, 不影响其他topic consumer.
 
 > 后续方向
+* 看kafka的发送速率有没有下降
+* JStorm 的task新增之后是否影响worker 的性能
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5NTkyNzMzMCwxNjg1MjE4OTMxLDIxMT
-YzNzUxNiwyNzkwOTY2ODksNzQzNjgxMjM2LDI1MDQyNzg2Mywt
-MTI2NDA1MjYwMSw5NzE5MTAxNDUsODU1MjIwMTIsLTIwNjY3OT
-c1NzEsLTMzODM0MTY0NywtMTg4MTE1NzUwMyw4OTEwNDQwODks
-LTEzMzgzNDA3LC0xODA4NjE2OTQwLC0xMDkxOTQyNjIwLDEwMz
-UxMjk2NjMsLTEwNDYzNDAzOTRdfQ==
+eyJoaXN0b3J5IjpbNDAzMDcwNjg0LDE2ODUyMTg5MzEsMjExNj
+M3NTE2LDI3OTA5NjY4OSw3NDM2ODEyMzYsMjUwNDI3ODYzLC0x
+MjY0MDUyNjAxLDk3MTkxMDE0NSw4NTUyMjAxMiwtMjA2Njc5Nz
+U3MSwtMzM4MzQxNjQ3LC0xODgxMTU3NTAzLDg5MTA0NDA4OSwt
+MTMzODM0MDcsLTE4MDg2MTY5NDAsLTEwOTE5NDI2MjAsMTAzNT
+EyOTY2MywtMTA0NjM0MDM5NF19
 -->
