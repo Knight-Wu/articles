@@ -83,11 +83,13 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 > 目前结论
 
 * 关于kafka
-同一个consumer group下, 若有consumer 
+同一个consumer group下, 若有consumer 增加, 则会引起所有的consumer 进行reblance, 包括其他topic下面的, 只是改变某个topic repartition的数量, 只是引起当前topic 的consumer 进行rebalance, 不影响其他topic consumer.
+
+> 后续方向
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4NTI4NTMwNCwxNjg1MjE4OTMxLDIxMT
+eyJoaXN0b3J5IjpbMTA5NTkyNzMzMCwxNjg1MjE4OTMxLDIxMT
 YzNzUxNiwyNzkwOTY2ODksNzQzNjgxMjM2LDI1MDQyNzg2Mywt
 MTI2NDA1MjYwMSw5NzE5MTAxNDUsODU1MjIwMTIsLTIwNjY3OT
 c1NzEsLTMzODM0MTY0NywtMTg4MTE1NzUwMyw4OTEwNDQwODks
