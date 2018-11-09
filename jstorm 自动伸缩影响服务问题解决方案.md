@@ -73,16 +73,19 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 经过**源码解析** 5,6两点的配置, 只有新增的task发生了assign, 但是在生产上进行测试的时候还是发现大幅度影响了topology的SendTPS, TPS的图表呈现断崖式下跌, **后续还要再次确认一下新增task 之后做了那些事, 具体的流程有哪些, more TODO**
 
-半天之后, 发现现在所有的topic的consumer都在一个consumer group, 新增consumer 会引起consumer group 的rebalance, 猜测会影响kafka 的性能,  因为按照一个consumer的变化就会rebalance整个 group, 进而影响其他topic的消费, 这样看明显是不合理的, 可以把某些topic 拆分到其他的consumer group, 看是否groupA 的调整是否影响groupB,
+半天之后, 发现现在所有的topic的consumer都在一个consumer group, 新增consumer 会引起consumer group 的rebalance, 日志里面kand猜测会影响kafka 的性能,  因为按照一个consumer的变化就会rebalance整个 group, 进而影响其他topic的消费, 这样看明显是不合理的, 可以把某些topic 拆分到其他的consumer group, 看是否groupA 的调整是否影响groupB,
 等待反馈. 
 
+> 第二次总结
+
+把某个spout 踩到
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4NTIxODkzMSwyMTE2Mzc1MTYsMjc5MD
-k2Njg5LDc0MzY4MTIzNiwyNTA0Mjc4NjMsLTEyNjQwNTI2MDEs
-OTcxOTEwMTQ1LDg1NTIyMDEyLC0yMDY2Nzk3NTcxLC0zMzgzND
-E2NDcsLTE4ODExNTc1MDMsODkxMDQ0MDg5LC0xMzM4MzQwNywt
-MTgwODYxNjk0MCwtMTA5MTk0MjYyMCwxMDM1MTI5NjYzLC0xMD
-Q2MzQwMzk0XX0=
+eyJoaXN0b3J5IjpbMjA0MDM2NzA4NiwxNjg1MjE4OTMxLDIxMT
+YzNzUxNiwyNzkwOTY2ODksNzQzNjgxMjM2LDI1MDQyNzg2Mywt
+MTI2NDA1MjYwMSw5NzE5MTAxNDUsODU1MjIwMTIsLTIwNjY3OT
+c1NzEsLTMzODM0MTY0NywtMTg4MTE1NzUwMyw4OTEwNDQwODks
+LTEzMzgzNDA3LC0xODA4NjE2OTQwLC0xMDkxOTQyNjIwLDEwMz
+UxMjk2NjMsLTEwNDYzNDAzOTRdfQ==
 -->
