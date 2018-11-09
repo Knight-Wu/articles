@@ -78,14 +78,16 @@ nimbus 启动之后会向服务器的5005端口启动一个进程 a, idea随时�
 
 > 第二次总结
 
-把某个spout 拆到其他的consumer group之后, 还是会影响JStorm的TPS, (通过看JStorm的管理界面的图表), 但是
+把某个spout 拆到其他的consumer group之后, 还是会影响JStorm的TPS, (通过看JStorm的管理界面的图表), 但是已经不引起其他topic的consumer 的rebalance了, 心碎.... 后面想到会不会因为这个topic的消息量很大呢, 然后选择了一个没有消息的topic 拆出来, 发现还是影响了图表, ORZ...
+
+> mu
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDM1NTA4OTkzLDE2ODUyMTg5MzEsMjExNj
-M3NTE2LDI3OTA5NjY4OSw3NDM2ODEyMzYsMjUwNDI3ODYzLC0x
-MjY0MDUyNjAxLDk3MTkxMDE0NSw4NTUyMjAxMiwtMjA2Njc5Nz
-U3MSwtMzM4MzQxNjQ3LC0xODgxMTU3NTAzLDg5MTA0NDA4OSwt
-MTMzODM0MDcsLTE4MDg2MTY5NDAsLTEwOTE5NDI2MjAsMTAzNT
-EyOTY2MywtMTA0NjM0MDM5NF19
+eyJoaXN0b3J5IjpbLTE4NjE0NDYxMzksMTY4NTIxODkzMSwyMT
+E2Mzc1MTYsMjc5MDk2Njg5LDc0MzY4MTIzNiwyNTA0Mjc4NjMs
+LTEyNjQwNTI2MDEsOTcxOTEwMTQ1LDg1NTIyMDEyLC0yMDY2Nz
+k3NTcxLC0zMzgzNDE2NDcsLTE4ODExNTc1MDMsODkxMDQ0MDg5
+LC0xMzM4MzQwNywtMTgwODYxNjk0MCwtMTA5MTk0MjYyMCwxMD
+M1MTI5NjYzLC0xMDQ2MzQwMzk0XX0=
 -->
