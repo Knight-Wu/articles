@@ -3,7 +3,7 @@
 ### dubbo 消费者从本地缓存获取提供者列表, 若提供者更改, 能推送更新到缓存(By programming)
 > 代码调用如图: 
 
-
+![](https://drive.google.com/uc?id=1KpmEBe7mhzPNlZ0zgLO-y5lMahW-Jexw)
 
 > 我这边当初这样做的背景是
 
@@ -18,5 +18,5 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MTU0ODMyMDgsLTExOTQ2OTczMl19
+eyJoaXN0b3J5IjpbLTM2MTE0MTcwOSwtMTE5NDY5NzMyXX0=
 -->
