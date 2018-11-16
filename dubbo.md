@@ -3,6 +3,8 @@
 ### dubbo 消费者从本地缓存获取提供者列表, 若提供者更改, 能推送更新到缓存(By programming)
 > 代码调用如图: 
 
+
+
 > 我这边当初这样做的背景是
 
  用一个插件在每个应用打印全链路日志, 当碰到提供者特殊服务器异常, 如线程池满, 超时等异常时需要打印特殊的异常码, 以及提供者的应用名, 但是这两个异常是提供者发送信息给消费者, 然后消费者端接受到之后抛出一个RPCException, 不能通过Invoker.Url.getParameter("application")直接获取提供者应用名, 因为此时并没有真正进入提供者, 所以需要在消费者本地缓存获取. 
@@ -16,5 +18,5 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExOTQ2OTczMl19
+eyJoaXN0b3J5IjpbLTE3MTU0ODMyMDgsLTExOTQ2OTczMl19
 -->
