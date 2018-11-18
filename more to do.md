@@ -1,3 +1,4 @@
+### TODO
 * 完整的洗数流程, 数据集市的数据流向以及相关的技术组件的选取
 * paxos 原理再次理解
 * nio的buffer为何不能一次读取全部数据
@@ -13,9 +14,12 @@
 
 
 
+### DOING
+* maven archtype 直接构建flink-quick-start, 解决一个classNotFoundEx 
+
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTYzNDUzODg4XX0=
+eyJoaXN0b3J5IjpbLTgzNTM3NjI3Ml19
 -->
