@@ -15,7 +15,7 @@
 ![4](https://user-images.githubusercontent.com/20329409/45937181-863cfc00-bff0-11e8-8696-74f72c3fb013.png)
 
 
-3. datanode的日志找不到了, 记得是同时报了管道破裂等IO错误.
+3. datanode的日志找不到了,  同时出现了 "IOException: channel is broken ".
  
 * 解决过程
 1. 关于第一个现象, 一开始只发现了第一个现象, 没有发现executor的异常, 所以自然是觉得jar包问题, 尝试了如下几种添加jar包的方式: 
@@ -61,6 +61,6 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4OTIyMTE2MSwxMTU0MzAyMzYxLC0xOD
+eyJoaXN0b3J5IjpbLTM0NTI3MjgxMiwxMTU0MzAyMzYxLC0xOD
 kxNzMyNzY5XX0=
 -->
