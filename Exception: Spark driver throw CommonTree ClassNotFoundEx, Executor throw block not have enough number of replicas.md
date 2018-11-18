@@ -16,9 +16,11 @@
 
 
 3. datanode的日志找不到了,  同时出现了 "IOException: channel is broken ".
+
+> 总结来看, 由于dn写失败, 导致nn检查小于最小副本数, executor接受到写
  
 * 解决过程
-1. 关于第一个现象, 一开始只发现了第一个现象, 没有发现executor的异常, 所以自然是觉得jar包问题, 尝试了如下几种添加jar包的方式: 
+4. 关于第一个现象, 一开始只发现了第一个现象, 没有发现executor的异常, 所以自然是觉得jar包问题, 尝试了如下几种添加jar包的方式: 
 * hive添加配置: Add Jar(一开始不懂, 应该在spark端添加jar)
 * spark依赖第三方jar, 将jar包放到driver和executor的container中, 前两个参数会从container中取jar包, 第三个参数会把jar包加载到container中.
 ```
@@ -31,11 +33,11 @@ spark.driver.extraJavaOptions=-verbose:class
 ```
 期间还设置了eventLog, 以上方法都没有解决这个问题, 后面发现了现象2.
 
-2. 针对executor写datanode报错, IO层面的异常就比较难排查了, 暂且想到了几个优化集群的方案.
+5. 针对executor写datanode报错, IO层面的异常就比较难排查了, 暂且想到了几个优化集群的方案.
 * 禁止THP(Transparent-Huge-Page-THP-Compaction-Causes-Poor-Performance)
 * 小文件问题, 见我收藏的资料, http://note.youdao.com/noteshare?id=0f01349f4abfc0834d3f6cebc4fbf33f&sub=wcp1536734480094475
 
-3. 根据图3的异常, 看了下源码, completeFile的时候会检查block的最小副本数是否达到, 客户端会轮询等待nn, 根据后续block 结束completeFile的时间(大概有二十几秒), 增加了retry次数之后, 后续的达不到最小副本数的异常有所减小, 
+6. 根据图3的异常, 看了下源码, completeFile的时候会检查block的最小副本数是否达到, 客户端会轮询等待nn, 根据后续block 结束completeFile的时间(大概有二十几秒), 增加了retry次数之后, 后续的达不到最小副本数的异常有所减小, 
 ![image](https://user-images.githubusercontent.com/20329409/45943305-51dd3600-c018-11e8-85df-44ffa688c109.png)
 
 但是仍然出现异常, 故想到写pipeline的dn失败时,重试其他dn, 故找到以下配置: 
@@ -61,6 +63,6 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0NTI3MjgxMiwxMTU0MzAyMzYxLC0xOD
-kxNzMyNzY5XX0=
+eyJoaXN0b3J5IjpbLTE3NTE4NTkwOTksMTE1NDMwMjM2MSwtMT
+g5MTczMjc2OV19
 -->
