@@ -17,7 +17,7 @@
 
 3. datanode的日志找不到了,  同时出现了 "IOException: channel is broken ".
 
-> 总结来看, 由于dn写失败, 导致nn检查小于最小副本数, executor接受到写
+> 总结来看, 由于dn写失败, 导致nn检查小于最小副本数, executor接受到无法关闭文件的异常, driver 反序列化executor 端异常时出现cla
  
 * 解决过程
 4. 关于第一个现象, 一开始只发现了第一个现象, 没有发现executor的异常, 所以自然是觉得jar包问题, 尝试了如下几种添加jar包的方式: 
@@ -63,6 +63,6 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTE4NTkwOTksMTE1NDMwMjM2MSwtMT
-g5MTczMjc2OV19
+eyJoaXN0b3J5IjpbNjI4NDUzMDU3LDExNTQzMDIzNjEsLTE4OT
+E3MzI3NjldfQ==
 -->
