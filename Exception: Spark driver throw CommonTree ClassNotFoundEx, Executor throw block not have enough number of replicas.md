@@ -46,6 +46,7 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > 所以我们想要的是反复重试新的dn, 直到客户端发起completeFile请求时, 轮询nn超时, 故把dfs.client.block.write.replace-datanode-on-failure.policy设置为always, dfs.client.block.write.replace-datanode-on-failure.best-effort设为true, namenode的block state change的日志级别调成debug, 再观察后续出现写异常的时候是否有重试其他dn.
 
+**一直没有来反馈** ， 经过后续的观察，再也没有出现commonTree的报错了， 证明解决问题的思路是正确的，yeah！
 
  
 
@@ -60,5 +61,5 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTE3MzI3NjldfQ==
+eyJoaXN0b3J5IjpbMTE1NDMwMjM2MSwtMTg5MTczMjc2OV19
 -->
