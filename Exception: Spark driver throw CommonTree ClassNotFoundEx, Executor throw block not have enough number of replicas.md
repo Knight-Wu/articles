@@ -40,7 +40,7 @@ spark.driver.extraJavaOptions=-verbose:class
 6. 根据图3的异常, 看了下源码, completeFile的时候会检查block的最小副本数是否达到, 客户端会轮询等待nn, 根据后续block 结束completeFile的时间(大概有二十几秒), 增加了retry次数之后, 后续的达不到最小副本数的异常有所减小, 
 ![image](https://user-images.githubusercontent.com/20329409/45943305-51dd3600-c018-11e8-85df-44ffa688c109.png)
 
-但是仍然出现异常, 想了下最根本的异常是dn写文件失败, 可以尝试一下故想到写pipeline的dn失败时,重试其他dn, 故找到以下配置: 
+但是仍然出现异常, 想了下最根本的异常是dn写文件失败, 可以尝试一下dn 故障转移, 让pipeline的某个 dn写失败时,重试其他dn, 通过多方资料找到以下配置: 
 ![image](https://user-images.githubusercontent.com/20329409/45943455-ee073d00-c018-11e8-88a5-f251c1d42453.png)
 > dfs.client.block.write.replace-datanode-on-failure.policy, 这个配置的解释一开始没看懂n这个参数( let n be the number of existing datanodes), 后面参考了这篇文章, [http://blog.cloudera.com/blog/2015/03/understanding-hdfs-recovery-processes-part-2/](http://blog.cloudera.com/blog/2015/03/understanding-hdfs-recovery-processes-part-2/), 应该是集群中现有的dn的数量,如果是default则按照公式进行计算,  如果是always, 每次都新加一个dn到pipeline中.
 
@@ -63,6 +63,6 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjM1NjExOTYsLTI4NTY0NDk0OSwxMT
-U0MzAyMzYxLC0xODkxNzMyNzY5XX0=
+eyJoaXN0b3J5IjpbNzM4OTk3NTU5LC0yODU2NDQ5NDksMTE1ND
+MwMjM2MSwtMTg5MTczMjc2OV19
 -->
