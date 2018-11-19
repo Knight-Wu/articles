@@ -11,7 +11,8 @@
 * flink的学习, flink 和JStorm的对比
 * google drive add articles to read-later-list
 * centOS redhat内核关系, 以及在修改hostname的时候命令的不同
-
+* datanode 磁盘中某个volume 的容量快满时会有何影响
+* 如何进行hdfs 磁盘的balance
 
 
 ### DOING
@@ -21,5 +22,5 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzNTM3NjI3Ml19
+eyJoaXN0b3J5IjpbOTIxMDk1MDAsLTgzNTM3NjI3Ml19
 -->
