@@ -5,10 +5,17 @@
 
 ![enter image description here](https://drive.google.com/uc?id=1EMvPfK4EHC1TQDEScJWgOzV6vRM__vkq)
 
-* 
+* 查询spark 是否连接hive 正常
+```
+scala> spark.catalog.listDatabases.show(false) 
+如果结果是类似这样的， 
+name |description |locationUri
+default|default database|file:/root/spark-warehouse|
+说明没有找到hive warehouse, 找不到hive的数据
+```
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5NTI5NDY0OV19
+eyJoaXN0b3J5IjpbLTgwMjY4NDM5NF19
 -->
