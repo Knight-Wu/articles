@@ -13,13 +13,18 @@
 ### 方案
 经过思考和搜索, 参考这篇文章 [https://stackoverflow.com/questions/11829922/logback-file-appender-doesnt-flush-immediately](https://stackoverflow.com/questions/11829922/logback-file-appender-doesnt-flush-immediately), 提供一个新的appender, encoder, BufferOutputStream 去实现.
 
-1. 新建 BufferOutputStream 继承java.io.OutputStream , 整合了logback的这两个类的功能, 构造函数传入参数 bufferSize, 
-2. 新建 BufferFileAppender 继承RollingFileAppender , 初始化BufferOutputStream 
-3. 新建Encoder, 继承自EncoderBase, 整合了PatternLayoutEncoderBase和LayoutWrappingEncoder的功能, 
+1. 自定义 outputStream 继承java.io.OutputStream , 整合了logback的这两个类的功能, 构造函数传入参数 bufferSize, 
+2. 自定义 appender 继承RollingFileAppender , 初始化BufferOutputStream 
+3. 自定义 encoder, 继承自EncoderBase, 整合了PatternLayoutEncoderBase和LayoutWrappingEncoder的功能, 
 4. 最后配置文件如下, 
+
+
+### 总结
+
+
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjY3NDgwMjAxXX0=
+eyJoaXN0b3J5IjpbMjY2NDk4ODYzLDI2NzQ4MDIwMV19
 -->
