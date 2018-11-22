@@ -19,12 +19,11 @@
 
 2. 自定义 appender 继承RollingFileAppender , 初始化BufferOutputStream 
 
-![enter image description here](https://drive.google.com/uc?id=1aS4zR4nyQLM6s5WzJbmVVvyMVrcXSajF)
 3. 自定义 encoder, 继承自EncoderBase, 整合了PatternLayoutEncoderBase和LayoutWrappingEncoder的功能, 
 
 ![](https://drive.google.com/uc?id=1-B3bpZIFiTPgS-m9tImlxRZYgm_kMsoP)
 4. 最后配置文件如下, 
-
+![enter image description here](https://drive.google.com/uc?id=1ZbecJjVla4PSqrvfZ1msbh9lL_qiGfmc)
 ### 碰到的问题
 大概前后花了一天半的时间完成整个任务, 包括测试, 还是网上资料给力, 提供了很好的思路, 剩下的就是编码细节, 搞清encoder 的初始化逻辑等, 自定义的类需要整合哪些类的功能等问题了
 
@@ -43,6 +42,6 @@ by the way, 开源真爽, 可以学习别人的思路, 还可以加入自己的�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxNDAzOTU4MSwtMTU4MzgyMDEzLDI2Nz
+eyJoaXN0b3J5IjpbMTAzMTE4MjUwNCwtMTU4MzgyMDEzLDI2Nz
 Q4MDIwMV19
 -->
