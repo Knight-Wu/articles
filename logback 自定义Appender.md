@@ -18,6 +18,8 @@
 3. 自定义 encoder, 继承自EncoderBase, 整合了PatternLayoutEncoderBase和LayoutWrappingEncoder的功能, 
 4. 最后配置文件如下, 
 
+### 碰到的问题
+大概前后花了一天半的时间完成整个任务, 包括测试, 还是wangz
 
 ### 总结
 
@@ -26,5 +28,5 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjY2NDk4ODYzLDI2NzQ4MDIwMV19
+eyJoaXN0b3J5IjpbOTgzNjEzNjc1LDI2NzQ4MDIwMV19
 -->
