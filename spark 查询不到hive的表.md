@@ -17,12 +17,12 @@ default|default database|file:/root/spark-warehouse|
 * 根据文档 [https://spark.apache.org/docs/2.2.0/sql-programming-guide.html#hive-tables](https://spark.apache.org/docs/2.2.0/sql-programming-guide.html#hive-tables)
 > Note that the `hive.metastore.warehouse.dir` property in `hive-site.xml` is deprecated since Spark 2.0.0. Instead, use `spark.sql.warehouse.dir` to specify the default location of database in warehouse
 
-显示指定了 spark.sql.warehouse.dir = `hive warehouse` 还是
+显示指定了 spark.sql.warehouse.dir = "hive warehouse" 还是没用,spark.catalog.listDatabases.show(false) 这个命令输出仍然是单独的spark warehouse
 
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzI1MTMxNTQ5XX0=
+eyJoaXN0b3J5IjpbLTE4OTY4NjQwNjFdfQ==
 -->
