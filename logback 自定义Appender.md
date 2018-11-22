@@ -34,7 +34,7 @@ logback也是推荐encoder 而不是layout, 具体原因没研究
  其中还发现了这个帖子, [I/O concept flush vs sync](https://stackoverflow.com/questions/4072878/i-o-concept-flush-vs-sync), 可以记录一下, 个人的理解是flush 只是基于file 这个类将buffer 清空到操作系统的缓存, 但是操作系统的缓存persist into disk 需要调用sync 
  
 ### 目前问题
-
+* 有可能gangg
 
 ### 总结
 
@@ -47,6 +47,6 @@ by the way, 开源真爽, 可以学习别人的思路, 还可以加入自己的�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY5NzU1MTgsMjA3MTc1ODExNCwtMTU4Mz
-gyMDEzLDI2NzQ4MDIwMV19
+eyJoaXN0b3J5IjpbLTM2NDgxNzk5OSwyMDcxNzU4MTE0LC0xNT
+gzODIwMTMsMjY3NDgwMjAxXX0=
 -->
