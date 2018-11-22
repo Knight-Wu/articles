@@ -12,7 +12,8 @@
 * google drive add articles to read-later-list
 * centOS redhat内核关系, 以及在修改hostname的时候命令的不同
 * datanode 磁盘中某个volume 的容量快满时会有何影响
-* 如何进行hdfs 磁盘的balanceyarn container如何用起来. 写一个使用的小demo
+* 如何进行hdfs 磁盘的balance
+* yarn container如何用起来. 写一个使用的小demo
 
 
 ### DOING
@@ -22,6 +23,6 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0MTg4ODMxNCw5MjEwOTUwMCwtODM1Mz
+eyJoaXN0b3J5IjpbMTM4NDQ0MDk3NCw5MjEwOTUwMCwtODM1Mz
 c2MjcyXX0=
 -->
