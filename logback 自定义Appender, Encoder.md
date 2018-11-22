@@ -41,6 +41,8 @@ logback也是推荐encoder 而不是layout, 具体原因没研究
 
 * 之前感觉不改源码, 直接改BufferOutputStream的初始化几乎不可能, 又不是spring有容器进行管理beans, 后续的解决思路等于是加上了一层逻辑层去重写底层的逻辑, 想到以前听到过一个计算机大神说的话, 大意是: 在计算机世界里, 没有什么加上一层逻辑层解决不了的, 想到之前写dubbo 的filter, SPI真是很方便的加入用户自己的插件.
 * 测试机器，日志盘不要和数据盘在一起，这样性能也会下降很厉害
+* 更加深刻理解作用域的限制, 源码里面非public的成员, 有时候影响很大.
+
 
 > by the way, 开源真爽, 可以学习别人的思路, 还可以加入自己的理解.
 
@@ -49,5 +51,5 @@ logback也是推荐encoder 而不是layout, 具体原因没研究
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTc5MzIwODFdfQ==
+eyJoaXN0b3J5IjpbLTYzNzg5NjY4OF19
 -->
