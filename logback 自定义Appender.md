@@ -13,12 +13,13 @@
 ### 方案
 经过思考和搜索, 参考这篇文章 [https://stackoverflow.com/questions/11829922/logback-file-appender-doesnt-flush-immediately](https://stackoverflow.com/questions/11829922/logback-file-appender-doesnt-flush-immediately), 提供一个新的appender, encoder, BufferOutputStream 去实现.
 
-1. BufferOutputStream , 整合了logback的这两个类的功能, 传入参数bufferS
+1. BufferOutputStream , 整合了logback的这两个类的功能, 构造函数传入参数bufferSize, 
+2. BufferFileAppender, 初始化
 
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzM2NDE0NTM1XX0=
+eyJoaXN0b3J5IjpbLTQzNTY4OTg4OV19
 -->
