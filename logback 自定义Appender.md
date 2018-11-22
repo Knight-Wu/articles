@@ -2,11 +2,11 @@
 领导提出打印日志性能差, 异步打印可能会丢消息等等问题, 故需要看清logback 内部实现逻辑, 采用异步或者批量的方式(自己想...)提高性能.
 
 ### 初探logback,  寻找思路
-yixia以下文章有利于快速了解logback
+以下涉及的源码均是logback-1.0.13, 以下文章有利于快速了解logback
 > 参考链接
 1. [https://cloud.tencent.com/developer/article/1154748](https://cloud.tencent.com/developer/article/1154748)
 
-再通过自己翻看源码, debug, 基本上掌握了logback的逻辑, 大概耗时半天, 此时也联系到公司的测试, 了解到之前他们做压测的时候, 将日志打印的一个配置: immediateFlush 改成false, 性能提升很大. 故定位到
+再通过自己翻看源码, debug, 基本上掌握了logback的逻辑, 大概耗时半天, 此时也联系到公司的测试, 了解到之前他们做压测的时候, 将日志打印的一个配置: immediateFlush 改成false, 性能提升很大. 故定位到 LayoutWrappingEncoder.doEncode(E event) , 
 
 
 ### 背景
@@ -16,5 +16,5 @@ yixia以下文章有利于快速了解logback
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwMjU0Mzg0MF19
+eyJoaXN0b3J5IjpbMTk4MTU2Njc4XX0=
 -->
