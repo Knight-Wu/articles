@@ -6,7 +6,7 @@
 > 参考链接
 1. [https://cloud.tencent.com/developer/article/1154748](https://cloud.tencent.com/developer/article/1154748)
 
-再通过自己翻看源码, debug, 基本上掌握了logback的逻辑, 大概耗时半天, 此时也联系到公司的测试, 了解到之前他们做压测的时候, 发现**当接口逻辑简单时,tps 很高时, 打印日志将占用大量的时间, 大概有百分之q**将日志打印的一个配置: immediateFlush 改成false, 性能提升很大. 故定位到 LayoutWrappingEncoder.doEncode(E event) , 如下图, 但是此时并不知道这个flush的实现细节, 接下来参考了这篇文章, [logback.xml immediate=false 到底缓存空间是多大](http://k1280000.iteye.com/blog/2265177)
+再通过自己翻看源码, debug, 基本上掌握了logback的逻辑, 大概耗时半天, 此时也联系到公司的测试, 了解到之前他们做压测的时候, 发现**当接口逻辑简单时,tps 很高时, 打印日志将占用大量的时间, 大概有百分之七八十, 都在等待日志进入blockQueue **将日志打印的一个配置: immediateFlush 改成false, 性能提升很大. 故定位到 LayoutWrappingEncoder.doEncode(E event) , 如下图, 但是此时并不知道这个flush的实现细节, 接下来参考了这篇文章, [logback.xml immediate=false 到底缓存空间是多大](http://k1280000.iteye.com/blog/2265177)
 定位到是 BufferOutputStream, 此时设计方案初步明了: **基于bufferSize 和时间进行flush , 提升消费能力, 进一步提升logback的性能**但是基于如下背景: 
 公司logback 版本混乱, 通过统一升级logback 版本的方式去推动, 相当困难, 目前没有建立严格的jar包审查体系, 故放弃修改源码; 
 
@@ -19,5 +19,5 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzUyMTYzNTldfQ==
+eyJoaXN0b3J5IjpbLTgyMzUzNjc1MF19
 -->
