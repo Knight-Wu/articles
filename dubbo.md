@@ -1,4 +1,4 @@
-**用了dubbo 差不多两年, 其实很多都用过看过了, 但是就是没总结, 现在总结还不晚
+**用了dubbo 差不多两年, 其实很多都用过看过了, 但是就是没总结, 现在总结还不晚**
 
 ### dubbo 消费者从本地缓存获取提供者列表, 若提供者更改, 能推送更新到缓存(By programming)
 > 代码调用如图: 
@@ -18,5 +18,6 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2MTE0MTcwOSwtMTE5NDY5NzMyXX0=
+eyJoaXN0b3J5IjpbLTE0NjQxMTUzMywtMzYxMTQxNzA5LC0xMT
+k0Njk3MzJdfQ==
 -->
