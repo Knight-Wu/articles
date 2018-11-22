@@ -33,6 +33,9 @@ logback也是推荐encoder 而不是layout, 具体原因没研究
 * I/O concept flush vs sync 
  其中还发现了这个帖子, [I/O concept flush vs sync](https://stackoverflow.com/questions/4072878/i-o-concept-flush-vs-sync), 可以记录一下, 个人的理解是flush 只是基于file 这个类将buffer 清空到操作系统的缓存, 但是操作系统的缓存persist into disk 需要调用sync 
  
+### 目前问题
+
+
 ### 总结
 
 之前感觉不改源码, 直接改BufferOutputStream的初始化几乎不可能, 又不是spring有容器进行管理beans, 后续的解决思路等于是加上了一层逻辑层去重写底层的逻辑, 想到以前听到过一个计算机大神说的话, 大意是: 在计算机世界里, 没有什么加上一层逻辑层解决不了的, 想到之前写dubbo 的filter, SPI真是很方便的加入用户自己的插件.
@@ -44,6 +47,6 @@ by the way, 开源真爽, 可以学习别人的思路, 还可以加入自己的�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3MTc1ODExNCwtMTU4MzgyMDEzLDI2Nz
-Q4MDIwMV19
+eyJoaXN0b3J5IjpbMzY5NzU1MTgsMjA3MTc1ODExNCwtMTU4Mz
+gyMDEzLDI2NzQ4MDIwMV19
 -->
