@@ -27,12 +27,12 @@
  
 ### 总结
 
-之前感觉不改源码, 直接改BufferOutputStream的初始化几乎不可能, 又不是spring有容器进行guanli
+之前感觉不改源码, 直接改BufferOutputStream的初始化几乎不可能, 又不是spring有容器进行管理beans, 后续的解决思路等于是加上了一层逻辑层去重写底层的逻辑, 想到z
 
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg0MTgzMDExOCwyNjc0ODAyMDFdfQ==
+eyJoaXN0b3J5IjpbLTExNjY4MTk5MDYsMjY3NDgwMjAxXX0=
 -->
