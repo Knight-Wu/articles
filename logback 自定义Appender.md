@@ -6,7 +6,7 @@
 > 参考链接
 1. [https://cloud.tencent.com/developer/article/1154748](https://cloud.tencent.com/developer/article/1154748)
 
-再通过自己翻看源码debug, 
+再通过自己翻看源码, debug, 基本上掌握了logback的逻辑, 大概耗时半天, 此时也联系到公司的测试, 了解到之前他们做压测的时候, 将日志打印改成
 
 
 ### 背景
@@ -16,5 +16,5 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODcyNzcxOTM4XX0=
+eyJoaXN0b3J5IjpbLTEyNTY0NTYyOV19
 -->
