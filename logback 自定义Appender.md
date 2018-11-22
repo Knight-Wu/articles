@@ -23,14 +23,16 @@
 
 * 一开始碰到一个设置immediateFlush 不生效的问题, 发现设置immediateFlush=false的 encoder和接下来执行write的encoder不是一个对象, 跟着源码进行debug, 发现这里新建了一个encoder, logback也是推荐encoder 而不是layout, 具体原因没研究
 * I/O concept flush vs sync 
- 其中还发现了这个帖子, [I/O concept flush vs sync](https://stackoverflow.com/questions/4072878/i-o-concept-flush-vs-sync), 可以记录一下, 个人的理解是flush 只是基于file 这个类将buffer qingk
+ 其中还发现了这个帖子, [I/O concept flush vs sync](https://stackoverflow.com/questions/4072878/i-o-concept-flush-vs-sync), 可以记录一下, 个人的理解是flush 只是基于file 这个类将buffer 清空到操作系统的缓存, 但是操作系统的缓存persist into disk 需要调用sync 
  
 ### 总结
+
+之前感觉不改源码, 直接改BufferOutputStream的初始化几乎不可能, 又不是spring有容器进行guanli
 
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5ODUyNTY4OSwyNjc0ODAyMDFdfQ==
+eyJoaXN0b3J5IjpbMTg0MTgzMDExOCwyNjc0ODAyMDFdfQ==
 -->
