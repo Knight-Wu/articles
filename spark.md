@@ -564,19 +564,6 @@ uuid time url result
 总而言之, hive on spark在large join时性能突出, spark sql在map join时性能突出, hive on mr比较慢
 
 ### hive on spark
-基于CDH-5.12.1, spark的配置需要依赖hive 服务, 若服务正常可以直接使用spark-shell, spark.sql("show databases").show 查询hive表.
-
-> 调试是否spark 是否连接hive 正常
-```
-scala> spark.catalog.listDatabases.show(false) 
-如果结果是类似这样的， 
-name |description |locationUri
-default|default database|file:/root/spark-warehouse|
-有可能是没有为Spark 启用依赖Hive服务
-```
-
-> 调试spark-shell, 增加日志
-![enter image description here](https://drive.google.com/uc?id=1EMvPfK4EHC1TQDEScJWgOzV6vRM__vkq)
 
 #### spark-submit
 * shell 脚本
@@ -700,11 +687,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwOTM4MDM2MiwtMjE0NTgwOTMxMCwtMT
-M0NjUyNDA2NiwxMzAzNTg4MTkyLDE5NjIwODQyMiwxNDYxODk4
-ODczLDE4MTY4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1Ny
-wxOTEwMDk3MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEy
-OTU1NCwtMTQxOTE2MDcyOSwtMTM4OTczMzYyNiwtMTEyNDE3NT
-EzNywxNTU0OTkyMzY0LC0xNDI4MjcwNjUsMzA4ODQxMDExLDEw
-MTA0NDU2NTNdfQ==
+eyJoaXN0b3J5IjpbLTExNDQ4Nzk5MDMsLTkwOTM4MDM2MiwtMj
+E0NTgwOTMxMCwtMTM0NjUyNDA2NiwxMzAzNTg4MTkyLDE5NjIw
+ODQyMiwxNDYxODk4ODczLDE4MTY4ODQyMjksLTEwNzU5MDM4ND
+MsLTU3MDMwMTg1NywxOTEwMDk3MTc0LC03MzE0MzEwMzAsODEz
+OTg0NjQ3LDE1MzEyOTU1NCwtMTQxOTE2MDcyOSwtMTM4OTczMz
+YyNiwtMTEyNDE3NTEzNywxNTU0OTkyMzY0LC0xNDI4MjcwNjUs
+MzA4ODQxMDExXX0=
 -->
