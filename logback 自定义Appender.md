@@ -22,7 +22,9 @@
 大概前后花了一天半的时间完成整个任务, 包括测试, 还是网上资料给力, 提供了很好的思路, 剩下的就是编码细节, 搞清encoder 的初始化逻辑等, 自定义的类需要整合哪些类的功能等问题了
 
 * 一开始碰到一个设置immediateFlush 不生效的问题, 发现设置immediateFlush=false的 encoder和接下来执行write的encoder不是一个对象, 跟着源码进行debug, 发现这里新建了一个encoder, logback也是推荐encoder 而不是layout, 具体原因没研究
-* 
+* I/O concept flush vs sync 
+ 其中还发现了这个帖子, [I/O concept flush vs sync](https://stackoverflow.com/questions/4072878/i-o-concept-flush-vs-sync), 可以记录一下, 个人的理解是flush 只是基于file 这个类将buffer qingk
+ 
 ### 总结
 
 
@@ -30,5 +32,5 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxMTExNjUxOSwyNjc0ODAyMDFdfQ==
+eyJoaXN0b3J5IjpbMTA5ODUyNTY4OSwyNjc0ODAyMDFdfQ==
 -->
