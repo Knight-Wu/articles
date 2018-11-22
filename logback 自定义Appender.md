@@ -11,7 +11,7 @@
 公司logback 版本混乱, 通过统一升级logback 版本的方式去推动, 相当困难, 目前没有建立严格的jar包审查体系, 故放弃修改源码; 采用提供独立 jar包的形式,  那么问题来了, 如何在不改动源码的情况下, 改变 BufferOutputStream 的bufferSize, 并周期性刷新? 
 
 ### 方案
-经过思考和搜索, [https://stackoverflow.com/questions/11829922/logback-file-appender-doesnt-flush-immediately](https://stackoverflow.com/questions/11829922/logback-file-appender-doesnt-flush-immediately), 提供一个新的appender 去实现.
+经过思考和搜索, 参考这篇文章 [https://stackoverflow.com/questions/11829922/logback-file-appender-doesnt-flush-immediately](https://stackoverflow.com/questions/11829922/logback-file-appender-doesnt-flush-immediately), 提供一个新的appender, encoder, BufferOutputStream 去实现.
 
 1. 
 
@@ -20,5 +20,5 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNjUwMTkyXX0=
+eyJoaXN0b3J5IjpbMzMxOTg3NjUzXX0=
 -->
