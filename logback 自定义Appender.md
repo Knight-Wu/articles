@@ -18,7 +18,7 @@
 1. 自定义 outputStream 继承java.io.OutputStream , 整合了logback的这两个类的功能, 构造函数传入参数 bufferSize, 
 
 2. 自定义 appender 继承RollingFileAppender , 初始化BufferOutputStream 
-
+![enter image description here](https://drive.google.com/uc?id=1yA923Us6R5DW4VkF4PKIJQHTFUlj9T2v)
 3. 自定义 encoder, 继承自EncoderBase, 整合了PatternLayoutEncoderBase和LayoutWrappingEncoder的功能, 
 
 ![](https://drive.google.com/uc?id=1-B3bpZIFiTPgS-m9tImlxRZYgm_kMsoP)
@@ -27,7 +27,9 @@
 ### 碰到的问题
 大概前后花了一天半的时间完成整个任务, 包括测试, 还是网上资料给力, 提供了很好的思路, 剩下的就是编码细节, 搞清encoder 的初始化逻辑等, 自定义的类需要整合哪些类的功能等问题了
 
-* 一开始碰到一个设置immediateFlush 不生效的问题, 发现设置immediateFlush=false的 encoder和接下来执行write的encoder不是一个对象, 跟着源码进行debug, 发现这里新建了一个encoder, logback也是推荐encoder 而不是layout, 具体原因没研究
+* 一开始碰到一个设置immediateFlush 不生效的问题, 发现设置immediateFlush=false的 encoder和接下来执行write的encoder不是一个对象, 跟着源码进行debug, 发现这里新建了一个encoder, 
+![enter image description here](https://drive.google.com/uc?id=1SJ73FAADDJ4KbOd7NdjyboXd85UDnLIe)
+logback也是推荐encoder 而不是layout, 具体原因没研究
 * I/O concept flush vs sync 
  其中还发现了这个帖子, [I/O concept flush vs sync](https://stackoverflow.com/questions/4072878/i-o-concept-flush-vs-sync), 可以记录一下, 个人的理解是flush 只是基于file 这个类将buffer 清空到操作系统的缓存, 但是操作系统的缓存persist into disk 需要调用sync 
  
@@ -42,6 +44,6 @@ by the way, 开源真爽, 可以学习别人的思路, 还可以加入自己的�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzMTE4MjUwNCwtMTU4MzgyMDEzLDI2Nz
+eyJoaXN0b3J5IjpbMjA3MTc1ODExNCwtMTU4MzgyMDEzLDI2Nz
 Q4MDIwMV19
 -->
