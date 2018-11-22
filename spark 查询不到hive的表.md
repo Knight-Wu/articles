@@ -19,10 +19,17 @@ default|default database|file:/root/spark-warehouse|
 
 显示指定了 spark.sql.warehouse.dir = "hive warehouse" 还是没用,spark.catalog.listDatabases.show(false) 这个命令输出仍然是单独的spark warehouse
 
+* 显示指定hadoop confi dir
+
+```
+export HADOOP_CONF_DIR=/etc/spark2/conf/yarn-conf; sh spark2-shell 
+
+```
+然后终于查到了hive 表, 具体原因仍待查
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTY4NjQwNjFdfQ==
+eyJoaXN0b3J5IjpbLTE4Mjg2Mjc1OTFdfQ==
 -->
