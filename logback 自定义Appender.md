@@ -19,7 +19,9 @@
 4. 最后配置文件如下, 
 
 ### 碰到的问题
-大概前后花了一天半的时间完成整个任务, 包括测试, 还是wangz
+大概前后花了一天半的时间完成整个任务, 包括测试, 还是网上资料给力, 提供了很好的思路, 剩下的就是编码细节, 搞清encoder 的初始化逻辑等, 自定义的类需要整合哪些类的功能等问题了
+
+* 一开始碰到一个设置immediateFlush 不生效的问题, gen
 
 ### 总结
 
@@ -28,5 +30,5 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTgzNjEzNjc1LDI2NzQ4MDIwMV19
+eyJoaXN0b3J5IjpbLTExMzQ3NTMxMjUsMjY3NDgwMjAxXX0=
 -->
