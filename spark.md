@@ -237,8 +237,8 @@ shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manag
 具体参见 [https://issues.apache.org/jira/browse/SPARK-751](https://issues.apache.org/jira/browse/SPARK-751)
 2. 文件句柄占用很多
 
-然后结束
-> Sorted-Based Shuffle
+
+> 然后介绍 Sorted-Based Shuffle
 
  参考资料, 按优先级
 1. [https://issues.apache.org/jira/browse/SPARK-2045](https://issues.apache.org/jira/browse/SPARK-2045)
@@ -694,11 +694,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzgyMjQ2MzA1LC0xNjAzMjAwMjAxLC0xMT
-Q0ODc5OTAzLC05MDkzODAzNjIsLTIxNDU4MDkzMTAsLTEzNDY1
-MjQwNjYsMTMwMzU4ODE5MiwxOTYyMDg0MjIsMTQ2MTg5ODg3My
-wxODE2ODg0MjI5LC0xMDc1OTAzODQzLC01NzAzMDE4NTcsMTkx
-MDA5NzE3NCwtNzMxNDMxMDMwLDgxMzk4NDY0NywxNTMxMjk1NT
-QsLTE0MTkxNjA3MjksLTEzODk3MzM2MjYsLTExMjQxNzUxMzcs
-MTU1NDk5MjM2NF19
+eyJoaXN0b3J5IjpbMTUyNzA1MTA5NywtMTYwMzIwMDIwMSwtMT
+E0NDg3OTkwMywtOTA5MzgwMzYyLC0yMTQ1ODA5MzEwLC0xMzQ2
+NTI0MDY2LDEzMDM1ODgxOTIsMTk2MjA4NDIyLDE0NjE4OTg4Nz
+MsMTgxNjg4NDIyOSwtMTA3NTkwMzg0MywtNTcwMzAxODU3LDE5
+MTAwOTcxNzQsLTczMTQzMTAzMCw4MTM5ODQ2NDcsMTUzMTI5NT
+U0LC0xNDE5MTYwNzI5LC0xMzg5NzMzNjI2LC0xMTI0MTc1MTM3
+LDE1NTQ5OTIzNjRdfQ==
 -->
