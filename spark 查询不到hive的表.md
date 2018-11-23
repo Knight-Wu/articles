@@ -27,14 +27,14 @@ export HADOOP_CONF_DIR=/etc/spark2/conf/yarn-conf; sh spark2-shell
 ```
 然后终于查到了hive 表, 具体原因仍待查, 后续采用如下方式排查: 
 ```
-set -x; source /etc/spark2/conf/spark-env.sh ; set +x 
+set -x; source /etc/spark2/conf/spark-env.sh ; set +x (a command)
 ```
-`set -x` enables a mode of the shell where all executed commands are printed to the terminal. In your case it's clearly used for debugging, which is a typical use case for `set -x`: printing every command as it is executed may help you to visualize the control flow of the script if it is not functioning as expected.
-
+`set -x` enables a mode of the shell where all executed commands are printed to the terminal. In your case it's clearly used for debugging, which is a typical use case for `set -x`: printing every command as it is executed may help you to visualize the control flow of the script if it is not functioning as expected.(说白了会ba)
+然后将
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2MTAzODYwMiwtMTkwMTQwMDE3MiwtMT
+eyJoaXN0b3J5IjpbMTI3MjU3NTI5MiwtMTkwMTQwMDE3MiwtMT
 gyODYyNzU5MV19
 -->
