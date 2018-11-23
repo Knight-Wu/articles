@@ -172,7 +172,7 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 
 > spark job pool
 
-fix me
+*fix me*
 
 #### spark persist
 参考自 [https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md](https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md)
@@ -689,11 +689,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI1OTUyODc1LC0xMTQ0ODc5OTAzLC05MD
-kzODAzNjIsLTIxNDU4MDkzMTAsLTEzNDY1MjQwNjYsMTMwMzU4
-ODE5MiwxOTYyMDg0MjIsMTQ2MTg5ODg3MywxODE2ODg0MjI5LC
-0xMDc1OTAzODQzLC01NzAzMDE4NTcsMTkxMDA5NzE3NCwtNzMx
-NDMxMDMwLDgxMzk4NDY0NywxNTMxMjk1NTQsLTE0MTkxNjA3Mj
-ksLTEzODk3MzM2MjYsLTExMjQxNzUxMzcsMTU1NDk5MjM2NCwt
-MTQyODI3MDY1XX0=
+eyJoaXN0b3J5IjpbLTI2ODI0OTMzOSwtMTE0NDg3OTkwMywtOT
+A5MzgwMzYyLC0yMTQ1ODA5MzEwLC0xMzQ2NTI0MDY2LDEzMDM1
+ODgxOTIsMTk2MjA4NDIyLDE0NjE4OTg4NzMsMTgxNjg4NDIyOS
+wtMTA3NTkwMzg0MywtNTcwMzAxODU3LDE5MTAwOTcxNzQsLTcz
+MTQzMTAzMCw4MTM5ODQ2NDcsMTUzMTI5NTU0LC0xNDE5MTYwNz
+I5LC0xMzg5NzMzNjI2LC0xMTI0MTc1MTM3LDE1NTQ5OTIzNjQs
+LTE0MjgyNzA2NV19
 -->
