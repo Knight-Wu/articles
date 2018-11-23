@@ -203,7 +203,7 @@ cache之后, 整个lineage 还会保留, 但是cache的数据不能在多个driv
 
 * 与mr的checkpoint的区别
 
- Hadoop MapReduce 在执行 job 的时候，不停地做持久化，每个 task 运行结束做一次，每个 job 运行结束做一次（写到 HDFS）。在 task 运行过程中也不停地在内存和磁盘间 swap 来 swap 去。 可是 Hadoop 中的 task 中途出错需要完全重新运行，比如 shuffle 了一半的数据存放到了磁盘，下次重新运行时仍然要重新 shuffle。Spark 好的一点在于尽量不去持久化，所以使用 pipeline，cache 等机制。用户如果感觉 job 可能会出错可以手动去 checkpoint 一些 critical 的 RDD，job 如果出错，下次运行时直接从 checkpoint 中读取数据。但是不足的是，checkpoint 需要两次运行 job
+ Hadoop MapReduce 在执行 job 的时候，不停地做持久化，每个 task 运行结束做一次，每个 job 运行结束做一次（写到 HDFS）。在 task 运行过程中也不停地在内存和磁盘间 swap 来 swap 去。 可是 Hadoop 中的 task 中途出错需要完全重新运行，比如 shuffle 了一半的数据存放到了磁盘，下次重新运行时仍然要重新 shuffle。Spark 好的一点在于尽量不去持久化，所以使用 pipeline，cache 等机制。用户如果感觉 job 可能会出错可以手动去 checkpoint 一些 critical 的 RDD，job 如果出错，下次运行时直接从 checkpoint 中读取数据。但不足的是，checkpoint 需要两次运行 job 
 
 
 #### spark shuffle
@@ -693,7 +693,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODk4NzE1MDYsLTExNDQ4Nzk5MDMsLT
+eyJoaXN0b3J5IjpbLTE2MDMyMDAyMDEsLTExNDQ4Nzk5MDMsLT
 kwOTM4MDM2MiwtMjE0NTgwOTMxMCwtMTM0NjUyNDA2NiwxMzAz
 NTg4MTkyLDE5NjIwODQyMiwxNDYxODk4ODczLDE4MTY4ODQyMj
 ksLTEwNzU5MDM4NDMsLTU3MDMwMTg1NywxOTEwMDk3MTc0LC03
