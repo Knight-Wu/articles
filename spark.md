@@ -180,13 +180,15 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 一些运算量很大, 运算时间很长, 或者依赖很多RDD的RDD 则需要进行checkpoint 分为reliable 和local 两种.
 
  1. reliable
+
  SparkContext.setCheckpointDir(directory: String) to set the checkpoint directory, 目录必须是hdfs路径, 因为 checkPoint file实际上是保存在executor 机器上的.
+
  用法: RDD.checkpoint() , 当前rdd被保存, 对 parent rdd的引用都会被移除; 每个job执行完之后, 会往前回溯所有的RDD, 若需要checkpoint, 则标记为 CheckpointingInProgress, 最后启动一个新的job 完成Checkpoint. 
 job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd的状态为 checkpoint, 并为该rdd 设置一个强依赖, 设置该rdd的 parent rdd为 CheckpointRDD, 该 CheckpointRDD 负责读取文件系统的 Checkpoint文件, 生成对应rdd 的 partition.
 
+ checkpoint 也是lazy的, 触发了action之后, 才会往前回溯到需要checkpoint的RDD 进行checkpoint.
 
-> checkpoint 也是lazy的, 触发了action之后, 才会往前回溯到需要checkpoint的RDD 进行checkpoint.
-> checkpoint的时候, 会重新起一个新的job 去计算需要checkpoint 的rdd, 所以一般在checkpoint 之前先执行 cache, 则后续的checkpoint 的过程就直接把内存中的数据持久化到硬盘中了, 省去了重复计算. 
+ checkpoint的时候, 会重新起一个新的job 去计算需要checkpoint 的rdd, 所以一般在checkpoint 之前先执行 cache, 则后续的checkpoint 的过程就直接把内存中的数据持久化到硬盘中了, 省去了重复计算. 
 
 
 * cache
@@ -194,11 +196,13 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 
 
 * cache和checkpoint的区别 
-> cache之后, 整个lineage 还会保留, 但是cache的数据不能在多个driver program之间共享; 但是 checkpoint 之后,会把 lineage全部删除, 因为是持久化到 hdfs的, 可以供其他job使用; 
+
+cache之后, 整个lineage 还会保留, 但是cache的数据不能在多个driver program之间共享; 但是 checkpoint 之后,会把 lineage全部删除, 因为是持久化到 hdfs的, 可以供其他job使用; 
 
 
 * 与mr的checkpoint的区别
-> Hadoop MapReduce 在执行 job 的时候，不停地做持久化，每个 task 运行结束做一次，每个 job 运行结束做一次（写到 HDFS）。在 task 运行过程中也不停地在内存和磁盘间 swap 来 swap 去。 可是讽刺的是，Hadoop 中的 task 太傻，中途出错需要完全重新运行，比如 shuffle 了一半的数据存放到了磁盘，下次重新运行时仍然要重新 shuffle。Spark 好的一点在于尽量不去持久化，所以使用 pipeline，cache 等机制。用户如果感觉 job 可能会出错可以手动去 checkpoint 一些 critical 的 RDD，job 如果出错，下次运行时直接从 checkpoint 中读取数据。唯一不足的是，checkpoint 需要两次运行 job
+
+ Hadoop MapReduce 在执行 job 的时候，不停地做持久化，每个 task 运行结束做一次，每个 job 运行结束做一次（写到 HDFS）。在 task 运行过程中也不停地在内存和磁盘间 swap 来 swap 去。 可是讽刺的是，Hadoop 中的 task 太傻，中途出错需要完全重新运行，比如 shuffle 了一半的数据存放到了磁盘，下次重新运行时仍然要重新 shuffle。Spark 好的一点在于尽量不去持久化，所以使用 pipeline，cache 等机制。用户如果感觉 job 可能会出错可以手动去 checkpoint 一些 critical 的 RDD，job 如果出错，下次运行时直接从 checkpoint 中读取数据。唯一不足的是，checkpoint 需要两次运行 job
 
 
 #### spark shuffle
@@ -688,11 +692,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1OTE2ODU3NywtMTE0NDg3OTkwMywtOT
-A5MzgwMzYyLC0yMTQ1ODA5MzEwLC0xMzQ2NTI0MDY2LDEzMDM1
-ODgxOTIsMTk2MjA4NDIyLDE0NjE4OTg4NzMsMTgxNjg4NDIyOS
-wtMTA3NTkwMzg0MywtNTcwMzAxODU3LDE5MTAwOTcxNzQsLTcz
-MTQzMTAzMCw4MTM5ODQ2NDcsMTUzMTI5NTU0LC0xNDE5MTYwNz
-I5LC0xMzg5NzMzNjI2LC0xMTI0MTc1MTM3LDE1NTQ5OTIzNjQs
-LTE0MjgyNzA2NV19
+eyJoaXN0b3J5IjpbLTEyMDMzOTgyMjEsLTExNDQ4Nzk5MDMsLT
+kwOTM4MDM2MiwtMjE0NTgwOTMxMCwtMTM0NjUyNDA2NiwxMzAz
+NTg4MTkyLDE5NjIwODQyMiwxNDYxODk4ODczLDE4MTY4ODQyMj
+ksLTEwNzU5MDM4NDMsLTU3MDMwMTg1NywxOTEwMDk3MTc0LC03
+MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEyOTU1NCwtMTQxOTE2MD
+cyOSwtMTM4OTczMzYyNiwtMTEyNDE3NTEzNywxNTU0OTkyMzY0
+LC0xNDI4MjcwNjVdfQ==
 -->
