@@ -178,11 +178,10 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 参考自 [https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md](https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md)
 * checkPoint
 一些运算量很大, 运算时间很长, 或者依赖很多RDD的RDD 则需要进行checkpoint 分为reliable 和local 两种.
-> 1. reliable
 
-> SparkContext.setCheckpointDir(directory: String) to set the checkpoint directory, 目录必须是hdfs路径, 因为 checkPoint file实际上是保存在executor 机器上的.
-
-> 用法: RDD.checkpoint() , 当前rdd被保存, 对 parent rdd的引用都会被移除; 每个job执行完之后, 会往前回溯所有的RDD, 若需要checkpoint, 则标记为 CheckpointingInProgress, 最后启动一个新的job 完成Checkpoint. 
+ 1. reliable
+ SparkContext.setCheckpointDir(directory: String) to set the checkpoint directory, 目录必须是hdfs路径, 因为 checkPoint file实际上是保存在executor 机器上的.
+ 用法: RDD.checkpoint() , 当前rdd被保存, 对 parent rdd的引用都会被移除; 每个job执行完之后, 会往前回溯所有的RDD, 若需要checkpoint, 则标记为 CheckpointingInProgress, 最后启动一个新的job 完成Checkpoint. 
 job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd的状态为 checkpoint, 并为该rdd 设置一个强依赖, 设置该rdd的 parent rdd为 CheckpointRDD, 该 CheckpointRDD 负责读取文件系统的 Checkpoint文件, 生成对应rdd 的 partition.
 
 
@@ -689,7 +688,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2ODI0OTMzOSwtMTE0NDg3OTkwMywtOT
+eyJoaXN0b3J5IjpbMTE1OTE2ODU3NywtMTE0NDg3OTkwMywtOT
 A5MzgwMzYyLC0yMTQ1ODA5MzEwLC0xMzQ2NTI0MDY2LDEzMDM1
 ODgxOTIsMTk2MjA4NDIyLDE0NjE4OTg4NzMsMTgxNjg4NDIyOS
 wtMTA3NTkwMzg0MywtNTcwMzAxODU3LDE5MTAwOTcxNzQsLTcz
