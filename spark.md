@@ -255,7 +255,7 @@ Sorted-Based Shuffle
 >Sort-Based Shuffle 的弱点
 
 1.  如果 Mapper 中 Task 的数量过大，依旧会产生很多小文件，此时在 Shuffle 传数据的过程中到 Reducer 端，Reducer 会需要同时大量的记录来进行反序例化，导致大量内存消耗和GC 的巨大负担
-2. 需要根据partitionId和key进行两次排序, 
+2. 需要根据partitionId和key进行两次排序,**为何需要两次** 
 
 > shuffleMapTask输出的文件如何存储
 
@@ -694,11 +694,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2Njg4MTY5OTgsLTE2MDMyMDAyMDEsLT
-ExNDQ4Nzk5MDMsLTkwOTM4MDM2MiwtMjE0NTgwOTMxMCwtMTM0
-NjUyNDA2NiwxMzAzNTg4MTkyLDE5NjIwODQyMiwxNDYxODk4OD
-czLDE4MTY4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1Nywx
-OTEwMDk3MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEyOT
-U1NCwtMTQxOTE2MDcyOSwtMTM4OTczMzYyNiwtMTEyNDE3NTEz
-NywxNTU0OTkyMzY0XX0=
+eyJoaXN0b3J5IjpbMTYzNzQwODMzLC0xNjY4ODE2OTk4LC0xNj
+AzMjAwMjAxLC0xMTQ0ODc5OTAzLC05MDkzODAzNjIsLTIxNDU4
+MDkzMTAsLTEzNDY1MjQwNjYsMTMwMzU4ODE5MiwxOTYyMDg0Mj
+IsMTQ2MTg5ODg3MywxODE2ODg0MjI5LC0xMDc1OTAzODQzLC01
+NzAzMDE4NTcsMTkxMDA5NzE3NCwtNzMxNDMxMDMwLDgxMzk4ND
+Y0NywxNTMxMjk1NTQsLTE0MTkxNjA3MjksLTEzODk3MzM2MjYs
+LTExMjQxNzUxMzddfQ==
 -->
