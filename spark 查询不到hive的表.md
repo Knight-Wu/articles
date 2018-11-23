@@ -28,7 +28,7 @@ export HADOOP_CONF_DIR=/etc/spark2/conf/yarn-conf; sh spark2-shell
 然后终于查到了hive 表, 具体原因仍待查, 后续采用如下方式排查: 
 ```
 set -x; source /etc/spark2/conf/spark-env.sh ; set +x 
-// 
+// set -x 
 
 ```
 
@@ -36,6 +36,6 @@ set -x; source /etc/spark2/conf/spark-env.sh ; set +x
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjM1MjQyNzcsLTE4Mjg2Mjc1OTFdfQ
+eyJoaXN0b3J5IjpbLTE5MDE0MDAxNzIsLTE4Mjg2Mjc1OTFdfQ
 ==
 -->
