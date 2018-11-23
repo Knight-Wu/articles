@@ -125,6 +125,7 @@ This measures the duration taken to write to the next DN over a regular TCP sock
 
 具体操作排查手册可参考:  [https://cloud.tencent.com/developer/article/1158307](https://cloud.tencent.com/developer/article/1158307)
  
+ ### 调整配置的文件描述符的数量
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQyODIyNDM0XX0=
+eyJoaXN0b3J5IjpbNDQwMjYzMjQ2LDk0MjgyMjQzNF19
 -->
