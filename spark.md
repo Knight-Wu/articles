@@ -161,6 +161,8 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 参考 [infoQ](http://www.infoq.com/cn/articles/three-apache-spark-apis-rdds-dataframes-and-datasets)
 > rdd属于最底层的抽象, 提供最复杂的操作; dataFrame, dataSet提供某些场景下定制化的api, 使代码更加明确和易用, 也提供了性能上的优化, 适用于半结构化的数据, 例如json; 而dataSet<T> 可以作为有类型的抽象, 将数据映射到java对象上,  对语法错误和解析错误提供编译时检查(说白了可以在编译时检查数据类型),  dataFrame可以当做是dataSet<Row> 是无类型的
 
+![](https://drive.google.com/uc?id=19Vh-HgtUFwVhFLRHRtYqiVIw7Rvy-eoL)
+
 ### spark job scheduling
 参见
 1. [https://spark.apache.org/docs/latest/job-scheduling.html](https://spark.apache.org/docs/latest/job-scheduling.html)
@@ -170,7 +172,7 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 
 > spark job pool
 
-待看
+fix me
 
 #### spark persist
 参考自 [https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md](https://github.com/JerryLead/SparkInternals/blob/master/markdown/6-CacheAndCheckpoint.md)
@@ -687,11 +689,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDQ4Nzk5MDMsLTkwOTM4MDM2MiwtMj
-E0NTgwOTMxMCwtMTM0NjUyNDA2NiwxMzAzNTg4MTkyLDE5NjIw
-ODQyMiwxNDYxODk4ODczLDE4MTY4ODQyMjksLTEwNzU5MDM4ND
-MsLTU3MDMwMTg1NywxOTEwMDk3MTc0LC03MzE0MzEwMzAsODEz
-OTg0NjQ3LDE1MzEyOTU1NCwtMTQxOTE2MDcyOSwtMTM4OTczMz
-YyNiwtMTEyNDE3NTEzNywxNTU0OTkyMzY0LC0xNDI4MjcwNjUs
-MzA4ODQxMDExXX0=
+eyJoaXN0b3J5IjpbODI1OTUyODc1LC0xMTQ0ODc5OTAzLC05MD
+kzODAzNjIsLTIxNDU4MDkzMTAsLTEzNDY1MjQwNjYsMTMwMzU4
+ODE5MiwxOTYyMDg0MjIsMTQ2MTg5ODg3MywxODE2ODg0MjI5LC
+0xMDc1OTAzODQzLC01NzAzMDE4NTcsMTkxMDA5NzE3NCwtNzMx
+NDMxMDMwLDgxMzk4NDY0NywxNTMxMjk1NTQsLTE0MTkxNjA3Mj
+ksLTEzODk3MzM2MjYsLTExMjQxNzUxMzcsMTU1NDk5MjM2NCwt
+MTQyODI3MDY1XX0=
 -->
