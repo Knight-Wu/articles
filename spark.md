@@ -271,6 +271,8 @@ Sorted-Based Shuffle
 groupByKey when performing an associative reductive operation. For example, rdd.groupByKey().mapValues(_.sum) produces the same result as rdd.reduceByKey(_ + _). However, the former transfers the entire dataset across the network, while the latter computes local sums for each key in each partition and combines those local sums into larger sums after shuffling
 
 * 在map 端进行聚合, map 进行数据压缩
+* **还有呢? **
+
 
 
 
@@ -711,11 +713,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNjU4MTg0NiwtMTM2NjM2NTYwMCw1OT
-E2ODgzNSwtNjYyNzQwNjU1LC0xOTMzNTUzMjk5LDE2Mzc0MDgz
-MywtMTY2ODgxNjk5OCwtMTYwMzIwMDIwMSwtMTE0NDg3OTkwMy
-wtOTA5MzgwMzYyLC0yMTQ1ODA5MzEwLC0xMzQ2NTI0MDY2LDEz
-MDM1ODgxOTIsMTk2MjA4NDIyLDE0NjE4OTg4NzMsMTgxNjg4ND
-IyOSwtMTA3NTkwMzg0MywtNTcwMzAxODU3LDE5MTAwOTcxNzQs
-LTczMTQzMTAzMF19
+eyJoaXN0b3J5IjpbLTc5ODE3MDY0MiwtODE2NTgxODQ2LC0xMz
+Y2MzY1NjAwLDU5MTY4ODM1LC02NjI3NDA2NTUsLTE5MzM1NTMy
+OTksMTYzNzQwODMzLC0xNjY4ODE2OTk4LC0xNjAzMjAwMjAxLC
+0xMTQ0ODc5OTAzLC05MDkzODAzNjIsLTIxNDU4MDkzMTAsLTEz
+NDY1MjQwNjYsMTMwMzU4ODE5MiwxOTYyMDg0MjIsMTQ2MTg5OD
+g3MywxODE2ODg0MjI5LC0xMDc1OTAzODQzLC01NzAzMDE4NTcs
+MTkxMDA5NzE3NF19
 -->
