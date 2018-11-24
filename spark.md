@@ -307,9 +307,7 @@ MR的combine和reduce 的records必须先sort. 而且显式的分为 map(), spil
 * 如何设置并行度
 1. spark.defalut.parallelism , 是全局默认的并行度, 如果没有指定则使用这个并行度.
     spark.sql.shuffle.partitions
-```
-val rdd2 = rdd1.reduceByKey()  //若设置 spark.defalut.parallelism=10, rdd2的分区数就是10
-```
+
 2. 源数据在hdfs上面, 
  ```
  sparkContext.textFile(String filePath,int minPartition)
@@ -318,8 +316,12 @@ split size  = 总文件大小/ minPartition,
 actual split size = Math.max(mapred.min.split.size,Math.min(split size,file block size(默认128MB)))
 再为每个split 创建一个task
 ```
-3. 可以repartition
-4. For distributed shuffle operations like `reduceByKey`and `join`, the largest number of partitions in a parent RDD.
+3. If the stage is receiving input from another stage, the transformation that triggered the stage boundary accepts a  numPartitions  argument:
+
+``` 
+val rdd2 = rdd1.reduceByKey(_ + _, numPartitions = X)
+```
+Determining the optimal value for  X  requires experimentation. Find the number of partitions in the parent dataset, and then multiply that by 1.5 until performance stops improving.
 5. 推荐 executor instances * core per executor 的两到三倍 = num of task , 避免cpu浪费(某些task 已经跑完了, 可以跑剩下的task)
 
 
@@ -712,11 +714,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyMjU4ODcwNywtNzk4MTcwNjQyLC04MT
-Y1ODE4NDYsLTEzNjYzNjU2MDAsNTkxNjg4MzUsLTY2Mjc0MDY1
-NSwtMTkzMzU1MzI5OSwxNjM3NDA4MzMsLTE2Njg4MTY5OTgsLT
-E2MDMyMDAyMDEsLTExNDQ4Nzk5MDMsLTkwOTM4MDM2MiwtMjE0
-NTgwOTMxMCwtMTM0NjUyNDA2NiwxMzAzNTg4MTkyLDE5NjIwOD
-QyMiwxNDYxODk4ODczLDE4MTY4ODQyMjksLTEwNzU5MDM4NDMs
-LTU3MDMwMTg1N119
+eyJoaXN0b3J5IjpbLTE5OTM1MTI5NTYsMTEyMjU4ODcwNywtNz
+k4MTcwNjQyLC04MTY1ODE4NDYsLTEzNjYzNjU2MDAsNTkxNjg4
+MzUsLTY2Mjc0MDY1NSwtMTkzMzU1MzI5OSwxNjM3NDA4MzMsLT
+E2Njg4MTY5OTgsLTE2MDMyMDAyMDEsLTExNDQ4Nzk5MDMsLTkw
+OTM4MDM2MiwtMjE0NTgwOTMxMCwtMTM0NjUyNDA2NiwxMzAzNT
+g4MTkyLDE5NjIwODQyMiwxNDYxODk4ODczLDE4MTY4ODQyMjks
+LTEwNzU5MDM4NDNdfQ==
 -->
