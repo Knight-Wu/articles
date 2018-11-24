@@ -262,7 +262,9 @@ Sorted-Based Shuffle
 
 [https://blog.csdn.net/duan_zhihua/article/details/71190682](https://blog.csdn.net/duan_zhihua/article/details/71190682)
 
-
+> 提升shuffle 的性能
+* 在map 端进行聚合
+* map 进行数据压缩
 
 
 > spark和MR的shuffle的区别
@@ -700,11 +702,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTkxNjg4MzUsLTY2Mjc0MDY1NSwtMTkzMz
-U1MzI5OSwxNjM3NDA4MzMsLTE2Njg4MTY5OTgsLTE2MDMyMDAy
-MDEsLTExNDQ4Nzk5MDMsLTkwOTM4MDM2MiwtMjE0NTgwOTMxMC
-wtMTM0NjUyNDA2NiwxMzAzNTg4MTkyLDE5NjIwODQyMiwxNDYx
-ODk4ODczLDE4MTY4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMT
-g1NywxOTEwMDk3MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1
-MzEyOTU1NF19
+eyJoaXN0b3J5IjpbLTEzNjYzNjU2MDAsNTkxNjg4MzUsLTY2Mj
+c0MDY1NSwtMTkzMzU1MzI5OSwxNjM3NDA4MzMsLTE2Njg4MTY5
+OTgsLTE2MDMyMDAyMDEsLTExNDQ4Nzk5MDMsLTkwOTM4MDM2Mi
+wtMjE0NTgwOTMxMCwtMTM0NjUyNDA2NiwxMzAzNTg4MTkyLDE5
+NjIwODQyMiwxNDYxODk4ODczLDE4MTY4ODQyMjksLTEwNzU5MD
+M4NDMsLTU3MDMwMTg1NywxOTEwMDk3MTc0LC03MzE0MzEwMzAs
+ODEzOTg0NjQ3XX0=
 -->
