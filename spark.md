@@ -270,7 +270,7 @@ Sorted-Based Shuffle
 
 groupByKey when performing an associative reductive operation. For example, rdd.groupByKey().mapValues(_.sum) produces the same result as rdd.reduceByKey(_ + _). However, the former transfers the entire dataset across the network, while the latter computes local sums for each key in each partition and combines those local sums into larger sums after shuffling
 
-* 在map 端进行聚合, map 进行数据压缩
+* 在map 端进行数据压缩, 减少传输的数据量
 * **还有呢? **
 
 
@@ -283,7 +283,7 @@ groupByKey when performing an associative reductive operation. For example, rdd.
 MR的combine和reduce 的records必须先sort. 而且显式的分为 map(), spill, merge, shuffle, sort, reduce几个阶段. 而spark 只有不同的 stage 和一系列的 transformation(), 说白了是编程模式的不同.
 
 > 问题
-* Sort-Based Shuffle map端的聚合什么时候会出现, 为什么会出现, 有何作用
+* Sort-Based Shuffle map端的聚合好像只在combineByKey 才有, 不是能减少map 端的数据输出量吗, 为何不是一旦有shuffle, 就在map端进行聚合, 换言之combineBy
 * **如何提高shuffle的性能**, shuffle的map和reduce的数量如何控制
 * spark 算子选择
 
@@ -714,11 +714,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDk3MDAxMjMsMTEyMjU4ODcwNywtNz
-k4MTcwNjQyLC04MTY1ODE4NDYsLTEzNjYzNjU2MDAsNTkxNjg4
-MzUsLTY2Mjc0MDY1NSwtMTkzMzU1MzI5OSwxNjM3NDA4MzMsLT
-E2Njg4MTY5OTgsLTE2MDMyMDAyMDEsLTExNDQ4Nzk5MDMsLTkw
-OTM4MDM2MiwtMjE0NTgwOTMxMCwtMTM0NjUyNDA2NiwxMzAzNT
-g4MTkyLDE5NjIwODQyMiwxNDYxODk4ODczLDE4MTY4ODQyMjks
-LTEwNzU5MDM4NDNdfQ==
+eyJoaXN0b3J5IjpbMTkzODY4Mzg0OCwxMTIyNTg4NzA3LC03OT
+gxNzA2NDIsLTgxNjU4MTg0NiwtMTM2NjM2NTYwMCw1OTE2ODgz
+NSwtNjYyNzQwNjU1LC0xOTMzNTUzMjk5LDE2Mzc0MDgzMywtMT
+Y2ODgxNjk5OCwtMTYwMzIwMDIwMSwtMTE0NDg3OTkwMywtOTA5
+MzgwMzYyLC0yMTQ1ODA5MzEwLC0xMzQ2NTI0MDY2LDEzMDM1OD
+gxOTIsMTk2MjA4NDIyLDE0NjE4OTg4NzMsMTgxNjg4NDIyOSwt
+MTA3NTkwMzg0M119
 -->
