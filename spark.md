@@ -255,13 +255,18 @@ Sorted-Based Shuffle
 >Sort-Based Shuffle 的弱点
 
 1.  如果 Mapper 中 Task 的数量过大，依旧会产生很多小文件，此时在 Shuffle 传数据的过程中到 Reducer 端，Reducer 会需要同时大量的记录来进行反序例化，导致大量内存消耗和GC 的巨大负担
-2. 通常的shuffle 算子是不需要进行排序的, 如果按照key 进行排序, 例如sortByKey, 则需要进行map, reduce的两次排序, 具体参见
+2. 通常的shuffle 算子是不需要进行排序的, 如果按照key 进行排序, 例如sortByKey, 则需要进行map, reduce的两次排序, 具体参见: 
+
+>    When conducting an operation that requires sorting the records within partitions, we end up sorting the same data twice: first by partition in the mapper, and then by key in the reducer.
+>    [https://blog.cloudera.com/blog/2015/01/improving-sort-performance-in-apache-spark-its-a-double/](https://blog.cloudera.com/blog/2015/01/improving-sort-performance-in-apache-spark-its-a-double/)
+
+
 
 > shuffleMapTask输出的文件如何存储
 
 > spark和MR的shuffle的区别
 
-1. MR的combine和reduce 的records必须先sort. 而且显式的分为 map(), spill, merge, shuffle, sort, reduce几个阶段. 而spark 只有不同的 stage 和一系列的 transformation(), 说白了是编程模式的不同.
+MR的combine和reduce 的records必须先sort. 而且显式的分为 map(), spill, merge, shuffle, sort, reduce几个阶段. 而spark 只有不同的 stage 和一系列的 transformation(), 说白了是编程模式的不同.
 
 > 问题
 * Sort-Based Shuffle的排序分为几个(为什么每个partition 中也需要排序), 什么时候进行, 并且如何避免不必要的排序, map端的聚合什么时候会出现, 为什么会出现, 有何作用
@@ -694,11 +699,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3NTgxOTg0MiwxNjM3NDA4MzMsLTE2Nj
-g4MTY5OTgsLTE2MDMyMDAyMDEsLTExNDQ4Nzk5MDMsLTkwOTM4
-MDM2MiwtMjE0NTgwOTMxMCwtMTM0NjUyNDA2NiwxMzAzNTg4MT
-kyLDE5NjIwODQyMiwxNDYxODk4ODczLDE4MTY4ODQyMjksLTEw
-NzU5MDM4NDMsLTU3MDMwMTg1NywxOTEwMDk3MTc0LC03MzE0Mz
-EwMzAsODEzOTg0NjQ3LDE1MzEyOTU1NCwtMTQxOTE2MDcyOSwt
-MTM4OTczMzYyNl19
+eyJoaXN0b3J5IjpbLTE5MzM1NTMyOTksMTYzNzQwODMzLC0xNj
+Y4ODE2OTk4LC0xNjAzMjAwMjAxLC0xMTQ0ODc5OTAzLC05MDkz
+ODAzNjIsLTIxNDU4MDkzMTAsLTEzNDY1MjQwNjYsMTMwMzU4OD
+E5MiwxOTYyMDg0MjIsMTQ2MTg5ODg3MywxODE2ODg0MjI5LC0x
+MDc1OTAzODQzLC01NzAzMDE4NTcsMTkxMDA5NzE3NCwtNzMxND
+MxMDMwLDgxMzk4NDY0NywxNTMxMjk1NTQsLTE0MTkxNjA3Mjks
+LTEzODk3MzM2MjZdfQ==
 -->
