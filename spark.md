@@ -263,8 +263,17 @@ Sorted-Based Shuffle
 [https://blog.csdn.net/duan_zhihua/article/details/71190682](https://blog.csdn.net/duan_zhihua/article/details/71190682)
 
 > 提升shuffle 的性能
-* 在map 端进行聚合
-* map 进行数据压缩
+
+[https://www.cloudera.com/documentation/enterprise/5-9-x/topics/admin_spark_tuning.html](https://www.cloudera.com/documentation/enterprise/5-9-x/topics/admin_spark_tuning.html)
+ 
+* 使用高效的算子
+
+groupByKey when performing an associative reductive operation. For example, rdd.groupByKey().mapValues(_.sum) produces the same result as rdd.reduceByKey(_ + _). However, the former transfers the entire dataset across the network, while the latter computes local sums for each key in each partition and combines those local sums into larger sums after shuffling
+
+* 在map 端进行聚合, map 进行数据压缩
+
+
+
 
 
 > spark和MR的shuffle的区别
@@ -702,11 +711,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNjYzNjU2MDAsNTkxNjg4MzUsLTY2Mj
-c0MDY1NSwtMTkzMzU1MzI5OSwxNjM3NDA4MzMsLTE2Njg4MTY5
-OTgsLTE2MDMyMDAyMDEsLTExNDQ4Nzk5MDMsLTkwOTM4MDM2Mi
-wtMjE0NTgwOTMxMCwtMTM0NjUyNDA2NiwxMzAzNTg4MTkyLDE5
-NjIwODQyMiwxNDYxODk4ODczLDE4MTY4ODQyMjksLTEwNzU5MD
-M4NDMsLTU3MDMwMTg1NywxOTEwMDk3MTc0LC03MzE0MzEwMzAs
-ODEzOTg0NjQ3XX0=
+eyJoaXN0b3J5IjpbLTgxNjU4MTg0NiwtMTM2NjM2NTYwMCw1OT
+E2ODgzNSwtNjYyNzQwNjU1LC0xOTMzNTUzMjk5LDE2Mzc0MDgz
+MywtMTY2ODgxNjk5OCwtMTYwMzIwMDIwMSwtMTE0NDg3OTkwMy
+wtOTA5MzgwMzYyLC0yMTQ1ODA5MzEwLC0xMzQ2NTI0MDY2LDEz
+MDM1ODgxOTIsMTk2MjA4NDIyLDE0NjE4OTg4NzMsMTgxNjg4ND
+IyOSwtMTA3NTkwMzg0MywtNTcwMzAxODU3LDE5MTAwOTcxNzQs
+LTczMTQzMTAzMF19
 -->
