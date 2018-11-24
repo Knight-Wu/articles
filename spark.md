@@ -283,28 +283,12 @@ groupByKey when performing an associative reductive operation. For example, rdd.
 MR的combine和reduce 的records必须先sort. 而且显式的分为 map(), spill, merge, shuffle, sort, reduce几个阶段. 而spark 只有不同的 stage 和一系列的 transformation(), 说白了是编程模式的不同.
 
 > 问题
-* Sort-Based Shuffle map端的聚合好像只在combineByKey 才有, 不是能减少map 端的数据输出量吗, 为何不是一旦有shuffle, 就在map端进行聚合, 换言之combineBy
-* **如何提高shuffle的性能**, shuffle的map和reduce的数量如何控制
+* Sort-Based Shuffle map端的聚合好像只在combineByKey 才有, 不是能减少map 端的数据输出量吗, 为何不是一旦有shuffle, 就在map端进行聚合, 换言之combineByKey 和reduceByKey 有何不同
 * spark 算子选择
 
-#### spark 资源分配
-* executor core 
-    --executor-cores in shell(or in conf spark.executor.cores) 5 means that each executor can run a maximum of five tasks at the same time。
-    > A rough guess is that at most five tasks per executor can achieve full write throughput, so it’s good to keep the number of cores per executor below that number
-
-* num of executor
-     --num-executors command-line flag or spark.executor.instances configuration property control the number of executors requested
-    > Starting in CDH 5.4/Spark 1.3, you will be able to avoid setting this property by turning on dynamic allocation with the spark.dynamicAllocation.enabled property. Dynamic allocation enables a Spark application to request executors when there is a backlog of pending tasks and free up executors when idle.
-
-> YARN may round the requested memory up a little. YARN’s yarn.scheduler.minimum-allocation-mb and yarn.scheduler.increment-allocation-mb properties control the minimum and increment request values respectively.
 
 
-* 跑批任务中(hive on spark, hive on mr)的资源分配
-> spark.executor.instance(实例数), spark. executor.memory(单个实例内存), 这两个参数可以根据实际情况进行相应调整。当处理数据量较大逻辑较为简单时可以增大实例数减小内存，提高批处理的并行数；当处理数据量不大但是逻辑较为复杂的任务时可以提高单个实例的内存，减小实例数，提升每个实例的处理能力。
-
-
-
-* 如何设置并行度
+#### 如何设置并行度
 1. spark.defalut.parallelism , 是全局默认的并行度, 如果没有指定则使用这个并行度.
     spark.sql.shuffle.partitions
 
@@ -327,7 +311,22 @@ Determining the optimal value for  X  requires experimentation. Find the number 
 
 
 
-#### spark 性能调优
+#### spark 资源分配
+* executor core 
+    --executor-cores in shell(or in conf spark.executor.cores) 5 means that each executor can run a maximum of five tasks at the same time。
+    > A rough guess is that at most five tasks per executor can achieve full write throughput, so it’s good to keep the number of cores per executor below that number
+
+* num of executor
+     --num-executors command-line flag or spark.executor.instances configuration property control the number of executors requested
+    > Starting in CDH 5.4/Spark 1.3, you will be able to avoid setting this property by turning on dynamic allocation with the spark.dynamicAllocation.enabled property. Dynamic allocation enables a Spark application to request executors when there is a backlog of pending tasks and free up executors when idle.
+
+> YARN may round the requested memory up a little. YARN’s yarn.scheduler.minimum-allocation-mb and yarn.scheduler.increment-allocation-mb properties control the minimum and increment request values respectively.
+
+
+* 跑批任务中(hive on spark, hive on mr)的资源分配
+> spark.executor.instance(实例数), spark. executor.memory(单个实例内存), 这两个参数可以根据实际情况进行相应调整。当处理数据量较大逻辑较为简单时可以增大实例数减小内存，提高批处理的并行数；当处理数据量不大但是逻辑较为复杂的任务时可以提高单个实例的内存，减小实例数，提升每个实例的处理能力。
+
+
 参考自
 1.  [https://spark.apache.org/docs/latest/tuning.html](https://spark.apache.org/docs/latest/tuning.html)
 2. [[distribution_of_executors_cores_and_memory_for_spark_application](https://spoddutur.github.io/spark-notes/distribution_of_executors_cores_and_memory_for_spark_application.html)
@@ -714,11 +713,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzODY4Mzg0OCwxMTIyNTg4NzA3LC03OT
-gxNzA2NDIsLTgxNjU4MTg0NiwtMTM2NjM2NTYwMCw1OTE2ODgz
-NSwtNjYyNzQwNjU1LC0xOTMzNTUzMjk5LDE2Mzc0MDgzMywtMT
-Y2ODgxNjk5OCwtMTYwMzIwMDIwMSwtMTE0NDg3OTkwMywtOTA5
-MzgwMzYyLC0yMTQ1ODA5MzEwLC0xMzQ2NTI0MDY2LDEzMDM1OD
-gxOTIsMTk2MjA4NDIyLDE0NjE4OTg4NzMsMTgxNjg4NDIyOSwt
-MTA3NTkwMzg0M119
+eyJoaXN0b3J5IjpbLTE1MDcwMjcxOTAsMTEyMjU4ODcwNywtNz
+k4MTcwNjQyLC04MTY1ODE4NDYsLTEzNjYzNjU2MDAsNTkxNjg4
+MzUsLTY2Mjc0MDY1NSwtMTkzMzU1MzI5OSwxNjM3NDA4MzMsLT
+E2Njg4MTY5OTgsLTE2MDMyMDAyMDEsLTExNDQ4Nzk5MDMsLTkw
+OTM4MDM2MiwtMjE0NTgwOTMxMCwtMTM0NjUyNDA2NiwxMzAzNT
+g4MTkyLDE5NjIwODQyMiwxNDYxODk4ODczLDE4MTY4ODQyMjks
+LTEwNzU5MDM4NDNdfQ==
 -->
