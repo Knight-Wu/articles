@@ -305,13 +305,12 @@ MR的combine和reduce 的records必须先sort. 而且显式的分为 map(), spil
 
 
 * 如何设置并行度
-1. spark sql 
-spark.sql.shuffle.partitions=[num_tasks]
-2. spark.defalut.parallelism , 是全局默认的并行度
+1. spark.defalut.parallelism , 是全局默认的并行度, 如果没有指定则使用这个并行度.
+    spark.sql.shuffle.partitions
 ```
 val rdd2 = rdd1.reduceByKey()  //若设置 spark.defalut.parallelism=10, rdd2的分区数就是10
 ```
-3. 源数据在hdfs上面, 
+2. 源数据在hdfs上面, 
  ```
  sparkContext.textFile(String filePath,int minPartition)
 //  minPartition 决定了这个文件被分成几片, 
@@ -319,9 +318,9 @@ split size  = 总文件大小/ minPartition,
 actual split size = Math.max(mapred.min.split.size,Math.min(split size,file block size(默认128MB)))
 再为每个split 创建一个task
 ```
-4. 可以repartition
-5. For distributed shuffle operations like `reduceByKey`and `join`, the largest number of partitions in a parent RDD.
-6. 推荐 executor instances * core per executor 的两到三倍 = num of task , 避免cpu浪费(某些task 已经跑完了, 可以跑剩下的task)
+3. 可以repartition
+4. For distributed shuffle operations like `reduceByKey`and `join`, the largest number of partitions in a parent RDD.
+5. 推荐 executor instances * core per executor 的两到三倍 = num of task , 避免cpu浪费(某些task 已经跑完了, 可以跑剩下的task)
 
 
 
@@ -713,7 +712,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4ODg2Mzk1NiwtNzk4MTcwNjQyLC04MT
+eyJoaXN0b3J5IjpbMTEyMjU4ODcwNywtNzk4MTcwNjQyLC04MT
 Y1ODE4NDYsLTEzNjYzNjU2MDAsNTkxNjg4MzUsLTY2Mjc0MDY1
 NSwtMTkzMzU1MzI5OSwxNjM3NDA4MzMsLTE2Njg4MTY5OTgsLT
 E2MDMyMDAyMDEsLTExNDQ4Nzk5MDMsLTkwOTM4MDM2MiwtMjE0
