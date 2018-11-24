@@ -257,13 +257,13 @@ Sorted-Based Shuffle
 1.  如果 Mapper 中 Task 的数量过大，依旧会产生很多小文件，此时在 Shuffle 传数据的过程中到 Reducer 端，Reducer 会需要同时大量的记录来进行反序例化，导致大量内存消耗和GC 的巨大负担
 2. 通常的shuffle 算子是不需要进行排序的, 如果按照key 进行排序, 例如sortByKey, 则需要进行map, reduce的两次排序, 具体参见: 
 
-1.
 >    When conducting an operation that requires sorting the records within partitions, we end up sorting the same data twice: first by partition in the mapper, and then by key in the reducer.
 >    [https://blog.cloudera.com/blog/2015/01/improving-sort-performance-in-apache-spark-its-a-double/](https://blog.cloudera.com/blog/2015/01/improving-sort-performance-in-apache-spark-its-a-double/)
 
 [https://blog.csdn.net/duan_zhihua/article/details/71190682](https://blog.csdn.net/duan_zhihua/article/details/71190682)
 
-> shuffleMapTask输出的文件如何存储
+
+
 
 > spark和MR的shuffle的区别
 
@@ -700,11 +700,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA5OTM1NjE5OSwtMTkzMzU1MzI5OSwxNj
-M3NDA4MzMsLTE2Njg4MTY5OTgsLTE2MDMyMDAyMDEsLTExNDQ4
-Nzk5MDMsLTkwOTM4MDM2MiwtMjE0NTgwOTMxMCwtMTM0NjUyND
-A2NiwxMzAzNTg4MTkyLDE5NjIwODQyMiwxNDYxODk4ODczLDE4
-MTY4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1NywxOTEwMD
-k3MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEyOTU1NCwt
-MTQxOTE2MDcyOV19
+eyJoaXN0b3J5IjpbNTQyNTQwNTczLC0xOTMzNTUzMjk5LDE2Mz
+c0MDgzMywtMTY2ODgxNjk5OCwtMTYwMzIwMDIwMSwtMTE0NDg3
+OTkwMywtOTA5MzgwMzYyLC0yMTQ1ODA5MzEwLC0xMzQ2NTI0MD
+Y2LDEzMDM1ODgxOTIsMTk2MjA4NDIyLDE0NjE4OTg4NzMsMTgx
+Njg4NDIyOSwtMTA3NTkwMzg0MywtNTcwMzAxODU3LDE5MTAwOT
+cxNzQsLTczMTQzMTAzMCw4MTM5ODQ2NDcsMTUzMTI5NTU0LC0x
+NDE5MTYwNzI5XX0=
 -->
