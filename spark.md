@@ -272,7 +272,7 @@ MR的combine和reduce 的records必须先sort. 而且显式的分为 map(), spil
 > 问题
 * Sort-Based Shuffle map端的聚合什么时候会出现, 为什么会出现, 有何作用
 * **如何提高shuffle的性能**, shuffle的map和reduce的数量如何控制
-
+* spark 算子选择
 
 #### spark 资源分配
 * executor core 
@@ -700,11 +700,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2Mjc0MDY1NSwtMTkzMzU1MzI5OSwxNj
-M3NDA4MzMsLTE2Njg4MTY5OTgsLTE2MDMyMDAyMDEsLTExNDQ4
-Nzk5MDMsLTkwOTM4MDM2MiwtMjE0NTgwOTMxMCwtMTM0NjUyND
-A2NiwxMzAzNTg4MTkyLDE5NjIwODQyMiwxNDYxODk4ODczLDE4
-MTY4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1NywxOTEwMD
-k3MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEyOTU1NCwt
-MTQxOTE2MDcyOV19
+eyJoaXN0b3J5IjpbNTkxNjg4MzUsLTY2Mjc0MDY1NSwtMTkzMz
+U1MzI5OSwxNjM3NDA4MzMsLTE2Njg4MTY5OTgsLTE2MDMyMDAy
+MDEsLTExNDQ4Nzk5MDMsLTkwOTM4MDM2MiwtMjE0NTgwOTMxMC
+wtMTM0NjUyNDA2NiwxMzAzNTg4MTkyLDE5NjIwODQyMiwxNDYx
+ODk4ODczLDE4MTY4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMT
+g1NywxOTEwMDk3MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1
+MzEyOTU1NF19
 -->
