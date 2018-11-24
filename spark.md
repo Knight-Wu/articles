@@ -306,7 +306,8 @@ MR的combine和reduce 的records必须先sort. 而且显式的分为 map(), spil
 
 * 如何设置并行度
 1. spark sql 
->spark.sql.shuffle.partitions=[num_tasks]
+spark.sql.shuffle.partitions=[num_tasks]
+
 2. spark.defalut.parallelism , 是全局默认的并行度
 ```
 val rdd2 = rdd1.reduceByKey()  //若设置 spark.defalut.parallelism=10, rdd2的分区数就是10
@@ -713,11 +714,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5ODE3MDY0MiwtODE2NTgxODQ2LC0xMz
-Y2MzY1NjAwLDU5MTY4ODM1LC02NjI3NDA2NTUsLTE5MzM1NTMy
-OTksMTYzNzQwODMzLC0xNjY4ODE2OTk4LC0xNjAzMjAwMjAxLC
-0xMTQ0ODc5OTAzLC05MDkzODAzNjIsLTIxNDU4MDkzMTAsLTEz
-NDY1MjQwNjYsMTMwMzU4ODE5MiwxOTYyMDg0MjIsMTQ2MTg5OD
-g3MywxODE2ODg0MjI5LC0xMDc1OTAzODQzLC01NzAzMDE4NTcs
-MTkxMDA5NzE3NF19
+eyJoaXN0b3J5IjpbLTQ5MTc0NjE4LC03OTgxNzA2NDIsLTgxNj
+U4MTg0NiwtMTM2NjM2NTYwMCw1OTE2ODgzNSwtNjYyNzQwNjU1
+LC0xOTMzNTUzMjk5LDE2Mzc0MDgzMywtMTY2ODgxNjk5OCwtMT
+YwMzIwMDIwMSwtMTE0NDg3OTkwMywtOTA5MzgwMzYyLC0yMTQ1
+ODA5MzEwLC0xMzQ2NTI0MDY2LDEzMDM1ODgxOTIsMTk2MjA4ND
+IyLDE0NjE4OTg4NzMsMTgxNjg4NDIyOSwtMTA3NTkwMzg0Mywt
+NTcwMzAxODU3XX0=
 -->
