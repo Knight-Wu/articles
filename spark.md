@@ -270,7 +270,7 @@ Sorted-Based Shuffle
 MR的combine和reduce 的records必须先sort. 而且显式的分为 map(), spill, merge, shuffle, sort, reduce几个阶段. 而spark 只有不同的 stage 和一系列的 transformation(), 说白了是编程模式的不同.
 
 > 问题
-* Sort-Based Shuffle的排序分为几个(为什么每个partition 中也需要排序), 什么时候进行, 并且如何避免不必要的排序, map端的聚合什么时候会出现, 为什么会出现, 有何作用
+* Sort-Based Shuffle map端的聚合什么时候会出现, 为什么会出现, 有何作用
 * **如何提高shuffle的性能**, shuffle的map和reduce的数量如何控制
 
 
@@ -700,11 +700,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTQyNTQwNTczLC0xOTMzNTUzMjk5LDE2Mz
-c0MDgzMywtMTY2ODgxNjk5OCwtMTYwMzIwMDIwMSwtMTE0NDg3
-OTkwMywtOTA5MzgwMzYyLC0yMTQ1ODA5MzEwLC0xMzQ2NTI0MD
-Y2LDEzMDM1ODgxOTIsMTk2MjA4NDIyLDE0NjE4OTg4NzMsMTgx
-Njg4NDIyOSwtMTA3NTkwMzg0MywtNTcwMzAxODU3LDE5MTAwOT
-cxNzQsLTczMTQzMTAzMCw4MTM5ODQ2NDcsMTUzMTI5NTU0LC0x
-NDE5MTYwNzI5XX0=
+eyJoaXN0b3J5IjpbLTY2Mjc0MDY1NSwtMTkzMzU1MzI5OSwxNj
+M3NDA4MzMsLTE2Njg4MTY5OTgsLTE2MDMyMDAyMDEsLTExNDQ4
+Nzk5MDMsLTkwOTM4MDM2MiwtMjE0NTgwOTMxMCwtMTM0NjUyND
+A2NiwxMzAzNTg4MTkyLDE5NjIwODQyMiwxNDYxODk4ODczLDE4
+MTY4ODQyMjksLTEwNzU5MDM4NDMsLTU3MDMwMTg1NywxOTEwMD
+k3MTc0LC03MzE0MzEwMzAsODEzOTg0NjQ3LDE1MzEyOTU1NCwt
+MTQxOTE2MDcyOV19
 -->
