@@ -322,7 +322,7 @@ actual split size = Math.max(mapred.min.split.size,Math.min(split size,file bloc
 val rdd2 = rdd1.reduceByKey(_ + _, numPartitions = X)
 ```
 Determining the optimal value for  X  requires experimentation. Find the number of partitions in the parent dataset, and then multiply that by 1.5 until performance stops improving.
-5. 推荐 executor instances * core per executor 的两到三倍 = num of task , 避免cpu浪费(某些task 已经跑完了, 可以跑剩下的task)
+4. 推荐 executor instances * core per executor 的两到三倍 = num of task , 避免cpu浪费(某些task 已经跑完了, 可以跑剩下的task)
 
 
 
@@ -714,7 +714,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTM1MTI5NTYsMTEyMjU4ODcwNywtNz
+eyJoaXN0b3J5IjpbLTE5MDk3MDAxMjMsMTEyMjU4ODcwNywtNz
 k4MTcwNjQyLC04MTY1ODE4NDYsLTEzNjYzNjU2MDAsNTkxNjg4
 MzUsLTY2Mjc0MDY1NSwtMTkzMzU1MzI5OSwxNjM3NDA4MzMsLT
 E2Njg4MTY5OTgsLTE2MDMyMDAyMDEsLTExNDQ4Nzk5MDMsLTkw
