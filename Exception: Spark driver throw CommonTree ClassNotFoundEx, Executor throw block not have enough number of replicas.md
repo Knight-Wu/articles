@@ -65,7 +65,7 @@ spark.driver.extraJavaOptions=-verbose:class
 
 
 * 问题
-dn 
+因为具体的blocken pipe的错误日志找不到了, 为什么没有触发spark 的集群容错有点困惑, 一个task 写异常至少是会根据 spark.task.maxFailures 这个配置chon
 
 
  
@@ -81,7 +81,7 @@ dn
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxMTAzODk4NCwxNzY4ODIxMDQ2LC0xMT
+eyJoaXN0b3J5IjpbMTI5ODI4ODg3MywxNzY4ODIxMDQ2LC0xMT
 g3NjI1MjA0LDE5MTc4NzczNTQsLTI4NTY0NDk0OSwxMTU0MzAy
 MzYxLC0xODkxNzMyNzY5XX0=
 -->
