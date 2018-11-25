@@ -472,10 +472,6 @@ spark.eventLog.dir 				path/log
 
 
 #### spark-shell 执行sparkSql
-```
-////创建HiveContext  
-scala> val sqlC = new org.apache.spark.sql.hive.HiveContext(sc)  
-sqlContext: org.apache.spark.sql.hive.HiveContext = org.apache.spark.sql.hive.HiveContext@42503a9b
 
 
 ///显示当前数据库的表，是一个transformation操作，生成RDD  
@@ -710,11 +706,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzMxMzg2NjUxLDYwNjcyNTUzMywtMTUwNz
-AyNzE5MCwxMTIyNTg4NzA3LC03OTgxNzA2NDIsLTgxNjU4MTg0
-NiwtMTM2NjM2NTYwMCw1OTE2ODgzNSwtNjYyNzQwNjU1LC0xOT
-MzNTUzMjk5LDE2Mzc0MDgzMywtMTY2ODgxNjk5OCwtMTYwMzIw
-MDIwMSwtMTE0NDg3OTkwMywtOTA5MzgwMzYyLC0yMTQ1ODA5Mz
-EwLC0xMzQ2NTI0MDY2LDEzMDM1ODgxOTIsMTk2MjA4NDIyLDE0
-NjE4OTg4NzNdfQ==
+eyJoaXN0b3J5IjpbLTEwMzg4NDEzMzEsMzMxMzg2NjUxLDYwNj
+cyNTUzMywtMTUwNzAyNzE5MCwxMTIyNTg4NzA3LC03OTgxNzA2
+NDIsLTgxNjU4MTg0NiwtMTM2NjM2NTYwMCw1OTE2ODgzNSwtNj
+YyNzQwNjU1LC0xOTMzNTUzMjk5LDE2Mzc0MDgzMywtMTY2ODgx
+Njk5OCwtMTYwMzIwMDIwMSwtMTE0NDg3OTkwMywtOTA5MzgwMz
+YyLC0yMTQ1ODA5MzEwLC0xMzQ2NTI0MDY2LDEzMDM1ODgxOTIs
+MTk2MjA4NDIyXX0=
 -->
