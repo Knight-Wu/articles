@@ -565,10 +565,7 @@ uuid time url result
 ### hive on spark, hive on MR 和spark sql的区别
 1. hive on spark 和spark sql 计算引擎都是spark, 只是从sql翻译成执行计划不一样, 并且可以使用hive的一些优化特性, 特别是对sql的优化, 这方面hive 的经验更丰富, 历史更久, 相当于对用户提供了两个项目的优化特性, 
 2. hive on spark 最后启动一个spark session, 是一个常驻任务, 可以运行多次application
-3. 
-
-
-> spark sql 默认使用hive metastore去管理metadata, 使用spark 自身的sql 优化器: catalyst.
+3.  spark sql 默认使用hive metastore去管理metadata, 使用spark 自身的sql 优化器: catalyst.
 
 
 * 若要讨论spark和MR的区别
@@ -641,12 +638,14 @@ ${lib_path}"cms-sparkintegration.jar" "$@" \
 
 
 1. parser
-> 将一长串sql 解析为一个语法树, 相当于是划分成一个个token, 并指定了token执行的先后顺序, 该模块基本都使用第三方类库 antlr实现. 
-2. analyzer
-> 遍历第一步提到的语法树, 将一个个token替换为具体的函数, 例如token为sum(), 则替换为具体的聚合函数; 并做数据类型的绑定, 定位到那个表的哪个列.
-3. optimzer
-> 分为基于规则优化和基于代价优化(目前支持还不好, 具体说来是比较多种规则优化下哪个的时间代价越小, 就采用哪些规则进行优化), 规则优化例如谓词下推（Predicate Pushdown）, 例如是filter下推到join之前, 先进行过滤再join, 减少大量数据; 常量累加（Constant Folding）, 将中间值事先计算, 得出一个中间结果; 和列值裁剪（Column Pruning）, 例如只要一列数据的, 就只传递该列数据, 减少大量的io和带宽. 
 
+将一长串sql 解析为一个语法树, 相当于是划分成一个个token, 并指定了token执行的先后顺序, 该模块基本都使用第三方类库 antlr实现. 
+2. analyzer
+
+ 遍历第一步提到的语法树, 将一个个token替换为具体的函数, 例如token为sum(), 则替换为具体的聚合函数; 并做数据类型的绑定, 定位到那个表的哪个列.
+3. optimzer
+
+分为基于规则优化和基于代价优化(目前支持还不好, 具体说来是比较多种规则优化下哪个的时间代价越小, 就采用哪些规则进行优化), 规则优化例如谓词下推（Predicate Pushdown）, 例如是filter下推到join之前, 先进行过滤再join, 减少大量数据; 常量累加（Constant Folding）, 将中间值事先计算, 得出一个中间结果; 和列值裁剪（Column Pruning）, 例如只要一列数据的, 就只传递该列数据, 减少大量的io和带宽. 
 
 4. 将逻辑执行计划转化为物理执行计划, 转化为特定的算子进行计算.
 
@@ -705,11 +704,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA5MzgwMzA5NywtMTAzODg0MTMzMSwzMz
-EzODY2NTEsNjA2NzI1NTMzLC0xNTA3MDI3MTkwLDExMjI1ODg3
-MDcsLTc5ODE3MDY0MiwtODE2NTgxODQ2LC0xMzY2MzY1NjAwLD
-U5MTY4ODM1LC02NjI3NDA2NTUsLTE5MzM1NTMyOTksMTYzNzQw
-ODMzLC0xNjY4ODE2OTk4LC0xNjAzMjAwMjAxLC0xMTQ0ODc5OT
-AzLC05MDkzODAzNjIsLTIxNDU4MDkzMTAsLTEzNDY1MjQwNjYs
-MTMwMzU4ODE5Ml19
+eyJoaXN0b3J5IjpbMTIwMjA3NzIzNSwyMDkzODAzMDk3LC0xMD
+M4ODQxMzMxLDMzMTM4NjY1MSw2MDY3MjU1MzMsLTE1MDcwMjcx
+OTAsMTEyMjU4ODcwNywtNzk4MTcwNjQyLC04MTY1ODE4NDYsLT
+EzNjYzNjU2MDAsNTkxNjg4MzUsLTY2Mjc0MDY1NSwtMTkzMzU1
+MzI5OSwxNjM3NDA4MzMsLTE2Njg4MTY5OTgsLTE2MDMyMDAyMD
+EsLTExNDQ4Nzk5MDMsLTkwOTM4MDM2MiwtMjE0NTgwOTMxMCwt
+MTM0NjUyNDA2Nl19
 -->
