@@ -246,34 +246,33 @@ class MyUtils {
 参考自 [link](http://www.importnew.com/28445.html)
 * 类加载的步骤
 1. 加载
-> 分为预加载和运行时加载, 
+ 分为预加载和运行时加载, 
 
-> 预加载, 虚拟机启动的时候加载rt.jar的class, 像java.lang.*、java.util.*、java.io.*等等, 可以设置虚拟机参数 -XX+TraceClassLoading 来获取类加载信息
+ 预加载, 虚拟机启动的时候加载rt.jar的class, 像java.lang.*、java.util.*、java.io.*等等, 可以设置虚拟机参数 -XX+TraceClassLoading 来获取类加载信息
 
-> 运行时加载: 在用到一个class文件的时候, 如果内存中没有则按类的全限定名来加载.
+ 运行时加载: 在用到一个class文件的时候, 如果内存中没有则按类的全限定名来加载.
 
-> 加载阶段: 
-    > 1. 获取class文件的二进制流 , 例如从zip包中获取，这就是以后jar、ear、war格式的基础
+ 加载阶段: 
+     1. 获取class文件的二进制流 , 例如从zip包中获取，这就是以后jar、ear、war格式的基础
 从网络中获取，典型应用就是Applet
 运行时计算生成，典型应用就是动态代理技术
 由其他文件生成，典型应用就是JSP，即由JSP生成对应的.class文件
 从数据库中读取，这种场景比较少见
-    > 2. 将类信息, 静态变量, 字节码, 常量等内容放到方法区
-    > 3. 内存中生成java.lang.Class的对象, 作为访问入口
+     2. 将类信息, 静态变量, 字节码, 常量等内容放到方法区
+     3. 内存中生成java.lang.Class的对象, 作为访问入口
 
 
 2. 验证
-> 这个地方要说一点和开发者相关的。.class文件的第5~第8个字节表示的是该.class文件的主次版本号，验证的时候会对这4个字节做一个验证，高版本的JDK能向下兼容以前版本的.class文件，但不能运行以后的class文件(向后兼容)，即使文件格式未发生任何变化，虚拟机也必须拒绝执行超过其版本号的.class文件。举个具体的例子，如果一段.java代码是在JDK1.6下编译的，那么JDK1.6、JDK1.7的环境能运行这个.java代码生成的.class文件，但是JDK1.5、JDK1.4乃更低的JDK版本是无法运行这个.java代码生成的.class文件的。如果运行，会抛出java.lang.UnsupportedClassVersionError，这个小细节，务必注意。
+ 这个地方要说一点和开发者相关的。.class文件的第5~第8个字节表示的是该.class文件的主次版本号，验证的时候会对这4个字节做一个验证，高版本的JDK能向下兼容以前版本的.class文件，但不能运行以后的class文件(向后兼容)，即使文件格式未发生任何变化，虚拟机也必须拒绝执行超过其版本号的.class文件。举个具体的例子，如果一段.java代码是在JDK1.6下编译的，那么JDK1.6、JDK1.7的环境能运行这个.java代码生成的.class文件，但是JDK1.5、JDK1.4乃更低的JDK版本是无法运行这个.java代码生成的.class文件的。如果运行，会抛出java.lang.UnsupportedClassVersionError，这个小细节，务必注意。
 
 3. 准备
  为类变量(static 变量, 不是实例变量)分配内存并设置其初始值, 均在方法区分配
 
->这个阶段赋初始值的变量指的是那些不被final修饰的static变量，比如”public static int value = 123;”，value在准备阶段过后是0而不是123，给value赋值为123的动作将在初始化阶段才进行；比如”public static final int value = 123;”就不一样了，在准备阶段，虚拟机就会给value赋值为123。
+这个阶段赋初始值的变量指的是那些不被final修饰的static变量，比如”public static int value = 123;”，value在准备阶段过后是0而不是123，给value赋值为123的动作将在初始化阶段才进行；比如”public static final int value = 123;”就不一样了，在准备阶段，虚拟机就会给value赋值为123。
 
 4. 解析
-> 将符号引用替换为直接引用的过程, 
-
->符号引用, 包括: 类和接口的全限定名; 字段的名称和描述符; 方法的名称和描述符
+将符号引用替换为直接引用的过程, 
+符号引用, 包括: 类和接口的全限定名; 字段的名称和描述符; 方法的名称和描述符
 
 例如下面这串代码: 
 ```
@@ -484,6 +483,6 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNTIxMzY4NDIsNDI1OTMxMTY2LC0xMz
-MwMTg1NTgwXX0=
+eyJoaXN0b3J5IjpbMTc3NDczMjc4NCw0MjU5MzExNjYsLTEzMz
+AxODU1ODBdfQ==
 -->
