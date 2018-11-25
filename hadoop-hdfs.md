@@ -177,7 +177,6 @@
 > 2. 如果在snapshot之后有修改, 则修改按时间倒序, 获取snapshot的时候把修改减去即可.
 
 #### HDFS and permission
-> 
 
 
 #### hdfs block 的作用, 为何设置的如此之大
@@ -447,6 +446,6 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODk5OTUyNjAsNTg0ODcwMDQ1LDEyODI3Mz
-UzODRdfQ==
+eyJoaXN0b3J5IjpbLTExMzg4NjY4OTYsODk5OTUyNjAsNTg0OD
+cwMDQ1LDEyODI3MzUzODRdfQ==
 -->
