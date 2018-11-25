@@ -387,17 +387,16 @@ https://hadoop.apache.org/docs/r2.7.1/hadoop-project-dist/hadoop-hdfs/hdfs-defau
 主要参考 [http://hadoop.apache.org/docs/r2.6.5/hadoop-yarn/hadoop-yarn-site/YARN.html](http://hadoop.apache.org/docs/r2.6.5/hadoop-yarn/hadoop-yarn-site/YARN.html)
 
 * 大致流程
-> 首先yarn 分配container来启动AM ; 然后AM注册到RM上, 让client可以知道AM的存在, 直接与AM通信; 然后AM 与RM请求资源分配; 然后AM启动container 并把相关信息提供给NM; application code在container上面执行, 并报告状态和进度等信息给AM; application执行完之后, AM从RM上面注销并返回container等资源.
+首先yarn 分配container来启动AM ; 然后AM注册到RM上, 让client可以知道AM的存在, 直接与AM通信; 然后AM 与RM请求资源分配; 然后AM启动container 并把相关信息提供给NM; application code在container上面执行, 并报告状态和进度等信息给AM; application执行完之后, AM从RM上面注销并返回container等资源.
 
 * resourceManager
-> 分为 scheduler和 ApplicationsManager 两个组件
-> scheduler 只负责资源的收集, 分为  CapacityScheduler and the FairScheduler, 不负责application的监控等
-> ApplicationsManager 负责接收 application的提交请求, 并分配AM, 并且负责监控AM的状态, 失败重启等.
+分为 scheduler和 ApplicationsManager 两个组件
+scheduler 只负责资源的收集, 分为  CapacityScheduler and the FairScheduler, 不负责application的监控等
+ApplicationsManager 负责接收 application的提交请求, 并分配AM, 并且负责监控AM的状态, 失败重启等.
 
 * ResourceRequest and Container
-> <resource-name, priority, resource-requirement, number-of-containers>
-
->resource-name is either hostname, rackname or * to indicate no preference. In future, we expect to support even more complex topologies for virtual machines on a host, more complex networks etc.
+<resource-name, priority, resource-requirement, number-of-containers>. 
+resource-name is either hostname, rackname or * to indicate no preference. In future, we expect to support even more complex topologies for virtual machines on a host, more complex networks etc.
 priority is intra-application priority for this request (to stress, this isn’t across multiple applications).
 resource-requirement is required capabilities such as memory, cpu etc. (at the time of writing YARN only supports memory and cpu).
 number-of-containers is just a multiple of such containers.
@@ -446,7 +445,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjA3NzQ5MSwxMzI5ODYyNzE4LC0xMT
-M4ODY2ODk2LDg5OTk1MjYwLDU4NDg3MDA0NSwxMjgyNzM1Mzg0
-XX0=
+eyJoaXN0b3J5IjpbMTY0OTEyMzA1NSwtMTQ2MDc3NDkxLDEzMj
+k4NjI3MTgsLTExMzg4NjY4OTYsODk5OTUyNjAsNTg0ODcwMDQ1
+LDEyODI3MzUzODRdfQ==
 -->
