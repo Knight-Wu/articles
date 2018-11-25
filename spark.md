@@ -361,10 +361,6 @@ spark-1.6 之后使用UnifiedMemoryManager, 之前使用StaticMemoryManager, 由
 
 上文的R, 在M中所占的比例, 默认是0.5, 给storage一直使用的,不会被execution抢占.可以看spark-history-server中storage使用的情况, 如果很小, 可以把这个值调低.
 
-> executor memory
-    
-the heap size can be controlled with the --executor-memory flag or the spark.executor.memory property
-
 > spark.yarn.executor.memoryOverhead
 
 指的是 off-heap memory per executor, 用来存储 VM overheads, interned strings, other native overheads, 默认值是 Max(384MB, 10% of spark.executor-memory), 所以每个executor使用的container的物理内存需要囊括spark.yarn.executor.memoryOverhead 和executor memory两部分.
@@ -387,8 +383,7 @@ if(total <= yarn.scheduler.minimum-allocation-mb){
 total = yarn.scheduler.minimum-allocation-mb+ yarn.scheduler.increment-allocation-mb的整数倍(container内存增量，每次增加申请的内存是该值的整数倍，默认值为1G)
 }
 ```
-
-> 后续参考资料
+参考资料:
 
 1. [https://wongxingjun.github.io/](https://wongxingjun.github.io/2016/05/26/Spark%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/)
 
@@ -715,11 +710,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA2NzI1NTMzLC0xNTA3MDI3MTkwLDExMj
-I1ODg3MDcsLTc5ODE3MDY0MiwtODE2NTgxODQ2LC0xMzY2MzY1
-NjAwLDU5MTY4ODM1LC02NjI3NDA2NTUsLTE5MzM1NTMyOTksMT
-YzNzQwODMzLC0xNjY4ODE2OTk4LC0xNjAzMjAwMjAxLC0xMTQ0
-ODc5OTAzLC05MDkzODAzNjIsLTIxNDU4MDkzMTAsLTEzNDY1Mj
-QwNjYsMTMwMzU4ODE5MiwxOTYyMDg0MjIsMTQ2MTg5ODg3Mywx
-ODE2ODg0MjI5XX0=
+eyJoaXN0b3J5IjpbMzMxMzg2NjUxLDYwNjcyNTUzMywtMTUwNz
+AyNzE5MCwxMTIyNTg4NzA3LC03OTgxNzA2NDIsLTgxNjU4MTg0
+NiwtMTM2NjM2NTYwMCw1OTE2ODgzNSwtNjYyNzQwNjU1LC0xOT
+MzNTUzMjk5LDE2Mzc0MDgzMywtMTY2ODgxNjk5OCwtMTYwMzIw
+MDIwMSwtMTE0NDg3OTkwMywtOTA5MzgwMzYyLC0yMTQ1ODA5Mz
+EwLC0xMzQ2NTI0MDY2LDEzMDM1ODgxOTIsMTk2MjA4NDIyLDE0
+NjE4OTg4NzNdfQ==
 -->
