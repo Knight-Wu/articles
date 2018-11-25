@@ -517,7 +517,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 * 提升并行程度,
 * 在hive端就去除倾斜的现象, 保证spark端使用的时效
 * 过滤少数导致数据倾斜的key
-*  将key添加随机前缀, 进行局部聚合,然后去掉随机前缀, 再进行全局聚合
+* 将key添加随机前缀, 进行局部聚合,然后去掉随机前缀, 再进行全局聚合
 * 改变parttion的数量
 * 自定义parttion
 * 避免shuffle, 通过将小表广播到大表所在的节点, 进行hash-join
@@ -706,11 +706,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMzg4NDEzMzEsMzMxMzg2NjUxLDYwNj
-cyNTUzMywtMTUwNzAyNzE5MCwxMTIyNTg4NzA3LC03OTgxNzA2
-NDIsLTgxNjU4MTg0NiwtMTM2NjM2NTYwMCw1OTE2ODgzNSwtNj
-YyNzQwNjU1LC0xOTMzNTUzMjk5LDE2Mzc0MDgzMywtMTY2ODgx
-Njk5OCwtMTYwMzIwMDIwMSwtMTE0NDg3OTkwMywtOTA5MzgwMz
-YyLC0yMTQ1ODA5MzEwLC0xMzQ2NTI0MDY2LDEzMDM1ODgxOTIs
-MTk2MjA4NDIyXX0=
+eyJoaXN0b3J5IjpbMTEwNTY3MjE3NywtMTAzODg0MTMzMSwzMz
+EzODY2NTEsNjA2NzI1NTMzLC0xNTA3MDI3MTkwLDExMjI1ODg3
+MDcsLTc5ODE3MDY0MiwtODE2NTgxODQ2LC0xMzY2MzY1NjAwLD
+U5MTY4ODM1LC02NjI3NDA2NTUsLTE5MzM1NTMyOTksMTYzNzQw
+ODMzLC0xNjY4ODE2OTk4LC0xNjAzMjAwMjAxLC0xMTQ0ODc5OT
+AzLC05MDkzODAzNjIsLTIxNDU4MDkzMTAsLTEzNDY1MjQwNjYs
+MTMwMzU4ODE5Ml19
 -->
