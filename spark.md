@@ -480,7 +480,7 @@ scala> sqlC.sql("select count(1) from crm_app.cust_group_detail").collect;
 
 
 
-```
+
 #### spark on yarn 
 > 问题排查
 
@@ -493,8 +493,8 @@ scala> sqlC.sql("select count(1) from crm_app.cust_group_detail").collect;
 ```
 spark.driver.extraClassPath=./antlr-runtime-3.4.jar
 spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/opt/cloudera/parcels/CDH-5.12.1-1.cdh5.12.1.p0.3/jars/antlr-runtime-3.4.jar
-
 ```
+
 其中前两个引用的相对目录，指的是YARN 的container的进程的工作目录， 第三个配置就是把jar包上传到container的工作目录, 也可以引用hdfs的目录
 3. external shuffle service
 > 作用
@@ -510,22 +510,21 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 ### 数据倾斜
 某个parttion的大小远大于其他parttion，stage执行的时间取决于task（parttion）中最慢的那个，导致某个stage执行过慢
 情形暂定为两种
-   * 相同的key的数据量太大(一般都是因为这个)
-   * 不同的key在同一个parttion的数据量太大
+   1. 相同的key的数据量太大(一般都是因为这个)
+   2. 不同的key在同一个parttion的数据量太大
 
 > 解决办法
-* 提升并行程度,
+* 提升并行程度, 适用情况2.
 * 在hive端就去除倾斜的现象, 保证spark端使用的时效
 * 过滤少数导致数据倾斜的key
 * 将key添加随机前缀, 进行局部聚合,然后去掉随机前缀, 再进行全局聚合
-* 改变parttion的数量
 * 自定义parttion
 * 避免shuffle, 通过将小表广播到大表所在的节点, 进行hash-join
 * 通过抽样来
 
 > 例题
 
-腾讯大数据平台数据分析的题目
+大厂大数据平台数据分析的题目
 ```
 大表A(大概每天的增量数据有3T)
 uuid url time 
@@ -706,7 +705,7 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwNTY3MjE3NywtMTAzODg0MTMzMSwzMz
+eyJoaXN0b3J5IjpbMjA5MzgwMzA5NywtMTAzODg0MTMzMSwzMz
 EzODY2NTEsNjA2NzI1NTMzLC0xNTA3MDI3MTkwLDExMjI1ODg3
 MDcsLTc5ODE3MDY0MiwtODE2NTgxODQ2LC0xMzY2MzY1NjAwLD
 U5MTY4ODM1LC02NjI3NDA2NTUsLTE5MzM1NTMyOTksMTYzNzQw
