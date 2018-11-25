@@ -106,9 +106,7 @@
 > 1. 调用这个旧 Active NameNode 的 HAServiceProtocol RPC 接口的 transitionToStandby 方法，看能不能把它转换为 Standby 状态。
 > 2. 如果失败, 执行配置的隔离措施, 默认是sshfence(通过 SSH 登录到目标机器上，执行命令 fuser 将对应的进程杀死)
 > 3. 只有在成功地执行完成 fencing 之后，选主成功的 ActiveStandbyElector 才会回调 ZKFailoverController 的 becomeActive 方法将对应的 NameNode 转换为 Active 状态，开始对外提供服务。
-* 问题
-1. zkwatcher 怎么实现对节点状态的监听
-2. 主备切换时, 如何知道原先active nn是有问题的, 是什么样的策略选择了`健康的 standby nn变成active
+
 
 
 
@@ -449,5 +447,6 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTg0ODcwMDQ1LDEyODI3MzUzODRdfQ==
+eyJoaXN0b3J5IjpbODk5OTUyNjAsNTg0ODcwMDQ1LDEyODI3Mz
+UzODRdfQ==
 -->
