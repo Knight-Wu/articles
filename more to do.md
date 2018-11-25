@@ -14,7 +14,7 @@
 * datanode 磁盘中某个volume 的容量快满时会有何影响
 * 如何进行hdfs 磁盘的balance
 * yarn container如何用起来. 写一个使用的小demo
-
+* linux 文件权限和用户权限的彻底理解
 
 ### DOING
 * maven archtype 直接构建flink-quick-start, 解决一个classNotFoundEx 
@@ -23,6 +23,6 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4NDQ0MDk3NCw5MjEwOTUwMCwtODM1Mz
-c2MjcyXX0=
+eyJoaXN0b3J5IjpbLTI4MzUwMzkzNywxMzg0NDQwOTc0LDkyMT
+A5NTAwLC04MzUzNzYyNzJdfQ==
 -->
