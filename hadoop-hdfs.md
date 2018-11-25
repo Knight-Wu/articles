@@ -400,7 +400,7 @@ resource-name is either hostname, rackname or * to indicate no preference. In fu
 priority is intra-application priority for this request (to stress, this isn’t across multiple applications).
 resource-requirement is required capabilities such as memory, cpu etc. (at the time of writing YARN only supports memory and cpu).
 number-of-containers is just a multiple of such containers.
-
+	
 * CapacityScheduler
 > 可继承的队列
 > Capacity Guarantees: 每个队列有资源的硬限制和软限制.
@@ -445,7 +445,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0OTEyMzA1NSwtMTQ2MDc3NDkxLDEzMj
-k4NjI3MTgsLTExMzg4NjY4OTYsODk5OTUyNjAsNTg0ODcwMDQ1
-LDEyODI3MzUzODRdfQ==
+eyJoaXN0b3J5IjpbOTQ3MjYxMDMsLTE0NjA3NzQ5MSwxMzI5OD
+YyNzE4LC0xMTM4ODY2ODk2LDg5OTk1MjYwLDU4NDg3MDA0NSwx
+MjgyNzM1Mzg0XX0=
 -->
