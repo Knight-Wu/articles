@@ -215,9 +215,8 @@
 如下图![enter image description here](https://drive.google.com/uc?id=1btvOQAEX6xNWRQvmm1yOxgi-VKtbp8Al)
 
 * 详细流程见
-> notebook-link  [notebook-link](http://note.youdao.com/noteshare?id=1db8cf2911deed6b89523bd3feab696e&sub=A63DC7C4A24A4C759435BB12479B6BDB)
-
->原贴地址 [http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html](http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html)
+ [notebook-link](http://note.youdao.com/noteshare?id=1db8cf2911deed6b89523bd3feab696e&sub=A63DC7C4A24A4C759435BB12479B6BDB)
+原贴地址 [http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html](http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html)
 
 
 #### Understanding HDFS Recovery Processes
@@ -446,6 +445,6 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzg4NjY4OTYsODk5OTUyNjAsNTg0OD
-cwMDQ1LDEyODI3MzUzODRdfQ==
+eyJoaXN0b3J5IjpbMTMyOTg2MjcxOCwtMTEzODg2Njg5Niw4OT
+k5NTI2MCw1ODQ4NzAwNDUsMTI4MjczNTM4NF19
 -->
