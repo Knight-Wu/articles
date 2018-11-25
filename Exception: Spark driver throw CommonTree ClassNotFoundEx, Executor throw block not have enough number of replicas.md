@@ -59,7 +59,7 @@ spark.driver.extraJavaOptions=-verbose:class
 
 * 根本原因
 
-应该是dn 写入失败, executor 报错而终止job, 至于为什么dn 会写入失败, 这个情况只在凌晨
+应该是dn 写入失败, executor 报错而终止job, 至于为什么dn 会写入失败, 这个情况只在凌晨hive 跑批, 集群压力大的时候出现, 其他时间均为出现, 后来查询到可能是CentOS 的一个bug, 其他团队在升级了操作系统版本之后解决, ho
 
 
  
@@ -75,7 +75,7 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI2MjgzMTM1MiwtMTE4NzYyNTIwNCwxOT
-E3ODc3MzU0LC0yODU2NDQ5NDksMTE1NDMwMjM2MSwtMTg5MTcz
-Mjc2OV19
+eyJoaXN0b3J5IjpbNzM0MDAwNDE4LC0xMTg3NjI1MjA0LDE5MT
+c4NzczNTQsLTI4NTY0NDk0OSwxMTU0MzAyMzYxLC0xODkxNzMy
+NzY5XX0=
 -->
