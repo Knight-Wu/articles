@@ -317,10 +317,12 @@ Determining the optimal value for  X  requires experimentation. Find the number 
     > A rough guess is that at most five tasks per executor can achieve full write throughput, so it’s good to keep the number of cores per executor below that number
 
 * num of executor
-     --num-executors command-line flag or spark.executor.instances configuration property control the number of executors requested
-    > Starting in CDH 5.4/Spark 1.3, you will be able to avoid setting this property by turning on dynamic allocation with the spark.dynamicAllocation.enabled property. Dynamic allocation enables a Spark application to request executors when there is a backlog of pending tasks and free up executors when idle.
+     
+ --num-executors command-line flag or spark.executor.instances configuration property control the number of executors requested.
+ 
+ Starting in CDH 5.4/Spark 1.3, you will be able to avoid setting this property by turning on dynamic allocation with the spark.dynamicAllocation.enabled property. Dynamic allocation enables a Spark application to request executors when there is a backlog of pending tasks and free up executors when idle.
 
-> YARN may round the requested memory up a little. YARN’s yarn.scheduler.minimum-allocation-mb and yarn.scheduler.increment-allocation-mb properties control the minimum and increment request values respectively.
+ YARN may round the requested memory up a little. YARN’s yarn.scheduler.minimum-allocation-mb and yarn.scheduler.increment-allocation-mb properties control the minimum and increment request values respectively.
 
 
 * 跑批任务中(hive on spark, hive on mr)的资源分配
@@ -329,9 +331,7 @@ Determining the optimal value for  X  requires experimentation. Find the number 
 
 参考自
 1.  [https://spark.apache.org/docs/latest/tuning.html](https://spark.apache.org/docs/latest/tuning.html)
-2. [[distribution_of_executors_cores_and_memory_for_spark_application](https://spoddutur.github.io/spark-notes/distribution_of_executors_cores_and_memory_for_spark_application.html)
-](%5Bistribution_of_executors_cores_and_memory_for_spark_application%5D%28https://spoddutur.github.io/spark-notes/distribution_of_executors_cores_and_memory_for_spark_application.html%29)
-
+2. [distribution_of_executors_cores_and_memory_for_spark_application](https://spoddutur.github.io/spark-notes/distribution_of_executors_cores_and_memory_for_spark_application.html)
 * 内存
 > 内存概述
 
@@ -713,11 +713,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDcwMjcxOTAsMTEyMjU4ODcwNywtNz
-k4MTcwNjQyLC04MTY1ODE4NDYsLTEzNjYzNjU2MDAsNTkxNjg4
-MzUsLTY2Mjc0MDY1NSwtMTkzMzU1MzI5OSwxNjM3NDA4MzMsLT
-E2Njg4MTY5OTgsLTE2MDMyMDAyMDEsLTExNDQ4Nzk5MDMsLTkw
-OTM4MDM2MiwtMjE0NTgwOTMxMCwtMTM0NjUyNDA2NiwxMzAzNT
-g4MTkyLDE5NjIwODQyMiwxNDYxODk4ODczLDE4MTY4ODQyMjks
-LTEwNzU5MDM4NDNdfQ==
+eyJoaXN0b3J5IjpbNzYxMTUyNzAwLC0xNTA3MDI3MTkwLDExMj
+I1ODg3MDcsLTc5ODE3MDY0MiwtODE2NTgxODQ2LC0xMzY2MzY1
+NjAwLDU5MTY4ODM1LC02NjI3NDA2NTUsLTE5MzM1NTMyOTksMT
+YzNzQwODMzLC0xNjY4ODE2OTk4LC0xNjAzMjAwMjAxLC0xMTQ0
+ODc5OTAzLC05MDkzODAzNjIsLTIxNDU4MDkzMTAsLTEzNDY1Mj
+QwNjYsMTMwMzU4ODE5MiwxOTYyMDg0MjIsMTQ2MTg5ODg3Mywx
+ODE2ODg0MjI5XX0=
 -->
