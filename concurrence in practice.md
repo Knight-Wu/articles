@@ -10,11 +10,11 @@
     因为cpu有多核心和对应的多级缓存, 不加额外的同步会导致A核心对应的缓存内容对 B核心的线程不可见.
 ### 线程安全的实现方法 
 * 互斥同步
-> synchronized, wait notify,  reentrantLock, 阻塞队列
+synchronized, wait notify,  reentrantLock, 阻塞队列
 * 非阻塞同步
->线程自旋, 使用CAS保证原子
+线程自旋, 使用CAS保证原子
 * 无同步方案
->对象不共享(局部变量); 线程本地变量(threadLocal); 不可变对象(final)  
+对象不共享(局部变量); 线程本地变量(threadLocal); 不可变对象(final)  
     
 #### 线程本地变量(threadLocal)
  
@@ -766,3 +766,6 @@ class Foo {
 #### 工作上出现的并发bug
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMzg3NzM2MTYzXX0=
+-->
