@@ -335,7 +335,7 @@ Determining the optimal value for  X  requires experimentation. Find the number 
 
 
 * 内存
-> 内存概述
+
 
 ![enter image description here](https://drive.google.com/uc?id=1Hk4apOubApExzejHwMx96J5dAi9j4KQi)
 
@@ -715,11 +715,11 @@ spark.sql("xxxsql").explain()
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0NDc0NjcyMCwtMTUwNzAyNzE5MCwxMT
-IyNTg4NzA3LC03OTgxNzA2NDIsLTgxNjU4MTg0NiwtMTM2NjM2
-NTYwMCw1OTE2ODgzNSwtNjYyNzQwNjU1LC0xOTMzNTUzMjk5LD
-E2Mzc0MDgzMywtMTY2ODgxNjk5OCwtMTYwMzIwMDIwMSwtMTE0
-NDg3OTkwMywtOTA5MzgwMzYyLC0yMTQ1ODA5MzEwLC0xMzQ2NT
-I0MDY2LDEzMDM1ODgxOTIsMTk2MjA4NDIyLDE0NjE4OTg4NzMs
-MTgxNjg4NDIyOV19
+eyJoaXN0b3J5IjpbNjA2NzI1NTMzLC0xNTA3MDI3MTkwLDExMj
+I1ODg3MDcsLTc5ODE3MDY0MiwtODE2NTgxODQ2LC0xMzY2MzY1
+NjAwLDU5MTY4ODM1LC02NjI3NDA2NTUsLTE5MzM1NTMyOTksMT
+YzNzQwODMzLC0xNjY4ODE2OTk4LC0xNjAzMjAwMjAxLC0xMTQ0
+ODc5OTAzLC05MDkzODAzNjIsLTIxNDU4MDkzMTAsLTEzNDY1Mj
+QwNjYsMTMwMzU4ODE5MiwxOTYyMDg0MjIsMTQ2MTg5ODg3Mywx
+ODE2ODg0MjI5XX0=
 -->
