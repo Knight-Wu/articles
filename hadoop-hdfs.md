@@ -382,10 +382,11 @@ https://hadoop.apache.org/docs/r2.7.1/hadoop-project-dist/hadoop-hdfs/hdfs-defau
 
 ### yarn
 > 架构
-![enter image description here](https://drive.google.com/uc?id=1F8GwegZOrNUYmnBu5_RK-iFoH-YQ_pPI)
+
+![](https://drive.google.com/uc?id=1F8GwegZOrNUYmnBu5_RK-iFoH-YQ_pPI)
 主要参考 [http://hadoop.apache.org/docs/r2.6.5/hadoop-yarn/hadoop-yarn-site/YARN.html](http://hadoop.apache.org/docs/r2.6.5/hadoop-yarn/hadoop-yarn-site/YARN.html)
 
-* application execution sequence
+* 大致流程
 > 首先yarn 分配container来启动AM ; 然后AM注册到RM上, 让client可以知道AM的存在, 直接与AM通信; 然后AM 与RM请求资源分配; 然后AM启动container 并把相关信息提供给NM; application code在container上面执行, 并报告状态和进度等信息给AM; application执行完之后, AM从RM上面注销并返回container等资源.
 
 * resourceManager
@@ -445,6 +446,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyOTg2MjcxOCwtMTEzODg2Njg5Niw4OT
-k5NTI2MCw1ODQ4NzAwNDUsMTI4MjczNTM4NF19
+eyJoaXN0b3J5IjpbLTE0NjA3NzQ5MSwxMzI5ODYyNzE4LC0xMT
+M4ODY2ODk2LDg5OTk1MjYwLDU4NDg3MDA0NSwxMjgyNzM1Mzg0
+XX0=
 -->
