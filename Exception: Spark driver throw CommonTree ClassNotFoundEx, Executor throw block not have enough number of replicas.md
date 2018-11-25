@@ -15,7 +15,9 @@
 ![4](https://user-images.githubusercontent.com/20329409/45937181-863cfc00-bff0-11e8-8696-74f72c3fb013.png)
 
 
-3. datanode的日志找不到了,  同时出现了 "IOException: channel is broken ".
+3. datanode的日志找不到了,  同时出现了 "IOException: channel is broken ". 代码如图
+
+![enter image description here](https://drive.google.com/uc?id=1oBOiQAmfVNUQpNunfBTbUgKR-Pqpl1C-)
 
 > 总结来看, 由于dn写失败, 导致nn检查小于最小副本数, executor接受到无法关闭文件的异常, driver 反序列化executor 端异常时出现classNotFoundEx.
  
@@ -62,6 +64,10 @@ spark.driver.extraJavaOptions=-verbose:class
 应该是dn 写入失败, executor 报错而终止job, 至于为什么dn 会写入失败, 这个情况只在凌晨hive 跑批, 集群压力大的时候出现, 其他时间均为出现, 后来查询到可能是CentOS 的一个bug, 其他团队在升级了操作系统版本之后解决, 这个还有待考察. 
 
 
+* 问题
+dn 
+
+
  
 
 
@@ -75,7 +81,7 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2ODgyMTA0NiwtMTE4NzYyNTIwNCwxOT
-E3ODc3MzU0LC0yODU2NDQ5NDksMTE1NDMwMjM2MSwtMTg5MTcz
-Mjc2OV19
+eyJoaXN0b3J5IjpbLTYxMTAzODk4NCwxNzY4ODIxMDQ2LC0xMT
+g3NjI1MjA0LDE5MTc4NzczNTQsLTI4NTY0NDk0OSwxMTU0MzAy
+MzYxLC0xODkxNzMyNzY5XX0=
 -->
