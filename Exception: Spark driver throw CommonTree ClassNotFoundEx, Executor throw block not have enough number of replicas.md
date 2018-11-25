@@ -57,6 +57,10 @@ spark.driver.extraJavaOptions=-verbose:class
 
 **一直没有来反馈** ， 经过后续的观察，再也没有出现commonTree的报错了， 证明解决问题的思路是正确的！
 
+* 根本原因
+
+应该是dn 写入失败, executor 报错而终止job, 至于为什么dn 会写入失败, 这个情况只在凌晨
+
 
  
 
@@ -71,6 +75,7 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExODc2MjUyMDQsMTkxNzg3NzM1NCwtMj
-g1NjQ0OTQ5LDExNTQzMDIzNjEsLTE4OTE3MzI3NjldfQ==
+eyJoaXN0b3J5IjpbMTI2MjgzMTM1MiwtMTE4NzYyNTIwNCwxOT
+E3ODc3MzU0LC0yODU2NDQ5NDksMTE1NDMwMjM2MSwtMTg5MTcz
+Mjc2OV19
 -->
