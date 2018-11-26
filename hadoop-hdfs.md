@@ -332,6 +332,14 @@ https://hadoop.apache.org/docs/r2.7.1/hadoop-project-dist/hadoop-hdfs/hdfs-defau
 
 > 强制退出safemode 命令: sudo -u hdfs hdfs dfsadmin -safemode leave
 
+#### hdfs 磁盘容量问题
+
+* 单个dn的单个volume的容量几乎用完, 会有何影响? 这个如何优化? 
+
+使用available-space- volume-choosing- policy来对单个Datanode的不同volume进行再平衡 https://www.cloudera.com/documentation/enterprise/5-12-x/topics/admin_dn_storage_balancing.html 
+
+* 某些dn 容量快满, 这个如何优化, 使用balance ?如果其他DN还有很多空间， 您可以使用balance， 但是如果您的上层有HBASE服务的话， 请在合适（业务不太多，对hbase性能不敏感的时候）的时候进行rebalance， 因为HDFS reblanace会破坏HBase的localility，进而影响hbase性能。
+
 #### 疑问
 
 
@@ -445,7 +453,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ3MjYxMDMsLTE0NjA3NzQ5MSwxMzI5OD
-YyNzE4LC0xMTM4ODY2ODk2LDg5OTk1MjYwLDU4NDg3MDA0NSwx
-MjgyNzM1Mzg0XX0=
+eyJoaXN0b3J5IjpbMTE0NjQwMzM3Niw5NDcyNjEwMywtMTQ2MD
+c3NDkxLDEzMjk4NjI3MTgsLTExMzg4NjY4OTYsODk5OTUyNjAs
+NTg0ODcwMDQ1LDEyODI3MzUzODRdfQ==
 -->
