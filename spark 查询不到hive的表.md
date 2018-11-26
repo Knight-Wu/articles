@@ -30,11 +30,10 @@ export HADOOP_CONF_DIR=/etc/spark2/conf/yarn-conf; sh spark2-shell
 set -x; source /etc/spark2/conf/spark-env.sh ; set +x (a command)
 ```
 `set -x` enables a mode of the shell where all executed commands are printed to the terminal. In your case it's clearly used for debugging, which is a typical use case for `set -x`: printing every command as it is executed may help you to visualize the control flow of the script if it is not functioning as expected.(说白了会把每步执行的命令都打出来)
-然后将a command 输出的第一行, 粘贴到 spark-env.sh的第一行, 运行spark-shell, 将输出结果保存.
-
+看到
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0NDA5NjY4MCwtMTkwMTQwMDE3MiwtMT
-gyODYyNzU5MV19
+eyJoaXN0b3J5IjpbLTE5MDUyNDE0NTcsLTg0NDA5NjY4MCwtMT
+kwMTQwMDE3MiwtMTgyODYyNzU5MV19
 -->
