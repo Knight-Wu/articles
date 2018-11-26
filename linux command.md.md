@@ -157,6 +157,9 @@ hostnamectl set-hostname hostname
 > tar -xf archive.tar -C /target/directory // 解包到任意目录
 
 * 查看linux系统版本
+
+
+
 >cat /etc/*-release
 
 * yum
@@ -228,6 +231,6 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxMjYxODc1MiwxMDI4NDY2MDM5LC02Mj
-Y5NzE1OTRdfQ==
+eyJoaXN0b3J5IjpbLTEzNTgxOTM5MTAsMTAxMjYxODc1MiwxMD
+I4NDY2MDM5LC02MjY5NzE1OTRdfQ==
 -->
