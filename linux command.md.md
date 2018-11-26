@@ -184,6 +184,12 @@ nohup command & // 命令执行完时打出信息到shell 屏幕上
 nohup command > myOutPut.out 2>&1 & // 把标准输入和输出重定向到自己的文件
 ```
 
+* set
+```
+set +x; command; set -x // 可以将每一行执行的详细命令都解析到屏幕上输出
+```
+
+
 ---
 #### 搭建cdh测试环境总结
 1. 机器
@@ -191,6 +197,7 @@ nohup command > myOutPut.out 2>&1 & // 把标准输入和输出重定向到自�
 
 2. yum源
 > 因为不能直连外网, 其他同事搭了一个代理服务器, 使用清华的yum源才好, 但是这个代理也很不稳定 中间经常卡住, 也不懂怎么测试, 还好后面比较熟悉yum命令, 知道可以使用yum search packageName来测试.
+
 
 
 
@@ -231,6 +238,6 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNTgxOTM5MTAsMTAxMjYxODc1MiwxMD
-I4NDY2MDM5LC02MjY5NzE1OTRdfQ==
+eyJoaXN0b3J5IjpbMTIyNjQyMzc5OSwtMTM1ODE5MzkxMCwxMD
+EyNjE4NzUyLDEwMjg0NjYwMzksLTYyNjk3MTU5NF19
 -->
