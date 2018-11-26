@@ -15,7 +15,7 @@
 * 如何进行hdfs 磁盘的balance
 * yarn container如何用起来. 写一个使用的小demo
 * linux 文件权限和用户权限的彻底理解
-* spark 集群容错的控制, 目前只知道task fail会触发 
+* spark 集群容错的控制, 目前只知道task fail会触发 spark.task.maxFailures这个配置, 但是executor层, container层, job层, application层的配置控制还有待学习
 
 ### DOING
 * maven archtype 直接构建flink-quick-start, 解决一个classNotFoundEx 
@@ -24,6 +24,6 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0ODkwODEzMjgsLTI4MzUwMzkzNywxMz
-g0NDQwOTc0LDkyMTA5NTAwLC04MzUzNzYyNzJdfQ==
+eyJoaXN0b3J5IjpbLTM3MjQ1Nzk4NSwtMjgzNTAzOTM3LDEzOD
+Q0NDA5NzQsOTIxMDk1MDAsLTgzNTM3NjI3Ml19
 -->
