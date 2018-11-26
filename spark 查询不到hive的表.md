@@ -33,9 +33,10 @@ set -x; source /etc/spark2/conf/spark-env.sh ; set +x (a command)
 看到
 ![enter image description here](https://drive.google.com/uc?id=1jJkq4OdxsnM170RoNGJ0SuzbkfcmSwsy)
 忽略第二行是自己加的, 第三行的意思是当没有设置 HADOOP_CONF_DIR 时, 才会把 $SPARK_CONF_DIR/yarn-conf 赋给他, 原因就清楚了: 
-运维安装的时候在 /etc/profile 指定了HADOOP_CONF_DIR, 导致这边不能将 $SPARK_CONF_DIR/yarn-conf 赋
+运维安装的时候在 /etc/profile 指定了HADOOP_CONF_DIR, 导致这边不能将 $SPARK_CONF_DIR/yarn-conf 赋予, HADOOP_CONF_DIR 里面没有hive-site.xml, 导致spark 无法找到hive . 
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2ODU5NzMzMywtNzg3MzM3OTg3LC04ND
+eyJoaXN0b3J5IjpbLTg2NDk0NDYwNiwtNzg3MzM3OTg3LC04ND
 QwOTY2ODAsLTE5MDE0MDAxNzIsLTE4Mjg2Mjc1OTFdfQ==
 -->
