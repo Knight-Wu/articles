@@ -29,12 +29,12 @@ export HADOOP_CONF_DIR=/etc/spark2/conf/yarn-conf; sh spark2-shell
 ```
 set -x; source /etc/spark2/conf/spark-env.sh ; set +x (a command)
 ```
-`set -x` enables a mode of the shell where all executed commands are printed to the terminal. In your case it's clearly used for debugging, which is a typical use case for `set -x`: printing every command as it is executed may help you to visualize the control flow of the script if it is not functioning as expected.(说白了会把每步执行的命令都打出来)
+`set -x` enables a mode of the shell where all executed commands are printed to the terminal. In your case it's clearly used for debugging, which is a typical use case for `set -x`: printing every command as it is executed may help you to visualize the control flow of the script if it is not functioning as expected.(说白了会把每步执行的命令都打出来, 并且会输出变量的值)
 看到
-
-
+![enter image description here](https://drive.google.com/uc?id=1jJkq4OdxsnM170RoNGJ0SuzbkfcmSwsy)
+忽略第二行是自己加的, HADOOP
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4NzMzNzk4NywtODQ0MDk2NjgwLC0xOT
-AxNDAwMTcyLC0xODI4NjI3NTkxXX0=
+eyJoaXN0b3J5IjpbNTIzMjQ1MjUxLC03ODczMzc5ODcsLTg0ND
+A5NjY4MCwtMTkwMTQwMDE3MiwtMTgyODYyNzU5MV19
 -->
