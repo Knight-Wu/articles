@@ -32,9 +32,10 @@ set -x; source /etc/spark2/conf/spark-env.sh ; set +x (a command)
 `set -x` enables a mode of the shell where all executed commands are printed to the terminal. In your case it's clearly used for debugging, which is a typical use case for `set -x`: printing every command as it is executed may help you to visualize the control flow of the script if it is not functioning as expected.(说白了会把每步执行的命令都打出来, 并且会输出变量的值)
 看到
 ![enter image description here](https://drive.google.com/uc?id=1jJkq4OdxsnM170RoNGJ0SuzbkfcmSwsy)
-忽略第二行是自己加的, HADOOP
+忽略第二行是自己加的, 第三行的意思是当没有设置 HADOOP_CONF_DIR 时, 才会把 $SPARK_CONF_DIR/yarn-conf 赋给他, 原因就清楚了: 
+运维安装的时候在 /etc/profile 指定了HADOOP_CONF_DIR, 导致这边不能将 $SPARK_CONF_DIR/yarn-conf 赋
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTIzMjQ1MjUxLC03ODczMzc5ODcsLTg0ND
-A5NjY4MCwtMTkwMTQwMDE3MiwtMTgyODYyNzU5MV19
+eyJoaXN0b3J5IjpbLTU2ODU5NzMzMywtNzg3MzM3OTg3LC04ND
+QwOTY2ODAsLTE5MDE0MDAxNzIsLTE4Mjg2Mjc1OTFdfQ==
 -->
