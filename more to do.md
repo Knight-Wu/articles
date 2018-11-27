@@ -12,7 +12,6 @@
 * google drive add articles to read-later-list
 * centOS redhat内核关系, 以及在修改hostname的时候命令的不同
 * datanode 磁盘中某个volume 的容量快满时会有何影响
-
 * yarn container如何用起来. 写一个使用的小demo
 * linux 文件权限和用户权限的彻底理解
 * spark 集群容错的控制, 目前只知道task fail会触发 spark.task.maxFailures这个配置, 但是executor层, container层, job层, application层的配置控制还有待学习
@@ -31,6 +30,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNzE1NTU0MDksLTI4MzUwMzkzNywxMz
-g0NDQwOTc0LDkyMTA5NTAwLC04MzUzNzYyNzJdfQ==
+eyJoaXN0b3J5IjpbLTU0MTk2MDczOSwtMTI3MTU1NTQwOSwtMj
+gzNTAzOTM3LDEzODQ0NDA5NzQsOTIxMDk1MDAsLTgzNTM3NjI3
+Ml19
 -->
