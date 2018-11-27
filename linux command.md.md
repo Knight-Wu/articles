@@ -88,6 +88,12 @@ zipgrep keyword filename|less
 for file in filename;do unzip -c $file|grep keyword;done|less
 帮助命令: unzip -hh
 ```
+* 解压jar 文件
+```
+jar xvf test.jar
+
+```
+
 >查找关键字出现的个数
 ```
 grep -o keyword filename|wc -l
@@ -238,6 +244,7 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIyNjQyMzc5OSwtMTM1ODE5MzkxMCwxMD
-EyNjE4NzUyLDEwMjg0NjYwMzksLTYyNjk3MTU5NF19
+eyJoaXN0b3J5IjpbMTIwMDE2NTgzNywxMjI2NDIzNzk5LC0xMz
+U4MTkzOTEwLDEwMTI2MTg3NTIsMTAyODQ2NjAzOSwtNjI2OTcx
+NTk0XX0=
 -->
