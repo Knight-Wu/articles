@@ -16,7 +16,7 @@
 * linux 文件权限和用户权限的彻底理解
 * spark 集群容错的控制, 目前只知道task fail会触发 spark.task.maxFailures这个配置, 但是executor层, container层, job层, application层的配置控制还有待学习
 * spark, hadoop release notes
-* logback release notes
+* logback 性能测试 https://github.com/ceki/logback-perf
 
 
 ### DOING
@@ -30,7 +30,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0MTk2MDczOSwtMTI3MTU1NTQwOSwtMj
-gzNTAzOTM3LDEzODQ0NDA5NzQsOTIxMDk1MDAsLTgzNTM3NjI3
-Ml19
+eyJoaXN0b3J5IjpbNDI5Mzk0MjksLTU0MTk2MDczOSwtMTI3MT
+U1NTQwOSwtMjgzNTAzOTM3LDEzODQ0NDA5NzQsOTIxMDk1MDAs
+LTgzNTM3NjI3Ml19
 -->
