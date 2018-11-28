@@ -303,9 +303,13 @@
 3. hive 查询时间变长
 
 * 小文件的来源
-1. Trickling data – Data ingested incrementally and in small batches can end up accounting for a large number of small files over time. Consider running regular jobs to compact the small files.
-2. Large number of mappers/reducers – MapReduce jobs and Hive queries with large number of mappers or reducers can generate a number of files on HDFS proportional to the number of mappers (for Map-Only jobs) or reducers (for Map-Reduce jobs)
-3. Over-partitioned tables – Partitioned Hive tables with a small amount of data per partition. 
+4. Trickling data – Data ingested incrementally and in small batches can end up accounting for a large number of small files over time. Consider running regular jobs to compact the small files.
+5. Large number of mappers/reducers – MapReduce jobs and Hive queries with large number of mappers or reducers can generate a number of files on HDFS proportional to the number of mappers (for Map-Only jobs) or reducers (for Map-Reduce jobs)
+6. Over-partitioned tables – Partitioned Hive tables with a small amount of data per partition. 
+
+解决手册: 
+1. [如何在Hadoop中处理小文件-续](https://mp.weixin.qq.com/s?__biz=MzI4OTY3MTUyNg==&mid=2247493657&idx=1&sn=1ed62012b73bc966949a7f5df469106a&chksm=ec293810db5eb10688beabd5495c6ee84aa73161d76283add0aee347c03d28f5bab802789e76&mpshare=1&scene=1&srcid=1127fhupWJ01oq4rKRgBRlYi#rd)
+2. [如何在Hadoop中处理小文件](https://mp.weixin.qq.com/s?__biz=MzI4OTY3MTUyNg==&mid=2247492796&idx=1&sn=5e15a9060f234d24c1fb112d9158970c&chksm=ec2934b5db5ebda381ced8a99e0170229e57c0692a03d73a087853f99a09a3ee9d4e83d57267&mpshare=1&scene=1&srcid=112702C9Rz8xmapnKTs6NAc8#rd)
 
 ### hdfs 配置调优
 https://hadoop.apache.org/docs/r2.7.1/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml
@@ -455,7 +459,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjM2NzA2MTMyLDk0NzI2MTAzLC0xNDYwNz
-c0OTEsMTMyOTg2MjcxOCwtMTEzODg2Njg5Niw4OTk5NTI2MCw1
-ODQ4NzAwNDUsMTI4MjczNTM4NF19
+eyJoaXN0b3J5IjpbLTIzMTkxMTAxNyw2MzY3MDYxMzIsOTQ3Mj
+YxMDMsLTE0NjA3NzQ5MSwxMzI5ODYyNzE4LC0xMTM4ODY2ODk2
+LDg5OTk1MjYwLDU4NDg3MDA0NSwxMjgyNzM1Mzg0XX0=
 -->
