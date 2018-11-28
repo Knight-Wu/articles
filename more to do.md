@@ -18,7 +18,8 @@
 * spark, hadoop release notes
 * logback 性能测试 https://github.com/ceki/logback-perf
 * top 命令如何定位到某个线程的问题, 假设cpu 百分百如何排查
-* 
+* 本地进程通信大量time_wait 连接
+* 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
 
 ### DOING
 * maven archtype 直接构建flink-quick-start, 解决一个classNotFoundEx 
@@ -31,7 +32,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTIxMDQ2Miw0MjkzOTQyOSwtNTQxOT
-YwNzM5LC0xMjcxNTU1NDA5LC0yODM1MDM5MzcsMTM4NDQ0MDk3
-NCw5MjEwOTUwMCwtODM1Mzc2MjcyXX0=
+eyJoaXN0b3J5IjpbLTQyNjc4MzA5MywtMTQ1MjEwNDYyLDQyOT
+M5NDI5LC01NDE5NjA3MzksLTEyNzE1NTU0MDksLTI4MzUwMzkz
+NywxMzg0NDQwOTc0LDkyMTA5NTAwLC04MzUzNzYyNzJdfQ==
 -->
