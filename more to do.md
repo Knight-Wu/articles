@@ -17,7 +17,8 @@
 * spark 集群容错的控制, 目前只知道task fail会触发 spark.task.maxFailures这个配置, 但是executor层, container层, job层, application层的配置控制还有待学习
 * spark, hadoop release notes
 * logback 性能测试 https://github.com/ceki/logback-perf
-
+* top 命令如何定位到某个线程的问题, 假设cpu 百分百如何排查
+* 
 
 ### DOING
 * maven archtype 直接构建flink-quick-start, 解决一个classNotFoundEx 
@@ -30,7 +31,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDI5Mzk0MjksLTU0MTk2MDczOSwtMTI3MT
-U1NTQwOSwtMjgzNTAzOTM3LDEzODQ0NDA5NzQsOTIxMDk1MDAs
-LTgzNTM3NjI3Ml19
+eyJoaXN0b3J5IjpbLTE0NTIxMDQ2Miw0MjkzOTQyOSwtNTQxOT
+YwNzM5LC0xMjcxNTU1NDA5LC0yODM1MDM5MzcsMTM4NDQ0MDk3
+NCw5MjEwOTUwMCwtODM1Mzc2MjcyXX0=
 -->
