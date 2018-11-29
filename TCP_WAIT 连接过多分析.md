@@ -8,7 +8,7 @@
 
 * 重点语句
 > A connection can be ["half-open"](https://en.wikipedia.org/wiki/TCP_half-open "TCP half-open"), in which case one side has terminated its end, but the other has not. The side that has terminated can no longer send any data into the connection, but the other side can. The terminating side should continue reading the data until the other side terminates as well.
-意思是从 FIN_WA
+意思是从 FIN_WAIT_2 到 TIME_WAIT 状态是主动关闭方等待被动关闭方发送完所有消息
 
 * time_wait 状态的作用
 1. 确保被动关闭方B 能知道主动关闭方 A 已经完全关闭了, 否则会一直处于LAST_ACK 的状态, 认为旧有的连接没有完全关闭, 进而有可能导致新建的连接也失败.
@@ -21,6 +21,6 @@ define TCP_TIMEWAIT_LEN (60*HZ) /* how long to wait to destroy TIME-WAIT
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzMwNDE3NTQsLTc3ODUzNTExMywxMT
-k0OTAxMTg3LDE4ODk3OTA3NTgsLTE1MTQ3NDQzOTFdfQ==
+eyJoaXN0b3J5IjpbLTQ1MDc3NzU2MSwtNzc4NTM1MTEzLDExOT
+Q5MDExODcsMTg4OTc5MDc1OCwtMTUxNDc0NDM5MV19
 -->
