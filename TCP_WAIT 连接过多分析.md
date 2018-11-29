@@ -30,10 +30,12 @@ define TCP_TIMEWAIT_LEN (60*HZ) /* how long to wait to destroy TIME-WAIT
 
 
 > The number of sessions in the server side is limited only by memory and can grow as new connections arrive, but the client must allocate a random port before sending the first SYN to the server. This port remains allocated during the whole conversation, and effectively limits the number of outgoing connections from each of the client's IP addresses. If an application fails to properly close unrequired connections, a client can run out of resources and become unable to establish new TCP connections, even from other applications.
+
+意思是作为TCP 连接的server 端, 只需要消耗内存, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyNzM4MTM4MywxNzg5MjYwMTcyLC0xNz
-A2MjA3OTUyLDUwODU5MjM2MiwtNDUwNzc3NTYxLC03Nzg1MzUx
-MTMsMTE5NDkwMTE4NywxODg5NzkwNzU4LC0xNTE0NzQ0MzkxXX
-0=
+eyJoaXN0b3J5IjpbMTYxNzM1NTY2MSwyMDI3MzgxMzgzLDE3OD
+kyNjAxNzIsLTE3MDYyMDc5NTIsNTA4NTkyMzYyLC00NTA3Nzc1
+NjEsLTc3ODUzNTExMywxMTk0OTAxMTg3LDE4ODk3OTA3NTgsLT
+E1MTQ3NDQzOTFdfQ==
 -->
