@@ -47,9 +47,10 @@ A connection in the  `TIME-WAIT`  state is kept for one minute in the connection
 
 For a web server, the destination address and the destination port are likely to be constant. If your web server is behind a L7 load-balancer, the source address will also be constant. On Linux, the client port is by default allocated in a port range of about 30,000 ports (this can be changed by tuning  `net.ipv4.ip_local_port_range`). This means that only 30,000 connections can be established between the web server and the load-balancer every minute, so about  **500 connections per second**.
 
-If the  `TIME-WAIT`  sockets are on the client side, such a situation is easy to detect. The call to  `connect()`  will return  `EADDRNOTAVAIL`  and the application will log some error message about that. On the server side, this is more complex as there is no log and no counter to rely on. In doubt, you should just try to come with something sensible to list the number of used quadruplets
+If the  `TIME-WAIT`  sockets are on the client side, such a situation is easy to detect. The call to  `connect()`  will return  `EADDRNOTAVAIL`  and the application will log some error message about that. On the server side, this is more complex as there is no log and no counter to rely on. 
+简而言之, 会导致client 无法同一时间发起更多的连接, 因为time_wait 释放需要一分钟, 此时会占用 Connection table 这样一个(source address, source port, destination address, destination port)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTczMzI5NDc0MSwtMTAxNjA1MzI5MCwyMD
+eyJoaXN0b3J5IjpbMTMzNTA4NDg4NCwtMTAxNjA1MzI5MCwyMD
 I3MzgxMzgzLDE3ODkyNjAxNzIsLTE3MDYyMDc5NTIsNTA4NTky
 MzYyLC00NTA3Nzc1NjEsLTc3ODUzNTExMywxMTk0OTAxMTg3LD
 E4ODk3OTA3NTgsLTE1MTQ3NDQzOTFdfQ==
