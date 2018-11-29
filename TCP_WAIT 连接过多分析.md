@@ -56,8 +56,12 @@ With many connections to handle, leaving a socket open for one additional minute
 
 First, from the application point of view, a  `TIME-WAIT`  socket does not consume any memory: the socket has been closed.
 实际上 a  `TIME-WAIT`  socket并不消耗应用内存. 所占系统内核的内存也很少, 最多不过几十兆.
+
+3. cpu消耗也很少
+
+* 解决
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5MjcwOTkwMCwtNjIyOTQ5NTk1LC0xMD
+eyJoaXN0b3J5IjpbLTIxNDA2NzU0MCwtNjIyOTQ5NTk1LC0xMD
 I4NDk1ODE4LC0xMDE2MDUzMjkwLDIwMjczODEzODMsMTc4OTI2
 MDE3MiwtMTcwNjIwNzk1Miw1MDg1OTIzNjIsLTQ1MDc3NzU2MS
 wtNzc4NTM1MTEzLDExOTQ5MDExODcsMTg4OTc5MDc1OCwtMTUx
