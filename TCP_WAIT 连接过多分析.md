@@ -39,8 +39,17 @@ time_wait 会等待60秒后关闭.
 define TCP_TIMEWAIT_LEN (60*HZ) /* how long to wait to destroy TIME-WAIT
   state, about 60 seconds. There have been  [propositions to turn this into a tunable value](http://web.archive.org/web/2014/http://comments.gmane.org/gmane.linux.network/244411 "[RFC PATCH net-next] tcp: introduce tcp_tw_interval to specifiy the time of TIME-WAIT")  but it has been refused on the ground the  `TIME-WAIT`  state is a good thing.
 
+* time_wait 的危害
+
+1. 占用 Connection table slot
+
+A connection in the  `TIME-WAIT`  state is kept for one minute in the connection table. This means, another connection with the same  _quadruplet_  (source address, source port, destination address, destination port) cannot exist.
+
+For a web server, the destination address and the destination port are likely to be constant. If your web server is behind a L7 load-balancer, the source address will also be constant. On Linux, the client port is by default allocated in a port range of about 30,000 ports (this can be changed by tuning  `net.ipv4.ip_local_port_range`). This means that only 30,000 connections can be established between the web server and the load-balancer every minute, so about  **500 connections per second**.
+
+If the  `TIME-WAIT`  sockets are on the client side, such a situation is easy to detect. The call to  `connect()`  will return  `EADDRNOTAVAIL`  and the application will log some error message about that. On the server side, this is more complex as there is no log and no counter to rely on. In doubt, you should just try to come with something sensible to list the number of used quadruplets
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2NDA1Nzk0MSwtMTAxNjA1MzI5MCwyMD
+eyJoaXN0b3J5IjpbMTczMzI5NDc0MSwtMTAxNjA1MzI5MCwyMD
 I3MzgxMzgzLDE3ODkyNjAxNzIsLTE3MDYyMDc5NTIsNTA4NTky
 MzYyLC00NTA3Nzc1NjEsLTc3ODUzNTExMywxMTk0OTAxMTg3LD
 E4ODk3OTA3NTgsLTE1MTQ3NDQzOTFdfQ==
