@@ -49,9 +49,17 @@ For a web server, the destination address and the destination port are likely to
 
 If the  `TIME-WAIT`  sockets are on the client side, such a situation is easy to detect. The call to  `connect()`  will return  `EADDRNOTAVAIL`  and the application will log some error message about that. On the server side, this is more complex as there is no log and no counter to rely on. 
 简而言之, 会导致client 无法同一时间发起更多的连接, 因为time_wait 释放需要一分钟, 此时会占用 Connection table 这样一个四元组 (source address, source port, destination address, destination port), 而这个四元组同一时刻只能有一个.
+
+2. 内存的消耗
+
+With many connections to handle, leaving a socket open for one additional minute may cost your server some memory. For example, if you want to handle about 10,000 new connections per second, you will have about 600,000 sockets in the  `TIME-WAIT`  state. How much memory does it represent? Not that much!
+
+First, from the application point of view, a  `TIME-WAIT`  socket does not consume any memory: the socket has been closed.
+实际上 a  `TIME-WAIT`  socket并不消耗应用内存. 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMjg0OTU4MTgsLTEwMTYwNTMyOTAsMj
-AyNzM4MTM4MywxNzg5MjYwMTcyLC0xNzA2MjA3OTUyLDUwODU5
-MjM2MiwtNDUwNzc3NTYxLC03Nzg1MzUxMTMsMTE5NDkwMTE4Ny
-wxODg5NzkwNzU4LC0xNTE0NzQ0MzkxXX0=
+eyJoaXN0b3J5IjpbLTYyMjk0OTU5NSwtMTAyODQ5NTgxOCwtMT
+AxNjA1MzI5MCwyMDI3MzgxMzgzLDE3ODkyNjAxNzIsLTE3MDYy
+MDc5NTIsNTA4NTkyMzYyLC00NTA3Nzc1NjEsLTc3ODUzNTExMy
+wxMTk0OTAxMTg3LDE4ODk3OTA3NTgsLTE1MTQ3NDQzOTFdfQ==
+
 -->
