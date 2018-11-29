@@ -5,8 +5,9 @@
 ![enter image description here](https://drive.google.com/uc?id=1Uqsp8zQ1CHq2bwsThdbCDFo38K_23koR)
 #### TCP 回顾
 [https://en.wikipedia.org/wiki/Transmission_Control_Protoco](https://en.wikipedia.org/wiki/Transmission_Control_Protoco)
+1. 关闭过程
+> 重点语句
 
-* 重点语句
 > A connection can be ["half-open"](https://en.wikipedia.org/wiki/TCP_half-open "TCP half-open"), in which case one side has terminated its end, but the other has not. The side that has terminated can no longer send any data into the connection, but the other side can. The terminating side should continue reading the data until the other side terminates as well.
 意思是从 FIN_WAIT_2 到 TIME_WAIT 状态是主动关闭方等待被动关闭方发送完所有消息
 
@@ -19,8 +20,14 @@ time_wait 会等待60秒后关闭.
 define TCP_TIMEWAIT_LEN (60*HZ) /* how long to wait to destroy TIME-WAIT
   state, about 60 seconds. There have been  [propositions to turn this into a tunable value](http://web.archive.org/web/2014/http://comments.gmane.org/gmane.linux.network/244411 "[RFC PATCH net-next] tcp: introduce tcp_tw_interval to specifiy the time of TIME-WAIT")  but it has been refused on the ground the  `TIME-WAIT`  state is a good thing.
 
+2. TCP 需要的资源
+
+> Most implementations allocate an entry in a table that maps a session to a running operating system process. Because TCP packets do not include a session identifier, both endpoints identify the session using the client's address and port. Whenever a packet is received, the TCP implementation must perform a lookup on this table to find the destination process. Each entry in the table is known as a Transmission Control Block or TCB. It contains information about the endpoints (IP and port), status of the connection, running data about the packets that are being exchanged and buffers for sending and receiving data.
+
+> The number of sessions in the server side is limited only by memory and can grow as new connections arrive, but the client must allocate a random port before sending the first SYN to the server. This port remains allocated during the whole conversation, and effectively limits the number of outgoing connections from each of the client's IP addresses. If an application fails to properly close unrequired connections, a client can run out of resources and become unable to establish new TCP connections, even from other applications.
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1MDc3NzU2MSwtNzc4NTM1MTEzLDExOT
-Q5MDExODcsMTg4OTc5MDc1OCwtMTUxNDc0NDM5MV19
+eyJoaXN0b3J5IjpbMTE4NTI2ODQ3MCwtNDUwNzc3NTYxLC03Nz
+g1MzUxMTMsMTE5NDkwMTE4NywxODg5NzkwNzU4LC0xNTE0NzQ0
+MzkxXX0=
 -->
