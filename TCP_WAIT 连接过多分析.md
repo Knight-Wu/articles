@@ -2,6 +2,10 @@
 
 [2014-tcp-time-wait-state-linux](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
 ### 需要提前掌握的知识
+#### TCP 回顾
+[https://en.wikipedia.org/wiki/Transmission_Control_Protoco](https://en.wikipedia.org/wiki/Transmission_Control_Protoco)
+
+* 重点语句
 
 
 * time_wait 状态的作用
@@ -15,6 +19,6 @@ define TCP_TIMEWAIT_LEN (60*HZ) /* how long to wait to destroy TIME-WAIT
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3ODUzNTExMywxMTk0OTAxMTg3LDE4OD
-k3OTA3NTgsLTE1MTQ3NDQzOTFdfQ==
+eyJoaXN0b3J5IjpbMTMwMjkyODk0MSwtNzc4NTM1MTEzLDExOT
+Q5MDExODcsMTg4OTc5MDc1OCwtMTUxNDc0NDM5MV19
 -->
