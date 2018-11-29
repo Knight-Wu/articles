@@ -24,10 +24,11 @@ define TCP_TIMEWAIT_LEN (60*HZ) /* how long to wait to destroy TIME-WAIT
 
 > Most implementations allocate an entry in a table that maps a session to a running operating system process. Because TCP packets do not include a session identifier, both endpoints identify the session using the client's address and port. Whenever a packet is received, the TCP implementation must perform a lookup on this table to find the destination process. Each entry in the table is known as a Transmission Control Block or TCB. It contains information about the endpoints (IP and port), status of the connection, running data about the packets that are being exchanged and buffers for sending and receiving data.
 
+意思是 TCP packets zhi
 > The number of sessions in the server side is limited only by memory and can grow as new connections arrive, but the client must allocate a random port before sending the first SYN to the server. This port remains allocated during the whole conversation, and effectively limits the number of outgoing connections from each of the client's IP addresses. If an application fails to properly close unrequired connections, a client can run out of resources and become unable to establish new TCP connections, even from other applications.
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4NTI2ODQ3MCwtNDUwNzc3NTYxLC03Nz
-g1MzUxMTMsMTE5NDkwMTE4NywxODg5NzkwNzU4LC0xNTE0NzQ0
-MzkxXX0=
+eyJoaXN0b3J5IjpbNTA4NTkyMzYyLC00NTA3Nzc1NjEsLTc3OD
+UzNTExMywxMTk0OTAxMTg3LDE4ODk3OTA3NTgsLTE1MTQ3NDQz
+OTFdfQ==
 -->
