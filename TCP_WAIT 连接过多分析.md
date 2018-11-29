@@ -59,9 +59,10 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
 3. cpu消耗也很少
 
-* 解决
+* 其他解决time_wait的办法见上面链接的原文. 
+> 总之 TCP_WAIT 较多是挺正常的, 毕竟这个状态要持续60 秒.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNDA2NzU0MCwtNjIyOTQ5NTk1LC0xMD
+eyJoaXN0b3J5IjpbMTg0OTYxMjIzOSwtNjIyOTQ5NTk1LC0xMD
 I4NDk1ODE4LC0xMDE2MDUzMjkwLDIwMjczODEzODMsMTc4OTI2
 MDE3MiwtMTcwNjIwNzk1Miw1MDg1OTIzNjIsLTQ1MDc3NzU2MS
 wtNzc4NTM1MTEzLDExOTQ5MDExODcsMTg4OTc5MDc1OCwtMTUx
