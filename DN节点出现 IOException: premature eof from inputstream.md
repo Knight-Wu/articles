@@ -79,7 +79,8 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 > Monitoring tools may choose to check liveness of the DataNode's data transfer port by connecting to it. The monitoring tool will close the connection immediately after establishment without sending any data. When this happens, the DataNode encounters an unexpected EOF and logs a full stack trace. This creates unneeded noise in the logs.
 
 
-  这个patch 判断已经新版已经合并了这个patch,  [hadoop-2.8 DataXceiver.java](https://github.com/apache/hadoop/blob/branch-2.8/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/datanode/DataXceiver.java), line 272
+ 新版已经合并了这个patch,  [hadoop-2.8 DataXceiver.java](https://github.com/apache/hadoop/blob/branch-2.8/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/datanode/DataXceiver.java), line 272
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjEwMDM1MiwyMDAyOTQ4MjE5XX0=
+eyJoaXN0b3J5IjpbNDQ5NzU0MTY5LC0xNTYxMDAzNTIsMjAwMj
+k0ODIxOV19
 -->
