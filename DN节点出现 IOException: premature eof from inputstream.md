@@ -13,9 +13,13 @@
 
 
 
-1. 关闭过程
+1. 关闭连接
 
 ![enter image description here](https://drive.google.com/uc?id=1Uqsp8zQ1CHq2bwsThdbCDFo38K_23koR)
+
+2. 建立连接
+
+ 
 
 
 > 重点语句
@@ -81,6 +85,6 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
  新版已经合并了这个patch,  [hadoop-2.8 DataXceiver.java](https://github.com/apache/hadoop/blob/branch-2.8/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/datanode/DataXceiver.java), line 272
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDQ5NzU0MTY5LC0xNTYxMDAzNTIsMjAwMj
-k0ODIxOV19
+eyJoaXN0b3J5IjpbLTc2NjcyNDQyNCw0NDk3NTQxNjksLTE1Nj
+EwMDM1MiwyMDAyOTQ4MjE5XX0=
 -->
