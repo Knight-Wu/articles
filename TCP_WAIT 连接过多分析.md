@@ -1,6 +1,5 @@
-### 背景
-
-[2014-tcp-time-wait-state-linux](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
+### 问题背景
+生产cloudera 的
 ### 需要提前掌握的知识
 ![enter image description here](https://drive.google.com/uc?id=1Uqsp8zQ1CHq2bwsThdbCDFo38K_23koR)
 
@@ -62,9 +61,9 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 * 其他解决time_wait的办法见上面链接的原文. 
 > 总之 TCP_WAIT 较多是挺正常的, 毕竟这个状态要持续60 秒.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg0OTYxMjIzOSwtNjIyOTQ5NTk1LC0xMD
-I4NDk1ODE4LC0xMDE2MDUzMjkwLDIwMjczODEzODMsMTc4OTI2
-MDE3MiwtMTcwNjIwNzk1Miw1MDg1OTIzNjIsLTQ1MDc3NzU2MS
-wtNzc4NTM1MTEzLDExOTQ5MDExODcsMTg4OTc5MDc1OCwtMTUx
-NDc0NDM5MV19
+eyJoaXN0b3J5IjpbLTUwOTc2MDQ5NiwxODQ5NjEyMjM5LC02Mj
+I5NDk1OTUsLTEwMjg0OTU4MTgsLTEwMTYwNTMyOTAsMjAyNzM4
+MTM4MywxNzg5MjYwMTcyLC0xNzA2MjA3OTUyLDUwODU5MjM2Mi
+wtNDUwNzc3NTYxLC03Nzg1MzUxMTMsMTE5NDkwMTE4NywxODg5
+NzkwNzU4LC0xNTE0NzQ0MzkxXX0=
 -->
