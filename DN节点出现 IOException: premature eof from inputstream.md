@@ -46,7 +46,10 @@
 
 * time_wait 状态的作用
 
-1. 确保前一个连接A 发的消息因为网络阻塞,  A连接关闭后, 仍然被后续新建的连接
+1. 确保前一个连接A 发的消息因为网络阻塞,  A连接关闭后, 仍然被后续新建的连接(源ip, 源端口, 目的ip, 目的端口)收到
+
+> The most known one is to **prevent delayed segments** from one connection being accepted by a later connection relying on the same quadruplet (source address, source port, destination address, destination port). The sequence number also needs to be in a certain range to be accepted. This narrows a bit the problem but it still exists, especially on fast connections with large receive windows. [RFC 1337](https://tools.ietf.org/html/rfc1337 "RFC 1337: TIME-WAIT Assassination Hazards in TCP") explains in details what happens when the `TIME-WAIT`state is deficient.
+
 2. 确保被动关闭方B 能知道主动关闭方 A 已经完全关闭了, 否则会一直处于LAST_ACK 的状态, 认为旧有的连接没有完全关闭, 进而有可能导致新建的连接也失败.
 > Without the `TIME-WAIT` state, a connection could be reopened while the remote end still thinks the previous connection is valid. When it receives a _SYN_ segment (and the sequence number matches), it will answer with a _RST_ as it is not expecting such a segment. The new connection will be aborted with an error
 
@@ -87,6 +90,6 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
  新版已经合并了这个patch,  [hadoop-2.8 DataXceiver.java](https://github.com/apache/hadoop/blob/branch-2.8/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/datanode/DataXceiver.java), line 272
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTI0MzAyODk2LC0xNjc4NTU5MTU2LDQ0OT
-c1NDE2OSwtMTU2MTAwMzUyLDIwMDI5NDgyMTldfQ==
+eyJoaXN0b3J5IjpbLTkyMTE0NTExOCwtMTY3ODU1OTE1Niw0ND
+k3NTQxNjksLTE1NjEwMDM1MiwyMDAyOTQ4MjE5XX0=
 -->
