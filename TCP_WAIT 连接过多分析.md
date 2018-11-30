@@ -1,7 +1,8 @@
 ### 问题背景
 生产cloudera 集群dn 节点频繁出现IOException: premature eof from inputstream, 怀疑是client 因为网络问题突然断掉连接, 数据写入中断导致, 进而去找CM 上面的监控网络的图表, 发现TCP_WAIT 比较多, 进而产生两个问题: 
 
-1. IOException: premature eof from inputstream 出现的根yin
+1. IOException: premature eof from inputstream 出现的根因
+2. TCP_WAIT 过多是否异常
 ### 需要提前掌握的知识
 ![enter image description here](https://drive.google.com/uc?id=1Uqsp8zQ1CHq2bwsThdbCDFo38K_23koR)
 
@@ -63,9 +64,9 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 * 其他解决time_wait的办法见上面链接的原文. 
 > 总之 TCP_WAIT 较多是挺正常的, 毕竟这个状态要持续60 秒.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzY3MTI0MjU2LDE4NDk2MTIyMzksLTYyMj
-k0OTU5NSwtMTAyODQ5NTgxOCwtMTAxNjA1MzI5MCwyMDI3Mzgx
-MzgzLDE3ODkyNjAxNzIsLTE3MDYyMDc5NTIsNTA4NTkyMzYyLC
-00NTA3Nzc1NjEsLTc3ODUzNTExMywxMTk0OTAxMTg3LDE4ODk3
-OTA3NTgsLTE1MTQ3NDQzOTFdfQ==
+eyJoaXN0b3J5IjpbNzc3NDg3MzksMTg0OTYxMjIzOSwtNjIyOT
+Q5NTk1LC0xMDI4NDk1ODE4LC0xMDE2MDUzMjkwLDIwMjczODEz
+ODMsMTc4OTI2MDE3MiwtMTcwNjIwNzk1Miw1MDg1OTIzNjIsLT
+Q1MDc3NzU2MSwtNzc4NTM1MTEzLDExOTQ5MDExODcsMTg4OTc5
+MDc1OCwtMTUxNDc0NDM5MV19
 -->
