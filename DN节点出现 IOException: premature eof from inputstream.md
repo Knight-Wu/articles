@@ -80,7 +80,7 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
 * 其他解决time_wait的办法见上面链接的原文. 
 
-> 总之 TCP_WAIT 在几百几千是挺正常的, 几万才算多,  如果应用层面没出现异常, 且没超过最大连接数: 
+> 总之 TCP_WAIT 在几百几千是挺正常的, 几万才算多, 最大值取决于当前节点配置的客户端端口数量,  如果应用层面没出现异常, 可以忽略.
 
 
 #### IOException: premature eof from inputstream 出现的根因
@@ -90,7 +90,7 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
  新版已经合并了这个patch,  [hadoop-2.8 DataXceiver.java](https://github.com/apache/hadoop/blob/branch-2.8/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/datanode/DataXceiver.java), line 272
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjE5MjYxNDMsLTEzNDY4NjExMCwtOT
-IxMTQ1MTE4LC0xNjc4NTU5MTU2LDQ0OTc1NDE2OSwtMTU2MTAw
-MzUyLDIwMDI5NDgyMTldfQ==
+eyJoaXN0b3J5IjpbLTQzMTA3MjQyNywtMTM0Njg2MTEwLC05Mj
+ExNDUxMTgsLTE2Nzg1NTkxNTYsNDQ5NzU0MTY5LC0xNTYxMDAz
+NTIsMjAwMjk0ODIxOV19
 -->
