@@ -43,7 +43,7 @@
 
 #### 解答TCP_WAIT 过多是否异常
 [2014-tcp-time-wait-state-linux](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
-
+[https://blog.oldboyedu.com/tcp-wait/](https://blog.oldboyedu.com/tcp-wait/)
 * time_wait 状态的作用
 
 1. 确保前一个连接A 发的消息因为网络阻塞,  A连接关闭后, 可能被后续新建的连接(如果源ip, 源端口, 目的ip, 目的端口,协议都和A 连接相同的)收到, 导致数据错乱
@@ -90,7 +90,7 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
  新版已经合并了这个patch,  [hadoop-2.8 DataXceiver.java](https://github.com/apache/hadoop/blob/branch-2.8/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/datanode/DataXceiver.java), line 272
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzMTA3MjQyNywtMTM0Njg2MTEwLC05Mj
-ExNDUxMTgsLTE2Nzg1NTkxNTYsNDQ5NzU0MTY5LC0xNTYxMDAz
-NTIsMjAwMjk0ODIxOV19
+eyJoaXN0b3J5IjpbMTQ1NzM3NDUyLC0xMzQ2ODYxMTAsLTkyMT
+E0NTExOCwtMTY3ODU1OTE1Niw0NDk3NTQxNjksLTE1NjEwMDM1
+MiwyMDAyOTQ4MjE5XX0=
 -->
