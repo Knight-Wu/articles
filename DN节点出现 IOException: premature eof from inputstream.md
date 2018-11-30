@@ -37,7 +37,7 @@
 意思是作为TCP 连接的server 端, 只需要消耗内存, 因为可以多个连接都连到一个端口, 但是client 端却需要新建一个随机端口, 并在连接时一直持有, 若应用没有合理的释放资源, 会导致端口不够用.
 > Written with [StackEdit](https://stackedit.io/).
 
-3. TCP time_wait状态
+#### 解答TCP_WAIT 过多是否异常
 [2014-tcp-time-wait-state-linux](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
 
 * time_wait 状态的作用
@@ -70,7 +70,10 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 3. cpu消耗也很少
 
 * 其他解决time_wait的办法见上面链接的原文. 
-> 总之 TCP_WAIT 较多是挺正常的, 毕竟这个状态要持续60 秒.
+
+> 总之 TCP_WAIT 较多是挺正常的, 毕竟这个状态要持续60 秒, 如果应用层面没出现异常, 且没超过最大连接数: 
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNDczMzI1NjNdfQ==
+eyJoaXN0b3J5IjpbMTA0MjU0MjgwN119
 -->
