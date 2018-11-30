@@ -75,7 +75,10 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
 
 #### IOException: premature eof from inputstream 出现的根因
-根据这个JIRA [HDFS-9572](https://issues.apache.org/jira/browse/HDFS-9572), 说是监控的包刚连接上但是没有写数据就断掉连接了,  这个patch 判断已经新版已经合并了这个patch [hadoop-2.8 DataXceiver.java](https://github.com/apache/hadoop/blob/branch-2.8/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/datanode/DataXceiver.java)
+根据这个JIRA [HDFS-9572](https://issues.apache.org/jira/browse/HDFS-9572), 
+> Monitoring tools may choose to check liveness of the DataNode's data transfer port by connecting to it. The monitoring tool will close the connection immediately after establishment without sending any data. When this happens, the DataNode encounters an unexpected EOF and logs a full stack trace. This creates unneeded noise in the logs.
+
+  这个patch 判断已经新版已经合并了这个patch [hadoop-2.8 DataXceiver.java](https://github.com/apache/hadoop/blob/branch-2.8/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/datanode/DataXceiver.java)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjYyMzQ1MzY0XX0=
+eyJoaXN0b3J5IjpbMjAwMjk0ODIxOV19
 -->
