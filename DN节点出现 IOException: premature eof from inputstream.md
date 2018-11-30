@@ -50,7 +50,7 @@
 
 > The most known one is to **prevent delayed segments** from one connection being accepted by a later connection relying on the same quadruplet (source address, source port, destination address, destination port). The sequence number also needs to be in a certain range to be accepted. This narrows a bit the problem but it still exists, especially on fast connections with large receive windows. [RFC 1337](https://tools.ietf.org/html/rfc1337 "RFC 1337: TIME-WAIT Assassination Hazards in TCP") explains in details what happens when the `TIME-WAIT`state is deficient.
 
-2. 确保被动关闭方B 能知道主动关闭方 A 已经完全关闭了, 否则会一直处于LAST_ACK 的状态, 认为旧有的连接没有完全关闭, 占用一个socket 四元组
+2. 确保被动关闭方B 能知道主动关闭方 A 已经完全关闭了, 否则会一直处于LAST_ACK 的状态, 认为旧有的连接没有完全关闭, 占用一个socket 五元组, 并且有可能导致新建的连接失败.
 > Without the `TIME-WAIT` state, a connection could be reopened while the remote end still thinks the previous connection is valid. When it receives a _SYN_ segment (and the sequence number matches), it will answer with a _RST_ as it is not expecting such a segment. The new connection will be aborted with an error
 
 time_wait 会等待60秒后关闭.
@@ -80,7 +80,7 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
 * 其他解决time_wait的办法见上面链接的原文. 
 
-> 总之 TCP_WAIT 较多是挺正常的, 毕竟这个状态要持续60 秒, 如果应用层面没出现异常, 且没超过最大连接数: 
+> 总之 TCP_WAIT 在几百几千是挺正常的, 几万才算多,  如果应用层面没出现异常, 且没超过最大连接数: 
 
 
 #### IOException: premature eof from inputstream 出现的根因
@@ -90,7 +90,7 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
  新版已经合并了这个patch,  [hadoop-2.8 DataXceiver.java](https://github.com/apache/hadoop/blob/branch-2.8/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/datanode/DataXceiver.java), line 272
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDY4NjExMCwtOTIxMTQ1MTE4LC0xNj
-c4NTU5MTU2LDQ0OTc1NDE2OSwtMTU2MTAwMzUyLDIwMDI5NDgy
-MTldfQ==
+eyJoaXN0b3J5IjpbLTE2NjE5MjYxNDMsLTEzNDY4NjExMCwtOT
+IxMTQ1MTE4LC0xNjc4NTU5MTU2LDQ0OTc1NDE2OSwtMTU2MTAw
+MzUyLDIwMDI5NDgyMTldfQ==
 -->
