@@ -1,5 +1,5 @@
 ### 问题背景
-生产cloudera 的某个节点TCP_WAIT 状态过多, 
+生产cloudera 集群dn 节点频繁出现IOException: premature eof from inputstream, huaiyi
 ### 需要提前掌握的知识
 ![enter image description here](https://drive.google.com/uc?id=1Uqsp8zQ1CHq2bwsThdbCDFo38K_23koR)
 
@@ -61,9 +61,9 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 * 其他解决time_wait的办法见上面链接的原文. 
 > 总之 TCP_WAIT 较多是挺正常的, 毕竟这个状态要持续60 秒.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODMyNjAzNjI4LDE4NDk2MTIyMzksLTYyMj
-k0OTU5NSwtMTAyODQ5NTgxOCwtMTAxNjA1MzI5MCwyMDI3Mzgx
-MzgzLDE3ODkyNjAxNzIsLTE3MDYyMDc5NTIsNTA4NTkyMzYyLC
-00NTA3Nzc1NjEsLTc3ODUzNTExMywxMTk0OTAxMTg3LDE4ODk3
-OTA3NTgsLTE1MTQ3NDQzOTFdfQ==
+eyJoaXN0b3J5IjpbLTEyMDIzNDYyMTgsMTg0OTYxMjIzOSwtNj
+IyOTQ5NTk1LC0xMDI4NDk1ODE4LC0xMDE2MDUzMjkwLDIwMjcz
+ODEzODMsMTc4OTI2MDE3MiwtMTcwNjIwNzk1Miw1MDg1OTIzNj
+IsLTQ1MDc3NzU2MSwtNzc4NTM1MTEzLDExOTQ5MDExODcsMTg4
+OTc5MDc1OCwtMTUxNDc0NDM5MV19
 -->
