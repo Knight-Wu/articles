@@ -75,7 +75,7 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
 
 #### IOException: premature eof from inputstream 出现的根因
-根据这个JIRA [HDFS-9572](https://issues.apache.org/jira/browse/HDFS-9572), 说是监控的
+根据这个JIRA [HDFS-9572](https://issues.apache.org/jira/browse/HDFS-9572), 说是监控的包刚连接上但是没有写数据就直接断掉了, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDE4OTYzMDJdfQ==
+eyJoaXN0b3J5IjpbMTYzODk2MzE5OF19
 -->
