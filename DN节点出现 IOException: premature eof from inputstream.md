@@ -74,6 +74,8 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 > 总之 TCP_WAIT 较多是挺正常的, 毕竟这个状态要持续60 秒, 如果应用层面没出现异常, 且没超过最大连接数: 
 
 
+#### IOException: premature eof from inputstream 出现的根因
+根据这个JIRA [HDFS-9572](https://issues.apache.org/jira/browse/HDFS-9572), 说是监控的
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0MjU0MjgwN119
+eyJoaXN0b3J5IjpbLTEzNDE4OTYzMDJdfQ==
 -->
