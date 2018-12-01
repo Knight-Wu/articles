@@ -14,10 +14,14 @@
 因为不能在某个提供者异常时, 消费者端大量的查询zk, 故需要先通过缓存获取, 如果提供者重启等情况导致提供者应用名改变, 缓存应该能更新. AbstractRegistry.notify 即实现了推送更新到缓存的目的.
 
 
+### 研究dubbo 各层的作用和关键细节
+#### 问题
+dubbo 如何共享连接, 不共享的话就是一个服务一个连接, 默认共享
+
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjQxMTUzMywtMzYxMTQxNzA5LC0xMT
-k0Njk3MzJdfQ==
+eyJoaXN0b3J5IjpbLTIwMDQ0NTM5OCwtMTQ2NDExNTMzLC0zNj
+ExNDE3MDksLTExOTQ2OTczMl19
 -->
