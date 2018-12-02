@@ -16,12 +16,12 @@
 
 ### 研究dubbo 各层的作用和关键细节
 #### 问题
-dubbo 如何共享连接, 不共享的话就是一个服务一个连接, 默认共享
+* dubbo 如何共享连接, 不共享的话就是一个服务一个连接, 默认共享
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDQ0NTM5OCwtMTQ2NDExNTMzLC0zNj
-ExNDE3MDksLTExOTQ2OTczMl19
+eyJoaXN0b3J5IjpbNzUwNTUwMDQ4LC0yMDA0NDUzOTgsLTE0Nj
+QxMTUzMywtMzYxMTQxNzA5LC0xMTk0Njk3MzJdfQ==
 -->
