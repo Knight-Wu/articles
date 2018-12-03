@@ -9,13 +9,14 @@ git checkout HEAD path // 用户将path 下的文件恢复到HEAD 的状态
 git checkout HEAD path/*   // 作用于 path 下面递归的所有的文件
 
 这个命令就很好用了, 想看下某个目录之前某个提交后的状态, 但是只想影响本地仓库, 看完后, 再切回到HEAD 的状态, 例如想快速deploy 某个历史版本
-* revert
+
 * reset
-git reset 大致与git checkout 一致, 只是会清除掉历史记录, 并不能回到HEA
+git reset 大致与git checkout 一致, 只是会清除掉历史记录, 并不能回到HEAD, 若要回退到HEAD, 则执行git pull
 
-
+* revert
+用于 public(公共)的修改, 与项目其他成员共享, 产生历史记录.
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1NzU1NjQ4MywxMzkzMTAxMjQxLC02Mz
+eyJoaXN0b3J5IjpbLTg0OTgyOTY2OCwxMzkzMTAxMjQxLC02Mz
 gyMDQxODQsLTE5MDc3ODBdfQ==
 -->
