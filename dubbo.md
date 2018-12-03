@@ -48,7 +48,7 @@
 > 引用注册中心的服务
 
 初始化: 
-1. DubboNamespaceHandler 等类通过解析xml 配置文件, 去初始化ReferenceBean, 通过配置, ReferenceConfig 解析出的 URL 的格式为： registry://registry-host/com.alibaba.dubbo.registry.RegistryService?refer=URL.encode("consumer://consumer-host/com.foo.FooService?version=1.0.0"),  
+1. DubboNamespaceHandler 等类通过解析xml 配置文件, 去初始化ReferenceBean,  解析参数配置构造url: registry://registry-host/com.alibaba.dubbo.registry.RegistryService?refer=URL.encode("consumer://consumer-host/com.foo.FooService?version=1.0.0"),  
 2. 通过RegistryProtocol 获取注册中心, 再订阅注册中心的服务(就是建立zkClient 监听服务的变化), 
 3. 初始化DubboProtocol, 建立连接(默认不是lazy 的), 这样初始化invoker 就完成了.
 4. 再根据invoker 创建动态代理, 根据代理去封装接口的调用, 最后返回代理给spring 容器
@@ -78,7 +78,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTMxNDMwMTYsLTU2Nzc2MjgxNiwyMD
+eyJoaXN0b3J5IjpbLTE0ODE2MTkyMzcsLTU2Nzc2MjgxNiwyMD
 Y4MDQ0NDQzLDc1MDU1MDA0OCwtMjAwNDQ1Mzk4LC0xNDY0MTE1
 MzMsLTM2MTE0MTcwOSwtMTE5NDY5NzMyXX0=
 -->
