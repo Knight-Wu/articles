@@ -42,10 +42,14 @@
 > 1. Dubbo的实现, 打开socket服务, 监听客户端的请求, 并返回.
 > 2. RMI 的实现,  RMI 协议的 Invoker 转为 Exporter 发生在 RmiProtocol类的 export 方法，它通过 Spring 或 Dubbo 或 JDK 来实现 RMI 服务，通讯细节这一块由 JDK 底层来实现，这就省了不少工作量
 
-2. 服务引用
+* 服务引用
 > 直接引用提供者的服务, 根据url 的dubbo协议头识别, 直接调用 DubboProtocol 的 refer()方法,返回提供者引用. 
 
-> 引用注册中心的服务, ReferenceConfig 解析出的 URL 的格式为： registry://registry-host/com.alibaba.dubbo.registry.RegistryService?refer=URL.encode("consumer://consumer-host/com.foo.FooService?version=1.0.0"),  通过RegistryProtocol 获取注册中心, 再订阅注册中心的服务, 就是建立zkClient 监听服务的变化, 初始化cluste在zk通过 RegistryProtocol 的 refer() 方法查询到提供者的url之后 ,再通过 dubbo:// 协议头识别，就会调用 DubboProtocol 的 refer() 方法，得到提供者引用
+> 引用注册中心的服务
+
+1. 通过配置, ReferenceConfig 解析出的 URL 的格式为： registry://registry-host/com.alibaba.dubbo.registry.RegistryService?refer=URL.encode("consumer://consumer-host/com.foo.FooService?version=1.0.0"),  
+2. 通过RegistryProtocol 获取注册中心, 再订阅注册中心的服务(就是建立zkClient 监听服务的变化), 初始化cluster. 
+3. 在zk通过 RegistryProtocol 的 refer() 方法查询到提供者的url之后 ,再通过 dubbo:// 协议头识别，就会调用 DubboProtocol 的 refer() 方法，得到提供者引用
 
 ### dubbo默认的心跳
 > 检测provider和consumer间的连接是否存在
@@ -68,7 +72,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzAwMjk4OTYsNzUwNTUwMDQ4LC0yMD
-A0NDUzOTgsLTE0NjQxMTUzMywtMzYxMTQxNzA5LC0xMTk0Njk3
-MzJdfQ==
+eyJoaXN0b3J5IjpbMjA2ODA0NDQ0Myw3NTA1NTAwNDgsLTIwMD
+Q0NTM5OCwtMTQ2NDExNTMzLC0zNjExNDE3MDksLTExOTQ2OTcz
+Ml19
 -->
