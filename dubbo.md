@@ -45,7 +45,7 @@
 2. 服务引用
 > 直接引用提供者的服务, 根据url 的dubbo协议头识别, 直接调用 DubboProtocol 的 refer()方法,返回提供者引用. 
 
-> 引用注册中心的服务, ReferenceConfig 解析出的 URL 的格式为： registry://registry-host/com.alibaba.dubbo.registry.RegistryService?refer=URL.encode("consumer://consumer-host/com.foo.FooService?version=1.0.0"),  在zk通过 RegistryProtocol 的 refer() 方法查询到提供者的url之后 ,再通过 dubbo:// 协议头识别，就会调用 DubboProtocol 的 refer() 方法，得到提供者引用
+> 引用注册中心的服务, ReferenceConfig 解析出的 URL 的格式为： registry://registry-host/com.alibaba.dubbo.registry.RegistryService?refer=URL.encode("consumer://consumer-host/com.foo.FooService?version=1.0.0"),  通过在zk通过 RegistryProtocol 的 refer() 方法查询到提供者的url之后 ,再通过 dubbo:// 协议头识别，就会调用 DubboProtocol 的 refer() 方法，得到提供者引用
 
 ### dubbo默认的心跳
 > 检测provider和consumer间的连接是否存在
@@ -68,7 +68,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDk1MTI3NDMsNzUwNTUwMDQ4LC0yMD
+eyJoaXN0b3J5IjpbLTE4OTQxNzM0MjgsNzUwNTUwMDQ4LC0yMD
 A0NDUzOTgsLTE0NjQxMTUzMywtMzYxMTQxNzA5LC0xMTk0Njk3
 MzJdfQ==
 -->
