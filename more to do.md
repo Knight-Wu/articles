@@ -20,6 +20,7 @@
 * top 命令如何定位到某个线程的问题, 假设cpu 百分百如何排查
 
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
+* git 问题: 如果本地不小心删了一个文件, 怎么从remote 更新下来, 只更新这个文件; 如果想把
 
 ### DOING
 * maven archtype 直接构建flink-quick-start, 解决一个classNotFoundEx 
@@ -32,7 +33,7 @@
 正常的, 消耗的内存和cpu都很少, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTEwNjc3OTk2LC00MjY3ODMwOTMsLTE0NT
+eyJoaXN0b3J5IjpbMzQ1NDQ3NzYwLC00MjY3ODMwOTMsLTE0NT
 IxMDQ2Miw0MjkzOTQyOSwtNTQxOTYwNzM5LC0xMjcxNTU1NDA5
 LC0yODM1MDM5MzcsMTM4NDQ0MDk3NCw5MjEwOTUwMCwtODM1Mz
 c2MjcyXX0=
