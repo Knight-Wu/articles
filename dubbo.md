@@ -14,7 +14,7 @@
 因为不能在某个提供者异常时, 消费者端大量的查询zk, 故需要先通过缓存获取, 如果提供者重启等情况导致提供者应用名改变, 缓存应该能更新. AbstractRegistry.notify 即实现了推送更新到缓存的目的.
 
 
-## lsf针对dubbo 所做的改造
+### lsf针对dubbo 所做的改造
 
 * 容错策略
 默认的容错策略是failover, 但是经过生产测试, 服务器有问题时还是会接收到不到百分之一的请求, 并不能识别服务器真死(服务器挂掉, jvm down) 和假死((内存, cpu ,线程池等资源耗尽), 所以增加容错策略 failtrue, 
@@ -47,7 +47,7 @@
 
 > 引用注册中心的服务, ReferenceConfig 解析出的 URL 的格式为： registry://registry-host/com.alibaba.dubbo.registry.RegistryService?refer=URL.encode("consumer://consumer-host/com.foo.FooService?version=1.0.0"),  在zk通过 RegistryProtocol 的 refer() 方法查询到提供者的url之后 ,再通过 dubbo:// 协议头识别，就会调用 DubboProtocol 的 refer() 方法，得到提供者引用
 
-#### dubbo默认的心跳
+### dubbo默认的心跳
 > 检测provider和consumer间的连接是否存在
 
 * provider的心跳检测
@@ -56,7 +56,7 @@
 * consumer的心跳
 > 默认60s内没有接受到任何消息就开始心跳, 超过三次没有接受到响应, 则会发起重连.
 
-#### zookeeper的作用
+### zookeeper的作用
 1. 提供者节点失效了, 与zk的会话超时, zk会知道, 主动删除节点信息
 2. 提供者节点信息变更了, 由zk推送通知, 消费者能够知道, 消费者watch相关节点的变化.
 
@@ -68,7 +68,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDE0NDAzODIsNzUwNTUwMDQ4LC0yMD
+eyJoaXN0b3J5IjpbLTE0MDk1MTI3NDMsNzUwNTUwMDQ4LC0yMD
 A0NDUzOTgsLTE0NjQxMTUzMywtMzYxMTQxNzA5LC0xMTk0Njk3
 MzJdfQ==
 -->
