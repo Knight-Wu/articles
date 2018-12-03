@@ -14,6 +14,52 @@
 因为不能在某个提供者异常时, 消费者端大量的查询zk, 故需要先通过缓存获取, 如果提供者重启等情况导致提供者应用名改变, 缓存应该能更新. AbstractRegistry.notify 即实现了推送更新到缓存的目的.
 
 
+## lsf针对dubbo 所做的改造
+
+* 容错策略
+默认的容错策略是failover, 但是经过生产测试, 服务器有问题时还是会接收到不到百分之一的请求, 并不能识别服务器真死(服务器挂掉, jvm down) 和假死((内存, cpu ,线程池等资源耗尽), 所以增加容错策略 failtrue, 
+1. 准备识别服务器异常, 在一定时间内, 不重试过载的服务器.
+2. 一旦有异常请求, 即开始心跳, 心跳会进入到服务端的线程池, 就像是一个正常的请求, 一段时间内心跳正常则恢复正常调用, 否则剔除异常服务器(在 AbstractClusterInvoker 的doSelect() 就直接剔除心跳失败的服务器) 
+
+
+* 心跳
+    因为dubbo 的默认心跳, 不进入业务线程池, 不能判断整个调用链的情况, 只能判断服务器有没有挂, 内存是否还有,  
+    在服务端提供一个monitorService，返回服务器状态（cpu，内存和线程池），若服务器连续正常返回且线程池使用率低于0.95或前后两次线程池使用率下降0.1则结束心跳，心跳超时时间默认500毫秒，间隔一定周期发送一次心跳，根据服务器数量设定心跳失败次数的阈值，超过阈值则剔除对应的机器，若所有机器均异常，则一定会保留心跳失败次数最小的机器。
+    * 触发条件
+      * 有timeoutEx或rejectEx（新增的）
+      * 根据统计信息，判断服务器某个方法的平均响应时间是之前的2.5倍
+    * 问题
+      * 服务端未升级高版本的jar包，导致没有monitorService，打印日志，结束心跳。
+ 
+
+### dubbo的大致流程
+1. 服务暴露
+> 直接在本机暴露服务, 先构建出url, 例如 dubbo://service-host/com.foo.FooService?version=1.0.0, 然后再把本机的服务端口打开
+
+> 向注册中心暴露服务, 构建出url : registry://registry-host/com.alibaba.dubbo.registry.RegistryService?export=URL.encode("dubbo://service-host/com.foo.FooService?version=1.0.0"), 通过url 的registry协议, 调用 RegistryProtocol 的 export()方法 将url注册到注册中心, 然后再根据dubbo协议头, 通过 DubboProtocol 的 export()将本地提供者的端口打开.
+
+> export的过程中, 首先将实现类, 例如HelloWorldImpl通过 ProxyFactory 类的 getInvoker 方法使用 ref 生成一个 AbstractProxyInvoker 实例, 从而得到Invoker, 再后, 就是将Invoker转化为 Exporter .分为两种情况
+> 1. Dubbo的实现, 打开socket服务, 监听客户端的请求, 并返回.
+> 2. RMI 的实现,  RMI 协议的 Invoker 转为 Exporter 发生在 RmiProtocol类的 export 方法，它通过 Spring 或 Dubbo 或 JDK 来实现 RMI 服务，通讯细节这一块由 JDK 底层来实现，这就省了不少工作量
+
+2. 服务引用
+> 直接引用提供者的服务, 根据url 的dubbo协议头识别, 直接调用 DubboProtocol 的 refer()方法,返回提供者引用. 
+
+> 引用注册中心的服务, ReferenceConfig 解析出的 URL 的格式为： registry://registry-host/com.alibaba.dubbo.registry.RegistryService?refer=URL.encode("consumer://consumer-host/com.foo.FooService?version=1.0.0"),  在zk通过 RegistryProtocol 的 refer() 方法查询到提供者的url之后 ,再通过 dubbo:// 协议头识别，就会调用 DubboProtocol 的 refer() 方法，得到提供者引用
+
+#### dubbo默认的心跳
+> 检测provider和consumer间的连接是否存在
+
+* provider的心跳检测
+> 默认开启, 默认60s内没有接受到任何请求, 就会开始心跳(针对所有channel 发送req), 超过三次心跳没有响应, 就断开连接, 释放资源
+
+* consumer的心跳
+> 默认60s内没有接受到任何消息就开始心跳, 超过三次没有接受到响应, 则会发起重连.
+
+#### zookeeper的作用
+1. 提供者节点失效了, 与zk的会话超时, zk会知道, 主动删除节点信息
+2. 提供者节点信息变更了, 由zk推送通知, 消费者能够知道, 消费者watch相关节点的变化.
+
 ### 研究dubbo 各层的作用和关键细节
 #### 问题
 * dubbo 如何共享连接, 不共享的话就是一个服务一个连接, 默认共享
@@ -22,6 +68,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzUwNTUwMDQ4LC0yMDA0NDUzOTgsLTE0Nj
-QxMTUzMywtMzYxMTQxNzA5LC0xMTk0Njk3MzJdfQ==
+eyJoaXN0b3J5IjpbLTE1MDE0NDAzODIsNzUwNTUwMDQ4LC0yMD
+A0NDUzOTgsLTE0NjQxMTUzMywtMzYxMTQxNzA5LC0xMTk0Njk3
+MzJdfQ==
 -->
