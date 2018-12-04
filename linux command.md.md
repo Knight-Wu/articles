@@ -138,8 +138,9 @@ total = used+ free+ buff/cache
 ![1](B6A2BA2EF42C420BBB5EF95034F9F367)
 
 * top
-> 查看各进程资源
-
+ 查看各进程资源
+top -Hbp processId // 查看这个进程的所有线程, 输入的pId 实际是线程id,
+https://blog.csdn.net/flysqrlboy/article/details/79314521
 
 * sysctl 
 > sysctl kernel.hostname=newHostName 修改机器的hostName, 立即生效,启动新的session后可见, 但是重启后会失效
@@ -245,7 +246,7 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzMxMjcwMTkxLDEyMDAxNjU4MzcsMTIyNj
-QyMzc5OSwtMTM1ODE5MzkxMCwxMDEyNjE4NzUyLDEwMjg0NjYw
-MzksLTYyNjk3MTU5NF19
+eyJoaXN0b3J5IjpbLTE1NTg4ODAwNTYsMzMxMjcwMTkxLDEyMD
+AxNjU4MzcsMTIyNjQyMzc5OSwtMTM1ODE5MzkxMCwxMDEyNjE4
+NzUyLDEwMjg0NjYwMzksLTYyNjk3MTU5NF19
 -->
