@@ -79,13 +79,13 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
 
 > Proxy 层封装了所有接口的透明化代理，而在其它层都以 Invoker 为中心，只有到了暴露给用户使用时，才用 Proxy 将 Invoker 转成接口，或将接口实现转成 Invoker，也就是去掉 Proxy 层 RPC 是可以 Run 的，只是不那么透明，不那么看起来像调本地服务一样调远程服务
 
-什么叫像本地服务一样调远程服务啊??? 看了代理生成的源码还是很模糊, 直到再回头看了下java 代理的作用, 看了InvocationHandler 代码的注释, dubbo 使用InvokerInvocationHandler 实现了InvocationHandler , 把对接口的调用都转化为invoker的调用, 
+什么叫像本地服务一样调远程服务啊??? 看了代理生成的源码还是很模糊, 直到再回头看了下java 代理的作用, 看了InvocationHandler 代码的注释, dubbo 使用InvokerInvocationHandler 实现了InvocationHandler , 把对接口的调用都转化为invoker的调用, 达到的效果: spring container里面保存的是代理对象, 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDIwNjMxNzEsMTE1Mjg1NDYyNywtMT
-Q4MTYxOTIzNywtNTY3NzYyODE2LDIwNjgwNDQ0NDMsNzUwNTUw
-MDQ4LC0yMDA0NDUzOTgsLTE0NjQxMTUzMywtMzYxMTQxNzA5LC
-0xMTk0Njk3MzJdfQ==
+eyJoaXN0b3J5IjpbLTkyNjI2NzE1MCwxMTUyODU0NjI3LC0xND
+gxNjE5MjM3LC01Njc3NjI4MTYsMjA2ODA0NDQ0Myw3NTA1NTAw
+NDgsLTIwMDQ0NTM5OCwtMTQ2NDExNTMzLC0zNjExNDE3MDksLT
+ExOTQ2OTczMl19
 -->
