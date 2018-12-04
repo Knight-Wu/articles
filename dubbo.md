@@ -70,7 +70,7 @@
 1. 提供者节点失效了, 与zk的会话超时, zk会知道, 主动删除节点信息
 2. 提供者节点信息变更了, 由zk推送通知, 消费者能够知道, 消费者watch相关节点的变化.
 
-### 研究dubbo 各层的作用和关键细节
+### 研究dubbo 各层的作用
 #### 问题
 * dubbo 如果不用动态代理, 直接调用invoker
 
@@ -78,8 +78,8 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1Mjg1NDYyNywtMTQ4MTYxOTIzNywtNT
-Y3NzYyODE2LDIwNjgwNDQ0NDMsNzUwNTUwMDQ4LC0yMDA0NDUz
-OTgsLTE0NjQxMTUzMywtMzYxMTQxNzA5LC0xMTk0Njk3MzJdfQ
-==
+eyJoaXN0b3J5IjpbOTc4NTc4ODQ4LDExNTI4NTQ2MjcsLTE0OD
+E2MTkyMzcsLTU2Nzc2MjgxNiwyMDY4MDQ0NDQzLDc1MDU1MDA0
+OCwtMjAwNDQ1Mzk4LC0xNDY0MTE1MzMsLTM2MTE0MTcwOSwtMT
+E5NDY5NzMyXX0=
 -->
