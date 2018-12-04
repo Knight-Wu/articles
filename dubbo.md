@@ -51,7 +51,7 @@
 1. DubboNamespaceHandler 等类通过解析xml 配置文件, 去初始化ReferenceBean,  解析参数配置构造url: registry://registry-host/com.alibaba.dubbo.registry.RegistryService?refer=URL.encode("consumer://consumer-host/com.foo.FooService?version=1.0.0"),  
 2. 通过RegistryProtocol 获取注册中心, 再订阅注册中心的服务(就是建立zkClient 监听服务的变化), 
 3. 初始化DubboProtocol, 建立连接(默认不是lazy 的), 这样初始化invoker 就完成了.
-4. 再根据invoker 创建动态代理, 根据代理去封装接口的调用, 最后返回代理给spring 容器
+4. 再根据invoker 创建动态代理, 根据代理去封装invoker.invoke() , 最后返回代理给spring 容器
 
 调用: 
 1. 通过Invoker 的调用链去发起调用, 会经过cluster 和loadBalance, filter等, 最后发起请求, 等待提供者返回.
@@ -72,13 +72,14 @@
 
 ### 研究dubbo 各层的作用和关键细节
 #### 问题
-* dubbo 如何共享连接, 不共享的话就是一个服务一个连接, 默认共享
+* dubbo 如果不用动态代理, 直接调用invoker
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0ODE2MTkyMzcsLTU2Nzc2MjgxNiwyMD
-Y4MDQ0NDQzLDc1MDU1MDA0OCwtMjAwNDQ1Mzk4LC0xNDY0MTE1
-MzMsLTM2MTE0MTcwOSwtMTE5NDY5NzMyXX0=
+eyJoaXN0b3J5IjpbMTE1Mjg1NDYyNywtMTQ4MTYxOTIzNywtNT
+Y3NzYyODE2LDIwNjgwNDQ0NDMsNzUwNTUwMDQ4LC0yMDA0NDUz
+OTgsLTE0NjQxMTUzMywtMzYxMTQxNzA5LC0xMTk0Njk3MzJdfQ
+==
 -->
