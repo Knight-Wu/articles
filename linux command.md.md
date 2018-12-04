@@ -138,7 +138,8 @@ total = used+ free+ buff/cache
 ![1](B6A2BA2EF42C420BBB5EF95034F9F367)
 
 * top
-> 查看各进程
+> 查看各进程资源
+
 
 * sysctl 
 > sysctl kernel.hostname=newHostName 修改机器的hostName, 立即生效,启动新的session后可见, 但是重启后会失效
@@ -244,7 +245,7 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIwMDE2NTgzNywxMjI2NDIzNzk5LC0xMz
-U4MTkzOTEwLDEwMTI2MTg3NTIsMTAyODQ2NjAzOSwtNjI2OTcx
-NTk0XX0=
+eyJoaXN0b3J5IjpbMzMxMjcwMTkxLDEyMDAxNjU4MzcsMTIyNj
+QyMzc5OSwtMTM1ODE5MzkxMCwxMDEyNjE4NzUyLDEwMjg0NjYw
+MzksLTYyNjk3MTU5NF19
 -->
