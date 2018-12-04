@@ -31,7 +31,7 @@
 ```
 run-example --verbose --master local[*] SparkPi // verbose(打印额外的debug 信息)
 run-example --verbose --master yarn --deploy-mode cluster SparkPi // 
-spark-submit  // 查看一些常用的配置
+spark-submit  // 查看一些提示信息, 包括常用的配置de
 ```
 
 > spark on yarn 配置
@@ -85,5 +85,5 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTExNjU5Nzc0OV19
+eyJoaXN0b3J5IjpbLTIwMTU5NDM1NzcsMTExNjU5Nzc0OV19
 -->
