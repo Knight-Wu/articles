@@ -33,6 +33,7 @@
  
 
 ### dubbo的大致流程
+http://jm.taobao.org/2013/11/14/3138/
 1. 服务暴露
 > 直接在本机暴露服务, 先构建出url, 例如 dubbo://service-host/com.foo.FooService?version=1.0.0, 然后再把本机的服务端口打开
 
@@ -86,8 +87,8 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MzY0NDg1MDksLTIxMDk5NzUxNDQsMT
-E1Mjg1NDYyNywtMTQ4MTYxOTIzNywtNTY3NzYyODE2LDIwNjgw
-NDQ0NDMsNzUwNTUwMDQ4LC0yMDA0NDUzOTgsLTE0NjQxMTUzMy
-wtMzYxMTQxNzA5LC0xMTk0Njk3MzJdfQ==
+eyJoaXN0b3J5IjpbNDM0MTAxNzY3LC0yMTA5OTc1MTQ0LDExNT
+I4NTQ2MjcsLTE0ODE2MTkyMzcsLTU2Nzc2MjgxNiwyMDY4MDQ0
+NDQzLDc1MDU1MDA0OCwtMjAwNDQ1Mzk4LC0xNDY0MTE1MzMsLT
+M2MTE0MTcwOSwtMTE5NDY5NzMyXX0=
 -->
