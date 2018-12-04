@@ -17,7 +17,7 @@
 * spark 集群容错的控制, 目前只知道task fail会触发 spark.task.maxFailures这个配置, 但是executor层, container层, job层, application层的配置控制还有待学习
 * spark, hadoop release notes
 * logback 性能测试 https://github.com/ceki/logback-perf
-
+* 如何能快速搞懂, 例如想之前看dubbo 为什么需要有代理这层的时候, 一直搞不懂这层, 就不能像调用本地服务的时候调用远程服务, 感觉是又想快速搞懂, 跳过或者忽略看的一些代码
 
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
 
@@ -38,7 +38,7 @@
 https://blog.csdn.net/flysqrlboy/article/details/79314521
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4MDA0ODgzNiw0MTQ2Mjg4MzUsLTE2Nj
+eyJoaXN0b3J5IjpbMTAxOTUwMjQwOSw0MTQ2Mjg4MzUsLTE2Nj
 Y5MDY2NDksODU4MjQ1MTI0LC00MjY3ODMwOTMsLTE0NTIxMDQ2
 Miw0MjkzOTQyOSwtNTQxOTYwNzM5LC0xMjcxNTU1NDA5LC0yOD
 M1MDM5MzcsMTM4NDQ0MDk3NCw5MjEwOTUwMCwtODM1Mzc2Mjcy
