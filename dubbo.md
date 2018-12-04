@@ -78,12 +78,13 @@ dubbo 代理层的作用一直都很模糊, 动态代理可以参考这篇文章
 dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/dev/design.html](http://dubbo.apache.org/zh-cn/docs/dev/design.html)
 
 > Proxy 层封装了所有接口的透明化代理，而在其它层都以 Invoker 为中心，只有到了暴露给用户使用时，才用 Proxy 将 Invoker 转成接口，或将接口实现转成 Invoker，也就是去掉 Proxy 层 RPC 是可以 Run 的，只是不那么透明，不那么看起来像调本地服务一样调远程服务
-> 
+
+什么叫像本地服务一样调远程服务啊??? 看了代理生成的源码还是很模糊, 直到再回头看了下java 代理的作用, 看了InvocationHandler 代码的注释, 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3NDA3MDQ5NSwxMTUyODU0NjI3LC0xND
+eyJoaXN0b3J5IjpbMTAzMTQ0Nzc5MCwxMTUyODU0NjI3LC0xND
 gxNjE5MjM3LC01Njc3NjI4MTYsMjA2ODA0NDQ0Myw3NTA1NTAw
 NDgsLTIwMDQ0NTM5OCwtMTQ2NDExNTMzLC0zNjExNDE3MDksLT
 ExOTQ2OTczMl19
