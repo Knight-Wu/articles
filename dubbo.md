@@ -71,15 +71,15 @@
 2. 提供者节点信息变更了, 由zk推送通知, 消费者能够知道, 消费者watch相关节点的变化.
 
 ### 研究dubbo 各层的作用
-#### 问题
-* dubbo 如果不用动态代理, 直接调用invoker
 
+* dubbo-proxy
+dubbo 代理层的作用一直都很模糊
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc4NTc4ODQ4LDExNTI4NTQ2MjcsLTE0OD
-E2MTkyMzcsLTU2Nzc2MjgxNiwyMDY4MDQ0NDQzLDc1MDU1MDA0
-OCwtMjAwNDQ1Mzk4LC0xNDY0MTE1MzMsLTM2MTE0MTcwOSwtMT
-E5NDY5NzMyXX0=
+eyJoaXN0b3J5IjpbMTk4MjM0MTEyMywxMTUyODU0NjI3LC0xND
+gxNjE5MjM3LC01Njc3NjI4MTYsMjA2ODA0NDQ0Myw3NTA1NTAw
+NDgsLTIwMDQ0NTM5OCwtMTQ2NDExNTMzLC0zNjExNDE3MDksLT
+ExOTQ2OTczMl19
 -->
