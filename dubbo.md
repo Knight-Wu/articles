@@ -73,13 +73,14 @@
 ### 研究dubbo 各层的作用
 
 * dubbo-proxy
-dubbo 代理层的作用一直都很模糊
+dubbo 代理层的作用一直都很模糊, 动态代理可以参考这篇文章做大致的了解, 
+[enter link description here](https://juejin.im/post/5ad3e6b36fb9a028ba1fee6a)
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4MjM0MTEyMywxMTUyODU0NjI3LC0xND
-gxNjE5MjM3LC01Njc3NjI4MTYsMjA2ODA0NDQ0Myw3NTA1NTAw
-NDgsLTIwMDQ0NTM5OCwtMTQ2NDExNTMzLC0zNjExNDE3MDksLT
-ExOTQ2OTczMl19
+eyJoaXN0b3J5IjpbLTE0NDkzNjAxMTIsMTE1Mjg1NDYyNywtMT
+Q4MTYxOTIzNywtNTY3NzYyODE2LDIwNjgwNDQ0NDMsNzUwNTUw
+MDQ4LC0yMDA0NDUzOTgsLTE0NjQxMTUzMywtMzYxMTQxNzA5LC
+0xMTk0Njk3MzJdfQ==
 -->
