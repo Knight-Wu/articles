@@ -74,13 +74,17 @@
 
 * dubbo-proxy
 dubbo 代理层的作用一直都很模糊, 动态代理可以参考这篇文章做大致的了解, 
-[enter link description here](https://juejin.im/post/5ad3e6b36fb9a028ba1fee6a)
+[https://juejin.im/post/5ad3e6b36fb9a028ba1fee6a](https://juejin.im/post/5ad3e6b36fb9a028ba1fee6a)
+dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/dev/design.html](http://dubbo.apache.org/zh-cn/docs/dev/design.html)
+
+> Proxy 层封装了所有接口的透明化代理，而在其它层都以 Invoker 为中心，只有到了暴露给用户使用时，才用 Proxy 将 Invoker 转成接口，或将接口实现转成 Invoker，也就是去掉 Proxy 层 RPC 是可以 Run 的，只是不那么透明，不那么看起来像调本地服务一样调远程服务
+> 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDkzNjAxMTIsMTE1Mjg1NDYyNywtMT
-Q4MTYxOTIzNywtNTY3NzYyODE2LDIwNjgwNDQ0NDMsNzUwNTUw
-MDQ4LC0yMDA0NDUzOTgsLTE0NjQxMTUzMywtMzYxMTQxNzA5LC
-0xMTk0Njk3MzJdfQ==
+eyJoaXN0b3J5IjpbMTU3NDA3MDQ5NSwxMTUyODU0NjI3LC0xND
+gxNjE5MjM3LC01Njc3NjI4MTYsMjA2ODA0NDQ0Myw3NTA1NTAw
+NDgsLTIwMDQ0NTM5OCwtMTQ2NDExNTMzLC0zNjExNDE3MDksLT
+ExOTQ2OTczMl19
 -->
