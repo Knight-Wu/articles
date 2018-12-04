@@ -81,11 +81,11 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
 
 什么叫像本地服务一样调远程服务啊??? 看了代理生成的源码还是很模糊, 直到再回头看了下java 代理的作用, 看了InvocationHandler 代码的注释, dubbo 使用InvokerInvocationHandler 实现了InvocationHandler , 把对接口的调用都转化为invoker的调用, 达到的效果: spring container 服务提供者是代理对象, 对这个服务的所有方法的调用, 都会经过 InvocationHandler的invoke 方法, dubbo 加以改造, 转化为了对invoker的调用, 并把方法和参数封装到了Invocation 里面.
 
-
+* java 是怎么实现把被代理类的所有方法都转移到invocationHandler 的invoke 方法的?
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDk5NzUxNDQsMTE1Mjg1NDYyNywtMT
-Q4MTYxOTIzNywtNTY3NzYyODE2LDIwNjgwNDQ0NDMsNzUwNTUw
-MDQ4LC0yMDA0NDUzOTgsLTE0NjQxMTUzMywtMzYxMTQxNzA5LC
-0xMTk0Njk3MzJdfQ==
+eyJoaXN0b3J5IjpbLTE5NDg0NzE2NjYsLTIxMDk5NzUxNDQsMT
+E1Mjg1NDYyNywtMTQ4MTYxOTIzNywtNTY3NzYyODE2LDIwNjgw
+NDQ0NDMsNzUwNTUwMDQ4LC0yMDA0NDUzOTgsLTE0NjQxMTUzMy
+wtMzYxMTQxNzA5LC0xMTk0Njk3MzJdfQ==
 -->
