@@ -17,7 +17,7 @@
 * spark 集群容错的控制, 目前只知道task fail会触发 spark.task.maxFailures这个配置, 但是executor层, container层, job层, application层的配置控制还有待学习
 * spark, hadoop release notes
 * logback 性能测试 https://github.com/ceki/logback-perf
-* top 命令如何定位到某个线程的问题, 假设cpu 百分百如何排查
+
 
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
 
@@ -33,10 +33,14 @@
 
 * git 问题: 如果本地不小心删了一个文件, 怎么从remote 更新下来, 只更新这个文件; 如果想根据revision number 检出一个新的分支, 用于maven deploy , 如何操作: git reset revision_num; 在用 git pull 还原到origin/master 
 见"git 原理" 已解决
+
+* top 命令如何定位到某个线程的问题, 假设cpu 百分百如何排查
+https://blog.csdn.net/flysqrlboy/article/details/79314521
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDE0NjI4ODM1LC0xNjY2OTA2NjQ5LDg1OD
-I0NTEyNCwtNDI2NzgzMDkzLC0xNDUyMTA0NjIsNDI5Mzk0Mjks
-LTU0MTk2MDczOSwtMTI3MTU1NTQwOSwtMjgzNTAzOTM3LDEzOD
-Q0NDA5NzQsOTIxMDk1MDAsLTgzNTM3NjI3Ml19
+eyJoaXN0b3J5IjpbMTQ4MDA0ODgzNiw0MTQ2Mjg4MzUsLTE2Nj
+Y5MDY2NDksODU4MjQ1MTI0LC00MjY3ODMwOTMsLTE0NTIxMDQ2
+Miw0MjkzOTQyOSwtNTQxOTYwNzM5LC0xMjcxNTU1NDA5LC0yOD
+M1MDM5MzcsMTM4NDQ0MDk3NCw5MjEwOTUwMCwtODM1Mzc2Mjcy
+XX0=
 -->
