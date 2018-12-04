@@ -17,7 +17,7 @@
 * spark 集群容错的控制, 目前只知道task fail会触发 spark.task.maxFailures这个配置, 但是executor层, container层, job层, application层的配置控制还有待学习
 * spark, hadoop release notes
 * logback 性能测试 https://github.com/ceki/logback-perf
-* 如何能快速搞懂, 例如想之前看dubbo 为什么需要有代理这层的时候, 一直搞不懂这层, 就不能像调用本地服务的时候调用远程服务, 感觉是又想快速搞懂, 跳过或者忽略看的一些代码
+* 如何能快速搞懂, 例如想之前看dubbo 为什么需要有代理这层的时候, 一直搞不懂这层, 就不能像调用本地服务的时候调用远程服务, 感觉是又想快速搞懂, 跳过或者忽略看的一些代码和文档, 觉得没有关系就不看, 就像看书一样, 一扫而过, 有些不懂的地方就跳过, 导致看了一个小时还是感觉什么都不懂, 而且很混乱, 时间过了但是却没有真正搞懂, 思路却因为融合
 
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
 
@@ -38,9 +38,9 @@
 https://blog.csdn.net/flysqrlboy/article/details/79314521
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxOTUwMjQwOSw0MTQ2Mjg4MzUsLTE2Nj
-Y5MDY2NDksODU4MjQ1MTI0LC00MjY3ODMwOTMsLTE0NTIxMDQ2
-Miw0MjkzOTQyOSwtNTQxOTYwNzM5LC0xMjcxNTU1NDA5LC0yOD
-M1MDM5MzcsMTM4NDQ0MDk3NCw5MjEwOTUwMCwtODM1Mzc2Mjcy
-XX0=
+eyJoaXN0b3J5IjpbLTE4MDg4NzEzOTUsNDE0NjI4ODM1LC0xNj
+Y2OTA2NjQ5LDg1ODI0NTEyNCwtNDI2NzgzMDkzLC0xNDUyMTA0
+NjIsNDI5Mzk0MjksLTU0MTk2MDczOSwtMTI3MTU1NTQwOSwtMj
+gzNTAzOTM3LDEzODQ0NDA5NzQsOTIxMDk1MDAsLTgzNTM3NjI3
+Ml19
 -->
