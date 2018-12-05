@@ -17,6 +17,7 @@
 * spark 集群容错的控制, 目前只知道task fail会触发 spark.task.maxFailures这个配置, 但是executor层, container层, job层, application层的配置控制还有待学习
 * spark, hadoop release notes
 * logback 性能测试 https://github.com/ceki/logback-perf
+* https://issues.apache.org/jira/browse/HDFS-9572 这个需要等待comment 回复
 * 如何能快速搞懂, 例如想之前看dubbo 为什么需要有代理这层的时候, 一直搞不懂这层, 就不能像调用本地服务的时候调用远程服务, 感觉是又想快速搞懂, 跳过或者忽略看的一些代码和文档, 觉得没有关系就不看, 就像看书一样, 一扫而过, 有些不懂的地方就跳过, 导致看了一个小时还是感觉什么都不懂, 而且很混乱, 时间过了但是却没有真正搞懂, 思路却因为融合了更多的问题而变得像一团的浆糊, 陷入泥潭, 而且浪费了时间, 心态也不如一小时前, 说白了就是看了一圈下来, 感觉很多不懂, 但是却无法提出一个问题, 也就没有了具体的方向, 所以总结下来, 在碰到一个比较陌生的领域的问题的时候, 搞懂背景知识是相当重要的, 而且在学习背景知识的过程中, 不能跳过, 看一段英文或者文档, 代码都没有耐心是无法赚大钱的, 衡量什么能跳什么不能跳的前提是, 不会影响看下去感觉, 如果感觉无法看下去了, 证明是之前的某些东西没搞懂, 需要一一克服,** 然后就是如何快速搞懂那一个个小点了**
 
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
@@ -38,9 +39,9 @@
 https://blog.csdn.net/flysqrlboy/article/details/79314521
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDMzNTMzMDksLTIxMzE1ODY5MzksND
-E0NjI4ODM1LC0xNjY2OTA2NjQ5LDg1ODI0NTEyNCwtNDI2Nzgz
-MDkzLC0xNDUyMTA0NjIsNDI5Mzk0MjksLTU0MTk2MDczOSwtMT
-I3MTU1NTQwOSwtMjgzNTAzOTM3LDEzODQ0NDA5NzQsOTIxMDk1
-MDAsLTgzNTM3NjI3Ml19
+eyJoaXN0b3J5IjpbLTE2MDAzNTYwNzIsLTE0NDMzNTMzMDksLT
+IxMzE1ODY5MzksNDE0NjI4ODM1LC0xNjY2OTA2NjQ5LDg1ODI0
+NTEyNCwtNDI2NzgzMDkzLC0xNDUyMTA0NjIsNDI5Mzk0MjksLT
+U0MTk2MDczOSwtMTI3MTU1NTQwOSwtMjgzNTAzOTM3LDEzODQ0
+NDA5NzQsOTIxMDk1MDAsLTgzNTM3NjI3Ml19
 -->
