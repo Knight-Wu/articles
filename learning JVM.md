@@ -251,6 +251,7 @@ class MyUtils {
 解决的核心思想: 不同的业务使用不同的线程池，线程池内部共享同一个 contextClassLoader，线程池之间使用不同的 contextClassLoader，就可以很好的起到隔离保护的作用，避免类版本冲突。
 
 https://github.com/alipay/sofa-ark 解决类冲突问题的开源方案.
+https://juejin.im/post/5c04892351882516e70dcc9b
 
 * 疑问
 1. 为什么java 需要三个CL, 只用一个行不行, 因为子类也是能获取到上层的CL 加载的类的 
@@ -495,7 +496,7 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTI3NTEyOTkyLC04NDIwMzIzNDYsLTkwOD
-Q5MzAsMTc3NDczMjc4NCw0MjU5MzExNjYsLTEzMzAxODU1ODBd
-fQ==
+eyJoaXN0b3J5IjpbLTk3NTEzNjIzNSwtODQyMDMyMzQ2LC05MD
+g0OTMwLDE3NzQ3MzI3ODQsNDI1OTMxMTY2LC0xMzMwMTg1NTgw
+XX0=
 -->
