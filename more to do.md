@@ -24,6 +24,7 @@
 * 为什么java 需要三个CL, 只用一个行不行, 因为子类也是能获取到上层的CL 加载的类的 
 * netty 的线程模型, 是用着NIO 还是AIO , 优点在哪
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
+* dubbo 线程池的核心线程数量如何设置
 
 ### DOING
 
@@ -55,11 +56,11 @@ https://blog.csdn.net/flysqrlboy/article/details/79314521
 正常的, 消耗的内存和cpu都很少, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzQxMjMwMjksLTg5NzY1NDA5NCwtMT
-M4NDE1MzYzMCwtMTMwOTA3NzE1NiwtMTE2ODYwMjczNiwtMTYw
-MDM1NjA3MiwtMTQ0MzM1MzMwOSwtMjEzMTU4NjkzOSw0MTQ2Mj
-g4MzUsLTE2NjY5MDY2NDksODU4MjQ1MTI0LC00MjY3ODMwOTMs
-LTE0NTIxMDQ2Miw0MjkzOTQyOSwtNTQxOTYwNzM5LC0xMjcxNT
-U1NDA5LC0yODM1MDM5MzcsMTM4NDQ0MDk3NCw5MjEwOTUwMCwt
-ODM1Mzc2MjcyXX0=
+eyJoaXN0b3J5IjpbMTY1NzIzNTA3MCwtODk3NjU0MDk0LC0xMz
+g0MTUzNjMwLC0xMzA5MDc3MTU2LC0xMTY4NjAyNzM2LC0xNjAw
+MzU2MDcyLC0xNDQzMzUzMzA5LC0yMTMxNTg2OTM5LDQxNDYyOD
+gzNSwtMTY2NjkwNjY0OSw4NTgyNDUxMjQsLTQyNjc4MzA5Mywt
+MTQ1MjEwNDYyLDQyOTM5NDI5LC01NDE5NjA3MzksLTEyNzE1NT
+U0MDksLTI4MzUwMzkzNywxMzg0NDQwOTc0LDkyMTA5NTAwLC04
+MzUzNzYyNzJdfQ==
 -->
