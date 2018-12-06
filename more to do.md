@@ -26,7 +26,7 @@
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
 * dubbo 线程池的核心线程数量如何设置, 取决于什么, 数据库还是机器?
 * 多个应用服务器的性能之和如何算, 
-* mysql 的常见ms问题, java的常见问题, concurrentHashMap, 红黑树, 
+* mysql 的常见ms问题, java的常见问题, 集合, 并发, jvm, concurrentHashMap, 红黑树, 
 * 准备英语ms , 自我介绍
 ### DOING
 
@@ -58,7 +58,7 @@ https://blog.csdn.net/flysqrlboy/article/details/79314521
 正常的, 消耗的内存和cpu都很少, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyNTExOTA4MCwxNjU3MjM1MDcwLC04OT
+eyJoaXN0b3J5IjpbLTE4MTg1MDY0OCwxNjU3MjM1MDcwLC04OT
 c2NTQwOTQsLTEzODQxNTM2MzAsLTEzMDkwNzcxNTYsLTExNjg2
 MDI3MzYsLTE2MDAzNTYwNzIsLTE0NDMzNTMzMDksLTIxMzE1OD
 Y5MzksNDE0NjI4ODM1LC0xNjY2OTA2NjQ5LDg1ODI0NTEyNCwt
