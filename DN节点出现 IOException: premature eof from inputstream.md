@@ -5,6 +5,40 @@
 2. TCP_WAIT 过多是否异常
 
 
+#### TCP/IP协议
+　　既然是网络编程，涉及几个系统之间的交互，那么首先要考虑的是如何准确的定位到网络上的一台或几台主机，另一个是如何进行可靠高效的数据传输。这里就要使用到TCP/IP协议。
+
+　　TCP/IP协议（传输控制协议）由网络层的IP协议和传输层的TCP协议组成。IP层负责网络主机的定位，数据传输的路由，由IP地址可以唯一的确定Internet上的一台主机。TCP层负责面向应用的可靠的或非可靠的数据传输机制，这是网络编程的主要对象。
+
+#### TCP与UDP
+　　TCP是一种面向连接的保证可靠传输的协议。通过TCP协议传输，得到的是一个顺序的无差错的数据流。发送方和接收方的成对的两个socket之间必须建立连接，以便在TCP协议的基础上进行通信，当一个socket（通常都是server socket）等待建立连接时，另一个socket可以要求进行连接，一旦这两个socket连接起来，它们就可以进行双向数据传输，双方都可以进行发送或接收操作。
+
+　　UDP是一种面向无连接的协议，每个数据报都是一个独立的信息，包括完整的源地址或目的地址，它在网络上以任何可能的路径传往目的地，因此能否到达目的地，到达目的地的时间以及内容的正确性都是不能被保证的。
+
+TCP与UDP区别：
+
+TCP特点：
+
+　　1、TCP是面向连接的协议，通过三次握手建立连接，通讯完成时要拆除连接，由于TCP是面向连接协议，所以只能用于点对点的通讯。而且建立连接也需要消耗时间和开销。
+
+　　2、TCP传输数据无大小限制，进行大数据传输。
+
+　　3、TCP是一个可靠的协议，它能保证接收方能够完整正确地接收到发送方发送的全部数据, 而且是顺序的.
+
+UDP特点：
+
+　　1、UDP是面向无连接的通讯协议，UDP数据包括目的端口号和源端口号信息，由于通讯不需要连接，所以可以实现广播发送。
+
+　　2、UDP传输数据时有大小限制，每个被传输的数据报必须限定在64KB之内。
+
+　　3、UDP是一个不可靠的协议，发送方所发送的数据报并不一定以相同的次序到达接收方(不保证顺序)。
+
+TCP与UDP应用：
+
+　　1、TCP在网络通信上有极强的生命力，例如远程连接（Telnet）和文件传输（FTP）都需要不定长度的数据被可靠地传输。但是可靠的传输是要付出代价的，对数据内容正确性的检验必然占用计算机的处理时间和网络的带宽，因此TCP传输的效率不如UDP高。
+
+　　2，UDP操作简单，而且仅需要较少的监护，因此通常用于局域网高可靠性的分散系统中client/server应用程序。例如视频会议系统，并不要求音频视频数据绝对的正确，只要保证连贯性就可以了，这种情况下显然使用UDP会更合理一些。
+
 
 #### TCP 回顾
 参考链接: 
@@ -90,7 +124,7 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
  新版已经合并了这个patch,  [hadoop-2.8 DataXceiver.java](https://github.com/apache/hadoop/blob/branch-2.8/hadoop-hdfs-project/hadoop-hdfs/src/main/java/org/apache/hadoop/hdfs/server/datanode/DataXceiver.java), line 272
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1NzM3NDUyLC0xMzQ2ODYxMTAsLTkyMT
-E0NTExOCwtMTY3ODU1OTE1Niw0NDk3NTQxNjksLTE1NjEwMDM1
-MiwyMDAyOTQ4MjE5XX0=
+eyJoaXN0b3J5IjpbLTEyMjc4NjU0MjcsMTQ1NzM3NDUyLC0xMz
+Q2ODYxMTAsLTkyMTE0NTExOCwtMTY3ODU1OTE1Niw0NDk3NTQx
+NjksLTE1NjEwMDM1MiwyMDAyOTQ4MjE5XX0=
 -->
