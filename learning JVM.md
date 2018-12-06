@@ -252,6 +252,7 @@ class MyUtils {
 
 https://github.com/alipay/sofa-ark 解决类冲突问题的开源方案.
 https://juejin.im/post/5c04892351882516e70dcc9b
+https://docs.oracle.com/javase/specs/jls/se7/html/jls-12.html
 
 * 疑问
 1. 为什么java 需要三个CL, 只用一个行不行, 因为子类也是能获取到上层的CL 加载的类的 
@@ -496,7 +497,7 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3NTEzNjIzNSwtODQyMDMyMzQ2LC05MD
-g0OTMwLDE3NzQ3MzI3ODQsNDI1OTMxMTY2LC0xMzMwMTg1NTgw
-XX0=
+eyJoaXN0b3J5IjpbMjA5MTA3MzQxMSwtOTc1MTM2MjM1LC04ND
+IwMzIzNDYsLTkwODQ5MzAsMTc3NDczMjc4NCw0MjU5MzExNjYs
+LTEzMzAxODU1ODBdfQ==
 -->
