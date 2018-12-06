@@ -12,9 +12,9 @@ git checkout HEAD path/*   // 作用于 path 下面递归的所有的文件
 
 但是有可能会导致detached HEAD, 
 https://www.git-tower.com/learn/git/faq/detached-head-when-checkout-commit
-问题: 到底s
+问题: 到底为什么会 detached 
 ```
-$ git checkout -b test-branch 56a4e5c08 
+$ git checkout -b test-branch 56a4e5?c08 
 ...do your thing... 
 $ git checkout master 
 $ git branch -d test-branch
@@ -27,6 +27,6 @@ git reset 大致与git checkout 一致, 只是会清除掉历史记录, 并不�
 用于 public(公共)的修改, 与项目其他成员共享, 产生历史记录.
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NjAxODA0OSwtODQ5ODI5NjY4LDEzOT
-MxMDEyNDEsLTYzODIwNDE4NCwtMTkwNzc4MF19
+eyJoaXN0b3J5IjpbLTE4MjY1MTIyNDUsLTg0OTgyOTY2OCwxMz
+kzMTAxMjQxLC02MzgyMDQxODQsLTE5MDc3ODBdfQ==
 -->
