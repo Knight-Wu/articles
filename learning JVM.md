@@ -245,7 +245,7 @@ class MyUtils {
 ## 类加载机制
 
 * 应用里类加载的详细过程
-首先是触发: 调用到这个类的static 字段, 或者有static block 等触发条件, 然后根据调用者的classloader 去加载这个类, 如果这个类已经被该CL 加载过, 则直接从内存中拿, 否则会读取类的字节码去初始化这个类. 如果这个类(包名.类名 唯一确定一个类, 但是类的jar 包可能有多版本)是其他版本的, 且已经被加载过, 就会出现诸如方法找不到等类冲突异常, 
+首先是触发: 调用到这个类的static 字段, 或者有static block 等触发条件, 然后根据调用者的classloader 去加载这个类, 如果这个类已经被该CL 加载过, 则直接从内存中拿, 否则会读取类的字节码去初始化这个类. 如果这个类(包名.类名 唯一确定一个类, 但是类的jar 包可能有多版本)是其他版本的, 且已经被加载过, 就会出现诸如方法找不到等类冲突异常, 假设可以使用不同的类去创建
 https://github.com/alipay/sofa-ark 解决类冲突问题的开源方案.
 
 
@@ -489,6 +489,6 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxMDcxMjU5NCwtOTA4NDkzMCwxNzc0Nz
+eyJoaXN0b3J5IjpbLTg0MjAzMjM0NiwtOTA4NDkzMCwxNzc0Nz
 MyNzg0LDQyNTkzMTE2NiwtMTMzMDE4NTU4MF19
 -->
