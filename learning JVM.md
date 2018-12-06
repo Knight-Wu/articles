@@ -243,6 +243,8 @@ class MyUtils {
 ```
 
 ## 类加载机制
+
+
 参考自 [link](http://www.importnew.com/28445.html)
 * 类加载的步骤
 1. 加载
@@ -483,6 +485,6 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3NDczMjc4NCw0MjU5MzExNjYsLTEzMz
-AxODU1ODBdfQ==
+eyJoaXN0b3J5IjpbLTMyMzk0OTg4LDE3NzQ3MzI3ODQsNDI1OT
+MxMTY2LC0xMzMwMTg1NTgwXX0=
 -->
