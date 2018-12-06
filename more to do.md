@@ -26,7 +26,7 @@
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
 
 ### DOING
-* maven archtype 直接构建flink-quick-start, 解决一个classNotFoundEx 
+
 
 
 ### DONE
@@ -40,12 +40,15 @@
 
 * top 命令如何定位到某个线程的问题, 假设cpu 百分百如何排查
 https://blog.csdn.net/flysqrlboy/article/details/79314521
+
+* maven archtype 直接构建flink-quick-start, 解决一个classNotFoundEx 
+新下载了一个 maven ,就解决了这个问题, 可以用archetype:generate 去新建一个和模板一致的maven 项目
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMDkwNzcxNTYsLTExNjg2MDI3MzYsLT
-E2MDAzNTYwNzIsLTE0NDMzNTMzMDksLTIxMzE1ODY5MzksNDE0
-NjI4ODM1LC0xNjY2OTA2NjQ5LDg1ODI0NTEyNCwtNDI2NzgzMD
-kzLC0xNDUyMTA0NjIsNDI5Mzk0MjksLTU0MTk2MDczOSwtMTI3
-MTU1NTQwOSwtMjgzNTAzOTM3LDEzODQ0NDA5NzQsOTIxMDk1MD
-AsLTgzNTM3NjI3Ml19
+eyJoaXN0b3J5IjpbLTEzODQxNTM2MzAsLTEzMDkwNzcxNTYsLT
+ExNjg2MDI3MzYsLTE2MDAzNTYwNzIsLTE0NDMzNTMzMDksLTIx
+MzE1ODY5MzksNDE0NjI4ODM1LC0xNjY2OTA2NjQ5LDg1ODI0NT
+EyNCwtNDI2NzgzMDkzLC0xNDUyMTA0NjIsNDI5Mzk0MjksLTU0
+MTk2MDczOSwtMTI3MTU1NTQwOSwtMjgzNTAzOTM3LDEzODQ0ND
+A5NzQsOTIxMDk1MDAsLTgzNTM3NjI3Ml19
 -->
