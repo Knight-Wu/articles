@@ -21,8 +21,8 @@
 * https://en.wikipedia.org/wiki/Chaos_engineering 软件工程的严谨思想
 * http://www.runoob.com/design-pattern 设计模式每天两例
 * https://mp.weixin.qq.com/s/5Yj6UckTabrQbgJ9TLV1gQ   java生产监控工具, 试用一下
-* 如何能快速搞懂, 例如想之前看dubbo 为什么需要有代理这层的时候, 一直搞不懂这层, 就不能像调用本地服务的时候调用远程服务, 感觉是又想快速搞懂, 跳过或者忽略看的一些代码和文档, 觉得没有关系就不看, 就像看书一样, 一扫而过, 有些不懂的地方就跳过, 导致看了一个小时还是感觉什么都不懂, 而且很混乱, 时间过了但是却没有真正搞懂, 思路却因为融合了更多的问题而变得像一团的浆糊, 陷入泥潭, 而且浪费了时间, 心态也不如一小时前, 说白了就是看了一圈下来, 感觉很多不懂, 但是却无法提出一个问题, 也就没有了具体的方向, 所以总结下来, 在碰到一个比较陌生的领域的问题的时候, 搞懂背景知识是相当重要的, 而且在学习背景知识的过程中, 不能跳过, 看一段英文或者文档, 代码都没有耐心是无法赚大钱的, 衡量什么能跳什么不能跳的前提是, 不会影响看下去感觉, 如果感觉无法看下去了, 证明是之前的某些东西没搞懂, 需要一一克服,** 然后就是如何快速搞懂那一个个小点了**
-
+* 为什么java 需要三个CL, 只用一个行不行, 因为子类也是能获取到上层的CL 加载的类的 
+* netty 的线程模型, 是用着NIO 还是AIO , 优点在哪
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
 
 ### DOING
@@ -30,6 +30,9 @@
 
 
 ### DONE
+
+* 如何能快速搞懂, 例如想之前看dubbo 为什么需要有代理这层的时候, 一直搞不懂这层, 就不能像调用本地服务的时候调用远程服务, 感觉是又想快速搞懂, 跳过或者忽略看的一些代码和文档, 觉得没有关系就不看, 就像看书一样, 一扫而过, 有些不懂的地方就跳过, 导致看了一个小时还是感觉什么都不懂, 而且很混乱, 时间过了但是却没有真正搞懂, 思路却因为融合了更多的问题而变得像一团的浆糊, 陷入泥潭, 而且浪费了时间, 心态也不如一小时前, 说白了就是看了一圈下来, 感觉很多不懂, 但是却无法提出一个问题, 也就没有了具体的方向, 所以总结下来, 在碰到一个比较陌生的领域的问题的时候, 搞懂背景知识是相当重要的, 而且在学习背景知识的过程中, 不能跳过, 看一段英文或者文档, 代码都没有耐心是无法赚大钱的, 衡量什么能跳什么不能跳的前提是, 不会影响看下去感觉, 如果感觉无法看下去了, 证明是之前的某些东西没搞懂, 需要一一克服,** 然后就是如何快速搞懂那一个个小点了**
+
 * 如何进行hdfs 磁盘的balance
 已查到资料
 * 本地进程通信大量time_wait 连接
@@ -45,10 +48,11 @@ https://blog.csdn.net/flysqrlboy/article/details/79314521
 新下载了一个 maven ,就解决了这个问题, 可以用archetype:generate 去新建一个和模板一致的maven 项目
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzODQxNTM2MzAsLTEzMDkwNzcxNTYsLT
-ExNjg2MDI3MzYsLTE2MDAzNTYwNzIsLTE0NDMzNTMzMDksLTIx
-MzE1ODY5MzksNDE0NjI4ODM1LC0xNjY2OTA2NjQ5LDg1ODI0NT
-EyNCwtNDI2NzgzMDkzLC0xNDUyMTA0NjIsNDI5Mzk0MjksLTU0
-MTk2MDczOSwtMTI3MTU1NTQwOSwtMjgzNTAzOTM3LDEzODQ0ND
-A5NzQsOTIxMDk1MDAsLTgzNTM3NjI3Ml19
+eyJoaXN0b3J5IjpbLTg5NzY1NDA5NCwtMTM4NDE1MzYzMCwtMT
+MwOTA3NzE1NiwtMTE2ODYwMjczNiwtMTYwMDM1NjA3MiwtMTQ0
+MzM1MzMwOSwtMjEzMTU4NjkzOSw0MTQ2Mjg4MzUsLTE2NjY5MD
+Y2NDksODU4MjQ1MTI0LC00MjY3ODMwOTMsLTE0NTIxMDQ2Miw0
+MjkzOTQyOSwtNTQxOTYwNzM5LC0xMjcxNTU1NDA5LC0yODM1MD
+M5MzcsMTM4NDQ0MDk3NCw5MjEwOTUwMCwtODM1Mzc2MjcyXX0=
+
 -->
