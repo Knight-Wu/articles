@@ -245,9 +245,15 @@ class MyUtils {
 ## 类加载机制
 
 * 应用里类加载的详细过程
-首先是触发: 调用到这个类的static 字段, 或者有static block 等触发条件, 然后根据调用者的classloader 去加载这个类, 如果这个类已经被该CL 加载过, 则直接从内存中拿, 否则会读取类的字节码去初始化这个类. 如果这个类(包名.类名 唯一确定一个类, 但是类的jar 包可能有多版本)是其他版本的, 且已经被加载过, 就会出现诸如方法找不到等类冲突异常, 解决的核心思想: 用不同的CL 去加载不同业务的包, 则不会产生冲突. 
+
+首先是触发: 调用到这个类的static 字段, 或者有static block 等触发条件, 然后根据调用者的classloader 去加载这个类, 如果这个类已经被该CL 加载过, 则直接从内存中拿, 否则会读取类的字节码去初始化这个类. 如果这个类(包名.类名 唯一确定一个类, 但是类的jar 包可能有多版本)是其他版本的, 且已经被加载过, 就会出现诸如方法找不到等类冲突异常, 
+
+解决的核心思想: 不同的业务使用不同的线程池，线程池内部共享同一个 contextClassLoader，线程池之间使用不同的 contextClassLoader，就可以很好的起到隔离保护的作用，避免类版本冲突。
+
 https://github.com/alipay/sofa-ark 解决类冲突问题的开源方案.
 
+* 疑问
+1. 为什么java 需要三个CL, 只用一个行不行, 因为子类也是能获取到上层的CL 加载的类的 
 
 参考自 [link](http://www.importnew.com/28445.html)
 * 类加载的步骤
@@ -489,7 +495,7 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEzMDEzMzc4OSwtODQyMDMyMzQ2LC05MD
-g0OTMwLDE3NzQ3MzI3ODQsNDI1OTMxMTY2LC0xMzMwMTg1NTgw
-XX0=
+eyJoaXN0b3J5IjpbNTI3NTEyOTkyLC04NDIwMzIzNDYsLTkwOD
+Q5MzAsMTc3NDczMjc4NCw0MjU5MzExNjYsLTEzMzAxODU1ODBd
+fQ==
 -->
