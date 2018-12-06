@@ -245,7 +245,7 @@ class MyUtils {
 ## 类加载机制
 
 * 应用里类加载的详细过程
-首先是触发: 调用到这个类的static 字段, 或者有static block 等触发条件, 
+首先是触发: 调用到这个类的static 字段, 或者有static block 等触发条件, 然后根据调用者的classloader 去加载这个类, 如果这个类已经被该CL 加载过, 则直接从内存中拿, 否则会读取类的字节码去获取
 
 参考自 [link](http://www.importnew.com/28445.html)
 * 类加载的步骤
@@ -487,6 +487,6 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzc0NDU3ODY1LDE3NzQ3MzI3ODQsNDI1OT
-MxMTY2LC0xMzMwMTg1NTgwXX0=
+eyJoaXN0b3J5IjpbLTc5MDE0NzIzOSwxNzc0NzMyNzg0LDQyNT
+kzMTE2NiwtMTMzMDE4NTU4MF19
 -->
