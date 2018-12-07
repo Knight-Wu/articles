@@ -155,7 +155,7 @@ hostnamectl set-hostname hostname
 
 * lrzsz
 rz // 上传文件, win 直接弹出对话框, win 需要支持Zmodem
-
+sz // 下载文件, 
 * tar
 
 > tar -cvf tarName.tar fileName 可以将目录和多个文件打包
@@ -249,8 +249,8 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyMDgxNTcyMywtMTU1ODg4MDA1NiwzMz
-EyNzAxOTEsMTIwMDE2NTgzNywxMjI2NDIzNzk5LC0xMzU4MTkz
-OTEwLDEwMTI2MTg3NTIsMTAyODQ2NjAzOSwtNjI2OTcxNTk0XX
-0=
+eyJoaXN0b3J5IjpbLTYwODA1MDk1MSwtMzIwODE1NzIzLC0xNT
+U4ODgwMDU2LDMzMTI3MDE5MSwxMjAwMTY1ODM3LDEyMjY0MjM3
+OTksLTEzNTgxOTM5MTAsMTAxMjYxODc1MiwxMDI4NDY2MDM5LC
+02MjY5NzE1OTRdfQ==
 -->
