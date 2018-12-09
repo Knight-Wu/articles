@@ -214,6 +214,13 @@ null
 * java 7 和java 8的hashmap 的主要区别在于
 定位到数组的位置之后, 在链表往后进行一个个查找的时候, 当链表长度大于8 时, java 8会转化为红黑树, 将查找的时间复杂度O(n), 降低为O(logn)
 
+
+* put 大致过程
+根据hash, 找到需要存放的entry 数组的index, 如果该位置没元素, 就直接放入, 如果有, 则判断该位置是不是红黑树的节点, 是的话就调用红黑树的插入方法(默认链表长度大于8, 则会变为红黑树), 否则遍历链表, 放到链表末尾, 如果插入后, 链表长度大于等于9, 则将该链表转化为红黑树, 最后如果插入后, hashMap size大于threshold, 则进行resize. 
+
+* resize 的大致过程
+resize 成原来容量的两倍, 如果原先数组的位置只有一个元素, 就直接取模迁移到新数组的位置, 如果是红黑树则是调用红黑树的分裂方法, 如果是链表, 则分成两个子链表, 一个放在原位置, 另一个放在 (原位置+oldCapacity).
+
 1. 返回bucket的index
  ``` 
 int indexFor(int hash,int length)
@@ -257,5 +264,6 @@ public void setClass(A a){
 分为静态代理和动态, 静态指代理类在运行前就生成的, 动态则指运行时才生成, 由中介类生成, 中介类需要实现 InvacationHandler 接口, 等于说中介类生成代理类, 代理类去真正代理, 所以说动态代理类的类名也都是由程序生成的. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyOTI4NzMzOSwxNzg5NDIwMzU0XX0=
+eyJoaXN0b3J5IjpbMTE1Njc5NTcsMTMyOTI4NzMzOSwxNzg5ND
+IwMzU0XX0=
 -->
