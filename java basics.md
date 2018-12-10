@@ -215,7 +215,7 @@ hashmap key和value都可以为null,
 作为一个native 的方法, 有以下三点规范, 来自代码注释
 1. 当对一个java application 的一次调用中, 必须返回同一个整型, 提供的信息也用于对象的相等比较，且不会被修改,但是在两次调用中, 不必返回相同的值
 2. 如果两个对象使用equal 方法区判断是否相等, 则调用hashCode 必须返回相同的结果
-3. 如果两个对象使用equal 方法比较是不相等的, 
+3. 如果两个对象使用equal 方法比较是不相等的, 则调用hashcode 方法必须返回不同的结果. 开发者需要意识到对unequal 的对象产生不同的hashcode 有利于提高hashtable 的性能. 
 
 * java 7 和java 8的hashmap 的主要区别在于
 定位到数组的位置之后, 在链表往后进行一个个查找的时候, 当链表长度大于8 时, java 8会转化为红黑树, 将查找的时间复杂度O(n), 降低为O(logn)
@@ -270,7 +270,7 @@ public void setClass(A a){
 分为静态代理和动态, 静态指代理类在运行前就生成的, 动态则指运行时才生成, 由中介类生成, 中介类需要实现 InvacationHandler 接口, 等于说中介类生成代理类, 代理类去真正代理, 所以说动态代理类的类名也都是由程序生成的. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzNDU1NDA4MCwxNTIwMTk3NzcxLDI4NT
+eyJoaXN0b3J5IjpbLTE4NjU2OTcxNywxNTIwMTk3NzcxLDI4NT
 U5MDA0NywxMTU2Nzk1NywxMzI5Mjg3MzM5LDE3ODk0MjAzNTRd
 fQ==
 -->
