@@ -40,7 +40,7 @@ Vector是线程安全的, 进而效率比较低, 在方法上加了对象锁
     *问题* 
     * 两个方法的优劣, 为什么ThreadLocalMap 采用开放地址法
     因为threadLocal的应用场景决定了数据量并不大, 采用开放地址法, 并采用Fibonacci hashing, 使hash 分布均匀, 在小数据量的时候存取会很快.
-    * jdk-1.8 引入红黑树, 有啥优势
+   
 
 > 初始容量 和 负载因子，这两个参数是影响HashMap性能的重要参数。其中，容量表示哈希表中桶的数量 (table 数组的大小)，初始容量是创建哈希表时桶的数量；负载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，它衡量的是一个散列表的空间的使用程度，负载因子越大表示散列表的装填程度越高，反之愈小。默认的resize的大小=初始容量
 
@@ -122,8 +122,6 @@ objectA = new ClassA();
     * 顺序: static field -> non static field -> class constructor,若有父类则父类优先
 
 **To summarize the process of creating an object, consider a class called Dog:**
-
-![image](http://i1.piimg.com/567571/61444e13fb981c47.png)
 
 * 代码分析一
 
@@ -264,6 +262,6 @@ public void setClass(A a){
 分为静态代理和动态, 静态指代理类在运行前就生成的, 动态则指运行时才生成, 由中介类生成, 中介类需要实现 InvacationHandler 接口, 等于说中介类生成代理类, 代理类去真正代理, 所以说动态代理类的类名也都是由程序生成的. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1Njc5NTcsMTMyOTI4NzMzOSwxNzg5ND
-IwMzU0XX0=
+eyJoaXN0b3J5IjpbMjg1NTkwMDQ3LDExNTY3OTU3LDEzMjkyOD
+czMzksMTc4OTQyMDM1NF19
 -->
