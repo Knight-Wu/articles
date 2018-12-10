@@ -624,9 +624,8 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
     > retrievals reflect the results of the most recently completed update operations holding upon their onset.  
     
     * iterator
-    > iterator is designed to be used only one thread at a time.多个线程共用一个iterator实例, 可能会抛出 java.lang.IllegalStateException. 所以需要在每个线程用个单独的iterator实例
-    
-        * 一个线程创建iterator之后对另一个线程对map元素的增删改,是可见的.
+  iterator is designed to be used only one thread at a time.多个线程共用一个iterator实例, 可能会抛出 java.lang.IllegalStateException. 所以需要在每个线程用个单独的iterator实例.
+ 一个线程创建iterator之后对另一个线程对map元素的增删改,是可见的.
         
 
 
@@ -767,5 +766,5 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzg3NzM2MTYzXX0=
+eyJoaXN0b3J5IjpbLTE1MDc0MTU2ODUsMzg3NzM2MTYzXX0=
 -->
