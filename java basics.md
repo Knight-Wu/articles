@@ -203,7 +203,10 @@ HashMap 的底层数组长度总是2的n次方的原因有两个，即当 length
 不同的hash值发生碰撞的概率比较小，这样就会使得数据在table数组中分布较均匀，空间利用率较高，查询速度也较快；
 h&(length - 1) 就相当于对length取模，而且在速度、效率上比直接取模要快得多，即二者是等价不等效的，这是HashMap在速度和效率上的一个优化。
 
-hashmap key和value都可以为null, 
+hashmap key和value都可以为null, 因为key 为null, 则hash值为0, hash& table.length -1 均为0, 所以key 为null的object 放在table[0], val覆盖.
+
+
+
 * 解决hash冲突的方法
     * 开放地址法(例如 ThreadLocalMap), 冲突时,往下遍历, 直到找到null的位置; 缺点: 容易产生元素的堆聚, 因为较长的链总是更容易产生冲突, 从而元素会落到链的末尾.
     * 拉链法(HashMap)
@@ -270,7 +273,7 @@ public void setClass(A a){
 分为静态代理和动态, 静态指代理类在运行前就生成的, 动态则指运行时才生成, 由中介类生成, 中介类需要实现 InvacationHandler 接口, 等于说中介类生成代理类, 代理类去真正代理, 所以说动态代理类的类名也都是由程序生成的. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjU2OTcxNywxNTIwMTk3NzcxLDI4NT
-U5MDA0NywxMTU2Nzk1NywxMzI5Mjg3MzM5LDE3ODk0MjAzNTRd
-fQ==
+eyJoaXN0b3J5IjpbLTExODk5NTk1NDIsLTE4NjU2OTcxNywxNT
+IwMTk3NzcxLDI4NTU5MDA0NywxMTU2Nzk1NywxMzI5Mjg3MzM5
+LDE3ODk0MjAzNTRdfQ==
 -->
