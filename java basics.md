@@ -211,6 +211,9 @@ hashmap key和value都可以为null,
     * 两个方法的优劣, 为什么ThreadLocalMap 采用开放地址法
     因为threadLocal的应用场景决定了数据量并不大, 采用开放地址法, 并采用Fibonacci hashing, 使hash 分布均匀, 在小数据量的时候存取会很快.
   
+* hashcode 
+作为一个native 的方法, 有以下三点规范, 来自代码注释
+1. 当被一个java application 连续调用的时候, 必须返回同一个
 
 * java 7 和java 8的hashmap 的主要区别在于
 定位到数组的位置之后, 在链表往后进行一个个查找的时候, 当链表长度大于8 时, java 8会转化为红黑树, 将查找的时间复杂度O(n), 降低为O(logn)
@@ -265,6 +268,7 @@ public void setClass(A a){
 分为静态代理和动态, 静态指代理类在运行前就生成的, 动态则指运行时才生成, 由中介类生成, 中介类需要实现 InvacationHandler 接口, 等于说中介类生成代理类, 代理类去真正代理, 所以说动态代理类的类名也都是由程序生成的. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyMDE5Nzc3MSwyODU1OTAwNDcsMTE1Nj
-c5NTcsMTMyOTI4NzMzOSwxNzg5NDIwMzU0XX0=
+eyJoaXN0b3J5IjpbLTkyMDcxMzY1NCwxNTIwMTk3NzcxLDI4NT
+U5MDA0NywxMTU2Nzk1NywxMzI5Mjg3MzM5LDE3ODk0MjAzNTRd
+fQ==
 -->
