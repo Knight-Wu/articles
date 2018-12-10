@@ -34,19 +34,7 @@ Vector是线程安全的, 进而效率比较低, 在方法上加了对象锁
 * LinkedHashMap是有序的,可以按照元素插入和访问的顺序排序, LinkedHashMap 的访问序可以方便地用来实现一个 LRU(least and recently used) Cache。在访问序模式下，尾部节点是最近一次被访问的节点 (least-recently)，而头部节点则是最远访问 (most-recently) 的节点。因而在决定失效缓存的时候，将头部节点移除即可。
 * TreeMap基于Compartor的排序.
 
-* 解决hash冲突的方法
-    * 开放地址法(例如 ThreadLocalMap), 冲突时,往下遍历, 直到找到null的位置; 缺点: 容易产生元素的堆聚, 因为较长的链总是更容易产生冲突, 从而元素会落到链的末尾.
-    * 拉链法(HashMap)
-    *问题* 
-    * 两个方法的优劣, 为什么ThreadLocalMap 采用开放地址法
-    因为threadLocal的应用场景决定了数据量并不大, 采用开放地址法, 并采用Fibonacci hashing, 使hash 分布均匀, 在小数据量的时候存取会很快.
-   
 
-> 初始容量 和 负载因子，这两个参数是影响HashMap性能的重要参数。其中，容量表示哈希表中桶的数量 (table 数组的大小)，初始容量是创建哈希表时桶的数量；负载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，它衡量的是一个散列表的空间的使用程度，负载因子越大表示散列表的装填程度越高，反之愈小。默认的resize的大小=初始容量
-
-> HashMap 的底层数组长度总是2的n次方的原因有两个，即当 length=2^n 时：
-不同的hash值发生碰撞的概率比较小，这样就会使得数据在table数组中分布较均匀，空间利用率较高，查询速度也较快；
-h&(length - 1) 就相当于对length取模，而且在速度、效率上比直接取模要快得多，即二者是等价不等效的，这是HashMap在速度和效率上的一个优化。
 
 * HashTable与HashMap区别
 hashTable是线程安全的, hashTable不允许null的key
@@ -209,6 +197,20 @@ null
 > The best way to avoid this type of exception is to always check for null when you did not create the object yourself." If the caller passes null, but null is not a valid argument for the method, then it's correct to throw the exception back at the caller because it's the caller's fault
 
 #### hashmap
+* 解决hash冲突的方法
+    * 开放地址法(例如 ThreadLocalMap), 冲突时,往下遍历, 直到找到null的位置; 缺点: 容易产生元素的堆聚, 因为较长的链总是更容易产生冲突, 从而元素会落到链的末尾.
+    * 拉链法(HashMap)
+    *问题* 
+    * 两个方法的优劣, 为什么ThreadLocalMap 采用开放地址法
+    因为threadLocal的应用场景决定了数据量并不大, 采用开放地址法, 并采用Fibonacci hashing, 使hash 分布均匀, 在小数据量的时候存取会很快.
+   
+
+> 初始容量 和 负载因子，这两个参数是影响HashMap性能的重要参数。其中，容量表示哈希表中桶的数量 (table 数组的大小)，初始容量是创建哈希表时桶的数量；负载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，它衡量的是一个散列表的空间的使用程度，负载因子越大表示散列表的装填程度越高，反之愈小。默认的resize的大小=初始容量
+
+> HashMap 的底层数组长度总是2的n次方的原因有两个，即当 length=2^n 时：
+不同的hash值发生碰撞的概率比较小，这样就会使得数据在table数组中分布较均匀，空间利用率较高，查询速度也较快；
+h&(length - 1) 就相当于对length取模，而且在速度、效率上比直接取模要快得多，即二者是等价不等效的，这是HashMap在速度和效率上的一个优化。
+
 * java 7 和java 8的hashmap 的主要区别在于
 定位到数组的位置之后, 在链表往后进行一个个查找的时候, 当链表长度大于8 时, java 8会转化为红黑树, 将查找的时间复杂度O(n), 降低为O(logn)
 
@@ -262,6 +264,6 @@ public void setClass(A a){
 分为静态代理和动态, 静态指代理类在运行前就生成的, 动态则指运行时才生成, 由中介类生成, 中介类需要实现 InvacationHandler 接口, 等于说中介类生成代理类, 代理类去真正代理, 所以说动态代理类的类名也都是由程序生成的. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjg1NTkwMDQ3LDExNTY3OTU3LDEzMjkyOD
-czMzksMTc4OTQyMDM1NF19
+eyJoaXN0b3J5IjpbLTk4MDE5MzQzMSwyODU1OTAwNDcsMTE1Nj
+c5NTcsMTMyOTI4NzMzOSwxNzg5NDIwMzU0XX0=
 -->
