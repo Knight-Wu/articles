@@ -627,7 +627,8 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
     val和key 都不能为null, 
     
     * initTable
-中间用了一个 Thread.yield() 具体用处是啥, 注释是当前线程 "lost initialization race ; just spin(旋转) ", 
+问题: 
+中间用了一个 Thread.yield() 具体用处是啥, 注释是当前线程 "lost initialization race ; just spin(旋转) ", 意思是让当前线程自旋一会, 等待下次竞争到锁之后即可走这个线程后续的逻辑? 
     * iterator
   iterator is designed to be used only one thread at a time.多个线程共用一个iterator实例, 可能会抛出 java.lang.IllegalStateException. 所以需要在每个线程用个单独的iterator实例.
  一个线程创建iterator之后对另一个线程对map元素的增删改,是可见的.
@@ -771,6 +772,6 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1ODg2OTA2OSwyMDY2MDY2MTcxLC0xMD
-U1NTcyODQwLDM4NzczNjE2M119
+eyJoaXN0b3J5IjpbNDQ4MzEwMDIwLDIwNjYwNjYxNzEsLTEwNT
+U1NzI4NDAsMzg3NzM2MTYzXX0=
 -->
