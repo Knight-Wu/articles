@@ -432,6 +432,7 @@ number-of-containers is just a multiple of such containers.
 > 每个节点一个, 负责监控container 的状态, 监控资源的使用情况并上报给RM
 
 * ApplicationMaster
+
 每个application一个, 负责与RM协商并获取 resource container的情况, 并监控container.
 解决了集群规模上升导致RM出现瓶颈的问题, RM只负责协调资源, 每个应用由AM监控, 大大减小了RM的压力. 
 * ApplicationMasterProtocol
@@ -459,8 +460,8 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwMzYyOTEzOSwtMjMxOTExMDE3LDYzNj
-cwNjEzMiw5NDcyNjEwMywtMTQ2MDc3NDkxLDEzMjk4NjI3MTgs
-LTExMzg4NjY4OTYsODk5OTUyNjAsNTg0ODcwMDQ1LDEyODI3Mz
-UzODRdfQ==
+eyJoaXN0b3J5IjpbLTExMzc5OTg1NTUsLTIzMTkxMTAxNyw2Mz
+Y3MDYxMzIsOTQ3MjYxMDMsLTE0NjA3NzQ5MSwxMzI5ODYyNzE4
+LC0xMTM4ODY2ODk2LDg5OTk1MjYwLDU4NDg3MDA0NSwxMjgyNz
+M1Mzg0XX0=
 -->
