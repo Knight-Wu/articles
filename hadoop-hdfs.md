@@ -433,10 +433,6 @@ number-of-containers is just a multiple of such containers.
 
 * ApplicationMaster
 
-![enter image description here](https://drive.google.com/uc?id=1m3wsGxq1csVWSiE24yU7HFprZu29zMnW)
-红框中的node 是AM所在的节点, 8042是NM 的端口
-
-
 每个application一个, 负责与RM协商并获取 resource container的情况, 并监控container.
 解决了集群规模上升导致RM出现瓶颈的问题, RM只负责协调资源, 每个应用由AM监控, 大大减小了RM的压力. 
 * ApplicationMasterProtocol
@@ -447,14 +443,20 @@ This is used by the ApplicationMaster to register/unregister and to request and 
 >The protocol between an ApplicationMaster and a NodeManager to start/stop containers and to get status of running containers.
 If security is enabled the NodeManager verifies that the ApplicationMaster has truly been allocated the container by the ResourceManager and also verifies all interactions such as stopping the container or obtaining status information for the container.
 
+![enter image description here](https://drive.google.com/uc?id=1m3wsGxq1csVWSiE24yU7HFprZu29zMnW)
+红框中的node 是AM所在的节点, 8042是NM 的端口
+
 * container
+
+It represents a resource on a single node at a given cluster.
+A container is supervised by the node manager, scheduled by the resource manager
+
 从这里可以看到这个NM 运行的application
 ![enter image description here](https://drive.google.com/uc?id=13EeOUmBxlwt3MignKDikPZdy1lNWLrWg)
 
-点进去可以看到这个application 的container 的yun
+点进去可以看到这个application 的container 的运行的应用的log, stderr, stdout. 
 ![enter image description here](https://drive.google.com/uc?id=1Fj8qN6D4HqfM0YO2YiP2QB496xOiakS6)
-It represents a resource on a single node at a given cluster.
-A container is supervised by the node manager, scheduled by the resource manager
+
 
 #### hdfs 命令
 * 目录授权
@@ -469,8 +471,8 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwNjE2Mzk3OCwtMTEzNzk5ODU1NSwtMj
-MxOTExMDE3LDYzNjcwNjEzMiw5NDcyNjEwMywtMTQ2MDc3NDkx
-LDEzMjk4NjI3MTgsLTExMzg4NjY4OTYsODk5OTUyNjAsNTg0OD
-cwMDQ1LDEyODI3MzUzODRdfQ==
+eyJoaXN0b3J5IjpbLTEwMjIxNzMwNjcsLTExMzc5OTg1NTUsLT
+IzMTkxMTAxNyw2MzY3MDYxMzIsOTQ3MjYxMDMsLTE0NjA3NzQ5
+MSwxMzI5ODYyNzE4LC0xMTM4ODY2ODk2LDg5OTk1MjYwLDU4ND
+g3MDA0NSwxMjgyNzM1Mzg0XX0=
 -->
