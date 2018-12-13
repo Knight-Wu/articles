@@ -448,7 +448,9 @@ This is used by the ApplicationMaster to register/unregister and to request and 
 If security is enabled the NodeManager verifies that the ApplicationMaster has truly been allocated the container by the ResourceManager and also verifies all interactions such as stopping the container or obtaining status information for the container.
 
 * container
-> It represents a resource on a single node at a given cluster.
+
+![enter image description here](https://drive.google.com/uc?id=1Fj8qN6D4HqfM0YO2YiP2QB496xOiakS6)
+It represents a resource on a single node at a given cluster.
 A container is supervised by the node manager, scheduled by the resource manager
 
 #### hdfs 命令
@@ -464,8 +466,8 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTI2MzQ2NDYzLC0xMTM3OTk4NTU1LC0yMz
-E5MTEwMTcsNjM2NzA2MTMyLDk0NzI2MTAzLC0xNDYwNzc0OTEs
-MTMyOTg2MjcxOCwtMTEzODg2Njg5Niw4OTk5NTI2MCw1ODQ4Nz
-AwNDUsMTI4MjczNTM4NF19
+eyJoaXN0b3J5IjpbMTg4NjMzMTAyMiwtMTEzNzk5ODU1NSwtMj
+MxOTExMDE3LDYzNjcwNjEzMiw5NDcyNjEwMywtMTQ2MDc3NDkx
+LDEzMjk4NjI3MTgsLTExMzg4NjY4OTYsODk5OTUyNjAsNTg0OD
+cwMDQ1LDEyODI3MzUzODRdfQ==
 -->
