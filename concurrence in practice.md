@@ -618,7 +618,7 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
 * ConcurrenceHashMap
 
     jdk1.8之前， 采用分段锁机制, 默认分16个Segment , Segment继承自ReentrantLock, 对每个段的table进行线程间的同步.
-从1.8开始，采用CAS算法，多个线程同时更新只有一个线程能成功。
+从1.8开始，采用CAS 机制，多个线程同时更新只有一个线程能成功。
     * isEmpty和size都是基于估算
     * 由于get操作不是阻塞的, 所以只能看到写入完成的值,新增和更新有点不同, 只有新增完成的entry才能看到, 引用下面一段jdk-1.8的注释来表达这个意思;     但是更新是满足volatile HB原则的. 
     > retrievals reflect the results of the most recently completed update operations holding upon their onset.  
@@ -772,6 +772,6 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDQ4MzEwMDIwLDIwNjYwNjYxNzEsLTEwNT
-U1NzI4NDAsMzg3NzM2MTYzXX0=
+eyJoaXN0b3J5IjpbLTE4MzYxMjM4MDQsNDQ4MzEwMDIwLDIwNj
+YwNjYxNzEsLTEwNTU1NzI4NDAsMzg3NzM2MTYzXX0=
 -->
