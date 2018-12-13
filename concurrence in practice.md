@@ -624,7 +624,7 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
     > retrievals reflect the results of the most recently completed update operations holding upon their onset.  
     
     * put 操作
-    val和key 都不能为null, 根据hash, hash & (tab.length-1), 算出数组的下标, 如果下标没有元素, 则进行一次CAS, 失败则进行下次循环, 如果该下标有元素, 则
+    val和key 都不能为null, 根据hash, hash & (tab.length-1), 算出数组的下标, 如果下标没有元素, 则进行一次CAS, 失败则进行下次循环, 如果该下标有元素, 则synchronize(头结点), 继续判断如果是链表, 则放在链表的
     
     * initTable
 问题: 
@@ -772,7 +772,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5MjE3MDQyNCwtMTgzNjEyMzgwNCw0ND
-gzMTAwMjAsMjA2NjA2NjE3MSwtMTA1NTU3Mjg0MCwzODc3MzYx
-NjNdfQ==
+eyJoaXN0b3J5IjpbMjQ4ODUxMzkwLC0xODM2MTIzODA0LDQ0OD
+MxMDAyMCwyMDY2MDY2MTcxLC0xMDU1NTcyODQwLDM4NzczNjE2
+M119
 -->
