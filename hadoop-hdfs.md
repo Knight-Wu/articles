@@ -433,6 +433,10 @@ number-of-containers is just a multiple of such containers.
 
 * ApplicationMaster
 
+![enter image description here](https://drive.google.com/uc?id=1m3wsGxq1csVWSiE24yU7HFprZu29zMnW)
+红框中的node 是AM所在的节点, 8042是NM 的端口
+
+
 每个application一个, 负责与RM协商并获取 resource container的情况, 并监控container.
 解决了集群规模上升导致RM出现瓶颈的问题, RM只负责协调资源, 每个应用由AM监控, 大大减小了RM的压力. 
 * ApplicationMasterProtocol
@@ -460,8 +464,8 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzc5OTg1NTUsLTIzMTkxMTAxNyw2Mz
-Y3MDYxMzIsOTQ3MjYxMDMsLTE0NjA3NzQ5MSwxMzI5ODYyNzE4
-LC0xMTM4ODY2ODk2LDg5OTk1MjYwLDU4NDg3MDA0NSwxMjgyNz
-M1Mzg0XX0=
+eyJoaXN0b3J5IjpbNTI2MzQ2NDYzLC0xMTM3OTk4NTU1LC0yMz
+E5MTEwMTcsNjM2NzA2MTMyLDk0NzI2MTAzLC0xNDYwNzc0OTEs
+MTMyOTg2MjcxOCwtMTEzODg2Njg5Niw4OTk5NTI2MCw1ODQ4Nz
+AwNDUsMTI4MjczNTM4NF19
 -->
