@@ -616,10 +616,10 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
 每次写数组的时候，都会用ReentrantLock 锁住，然后生成一个新的数组进行拷贝, 只保证写是线程安全的，不保证写立马被读可见, 因为读的时候没有加锁. 适用于读多写少的场景.
 
 * ConcurrenceHashMap
-
+明早把代码t
     jdk1.8之前， 采用分段锁机制, 默认分16个Segment , Segment继承自ReentrantLock, 对每个段的table进行线程间的同步.
 从1.8开始，采用CAS 机制，多个线程同时更新只有一个线程能成功。
-    * isEmpty和size都是基于估算
+
     * 由于get操作不是阻塞的, 所以只能看到写入完成的值,新增和更新有点不同, 只有新增完成的entry才能看到, 引用下面一段jdk-1.8的注释来表达这个意思;     但是更新是满足volatile HB原则的. 
     > retrievals reflect the results of the most recently completed update operations holding upon their onset.  
     
@@ -772,7 +772,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwNDU5NzQzOSwtMTgzNjEyMzgwNCw0ND
-gzMTAwMjAsMjA2NjA2NjE3MSwtMTA1NTU3Mjg0MCwzODc3MzYx
-NjNdfQ==
+eyJoaXN0b3J5IjpbLTUzODQxNzkzOSwtNTA0NTk3NDM5LC0xOD
+M2MTIzODA0LDQ0ODMxMDAyMCwyMDY2MDY2MTcxLC0xMDU1NTcy
+ODQwLDM4NzczNjE2M119
 -->
