@@ -616,7 +616,7 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
 每次写数组的时候，都会用ReentrantLock 锁住，然后生成一个新的数组进行拷贝, 只保证写是线程安全的，不保证写立马被读可见, 因为读的时候没有加锁. 适用于读多写少的场景.
 
 * ConcurrenceHashMap
-* spread 方法的作用 ?
+
 
 
 如果在创建HashMap实例时没有给定capacity、loadFactor则默认值分别是16和0.75。 当好多Node 被映射到同一个桶时，如果这个桶中 node 的数量小于TREEIFY_THRESHOLD(8 )当然不会转化成树形结构存储；如果这个桶中Node 的数量大于了 TREEIFY_THRESHOLD(8 ) ，但是capacity小于MIN_TREEIFY_CAPACITY(64 ) 则依然使用链表结构进行存储，此时会对HashMap进行扩, 链表分半到不同的bucket 上, 如果capacity大于MIN_TREEIFY_CAPACITY(64 ) ，则会进行树化
@@ -780,9 +780,9 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3ODAwMDQzLDEwNjE0NTUzMDMsODI3Mj
-A5MTEsLTE2MzEwMTQzMTcsLTU3ODQ0NzY4MSwxNzM2MjYzMDEs
-LTU5MDE2OTg3MiwtNTA0NTk3NDM5LC0xODM2MTIzODA0LDQ0OD
-MxMDAyMCwyMDY2MDY2MTcxLC0xMDU1NTcyODQwLDM4NzczNjE2
-M119
+eyJoaXN0b3J5IjpbLTE5Mjc1NTcwMzksLTU3ODAwMDQzLDEwNj
+E0NTUzMDMsODI3MjA5MTEsLTE2MzEwMTQzMTcsLTU3ODQ0NzY4
+MSwxNzM2MjYzMDEsLTU5MDE2OTg3MiwtNTA0NTk3NDM5LC0xOD
+M2MTIzODA0LDQ0ODMxMDAyMCwyMDY2MDY2MTcxLC0xMDU1NTcy
+ODQwLDM4NzczNjE2M119
 -->
