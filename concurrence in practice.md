@@ -617,8 +617,6 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
 
 * ConcurrenceHashMap
 
-
-
 如果在创建HashMap实例时没有给定capacity、loadFactor则默认值分别是16和0.75。 当好多Node 被映射到同一个桶时，如果这个桶中 node 的数量小于TREEIFY_THRESHOLD(8 )当然不会转化成树形结构存储；如果这个桶中Node 的数量大于了 TREEIFY_THRESHOLD(8 ) ，但是capacity小于MIN_TREEIFY_CAPACITY(64 ) 则依然使用链表结构进行存储，此时会对HashMap进行扩, 链表分半到不同的bucket 上, 如果capacity大于MIN_TREEIFY_CAPACITY(64 ) ，则会进行树化
 
 
@@ -638,6 +636,9 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
     * iterator
   iterator is designed to be used only one thread at a time.多个线程共用一个iterator实例, 可能会抛出 java.lang.IllegalStateException. 所以需要在每个线程用个单独的iterator实例.
  一个线程创建iterator之后对另一个线程对map元素的增删改,是可见的.
+
+以下来自ConcurrentHashMap 的overview
+> 用meige      
         
     jdk1.8之前， 采用分段锁机制, 默认分16个Segment , Segment继承自ReentrantLock, 对每个段的table进行线程间的同步.
 从1.8开始，采用CAS 机制，多个线程同时更新只有一个线程能成功。
@@ -780,7 +781,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Mjc1NTcwMzksLTU3ODAwMDQzLDEwNj
+eyJoaXN0b3J5IjpbLTE2MDgwNzgyNDEsLTU3ODAwMDQzLDEwNj
 E0NTUzMDMsODI3MjA5MTEsLTE2MzEwMTQzMTcsLTU3ODQ0NzY4
 MSwxNzM2MjYzMDEsLTU5MDE2OTg3MiwtNTA0NTk3NDM5LC0xOD
 M2MTIzODA0LDQ0ODMxMDAyMCwyMDY2MDY2MTcxLC0xMDU1NTcy
