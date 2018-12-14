@@ -641,7 +641,7 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
 > 用每个bucket 的首节点做锁, 可以减少多持有一个额外的锁的空间消耗, 但是有个缺点是会影响这个list 其他节点的更新,   
 
 > 当多个线程都发现map在扩容的时候, 会协助迁移 node, helpTransfer 这个方法;
->  在transfer 的时候, 碰到 forwarding node (hash 值是 "MOVED"), access
+>  在transfer 的时候, 碰到 forwarding node (hash 值是 "MOVED"), access and update 操作会重新扫描新的table. 
         
     jdk1.8之前， 采用分段锁机制, 默认分16个Segment , Segment继承自ReentrantLock, 对每个段的table进行线程间的同步.
 从1.8开始，采用CAS 机制，多个线程同时更新只有一个线程能成功。
@@ -784,10 +784,10 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNjQ0MjMxNzYsMTgyMjgyNDA4MiwtMj
-A3MzE2MTMwNiwtNTc4MDAwNDMsMTA2MTQ1NTMwMyw4MjcyMDkx
-MSwtMTYzMTAxNDMxNywtNTc4NDQ3NjgxLDE3MzYyNjMwMSwtNT
-kwMTY5ODcyLC01MDQ1OTc0MzksLTE4MzYxMjM4MDQsNDQ4MzEw
-MDIwLDIwNjYwNjYxNzEsLTEwNTU1NzI4NDAsMzg3NzM2MTYzXX
-0=
+eyJoaXN0b3J5IjpbLTIzMjUxMjIyNCwxODIyODI0MDgyLC0yMD
+czMTYxMzA2LC01NzgwMDA0MywxMDYxNDU1MzAzLDgyNzIwOTEx
+LC0xNjMxMDE0MzE3LC01Nzg0NDc2ODEsMTczNjI2MzAxLC01OT
+AxNjk4NzIsLTUwNDU5NzQzOSwtMTgzNjEyMzgwNCw0NDgzMTAw
+MjAsMjA2NjA2NjE3MSwtMTA1NTU3Mjg0MCwzODc3MzYxNjNdfQ
+==
 -->
