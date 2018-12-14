@@ -27,7 +27,6 @@
 * dubbo 线程池的核心线程数量如何设置, 取决于什么, 数据库还是机器?
 * 多个应用服务器的性能之和如何算, 
 * mysql 的常见问题, java的常见问题, 集合, 并发, jvm, concurrentHashMap, 红黑树, 
-* 准备英语问题 , 自我介绍
 * Build highly concurrent, distributed, and resilient message-driven applications on the JVM [http://akka.io](http://akka.io/)
 ### DOING
 
@@ -59,11 +58,11 @@ https://blog.csdn.net/flysqrlboy/article/details/79314521
 正常的, 消耗的内存和cpu都很少, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2NzE5MDcxOSwtNjk4NjczMzM0LDE2NT
-cyMzUwNzAsLTg5NzY1NDA5NCwtMTM4NDE1MzYzMCwtMTMwOTA3
-NzE1NiwtMTE2ODYwMjczNiwtMTYwMDM1NjA3MiwtMTQ0MzM1Mz
-MwOSwtMjEzMTU4NjkzOSw0MTQ2Mjg4MzUsLTE2NjY5MDY2NDks
-ODU4MjQ1MTI0LC00MjY3ODMwOTMsLTE0NTIxMDQ2Miw0MjkzOT
-QyOSwtNTQxOTYwNzM5LC0xMjcxNTU1NDA5LC0yODM1MDM5Mzcs
-MTM4NDQ0MDk3NF19
+eyJoaXN0b3J5IjpbLTE5ODAyNzY2MjksMTE2NzE5MDcxOSwtNj
+k4NjczMzM0LDE2NTcyMzUwNzAsLTg5NzY1NDA5NCwtMTM4NDE1
+MzYzMCwtMTMwOTA3NzE1NiwtMTE2ODYwMjczNiwtMTYwMDM1Nj
+A3MiwtMTQ0MzM1MzMwOSwtMjEzMTU4NjkzOSw0MTQ2Mjg4MzUs
+LTE2NjY5MDY2NDksODU4MjQ1MTI0LC00MjY3ODMwOTMsLTE0NT
+IxMDQ2Miw0MjkzOTQyOSwtNTQxOTYwNzM5LC0xMjcxNTU1NDA5
+LC0yODM1MDM5MzddfQ==
 -->
