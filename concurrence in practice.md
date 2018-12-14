@@ -621,7 +621,8 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
 从1.8开始，采用CAS 机制，多个线程同时更新只有一个线程能成功。
 
 由于get操作不是阻塞的, 所以只能看到更新(包括put和remove )完成的值, 也就是:  update operation happend-before  retrievals .  引用下面一段jdk-1.8的注释来表达这个意思;  
-    > retrievals reflect the results of the most recently completed update operations holding upon their onset.  
+   > retrievals reflect the results of the most recently completed update operations holding upon their onset.  
+对于一些集合操作, putAll, clear, 并发的retrievals (检索) 可能只反映部分的结果. 
     
     * put 操作
     val和key 都不能为null, 根据hash, hash & (tab.length-1), 算出数组的下标, 如果下标没有元素, 则进行一次CAS, 失败则进行下次循环, 如果该下标有元素, 则synchronize(头结点), 继续判断如果是链表, 则放在链表的末尾, 如果是红黑树, 则调用红黑树的插值方法, 如果链表长度超过了默认值8 , 则会优先进行tab 数组的扩容, 如果数组的长度大于64, 则会把链表转化为红黑树. 
@@ -772,7 +773,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5OTgxNTcxMiwtNTkwMTY5ODcyLC01MD
-Q1OTc0MzksLTE4MzYxMjM4MDQsNDQ4MzEwMDIwLDIwNjYwNjYx
-NzEsLTEwNTU1NzI4NDAsMzg3NzM2MTYzXX0=
+eyJoaXN0b3J5IjpbMTczNjI2MzAxLC01OTAxNjk4NzIsLTUwND
+U5NzQzOSwtMTgzNjEyMzgwNCw0NDgzMTAwMjAsMjA2NjA2NjE3
+MSwtMTA1NTU3Mjg0MCwzODc3MzYxNjNdfQ==
 -->
