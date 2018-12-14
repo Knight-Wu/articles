@@ -616,9 +616,9 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
 每次写数组的时候，都会用ReentrantLock 锁住，然后生成一个新的数组进行拷贝, 只保证写是线程安全的，不保证写立马被读可见, 因为读的时候没有加锁. 适用于读多写少的场景.
 
 * ConcurrenceHashMap
+如果在创建HashMap实例时没有给定capacity、loadFactor则默认值分别是16和0.75。 当好多Node 被映射到同一个桶时，如果这个桶中 node 的数量小于TREEIFY_THRESHOLD(8 )当然不会转化成树形结构存储；如果这个桶中Node 的数量大于了 TREEIFY_THRESHOLD(8 ) ，但是capacity小于MIN_TREEIFY_CAPACITY(64 ) 则依然使用链表结构进行存储，此时会对HashMap进行扩容；如果capacity大于了MIN_TREEIFY_CAPACITY ，则会进行树化。
 
-    jdk1.8之前， 采用分段锁机制, 默认分16个Segment , Segment继承自ReentrantLock, 对每个段的table进行线程间的同步.
-从1.8开始，采用CAS 机制，多个线程同时更新只有一个线程能成功。
+
 
 由于get操作不是阻塞的, 所以只能看到更新(包括put和remove )完成的值, 也就是:  update operation happend-before  retrievals .  引用下面一段jdk-1.8的注释来表达这个意思;  
    > retrievals reflect the results of the most recently completed update operations holding upon their onset.  
@@ -637,6 +637,8 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
   iterator is designed to be used only one thread at a time.多个线程共用一个iterator实例, 可能会抛出 java.lang.IllegalStateException. 所以需要在每个线程用个单独的iterator实例.
  一个线程创建iterator之后对另一个线程对map元素的增删改,是可见的.
         
+    jdk1.8之前， 采用分段锁机制, 默认分16个Segment , Segment继承自ReentrantLock, 对每个段的table进行线程间的同步.
+从1.8开始，采用CAS 机制，多个线程同时更新只有一个线程能成功。
 
 
 #### Lock
@@ -776,7 +778,8 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3ODQ0NzY4MSwxNzM2MjYzMDEsLTU5MD
-E2OTg3MiwtNTA0NTk3NDM5LC0xODM2MTIzODA0LDQ0ODMxMDAy
-MCwyMDY2MDY2MTcxLC0xMDU1NTcyODQwLDM4NzczNjE2M119
+eyJoaXN0b3J5IjpbLTE2MzEwMTQzMTcsLTU3ODQ0NzY4MSwxNz
+M2MjYzMDEsLTU5MDE2OTg3MiwtNTA0NTk3NDM5LC0xODM2MTIz
+ODA0LDQ0ODMxMDAyMCwyMDY2MDY2MTcxLC0xMDU1NTcyODQwLD
+M4NzczNjE2M119
 -->
