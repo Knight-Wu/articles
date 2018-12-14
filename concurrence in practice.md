@@ -638,7 +638,7 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
  一个线程创建iterator之后对另一个线程对map元素的增删改,是可见的.
 
 以下来自ConcurrentHashMap 的overview
-> 用每个bucket 的首节点做锁, 可以减少多持有一个额外的锁的空间消耗, 但是有个缺点是会影响这个list 其他节点的更新,   当多个线程都发现
+> 用每个bucket 的首节点做锁, 可以减少多持有一个额外的锁的空间消耗, 但是有个缺点是会影响这个list 其他节点的更新,   当多个线程都发现map在扩容的时候, 会协助迁移 node, helpTransfer 这个方法, 
         
     jdk1.8之前， 采用分段锁机制, 默认分16个Segment , Segment继承自ReentrantLock, 对每个段的table进行线程间的同步.
 从1.8开始，采用CAS 机制，多个线程同时更新只有一个线程能成功。
@@ -781,10 +781,9 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1MzM4MjQ0OSwxODIyODI0MDgyLC0yMD
-czMTYxMzA2LC01NzgwMDA0MywxMDYxNDU1MzAzLDgyNzIwOTEx
-LC0xNjMxMDE0MzE3LC01Nzg0NDc2ODEsMTczNjI2MzAxLC01OT
-AxNjk4NzIsLTUwNDU5NzQzOSwtMTgzNjEyMzgwNCw0NDgzMTAw
-MjAsMjA2NjA2NjE3MSwtMTA1NTU3Mjg0MCwzODc3MzYxNjNdfQ
-==
+eyJoaXN0b3J5IjpbNTYzODE2MDkzLDE4MjI4MjQwODIsLTIwNz
+MxNjEzMDYsLTU3ODAwMDQzLDEwNjE0NTUzMDMsODI3MjA5MTEs
+LTE2MzEwMTQzMTcsLTU3ODQ0NzY4MSwxNzM2MjYzMDEsLTU5MD
+E2OTg3MiwtNTA0NTk3NDM5LC0xODM2MTIzODA0LDQ0ODMxMDAy
+MCwyMDY2MDY2MTcxLC0xMDU1NTcyODQwLDM4NzczNjE2M119
 -->
