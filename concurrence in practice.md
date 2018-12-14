@@ -616,8 +616,7 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
 每次写数组的时候，都会用ReentrantLock 锁住，然后生成一个新的数组进行拷贝, 只保证写是线程安全的，不保证写立马被读可见, 因为读的时候没有加锁. 适用于读多写少的场景.
 
 * ConcurrenceHashMap
-如果在创建HashMap实例时没有给定capacity、loadFactor则默认值分别是16和0.75。 当好多Node 被映射到同一个桶时，如果这个桶中 node 的数量小于TREEIFY_THRESHOLD(8 )当然不会转化成树形结构存储；如果这个桶中Node 的数量大于了 TREEIFY_THRESHOLD(8 ) ，但是capacity小于MIN_TREEIFY_CAPACITY(64 ) 则依然使用链表结构进行存储，此时会对HashMap进行扩, 链表分半到不同的bucket 上, 如果capacity大于MIN_TREEIFY_CAPACITY(64 ) ，则会进行树化。
-
+如果在创建HashMap实例时没有给定capacity、loadFactor则默认值分别是16和0.75。 当好多Node 被映射到同一个桶时，如果这个桶中 node 的数量小于TREEIFY_THRESHOLD(8 )当然不会转化成树形结构存储；如果这个桶中Node 的数量大于了 TREEIFY_THRESHOLD(8 ) ，但是capacity小于MIN_TREEIFY_CAPACITY(64 ) 则依然使用链表结构进行存储，此时会对HashMap进行扩, 链表分半到不同的bucket 上, 如果capacity大于MIN_TREEIFY_CAPACITY(64 ) ，则会进行树化
 
 
 由于get操作不是阻塞的, 所以只能看到更新(包括put和remove )完成的值, 也就是:  update operation happend-before  retrievals .  引用下面一段jdk-1.8的注释来表达这个意思;  
@@ -778,8 +777,8 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI3MjA5MTEsLTE2MzEwMTQzMTcsLTU3OD
-Q0NzY4MSwxNzM2MjYzMDEsLTU5MDE2OTg3MiwtNTA0NTk3NDM5
-LC0xODM2MTIzODA0LDQ0ODMxMDAyMCwyMDY2MDY2MTcxLC0xMD
-U1NTcyODQwLDM4NzczNjE2M119
+eyJoaXN0b3J5IjpbMTA2MTQ1NTMwMyw4MjcyMDkxMSwtMTYzMT
+AxNDMxNywtNTc4NDQ3NjgxLDE3MzYyNjMwMSwtNTkwMTY5ODcy
+LC01MDQ1OTc0MzksLTE4MzYxMjM4MDQsNDQ4MzEwMDIwLDIwNj
+YwNjYxNzEsLTEwNTU1NzI4NDAsMzg3NzM2MTYzXX0=
 -->
