@@ -13,7 +13,9 @@
 当然这里的底数2和3可以用a和b替代，a，b大于等于2，属于整数。a,b取值是如何确定的呢？
 有点编程经验的都知道，分而治之的概念。排序算法中有一个叫做“归并排序”或者“合并排序”的算法，它用到的就是分而治之的思想，而它的时间复杂度就是N*logN，此算法采用的是二分法，所以可以认为对应的对数函数底数为2，也有可能是三分法，底数为3，以此类推。
 
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODcwMDc5NTE2LDE1NDcyMTc3MTNdfQ==
+eyJoaXN0b3J5IjpbLTg3ODU3Mzc1MCw4NzAwNzk1MTYsMTU0Nz
+IxNzcxM119
 -->
