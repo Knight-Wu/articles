@@ -604,7 +604,7 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
 #### Collections
 * queue(BlockingQueue)
 
-    大致流程: 读写线程先抢占进入阻塞队列(sync queue), 获取到互斥锁后, 读线程和写线程分别进入一个条件队列, 并若队列里元素为空,则读阻塞,直到新元素写入成功, 通知读队列的第一个线程,该线程进入阻塞队列排队, 直到获取到锁. 写阻塞同理;
+    大致流程: 读写线程先抢占进入阻塞队列(sync queue), 获取到互斥锁后, 读线程和写线程分别进入一个条件队列, 并写队列里元素为空,则读阻塞,直到新元素写入成功, 则通知读队列的第一个线程,该线程进入阻塞队列排队, 直到获取到锁. 写阻塞同理;
     
     * LinkedBlockingQueue
     * ArrayBlockingQueue
@@ -787,10 +787,10 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDAyOTczNjQ5LC0yMzI1MTIyMjQsMTgyMj
-gyNDA4MiwtMjA3MzE2MTMwNiwtNTc4MDAwNDMsMTA2MTQ1NTMw
-Myw4MjcyMDkxMSwtMTYzMTAxNDMxNywtNTc4NDQ3NjgxLDE3Mz
-YyNjMwMSwtNTkwMTY5ODcyLC01MDQ1OTc0MzksLTE4MzYxMjM4
-MDQsNDQ4MzEwMDIwLDIwNjYwNjYxNzEsLTEwNTU1NzI4NDAsMz
-g3NzM2MTYzXX0=
+eyJoaXN0b3J5IjpbOTIxNjYzMTI2LDQwMjk3MzY0OSwtMjMyNT
+EyMjI0LDE4MjI4MjQwODIsLTIwNzMxNjEzMDYsLTU3ODAwMDQz
+LDEwNjE0NTUzMDMsODI3MjA5MTEsLTE2MzEwMTQzMTcsLTU3OD
+Q0NzY4MSwxNzM2MjYzMDEsLTU5MDE2OTg3MiwtNTA0NTk3NDM5
+LC0xODM2MTIzODA0LDQ0ODMxMDAyMCwyMDY2MDY2MTcxLC0xMD
+U1NTcyODQwLDM4NzczNjE2M119
 -->
