@@ -19,8 +19,12 @@
 
 * 中序遍历
 因为左小右大, 可以根据中序遍历一颗二叉树来排序一个无序数组. 
+
+* 红黑树作为自平衡树在jdk1.8 hashmap中 的作用
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTQyMzEwMzIsMTcwNjUwNjIwOCwxNz
-cxMDkyNTMwLDg3MDA3OTUxNiwxNTQ3MjE3NzEzXX0=
+eyJoaXN0b3J5IjpbMTYwMzM1NDQyMiwtMTMxNDIzMTAzMiwxNz
+A2NTA2MjA4LDE3NzEwOTI1MzAsODcwMDc5NTE2LDE1NDcyMTc3
+MTNdfQ==
 -->
