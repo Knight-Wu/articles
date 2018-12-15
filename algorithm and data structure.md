@@ -17,8 +17,9 @@
 * 树的遍历
 最简单的划分：是深度优先（先访问子节点，再访问父节点，最后是第二个子节点）？还是广度优先（先访问第一个子节点，再访问第二个子节点，最后访问父节点）？ 深度优先可进一步按照根节点相对于左右子节点的访问先后来划分。如果把左节点和右节点的位置固定不动，那么根节点放在左节点的左边，称为前序（pre-order）、根节点放在左节点和右节点的中间，称为中序（in-order）、根节点放在右节点的右边，称为后序（post-order）。对广度优先而言，遍历没有前序中序后序之分：给定一组已排序的子节点，其“广度优先”的遍历只有一种唯一的结果。
 
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3MTA5MjUzMCw4NzAwNzk1MTYsMTU0Nz
-IxNzcxM119
+eyJoaXN0b3J5IjpbMTcwNjUwNjIwOCwxNzcxMDkyNTMwLDg3MD
+A3OTUxNiwxNTQ3MjE3NzEzXX0=
 -->
