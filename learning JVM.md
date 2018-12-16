@@ -180,7 +180,8 @@ java1.8的默认垃圾收集器是 parallel collector
 CMS 和G1 是注重响应时间的, 可以控制响应时间的多少.
 
 #### GC调优
-jvm heap 大小如何设置, 吞吐量这个指标如何设置, 
+jvm heap 大小初始化如何设置: 
+https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 jvm 参数调优: 
 https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 分为三个方面: Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal(如果前两者都满足了, 则会降低heap 的大小, 目前这个goal 还没有满足)
@@ -524,10 +525,11 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5MDgwNDM4NCwxNzE2Mjc4Nzk5LDE5Nj
-M4NDQxNjIsLTQwOTk4OTEyOCwxMzg5MjQyMjM4LDUzNzUxOTQ4
-OSwtOTQ1ODQwOTMxLDE1NTkyOTM4OSwtMTA1ODE0ODY0OCwtMT
-cxMDc2NjM2LC0xNTYxNTY0NDU5LC0xMjM3OTM3NjUxLC00NDg3
-MDMwNTcsLTk3NTEzNjIzNSwtODQyMDMyMzQ2LC05MDg0OTMwLD
-E3NzQ3MzI3ODQsNDI1OTMxMTY2LC0xMzMwMTg1NTgwXX0=
+eyJoaXN0b3J5IjpbLTE0OTI0OTM4MDksMTk5MDgwNDM4NCwxNz
+E2Mjc4Nzk5LDE5NjM4NDQxNjIsLTQwOTk4OTEyOCwxMzg5MjQy
+MjM4LDUzNzUxOTQ4OSwtOTQ1ODQwOTMxLDE1NTkyOTM4OSwtMT
+A1ODE0ODY0OCwtMTcxMDc2NjM2LC0xNTYxNTY0NDU5LC0xMjM3
+OTM3NjUxLC00NDg3MDMwNTcsLTk3NTEzNjIzNSwtODQyMDMyMz
+Q2LC05MDg0OTMwLDE3NzQ3MzI3ODQsNDI1OTMxMTY2LC0xMzMw
+MTg1NTgwXX0=
 -->
