@@ -165,7 +165,8 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
   * 可预测的停顿
 
 #### 选择垃圾收集器
-java1.8的默认垃圾收集器是 parallel collector, 是一个注重吞吐量的, 但是响应时间可能大于一秒, 
+java1.8的默认垃圾收集器是 parallel collector, 是一个注重吞吐量的, 但是响应时间可能大于一秒, CMS 和G1 是注重响应时间的, 可以控制响应时间的多少.
+ parallel collector 和CMS的配置如何设置
 
 
 ### java heap 分代(基于jdk1.8)
@@ -499,7 +500,7 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyMDcxNjI1NywxNTU5MjkzODksLTEwNT
+eyJoaXN0b3J5IjpbLTk0NTg0MDkzMSwxNTU5MjkzODksLTEwNT
 gxNDg2NDgsLTE3MTA3NjYzNiwtMTU2MTU2NDQ1OSwtMTIzNzkz
 NzY1MSwtNDQ4NzAzMDU3LC05NzUxMzYyMzUsLTg0MjAzMjM0Ni
 wtOTA4NDkzMCwxNzc0NzMyNzg0LDQyNTkzMTE2NiwtMTMzMDE4
