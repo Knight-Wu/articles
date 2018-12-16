@@ -193,10 +193,10 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 
 
 * 将SurvivorRatio由默认的8改为2
-> 使surivor的比例增大, eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 影响是: minorGC的频率增大, 因为eden小了; 增大了新生代对象复制的开销, 因为有更多的对象会留在 surivor区域, 但是提高了晋升老年代的门槛, 让新生代对象能进行充分的淘汰才能进入老年代,  使真正的长寿的对象才能进入老年代, 使fullGC的时间变短了. 
+使surivor的比例增大, eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 影响是: minorGC的频率增大, 因为eden小了; 增大了新生代对象复制的开销, 因为有更多的对象会留在 surivor区域, 但是提高了晋升老年代的门槛, 让新生代对象能进行充分的淘汰才能进入老年代,  使真正的长寿的对象才能进入老年代, 使fullGC的时间变短了. 
 
 * NewParSize调优
-> NewParSize表示新生代大小, 增大新生代大小, 则单次minorGC时间变长, 频率下降, 业务读写操作时间抖动较大; 减小新生代大小, 就会使minorGC频率加快, 加快晋升到老年代的速度(因为每minorGC一次, 对象年龄加一), 增加fullGC的机会
+ NewParSize表示新生代大小, 增大新生代大小, 则单次minorGC时间变长, 频率下降, 业务读写操作时间抖动较大; 减小新生代大小, 就会使minorGC频率加快, 加快晋升到老年代的速度(因为每minorGC一次, 对象年龄加一), 增加fullGC的机会
 
 ### java heap 分代(基于jdk1.8)
 * 新生代(PSYoungGen)
@@ -527,11 +527,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjgzNTEyMTk3LC0xMjE4Njg2MTY3LC0xND
-kyNDkzODA5LDE5OTA4MDQzODQsMTcxNjI3ODc5OSwxOTYzODQ0
-MTYyLC00MDk5ODkxMjgsMTM4OTI0MjIzOCw1Mzc1MTk0ODksLT
-k0NTg0MDkzMSwxNTU5MjkzODksLTEwNTgxNDg2NDgsLTE3MTA3
-NjYzNiwtMTU2MTU2NDQ1OSwtMTIzNzkzNzY1MSwtNDQ4NzAzMD
-U3LC05NzUxMzYyMzUsLTg0MjAzMjM0NiwtOTA4NDkzMCwxNzc0
-NzMyNzg0XX0=
+eyJoaXN0b3J5IjpbLTI5OTk1NzI5NSw2ODM1MTIxOTcsLTEyMT
+g2ODYxNjcsLTE0OTI0OTM4MDksMTk5MDgwNDM4NCwxNzE2Mjc4
+Nzk5LDE5NjM4NDQxNjIsLTQwOTk4OTEyOCwxMzg5MjQyMjM4LD
+UzNzUxOTQ4OSwtOTQ1ODQwOTMxLDE1NTkyOTM4OSwtMTA1ODE0
+ODY0OCwtMTcxMDc2NjM2LC0xNTYxNTY0NDU5LC0xMjM3OTM3Nj
+UxLC00NDg3MDMwNTcsLTk3NTEzNjIzNSwtODQyMDMyMzQ2LC05
+MDg0OTMwXX0=
 -->
