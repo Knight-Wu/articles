@@ -22,9 +22,11 @@
 
 * 红黑树作为自平衡树在jdk1.8 hashmap中 的作用
 
+#### B树
+B 树的深度
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwMzM1NDQyMiwtMTMxNDIzMTAzMiwxNz
-A2NTA2MjA4LDE3NzEwOTI1MzAsODcwMDc5NTE2LDE1NDcyMTc3
-MTNdfQ==
+eyJoaXN0b3J5IjpbLTE0NjE1MjMwNzEsMTYwMzM1NDQyMiwtMT
+MxNDIzMTAzMiwxNzA2NTA2MjA4LDE3NzEwOTI1MzAsODcwMDc5
+NTE2LDE1NDcyMTc3MTNdfQ==
 -->
