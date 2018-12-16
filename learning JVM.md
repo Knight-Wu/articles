@@ -165,6 +165,9 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
   * 可预测的停顿
 
 #### 选择垃圾收集器
+jvm 参数调优: 
+https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
+各个收集器的配合使用的关系和特点: http://www.fasterj.com/articles/oraclecollectors1.shtml
 
 java1.8的默认垃圾收集器是 parallel collector, 是一个注重吞吐量的, 但是响应时间可能大于一秒, CMS 和G1 是注重响应时间的, 可以控制响应时间的多少.
  parallel collector 和CMS的配置如何设置
@@ -501,9 +504,9 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5MjkzODY5OSwtOTQ1ODQwOTMxLDE1NT
-kyOTM4OSwtMTA1ODE0ODY0OCwtMTcxMDc2NjM2LC0xNTYxNTY0
-NDU5LC0xMjM3OTM3NjUxLC00NDg3MDMwNTcsLTk3NTEzNjIzNS
-wtODQyMDMyMzQ2LC05MDg0OTMwLDE3NzQ3MzI3ODQsNDI1OTMx
-MTY2LC0xMzMwMTg1NTgwXX0=
+eyJoaXN0b3J5IjpbLTEwNDc5NTA1MTUsLTk0NTg0MDkzMSwxNT
+U5MjkzODksLTEwNTgxNDg2NDgsLTE3MTA3NjYzNiwtMTU2MTU2
+NDQ1OSwtMTIzNzkzNzY1MSwtNDQ4NzAzMDU3LC05NzUxMzYyMz
+UsLTg0MjAzMjM0NiwtOTA4NDkzMCwxNzc0NzMyNzg0LDQyNTkz
+MTE2NiwtMTMzMDE4NTU4MF19
 -->
