@@ -172,7 +172,8 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 
 https://stackoverflow.com/questions/33206313/default-garbage-collector-for-java-8
 
-java1.8的默认垃圾收集器是 parallel collector, 是一个注重吞吐量的, 但是响应时间可能大于一秒, CMS 和G1 是注重响应时间的, 可以控制响应时间的多少.
+java1.8的默认垃圾收集器是 parallel collector(https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/parallel.html) 是一个注重吞吐量的, 
+但是响应时间可能大于一秒, CMS 和G1 是注重响应时间的, 可以控制响应时间的多少.
  parallel collector 和CMS的配置如何设置
 
 
@@ -507,9 +508,9 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTM3NTE5NDg5LC05NDU4NDA5MzEsMTU1OT
-I5Mzg5LC0xMDU4MTQ4NjQ4LC0xNzEwNzY2MzYsLTE1NjE1NjQ0
-NTksLTEyMzc5Mzc2NTEsLTQ0ODcwMzA1NywtOTc1MTM2MjM1LC
-04NDIwMzIzNDYsLTkwODQ5MzAsMTc3NDczMjc4NCw0MjU5MzEx
-NjYsLTEzMzAxODU1ODBdfQ==
+eyJoaXN0b3J5IjpbMTM4OTI0MjIzOCw1Mzc1MTk0ODksLTk0NT
+g0MDkzMSwxNTU5MjkzODksLTEwNTgxNDg2NDgsLTE3MTA3NjYz
+NiwtMTU2MTU2NDQ1OSwtMTIzNzkzNzY1MSwtNDQ4NzAzMDU3LC
+05NzUxMzYyMzUsLTg0MjAzMjM0NiwtOTA4NDkzMCwxNzc0NzMy
+Nzg0LDQyNTkzMTE2NiwtMTMzMDE4NTU4MF19
 -->
