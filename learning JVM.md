@@ -185,7 +185,10 @@ jvm 参数调优:
 https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 分为三个方面: Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal(如果前两者都满足了, 则会降低heap 的大小, 目前这个goal 还没有满足)
 
-> The garbage collector tries to meet any pause time goal before the throughput goal.(pause time goal有更高的优先级 )
+ The garbage collector tries to meet any pause time goal before the throughput goal.(pause time goal有更高的优先级 )
+ 吞吐量不够, 需要加大heap size; gc pause 时间太长, 需要减小heap size, 可能会导致heap size 在震荡, 如何协调. 
+
+
 
 
 * 将SurvivorRatio由默认的8改为2
@@ -521,10 +524,10 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc3NTg3NDc0LDE3MTYyNzg3OTksMTk2Mz
-g0NDE2MiwtNDA5OTg5MTI4LDEzODkyNDIyMzgsNTM3NTE5NDg5
-LC05NDU4NDA5MzEsMTU1OTI5Mzg5LC0xMDU4MTQ4NjQ4LC0xNz
-EwNzY2MzYsLTE1NjE1NjQ0NTksLTEyMzc5Mzc2NTEsLTQ0ODcw
-MzA1NywtOTc1MTM2MjM1LC04NDIwMzIzNDYsLTkwODQ5MzAsMT
-c3NDczMjc4NCw0MjU5MzExNjYsLTEzMzAxODU1ODBdfQ==
+eyJoaXN0b3J5IjpbMTk5MDgwNDM4NCwxNzE2Mjc4Nzk5LDE5Nj
+M4NDQxNjIsLTQwOTk4OTEyOCwxMzg5MjQyMjM4LDUzNzUxOTQ4
+OSwtOTQ1ODQwOTMxLDE1NTkyOTM4OSwtMTA1ODE0ODY0OCwtMT
+cxMDc2NjM2LC0xNTYxNTY0NDU5LC0xMjM3OTM3NjUxLC00NDg3
+MDMwNTcsLTk3NTEzNjIzNSwtODQyMDMyMzQ2LC05MDg0OTMwLD
+E3NzQ3MzI3ODQsNDI1OTMxMTY2LC0xMzMwMTg1NTgwXX0=
 -->
