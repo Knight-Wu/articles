@@ -164,7 +164,8 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
   整体使用标记-整理, 局部采用标记-复制,故不会有内存碎片.
   * 可预测的停顿
 
-#### 选择垃圾shoujiq
+#### 选择垃圾收集器
+java1.8的默认垃圾收集器是 parallel collector, 是一个注重吞吐量的, 但是响应时间可能大于一秒, 
 
 
 ### java heap 分代(基于jdk1.8)
@@ -498,9 +499,9 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxOTQyNDQzLDE1NTkyOTM4OSwtMTA1OD
-E0ODY0OCwtMTcxMDc2NjM2LC0xNTYxNTY0NDU5LC0xMjM3OTM3
-NjUxLC00NDg3MDMwNTcsLTk3NTEzNjIzNSwtODQyMDMyMzQ2LC
-05MDg0OTMwLDE3NzQ3MzI3ODQsNDI1OTMxMTY2LC0xMzMwMTg1
-NTgwXX0=
+eyJoaXN0b3J5IjpbMTgyMDcxNjI1NywxNTU5MjkzODksLTEwNT
+gxNDg2NDgsLTE3MTA3NjYzNiwtMTU2MTU2NDQ1OSwtMTIzNzkz
+NzY1MSwtNDQ4NzAzMDU3LC05NzUxMzYyMzUsLTg0MjAzMjM0Ni
+wtOTA4NDkzMCwxNzc0NzMyNzg0LDQyNTkzMTE2NiwtMTMzMDE4
+NTU4MF19
 -->
