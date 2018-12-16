@@ -165,9 +165,8 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
   * 可预测的停顿
 
 #### 选择垃圾收集器
+The garbage collector tries to meet any pause time goal before the throughput goal.
 
-jvm 参数调优: 
-https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 各个收集器的配合使用的关系和特点: http://www.fasterj.com/articles/oraclecollectors1.shtml
 
 https://stackoverflow.com/questions/33206313/default-garbage-collector-for-java-8
@@ -180,7 +179,16 @@ java1.8的默认垃圾收集器是 parallel collector
 
 CMS 和G1 是注重响应时间的, 可以控制响应时间的多少.
 
+#### GC调优
+jvm 参数调优: 
+https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
+分为三个方面: Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal(如果qian)
 
+* 将SurvivorRatio由默认的8改为2
+> 使surivor的比例增大, eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 影响是: minorGC的频率增大, 因为eden小了; 增大了新生代对象复制的开销, 因为有更多的对象会留在 surivor区域, 但是提高了晋升老年代的门槛, 让新生代对象能进行充分的淘汰才能进入老年代,  使真正的长寿的对象才能进入老年代, 使fullGC的时间变短了. 
+
+* NewParSize调优
+> NewParSize表示新生代大小, 增大新生代大小, 则单次minorGC时间变长, 频率下降, 业务读写操作时间抖动较大; 减小新生代大小, 就会使minorGC频率加快, 加快晋升到老年代的速度(因为每minorGC一次, 对象年龄加一), 增加fullGC的机会
 
 ### java heap 分代(基于jdk1.8)
 * 新生代(PSYoungGen)
@@ -210,12 +218,8 @@ https://www.zhihu.com/question/41922036/answer/93079526
 > Full GC时，就不在分 “young gen使用young gen自己的收集器(一般是copy算法)；old gen使用old gen的收集器(一般是mark-sweep-compact算法)”，而是，整个heap以及perm gen，所有内存，全部的统一使用 old gen的收集器(一般是mark-sweep-compact算法) 一站式搞定
 
 
-#### GC调优案例
-* 将SurvivorRatio由默认的8改为2
-> 使surivor的比例增大, eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 影响是: minorGC的频率增大, 因为eden小了; 增大了新生代对象复制的开销, 因为有更多的对象会留在 surivor区域, 但是提高了晋升老年代的门槛, 让新生代对象能进行充分的淘汰才能进入老年代,  使真正的长寿的对象才能进入老年代, 使fullGC的时间变短了. 
 
-* NewParSize调优
-> NewParSize表示新生代大小, 增大新生代大小, 则单次minorGC时间变长, 频率下降, 业务读写操作时间抖动较大; 减小新生代大小, 就会使minorGC频率加快, 加快晋升到老年代的速度(因为每minorGC一次, 对象年龄加一), 增加fullGC的机会
+
 
 
 
@@ -513,10 +517,10 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2Mzg0NDE2MiwtNDA5OTg5MTI4LDEzOD
-kyNDIyMzgsNTM3NTE5NDg5LC05NDU4NDA5MzEsMTU1OTI5Mzg5
-LC0xMDU4MTQ4NjQ4LC0xNzEwNzY2MzYsLTE1NjE1NjQ0NTksLT
-EyMzc5Mzc2NTEsLTQ0ODcwMzA1NywtOTc1MTM2MjM1LC04NDIw
-MzIzNDYsLTkwODQ5MzAsMTc3NDczMjc4NCw0MjU5MzExNjYsLT
-EzMzAxODU1ODBdfQ==
+eyJoaXN0b3J5IjpbMjA0NTkzNjk4NSwxOTYzODQ0MTYyLC00MD
+k5ODkxMjgsMTM4OTI0MjIzOCw1Mzc1MTk0ODksLTk0NTg0MDkz
+MSwxNTU5MjkzODksLTEwNTgxNDg2NDgsLTE3MTA3NjYzNiwtMT
+U2MTU2NDQ1OSwtMTIzNzkzNzY1MSwtNDQ4NzAzMDU3LC05NzUx
+MzYyMzUsLTg0MjAzMjM0NiwtOTA4NDkzMCwxNzc0NzMyNzg0LD
+QyNTkzMTE2NiwtMTMzMDE4NTU4MF19
 -->
