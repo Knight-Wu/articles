@@ -23,10 +23,11 @@
 * 红黑树作为自平衡树在jdk1.8 hashmap中 的作用
 
 #### B树
-B 树的深度
+> B树相对于平衡二叉树的不同是，每个节点包含的关键字增多了，特别是在B树应用到数据库中的时候，数据库充分利用了磁盘块的原理（磁盘数据存储是采用块的形式存储的，每个块的大小为4K，每次IO进行数据读取时，同一个磁盘块的数据可以一次性读取出来）把节点大小限制和充分使用在磁盘快大小范围；把树的节点关键字增多后树的深度比原来的二叉树少了，减少数据查找的次数和复杂度;
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjE1MjMwNzEsMTYwMzM1NDQyMiwtMT
+eyJoaXN0b3J5IjpbLTExMzA4NjA2MzMsMTYwMzM1NDQyMiwtMT
 MxNDIzMTAzMiwxNzA2NTA2MjA4LDE3NzEwOTI1MzAsODcwMDc5
 NTE2LDE1NDcyMTc3MTNdfQ==
 -->
