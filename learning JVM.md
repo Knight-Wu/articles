@@ -372,13 +372,13 @@ Constant pool:
 
 > 以下几种场景, 类会被正常初始化
 
-> 1、使用new关键字实例化对象、读取或者设置一个类的静态字段（被final修饰的静态字段除外）、调用一个类的静态方法的时候
+ 1、使用new关键字实例化对象、读取或者设置一个类的静态字段（被final修饰的静态字段除外）、调用一个类的静态方法的时候
 
-> 2、使用java.lang.reflect包中的方法对类进行反射调用的时候
+ 2、使用java.lang.reflect包中的方法对类进行反射调用的时候
 
-> 3、初始化一个类，发现其父类还没有初始化过的时候
+ 3、初始化一个类，发现其父类还没有初始化过的时候
 
-> 4、虚拟机启动的时候，虚拟机会先初始化用户指定的包含main()方法的那个类
+ 4、虚拟机启动的时候，虚拟机会先初始化用户指定的包含main()方法的那个类
 
 ---
 
@@ -525,11 +525,11 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTI0OTM4MDksMTk5MDgwNDM4NCwxNz
-E2Mjc4Nzk5LDE5NjM4NDQxNjIsLTQwOTk4OTEyOCwxMzg5MjQy
-MjM4LDUzNzUxOTQ4OSwtOTQ1ODQwOTMxLDE1NTkyOTM4OSwtMT
-A1ODE0ODY0OCwtMTcxMDc2NjM2LC0xNTYxNTY0NDU5LC0xMjM3
-OTM3NjUxLC00NDg3MDMwNTcsLTk3NTEzNjIzNSwtODQyMDMyMz
-Q2LC05MDg0OTMwLDE3NzQ3MzI3ODQsNDI1OTMxMTY2LC0xMzMw
-MTg1NTgwXX0=
+eyJoaXN0b3J5IjpbLTEyMTg2ODYxNjcsLTE0OTI0OTM4MDksMT
+k5MDgwNDM4NCwxNzE2Mjc4Nzk5LDE5NjM4NDQxNjIsLTQwOTk4
+OTEyOCwxMzg5MjQyMjM4LDUzNzUxOTQ4OSwtOTQ1ODQwOTMxLD
+E1NTkyOTM4OSwtMTA1ODE0ODY0OCwtMTcxMDc2NjM2LC0xNTYx
+NTY0NDU5LC0xMjM3OTM3NjUxLC00NDg3MDMwNTcsLTk3NTEzNj
+IzNSwtODQyMDMyMzQ2LC05MDg0OTMwLDE3NzQ3MzI3ODQsNDI1
+OTMxMTY2XX0=
 -->
