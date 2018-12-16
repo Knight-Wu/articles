@@ -164,10 +164,7 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
   整体使用标记-整理, 局部采用标记-复制,故不会有内存碎片.
   * 可预测的停顿
 
-   
-
-*问题*
-* jvm的高并发的并行程度如何计算, 基于cpu的核数? 还是? 最大并行程度受限于怎么样的硬件指标
+  #### java 1.8 默认垃圾收集器
 
 
 ### java heap 分代(基于jdk1.8)
@@ -501,8 +498,8 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTgxNDg2NDgsLTE3MTA3NjYzNiwtMT
-U2MTU2NDQ1OSwtMTIzNzkzNzY1MSwtNDQ4NzAzMDU3LC05NzUx
-MzYyMzUsLTg0MjAzMjM0NiwtOTA4NDkzMCwxNzc0NzMyNzg0LD
-QyNTkzMTE2NiwtMTMzMDE4NTU4MF19
+eyJoaXN0b3J5IjpbMTU1OTI5Mzg5LC0xMDU4MTQ4NjQ4LC0xNz
+EwNzY2MzYsLTE1NjE1NjQ0NTksLTEyMzc5Mzc2NTEsLTQ0ODcw
+MzA1NywtOTc1MTM2MjM1LC04NDIwMzIzNDYsLTkwODQ5MzAsMT
+c3NDczMjc4NCw0MjU5MzExNjYsLTEzMzAxODU1ODBdfQ==
 -->
