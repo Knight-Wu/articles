@@ -195,6 +195,8 @@ minorGC之前会检查老年代最大的连续内存空间是否大于新生代�
 https://www.zhihu.com/question/41922036/answer/93079526  
 > full GC：当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC（因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC）；或者，如果有perm gen的话，要在perm gen分配空间但已经没有足够空间时，也要触发一次full GC；或者System.gc()、heap dump带GC，默认也是触发full GC。
 
+> Full GC时，就不在分 “young gen使用young gen自己的收集器(一般是copy算法)；old gen使用old gen的收集器(一般是mark-sweep-compact算法)”，而是，整个heap以及perm gen，所有内存，全部的统一使用 old gen的收集器(一般是mark-sweep-compact算法) 一站式搞定
+
 
 #### GC调优案例
 * 将SurvivorRatio由默认的8改为2
@@ -499,8 +501,8 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MTA3NjYzNiwtMTU2MTU2NDQ1OSwtMT
-IzNzkzNzY1MSwtNDQ4NzAzMDU3LC05NzUxMzYyMzUsLTg0MjAz
-MjM0NiwtOTA4NDkzMCwxNzc0NzMyNzg0LDQyNTkzMTE2NiwtMT
-MzMDE4NTU4MF19
+eyJoaXN0b3J5IjpbLTEwNTgxNDg2NDgsLTE3MTA3NjYzNiwtMT
+U2MTU2NDQ1OSwtMTIzNzkzNzY1MSwtNDQ4NzAzMDU3LC05NzUx
+MzYyMzUsLTg0MjAzMjM0NiwtOTA4NDkzMCwxNzc0NzMyNzg0LD
+QyNTkzMTE2NiwtMTMzMDE4NTU4MF19
 -->
