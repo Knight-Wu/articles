@@ -173,7 +173,9 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 https://stackoverflow.com/questions/33206313/default-garbage-collector-for-java-8
 
 java1.8的默认垃圾收集器是 parallel collector(https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/parallel.html) 是一个注重吞吐量的, 但是响应时间可能大于一秒,  
-可以用配置控制吞吐量(gc 时间和运行时间的比值), 最大GC 时间, 动态调整heap size的大小
+可以用配置控制吞吐量(gc 时间和运行时间的比值), 
+最大GC 暂停时间, 
+动态调整heap size的大小, 如果某个代的gc时间超过最大GC 停顿时间, 则会减少这个代的大小
 CMS 和G1 是注重响应时间的, 可以控制响应时间的多少.
  parallel collector 和CMS的配置如何设置
 
@@ -509,7 +511,7 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjUwMDY0NjIwLDEzODkyNDIyMzgsNTM3NT
+eyJoaXN0b3J5IjpbMjU3NzkyMzY2LDEzODkyNDIyMzgsNTM3NT
 E5NDg5LC05NDU4NDA5MzEsMTU1OTI5Mzg5LC0xMDU4MTQ4NjQ4
 LC0xNzEwNzY2MzYsLTE1NjE1NjQ0NTksLTEyMzc5Mzc2NTEsLT
 Q0ODcwMzA1NywtOTc1MTM2MjM1LC04NDIwMzIzNDYsLTkwODQ5
