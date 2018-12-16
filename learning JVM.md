@@ -165,7 +165,7 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
   * 可预测的停顿
 
 #### 选择垃圾收集器
-The garbage collector tries to meet any pause time goal before the throughput goal.
+
 
 各个收集器的配合使用的关系和特点: http://www.fasterj.com/articles/oraclecollectors1.shtml
 
@@ -182,7 +182,10 @@ CMS 和G1 是注重响应时间的, 可以控制响应时间的多少.
 #### GC调优
 jvm 参数调优: 
 https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
-分为三个方面: Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal(如果qian)
+分为三个方面: Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal(如果前两者都满足了, 则会降低heap 的大小, 目前这个goal 还没有满足)
+
+> The garbage collector tries to meet any pause time goal before the throughput goal.(pause time goal有更高的优先级 )
+
 
 * 将SurvivorRatio由默认的8改为2
 > 使surivor的比例增大, eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 影响是: minorGC的频率增大, 因为eden小了; 增大了新生代对象复制的开销, 因为有更多的对象会留在 surivor区域, 但是提高了晋升老年代的门槛, 让新生代对象能进行充分的淘汰才能进入老年代,  使真正的长寿的对象才能进入老年代, 使fullGC的时间变短了. 
@@ -517,7 +520,7 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0NTkzNjk4NSwxOTYzODQ0MTYyLC00MD
+eyJoaXN0b3J5IjpbMTcxNjI3ODc5OSwxOTYzODQ0MTYyLC00MD
 k5ODkxMjgsMTM4OTI0MjIzOCw1Mzc1MTk0ODksLTk0NTg0MDkz
 MSwxNTU5MjkzODksLTEwNTgxNDg2NDgsLTE3MTA3NjYzNiwtMT
 U2MTU2NDQ1OSwtMTIzNzkzNzY1MSwtNDQ4NzAzMDU3LC05NzUx
