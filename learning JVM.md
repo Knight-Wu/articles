@@ -191,7 +191,15 @@ minorGC之前会检查老年代最大的连续内存空间是否大于新生代�
 > 新生代gc过程
 1. 对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代.
 
->无论是Minor GC还是CMS GC，都会’Stop-The-World’，即停止用户的一切线程，只留下gc线程回收垃圾对象。其中Minor GC的STW时间主要耗费在复制阶段，CMS GC的STW时间主要耗费在标示垃圾对象阶段
+* full GC
+> full GC：当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC（因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC）；或者，如果有perm gen的话，要在perm gen分配空间但已经没有足够空间时，也要触发一次full GC；或者System.gc()、heap dump带GC，默认也是触发full GC。
+
+  
+  
+作者：RednaxelaFX  
+链接：https://www.zhihu.com/question/41922036/answer/93079526  
+来源：知乎  
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 #### GC调优案例
 * 将SurvivorRatio由默认的8改为2
@@ -496,7 +504,8 @@ public class A{
 #### 问题
 1. spring是如何运行起来的, 并维持程序一直运行, 不结束
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzc5Mzc2NTEsLTQ0ODcwMzA1NywtOT
-c1MTM2MjM1LC04NDIwMzIzNDYsLTkwODQ5MzAsMTc3NDczMjc4
-NCw0MjU5MzExNjYsLTEzMzAxODU1ODBdfQ==
+eyJoaXN0b3J5IjpbLTE1NjE1NjQ0NTksLTEyMzc5Mzc2NTEsLT
+Q0ODcwMzA1NywtOTc1MTM2MjM1LC04NDIwMzIzNDYsLTkwODQ5
+MzAsMTc3NDczMjc4NCw0MjU5MzExNjYsLTEzMzAxODU1ODBdfQ
+==
 -->
