@@ -514,22 +514,21 @@ public class A{
     java -classpath . packageA.packageB.A
 ```
 
-* GC 调优
-> [http://hbasefly.com/2016/08/09/hbase-cms-gc/](http://hbasefly.com/2016/08/09/hbase-cms-gc/)
 
 #### jvm常用命令
 * -verbose:class , -verbose:gc ,-verbose:jni 
 > [https://dzone.com/articles/how-use-verbose-options-java](https://dzone.com/articles/how-use-verbose-options-java)
 > -verbose:class is used to display the information about classes being loaded by JVM. This is useful when using class loaders for loading classes dynamically or for analysing what all classes are getting loaded in a particular scenario. 
 
-#### 问题
-1. spring是如何运行起来的, 并维持程序一直运行, 不结束
+#### 零散问题
+* 字节码的文件格式
+https://www.jianshu.com/p/252f381a6bc4
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTg2ODYxNjcsLTE0OTI0OTM4MDksMT
-k5MDgwNDM4NCwxNzE2Mjc4Nzk5LDE5NjM4NDQxNjIsLTQwOTk4
-OTEyOCwxMzg5MjQyMjM4LDUzNzUxOTQ4OSwtOTQ1ODQwOTMxLD
-E1NTkyOTM4OSwtMTA1ODE0ODY0OCwtMTcxMDc2NjM2LC0xNTYx
-NTY0NDU5LC0xMjM3OTM3NjUxLC00NDg3MDMwNTcsLTk3NTEzNj
-IzNSwtODQyMDMyMzQ2LC05MDg0OTMwLDE3NzQ3MzI3ODQsNDI1
-OTMxMTY2XX0=
+eyJoaXN0b3J5IjpbMTkwNjI4MTc3OCwtMTIxODY4NjE2NywtMT
+Q5MjQ5MzgwOSwxOTkwODA0Mzg0LDE3MTYyNzg3OTksMTk2Mzg0
+NDE2MiwtNDA5OTg5MTI4LDEzODkyNDIyMzgsNTM3NTE5NDg5LC
+05NDU4NDA5MzEsMTU1OTI5Mzg5LC0xMDU4MTQ4NjQ4LC0xNzEw
+NzY2MzYsLTE1NjE1NjQ0NTksLTEyMzc5Mzc2NTEsLTQ0ODcwMz
+A1NywtOTc1MTM2MjM1LC04NDIwMzIzNDYsLTkwODQ5MzAsMTc3
+NDczMjc4NF19
 -->
