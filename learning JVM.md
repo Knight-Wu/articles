@@ -146,6 +146,11 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
 
 * Parallel Scavenage
 新生代收集器, 注重控制吞吐量来控制GC的停顿时间, 虚拟机运行100分钟, GC一分钟, 吞吐量 99%
+java1.8的默认垃圾收集器是 parallel collector
+(https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/parallel.html) 是一个注重吞吐量的, 但是响应时间较长的GC collector, 
+可以控制吞吐量(gc 时间和运行时间的比值), 
+最大GC 暂停时间, 
+动态调整heap size的大小, 如果某个代的gc时间超过最大GC 停顿时间, 则会按比例减少这个代的大小, 如果某个代的吞吐量不满足, 则会增大某个代的大小.
 重要参数 : -XX:MaxGCPauseMills , -XX:GCTimeRatio, -XX:UseAdaptiveSizePolicy(自适应调节) 与ParNew的最大区别
 
 * Serial Old
@@ -174,11 +179,7 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
 
 https://stackoverflow.com/questions/33206313/default-garbage-collector-for-java-8
 
-java1.8的默认垃圾收集器是 parallel collector
-(https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/parallel.html) 是一个注重吞吐量的, 但是响应时间较长的GC collector, 
-可以控制吞吐量(gc 时间和运行时间的比值), 
-最大GC 暂停时间, 
-动态调整heap size的大小, 如果某个代的gc时间超过最大GC 停顿时间, 则会按比例减少这个代的大小, 如果某个代的吞吐量不满足, 则会增大某个代的大小.
+
 
 CMS 和G1 是注重响应时间的, 可以控制响应时间的多少.
 
@@ -530,11 +531,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzk4MDA4MzQ5LC0xNjk5NzEzMzI2LC0yOT
-k5NTcyOTUsNjgzNTEyMTk3LC0xMjE4Njg2MTY3LC0xNDkyNDkz
-ODA5LDE5OTA4MDQzODQsMTcxNjI3ODc5OSwxOTYzODQ0MTYyLC
-00MDk5ODkxMjgsMTM4OTI0MjIzOCw1Mzc1MTk0ODksLTk0NTg0
-MDkzMSwxNTU5MjkzODksLTEwNTgxNDg2NDgsLTE3MTA3NjYzNi
-wtMTU2MTU2NDQ1OSwtMTIzNzkzNzY1MSwtNDQ4NzAzMDU3LC05
-NzUxMzYyMzVdfQ==
+eyJoaXN0b3J5IjpbLTUzNDMzNzY2MywtMTY5OTcxMzMyNiwtMj
+k5OTU3Mjk1LDY4MzUxMjE5NywtMTIxODY4NjE2NywtMTQ5MjQ5
+MzgwOSwxOTkwODA0Mzg0LDE3MTYyNzg3OTksMTk2Mzg0NDE2Mi
+wtNDA5OTg5MTI4LDEzODkyNDIyMzgsNTM3NTE5NDg5LC05NDU4
+NDA5MzEsMTU1OTI5Mzg5LC0xMDU4MTQ4NjQ4LC0xNzEwNzY2Mz
+YsLTE1NjE1NjQ0NTksLTEyMzc5Mzc2NTEsLTQ0ODcwMzA1Nywt
+OTc1MTM2MjM1XX0=
 -->
