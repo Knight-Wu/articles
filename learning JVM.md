@@ -195,7 +195,7 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 > In general, increase the memory as you increase the number of processors, since allocation can be parallelized.
 
 * The Young Generation
-Young Generation size 越大, minor gc 频率越低, 永久代就会越小(永久代 + 年轻代等于 heap size), major 会越频繁, 
+Young Generation size 越大, minor gc 频率越低, 永久代就会越小(永久代 + 年轻代等于 heap size), major 会越频繁, major 通常会引起minor , 就是一次full gc.
 
 
 jvm 参数调优: 
@@ -547,7 +547,7 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzI3MzE1OTc1LC0yMTQxMTcxMzkyLC0xMj
+eyJoaXN0b3J5IjpbMjI3ODM5MDgzLC0yMTQxMTcxMzkyLC0xMj
 M2NjgwNjYzLC00MDgwNzYzMDksMTIzMzMzNDI3OCwxNzk5NDMz
 NDAsLTUyMzczODE3NiwtMTI5Njk1OTIzOCwtMTY5OTcxMzMyNi
 wtMjk5OTU3Mjk1LDY4MzUxMjE5NywtMTIxODY4NjE2NywtMTQ5
