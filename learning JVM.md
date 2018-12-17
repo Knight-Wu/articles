@@ -194,6 +194,9 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
     
 > In general, increase the memory as you increase the number of processors, since allocation can be parallelized.
 
+* The Young Generation
+Young Generation size 越大, minor gc 频率越低, 永久代就会越小(永久代 + 年轻代等于 heap size), major 会越频繁, 
+
 
 jvm 参数调优: 
 https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
@@ -544,11 +547,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNDExNzEzOTIsLTEyMzY2ODA2NjMsLT
-QwODA3NjMwOSwxMjMzMzM0Mjc4LDE3OTk0MzM0MCwtNTIzNzM4
-MTc2LC0xMjk2OTU5MjM4LC0xNjk5NzEzMzI2LC0yOTk5NTcyOT
-UsNjgzNTEyMTk3LC0xMjE4Njg2MTY3LC0xNDkyNDkzODA5LDE5
-OTA4MDQzODQsMTcxNjI3ODc5OSwxOTYzODQ0MTYyLC00MDk5OD
-kxMjgsMTM4OTI0MjIzOCw1Mzc1MTk0ODksLTk0NTg0MDkzMSwx
-NTU5MjkzODldfQ==
+eyJoaXN0b3J5IjpbMzI3MzE1OTc1LC0yMTQxMTcxMzkyLC0xMj
+M2NjgwNjYzLC00MDgwNzYzMDksMTIzMzMzNDI3OCwxNzk5NDMz
+NDAsLTUyMzczODE3NiwtMTI5Njk1OTIzOCwtMTY5OTcxMzMyNi
+wtMjk5OTU3Mjk1LDY4MzUxMjE5NywtMTIxODY4NjE2NywtMTQ5
+MjQ5MzgwOSwxOTkwODA0Mzg0LDE3MTYyNzg3OTksMTk2Mzg0ND
+E2MiwtNDA5OTg5MTI4LDEzODkyNDIyMzgsNTM3NTE5NDg5LC05
+NDU4NDA5MzFdfQ==
 -->
