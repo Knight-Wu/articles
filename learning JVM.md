@@ -196,7 +196,8 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 
 * The Young Generation
 Young Generation size 越大, minor gc 频率越低, 永久代就会越小(永久代 + 年轻代等于 heap size), major 会越频繁, major 通常会引起minor , 就是一次full gc.
-
+> By default, the young generation size is controlled by the parameter  `NewRatio`. For example, setting  `-XX:NewRatio=3`  means that the ratio between the young and tenured generation is 1:3. In other words, the combined size of the eden and survivor spaces will be one-fourth of the total heap size.
+The parameters  `NewSize`  and  `MaxNewSize`  bound the young generation size from below and above. Setting these to the same value fixes the young generation, just as setting  `-Xms`  and  `-Xmx`  to the same value fixes the total heap size.
 
 jvm 参数调优: 
 https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
@@ -547,11 +548,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjI3ODM5MDgzLC0yMTQxMTcxMzkyLC0xMj
-M2NjgwNjYzLC00MDgwNzYzMDksMTIzMzMzNDI3OCwxNzk5NDMz
-NDAsLTUyMzczODE3NiwtMTI5Njk1OTIzOCwtMTY5OTcxMzMyNi
-wtMjk5OTU3Mjk1LDY4MzUxMjE5NywtMTIxODY4NjE2NywtMTQ5
-MjQ5MzgwOSwxOTkwODA0Mzg0LDE3MTYyNzg3OTksMTk2Mzg0ND
-E2MiwtNDA5OTg5MTI4LDEzODkyNDIyMzgsNTM3NTE5NDg5LC05
-NDU4NDA5MzFdfQ==
+eyJoaXN0b3J5IjpbLTE3OTQ4NDA3MzksLTIxNDExNzEzOTIsLT
+EyMzY2ODA2NjMsLTQwODA3NjMwOSwxMjMzMzM0Mjc4LDE3OTk0
+MzM0MCwtNTIzNzM4MTc2LC0xMjk2OTU5MjM4LC0xNjk5NzEzMz
+I2LC0yOTk5NTcyOTUsNjgzNTEyMTk3LC0xMjE4Njg2MTY3LC0x
+NDkyNDkzODA5LDE5OTA4MDQzODQsMTcxNjI3ODc5OSwxOTYzOD
+Q0MTYyLC00MDk5ODkxMjgsMTM4OTI0MjIzOCw1Mzc1MTk0ODks
+LTk0NTg0MDkzMV19
 -->
