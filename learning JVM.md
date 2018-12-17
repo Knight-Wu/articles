@@ -163,11 +163,11 @@ java1.8的默认垃圾收集器是 parallel collector
 是Serial 的老年代版本, 可以与Parallel Scavenage配合使用, 作为CMS的备案, 在发生concurrent mode failure使用
 
 * Parallel Old
-标记整理suanfa是Parallel Scavenage的老年代版本, 可与Parallel Scavenage 配合使用, 
+标记整理算法, 是Parallel Scavenage的老年代版本, 可与Parallel Scavenage 配合使用, 
 
 * CMS(Concurrent Mark Sweep)
 
-主要是将回收时间降至最短,基于标记-清除算法,
+,基于标记-清除算法,
   * 缺点
     * 收集阶段, 占用一部分线程和cpu资源, 导致吞吐量下降
     * 无法处理浮动垃圾, 因为gc时用户线程继续产生新对象, 所以需要预留至少一部分空间用作gc时新对象的产生(-XX: CMSInitiatingOccupancyFraction 设置百分比), 若这部分空间不能满足, 则会导致concurrent mode failure, 导致启用备份的Serial Old收集器, 停顿会很长.
@@ -528,7 +528,7 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwOTM0MTkyMiwtMTI5Njk1OTIzOCwtMT
+eyJoaXN0b3J5IjpbLTUyMzczODE3NiwtMTI5Njk1OTIzOCwtMT
 Y5OTcxMzMyNiwtMjk5OTU3Mjk1LDY4MzUxMjE5NywtMTIxODY4
 NjE2NywtMTQ5MjQ5MzgwOSwxOTkwODA0Mzg0LDE3MTYyNzg3OT
 ksMTk2Mzg0NDE2MiwtNDA5OTg5MTI4LDEzODkyNDIyMzgsNTM3
