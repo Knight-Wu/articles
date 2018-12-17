@@ -178,6 +178,7 @@ java1.8的默认垃圾收集器是 parallel collector
 4. Concurrent Abortable Preclean(并发可取消的预清理）,不会暂停用户线程
 5.  Final Remark 最终标记, 本阶段的目标是完成老年代中所有存活对象的标记, 因为之前的concurrent mask 是和用户线程并发执行的, 可能中间会产生浮动垃圾, 所以需要进行最终标记, 会STW
 6.  Concurrent Sweep（并发清除）此阶段与应用程序并发执行，不需要 STW。目的是删除未使用的对象，并收回他们占用的空间
+7. Concurrent Reset（并发重置）此阶段与应用程序并发执行，重置 CMS 算法相关的内部数据，为下一次 GC 循环做准备
 
 * 浮动垃圾(Floating Garbage)
 由于应用线程和gc 线程并行执行, gc 线程标记的可达的对象在标记结束后又不可达了, 这部分剩余的对象叫做浮动垃圾, 这部分对象会在下次gc 被回收.
@@ -563,11 +564,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTk3MDI0LDEzODI2NDA0NDgsLTIwMj
-IxMzgxNTIsLTE0MDc1NDU3OTAsLTk0NzY4MzY4NCwtNjY4MTIx
-NTgwLC0xODgxMDM3MzY0LDEzNjU2NDAwNTEsOTQ0MDU1NDM2LC
-00NTI3NjYzNTYsLTE2MzY0MzkwNzgsLTE3OTQ4NDA3MzksLTIx
-NDExNzEzOTIsLTEyMzY2ODA2NjMsLTQwODA3NjMwOSwxMjMzMz
-M0Mjc4LDE3OTk0MzM0MCwtNTIzNzM4MTc2LC0xMjk2OTU5MjM4
-LC0xNjk5NzEzMzI2XX0=
+eyJoaXN0b3J5IjpbLTE1OTg0ODY3MDMsMTM4MjY0MDQ0OCwtMj
+AyMjEzODE1MiwtMTQwNzU0NTc5MCwtOTQ3NjgzNjg0LC02Njgx
+MjE1ODAsLTE4ODEwMzczNjQsMTM2NTY0MDA1MSw5NDQwNTU0Mz
+YsLTQ1Mjc2NjM1NiwtMTYzNjQzOTA3OCwtMTc5NDg0MDczOSwt
+MjE0MTE3MTM5MiwtMTIzNjY4MDY2MywtNDA4MDc2MzA5LDEyMz
+MzMzQyNzgsMTc5OTQzMzQwLC01MjM3MzgxNzYsLTEyOTY5NTky
+MzgsLTE2OTk3MTMzMjZdfQ==
 -->
