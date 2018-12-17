@@ -184,6 +184,7 @@ java1.8的默认垃圾收集器是 parallel collector
 #### GC调优
 jvm heap 大小初始化如何设置: 
 https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
+总结说来, 将full gc 之后老年代的大小作为基准值, 其他带都可以ge
 
 * heap size 相关配置
 > By default, the virtual machine grows or shrinks the heap at each collection to try to keep the proportion of free space to live objects at each collection within a specific range. This target range is set as a percentage by the parameters `-XX:MinHeapFreeRatio=``<minimum>` and `-XX:MaxHeapFreeRatio=``<maximum>`, and the total size is bounded below by `-Xms``<min>` and above by `-Xmx``<max>`.
@@ -548,11 +549,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTQ4NDA3MzksLTIxNDExNzEzOTIsLT
-EyMzY2ODA2NjMsLTQwODA3NjMwOSwxMjMzMzM0Mjc4LDE3OTk0
-MzM0MCwtNTIzNzM4MTc2LC0xMjk2OTU5MjM4LC0xNjk5NzEzMz
-I2LC0yOTk5NTcyOTUsNjgzNTEyMTk3LC0xMjE4Njg2MTY3LC0x
-NDkyNDkzODA5LDE5OTA4MDQzODQsMTcxNjI3ODc5OSwxOTYzOD
-Q0MTYyLC00MDk5ODkxMjgsMTM4OTI0MjIzOCw1Mzc1MTk0ODks
-LTk0NTg0MDkzMV19
+eyJoaXN0b3J5IjpbLTQ4MDQ1NTA1MSwtMTc5NDg0MDczOSwtMj
+E0MTE3MTM5MiwtMTIzNjY4MDY2MywtNDA4MDc2MzA5LDEyMzMz
+MzQyNzgsMTc5OTQzMzQwLC01MjM3MzgxNzYsLTEyOTY5NTkyMz
+gsLTE2OTk3MTMzMjYsLTI5OTk1NzI5NSw2ODM1MTIxOTcsLTEy
+MTg2ODYxNjcsLTE0OTI0OTM4MDksMTk5MDgwNDM4NCwxNzE2Mj
+c4Nzk5LDE5NjM4NDQxNjIsLTQwOTk4OTEyOCwxMzg5MjQyMjM4
+LDUzNzUxOTQ4OV19
 -->
