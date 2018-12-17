@@ -172,6 +172,9 @@ java1.8的默认垃圾收集器是 parallel collector
 基于标记-清除算法, 
   * 缺点
     * 收集阶段, 占用一部分线程和cpu资源, 导致吞吐量下降
+
+* 浮动垃圾(Floating Garbage)
+由于应用线程和gc 线程并行执行, gc 线程标记的可达的对象在标记结束后又不可达了, 这部分剩余的对象叫做浮动
 * concurrent mode failure
     因为gc时用户线程继续产生新对象, 如果CMS 此时不能完成清除工作, 导致老年代空间满了, 会触发这个失败, 会停止所有的用户线程去做gc, 停顿会很长.
  所以需要预留至少一部分空间用作gc时新对象的产生(-XX: CMSInitiatingOccupancyFraction 设置百分比), 
@@ -552,11 +555,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ0MDU1NDM2LC00NTI3NjYzNTYsLTE2Mz
-Y0MzkwNzgsLTE3OTQ4NDA3MzksLTIxNDExNzEzOTIsLTEyMzY2
-ODA2NjMsLTQwODA3NjMwOSwxMjMzMzM0Mjc4LDE3OTk0MzM0MC
-wtNTIzNzM4MTc2LC0xMjk2OTU5MjM4LC0xNjk5NzEzMzI2LC0y
-OTk5NTcyOTUsNjgzNTEyMTk3LC0xMjE4Njg2MTY3LC0xNDkyND
-kzODA5LDE5OTA4MDQzODQsMTcxNjI3ODc5OSwxOTYzODQ0MTYy
-LC00MDk5ODkxMjhdfQ==
+eyJoaXN0b3J5IjpbNzgyNzY2ODY4LDk0NDA1NTQzNiwtNDUyNz
+Y2MzU2LC0xNjM2NDM5MDc4LC0xNzk0ODQwNzM5LC0yMTQxMTcx
+MzkyLC0xMjM2NjgwNjYzLC00MDgwNzYzMDksMTIzMzMzNDI3OC
+wxNzk5NDMzNDAsLTUyMzczODE3NiwtMTI5Njk1OTIzOCwtMTY5
+OTcxMzMyNiwtMjk5OTU3Mjk1LDY4MzUxMjE5NywtMTIxODY4Nj
+E2NywtMTQ5MjQ5MzgwOSwxOTkwODA0Mzg0LDE3MTYyNzg3OTks
+MTk2Mzg0NDE2Ml19
 -->
