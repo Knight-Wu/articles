@@ -565,9 +565,9 @@ https://www.jianshu.com/p/252f381a6bc4
 
 https://www.zhihu.com/question/27339390
 * java内部类
-* Parallel Scavenage的gc pause和吞吐量这两个zhibiao
+* Parallel Scavenage的gc pause和吞吐量这两个指标如何调节
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjMxNTk2NDIsLTIxMjY0NTUwNywtMT
+eyJoaXN0b3J5IjpbLTE0NDY0Mjg4MjAsLTIxMjY0NTUwNywtMT
 U5ODQ4NjcwMywxMzgyNjQwNDQ4LC0yMDIyMTM4MTUyLC0xNDA3
 NTQ1NzkwLC05NDc2ODM2ODQsLTY2ODEyMTU4MCwtMTg4MTAzNz
 M2NCwxMzY1NjQwMDUxLDk0NDA1NTQzNiwtNDUyNzY2MzU2LC0x
