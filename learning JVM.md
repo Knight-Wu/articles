@@ -116,7 +116,7 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
 ### 垃圾收集策略
 * 标记-清除算法
 
-需要回收的对象进行一次标记,标记完成后统一回收
+需要回收的对象进行一次标记,标记完成后统一回收, 不需要对对象进行移动
 * 缺点
   * 标记和回收的效率都不高
   * 回收后产生大量内存碎片,以至于分配较大对象时,无法得到连续的足够内存而导致再次进行gc
@@ -127,7 +127,7 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
 * 缺点
   * 不适用对象存活率较高的情况,复制的对象太多, 例如老年代
 * 标记整理算法
-将可用的对象向一端移动,然后清理掉边界以外的内存,有效避免了内存碎片(针对标记清除算法)和需要有一部分空间来作为留存空间(针对标记-复制算法).
+将不可用对象进行一次标记, 并清除, 然后将可用的对象向一端移动,然后清理掉边界以外的内存,有效避免了内存碎片(针对标记清除算法)和需要有一部分空间来作为留存空间(针对标记-复制算法).
 
 * 分代收集算法
 对新生代和老年代采用不同的垃圾收集算法, 例如HotSpot新生代采用标记-复制, 老年代采用标记整理
@@ -527,11 +527,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5OTk1NzI5NSw2ODM1MTIxOTcsLTEyMT
-g2ODYxNjcsLTE0OTI0OTM4MDksMTk5MDgwNDM4NCwxNzE2Mjc4
-Nzk5LDE5NjM4NDQxNjIsLTQwOTk4OTEyOCwxMzg5MjQyMjM4LD
-UzNzUxOTQ4OSwtOTQ1ODQwOTMxLDE1NTkyOTM4OSwtMTA1ODE0
-ODY0OCwtMTcxMDc2NjM2LC0xNTYxNTY0NDU5LC0xMjM3OTM3Nj
-UxLC00NDg3MDMwNTcsLTk3NTEzNjIzNSwtODQyMDMyMzQ2LC05
-MDg0OTMwXX0=
+eyJoaXN0b3J5IjpbODgxNjQwMTAyLC0yOTk5NTcyOTUsNjgzNT
+EyMTk3LC0xMjE4Njg2MTY3LC0xNDkyNDkzODA5LDE5OTA4MDQz
+ODQsMTcxNjI3ODc5OSwxOTYzODQ0MTYyLC00MDk5ODkxMjgsMT
+M4OTI0MjIzOCw1Mzc1MTk0ODksLTk0NTg0MDkzMSwxNTU5Mjkz
+ODksLTEwNTgxNDg2NDgsLTE3MTA3NjYzNiwtMTU2MTU2NDQ1OS
+wtMTIzNzkzNzY1MSwtNDQ4NzAzMDU3LC05NzUxMzYyMzUsLTg0
+MjAzMjM0Nl19
 -->
