@@ -175,7 +175,7 @@ java1.8的默认垃圾收集器是 parallel collector
 1. 第一次STW 暂停: 标记被 gc root 的直接引用, 和年轻代对象所引用的对象, 叫做 _initial mark pause_,
 2.  Concurrent Mark, 这个阶段不会暂停用户线程, 第一步找到的老年代的root 的直接引用, 标记所有可达的对象, 并非所有老年代中存活的对象都在此阶段被标记，因为在标记过程中对象的引用关系还在发生变化 
 3.  Concurrent Preclean（并发预清理）此阶段同样是与应用线程并行执行的，不需要停止应用线程。因为前一阶段是与程序并发进行的，可能有一些引用已经改变。如果在并发标记过程中发生了引用关系变化，JVM 会通过 Card 将发生了改变的区域标记为「脏」区，这就是所谓的卡片标记（Card Marking）。本阶段也会执行一些必要的细节处理，并为 Final Remark 阶段做一些准备工作
-4. Concurrent Abortable Preclean
+4. Concurrent Abortable Preclean(并发可取消的预清理）,不会暂停用户线程
 5. 
 
 * 浮动垃圾(Floating Garbage)
@@ -562,11 +562,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4MjY0MDQ0OCwtMjAyMjEzODE1MiwtMT
-QwNzU0NTc5MCwtOTQ3NjgzNjg0LC02NjgxMjE1ODAsLTE4ODEw
-MzczNjQsMTM2NTY0MDA1MSw5NDQwNTU0MzYsLTQ1Mjc2NjM1Ni
-wtMTYzNjQzOTA3OCwtMTc5NDg0MDczOSwtMjE0MTE3MTM5Miwt
-MTIzNjY4MDY2MywtNDA4MDc2MzA5LDEyMzMzMzQyNzgsMTc5OT
-QzMzQwLC01MjM3MzgxNzYsLTEyOTY5NTkyMzgsLTE2OTk3MTMz
-MjYsLTI5OTk1NzI5NV19
+eyJoaXN0b3J5IjpbNTgyMTMyNzY0LDEzODI2NDA0NDgsLTIwMj
+IxMzgxNTIsLTE0MDc1NDU3OTAsLTk0NzY4MzY4NCwtNjY4MTIx
+NTgwLC0xODgxMDM3MzY0LDEzNjU2NDAwNTEsOTQ0MDU1NDM2LC
+00NTI3NjYzNTYsLTE2MzY0MzkwNzgsLTE3OTQ4NDA3MzksLTIx
+NDExNzEzOTIsLTEyMzY2ODA2NjMsLTQwODA3NjMwOSwxMjMzMz
+M0Mjc4LDE3OTk0MzM0MCwtNTIzNzM4MTc2LC0xMjk2OTU5MjM4
+LC0xNjk5NzEzMzI2XX0=
 -->
