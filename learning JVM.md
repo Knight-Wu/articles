@@ -147,10 +147,10 @@ https://stackoverflow.com/questions/33206313/default-garbage-collector-for-java-
  单线程收集器, 不只是说只会使用一个cpu或者一个线程去收集, 而是指GC时会暂停其他工作线程,但省去了线程切换的开销, 在client 模式下, heap是几百兆的情况, gc效率很高, 造成的停顿仅仅是几百毫秒, 是client端默认的GC收集器
 
 * ParNew
-是Serial 的多线程版本, 作为新生代的默认收集器, 只能与CMS联合使用, 只是并发版本, 并不能做到并行执行. 
+是Serial 的多线程版本, 只是并发, 并不能做到并行执行.  复制算法, 只能与CMS联合使用, 
 
 * Parallel Scavenage
-新生代收集器, 复制suanfa与ParNew 的最大区别可以控制吞吐量, gc 最大暂停时间等. 
+新生代收集器, 复制算法, 与ParNew 的最大区别可以控制吞吐量, gc 最大暂停时间等. 
 java1.8的默认垃圾收集器是 parallel collector
 (https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/parallel.html) , 即新生代是 Parallel Scavenage , 老年代是Parallel Old , 当使用 **-XX:+UseParallelGC**或 **-XX:+UseParallelOldGC** 均意味着两个配合使用. 
 有以下特点: 
@@ -160,10 +160,10 @@ java1.8的默认垃圾收集器是 parallel collector
  -XX:UseAdaptiveSizePolicy(自适应调节) 
 
 * Serial Old
-是Serial 的老年代版本, 与Parallel Scavenage配合使用, 作为CMS的备案, 在发生concurrent mode failure使用
+是Serial 的老年代版本, 可以与Parallel Scavenage配合使用, 作为CMS的备案, 在发生concurrent mode failure使用
 
 * Parallel Old
-是Parallel Scavenage的老年代版本, 可与Parallel Scavenage 配合使用
+标记整理suanfa是Parallel Scavenage的老年代版本, 可与Parallel Scavenage 配合使用, 
 
 * CMS(Concurrent Mark Sweep)
 
@@ -528,7 +528,7 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwOTk4MTczNiwtMTI5Njk1OTIzOCwtMT
+eyJoaXN0b3J5IjpbMjAwOTM0MTkyMiwtMTI5Njk1OTIzOCwtMT
 Y5OTcxMzMyNiwtMjk5OTU3Mjk1LDY4MzUxMjE5NywtMTIxODY4
 NjE2NywtMTQ5MjQ5MzgwOSwxOTkwODA0Mzg0LDE3MTYyNzg3OT
 ksMTk2Mzg0NDE2MiwtNDA5OTg5MTI4LDEzODkyNDIyMzgsNTM3
