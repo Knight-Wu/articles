@@ -176,7 +176,8 @@ java1.8的默认垃圾收集器是 parallel collector
 2.  Concurrent Mark, 这个阶段不会暂停用户线程, 第一步找到的老年代的root 的直接引用, 标记所有可达的对象, 并非所有老年代中存活的对象都在此阶段被标记，因为在标记过程中对象的引用关系还在发生变化 
 3.  Concurrent Preclean（并发预清理）此阶段同样是与应用线程并行执行的，不需要停止应用线程。因为前一阶段是与程序并发进行的，可能有一些引用已经改变。如果在并发标记过程中发生了引用关系变化，JVM 会通过 Card 将发生了改变的区域标记为「脏」区，这就是所谓的卡片标记（Card Marking）。本阶段也会执行一些必要的细节处理，并为 Final Remark 阶段做一些准备工作
 4. Concurrent Abortable Preclean(并发可取消的预清理）,不会暂停用户线程
-5.  Final Remark 最终标记, 本阶段的目标是完成老年代中所有存活对象的标记, 因为之前的concurrent mask 是和用户线程并发执行的, 可能后续有
+5.  Final Remark 最终标记, 本阶段的目标是完成老年代中所有存活对象的标记, 因为之前的concurrent mask 是和用户线程并发执行的, 可能中间会产生浮动垃圾, 所以需要进行最终标记, 会STW
+6.  Concurrent Sweep（并发清除）此阶段与应用程序并发执行，不需要 STW。目的是删除未使用的对象，并收回他们占用的空间
 
 * 浮动垃圾(Floating Garbage)
 由于应用线程和gc 线程并行执行, gc 线程标记的可达的对象在标记结束后又不可达了, 这部分剩余的对象叫做浮动垃圾, 这部分对象会在下次gc 被回收.
@@ -562,11 +563,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MTU2MzA4MDksMTM4MjY0MDQ0OCwtMj
-AyMjEzODE1MiwtMTQwNzU0NTc5MCwtOTQ3NjgzNjg0LC02Njgx
-MjE1ODAsLTE4ODEwMzczNjQsMTM2NTY0MDA1MSw5NDQwNTU0Mz
-YsLTQ1Mjc2NjM1NiwtMTYzNjQzOTA3OCwtMTc5NDg0MDczOSwt
-MjE0MTE3MTM5MiwtMTIzNjY4MDY2MywtNDA4MDc2MzA5LDEyMz
-MzMzQyNzgsMTc5OTQzMzQwLC01MjM3MzgxNzYsLTEyOTY5NTky
-MzgsLTE2OTk3MTMzMjZdfQ==
+eyJoaXN0b3J5IjpbLTE3OTk3MDI0LDEzODI2NDA0NDgsLTIwMj
+IxMzgxNTIsLTE0MDc1NDU3OTAsLTk0NzY4MzY4NCwtNjY4MTIx
+NTgwLC0xODgxMDM3MzY0LDEzNjU2NDAwNTEsOTQ0MDU1NDM2LC
+00NTI3NjYzNTYsLTE2MzY0MzkwNzgsLTE3OTQ4NDA3MzksLTIx
+NDExNzEzOTIsLTEyMzY2ODA2NjMsLTQwODA3NjMwOSwxMjMzMz
+M0Mjc4LDE3OTk0MzM0MCwtNTIzNzM4MTc2LC0xMjk2OTU5MjM4
+LC0xNjk5NzEzMzI2XX0=
 -->
