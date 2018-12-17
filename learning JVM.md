@@ -170,8 +170,9 @@ java1.8的默认垃圾收集器是 parallel collector
 * CMS(Concurrent Mark Sweep)
 > designed for applications that prefer shorter garbage collection pauses and that can afford to share processor resources with the garbage collector while the application is running
 基于标记-清除算法, 
-  * 缺点
-    * 收集阶段, 占用一部分线程和cpu资源, 导致吞吐量下降
+
+过程: 
+第一次暂停: 标记所有可达的对象, 叫做 _initial mark pause_
 
 * 浮动垃圾(Floating Garbage)
 由于应用线程和gc 线程并行执行, gc 线程标记的可达的对象在标记结束后又不可达了, 这部分剩余的对象叫做浮动垃圾, 这部分对象会在下次gc 被回收.
@@ -557,11 +558,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM2NTY0MDA1MSw5NDQwNTU0MzYsLTQ1Mj
-c2NjM1NiwtMTYzNjQzOTA3OCwtMTc5NDg0MDczOSwtMjE0MTE3
-MTM5MiwtMTIzNjY4MDY2MywtNDA4MDc2MzA5LDEyMzMzMzQyNz
-gsMTc5OTQzMzQwLC01MjM3MzgxNzYsLTEyOTY5NTkyMzgsLTE2
-OTk3MTMzMjYsLTI5OTk1NzI5NSw2ODM1MTIxOTcsLTEyMTg2OD
-YxNjcsLTE0OTI0OTM4MDksMTk5MDgwNDM4NCwxNzE2Mjc4Nzk5
-LDE5NjM4NDQxNjJdfQ==
+eyJoaXN0b3J5IjpbLTE2MTI4MDA1MDYsMTM2NTY0MDA1MSw5ND
+QwNTU0MzYsLTQ1Mjc2NjM1NiwtMTYzNjQzOTA3OCwtMTc5NDg0
+MDczOSwtMjE0MTE3MTM5MiwtMTIzNjY4MDY2MywtNDA4MDc2Mz
+A5LDEyMzMzMzQyNzgsMTc5OTQzMzQwLC01MjM3MzgxNzYsLTEy
+OTY5NTkyMzgsLTE2OTk3MTMzMjYsLTI5OTk1NzI5NSw2ODM1MT
+IxOTcsLTEyMTg2ODYxNjcsLTE0OTI0OTM4MDksMTk5MDgwNDM4
+NCwxNzE2Mjc4Nzk5XX0=
 -->
