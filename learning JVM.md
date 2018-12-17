@@ -133,7 +133,12 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
 对新生代和老年代采用不同的垃圾收集算法, 例如HotSpot新生代采用标记-复制, 老年代采用标记整理
 ### 垃圾收集器
 * 重要概念
+
 并发和并行: 并发指的是gc 线程和用户线程在一个cpu 内进行交替执行; 而并行指的是这两个线程在不同的cpu 上同时执行, 不需要切换.
+
+新生代回收器: Serial、ParNew、Parallel Scavenge
+老年代回收期: Serial Old、Parallel Old、CMS
+整堆回收器：G1
 
 * Serial
 > 单线程收集器, 不只是说只会使用一个cpu或者一个线程去收集, 而是指GC时会暂停其他工作线程,但省去了线程切换的开销, 在client 模式下, heap是几百兆的情况, gc效率很高, 造成的停顿仅仅是几百毫秒, 是client端默认的GC收集器
@@ -530,11 +535,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM4OTkwMjY4OSwtMjk5OTU3Mjk1LDY4Mz
-UxMjE5NywtMTIxODY4NjE2NywtMTQ5MjQ5MzgwOSwxOTkwODA0
-Mzg0LDE3MTYyNzg3OTksMTk2Mzg0NDE2MiwtNDA5OTg5MTI4LD
-EzODkyNDIyMzgsNTM3NTE5NDg5LC05NDU4NDA5MzEsMTU1OTI5
-Mzg5LC0xMDU4MTQ4NjQ4LC0xNzEwNzY2MzYsLTE1NjE1NjQ0NT
-ksLTEyMzc5Mzc2NTEsLTQ0ODcwMzA1NywtOTc1MTM2MjM1LC04
-NDIwMzIzNDZdfQ==
+eyJoaXN0b3J5IjpbLTE2OTk3MTMzMjYsLTI5OTk1NzI5NSw2OD
+M1MTIxOTcsLTEyMTg2ODYxNjcsLTE0OTI0OTM4MDksMTk5MDgw
+NDM4NCwxNzE2Mjc4Nzk5LDE5NjM4NDQxNjIsLTQwOTk4OTEyOC
+wxMzg5MjQyMjM4LDUzNzUxOTQ4OSwtOTQ1ODQwOTMxLDE1NTky
+OTM4OSwtMTA1ODE0ODY0OCwtMTcxMDc2NjM2LC0xNTYxNTY0ND
+U5LC0xMjM3OTM3NjUxLC00NDg3MDMwNTcsLTk3NTEzNjIzNSwt
+ODQyMDMyMzQ2XX0=
 -->
