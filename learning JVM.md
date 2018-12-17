@@ -168,7 +168,8 @@ java1.8的默认垃圾收集器是 parallel collector
 标记整理算法, 是Parallel Scavenage的老年代版本, 可与Parallel Scavenage 配合使用, 
 
 * CMS(Concurrent Mark Sweep)
-基于标记-清除算法,
+> designed for applications that prefer shorter garbage collection pauses and that can afford to share processor resources with the garbage collector while the application is running
+基于标记-清除算法, 
   * 缺点
     * 收集阶段, 占用一部分线程和cpu资源, 导致吞吐量下降
     * 无法处理浮动垃圾, 因为gc时用户线程继续产生新对象, 所以需要预留至少一部分空间用作gc时新对象的产生(-XX: CMSInitiatingOccupancyFraction 设置百分比), 若这部分空间不能满足, 则会导致concurrent mode failure, 导致启用备份的Serial Old收集器, 停顿会很长.
@@ -549,11 +550,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MzY0MzkwNzgsLTE3OTQ4NDA3MzksLT
-IxNDExNzEzOTIsLTEyMzY2ODA2NjMsLTQwODA3NjMwOSwxMjMz
-MzM0Mjc4LDE3OTk0MzM0MCwtNTIzNzM4MTc2LC0xMjk2OTU5Mj
-M4LC0xNjk5NzEzMzI2LC0yOTk5NTcyOTUsNjgzNTEyMTk3LC0x
-MjE4Njg2MTY3LC0xNDkyNDkzODA5LDE5OTA4MDQzODQsMTcxNj
-I3ODc5OSwxOTYzODQ0MTYyLC00MDk5ODkxMjgsMTM4OTI0MjIz
-OCw1Mzc1MTk0ODldfQ==
+eyJoaXN0b3J5IjpbLTQ1Mjc2NjM1NiwtMTYzNjQzOTA3OCwtMT
+c5NDg0MDczOSwtMjE0MTE3MTM5MiwtMTIzNjY4MDY2MywtNDA4
+MDc2MzA5LDEyMzMzMzQyNzgsMTc5OTQzMzQwLC01MjM3MzgxNz
+YsLTEyOTY5NTkyMzgsLTE2OTk3MTMzMjYsLTI5OTk1NzI5NSw2
+ODM1MTIxOTcsLTEyMTg2ODYxNjcsLTE0OTI0OTM4MDksMTk5MD
+gwNDM4NCwxNzE2Mjc4Nzk5LDE5NjM4NDQxNjIsLTQwOTk4OTEy
+OCwxMzg5MjQyMjM4XX0=
 -->
