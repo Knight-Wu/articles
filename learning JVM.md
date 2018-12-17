@@ -188,6 +188,7 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 * heap size 相关配置
 > By default, the virtual machine grows or shrinks the heap at each collection to try to keep the proportion of free space to live objects at each collection within a specific range. This target range is set as a percentage by the parameters `-XX:MinHeapFreeRatio=``<minimum>` and `-XX:MaxHeapFreeRatio=``<maximum>`, and the total size is bounded below by `-Xms``<min>` and above by `-Xmx``<max>`.
 
+
 jvm 参数调优: 
 https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 分为三个方面: Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal(如果前两者都满足了, 则会降低heap 的大小, 目前这个goal 还没有满足)
@@ -537,11 +538,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzY2ODA2NjMsLTQwODA3NjMwOSwxMj
-MzMzM0Mjc4LDE3OTk0MzM0MCwtNTIzNzM4MTc2LC0xMjk2OTU5
-MjM4LC0xNjk5NzEzMzI2LC0yOTk5NTcyOTUsNjgzNTEyMTk3LC
-0xMjE4Njg2MTY3LC0xNDkyNDkzODA5LDE5OTA4MDQzODQsMTcx
-NjI3ODc5OSwxOTYzODQ0MTYyLC00MDk5ODkxMjgsMTM4OTI0Mj
-IzOCw1Mzc1MTk0ODksLTk0NTg0MDkzMSwxNTU5MjkzODksLTEw
-NTgxNDg2NDhdfQ==
+eyJoaXN0b3J5IjpbNDgwNjQxMTc1LC0xMjM2NjgwNjYzLC00MD
+gwNzYzMDksMTIzMzMzNDI3OCwxNzk5NDMzNDAsLTUyMzczODE3
+NiwtMTI5Njk1OTIzOCwtMTY5OTcxMzMyNiwtMjk5OTU3Mjk1LD
+Y4MzUxMjE5NywtMTIxODY4NjE2NywtMTQ5MjQ5MzgwOSwxOTkw
+ODA0Mzg0LDE3MTYyNzg3OTksMTk2Mzg0NDE2MiwtNDA5OTg5MT
+I4LDEzODkyNDIyMzgsNTM3NTE5NDg5LC05NDU4NDA5MzEsMTU1
+OTI5Mzg5XX0=
 -->
