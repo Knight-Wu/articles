@@ -172,6 +172,7 @@ java1.8的默认垃圾收集器是 parallel collector
 基于标记-清除算法, 
   * 缺点
     * 收集阶段, 占用一部分线程和cpu资源, 导致吞吐量下降
+    在标记和qin 
     * 无法处理浮动垃圾, 因为gc时用户线程继续产生新对象, 所以需要预留至少一部分空间用作gc时新对象的产生(-XX: CMSInitiatingOccupancyFraction 设置百分比), 若这部分空间不能满足, 则会导致concurrent mode failure, 导致启用备份的Serial Old收集器, 停顿会很长.
     * 采用标记清除算法, 内存碎片很多,-XX:UseCMSCompactionAtFullCollection(默认开启, 开启内存碎片的整理工作), 但是会导致停顿时间变长,  也可采用 -XX:CMSFullGCsBeforeCompaction(表示执行了多少次不压缩的full GC后, 来一次压缩的full GC ,默认是0, 表示每次都压缩).
     
@@ -550,11 +551,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1Mjc2NjM1NiwtMTYzNjQzOTA3OCwtMT
-c5NDg0MDczOSwtMjE0MTE3MTM5MiwtMTIzNjY4MDY2MywtNDA4
-MDc2MzA5LDEyMzMzMzQyNzgsMTc5OTQzMzQwLC01MjM3MzgxNz
-YsLTEyOTY5NTkyMzgsLTE2OTk3MTMzMjYsLTI5OTk1NzI5NSw2
-ODM1MTIxOTcsLTEyMTg2ODYxNjcsLTE0OTI0OTM4MDksMTk5MD
-gwNDM4NCwxNzE2Mjc4Nzk5LDE5NjM4NDQxNjIsLTQwOTk4OTEy
-OCwxMzg5MjQyMjM4XX0=
+eyJoaXN0b3J5IjpbLTE1MzM0MjI3ODEsLTQ1Mjc2NjM1NiwtMT
+YzNjQzOTA3OCwtMTc5NDg0MDczOSwtMjE0MTE3MTM5MiwtMTIz
+NjY4MDY2MywtNDA4MDc2MzA5LDEyMzMzMzQyNzgsMTc5OTQzMz
+QwLC01MjM3MzgxNzYsLTEyOTY5NTkyMzgsLTE2OTk3MTMzMjYs
+LTI5OTk1NzI5NSw2ODM1MTIxOTcsLTEyMTg2ODYxNjcsLTE0OT
+I0OTM4MDksMTk5MDgwNDM4NCwxNzE2Mjc4Nzk5LDE5NjM4NDQx
+NjIsLTQwOTk4OTEyOF19
 -->
