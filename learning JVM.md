@@ -226,10 +226,15 @@ https://www.zhihu.com/question/41922036/answer/93079526
 > Full GC时，就不在分 “young gen使用young gen自己的收集器(一般是copy算法)；old gen使用old gen的收集器(一般是mark-sweep-compact算法)”，而是，整个heap以及perm gen，所有内存，全部的统一使用 old gen的收集器(一般是mark-sweep-compact算法) 一站式搞定
 
 
-jvm常用命令
+#### GC 常用命令
 * -verbose:class , -verbose:gc ,-verbose:jni 
-> [https://dzone.com/articles/how-use-verbose-options-java](https://dzone.com/articles/how-use-verbose-options-java)
-> -verbose:class is used to display the information about classes being loaded by JVM. This is useful when using class loaders for loading classes dynamically or for analysing what all classes are getting loaded in a particular scenario. 
+ [https://dzone.com/articles/how-use-verbose-options-java](https://dzone.com/articles/how-use-verbose-options-java)
+ -verbose:class is used to display the information about classes being loaded by JVM. This is useful when using class loaders for loading classes dynamically or for analysing what all classes are getting loaded in a particular scenario. 
+
+-XX:+PrintGCDetails , -XX:+PrintGCTimeStamps
+
+
+
 
 
 
@@ -526,11 +531,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjAwNTAwNTM0LDE3OTk0MzM0MCwtNTIzNz
-M4MTc2LC0xMjk2OTU5MjM4LC0xNjk5NzEzMzI2LC0yOTk5NTcy
-OTUsNjgzNTEyMTk3LC0xMjE4Njg2MTY3LC0xNDkyNDkzODA5LD
-E5OTA4MDQzODQsMTcxNjI3ODc5OSwxOTYzODQ0MTYyLC00MDk5
-ODkxMjgsMTM4OTI0MjIzOCw1Mzc1MTk0ODksLTk0NTg0MDkzMS
-wxNTU5MjkzODksLTEwNTgxNDg2NDgsLTE3MTA3NjYzNiwtMTU2
-MTU2NDQ1OV19
+eyJoaXN0b3J5IjpbMTIzMzMzNDI3OCwxNzk5NDMzNDAsLTUyMz
+czODE3NiwtMTI5Njk1OTIzOCwtMTY5OTcxMzMyNiwtMjk5OTU3
+Mjk1LDY4MzUxMjE5NywtMTIxODY4NjE2NywtMTQ5MjQ5MzgwOS
+wxOTkwODA0Mzg0LDE3MTYyNzg3OTksMTk2Mzg0NDE2MiwtNDA5
+OTg5MTI4LDEzODkyNDIyMzgsNTM3NTE5NDg5LC05NDU4NDA5Mz
+EsMTU1OTI5Mzg5LC0xMDU4MTQ4NjQ4LC0xNzEwNzY2MzYsLTE1
+NjE1NjQ0NTldfQ==
 -->
