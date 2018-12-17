@@ -192,7 +192,7 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
     
 > Setting  `-Xms`  and  `-Xmx`  to the same value increases predictability by removing the most important sizing decision from the virtual machine. However, the virtual machine is then unable to compensate if you make a poor choice.( 这两个值设置成一样的话, jvm 就无法调整size)
     
--   In general, increase the memory as you increase the number of processors, since allocation can be parallelized.
+> In general, increase the memory as you increase the number of processors, since allocation can be parallelized.
 
 
 jvm 参数调优: 
@@ -544,7 +544,7 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTczNzQ2MDcsLTEyMzY2ODA2NjMsLT
+eyJoaXN0b3J5IjpbLTIxNDExNzEzOTIsLTEyMzY2ODA2NjMsLT
 QwODA3NjMwOSwxMjMzMzM0Mjc4LDE3OTk0MzM0MCwtNTIzNzM4
 MTc2LC0xMjk2OTU5MjM4LC0xNjk5NzEzMzI2LC0yOTk5NTcyOT
 UsNjgzNTEyMTk3LC0xMjE4Njg2MTY3LC0xNDkyNDkzODA5LDE5
