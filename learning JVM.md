@@ -136,15 +136,13 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
 
 并发和并行: 并发指的是gc 线程和用户线程在一个cpu 内进行交替执行; 而并行指的是这两个线程在不同的cpu 上同时执行, 不需要切换.
 
-新生代回收器: Serial、ParNew、Parallel Scavenge
-老年代回收期: Serial Old、Parallel Old、CMS
-整堆回收器：G1
+![enter image description here](https://drive.google.com/uc?id=1UkKi-2ipWHbbol68eC3-5wQtM2-cNAPY)
 
 * Serial
-> 单线程收集器, 不只是说只会使用一个cpu或者一个线程去收集, 而是指GC时会暂停其他工作线程,但省去了线程切换的开销, 在client 模式下, heap是几百兆的情况, gc效率很高, 造成的停顿仅仅是几百毫秒, 是client端默认的GC收集器
+ 单线程收集器, 不只是说只会使用一个cpu或者一个线程去收集, 而是指GC时会暂停其他工作线程,但省去了线程切换的开销, 在client 模式下, heap是几百兆的情况, gc效率很高, 造成的停顿仅仅是几百毫秒, 是client端默认的GC收集器
 
-* ParNew(parallel 并行)
-> 是Serial 的多线程版本, 作为新生代的默认收集器, 只能与CMS联合使用
+* ParNew
+是Serial 的多线程版本, 作为新生代的默认收集器, 只能与CMS联合使用, 只是并发版本, 并不能zu
 
 * Parallel Scavenage
 
@@ -173,8 +171,6 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
   * 可预测的停顿
 
 #### 选择垃圾收集器
-
-
 各个收集器的配合使用的关系和特点: http://www.fasterj.com/articles/oraclecollectors1.shtml
 
 https://stackoverflow.com/questions/33206313/default-garbage-collector-for-java-8
@@ -535,11 +531,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTk3MTMzMjYsLTI5OTk1NzI5NSw2OD
-M1MTIxOTcsLTEyMTg2ODYxNjcsLTE0OTI0OTM4MDksMTk5MDgw
-NDM4NCwxNzE2Mjc4Nzk5LDE5NjM4NDQxNjIsLTQwOTk4OTEyOC
-wxMzg5MjQyMjM4LDUzNzUxOTQ4OSwtOTQ1ODQwOTMxLDE1NTky
-OTM4OSwtMTA1ODE0ODY0OCwtMTcxMDc2NjM2LC0xNTYxNTY0ND
-U5LC0xMjM3OTM3NjUxLC00NDg3MDMwNTcsLTk3NTEzNjIzNSwt
-ODQyMDMyMzQ2XX0=
+eyJoaXN0b3J5IjpbLTY4OTI2MzM1MywtMTY5OTcxMzMyNiwtMj
+k5OTU3Mjk1LDY4MzUxMjE5NywtMTIxODY4NjE2NywtMTQ5MjQ5
+MzgwOSwxOTkwODA0Mzg0LDE3MTYyNzg3OTksMTk2Mzg0NDE2Mi
+wtNDA5OTg5MTI4LDEzODkyNDIyMzgsNTM3NTE5NDg5LC05NDU4
+NDA5MzEsMTU1OTI5Mzg5LC0xMDU4MTQ4NjQ4LC0xNzEwNzY2Mz
+YsLTE1NjE1NjQ0NTksLTEyMzc5Mzc2NTEsLTQ0ODcwMzA1Nywt
+OTc1MTM2MjM1XX0=
 -->
