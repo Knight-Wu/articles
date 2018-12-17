@@ -187,7 +187,9 @@ java1.8的默认垃圾收集器是 parallel collector
 * concurrent mode failure
     因为gc时用户线程继续产生新对象, 如果CMS 此时不能完成清除工作, 导致老年代空间满了, 会触发这个失败, 会停止所有的用户线程去做gc, 停顿会很长.
  所以需要预留至少一部分空间用作gc时新对象的产生(-XX: CMSInitiatingOccupancyFraction 设置百分比), 
-       * 采用标记清除算法, 内存碎片很多,-XX:UseCMSCompactionAtFullCollection(默认开启, 开启内存碎片的整理工作), 但是会导致停顿时间变长,  也可采用 -XX:CMSFullGCsBeforeCompaction(表示执行了多少次不压缩的full GC后, 来一次压缩的full GC ,默认是0, 表示每次都压缩).
+       
+* 采用标记清除算法, 内存碎片很多
+使用 -XX:UseCMSCompactionAtFullCollection(默认开启, 开启内存碎片的整理工作), 但是会导致停顿时间变长,  也可采用 -XX:CMSFullGCsBeforeCompaction(表示执行了多少次不压缩的full GC后, 来一次压缩的full GC ,默认是0, 表示每次都压缩).
     
 * Garbage First(G1)
   * 并行(多线程处理GC, 此时用户线程仍然等待)和并发(减少停顿时间, 和用户线程并行, 垃圾收集器在另一个CPU)
@@ -563,12 +565,13 @@ https://www.jianshu.com/p/252f381a6bc4
 
 https://www.zhihu.com/question/27339390
 * java内部类
+* Parallel Scavenage的gc pause和吞吐量这两个zhibiao
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjY0NTUwNywtMTU5ODQ4NjcwMywxMz
-gyNjQwNDQ4LC0yMDIyMTM4MTUyLC0xNDA3NTQ1NzkwLC05NDc2
-ODM2ODQsLTY2ODEyMTU4MCwtMTg4MTAzNzM2NCwxMzY1NjQwMD
-UxLDk0NDA1NTQzNiwtNDUyNzY2MzU2LC0xNjM2NDM5MDc4LC0x
-Nzk0ODQwNzM5LC0yMTQxMTcxMzkyLC0xMjM2NjgwNjYzLC00MD
-gwNzYzMDksMTIzMzMzNDI3OCwxNzk5NDMzNDAsLTUyMzczODE3
-NiwtMTI5Njk1OTIzOF19
+eyJoaXN0b3J5IjpbLTE1MjMxNTk2NDIsLTIxMjY0NTUwNywtMT
+U5ODQ4NjcwMywxMzgyNjQwNDQ4LC0yMDIyMTM4MTUyLC0xNDA3
+NTQ1NzkwLC05NDc2ODM2ODQsLTY2ODEyMTU4MCwtMTg4MTAzNz
+M2NCwxMzY1NjQwMDUxLDk0NDA1NTQzNiwtNDUyNzY2MzU2LC0x
+NjM2NDM5MDc4LC0xNzk0ODQwNzM5LC0yMTQxMTcxMzkyLC0xMj
+M2NjgwNjYzLC00MDgwNzYzMDksMTIzMzMzNDI3OCwxNzk5NDMz
+NDAsLTUyMzczODE3Nl19
 -->
