@@ -147,7 +147,7 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
 * Parallel Scavenage
 新生代收集器, 与ParNew 的最大区别可以控制吞吐量, gc 最大暂停时间等. 
 java1.8的默认垃圾收集器是 parallel collector
-(https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/parallel.html) , 即新生代是 Parallel Scavenage , 老年代是Parallel Old , 
+(https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/parallel.html) , 即新生代是 Parallel Scavenage , 老年代是Parallel Old , 当使用 **-XX:+UseParallelGC**
 可以控制吞吐量(gc 时间和运行时间的比值), -XX:GCTimeRatio
 最大GC 暂停时间,  -XX:MaxGCPauseMills
 动态调整heap size的大小, 如果某个代的gc时间超过最大GC 停顿时间, 则会按比例减少这个代的大小, 如果某个代的吞吐量不满足, 则会增大某个代的大小.
@@ -531,11 +531,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTY5NTkyMzgsLTE2OTk3MTMzMjYsLT
-I5OTk1NzI5NSw2ODM1MTIxOTcsLTEyMTg2ODYxNjcsLTE0OTI0
-OTM4MDksMTk5MDgwNDM4NCwxNzE2Mjc4Nzk5LDE5NjM4NDQxNj
-IsLTQwOTk4OTEyOCwxMzg5MjQyMjM4LDUzNzUxOTQ4OSwtOTQ1
-ODQwOTMxLDE1NTkyOTM4OSwtMTA1ODE0ODY0OCwtMTcxMDc2Nj
-M2LC0xNTYxNTY0NDU5LC0xMjM3OTM3NjUxLC00NDg3MDMwNTcs
-LTk3NTEzNjIzNV19
+eyJoaXN0b3J5IjpbLTg3NjMwMjI5NCwtMTI5Njk1OTIzOCwtMT
+Y5OTcxMzMyNiwtMjk5OTU3Mjk1LDY4MzUxMjE5NywtMTIxODY4
+NjE2NywtMTQ5MjQ5MzgwOSwxOTkwODA0Mzg0LDE3MTYyNzg3OT
+ksMTk2Mzg0NDE2MiwtNDA5OTg5MTI4LDEzODkyNDIyMzgsNTM3
+NTE5NDg5LC05NDU4NDA5MzEsMTU1OTI5Mzg5LC0xMDU4MTQ4Nj
+Q4LC0xNzEwNzY2MzYsLTE1NjE1NjQ0NTksLTEyMzc5Mzc2NTEs
+LTQ0ODcwMzA1N119
 -->
