@@ -260,6 +260,11 @@ https://www.zhihu.com/question/41922036/answer/93079526
 
 > Full GC时，就不在分 “young gen使用young gen自己的收集器(一般是copy算法)；old gen使用old gen的收集器(一般是mark-sweep-compact算法)”，而是，整个heap以及perm gen，所有内存，全部的统一使用 old gen的收集器(一般是mark-sweep-compact算法) 一站式搞定
 
+* GC root
+ 1. local variable
+ 2. active java thread
+ 3. static variable
+ 4. JNI reference
 
 #### GC 常用命令
 * -verbose:class , -verbose:gc ,-verbose:jni 
@@ -267,28 +272,6 @@ https://www.zhihu.com/question/41922036/answer/93079526
  -verbose:class is used to display the information about classes being loaded by JVM. This is useful when using class loaders for loading classes dynamically or for analysing what all classes are getting loaded in a particular scenario. 
 
 -XX:+PrintGCDetails , -XX:+PrintGCTimeStamps
-
-
-
-
-
-
-
-###  hotSpot的算法实现
-* 什么时候开始GC
- 当eden和一个survivor的空间容不下新的对象时,产生minorGC,将长期存活对象移到老年代, 若老年代的空间不够, 则进行fullGC
-* GC root
- 1. local variable
- 2. active java thread
- 3. static variable
- 4. JNI reference
-* 寻找GC Root的引用链
-  *  逐个检测(包括方法区), 花费很多时间
-  *  GC 产生停顿, 保证引用关系不变
-  * 解决办法: 减小时间, 类设置OOP map, 记录引用位置 
-  
-* 但是导致引用变化的指令可能非常多, 可能导致 OOP Map的所占空间巨大
-  *  解决办法:在程序需要长时间执行的地方设置safepoint, 并生成OOP map, 程序跑到safepoint才GC, 并在safepoint设置标志, 跑到这个safepoint的时候判断有没有gc, 若线程处在block等状态, 在一段引用关系不变的代码段设置safeRegion, 随时可以GC
 
 #### 开发中的GC优化
 1. 尽量少使用临时对象, 局部变量尽量使用基本数据类型, 也可以避免装箱; 用StringBuffer, 不用string做累加.
@@ -567,11 +550,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3NDYyNjA1NiwtMTQ0NjQyODgyMCwtNz
-Q2NjA2MDE2LC0xNDQ2NDI4ODIwLC0yMTI2NDU1MDcsLTE1OTg0
-ODY3MDMsMTM4MjY0MDQ0OCwtMjAyMjEzODE1MiwtMTQwNzU0NT
-c5MCwtOTQ3NjgzNjg0LC02NjgxMjE1ODAsLTE4ODEwMzczNjQs
-MTM2NTY0MDA1MSw5NDQwNTU0MzYsLTQ1Mjc2NjM1NiwtMTYzNj
-QzOTA3OCwtMTc5NDg0MDczOSwtMjE0MTE3MTM5MiwtMTIzNjY4
-MDY2MywtNDA4MDc2MzA5XX0=
+eyJoaXN0b3J5IjpbLTY3NTA0NDgxMSwtMjc0NjI2MDU2LC0xND
+Q2NDI4ODIwLC03NDY2MDYwMTYsLTE0NDY0Mjg4MjAsLTIxMjY0
+NTUwNywtMTU5ODQ4NjcwMywxMzgyNjQwNDQ4LC0yMDIyMTM4MT
+UyLC0xNDA3NTQ1NzkwLC05NDc2ODM2ODQsLTY2ODEyMTU4MCwt
+MTg4MTAzNzM2NCwxMzY1NjQwMDUxLDk0NDA1NTQzNiwtNDUyNz
+Y2MzU2LC0xNjM2NDM5MDc4LC0xNzk0ODQwNzM5LC0yMTQxMTcx
+MzkyLC0xMjM2NjgwNjYzXX0=
 -->
