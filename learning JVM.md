@@ -142,17 +142,16 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
  单线程收集器, 不只是说只会使用一个cpu或者一个线程去收集, 而是指GC时会暂停其他工作线程,但省去了线程切换的开销, 在client 模式下, heap是几百兆的情况, gc效率很高, 造成的停顿仅仅是几百毫秒, 是client端默认的GC收集器
 
 * ParNew
-是Serial 的多线程版本, 作为新生代的默认收集器, 只能与CMS联合使用, 只是并发版本, 并不能zu
+是Serial 的多线程版本, 作为新生代的默认收集器, 只能与CMS联合使用, 只是并发版本, 并不能做到并行执行. 
 
 * Parallel Scavenage
-
 新生代收集器, 注重控制吞吐量来控制GC的停顿时间, 虚拟机运行100分钟, GC一分钟, 吞吐量 99%
 重要参数 : -XX:MaxGCPauseMills , -XX:GCTimeRatio, -XX:UseAdaptiveSizePolicy(自适应调节) 与ParNew的最大区别
+
 * Serial Old
-
 是Serial 的老年代版本, 与Parallel Scavenage配合使用, 作为CMS的备案, 在发生concurrent mode failure使用
-* Parallel Old
 
+* Parallel Old
 是Parallel Scavenage的老年代版本, 可与Parallel Scavenage 配合使用
 
 * CMS(Concurrent Mark Sweep)
@@ -531,11 +530,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4OTI2MzM1MywtMTY5OTcxMzMyNiwtMj
-k5OTU3Mjk1LDY4MzUxMjE5NywtMTIxODY4NjE2NywtMTQ5MjQ5
-MzgwOSwxOTkwODA0Mzg0LDE3MTYyNzg3OTksMTk2Mzg0NDE2Mi
-wtNDA5OTg5MTI4LDEzODkyNDIyMzgsNTM3NTE5NDg5LC05NDU4
-NDA5MzEsMTU1OTI5Mzg5LC0xMDU4MTQ4NjQ4LC0xNzEwNzY2Mz
-YsLTE1NjE1NjQ0NTksLTEyMzc5Mzc2NTEsLTQ0ODcwMzA1Nywt
-OTc1MTM2MjM1XX0=
+eyJoaXN0b3J5IjpbNzk4MDA4MzQ5LC0xNjk5NzEzMzI2LC0yOT
+k5NTcyOTUsNjgzNTEyMTk3LC0xMjE4Njg2MTY3LC0xNDkyNDkz
+ODA5LDE5OTA4MDQzODQsMTcxNjI3ODc5OSwxOTYzODQ0MTYyLC
+00MDk5ODkxMjgsMTM4OTI0MjIzOCw1Mzc1MTk0ODksLTk0NTg0
+MDkzMSwxNTU5MjkzODksLTEwNTgxNDg2NDgsLTE3MTA3NjYzNi
+wtMTU2MTU2NDQ1OSwtMTIzNzkzNzY1MSwtNDQ4NzAzMDU3LC05
+NzUxMzYyMzVdfQ==
 -->
