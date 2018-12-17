@@ -172,8 +172,10 @@ java1.8的默认垃圾收集器是 parallel collector
 基于标记-清除算法, 
   * 缺点
     * 收集阶段, 占用一部分线程和cpu资源, 导致吞吐量下降
-    * 因为gc时用户线程继续产生新对象, 如果CMS 此时不能完成清除工作, 导致老年代空间满了, 所以需要预留至少一部分空间用作gc时新对象的产生(-XX: CMSInitiatingOccupancyFraction 设置百分比), 若这部分空间不能满足, 则会导致concurrent mode failure, 会停止所有的用户线程去做gc, 停顿会很长.
-    * 采用标记清除算法, 内存碎片很多,-XX:UseCMSCompactionAtFullCollection(默认开启, 开启内存碎片的整理工作), 但是会导致停顿时间变长,  也可采用 -XX:CMSFullGCsBeforeCompaction(表示执行了多少次不压缩的full GC后, 来一次压缩的full GC ,默认是0, 表示每次都压缩).
+* concurrent mode failure
+    因为gc时用户线程继续产生新对象, 如果CMS 此时不能完成清除工作, 导致老年代空间满了, 会触发这个失败, 会停止所有的用户线程去做gc, 停顿会很长.
+ 所以需要预留至少一部分空间用作gc时新对象的产生(-XX: CMSInitiatingOccupancyFraction 设置百分比), 
+       * 采用标记清除算法, 内存碎片很多,-XX:UseCMSCompactionAtFullCollection(默认开启, 开启内存碎片的整理工作), 但是会导致停顿时间变长,  也可采用 -XX:CMSFullGCsBeforeCompaction(表示执行了多少次不压缩的full GC后, 来一次压缩的full GC ,默认是0, 表示每次都压缩).
     
 * Garbage First(G1)
   * 并行(多线程处理GC, 此时用户线程仍然等待)和并发(减少停顿时间, 和用户线程并行, 垃圾收集器在另一个CPU)
@@ -550,11 +552,11 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzI1ODczNTEsLTQ1Mjc2NjM1NiwtMT
-YzNjQzOTA3OCwtMTc5NDg0MDczOSwtMjE0MTE3MTM5MiwtMTIz
-NjY4MDY2MywtNDA4MDc2MzA5LDEyMzMzMzQyNzgsMTc5OTQzMz
-QwLC01MjM3MzgxNzYsLTEyOTY5NTkyMzgsLTE2OTk3MTMzMjYs
-LTI5OTk1NzI5NSw2ODM1MTIxOTcsLTEyMTg2ODYxNjcsLTE0OT
-I0OTM4MDksMTk5MDgwNDM4NCwxNzE2Mjc4Nzk5LDE5NjM4NDQx
-NjIsLTQwOTk4OTEyOF19
+eyJoaXN0b3J5IjpbOTQ0MDU1NDM2LC00NTI3NjYzNTYsLTE2Mz
+Y0MzkwNzgsLTE3OTQ4NDA3MzksLTIxNDExNzEzOTIsLTEyMzY2
+ODA2NjMsLTQwODA3NjMwOSwxMjMzMzM0Mjc4LDE3OTk0MzM0MC
+wtNTIzNzM4MTc2LC0xMjk2OTU5MjM4LC0xNjk5NzEzMzI2LC0y
+OTk5NTcyOTUsNjgzNTEyMTk3LC0xMjE4Njg2MTY3LC0xNDkyND
+kzODA5LDE5OTA4MDQzODQsMTcxNjI3ODc5OSwxOTYzODQ0MTYy
+LC00MDk5ODkxMjhdfQ==
 -->
