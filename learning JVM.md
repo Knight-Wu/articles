@@ -188,6 +188,12 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 * heap size 相关配置
 > By default, the virtual machine grows or shrinks the heap at each collection to try to keep the proportion of free space to live objects at each collection within a specific range. This target range is set as a percentage by the parameters `-XX:MinHeapFreeRatio=``<minimum>` and `-XX:MaxHeapFreeRatio=``<maximum>`, and the total size is bounded below by `-Xms``<min>` and above by `-Xmx``<max>`.
 
+>    Unless you have problems with pauses, try granting as much memory as possible to the virtual machine. The default size is often too small.( 越大的heap size , 会增加gc pause 时间)
+    
+-   Setting  `-Xms`  and  `-Xmx`  to the same value increases predictability by removing the most important sizing decision from the virtual machine. However, the virtual machine is then unable to compensate if you make a poor choice.
+    
+-   In general, increase the memory as you increase the number of processors, since allocation can be parallelized.
+
 
 jvm 参数调优: 
 https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
@@ -538,7 +544,7 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDgwNjQxMTc1LC0xMjM2NjgwNjYzLC00MD
+eyJoaXN0b3J5IjpbNzM3MzI2MzMzLC0xMjM2NjgwNjYzLC00MD
 gwNzYzMDksMTIzMzMzNDI3OCwxNzk5NDMzNDAsLTUyMzczODE3
 NiwtMTI5Njk1OTIzOCwtMTY5OTcxMzMyNiwtMjk5OTU3Mjk1LD
 Y4MzUxMjE5NywtMTIxODY4NjE2NywtMTQ5MjQ5MzgwOSwxOTkw
