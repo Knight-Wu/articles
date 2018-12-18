@@ -108,7 +108,37 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 https://github.com/alibaba/arthas
 ![enter image description here](https://drive.google.com/uc?id=1NY996uHRRNWcX2Z8WpIjTkt8lq_JzC3d)
 
-个人使用经验:  需要应用的用户权限, 使用watch 命令可以
+个人使用经验:  需要应用的用户权限, 使用watch 命令可以查看某个方法的入参和返回值, 并可以启动一个后台线程长时间监控. 
+```
+$ watch demo.MathGame primeFactors "{params,returnObj}" -x 2
+
+Press Ctrl+C to abort.
+
+Affect(class-cnt:1 , method-cnt:1) cost in 44 ms.
+
+ts=2018-12-03 19:16:51; [cost=1.280502ms] result=@ArrayList[
+
+    @Object[][
+
+        @Integer[535629513],
+
+    ],
+
+    @ArrayList[
+
+        @Integer[3],
+
+        @Integer[19],
+
+        @Integer[191],
+
+        @Integer[49199],
+
+    ],
+
+]
+
+```
 
 
 
@@ -116,8 +146,8 @@ https://github.com/alibaba/arthas
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5ODgxNDk4LDE3Njg4MTg2MzQsLTExOD
-YyOTE1OTEsODI1NTM2NjgzLC0xNTc1OTQ2NDg3LDM0NzQxMDkw
-MywxMDYzMzY0MTExLDE0OTQ0MDAxMzYsLTE0NjQzMzMzMDUsMz
-IzMjY0MDU0XX0=
+eyJoaXN0b3J5IjpbLTMxOTI4NDA2MSwxNzY4ODE4NjM0LC0xMT
+g2MjkxNTkxLDgyNTUzNjY4MywtMTU3NTk0NjQ4NywzNDc0MTA5
+MDMsMTA2MzM2NDExMSwxNDk0NDAwMTM2LC0xNDY0MzMzMzA1LD
+MyMzI2NDA1NF19
 -->
