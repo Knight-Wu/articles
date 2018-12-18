@@ -26,14 +26,15 @@ spark.driver.extraJavaOptions=-verbose:class
 * spark 日志分类
 driver : yarn 界面和命令
 executor : 由yarn nodemanager管理, 
-yarn.nodemanager.remote-app-log-dir
-yarn.nodemanager.remote-app-log-dir-suffix
-
-
+yarn.nodemanager.remote-app-log-dir  			  /tmp/logs
+yarn.nodemanager.remote-app-log-dir-suffix   logs
+可以通过 hadoop fs -get /tmp/logs/${usr}/logs/${applicationId}
+或yarn 界面查看, 点进去可以看到这个application 的container 的运行的应用的log, stderr, stdout. 
+![enter image description here](https://drive.google.com/uc?id=1Fj8qN6D4HqfM0YO2YiP2QB496xOiakS6)
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwNTc1MjA2MSwzMjMyNjQwNTRdfQ==
+eyJoaXN0b3J5IjpbLTY4NTY2NjYzMSwzMjMyNjQwNTRdfQ==
 -->
