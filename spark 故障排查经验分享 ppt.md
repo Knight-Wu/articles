@@ -101,7 +101,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 有关Spark容错机制的文章，有博客。 https://blog.cloudera.com/blog/2017/04/blacklisting-in-apache-spark/ 
 
 
-* spark 本地环境debug
+* spark windows 调试环境搭建
 
 
 
@@ -111,7 +111,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTA1NjM1MTEsLTE1NzU5NDY0ODcsMz
-Q3NDEwOTAzLDEwNjMzNjQxMTEsMTQ5NDQwMDEzNiwtMTQ2NDMz
-MzMwNSwzMjMyNjQwNTRdfQ==
+eyJoaXN0b3J5IjpbNDQ3MDk2MjI0LC0xNTc1OTQ2NDg3LDM0Nz
+QxMDkwMywxMDYzMzY0MTExLDE0OTQ0MDAxMzYsLTE0NjQzMzMz
+MDUsMzIzMjY0MDU0XX0=
 -->
