@@ -207,6 +207,7 @@
 > hadoop fsck -blockId blk_xxx 不需要后缀, 查看block属于的文件和副本情况.
 
 #### hdfs 读写流程
+![](https://drive.google.com/uc?id=1LjDrWGX6zhQzEJOzNWG615eKFyK2XHDF)
 1. 写流程, client通过 FileSystem.open()获取一个RPC 请求到nn, 然后创建一个文件,  并获取lease 保证只有一个writer, 多个reader(只有ack的packet可以读), 并且nn 检查client的权限等. 最后返回一个  FSDataOutputStream 给client写入数据,通过socket去写datanode
 
 2. 真正开始写: client 直接与dn 通信, 通过 FSDataInputStream  发送一个写请求, 当本地的临时目录超过一个block大小后, 才会把数据发往dn, 这个过程中先把数据 packets(默认 64KB)  先写到本地的 data queue, 这个队列通过 DataStreamer去消费 , 这个dataStreamer 向nn收集新的 block的信息. 而dn组成了 pipeline,  假设副本数是3, pipeline 里面就是三个dn , 一个dn写完再把packets 交给下一个dn. 当packets写入第一个dn之后, 会转移到一个ack队列, 去保证数据的三份副本都写入成功后, 才把ack从队列中移除, 并且是等待一个block的所有ack返回之后, 才会发送下一个block.
@@ -471,8 +472,8 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMjIxNzMwNjcsLTExMzc5OTg1NTUsLT
-IzMTkxMTAxNyw2MzY3MDYxMzIsOTQ3MjYxMDMsLTE0NjA3NzQ5
-MSwxMzI5ODYyNzE4LC0xMTM4ODY2ODk2LDg5OTk1MjYwLDU4ND
-g3MDA0NSwxMjgyNzM1Mzg0XX0=
+eyJoaXN0b3J5IjpbLTE2NjQ5OTQ3MDYsLTEwMjIxNzMwNjcsLT
+ExMzc5OTg1NTUsLTIzMTkxMTAxNyw2MzY3MDYxMzIsOTQ3MjYx
+MDMsLTE0NjA3NzQ5MSwxMzI5ODYyNzE4LC0xMTM4ODY2ODk2LD
+g5OTk1MjYwLDU4NDg3MDA0NSwxMjgyNzM1Mzg0XX0=
 -->
