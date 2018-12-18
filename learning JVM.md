@@ -213,7 +213,7 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 > In general, increase the memory as you increase the number of processors, since allocation can be parallelized.
 
 * 提高晋升老年代的门槛, 降低full GC的频率
-一是可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 应该能够降低full GC 的频率.
+一是可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 应该能够降低full GC 的频率. 参数:`-XX:NewRatio=3`  means that the ratio between the young and tenured generation is 1:3
 
 * The Young Generation
 Young Generation size 越大, 
@@ -554,11 +554,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwOTgwNTQ2OCwtMTI5NjEzNjg1NCwtMj
-c0NjI2MDU2LC0xNDQ2NDI4ODIwLC03NDY2MDYwMTYsLTE0NDY0
-Mjg4MjAsLTIxMjY0NTUwNywtMTU5ODQ4NjcwMywxMzgyNjQwND
-Q4LC0yMDIyMTM4MTUyLC0xNDA3NTQ1NzkwLC05NDc2ODM2ODQs
-LTY2ODEyMTU4MCwtMTg4MTAzNzM2NCwxMzY1NjQwMDUxLDk0ND
-A1NTQzNiwtNDUyNzY2MzU2LC0xNjM2NDM5MDc4LC0xNzk0ODQw
-NzM5LC0yMTQxMTcxMzkyXX0=
+eyJoaXN0b3J5IjpbLTE2NDIzMzE0MzYsLTEyOTYxMzY4NTQsLT
+I3NDYyNjA1NiwtMTQ0NjQyODgyMCwtNzQ2NjA2MDE2LC0xNDQ2
+NDI4ODIwLC0yMTI2NDU1MDcsLTE1OTg0ODY3MDMsMTM4MjY0MD
+Q0OCwtMjAyMjEzODE1MiwtMTQwNzU0NTc5MCwtOTQ3NjgzNjg0
+LC02NjgxMjE1ODAsLTE4ODEwMzczNjQsMTM2NTY0MDA1MSw5ND
+QwNTU0MzYsLTQ1Mjc2NjM1NiwtMTYzNjQzOTA3OCwtMTc5NDg0
+MDczOSwtMjE0MTE3MTM5Ml19
 -->
