@@ -214,6 +214,7 @@ minorGC之前会检查老年代最大的连续内存空间是否大于新生代�
 * 新生代gc过程
 对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代.
 
+**所以需要
 * major gc 
 指的老年代进行的gc
 
@@ -223,9 +224,9 @@ https://www.zhihu.com/question/41922036/answer/93079526
 
 当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC（因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC）；或者，如果有perm gen的话，要在perm gen分配空间但已经没有足够空间时，也要触发一次full GC；或者System.gc()、heap dump带GC，默认也是触发full GC。
 
-> 所以, 简而言之, 降低full gc的频率, 一个方向是增大老年代的大小, 二是减小新生代晋升的对象的大小, 提高晋升门槛
-
 > Full GC时，就不在分 “young gen使用young gen自己的收集器(一般是copy算法)；old gen使用old gen的收集器(一般是mark-sweep-compact算法)”，而是，整个heap以及perm gen，所有内存，全部的统一使用 old gen的收集器(一般是mark-sweep-compact算法) 一站式搞定
+
+ **所以, 简而言之, 降低full gc的频率, 一个方向是增大老年代的大小, 二是减小新生代晋升的对象的大小, 提高晋升门槛**
 
 * GC root
  1. local variable
@@ -569,11 +570,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5MzEwOTMyMiwyNjE3NTQ2MzgsMTIxMD
-A5MzA0MSwyMTI3MzczMTk4LDI5NTM2NTI0NSwtMTQ2OTIzMDA2
-NCw2OTcyMTkwNjUsNjQxNTcyODk5LC0xMjY4MTU3MTgsLTEyOT
-YxMzY4NTQsLTI3NDYyNjA1NiwtMTQ0NjQyODgyMCwtNzQ2NjA2
-MDE2LC0xNDQ2NDI4ODIwLC0yMTI2NDU1MDcsLTE1OTg0ODY3MD
-MsMTM4MjY0MDQ0OCwtMjAyMjEzODE1MiwtMTQwNzU0NTc5MCwt
-OTQ3NjgzNjg0XX0=
+eyJoaXN0b3J5IjpbMTQ3NDg5MDUxNCwtODkzMTA5MzIyLDI2MT
+c1NDYzOCwxMjEwMDkzMDQxLDIxMjczNzMxOTgsMjk1MzY1MjQ1
+LC0xNDY5MjMwMDY0LDY5NzIxOTA2NSw2NDE1NzI4OTksLTEyNj
+gxNTcxOCwtMTI5NjEzNjg1NCwtMjc0NjI2MDU2LC0xNDQ2NDI4
+ODIwLC03NDY2MDYwMTYsLTE0NDY0Mjg4MjAsLTIxMjY0NTUwNy
+wtMTU5ODQ4NjcwMywxMzgyNjQwNDQ4LC0yMDIyMTM4MTUyLC0x
+NDA3NTQ1NzkwXX0=
 -->
