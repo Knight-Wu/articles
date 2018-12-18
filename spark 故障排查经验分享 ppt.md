@@ -25,12 +25,15 @@ spark.driver.extraJavaOptions=-verbose:class
 
 * spark 日志分类
 driver : yarn 界面和命令
-executor : 
+executor : 由yarn nodemanager管理, 
+yarn.nodemanager.remote-app-log-dir
+yarn.nodemanager.remote-app-log-dir-suffix
+
 
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjE0MDgxNzIsMzIzMjY0MDU0XX0=
+eyJoaXN0b3J5IjpbMTEwNTc1MjA2MSwzMjMyNjQwNTRdfQ==
 -->
