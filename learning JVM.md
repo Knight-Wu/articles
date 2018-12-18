@@ -199,9 +199,10 @@ java1.8的默认垃圾收集器是 parallel collector
   * 可预测的停顿
 
 #### GC调优
-jvm heap 大小初始化如何设置: 
+* jvm heap 大小初始化如何设置
+简而言之, 一开始可以根据默认值或者一个大概的估计值去配置, 并设置最大堆和最小堆的范围, 然后触发了 full gc 之后老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
 https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
-总结说来, 将full gc 之后老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
+
 
 * heap size 相关配置
 简而言之, 
@@ -555,11 +556,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTI2MTExMDcsLTEyNjgxNTcxOCwtMT
-I5NjEzNjg1NCwtMjc0NjI2MDU2LC0xNDQ2NDI4ODIwLC03NDY2
-MDYwMTYsLTE0NDY0Mjg4MjAsLTIxMjY0NTUwNywtMTU5ODQ4Nj
-cwMywxMzgyNjQwNDQ4LC0yMDIyMTM4MTUyLC0xNDA3NTQ1Nzkw
-LC05NDc2ODM2ODQsLTY2ODEyMTU4MCwtMTg4MTAzNzM2NCwxMz
-Y1NjQwMDUxLDk0NDA1NTQzNiwtNDUyNzY2MzU2LC0xNjM2NDM5
-MDc4LC0xNzk0ODQwNzM5XX0=
+eyJoaXN0b3J5IjpbMTQ2NTYzMzQ2OCwtMTI2ODE1NzE4LC0xMj
+k2MTM2ODU0LC0yNzQ2MjYwNTYsLTE0NDY0Mjg4MjAsLTc0NjYw
+NjAxNiwtMTQ0NjQyODgyMCwtMjEyNjQ1NTA3LC0xNTk4NDg2Nz
+AzLDEzODI2NDA0NDgsLTIwMjIxMzgxNTIsLTE0MDc1NDU3OTAs
+LTk0NzY4MzY4NCwtNjY4MTIxNTgwLC0xODgxMDM3MzY0LDEzNj
+U2NDAwNTEsOTQ0MDU1NDM2LC00NTI3NjYzNTYsLTE2MzY0Mzkw
+NzgsLTE3OTQ4NDA3MzldfQ==
 -->
