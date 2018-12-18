@@ -200,9 +200,8 @@ java1.8的默认垃圾收集器是 parallel collector
 
 #### GC调优
 * jvm heap 大小初始化如何设置
-简而言之, 一开始可以根据默认值或者一个大概的估计值去配置, 并设置最大堆和最小堆的范围, 然后触发了 full gc 之后老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
+简而言之, 一开始可以根据默认值或者一个大概的估计值去配置, 并设置最大堆和最小堆的范围, 然后触发了 full gc 之后将老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
 https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
-
 
 * heap size 相关配置
 简而言之, 
@@ -217,10 +216,9 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 * 提高晋升老年代的门槛, 降低full GC的频率
 一是可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 可能可以降低full GC 的频率. 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 进而带来major gc 的频率升高, 具体的调优值取决于对象的生命周期的组成, 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 参数:`-XX:NewRatio=3`  means that the ratio between the young and tenured generation is 1:3
 
-* The Young Generation
-Young Generation size 越大, 
-> By default, the young generation size is controlled by the parameter  `NewRatio`. For example, setting  `-XX:NewRatio=3`  means that the ratio between the young and tenured generation is 1:3. In other words, the combined size of the eden and survivor spaces will be one-fourth of the total heap size.
-The parameters  `NewSize`  and  `MaxNewSize`  bound the young generation size from below and above. Setting these to the same value fixes the young generation, just as setting  `-Xms`  and  `-Xmx`  to the same value fixes the total heap size.
+
+
+>The parameters  `NewSize`  and  `MaxNewSize`  bound the young generation size from below and above. Setting these to the same value fixes the young generation, just as setting  `-Xms`  and  `-Xmx`  to the same value fixes the total heap size.
 
 parallel gc 参数调优: 
 https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
@@ -232,11 +230,7 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 
 
 
-* 将SurvivorRatio由默认的8改为2
-使surivor的比例增大, eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 影响是: minorGC的频率增大, 因为eden小了; 增大了新生代对象复制的开销, 因为有更多的对象会留在 surivor区域, 但是提高了晋升老年代的门槛, 让新生代对象能进行充分的淘汰才能进入老年代,  使真正的长寿的对象才能进入老年代, 使fullGC的时间变短了. 
 
-* NewParSize调优
- NewParSize表示新生代大小, 增大新生代大小, 则单次minorGC时间变长, 频率下降, 业务读写操作时间抖动较大; 减小新生代大小, 就会使minorGC频率加快, 加快晋升到老年代的速度(因为每minorGC一次, 对象年龄加一), 增加fullGC的机会
 
 ### java heap 分代(基于jdk1.8)
 * 新生代(PSYoungGen)
@@ -556,7 +550,7 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2NTYzMzQ2OCwtMTI2ODE1NzE4LC0xMj
+eyJoaXN0b3J5IjpbLTg0NDU2MDk1OCwtMTI2ODE1NzE4LC0xMj
 k2MTM2ODU0LC0yNzQ2MjYwNTYsLTE0NDY0Mjg4MjAsLTc0NjYw
 NjAxNiwtMTQ0NjQyODgyMCwtMjEyNjQ1NTA3LC0xNTk4NDg2Nz
 AzLDEzODI2NDA0NDgsLTIwMjIxMzgxNTIsLTE0MDc1NDU3OTAs
