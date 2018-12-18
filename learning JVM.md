@@ -213,7 +213,7 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 > In general, increase the memory as you increase the number of processors, since allocation can be parallelized.
 
 * The Young Generation
-Young Generation size 越大, minor gc 频率越低, 晋升老年代的门槛会越高, 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 应该能够降低full GC 的频率.
+Young Generation size 越大, minor gc 频率越低, 晋升老年代的门槛会越高, 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 
 > By default, the young generation size is controlled by the parameter  `NewRatio`. For example, setting  `-XX:NewRatio=3`  means that the ratio between the young and tenured generation is 1:3. In other words, the combined size of the eden and survivor spaces will be one-fourth of the total heap size.
 The parameters  `NewSize`  and  `MaxNewSize`  bound the young generation size from below and above. Setting these to the same value fixes the young generation, just as setting  `-Xms`  and  `-Xmx`  to the same value fixes the total heap size.
 
@@ -549,12 +549,13 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
+* 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ3NzQ1MzEwLC0xMjk2MTM2ODU0LC0yNz
-Q2MjYwNTYsLTE0NDY0Mjg4MjAsLTc0NjYwNjAxNiwtMTQ0NjQy
-ODgyMCwtMjEyNjQ1NTA3LC0xNTk4NDg2NzAzLDEzODI2NDA0ND
-gsLTIwMjIxMzgxNTIsLTE0MDc1NDU3OTAsLTk0NzY4MzY4NCwt
-NjY4MTIxNTgwLC0xODgxMDM3MzY0LDEzNjU2NDAwNTEsOTQ0MD
-U1NDM2LC00NTI3NjYzNTYsLTE2MzY0MzkwNzgsLTE3OTQ4NDA3
-MzksLTIxNDExNzEzOTJdfQ==
+eyJoaXN0b3J5IjpbLTE0MDMzMzA2MjUsLTEyOTYxMzY4NTQsLT
+I3NDYyNjA1NiwtMTQ0NjQyODgyMCwtNzQ2NjA2MDE2LC0xNDQ2
+NDI4ODIwLC0yMTI2NDU1MDcsLTE1OTg0ODY3MDMsMTM4MjY0MD
+Q0OCwtMjAyMjEzODE1MiwtMTQwNzU0NTc5MCwtOTQ3NjgzNjg0
+LC02NjgxMjE1ODAsLTE4ODEwMzczNjQsMTM2NTY0MDA1MSw5ND
+QwNTU0MzYsLTQ1Mjc2NjM1NiwtMTYzNjQzOTA3OCwtMTc5NDg0
+MDczOSwtMjE0MTE3MTM5Ml19
 -->
