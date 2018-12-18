@@ -103,13 +103,15 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 
 * spark 本地环境debug
 
+
+
 * spark 的执行任务的整个流程
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA0ODQ0MDEzLC0xNTc1OTQ2NDg3LDM0Nz
-QxMDkwMywxMDYzMzY0MTExLDE0OTQ0MDAxMzYsLTE0NjQzMzMz
-MDUsMzIzMjY0MDU0XX0=
+eyJoaXN0b3J5IjpbLTEwNTA1NjM1MTEsLTE1NzU5NDY0ODcsMz
+Q3NDEwOTAzLDEwNjMzNjQxMTEsMTQ5NDQwMDEzNiwtMTQ2NDMz
+MzMwNSwzMjMyNjQwNTRdfQ==
 -->
