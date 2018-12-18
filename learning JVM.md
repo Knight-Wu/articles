@@ -198,6 +198,42 @@ java1.8的默认垃圾收集器是 parallel collector
   整体使用标记-整理, 局部采用标记-复制,故不会有内存碎片.
   * 可预测的停顿
 
+
+### GC回收过程
+> 大致过程
+*  对象优先在eden分配, 当eden没有足够空间时, 进行一次minorGC, 将存在GC root引用链的对象复制到survivor区域, 使用标记复制算法, 然后存活对象的年龄加一. 
+* 大对象直接分配到老年代
+当对象大小大于参数设置的 -XX:PretenureSizeThreshold (默认是 0 , 即无论多大不会直接进入老年代)
+* 长期存活对象进入老年代
+当对象出生在eden, 经过一次minorGC进入survivor, 则对象年龄设为1, 当对象年龄超过该参数 -XX:MaxTenuringThreshold 默认15, 则进入老年代
+* 动态对象年龄判定
+当某个年龄的对象的大小总和超过survivor的一半, 则大于或等于该年龄的所有对象都会进入老年代.
+* 空间分配担保
+minorGC之前会检查老年代最大的连续内存空间是否大于新生代所有对象的大小,  或者检查最大的老年代的连续内存是否大于历史平均进入老年代的对象大小, 满足一个就进行minorGC, 否则fullGC
+
+* 新生代gc过程
+对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代.
+
+* major gc 
+指的老年代进行的gc
+
+
+* full GC
+https://www.zhihu.com/question/41922036/answer/93079526  
+
+当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC（因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC）；或者，如果有perm gen的话，要在perm gen分配空间但已经没有足够空间时，也要触发一次full GC；或者System.gc()、heap dump带GC，默认也是触发full GC。
+
+> 所以, 简而言之, 降低full gc的频率, 一个方向是增大老年代的大小, 二是减小新生代晋升的对象的大小, 提高晋升门槛
+
+> Full GC时，就不在分 “young gen使用young gen自己的收集器(一般是copy算法)；old gen使用old gen的收集器(一般是mark-sweep-compact算法)”，而是，整个heap以及perm gen，所有内存，全部的统一使用 old gen的收集器(一般是mark-sweep-compact算法) 一站式搞定
+
+* GC root
+ 1. local variable
+ 2. active java thread
+ 3. static variable
+ 4. JNI reference
+
+
 #### GC调优
 * jvm heap 大小初始化如何设置
 简而言之, 一开始可以根据默认值或者一个大概的估计值去配置, 并设置最大堆和最小堆的范围, 然后触发了 full gc 之后将老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
@@ -247,40 +283,6 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 采用标记清除算法或标记整理算法
 * Metaspace(方法区)
 存储类的信息
-
-### GC回收过程
-> 大致过程
-*  对象优先在eden分配, 当eden没有足够空间时, 进行一次minorGC, 将存在GC root引用链的对象复制到survivor区域, 使用标记复制算法, 然后存活对象的年龄加一. 
-* 大对象直接分配到老年代
-当对象大小大于参数设置的 -XX:PretenureSizeThreshold (默认是 0 , 即无论多大不会直接进入老年代)
-* 长期存活对象进入老年代
-当对象出生在eden, 经过一次minorGC进入survivor, 则对象年龄设为1, 当对象年龄超过该参数 -XX:MaxTenuringThreshold 默认15, 则进入老年代
-* 动态对象年龄判定
-当某个年龄的对象的大小总和超过survivor的一半, 则大于或等于该年龄的所有对象都会进入老年代.
-* 空间分配担保
-minorGC之前会检查老年代最大的连续内存空间是否大于新生代所有对象的大小,  或者检查最大的老年代的连续内存是否大于历史平均进入老年代的对象大小, 满足一个就进行minorGC, 否则fullGC
-
-* 新生代gc过程
-对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代.
-
-* major gc 
-指的老年代进行的gc
-
-
-* full GC
-https://www.zhihu.com/question/41922036/answer/93079526  
-
-当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC（因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC）；或者，如果有perm gen的话，要在perm gen分配空间但已经没有足够空间时，也要触发一次full GC；或者System.gc()、heap dump带GC，默认也是触发full GC。
-
-> 所以, 简而言之, 降低full gc的频率, 一个方向是增大老年代的大小, 二是减小新生代晋升的对象的大小, 提高晋升门槛
-
-> Full GC时，就不在分 “young gen使用young gen自己的收集器(一般是copy算法)；old gen使用old gen的收集器(一般是mark-sweep-compact算法)”，而是，整个heap以及perm gen，所有内存，全部的统一使用 old gen的收集器(一般是mark-sweep-compact算法) 一站式搞定
-
-* GC root
- 1. local variable
- 2. active java thread
- 3. static variable
- 4. JNI reference
 
 #### GC 常用命令
 * -verbose:class , -verbose:gc ,-verbose:jni 
@@ -567,7 +569,7 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5NzkzMDM0OCwyNjE3NTQ2MzgsMTIxMD
+eyJoaXN0b3J5IjpbLTg5MzEwOTMyMiwyNjE3NTQ2MzgsMTIxMD
 A5MzA0MSwyMTI3MzczMTk4LDI5NTM2NTI0NSwtMTQ2OTIzMDA2
 NCw2OTcyMTkwNjUsNjQxNTcyODk5LC0xMjY4MTU3MTgsLTEyOT
 YxMzY4NTQsLTI3NDYyNjA1NiwtMTQ0NjQyODgyMCwtNzQ2NjA2
