@@ -69,11 +69,21 @@ r>=3 &&( floor(r/2) >= 12 || r>=n && (block is flushed or appended))
 
 >  dfs.client.block.write.replace-datanode-on-failure.best-effort
 
-假设这个参数是false, 如果作为replacement的dn也写失败的话就会直接抛出异常, 终止重试; 如果设为true, 则假设replacement的dn也写失败, 仍然会找新的dn去重试.
+假设这个参数是false, datanode replacement 的过程失败的话就会直接抛出异常, 终止重试; 如果设为true, 则假设replacement的dn也写失败, 仍然会找新的dn去重试.
+
+* 解决办法
+dfs.client.block.write.replace-datanode-on-failure.policy = always, 
+dfs.client.block.write.replace-datanode-on-failure.best-effort = true
+
+
+* spark on yarn 的其他容错策略
+
+* spark 的执行任务的整个流程
+
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzEyMDkyMjgxLDE0OTQ0MDAxMzYsLTE0Nj
-QzMzMzMDUsMzIzMjY0MDU0XX0=
+eyJoaXN0b3J5IjpbLTE5ODYwODI0ODksMTQ5NDQwMDEzNiwtMT
+Q2NDMzMzMwNSwzMjMyNjQwNTRdfQ==
 -->
