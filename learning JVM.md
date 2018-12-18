@@ -214,7 +214,9 @@ minorGC之前会检查老年代最大的连续内存空间是否大于新生代�
 * 新生代gc过程
 对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代.
 
-**所以需要
+
+
+
 * major gc 
 指的老年代进行的gc
 
@@ -570,7 +572,7 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3NDg5MDUxNCwtODkzMTA5MzIyLDI2MT
+eyJoaXN0b3J5IjpbMjA0NjQ3NjE3NiwtODkzMTA5MzIyLDI2MT
 c1NDYzOCwxMjEwMDkzMDQxLDIxMjczNzMxOTgsMjk1MzY1MjQ1
 LC0xNDY5MjMwMDY0LDY5NzIxOTA2NSw2NDE1NzI4OTksLTEyNj
 gxNTcxOCwtMTI5NjEzNjg1NCwtMjc0NjI2MDU2LC0xNDQ2NDI4
