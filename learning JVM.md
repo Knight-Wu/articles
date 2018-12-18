@@ -249,6 +249,7 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 存储类的信息
 
 ### GC回收过程
+> 大致过程
 *  对象优先在eden分配, 当eden没有足够空间时, 进行一次minorGC, 将存在GC root引用链的对象复制到survivor区域, 使用标记复制算法, 然后存活对象的年龄加一. 
 * 大对象直接分配到老年代
 当对象大小大于参数设置的 -XX:PretenureSizeThreshold (默认是 0 , 即无论多大不会直接进入老年代)
@@ -258,8 +259,13 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 当某个年龄的对象的大小总和超过survivor的一半, 则大于或等于该年龄的所有对象都会进入老年代.
 * 空间分配担保
 minorGC之前会检查老年代最大的连续内存空间是否大于新生代所有对象的大小,  或者检查最大的老年代的连续内存是否大于历史平均进入老年代的对象大小, 满足一个就进行minorGC, 否则fullGC
-> 新生代gc过程
-1. 对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代.
+
+* 新生代gc过程
+对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代.
+
+* major gc 
+指的老年代进行的gc
+
 
 * full GC
 https://www.zhihu.com/question/41922036/answer/93079526  
@@ -558,11 +564,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyNzM3MzE5OCwyOTUzNjUyNDUsLTE0Nj
-kyMzAwNjQsNjk3MjE5MDY1LDY0MTU3Mjg5OSwtMTI2ODE1NzE4
-LC0xMjk2MTM2ODU0LC0yNzQ2MjYwNTYsLTE0NDY0Mjg4MjAsLT
-c0NjYwNjAxNiwtMTQ0NjQyODgyMCwtMjEyNjQ1NTA3LC0xNTk4
-NDg2NzAzLDEzODI2NDA0NDgsLTIwMjIxMzgxNTIsLTE0MDc1ND
-U3OTAsLTk0NzY4MzY4NCwtNjY4MTIxNTgwLC0xODgxMDM3MzY0
-LDEzNjU2NDAwNTFdfQ==
+eyJoaXN0b3J5IjpbMTIxMDA5MzA0MSwyMTI3MzczMTk4LDI5NT
+M2NTI0NSwtMTQ2OTIzMDA2NCw2OTcyMTkwNjUsNjQxNTcyODk5
+LC0xMjY4MTU3MTgsLTEyOTYxMzY4NTQsLTI3NDYyNjA1NiwtMT
+Q0NjQyODgyMCwtNzQ2NjA2MDE2LC0xNDQ2NDI4ODIwLC0yMTI2
+NDU1MDcsLTE1OTg0ODY3MDMsMTM4MjY0MDQ0OCwtMjAyMjEzOD
+E1MiwtMTQwNzU0NTc5MCwtOTQ3NjgzNjg0LC02NjgxMjE1ODAs
+LTE4ODEwMzczNjRdfQ==
 -->
