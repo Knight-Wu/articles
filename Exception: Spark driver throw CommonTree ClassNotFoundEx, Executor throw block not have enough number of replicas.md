@@ -24,7 +24,7 @@
 * 解决过程
 4. 关于第一个现象, 一开始只发现了第一个现象, 没有发现executor的异常, 所以自然是觉得jar包问题, 尝试了如下几种添加jar包的方式: 
 * hive添加配置: Add Jar(一开始不懂, 应该在spark端添加jar)
-* spark依赖第三方jar, 将jar包放到driver和executor的container中, 前两个参数会从container中取jar包, 第三个参数会把jar包加载到container中.
+* spark依赖第三方jar, 将jar包放到driver和executor的container中, 前两个参数告诉container jar包在哪 , 第三个参数会把jar包加载到container中.
 ```
 hive -hiveconf spark.driver.extraClassPath=./antlr-runtime-3.4.jar  -hiveconf spark.executor.extraClassPath=./antlr-runtime-3.4.jar -hiveconf spark.yarn.dist.files=/opt/cloudera/parcels/CDH-5.12.1-1.cdh5.12.1.p0.3/jars/antlr-runtime-3.4.jar
 ```
@@ -81,7 +81,7 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzk5MzQ1NjEyLDE3Njg4MjEwNDYsLTExOD
-c2MjUyMDQsMTkxNzg3NzM1NCwtMjg1NjQ0OTQ5LDExNTQzMDIz
-NjEsLTE4OTE3MzI3NjldfQ==
+eyJoaXN0b3J5IjpbODAyOTIyMTE0LDc5OTM0NTYxMiwxNzY4OD
+IxMDQ2LC0xMTg3NjI1MjA0LDE5MTc4NzczNTQsLTI4NTY0NDk0
+OSwxMTU0MzAyMzYxLC0xODkxNzMyNzY5XX0=
 -->
