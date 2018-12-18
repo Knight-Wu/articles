@@ -102,7 +102,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 
 
 * spark windows 调试环境搭建
-
+[spark windows](https://github.com/Knight-Wu/articles/blob/master/scala%20spark%20windows%20%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.md)
 
 
 * spark 的执行任务的整个流程
@@ -111,7 +111,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDQ3MDk2MjI0LC0xNTc1OTQ2NDg3LDM0Nz
+eyJoaXN0b3J5IjpbODI1NTM2NjgzLC0xNTc1OTQ2NDg3LDM0Nz
 QxMDkwMywxMDYzMzY0MTExLDE0OTQ0MDAxMzYsLTE0NjQzMzMz
 MDUsMzIzMjY0MDU0XX0=
 -->
