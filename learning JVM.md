@@ -269,7 +269,8 @@ minorGC之前会检查老年代最大的连续内存空间是否大于新生代�
 
 * full GC
 https://www.zhihu.com/question/41922036/answer/93079526  
-> full GC：当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC（因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC）；或者，如果有perm gen的话，要在perm gen分配空间但已经没有足够空间时，也要触发一次full GC；或者System.gc()、heap dump带GC，默认也是触发full GC。
+
+当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC（因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC）；或者，如果有perm gen的话，要在perm gen分配空间但已经没有足够空间时，也要触发一次full GC；或者System.gc()、heap dump带GC，默认也是触发full GC。
 
 > Full GC时，就不在分 “young gen使用young gen自己的收集器(一般是copy算法)；old gen使用old gen的收集器(一般是mark-sweep-compact算法)”，而是，整个heap以及perm gen，所有内存，全部的统一使用 old gen的收集器(一般是mark-sweep-compact算法) 一站式搞定
 
@@ -564,11 +565,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxMDA5MzA0MSwyMTI3MzczMTk4LDI5NT
-M2NTI0NSwtMTQ2OTIzMDA2NCw2OTcyMTkwNjUsNjQxNTcyODk5
-LC0xMjY4MTU3MTgsLTEyOTYxMzY4NTQsLTI3NDYyNjA1NiwtMT
-Q0NjQyODgyMCwtNzQ2NjA2MDE2LC0xNDQ2NDI4ODIwLC0yMTI2
-NDU1MDcsLTE1OTg0ODY3MDMsMTM4MjY0MDQ0OCwtMjAyMjEzOD
-E1MiwtMTQwNzU0NTc5MCwtOTQ3NjgzNjg0LC02NjgxMjE1ODAs
-LTE4ODEwMzczNjRdfQ==
+eyJoaXN0b3J5IjpbMjYxNzU0NjM4LDEyMTAwOTMwNDEsMjEyNz
+M3MzE5OCwyOTUzNjUyNDUsLTE0NjkyMzAwNjQsNjk3MjE5MDY1
+LDY0MTU3Mjg5OSwtMTI2ODE1NzE4LC0xMjk2MTM2ODU0LC0yNz
+Q2MjYwNTYsLTE0NDY0Mjg4MjAsLTc0NjYwNjAxNiwtMTQ0NjQy
+ODgyMCwtMjEyNjQ1NTA3LC0xNTk4NDg2NzAzLDEzODI2NDA0ND
+gsLTIwMjIxMzgxNTIsLTE0MDc1NDU3OTAsLTk0NzY4MzY4NCwt
+NjY4MTIxNTgwXX0=
 -->
