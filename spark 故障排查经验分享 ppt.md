@@ -24,17 +24,20 @@ spark.driver.extraJavaOptions=-verbose:class
 尝试了一番无果, 可能解决思路不对, 重新汇总所有信息, 从查看所有spark 日志开始
 
 * spark 日志分类
-driver : yarn 界面和命令
-executor : 由yarn nodemanager管理, 
+1. driver : yarn 界面和命令
+2. executor : 由yarn nodemanager管理, 
 yarn.nodemanager.remote-app-log-dir  			  /tmp/logs
 yarn.nodemanager.remote-app-log-dir-suffix   logs
 可以通过 hadoop fs -get /tmp/logs/${usr}/logs/${applicationId}
 或yarn 界面查看, 点进去可以看到这个application 的container 的运行的应用的log, stderr, stdout. 
 ![enter image description here](https://drive.google.com/uc?id=1Fj8qN6D4HqfM0YO2YiP2QB496xOiakS6)
 
+3. eventLog
+通过spark history server 查看, 提供可视化界面
 
+> 问题来了, 如何通过task 定位到
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4NTY2NjYzMSwzMjMyNjQwNTRdfQ==
+eyJoaXN0b3J5IjpbNzIxODE5MjI5LDMyMzI2NDA1NF19
 -->
