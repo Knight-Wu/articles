@@ -42,9 +42,12 @@ eventLog missing, grep ex-timestamp -C 1000  *executor.log  |less
 * executor和dn 相关异常
 ![图3](https://user-images.githubusercontent.com/20329409/45937116-ea12f500-bfef-11e8-9e82-11c46502b1d9.png)
 
-场景: executor 
+场景: executor 写dn, 完成这个块的时候发现一个副本也没有. 
+
+* hdfs 写入流程
+
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODEwOTQ0OTM0LDMyMzI2NDA1NF19
+eyJoaXN0b3J5IjpbLTEzOTk4MDY0MTIsMzIzMjY0MDU0XX0=
 -->
