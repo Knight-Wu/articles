@@ -238,6 +238,8 @@ https://www.zhihu.com/question/41922036/answer/93079526
 
 
 #### GC调优
+* 原则
+> Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal三者只能取其二, 特别是1和2是互相矛盾的, heap size 越大, 频率会降低, 但是当gc 的时候, 存活的duix
 * jvm heap 大小初始化如何设置
 简而言之, 一开始可以根据默认值或者一个大概的估计值去配置, 并设置最大堆和最小堆的范围, 然后触发了 full gc 之后将老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
 https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
@@ -572,11 +574,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0NjQ3NjE3NiwtODkzMTA5MzIyLDI2MT
-c1NDYzOCwxMjEwMDkzMDQxLDIxMjczNzMxOTgsMjk1MzY1MjQ1
-LC0xNDY5MjMwMDY0LDY5NzIxOTA2NSw2NDE1NzI4OTksLTEyNj
-gxNTcxOCwtMTI5NjEzNjg1NCwtMjc0NjI2MDU2LC0xNDQ2NDI4
-ODIwLC03NDY2MDYwMTYsLTE0NDY0Mjg4MjAsLTIxMjY0NTUwNy
-wtMTU5ODQ4NjcwMywxMzgyNjQwNDQ4LC0yMDIyMTM4MTUyLC0x
-NDA3NTQ1NzkwXX0=
+eyJoaXN0b3J5IjpbMTAxMDI5NzQzOSwyMDQ2NDc2MTc2LC04OT
+MxMDkzMjIsMjYxNzU0NjM4LDEyMTAwOTMwNDEsMjEyNzM3MzE5
+OCwyOTUzNjUyNDUsLTE0NjkyMzAwNjQsNjk3MjE5MDY1LDY0MT
+U3Mjg5OSwtMTI2ODE1NzE4LC0xMjk2MTM2ODU0LC0yNzQ2MjYw
+NTYsLTE0NDY0Mjg4MjAsLTc0NjYwNjAxNiwtMTQ0NjQyODgyMC
+wtMjEyNjQ1NTA3LC0xNTk4NDg2NzAzLDEzODI2NDA0NDgsLTIw
+MjIxMzgxNTJdfQ==
 -->
