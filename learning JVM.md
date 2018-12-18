@@ -204,6 +204,7 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 总结说来, 将full gc 之后老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
 
 * heap size 相关配置
+简而言之, 
 > By default, the virtual machine grows or shrinks the heap at each collection to try to keep the proportion of free space to live objects at each collection within a specific range. This target range is set as a percentage by the parameters `-XX:MinHeapFreeRatio=``<minimum>` and `-XX:MaxHeapFreeRatio=``<maximum>`, and the total size is bounded below by `-Xms``<min>` and above by `-Xmx``<max>`.
 
 >    Unless you have problems with pauses, try granting as much memory as possible to the virtual machine. The default size is often too small.( 越大的heap size , 会增加gc pause 时间)
@@ -554,11 +555,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjgxNTcxOCwtMTI5NjEzNjg1NCwtMj
-c0NjI2MDU2LC0xNDQ2NDI4ODIwLC03NDY2MDYwMTYsLTE0NDY0
-Mjg4MjAsLTIxMjY0NTUwNywtMTU5ODQ4NjcwMywxMzgyNjQwND
-Q4LC0yMDIyMTM4MTUyLC0xNDA3NTQ1NzkwLC05NDc2ODM2ODQs
-LTY2ODEyMTU4MCwtMTg4MTAzNzM2NCwxMzY1NjQwMDUxLDk0ND
-A1NTQzNiwtNDUyNzY2MzU2LC0xNjM2NDM5MDc4LC0xNzk0ODQw
-NzM5LC0yMTQxMTcxMzkyXX0=
+eyJoaXN0b3J5IjpbLTEyOTI2MTExMDcsLTEyNjgxNTcxOCwtMT
+I5NjEzNjg1NCwtMjc0NjI2MDU2LC0xNDQ2NDI4ODIwLC03NDY2
+MDYwMTYsLTE0NDY0Mjg4MjAsLTIxMjY0NTUwNywtMTU5ODQ4Nj
+cwMywxMzgyNjQwNDQ4LC0yMDIyMTM4MTUyLC0xNDA3NTQ1Nzkw
+LC05NDc2ODM2ODQsLTY2ODEyMTU4MCwtMTg4MTAzNzM2NCwxMz
+Y1NjQwMDUxLDk0NDA1NTQzNiwtNDUyNzY2MzU2LC0xNjM2NDM5
+MDc4LC0xNzk0ODQwNzM5XX0=
 -->
