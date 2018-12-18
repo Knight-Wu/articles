@@ -203,8 +203,6 @@ java1.8的默认垃圾收集器是 parallel collector
 简而言之, 一开始可以根据默认值或者一个大概的估计值去配置, 并设置最大堆和最小堆的范围, 然后触发了 full gc 之后将老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
 https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 
-* heap size 相关配置
-简而言之, 
 > By default, the virtual machine grows or shrinks the heap at each collection to try to keep the proportion of free space to live objects at each collection within a specific range. This target range is set as a percentage by the parameters `-XX:MinHeapFreeRatio=``<minimum>` and `-XX:MaxHeapFreeRatio=``<maximum>`, and the total size is bounded below by `-Xms``<min>` and above by `-Xmx``<max>`.
 
 >    Unless you have problems with pauses, try granting as much memory as possible to the virtual machine. The default size is often too small.( 越大的heap size , 会增加gc pause 时间)
@@ -212,6 +210,7 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 > Setting  `-Xms`  and  `-Xmx`  to the same value increases predictability by removing the most important sizing decision from the virtual machine. However, the virtual machine is then unable to compensate if you make a poor choice.( 这两个值设置成一样的话, jvm 就无法调整size)
     
 > In general, increase the memory as you increase the number of processors, since allocation can be parallelized.
+
 
 * 提高晋升老年代的门槛, 降低full GC的频率
 1. 一是可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 可能可以降低full GC 的频率. 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 进而带来major gc 的频率升高, 反之如果新生代大小调小, 可以适当提高晋升的年龄大小, 来弥补会晋升老年代的门槛, 具体的调优值取决于对象的生命周期的组成, 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 参数:`-XX:NewRatio=3`  means that the ratio between the young and tenured generation is 1:3
@@ -559,11 +558,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTg0MTQ5MjM2LDI5NTM2NTI0NSwtMTQ2OT
-IzMDA2NCw2OTcyMTkwNjUsNjQxNTcyODk5LC0xMjY4MTU3MTgs
-LTEyOTYxMzY4NTQsLTI3NDYyNjA1NiwtMTQ0NjQyODgyMCwtNz
-Q2NjA2MDE2LC0xNDQ2NDI4ODIwLC0yMTI2NDU1MDcsLTE1OTg0
-ODY3MDMsMTM4MjY0MDQ0OCwtMjAyMjEzODE1MiwtMTQwNzU0NT
-c5MCwtOTQ3NjgzNjg0LC02NjgxMjE1ODAsLTE4ODEwMzczNjQs
-MTM2NTY0MDA1MV19
+eyJoaXN0b3J5IjpbMjEyNzM3MzE5OCwyOTUzNjUyNDUsLTE0Nj
+kyMzAwNjQsNjk3MjE5MDY1LDY0MTU3Mjg5OSwtMTI2ODE1NzE4
+LC0xMjk2MTM2ODU0LC0yNzQ2MjYwNTYsLTE0NDY0Mjg4MjAsLT
+c0NjYwNjAxNiwtMTQ0NjQyODgyMCwtMjEyNjQ1NTA3LC0xNTk4
+NDg2NzAzLDEzODI2NDA0NDgsLTIwMjIxMzgxNTIsLTE0MDc1ND
+U3OTAsLTk0NzY4MzY4NCwtNjY4MTIxNTgwLC0xODgxMDM3MzY0
+LDEzNjU2NDAwNTFdfQ==
 -->
