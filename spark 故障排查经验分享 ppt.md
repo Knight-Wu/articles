@@ -48,10 +48,32 @@ eventLog missing, grep ex-timestamp -C 1000  *executor.log  |less
 ![](https://drive.google.com/uc?id=1LjDrWGX6zhQzEJOzNWG615eKFyK2XHDF)
 异常场景: executor 写dn, 客户端检查这个块的时候发现一个副本也没有, 出现在上文第二步. 同时dn 出现"IOException: channel is broken " .
 
+* IO 层面的异常
+![enter image description here](https://drive.google.com/uc?id=1yJN8y_HmloD7eTdDSwcV4w67gk61hlW4)
+
+* hdfs 集群容错
+
+最根本的原因可能是dn 写失败, 思路是: 某个 dn写失败时,重试其他dn
+
+![image](https://user-images.githubusercontent.com/20329409/45943455-ee073d00-c018-11e8-88a5-f251c1d42453.png)
+[http://blog.cloudera.com/blog/2015/03/understanding-hdfs-recovery-processes-part-2/](http://blog.cloudera.com/blog/2015/03/understanding-hdfs-recovery-processes-part-2/)
+https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml
+DFSOutputStream.DataStreamer
+
+> dfs.client.block.write.replace-datanode-on-failure.policy
+
+如果是default则按照公式进行计算, 
+r 是副本数 3, n是集群中现有的dn的数量, 目前是 12
+r>=3 &&( floor(r/2) >= 12 || r>=n && (block is flushed or appended))
+如果是always, 每次都新加一个dn到pipeline中.
+
+>  dfs.client.block.write.replace-datanode-on-failure.best-effort
+
+假设这个参数是false, 如果作为replacement的dn也写失败的话就会直接抛出异常, 终止重试; 如果设为true, 则假设replacement的dn也写失败, 仍然会找新的dn去重试.
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ5NDQwMDEzNiwtMTQ2NDMzMzMwNSwzMj
-MyNjQwNTRdfQ==
+eyJoaXN0b3J5IjpbNzEyMDkyMjgxLDE0OTQ0MDAxMzYsLTE0Nj
+QzMzMzMDUsMzIzMjY0MDU0XX0=
 -->
