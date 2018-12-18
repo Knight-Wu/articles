@@ -222,7 +222,7 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 使surivor的比例增大, eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 影响是: minorGC的频率增大, 因为eden小了; 增大了新生代对象复制的开销, 因为有更多的对象会留在 surivor区域, 但是提高了晋升老年代的门槛, 让新生代对象能进行充分的淘汰才能进入老年代,  使真正的长寿的对象才能进入老年代, 使fullGC的时间变短了. 
 
 
-parallel gc 参数调优: 
+* parallel gc 参数调优: 
 https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 分为三个方面: Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal(如果前两者都满足了, 则会降低heap 的大小, 目前这个goal 还没有满足)
 
@@ -230,7 +230,10 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
  吞吐量不够, 需要加大heap size; gc pause 时间太长, 需要减小heap size, 可能会导致heap size 在震荡, 如何协调. 
 
 
+* CMS 调优
 
+推荐配置, 基本适合大多数场景: 
+-XX:+UseConcMarkSweepGC -XX:+UseParNewGC  -XX:+CMSParallelRemarkEnabled  -XX:+UseCMSCompactAtFullCollection  -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75% -XX:-DisableExplicitGC
 
 
 
@@ -552,11 +555,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQxNTcyODk5LC0xMjY4MTU3MTgsLTEyOT
-YxMzY4NTQsLTI3NDYyNjA1NiwtMTQ0NjQyODgyMCwtNzQ2NjA2
-MDE2LC0xNDQ2NDI4ODIwLC0yMTI2NDU1MDcsLTE1OTg0ODY3MD
-MsMTM4MjY0MDQ0OCwtMjAyMjEzODE1MiwtMTQwNzU0NTc5MCwt
-OTQ3NjgzNjg0LC02NjgxMjE1ODAsLTE4ODEwMzczNjQsMTM2NT
-Y0MDA1MSw5NDQwNTU0MzYsLTQ1Mjc2NjM1NiwtMTYzNjQzOTA3
-OCwtMTc5NDg0MDczOV19
+eyJoaXN0b3J5IjpbLTE4OTczNjU0ODcsNjQxNTcyODk5LC0xMj
+Y4MTU3MTgsLTEyOTYxMzY4NTQsLTI3NDYyNjA1NiwtMTQ0NjQy
+ODgyMCwtNzQ2NjA2MDE2LC0xNDQ2NDI4ODIwLC0yMTI2NDU1MD
+csLTE1OTg0ODY3MDMsMTM4MjY0MDQ0OCwtMjAyMjEzODE1Miwt
+MTQwNzU0NTc5MCwtOTQ3NjgzNjg0LC02NjgxMjE1ODAsLTE4OD
+EwMzczNjQsMTM2NTY0MDA1MSw5NDQwNTU0MzYsLTQ1Mjc2NjM1
+NiwtMTYzNjQzOTA3OF19
 -->
