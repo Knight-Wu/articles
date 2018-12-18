@@ -1,5 +1,5 @@
 ### 前言
-老早就想在windows 搭建一个本地环境, 一拖再拖, 这次终于花了两三天零碎的时间搞定了. 本文属于搭建好之后的总结, 纯手打, 一些零碎和基础的点就没写, 只画重点和一些常见的问题. 
+老早就想在windows 搭建一个本地环境, 一拖再拖, 这次终于花了一些零碎的时间搞定了. 本文属于搭建好之后的总结,  一些零碎和基础的点就没写, 只画重点和一些常见的问题. 
 
 ---
 
@@ -15,7 +15,7 @@
 	用命令 hadoop fs -ls /
 6. 测试spark 环境
 
-	之前我天真的以为 spark 不强依赖hadoop, 直接用spark-shell 验证环境, 就碰到了这个错误: NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream when execute spark-shell 事后总结应该先验证hadoop, 可以参考这个链接的第一个回答: [NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream](%5BNoClassDefFoundError%20com.apache.hadoop.fs.FSDataInputStream%20when%20execute%20spark-shell%5D%28https://stackoverflow.com/questions/30906412/noclassdeffounderror-com-apache-hadoop-fs-fsdatainputstream-when-execute-spark-s%29),  总结一下: 目前spark需要依赖Hadoop client libraries for HDFS and YARN,  但是可以灵活依赖hadoop版本, 不需要像1.4之前和hadoop一起build, **目前把 bin/hadoop classpath的输出以及hadoopHome 配置到conf/spark-env.sh就可以了, windows是 conf/spark-env.cmd(没有就创建一个)**,如下图, 配置的加载逻辑可以看 spark-class脚本.
+	之前以为 spark 不强依赖hadoop, 直接用spark-shell 验证环境, 就碰到了这个错误: NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream when execute spark-shell 事后总结应该先验证hadoop, 可以参考这个链接的第一个回答: [NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream](%5BNoClassDefFoundError%20com.apache.hadoop.fs.FSDataInputStream%20when%20execute%20spark-shell%5D%28https://stackoverflow.com/questions/30906412/noclassdeffounderror-com-apache-hadoop-fs-fsdatainputstream-when-execute-spark-s%29),  总结一下: 目前spark需要依赖Hadoop client libraries for HDFS and YARN,  但是可以灵活依赖hadoop版本, 不需要像1.4之前和hadoop一起build, **目前把 bin/hadoop classpath的输出以及hadoopHome 配置到conf/spark-env.sh就可以了, windows是 conf/spark-env.cmd(没有就创建一个)**,如下图, 配置的加载逻辑可以看 spark-class脚本.
 >	bin/hadoop classpath input
 
 ![hadoop classpath](https://drive.google.com/uc?id=1Mjm78ZLoSMzIpoegwPIaaIdxb0JO0Pvx)
@@ -85,5 +85,6 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0MTExOTIyNiwxMTE2NTk3NzQ5XX0=
+eyJoaXN0b3J5IjpbLTE5MzY4NTk5ODcsMTE0MTExOTIyNiwxMT
+E2NTk3NzQ5XX0=
 -->
