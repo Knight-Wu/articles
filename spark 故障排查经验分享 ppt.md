@@ -37,9 +37,13 @@ yarn.nodemanager.remote-app-log-dir-suffix   logs
 
 > 问题来了, 如何知道异常的task 是属于哪个executor ? 
 
+eventLog missing
 grep ex-timestamp -C 1000  *executor.log  |less
+
+
+
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzkzNDA4NDA5LDMyMzI2NDA1NF19
+eyJoaXN0b3J5IjpbMTExMDAyOTQ0NSwzMjMyNjQwNTRdfQ==
 -->
