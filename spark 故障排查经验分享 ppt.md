@@ -24,12 +24,12 @@ spark.driver.extraJavaOptions=-verbose:class
 尝试了一番无果, 可能解决思路不对, 重新汇总所有信息, 从查看所有spark 日志开始
 
 * spark 日志分类
-
+dv
 
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzIzMjY0MDU0XX0=
+eyJoaXN0b3J5IjpbNTk0Mjk5MzY0LDMyMzI2NDA1NF19
 -->
