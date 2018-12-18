@@ -216,14 +216,12 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 * 提高晋升老年代的门槛, 降低full GC的频率
 1. 一是可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 可能可以降低full GC 的频率. 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 进而带来major gc 的频率升高, 反之如果新生代大小调小, 可以适当提高晋升的年龄大小, 来弥补会晋升老年代的门槛, 具体的调优值取决于对象的生命周期的组成, 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 参数:`-XX:NewRatio=3`  means that the ratio between the young and tenured generation is 1:3
 
-2. 增大surivor 的
+2. 增大surivor 区域, SurvivorRatio 默认为8
 SurvivorRatio 为2,   eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 防止surivor 区域太小而导致新生带对象过早进入老年代.
 
 
 
 >The parameters  `NewSize`  and  `MaxNewSize`  bound the young generation size from below and above. Setting these to the same value fixes the young generation, just as setting  `-Xms`  and  `-Xmx`  to the same value fixes the total heap size.
-
-* SurvivorRatio的比例值调小
 
 
 * parallel gc 参数调优: 
@@ -561,11 +559,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3NDUzODg3NCwyOTUzNjUyNDUsLTE0Nj
-kyMzAwNjQsNjk3MjE5MDY1LDY0MTU3Mjg5OSwtMTI2ODE1NzE4
-LC0xMjk2MTM2ODU0LC0yNzQ2MjYwNTYsLTE0NDY0Mjg4MjAsLT
-c0NjYwNjAxNiwtMTQ0NjQyODgyMCwtMjEyNjQ1NTA3LC0xNTk4
-NDg2NzAzLDEzODI2NDA0NDgsLTIwMjIxMzgxNTIsLTE0MDc1ND
-U3OTAsLTk0NzY4MzY4NCwtNjY4MTIxNTgwLC0xODgxMDM3MzY0
-LDEzNjU2NDAwNTFdfQ==
+eyJoaXN0b3J5IjpbNTg0MTQ5MjM2LDI5NTM2NTI0NSwtMTQ2OT
+IzMDA2NCw2OTcyMTkwNjUsNjQxNTcyODk5LC0xMjY4MTU3MTgs
+LTEyOTYxMzY4NTQsLTI3NDYyNjA1NiwtMTQ0NjQyODgyMCwtNz
+Q2NjA2MDE2LC0xNDQ2NDI4ODIwLC0yMTI2NDU1MDcsLTE1OTg0
+ODY3MDMsMTM4MjY0MDQ0OCwtMjAyMjEzODE1MiwtMTQwNzU0NT
+c5MCwtOTQ3NjgzNjg0LC02NjgxMjE1ODAsLTE4ODEwMzczNjQs
+MTM2NTY0MDA1MV19
 -->
