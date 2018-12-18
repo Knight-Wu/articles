@@ -13,13 +13,23 @@ spark-1.6和hive-2.2是兼容的
 hive -hiveconf spark.driver.extraClassPath=./antlr-runtime-3.4.jar  -hiveconf spark.executor.extraClassPath=./antlr-runtime-3.4.jar -hiveconf spark.yarn.dist.files=/opt/cloudera/parcels/CDH-5.12.1-1.cdh5.12.1.p0.3/jars/antlr-runtime-3.4.jar
 // 将jar包放到driver和executor的container中, 前两个参数告诉container jar包在哪 , 第三个参数会把jar包加载到container中.
 ```
-并且打印executor和driver加载的class, 仍然没发现加载了commonTree这个class, 且仍然报错
+
 ```
 spark.executor.extraJavaOptions=-verbose:class
 spark.driver.extraJavaOptions=-verbose:class
+// 打印executor和driver加载的class
 ```
+---
+
+尝试了一番无果, 可能解决思路不对, 重新汇总所有信息, 从查看所有spark 日志开始
+
+* spark 日志分类
+
+
+
+
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4Njc2MjM4MzFdfQ==
+eyJoaXN0b3J5IjpbMzIzMjY0MDU0XX0=
 -->
