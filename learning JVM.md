@@ -212,12 +212,13 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
     
 > In general, increase the memory as you increase the number of processors, since allocation can be parallelized.
 
+* 如何k
 * The Young Generation
 Young Generation size 越大, minor gc 频率越低, 晋升老年代的门槛会越高, 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 
 > By default, the young generation size is controlled by the parameter  `NewRatio`. For example, setting  `-XX:NewRatio=3`  means that the ratio between the young and tenured generation is 1:3. In other words, the combined size of the eden and survivor spaces will be one-fourth of the total heap size.
 The parameters  `NewSize`  and  `MaxNewSize`  bound the young generation size from below and above. Setting these to the same value fixes the young generation, just as setting  `-Xms`  and  `-Xmx`  to the same value fixes the total heap size.
 
-jvm 参数调优: 
+parallel gc 参数调优: 
 https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 分为三个方面: Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal(如果前两者都满足了, 则会降低heap 的大小, 目前这个goal 还没有满足)
 
@@ -551,7 +552,7 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDMzMzA2MjUsLTEyOTYxMzY4NTQsLT
+eyJoaXN0b3J5IjpbLTE3MTY0NDIxODUsLTEyOTYxMzY4NTQsLT
 I3NDYyNjA1NiwtMTQ0NjQyODgyMCwtNzQ2NjA2MDE2LC0xNDQ2
 NDI4ODIwLC0yMTI2NDU1MDcsLTE1OTg0ODY3MDMsMTM4MjY0MD
 Q0OCwtMjAyMjEzODE1MiwtMTQwNzU0NTc5MCwtOTQ3NjgzNjg0
