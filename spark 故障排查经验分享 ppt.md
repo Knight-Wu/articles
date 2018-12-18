@@ -76,7 +76,8 @@ dfs.client.block.write.replace-datanode-on-failure.policy = always,
 dfs.client.block.write.replace-datanode-on-failure.best-effort = true
 
 
-* spark on yarn 的其他容错策略
+* spark on yarn 的容错策略
+
 
 * spark 本地环境debug
 
@@ -86,6 +87,7 @@ dfs.client.block.write.replace-datanode-on-failure.best-effort = true
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzQ3NDEwOTAzLDEwNjMzNjQxMTEsMTQ5ND
-QwMDEzNiwtMTQ2NDMzMzMwNSwzMjMyNjQwNTRdfQ==
+eyJoaXN0b3J5IjpbLTE1NzU5NDY0ODcsMzQ3NDEwOTAzLDEwNj
+MzNjQxMTEsMTQ5NDQwMDEzNiwtMTQ2NDMzMzMwNSwzMjMyNjQw
+NTRdfQ==
 -->
