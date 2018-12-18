@@ -219,7 +219,7 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 >The parameters  `NewSize`  and  `MaxNewSize`  bound the young generation size from below and above. Setting these to the same value fixes the young generation, just as setting  `-Xms`  and  `-Xmx`  to the same value fixes the total heap size.
 
 * 将SurvivorRatio由默认的8改为2
-使surivor的比例增大, eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 影响是: minorGC的频率增大, 因为eden小了; 增大了新生代对象复制的开销, 因为有更多的对象会留在 surivor区域, 但是提高了晋升老年代的门槛, 让新生代对象能进行充分的淘汰才能进入老年代,  使真正的长寿的对象才能进入老年代, 使fullGC的时间变短了. 
+使surivor的比例增大, eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 影响是: minorGC的频率增大, 因为eden小了; 增大了新生代对象复制的开销, 因为有更多的对象会留在 surivor区域, 但是提高了晋升老年代的门槛, 让新生代对象能进行充分的淘汰才能进入老年代,  使真正的长寿的对象才能进入老年代, 使fullGC的时间变短了. **这个参数到底有啥用?**
 
 
 * parallel gc 参数调优: 
@@ -557,11 +557,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk3MjE5MDY1LDY0MTU3Mjg5OSwtMTI2OD
-E1NzE4LC0xMjk2MTM2ODU0LC0yNzQ2MjYwNTYsLTE0NDY0Mjg4
-MjAsLTc0NjYwNjAxNiwtMTQ0NjQyODgyMCwtMjEyNjQ1NTA3LC
-0xNTk4NDg2NzAzLDEzODI2NDA0NDgsLTIwMjIxMzgxNTIsLTE0
-MDc1NDU3OTAsLTk0NzY4MzY4NCwtNjY4MTIxNTgwLC0xODgxMD
-M3MzY0LDEzNjU2NDAwNTEsOTQ0MDU1NDM2LC00NTI3NjYzNTYs
-LTE2MzY0MzkwNzhdfQ==
+eyJoaXN0b3J5IjpbLTE0NjkyMzAwNjQsNjk3MjE5MDY1LDY0MT
+U3Mjg5OSwtMTI2ODE1NzE4LC0xMjk2MTM2ODU0LC0yNzQ2MjYw
+NTYsLTE0NDY0Mjg4MjAsLTc0NjYwNjAxNiwtMTQ0NjQyODgyMC
+wtMjEyNjQ1NTA3LC0xNTk4NDg2NzAzLDEzODI2NDA0NDgsLTIw
+MjIxMzgxNTIsLTE0MDc1NDU3OTAsLTk0NzY4MzY4NCwtNjY4MT
+IxNTgwLC0xODgxMDM3MzY0LDEzNjU2NDAwNTEsOTQ0MDU1NDM2
+LC00NTI3NjYzNTZdfQ==
 -->
