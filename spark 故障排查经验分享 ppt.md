@@ -35,9 +35,11 @@ yarn.nodemanager.remote-app-log-dir-suffix   logs
 3. eventLog
 通过spark history server 查看, 提供可视化界面
 
-> 问题来了, 如何通过task 定位到
+> 问题来了, 如何知道异常的task 是属于哪个executor ? 
+
+grep *executor.log 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzIxODE5MjI5LDMyMzI2NDA1NF19
+eyJoaXN0b3J5IjpbOTYzODA3MjMsMzIzMjY0MDU0XX0=
 -->
