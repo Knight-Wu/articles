@@ -39,17 +39,19 @@ yarn.nodemanager.remote-app-log-dir-suffix   logs
 
 eventLog missing, grep ex-timestamp -C 1000  *executor.log  |less
 
-* executor和dn 相关异常
+* executor 异常
 ![图3](https://user-images.githubusercontent.com/20329409/45937116-ea12f500-bfef-11e8-9e82-11c46502b1d9.png)
 
 
 
 * hdfs 写入流程
 ![](https://drive.google.com/uc?id=1LjDrWGX6zhQzEJOzNWG615eKFyK2XHDF)
-异常场景: executor 写dn, 客户端检查这个块的时候发现一个副本也没有, 出现在上文第二步
+异常场景: executor 写dn, 客户端检查这个块的时候发现一个副本也没有, 出现在上文第二步. 同时dn 出现"IOException: channel is broken " .
+
+
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTUzMjI5NiwtMTQ2NDMzMzMwNSwzMj
+eyJoaXN0b3J5IjpbMTQ5NDQwMDEzNiwtMTQ2NDMzMzMwNSwzMj
 MyNjQwNTRdfQ==
 -->
