@@ -104,8 +104,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 * 远程调试环境搭建
 [spark windows](https://github.com/Knight-Wu/articles/blob/master/scala%20spark%20windows%20%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.md)
 
-
+* 线上故障排查工具介绍: **arthas**
 https://github.com/alibaba/arthas
+![enter image description here](https://drive.google.com/uc?id=1NY996uHRRNWcX2Z8WpIjTkt8lq_JzC3d)
+
+个人使用经验: 需要应用的用户权限, 使用watch 命令即可
 
 
 
@@ -113,8 +116,8 @@ https://github.com/alibaba/arthas
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDYyNzI2NiwxNzY4ODE4NjM0LC0xMT
-g2MjkxNTkxLDgyNTUzNjY4MywtMTU3NTk0NjQ4NywzNDc0MTA5
-MDMsMTA2MzM2NDExMSwxNDk0NDAwMTM2LC0xNDY0MzMzMzA1LD
-MyMzI2NDA1NF19
+eyJoaXN0b3J5IjpbMTQwOTM1NDA0LDE3Njg4MTg2MzQsLTExOD
+YyOTE1OTEsODI1NTM2NjgzLC0xNTc1OTQ2NDg3LDM0NzQxMDkw
+MywxMDYzMzY0MTExLDE0OTQ0MDAxMzYsLTE0NjQzMzMzMDUsMz
+IzMjY0MDU0XX0=
 -->
