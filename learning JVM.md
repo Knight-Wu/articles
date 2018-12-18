@@ -231,6 +231,8 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 
 
 * CMS 调优
+常用参数解释: 
+![enter image description here](https://drive.google.com/uc?id=1dxbRc-uCa9v2HbMKFPf3EAWs9FDeFDlm)
 
 推荐配置, 基本适合大多数场景: 
 -XX:+UseConcMarkSweepGC -XX:+UseParNewGC  -XX:+CMSParallelRemarkEnabled  -XX:+UseCMSCompactAtFullCollection  -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75% -XX:-DisableExplicitGC
@@ -555,11 +557,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTczNjU0ODcsNjQxNTcyODk5LC0xMj
-Y4MTU3MTgsLTEyOTYxMzY4NTQsLTI3NDYyNjA1NiwtMTQ0NjQy
-ODgyMCwtNzQ2NjA2MDE2LC0xNDQ2NDI4ODIwLC0yMTI2NDU1MD
-csLTE1OTg0ODY3MDMsMTM4MjY0MDQ0OCwtMjAyMjEzODE1Miwt
-MTQwNzU0NTc5MCwtOTQ3NjgzNjg0LC02NjgxMjE1ODAsLTE4OD
-EwMzczNjQsMTM2NTY0MDA1MSw5NDQwNTU0MzYsLTQ1Mjc2NjM1
-NiwtMTYzNjQzOTA3OF19
+eyJoaXN0b3J5IjpbNjk3MjE5MDY1LDY0MTU3Mjg5OSwtMTI2OD
+E1NzE4LC0xMjk2MTM2ODU0LC0yNzQ2MjYwNTYsLTE0NDY0Mjg4
+MjAsLTc0NjYwNjAxNiwtMTQ0NjQyODgyMCwtMjEyNjQ1NTA3LC
+0xNTk4NDg2NzAzLDEzODI2NDA0NDgsLTIwMjIxMzgxNTIsLTE0
+MDc1NDU3OTAsLTk0NzY4MzY4NCwtNjY4MTIxNTgwLC0xODgxMD
+M3MzY0LDEzNjU2NDAwNTEsOTQ0MDU1NDM2LC00NTI3NjYzNTYs
+LTE2MzY0MzkwNzhdfQ==
 -->
