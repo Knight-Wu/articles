@@ -108,7 +108,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 https://github.com/alibaba/arthas
 ![enter image description here](https://drive.google.com/uc?id=1NY996uHRRNWcX2Z8WpIjTkt8lq_JzC3d)
 
-个人使用经验: 需要应用的用户权限, 使用watch 命令即可
+个人使用经验:  需要应用的用户权限, 使用watch 命令可以
 
 
 
@@ -116,7 +116,7 @@ https://github.com/alibaba/arthas
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQwOTM1NDA0LDE3Njg4MTg2MzQsLTExOD
+eyJoaXN0b3J5IjpbMTk5ODgxNDk4LDE3Njg4MTg2MzQsLTExOD
 YyOTE1OTEsODI1NTM2NjgzLC0xNTc1OTQ2NDg3LDM0NzQxMDkw
 MywxMDYzMzY0MTExLDE0OTQ0MDAxMzYsLTE0NjQzMzMzMDUsMz
 IzMjY0MDU0XX0=
