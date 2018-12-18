@@ -78,6 +78,28 @@ dfs.client.block.write.replace-datanode-on-failure.best-effort = true
 
 * spark on yarn 的容错策略
 
+* spark.task.maxFailures 
+spark运行task时候的task失败的最大重试限制，如果Task重试了4次失败，会导致整个job失败 spark.task.maxFailures 4 Number of individual task failures before giving up on the job. Should be greater than or equal to 1. Number of allowed retries = this value - 1. 比如下面日志就显示了4次重试 
+
+> 86807: 17/10/17 02:00:20 ERROR Executor: Exception in task 3.0 in stage 0.0 (TID 3) 86808: java.io.FileNotFoundException: File does not exist: hdfs://Neptune/project/ecpdockets/datasets/hive/novusdoc/20171010/collection_name=N_STDCKLNK45 86904: 17/10/17 02:00:21 ERROR Executor: Exception in task 3.1 in stage 0.0 (TID 4) 86905: java.io.FileNotFoundException: File does not exist: hdfs://Neptune/project/ecpdockets/datasets/hive/novusdoc/20171010/collection_name=N_STDCKLNK45 86970: 17/10/17 02:00:21 ERROR Executor: Exception in task 3.2 in stage 0.0 (TID 9) 86971: java.io.FileNotFoundException: File does not exist: hdfs://Neptune/project/ecpdockets/datasets/hive/novusdoc/20171010/collection_name=N_STDCKLNK45 87005: 17/10/17 02:00:21 ERROR Executor: Exception in task 3.3 in stage 0.0 (TID 12) 87006: java.io.FileNotFoundException: File does not exist: hdfs://Neptune/project/ecpdockets/datasets/hive/novusdoc/20171010/collection_name=N_STDCKLNK45
+
+* spark.yarn.max.executor.failures 
+Spark executor失败的最大上限，如果达到，整个Job失败 
+
+> 5742:xx.xx.xx.xx.xx.xx.xx.xx.xx.[Reporter] INFO org.apache.spark.deploy.yarn.ApplicationMaster - Final app status: FAILED, exitCode: 11, (reason: Max number of executor failures (3) reached) 
+
+
+* spark.yarn.maxAppAttempts 和 `yarn.resourcemanager.am.max-attempts` YARN应用级别的最大尝试次
+
+如果达到，整个YARN应用失败 前者(spark层)会override后者(yarn层），前者是应用层面，后者是YARN服务层面，因此设置如果大于后者是不起作用的。 相关日志会有这样的情况， 
+
+>  2018-11-26 12:11:55,490 INFO org.apache.hadoop.yarn.server.resourcemanager.rmapp.attempt.RMAppAttemptImpl: appattempt_1543187098835_0006_000001 State change from FINAL_SAVING to FAILED on event = ATTEMPT_UPDATE_SAVED 2018-11-26 12:11:55,490 INFO org.apache.hadoop.yarn.server.resourcemanager.rmapp.RMAppImpl: The number of failed attempts is 1. The max attempts is 2 2018-11-26 12:11:55,491 INFO org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler: Application appattempt_1543187098835_0006_000001 is done. finalState=FAILED 2018-11-26 12:11:55,491 INFO org.apache.hadoop.yarn.server.resourcemanager.ApplicationMasterService: Registering app attempt : appattempt_1543187098835_0006_000002 
+
+
+https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org/docs/latest/running-on-yarn.html
+
+有关Spark容错机制的文章，有博客。 https://blog.cloudera.com/blog/2017/04/blacklisting-in-apache-spark/ 
+
 
 * spark 本地环境debug
 
@@ -87,7 +109,7 @@ dfs.client.block.write.replace-datanode-on-failure.best-effort = true
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NzU5NDY0ODcsMzQ3NDEwOTAzLDEwNj
-MzNjQxMTEsMTQ5NDQwMDEzNiwtMTQ2NDMzMzMwNSwzMjMyNjQw
-NTRdfQ==
+eyJoaXN0b3J5IjpbNjA0ODQ0MDEzLC0xNTc1OTQ2NDg3LDM0Nz
+QxMDkwMywxMDYzMzY0MTExLDE0OTQ0MDAxMzYsLTE0NjQzMzMz
+MDUsMzIzMjY0MDU0XX0=
 -->
