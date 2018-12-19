@@ -202,7 +202,7 @@ oracle 文章的截图:
 
 > region
 ![enter image description here](https://drive.google.com/uc?id=1Ts2G1JO3TdWeT-m7YOsN3o76y8kgf3PC)
-新生代和老年代由region 构成, 存储地址不是连续的, H 表示这些Region存储的是巨大对象（humongous object，H-obj），即大小大于等于region一半的对象, 一个H 区域的剩余空间就不能分配其他对象了, H直接属于old gen. 为了减少连续H-objs分配对GC的影响，需要把大对象变为普通的对象，建议增大Region size。 
+新生代和老年代由region 构成, 存储地址不是连续的, H 表示这些Region存储的是巨大对象（humongous object，H-obj），即大小大于等于region一半的对象, 一个H 区域的剩余空间就不能分配其他对象了, H直接属于old gen. 为了减少连续H-objs分配对GC的影响，需要把大对象变为普通的对象，建议增大Region size, 否则会
 
 ### GC回收过程
 > 大致过程
@@ -581,11 +581,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjc0MjgzMDYsMTkzMjgzNjk0Niw2Nz
-QxNzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3NjQsNzA2NzI3MTAs
-LTEzODMzNDcwNCwtMTcxNjc4NjMzMyw3NDEzMzYyMjgsLTE0Nj
-U2ODk2MjIsMjA0NjQ3NjE3NiwtODkzMTA5MzIyLDI2MTc1NDYz
-OCwxMjEwMDkzMDQxLDIxMjczNzMxOTgsMjk1MzY1MjQ1LC0xND
-Y5MjMwMDY0LDY5NzIxOTA2NSw2NDE1NzI4OTksLTEyNjgxNTcx
-OF19
+eyJoaXN0b3J5IjpbLTY1MTA1Mjg0NywxOTMyODM2OTQ2LDY3ND
+E3MTkyNCwyMTIzNDkzODQ3LDE3ODA3NDc2NCw3MDY3MjcxMCwt
+MTM4MzM0NzA0LC0xNzE2Nzg2MzMzLDc0MTMzNjIyOCwtMTQ2NT
+Y4OTYyMiwyMDQ2NDc2MTc2LC04OTMxMDkzMjIsMjYxNzU0NjM4
+LDEyMTAwOTMwNDEsMjEyNzM3MzE5OCwyOTUzNjUyNDUsLTE0Nj
+kyMzAwNjQsNjk3MjE5MDY1LDY0MTU3Mjg5OSwtMTI2ODE1NzE4
+XX0=
 -->
