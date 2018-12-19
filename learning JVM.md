@@ -200,17 +200,22 @@ oracle 文章的截图:
   G1是一个有整理内存过程的垃圾收集器，不会产生很多内存碎片。
   G1的Stop The World(STW)更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间。
 
-不再分为young gc和old gc了, 而是young gc和mixed gc, young gc 的触发时机和原理基本和之前一致, Mixed GC：选定所有年轻代里的Region，外加根据global concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
-> region
-![enter image description here](https://drive.google.com/uc?id=1Ts2G1JO3TdWeT-m7YOsN3o76y8kgf3PC)
-新生代和老年代由region 构成, 存储地址不是连续的, H 表示这些Region存储的是巨大对象（humongous object，H-obj），即大小大于等于region一半的对象, 一个H 区域的剩余空间就不能分配其他对象了, H直接属于old gen. 为了减少连续H-objs分配对GC的影响，需要把大对象变为普通的对象，建议增大Region size, 否则会根据heap size 去分配region size. 
+不再分为young gc和old gc了, 而是young gc和mixed gc, young gc 的触发时机和原理基本和之前一致, Mixed GC 选定所有年轻代里的Region，外加根据global concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
 
-> 大致步骤
+> global concurrent marking 大致步骤
 
 -   初始标记（initial mark，STW）。它标记了从GC Root开始直接可达的对象。
 -   并发标记（Concurrent Marking）。这个阶段从GC Root开始对heap中的对象标记，标记线程与应用程序线程并行执行，并且收集各个Region的存活对象信息。
 -   最终标记（Remark，STW）。标记那些在并发标记阶段发生变化的对象，将被回收。
 -   清除垃圾（Cleanup）。清除空Region（没有存活对象的），加入到free list。
+
+
+> region
+![enter image description here](https://drive.google.com/uc?id=1Ts2G1JO3TdWeT-m7YOsN3o76y8kgf3PC)
+新生代和老年代由region 构成, 存储地址不是连续的, H 表示这些Region存储的是巨大对象（humongous object，H-obj），即大小大于等于region一半的对象, 一个H 区域的剩余空间就不能分配其他对象了, H直接属于old gen. 为了减少连续H-objs分配对GC的影响，需要把大对象变为普通的对象，建议增大Region size, 否则会根据heap size 去分配region size. 
+
+
+
 
 ### GC回收过程
 > 大致过程
@@ -589,11 +594,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjYwNTM2Mzg0LDE5MzI4MzY5NDYsNjc0MT
-cxOTI0LDIxMjM0OTM4NDcsMTc4MDc0NzY0LDcwNjcyNzEwLC0x
-MzgzMzQ3MDQsLTE3MTY3ODYzMzMsNzQxMzM2MjI4LC0xNDY1Nj
-g5NjIyLDIwNDY0NzYxNzYsLTg5MzEwOTMyMiwyNjE3NTQ2Mzgs
-MTIxMDA5MzA0MSwyMTI3MzczMTk4LDI5NTM2NTI0NSwtMTQ2OT
-IzMDA2NCw2OTcyMTkwNjUsNjQxNTcyODk5LC0xMjY4MTU3MThd
-fQ==
+eyJoaXN0b3J5IjpbLTEzNjM1ODY0MDMsMTkzMjgzNjk0Niw2Nz
+QxNzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3NjQsNzA2NzI3MTAs
+LTEzODMzNDcwNCwtMTcxNjc4NjMzMyw3NDEzMzYyMjgsLTE0Nj
+U2ODk2MjIsMjA0NjQ3NjE3NiwtODkzMTA5MzIyLDI2MTc1NDYz
+OCwxMjEwMDkzMDQxLDIxMjczNzMxOTgsMjk1MzY1MjQ1LC0xND
+Y5MjMwMDY0LDY5NzIxOTA2NSw2NDE1NzI4OTksLTEyNjgxNTcx
+OF19
 -->
