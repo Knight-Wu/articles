@@ -341,7 +341,7 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 > 降低CMS gc 时remark阶段的暂停时间: 
 
 因为remark 的时间会随着新生代存活对象的数量增多而上升, 这样如果Remark前执行一次Minor GC，大部分对象就会被回收。CMS就采用了这样的方式，在Remark前增加了一个可中断的并发预清理（CMS-concurrent-abortable-preclean），该阶段主要工作仍然是并发标记对象是否存活，只是这个过程可被中断。此阶段在Eden区使用超过2M时启动，当然2M是默认的阈值，可以通过CMSScheduleRemarkEdenSizeThreshold 参数修改, 并且当eden 空间使用率小于CMSScheduleRemarkEdenPenetration 这个比例时中断, 如果此阶段执行时等到了Minor GC，那么上述新生代不可达的对象将被回收，Reamark阶段需要扫描的对象就少了。
-除此之外CMS为了避免这个阶段没有等到Minor GC而陷入无限等待，提供了参数CMSMaxAbortablePrecleanTime ，默认为5s，含义是如果可中断的预清理执行超过5s，不管发没发生Minor GC，都会中止此阶段，进入Remark. 对于这种情况，CMS提供CMSScavengeBeforeRemark参数，用来保证Remark前强制进行一次Minor GC。
+除此之外CMS为了避免这个阶段没有等到Minor GC而陷入无限等待，提供了参数CMSMaxAbortablePrecleanTime ，默认为5s，含义是如果可中断的预清理执行超过5s，不管发没发生Minor GC，都会中止等待minor gc，进入Remark. 对于这种情况，CMS提供CMSScavengeBeforeRemark参数，用来保证Remark前强制进行一次Minor GC。
 
 ### java heap 分代(基于jdk1.8)
 * 新生代(PSYoungGen)
@@ -635,11 +635,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzU4MDg3NzEsLTIzODcxMzIxMCwyMDk4ND
-EyMTA0LC0xNDI0NjUzMzMsLTE1OTgxNzMyOTQsLTg2MjMyMDEx
-NiwxMzQwMzgxMzMxLDEwOTk1NDQ3MzQsMTk5MzgyODg4LC0xND
-UzMDU4MjIsMTk4ODUzMjAzNSw1NDAwNzc3ODQsLTE1NzEyMTYw
-MzQsLTEzNjM1ODY0MDMsMTkzMjgzNjk0Niw2NzQxNzE5MjQsMj
-EyMzQ5Mzg0NywxNzgwNzQ3NjQsNzA2NzI3MTAsLTEzODMzNDcw
-NF19
+eyJoaXN0b3J5IjpbLTU2NDgxNzE4NywtMjM4NzEzMjEwLDIwOT
+g0MTIxMDQsLTE0MjQ2NTMzMywtMTU5ODE3MzI5NCwtODYyMzIw
+MTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNCwxOTkzODI4ODgsLT
+E0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MDA3Nzc4NCwtMTU3MTIx
+NjAzNCwtMTM2MzU4NjQwMywxOTMyODM2OTQ2LDY3NDE3MTkyNC
+wyMTIzNDkzODQ3LDE3ODA3NDc2NCw3MDY3MjcxMCwtMTM4MzM0
+NzA0XX0=
 -->
