@@ -200,7 +200,10 @@ oracle 文章的截图:
   G1是一个有整理内存过程的垃圾收集器，不会产生很多内存碎片。
   G1的Stop The World(STW)更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间。
 
-不再分为young gc和old gc了, 而是young gc和mixed gc, young gc 的触发时机和原理基本和之前一致, Mixed GC 选定所有年轻代里的Region，外加根据global concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
+不再分为young gc和old gc了, 而是young gc和mixed gc, 
+
+Young GC：选定年轻代里的一些Region。通过控制年轻代的region个数，即年轻代内存大小，来控制young GC的时间开销。
+Mixed GC 选定所有年轻代里的Region，外加根据global concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
 
 > 什么情况触发 global concurrent marking 
 
@@ -598,11 +601,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NzEyMTYwMzQsLTEzNjM1ODY0MDMsMT
-kzMjgzNjk0Niw2NzQxNzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3
-NjQsNzA2NzI3MTAsLTEzODMzNDcwNCwtMTcxNjc4NjMzMyw3ND
-EzMzYyMjgsLTE0NjU2ODk2MjIsMjA0NjQ3NjE3NiwtODkzMTA5
-MzIyLDI2MTc1NDYzOCwxMjEwMDkzMDQxLDIxMjczNzMxOTgsMj
-k1MzY1MjQ1LC0xNDY5MjMwMDY0LDY5NzIxOTA2NSw2NDE1NzI4
-OTldfQ==
+eyJoaXN0b3J5IjpbNTQwMDc3Nzg0LC0xNTcxMjE2MDM0LC0xMz
+YzNTg2NDAzLDE5MzI4MzY5NDYsNjc0MTcxOTI0LDIxMjM0OTM4
+NDcsMTc4MDc0NzY0LDcwNjcyNzEwLC0xMzgzMzQ3MDQsLTE3MT
+Y3ODYzMzMsNzQxMzM2MjI4LC0xNDY1Njg5NjIyLDIwNDY0NzYx
+NzYsLTg5MzEwOTMyMiwyNjE3NTQ2MzgsMTIxMDA5MzA0MSwyMT
+I3MzczMTk4LDI5NTM2NTI0NSwtMTQ2OTIzMDA2NCw2OTcyMTkw
+NjVdfQ==
 -->
