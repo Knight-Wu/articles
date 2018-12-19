@@ -172,11 +172,11 @@ java1.8的默认垃圾收集器是 parallel collector
 基于标记-清除算法, 所以会产生内存碎片.
 
 过程: 
-1. 第一次STW 暂停: 标记被 gc root 的直接引用, 和年轻代对象所引用的对象, 叫做 initial mark ,
+1. 第一次STW 暂停: 标记被 gc root 的直接引用, 和年轻代对象所引用的对象, 叫做 initial mark , 比后面的Remark  要快得多.
 2.  Concurrent Mark, 这个阶段不会暂停用户线程, 第一步找到的老年代的root 的直接引用, 标记所有可达的对象, 并非所有老年代中存活的对象都在此阶段被标记，因为在标记过程中对象的引用关系还在发生变化 
 3.  Concurrent Preclean（并发预清理）此阶段同样是与应用线程并行执行的，不需要停止应用线程。因为前一阶段是与程序并发进行的，可能有一些引用已经改变。如果在并发标记过程中发生了引用关系变化，JVM 会通过 Card 将发生了改变的区域标记为「脏」区，这就是所谓的卡片标记（Card Marking）。本阶段也会执行一些必要的细节处理，并为 Final Remark 阶段做一些准备工作
 4. Concurrent Abortable Preclean(并发可取消的预清理）,不会暂停用户线程
-5.  Final Remark 最终标记, 本阶段的目标是完成老年代中所有存活对象的标记, 因为之前的concurrent mask 是和用户线程并发执行的, 可能中间会产生浮动垃圾, 所以需要进行最终标记, 会STW
+5.  Remark 最终标记, 本阶段的目标是完成老年代中所有存活对象的标记, 因为之前的concurrent mask 是和用户线程并发执行的, 可能中间会产生浮动垃圾, 所以需要进行最终标记, 会STW
 6.  Concurrent Sweep（并发清除）此阶段与应用程序并发执行，不需要 STW。目的是删除未使用的对象，并收回他们占用的空间
 7. Concurrent Reset（并发重置）此阶段与应用程序并发执行，重置 CMS 算法相关的内部数据，为下一次 GC 循环做准备
 
@@ -576,11 +576,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAzMDc1Njg0MSwtMTQ2NTY4OTYyMiwyMD
-Q2NDc2MTc2LC04OTMxMDkzMjIsMjYxNzU0NjM4LDEyMTAwOTMw
-NDEsMjEyNzM3MzE5OCwyOTUzNjUyNDUsLTE0NjkyMzAwNjQsNj
-k3MjE5MDY1LDY0MTU3Mjg5OSwtMTI2ODE1NzE4LC0xMjk2MTM2
-ODU0LC0yNzQ2MjYwNTYsLTE0NDY0Mjg4MjAsLTc0NjYwNjAxNi
-wtMTQ0NjQyODgyMCwtMjEyNjQ1NTA3LC0xNTk4NDg2NzAzLDEz
-ODI2NDA0NDhdfQ==
+eyJoaXN0b3J5IjpbNzQxMzM2MjI4LC0xNDY1Njg5NjIyLDIwND
+Y0NzYxNzYsLTg5MzEwOTMyMiwyNjE3NTQ2MzgsMTIxMDA5MzA0
+MSwyMTI3MzczMTk4LDI5NTM2NTI0NSwtMTQ2OTIzMDA2NCw2OT
+cyMTkwNjUsNjQxNTcyODk5LC0xMjY4MTU3MTgsLTEyOTYxMzY4
+NTQsLTI3NDYyNjA1NiwtMTQ0NjQyODgyMCwtNzQ2NjA2MDE2LC
+0xNDQ2NDI4ODIwLC0yMTI2NDU1MDcsLTE1OTg0ODY3MDMsMTM4
+MjY0MDQ0OF19
 -->
