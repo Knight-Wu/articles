@@ -202,7 +202,14 @@ oracle 文章的截图:
 
 > region
 ![enter image description here](https://drive.google.com/uc?id=1Ts2G1JO3TdWeT-m7YOsN3o76y8kgf3PC)
-新生代和老年代由region 构成, 存储地址不是连续的, H 表示这些Region存储的是巨大对象（humongous object，H-obj），即大小大于等于region一半的对象, 一个H 区域的剩余空间就不能分配其他对象了, H直接属于old gen. 为了减少连续H-objs分配对GC的影响，需要把大对象变为普通的对象，建议增大Region size, 否则会
+新生代和老年代由region 构成, 存储地址不是连续的, H 表示这些Region存储的是巨大对象（humongous object，H-obj），即大小大于等于region一半的对象, 一个H 区域的剩余空间就不能分配其他对象了, H直接属于old gen. 为了减少连续H-objs分配对GC的影响，需要把大对象变为普通的对象，建议增大Region size, 否则会根据heap size 去分配region size. 
+
+> 大致步骤
+
+-   初始标记（initial mark，STW）。它标记了从GC Root开始直接可达的对象。
+-   并发标记（Concurrent Marking）。这个阶段从GC Root开始对heap中的对象标记，标记线程与应用程序线程并行执行，并且收集各个Region的存活对象信息。
+-   最终标记（Remark，STW）。标记那些在并发标记阶段发生变化的对象，将被回收。
+-   清除垃圾（Cleanup）。清除空Region（没有存活对象的），加入到free list。
 
 ### GC回收过程
 > 大致过程
@@ -581,7 +588,7 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1MTA1Mjg0NywxOTMyODM2OTQ2LDY3ND
+eyJoaXN0b3J5IjpbMTAxNjE1NjUzMiwxOTMyODM2OTQ2LDY3ND
 E3MTkyNCwyMTIzNDkzODQ3LDE3ODA3NDc2NCw3MDY3MjcxMCwt
 MTM4MzM0NzA0LC0xNzE2Nzg2MzMzLDc0MTMzNjIyOCwtMTQ2NT
 Y4OTYyMiwyMDQ2NDc2MTc2LC04OTMxMDkzMjIsMjYxNzU0NjM4
