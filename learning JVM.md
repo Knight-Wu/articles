@@ -216,9 +216,11 @@ Young GC：选定年轻代里的一些Region。通过控制年轻代的region个
 Mixed GC 选定所有年轻代里的Region，外加根据concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
 大致过程: 当old区Heap的对象占总Heap的比例超过InitiatingHeapOccupancyPercent之后，就会开始ConcurentMarking, 完成了Concurrent Marking后，G1会从Young GC切换到Mixed GC, 在Mixed GC中，G1可以增加若干个Old区域的Region到CSet中。  Mixed GC的次数根据候选的Old CSet ?
 
-## Full GC
+Full GC:
+和CMS一样，G1的一些收集过程是和应用程序并发执行的，所以可能还没有回收完成，是由于申请内存的速度比回收速度快，新的对象就占满了所有空间，在CMS中叫做Concurrent Mode Failure, 在G1中称为Allocation Failure，也会降
+级为一个STW的fullgc。
 
-和CMS一样，G1的一些收集过程是和应用程序并发执行的，所以可能还没有回收完成，是由于申请内存的速度比回收速度快，新的对象就占满了所有空间，在CMS中叫做Concurrent Mode Failure, 在G1中称为Allocation Failure，也会降级为一个STW的fullgc。
+
 > 什么情况触发 concurrent marking 
 
 A concurrent marking phase is started when the occupancy of the entire Java heap reaches the value of the parameter  `InitiatingHeapOccupancyPercent`. Set the value of this parameter with the command-line option  `-XX:InitiatingHeapOccupancyPercent=``<NN>`. The default value of  `InitiatingHeapOccupancyPercent`  is 45.
@@ -643,11 +645,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTU2NjQzMTAyLC01NjQ4MTcxODcsLTIzOD
-cxMzIxMCwyMDk4NDEyMTA0LC0xNDI0NjUzMzMsLTE1OTgxNzMy
-OTQsLTg2MjMyMDExNiwxMzQwMzgxMzMxLDEwOTk1NDQ3MzQsMT
-k5MzgyODg4LC0xNDUzMDU4MjIsMTk4ODUzMjAzNSw1NDAwNzc3
-ODQsLTE1NzEyMTYwMzQsLTEzNjM1ODY0MDMsMTkzMjgzNjk0Ni
-w2NzQxNzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3NjQsNzA2NzI3
-MTBdfQ==
+eyJoaXN0b3J5IjpbMTMwOTA3MzUzOCwtNTY0ODE3MTg3LC0yMz
+g3MTMyMTAsMjA5ODQxMjEwNCwtMTQyNDY1MzMzLC0xNTk4MTcz
+Mjk0LC04NjIzMjAxMTYsMTM0MDM4MTMzMSwxMDk5NTQ0NzM0LD
+E5OTM4Mjg4OCwtMTQ1MzA1ODIyLDE5ODg1MzIwMzUsNTQwMDc3
+Nzg0LC0xNTcxMjE2MDM0LC0xMzYzNTg2NDAzLDE5MzI4MzY5ND
+YsNjc0MTcxOTI0LDIxMjM0OTM4NDcsMTc4MDc0NzY0LDcwNjcy
+NzEwXX0=
 -->
