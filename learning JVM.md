@@ -236,7 +236,7 @@ A concurrent marking phase is started when the occupancy of the entire Java heap
 
 > 新生代标记的过程中, 如何避免像老年代的全堆扫描, 知道哪些新生代对象被老年代引用呢
 
-经过统计信息显示，老年代持有新生代对象引用的情况不足1%，根据这一特性JVM引入了卡表（card table）, 卡表的具体策略是将老年代的空间分成大小为512B的若干张卡（card）, 当laoni
+经过统计信息显示，老年代持有新生代对象引用的情况不足1%，根据这一特性JVM引入了卡表（card table）, 卡表的具体策略是将老年代的空间分成大小为512B的若干张卡（card）, 当老年代引用新生代时会更新卡表,  新生代扫描卡表就避免了全堆扫描. 
 
 
 
@@ -624,11 +624,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwNjkxMjk2LC0xNTk4MTczMjk0LC04Nj
-IzMjAxMTYsMTM0MDM4MTMzMSwxMDk5NTQ0NzM0LDE5OTM4Mjg4
-OCwtMTQ1MzA1ODIyLDE5ODg1MzIwMzUsNTQwMDc3Nzg0LC0xNT
-cxMjE2MDM0LC0xMzYzNTg2NDAzLDE5MzI4MzY5NDYsNjc0MTcx
-OTI0LDIxMjM0OTM4NDcsMTc4MDc0NzY0LDcwNjcyNzEwLC0xMz
-gzMzQ3MDQsLTE3MTY3ODYzMzMsNzQxMzM2MjI4LC0xNDY1Njg5
-NjIyXX0=
+eyJoaXN0b3J5IjpbLTE3NTE3MjYyOTcsLTE1OTgxNzMyOTQsLT
+g2MjMyMDExNiwxMzQwMzgxMzMxLDEwOTk1NDQ3MzQsMTk5Mzgy
+ODg4LC0xNDUzMDU4MjIsMTk4ODUzMjAzNSw1NDAwNzc3ODQsLT
+E1NzEyMTYwMzQsLTEzNjM1ODY0MDMsMTkzMjgzNjk0Niw2NzQx
+NzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3NjQsNzA2NzI3MTAsLT
+EzODMzNDcwNCwtMTcxNjc4NjMzMyw3NDEzMzYyMjgsLTE0NjU2
+ODk2MjJdfQ==
 -->
