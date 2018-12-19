@@ -234,6 +234,8 @@ A concurrent marking phase is started when the occupancy of the entire Java heap
 * 新生代gc过程
 对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代, 或者 to区域满了就会直接晋升老年代. 
 
+> 新生代标记的过程中
+
 * 新生代晋升条件
 
      * **动态年龄计算**：Hotspot遍历所有对象时，按照年龄从小到大对其所占用的大小进行累积，当累积的某个年龄大小超过了survivor区的一半时，取这个年龄和MaxTenuringThreshold中更小的一个值，作为新的晋升年龄阈值。
@@ -618,7 +620,7 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzODkyODEzOSwtMTU5ODE3MzI5NCwtOD
+eyJoaXN0b3J5IjpbMTUzODk1NTc2OSwtMTU5ODE3MzI5NCwtOD
 YyMzIwMTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNCwxOTkzODI4
 ODgsLTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MDA3Nzc4NCwtMT
 U3MTIxNjAzNCwtMTM2MzU4NjQwMywxOTMyODM2OTQ2LDY3NDE3
