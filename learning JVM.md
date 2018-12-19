@@ -209,9 +209,14 @@ oracle 文章的截图:
 不再分为young gc和old gc了, 而是young gc和mixed gc, 
 
 Young GC：选定年轻代里的一些Region。通过控制年轻代的region个数，即年轻代内存大小，来控制young GC的时间开销。
-Mixed GC 选定所有年轻代里的Region，外加根据global concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
+大致过程: 
+当Eden区域无法申请新的对象时（满了），就会进行Young GC, Young GC将Eden和Survivor区域的Region(称为Collection Set, CSet)中的活对象Copy到一些新Region中(即新的Survivor)，当对象的GC年龄达到阈值后会Copy到Old Region中。由于采取的是Copying算法，所以就避免了内存碎片的问题，不再需要单独的压缩。
 
-> 什么情况触发 global concurrent marking 
+
+Mixed GC 选定所有年轻代里的Region，外加根据concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
+大致过程: 
+
+> 什么情况触发 concurrent marking 
 
 A concurrent marking phase is started when the occupancy of the entire Java heap reaches the value of the parameter  `InitiatingHeapOccupancyPercent`. Set the value of this parameter with the command-line option  `-XX:InitiatingHeapOccupancyPercent=``<NN>`. The default value of  `InitiatingHeapOccupancyPercent`  is 45.
 
@@ -635,11 +640,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2NDgxNzE4NywtMjM4NzEzMjEwLDIwOT
-g0MTIxMDQsLTE0MjQ2NTMzMywtMTU5ODE3MzI5NCwtODYyMzIw
-MTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNCwxOTkzODI4ODgsLT
-E0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MDA3Nzc4NCwtMTU3MTIx
-NjAzNCwtMTM2MzU4NjQwMywxOTMyODM2OTQ2LDY3NDE3MTkyNC
-wyMTIzNDkzODQ3LDE3ODA3NDc2NCw3MDY3MjcxMCwtMTM4MzM0
-NzA0XX0=
+eyJoaXN0b3J5IjpbLTE5MDg4NTM1MDYsLTU2NDgxNzE4NywtMj
+M4NzEzMjEwLDIwOTg0MTIxMDQsLTE0MjQ2NTMzMywtMTU5ODE3
+MzI5NCwtODYyMzIwMTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNC
+wxOTkzODI4ODgsLTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MDA3
+Nzc4NCwtMTU3MTIxNjAzNCwtMTM2MzU4NjQwMywxOTMyODM2OT
+Q2LDY3NDE3MTkyNCwyMTIzNDkzODQ3LDE3ODA3NDc2NCw3MDY3
+MjcxMF19
 -->
