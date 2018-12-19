@@ -257,10 +257,14 @@ A concurrent marking phase is started when the occupancy of the entire Java heap
 
 * full GC
 https://www.zhihu.com/question/41922036/answer/93079526  
+Full GC时，就不在分 “young gen使用young gen自己的收集器(一般是copy算法)；old gen使用old gen的收集器(一般是mark-sweep-compact算法)”，而是，整个heap以及perm gen，所有内存，全部的统一使用 old gen的收集器(一般是mark-sweep-compact算法) 一站式搞定
 
-当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC（因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC) , 这是预计的情况, 另外就是实际情况, 在新生代对象实际晋升到老年代的时候发生了 promotion failed , 则也会触发full gc. 或者System.gc()、heap dump带GC，默认也是触发full GC。
+> 触发full gc 的原因
+1.  Perm空间不足；
+2.  CMS GC时出现promotion failed和concurrent mode failure（concurrent mode failure发生的原因一般是CMS正在进行，但是由于老年代空间不足，需要尽快回收老年代里面的不再被使用的对象，这时停止所有的线程，同时终止CMS，直接进行Serial Old GC）；
+3.  统计得到的Young GC晋升到老年代的平均大小大于老年代的剩余空间；
+4.  主动触发Full GC（执行jmap -histo:live [pid]）来避免碎片问题。
 
-> Full GC时，就不在分 “young gen使用young gen自己的收集器(一般是copy算法)；old gen使用old gen的收集器(一般是mark-sweep-compact算法)”，而是，整个heap以及perm gen，所有内存，全部的统一使用 old gen的收集器(一般是mark-sweep-compact算法) 一站式搞定
 
  **所以, 简而言之, 降低full gc的频率, 一个方向是增大老年代的大小, 二是减小新生代晋升的对象的大小, 提高晋升门槛**, 如果是一次fullgc后，剩余对象不多, 证明很多都不是真正的老对象。那么说明你eden区设置太小，导致短生命周期的对象进入了old区。如果一次fullgc后，old区回收率不大，那么说明old区太小。
 
@@ -624,11 +628,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTE3MjYyOTcsLTE1OTgxNzMyOTQsLT
-g2MjMyMDExNiwxMzQwMzgxMzMxLDEwOTk1NDQ3MzQsMTk5Mzgy
-ODg4LC0xNDUzMDU4MjIsMTk4ODUzMjAzNSw1NDAwNzc3ODQsLT
-E1NzEyMTYwMzQsLTEzNjM1ODY0MDMsMTkzMjgzNjk0Niw2NzQx
-NzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3NjQsNzA2NzI3MTAsLT
-EzODMzNDcwNCwtMTcxNjc4NjMzMyw3NDEzMzYyMjgsLTE0NjU2
-ODk2MjJdfQ==
+eyJoaXN0b3J5IjpbLTg5Njc1OTY0NiwtMTU5ODE3MzI5NCwtOD
+YyMzIwMTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNCwxOTkzODI4
+ODgsLTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MDA3Nzc4NCwtMT
+U3MTIxNjAzNCwtMTM2MzU4NjQwMywxOTMyODM2OTQ2LDY3NDE3
+MTkyNCwyMTIzNDkzODQ3LDE3ODA3NDc2NCw3MDY3MjcxMCwtMT
+M4MzM0NzA0LC0xNzE2Nzg2MzMzLDc0MTMzNjIyOCwtMTQ2NTY4
+OTYyMl19
 -->
