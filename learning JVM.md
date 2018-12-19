@@ -201,7 +201,8 @@ oracle 文章的截图:
   G1的Stop The World(STW)更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间。
 
 > region
-新生代和老年代由一系列的region 构成, 存储地址不是连续的, 
+![enter image description here](https://drive.google.com/uc?id=1Ts2G1JO3TdWeT-m7YOsN3o76y8kgf3PC)
+新生代和老年代由region 构成, 存储地址不是连续的, H 表示这些Region存储的是巨大对象（humongous object，H-obj），即大小大于等于region一半的对象。
 
 ### GC回收过程
 > 大致过程
@@ -580,11 +581,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyMzQ5Mzg0NywxNzgwNzQ3NjQsNzA2Nz
-I3MTAsLTEzODMzNDcwNCwtMTcxNjc4NjMzMyw3NDEzMzYyMjgs
-LTE0NjU2ODk2MjIsMjA0NjQ3NjE3NiwtODkzMTA5MzIyLDI2MT
-c1NDYzOCwxMjEwMDkzMDQxLDIxMjczNzMxOTgsMjk1MzY1MjQ1
-LC0xNDY5MjMwMDY0LDY5NzIxOTA2NSw2NDE1NzI4OTksLTEyNj
-gxNTcxOCwtMTI5NjEzNjg1NCwtMjc0NjI2MDU2LC0xNDQ2NDI4
-ODIwXX0=
+eyJoaXN0b3J5IjpbLTEwOTI4MDA4NTMsMjEyMzQ5Mzg0NywxNz
+gwNzQ3NjQsNzA2NzI3MTAsLTEzODMzNDcwNCwtMTcxNjc4NjMz
+Myw3NDEzMzYyMjgsLTE0NjU2ODk2MjIsMjA0NjQ3NjE3NiwtOD
+kzMTA5MzIyLDI2MTc1NDYzOCwxMjEwMDkzMDQxLDIxMjczNzMx
+OTgsMjk1MzY1MjQ1LC0xNDY5MjMwMDY0LDY5NzIxOTA2NSw2ND
+E1NzI4OTksLTEyNjgxNTcxOCwtMTI5NjEzNjg1NCwtMjc0NjI2
+MDU2XX0=
 -->
