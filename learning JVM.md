@@ -243,7 +243,7 @@ minorGC之前会检查老年代最大的连续内存空间是否大于新生代�
 
 
 * major gc 
-指的老年代进行的gc, 老年代对象比例超过某个阈值, 通常有参数设置, 不可能是老年代百分百了才触发, 例如
+指的老年代进行的gc, 老年代对象比例超过某个阈值, 通常有参数设置, 不可能是老年代百分百了才触发, 例如 CMS gc 设置这个值 :  -XX:CMSInitiatingOccupancyFraction=75%,  意味着老年代超过75 才触发major gc. 
 
 
 * full GC
@@ -601,11 +601,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0Njk3OTkyNiwtMTQ1MzA1ODIyLDE5OD
-g1MzIwMzUsNTQwMDc3Nzg0LC0xNTcxMjE2MDM0LC0xMzYzNTg2
-NDAzLDE5MzI4MzY5NDYsNjc0MTcxOTI0LDIxMjM0OTM4NDcsMT
-c4MDc0NzY0LDcwNjcyNzEwLC0xMzgzMzQ3MDQsLTE3MTY3ODYz
-MzMsNzQxMzM2MjI4LC0xNDY1Njg5NjIyLDIwNDY0NzYxNzYsLT
-g5MzEwOTMyMiwyNjE3NTQ2MzgsMTIxMDA5MzA0MSwyMTI3Mzcz
-MTk4XX0=
+eyJoaXN0b3J5IjpbMTk5MzgyODg4LC0xNDUzMDU4MjIsMTk4OD
+UzMjAzNSw1NDAwNzc3ODQsLTE1NzEyMTYwMzQsLTEzNjM1ODY0
+MDMsMTkzMjgzNjk0Niw2NzQxNzE5MjQsMjEyMzQ5Mzg0NywxNz
+gwNzQ3NjQsNzA2NzI3MTAsLTEzODMzNDcwNCwtMTcxNjc4NjMz
+Myw3NDEzMzYyMjgsLTE0NjU2ODk2MjIsMjA0NjQ3NjE3NiwtOD
+kzMTA5MzIyLDI2MTc1NDYzOCwxMjEwMDkzMDQxLDIxMjczNzMx
+OThdfQ==
 -->
