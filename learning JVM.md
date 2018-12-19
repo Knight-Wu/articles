@@ -171,6 +171,8 @@ java1.8的默认垃圾收集器是 parallel collector
 > designed for applications that prefer shorter garbage collection pauses and that can afford to share processor resources with the garbage collector while the application is running
 基于标记-清除算法, 所以会产生内存碎片.
 
+oracle 文章的截图: 
+![enter image description here](https://drive.google.com/uc?id=12ASb1yk3McGByLQ0jEeNrAEcIvgfOCbK)
 过程: 
 1. 第一次STW 暂停: 标记被 gc root 的直接引用, 和年轻代对象所引用的对象, 叫做 initial mark , 比后面的Remark  要快得多.
 2.  Concurrent Mark, 这个阶段不会暂停用户线程, 第一步找到的老年代的root 的直接引用, 标记所有可达的对象, 并非所有老年代中存活的对象都在此阶段被标记，因为在标记过程中对象的引用关系还在发生变化 
@@ -576,11 +578,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MTY3ODYzMzMsNzQxMzM2MjI4LC0xND
-Y1Njg5NjIyLDIwNDY0NzYxNzYsLTg5MzEwOTMyMiwyNjE3NTQ2
-MzgsMTIxMDA5MzA0MSwyMTI3MzczMTk4LDI5NTM2NTI0NSwtMT
-Q2OTIzMDA2NCw2OTcyMTkwNjUsNjQxNTcyODk5LC0xMjY4MTU3
-MTgsLTEyOTYxMzY4NTQsLTI3NDYyNjA1NiwtMTQ0NjQyODgyMC
-wtNzQ2NjA2MDE2LC0xNDQ2NDI4ODIwLC0yMTI2NDU1MDcsLTE1
-OTg0ODY3MDNdfQ==
+eyJoaXN0b3J5IjpbLTEyOTk3MTUyOTQsLTE3MTY3ODYzMzMsNz
+QxMzM2MjI4LC0xNDY1Njg5NjIyLDIwNDY0NzYxNzYsLTg5MzEw
+OTMyMiwyNjE3NTQ2MzgsMTIxMDA5MzA0MSwyMTI3MzczMTk4LD
+I5NTM2NTI0NSwtMTQ2OTIzMDA2NCw2OTcyMTkwNjUsNjQxNTcy
+ODk5LC0xMjY4MTU3MTgsLTEyOTYxMzY4NTQsLTI3NDYyNjA1Ni
+wtMTQ0NjQyODgyMCwtNzQ2NjA2MDE2LC0xNDQ2NDI4ODIwLC0y
+MTI2NDU1MDddfQ==
 -->
