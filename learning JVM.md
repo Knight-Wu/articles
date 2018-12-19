@@ -303,6 +303,9 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 
 * ParNew gc collector 调优, 和CMS 配套使用, 负责新生代
  gc collector threads 是多线程的, 仍然会STW
+
+* 如何降低新生代的gc 暂停时间
+可以提高新生代的整体大小, 或者eden 区的大小, 降低
  
 * CMS 调优
 常用参数解释: 
@@ -606,11 +609,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0MDM4MTMzMSwxMDk5NTQ0NzM0LDE5OT
-M4Mjg4OCwtMTQ1MzA1ODIyLDE5ODg1MzIwMzUsNTQwMDc3Nzg0
-LC0xNTcxMjE2MDM0LC0xMzYzNTg2NDAzLDE5MzI4MzY5NDYsNj
-c0MTcxOTI0LDIxMjM0OTM4NDcsMTc4MDc0NzY0LDcwNjcyNzEw
-LC0xMzgzMzQ3MDQsLTE3MTY3ODYzMzMsNzQxMzM2MjI4LC0xND
-Y1Njg5NjIyLDIwNDY0NzYxNzYsLTg5MzEwOTMyMiwyNjE3NTQ2
-MzhdfQ==
+eyJoaXN0b3J5IjpbLTcyMTkzNjA2OCwxMzQwMzgxMzMxLDEwOT
+k1NDQ3MzQsMTk5MzgyODg4LC0xNDUzMDU4MjIsMTk4ODUzMjAz
+NSw1NDAwNzc3ODQsLTE1NzEyMTYwMzQsLTEzNjM1ODY0MDMsMT
+kzMjgzNjk0Niw2NzQxNzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3
+NjQsNzA2NzI3MTAsLTEzODMzNDcwNCwtMTcxNjc4NjMzMyw3ND
+EzMzYyMjgsLTE0NjU2ODk2MjIsMjA0NjQ3NjE3NiwtODkzMTA5
+MzIyXX0=
 -->
