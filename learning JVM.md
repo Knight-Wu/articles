@@ -599,13 +599,13 @@ https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
-* cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 
+* cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4ODUzMjAzNSw1NDAwNzc3ODQsLTE1Nz
-EyMTYwMzQsLTEzNjM1ODY0MDMsMTkzMjgzNjk0Niw2NzQxNzE5
-MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3NjQsNzA2NzI3MTAsLTEzOD
-MzNDcwNCwtMTcxNjc4NjMzMyw3NDEzMzYyMjgsLTE0NjU2ODk2
-MjIsMjA0NjQ3NjE3NiwtODkzMTA5MzIyLDI2MTc1NDYzOCwxMj
-EwMDkzMDQxLDIxMjczNzMxOTgsMjk1MzY1MjQ1LC0xNDY5MjMw
-MDY0XX0=
+eyJoaXN0b3J5IjpbLTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MD
+A3Nzc4NCwtMTU3MTIxNjAzNCwtMTM2MzU4NjQwMywxOTMyODM2
+OTQ2LDY3NDE3MTkyNCwyMTIzNDkzODQ3LDE3ODA3NDc2NCw3MD
+Y3MjcxMCwtMTM4MzM0NzA0LC0xNzE2Nzg2MzMzLDc0MTMzNjIy
+OCwtMTQ2NTY4OTYyMiwyMDQ2NDc2MTc2LC04OTMxMDkzMjIsMj
+YxNzU0NjM4LDEyMTAwOTMwNDEsMjEyNzM3MzE5OCwyOTUzNjUy
+NDVdfQ==
 -->
