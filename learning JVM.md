@@ -225,22 +225,15 @@ A concurrent marking phase is started when the occupancy of the entire Java heap
 
 
 ### GC回收过程
-> 大致过程
-*  对象优先在eden分配, 当eden没有足够空间时, 进行一次minorGC, 将存在GC root引用链的对象复制到survivor区域, 使用标记复制算法, 然后存活对象的年龄加一. 
-* 大对象直接分配到老年代
-当对象大小大于参数设置的 -XX:PretenureSizeThreshold (默认是 0 , 即无论多大不会直接进入老年代)
-* 长期存活对象进入老年代
-当对象出生在eden, 经过一次minorGC进入survivor, 则对象年龄设为1, 当对象年龄超过该参数 -XX:MaxTenuringThreshold 默认15, 则进入老年代
-* 动态对象年龄判定
-当某个年龄的对象的大小总和超过survivor的一半, 则大于或等于该年龄的所有对象都会进入老年代.
-* 空间分配担保
-minorGC之前会检查老年代最大的连续内存空间是否大于新生代所有对象的大小,  或者检查最大的老年代的连续内存是否大于历史平均进入老年代的对象大小, 满足一个就进行minorGC, 否则fullGC
-
 * 新生代gc过程
 对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代, 或者 to区域满了就会直接晋升老年代. 
 
 * 新生代晋升条件
-chaogu
+**动态年龄计算**：Hotspot遍历所有对象时，按照年龄从小到大对其所占用的大小进行累积，当累积的某个年龄大小超过了survivor区的一半时，取这个年龄和MaxTenuringThreshold中更小的一个值，作为新的晋升年龄阈值。
+
+某些对象大小超过指定的阈值, 则这种大对象直接分配到老年代
+
+
 
 
 
@@ -615,11 +608,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNzIyMjg4MzEsMTM0MDM4MTMzMSwxMD
-k5NTQ0NzM0LDE5OTM4Mjg4OCwtMTQ1MzA1ODIyLDE5ODg1MzIw
-MzUsNTQwMDc3Nzg0LC0xNTcxMjE2MDM0LC0xMzYzNTg2NDAzLD
-E5MzI4MzY5NDYsNjc0MTcxOTI0LDIxMjM0OTM4NDcsMTc4MDc0
-NzY0LDcwNjcyNzEwLC0xMzgzMzQ3MDQsLTE3MTY3ODYzMzMsNz
-QxMzM2MjI4LC0xNDY1Njg5NjIyLDIwNDY0NzYxNzYsLTg5MzEw
-OTMyMl19
+eyJoaXN0b3J5IjpbLTQyNjIzMTk0NiwxMzQwMzgxMzMxLDEwOT
+k1NDQ3MzQsMTk5MzgyODg4LC0xNDUzMDU4MjIsMTk4ODUzMjAz
+NSw1NDAwNzc3ODQsLTE1NzEyMTYwMzQsLTEzNjM1ODY0MDMsMT
+kzMjgzNjk0Niw2NzQxNzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3
+NjQsNzA2NzI3MTAsLTEzODMzNDcwNCwtMTcxNjc4NjMzMyw3ND
+EzMzYyMjgsLTE0NjU2ODk2MjIsMjA0NjQ3NjE3NiwtODkzMTA5
+MzIyXX0=
 -->
