@@ -239,6 +239,9 @@ minorGC之前会检查老年代最大的连续内存空间是否大于新生代�
 * 新生代gc过程
 对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代, 或者 to区域满了就会直接晋升老年代. 
 
+* 新生代晋升条件
+chaogu
+
 
 
 
@@ -612,11 +615,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzNTQ1OTIwNSwxMzQwMzgxMzMxLDEwOT
-k1NDQ3MzQsMTk5MzgyODg4LC0xNDUzMDU4MjIsMTk4ODUzMjAz
-NSw1NDAwNzc3ODQsLTE1NzEyMTYwMzQsLTEzNjM1ODY0MDMsMT
-kzMjgzNjk0Niw2NzQxNzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3
-NjQsNzA2NzI3MTAsLTEzODMzNDcwNCwtMTcxNjc4NjMzMyw3ND
-EzMzYyMjgsLTE0NjU2ODk2MjIsMjA0NjQ3NjE3NiwtODkzMTA5
-MzIyXX0=
+eyJoaXN0b3J5IjpbLTIwNzIyMjg4MzEsMTM0MDM4MTMzMSwxMD
+k5NTQ0NzM0LDE5OTM4Mjg4OCwtMTQ1MzA1ODIyLDE5ODg1MzIw
+MzUsNTQwMDc3Nzg0LC0xNTcxMjE2MDM0LC0xMzYzNTg2NDAzLD
+E5MzI4MzY5NDYsNjc0MTcxOTI0LDIxMjM0OTM4NDcsMTc4MDc0
+NzY0LDcwNjcyNzEwLC0xMzgzMzQ3MDQsLTE3MTY3ODYzMzMsNz
+QxMzM2MjI4LC0xNDY1Njg5NjIyLDIwNDY0NzYxNzYsLTg5MzEw
+OTMyMl19
 -->
