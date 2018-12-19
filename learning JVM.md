@@ -174,7 +174,7 @@ java1.8的默认垃圾收集器是 parallel collector
 oracle 文章的截图: 
 ![enter image description here](https://drive.google.com/uc?id=12ASb1yk3McGByLQ0jEeNrAEcIvgfOCbK)
 过程: 
-1. 第一次STW 暂停: 标记被 gc root 的直接引用, 和年轻代对象所引用的对象, 叫做 initial mark , 比后面的Remark  要快得多.
+1. 第一次STW 暂停,  initial mark , 标记老年代中可达的对象, 以及被年轻代引用的对象,  比minor gc h
 2.  Concurrent Mark, 这个阶段不会暂停用户线程, 第一步找到的老年代的root 的直接引用, 标记所有可达的对象, 并非所有老年代中存活的对象都在此阶段被标记，因为在标记过程中对象的引用关系还在发生变化 
 3.  Concurrent Preclean（并发预清理）此阶段同样是与应用线程并行执行的，不需要停止应用线程。因为前一阶段是与程序并发进行的，可能有一些引用已经改变。如果在并发标记过程中发生了引用关系变化，JVM 会通过 Card 将发生了改变的区域标记为「脏」区，这就是所谓的卡片标记（Card Marking）。本阶段也会执行一些必要的细节处理，并为 Final Remark 阶段做一些准备工作
 4. Concurrent Abortable Preclean(并发可取消的预清理）,不会暂停用户线程
@@ -578,11 +578,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTk3MTUyOTQsLTE3MTY3ODYzMzMsNz
-QxMzM2MjI4LC0xNDY1Njg5NjIyLDIwNDY0NzYxNzYsLTg5MzEw
-OTMyMiwyNjE3NTQ2MzgsMTIxMDA5MzA0MSwyMTI3MzczMTk4LD
-I5NTM2NTI0NSwtMTQ2OTIzMDA2NCw2OTcyMTkwNjUsNjQxNTcy
-ODk5LC0xMjY4MTU3MTgsLTEyOTYxMzY4NTQsLTI3NDYyNjA1Ni
-wtMTQ0NjQyODgyMCwtNzQ2NjA2MDE2LC0xNDQ2NDI4ODIwLC0y
-MTI2NDU1MDddfQ==
+eyJoaXN0b3J5IjpbLTU3NTcyMTY0LC0xNzE2Nzg2MzMzLDc0MT
+MzNjIyOCwtMTQ2NTY4OTYyMiwyMDQ2NDc2MTc2LC04OTMxMDkz
+MjIsMjYxNzU0NjM4LDEyMTAwOTMwNDEsMjEyNzM3MzE5OCwyOT
+UzNjUyNDUsLTE0NjkyMzAwNjQsNjk3MjE5MDY1LDY0MTU3Mjg5
+OSwtMTI2ODE1NzE4LC0xMjk2MTM2ODU0LC0yNzQ2MjYwNTYsLT
+E0NDY0Mjg4MjAsLTc0NjYwNjAxNiwtMTQ0NjQyODgyMCwtMjEy
+NjQ1NTA3XX0=
 -->
