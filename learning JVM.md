@@ -321,7 +321,13 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 推荐配置, 基本适合大多数场景: 
 -XX:+UseConcMarkSweepGC -XX:+UseParNewGC  -XX:+CMSParallelRemarkEnabled  -XX:+UseCMSCompactAtFullCollection  -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75% -XX:-DisableExplicitGC
 
-* 
+> 降低CMS gc 时remark阶段的暂停时间: 
+因为remark 的时间会随着新生代存活对象的数量增多而上升, 这样如果Remark前执行一次Minor GC，大部分对象就会被回收。CMS就采用了这样的方式，在Remark前增加了一个可中断的并发预清理（CMS-concurrent-abortable-preclean），该阶段主要工作仍然是并发标记对象是否存活，只是这个过程可被中断。此阶段在Eden区使用超过2M时启动，当然2M是默认的阈值，可以通过参数修改。如果此阶段执行时等到了Minor GC，那么上述灰色对象将被回收，Reamark阶段需要扫描的对象就少了。
+
+除此之外CMS为了避免这个阶段没有等到Minor GC而陷入无限等待，提供了参数CMSMaxAbortablePrecleanTime ，默认为5s，含义是如果可中断的预清理执行超过5s，不管发没发生Minor GC，都会中止此阶段，进入Remark。  
+根据GC日志红色标记2处显示，可中断的并发预清理执行了5.35s，超过了设置的5s被中断，期间没有等到Minor GC ，所以Remark时新生代中仍然有很多对象。
+
+对于这种情况，CMS提供CMSScavengeBeforeRemark参数，用来保证Remark前强制进行一次Minor GC。
 
 ### java heap 分代(基于jdk1.8)
 * 新生代(PSYoungGen)
@@ -616,11 +622,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4MTQzMiwtMTU5ODE3MzI5NCwtODYyMz
-IwMTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNCwxOTkzODI4ODgs
-LTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MDA3Nzc4NCwtMTU3MT
-IxNjAzNCwtMTM2MzU4NjQwMywxOTMyODM2OTQ2LDY3NDE3MTky
-NCwyMTIzNDkzODQ3LDE3ODA3NDc2NCw3MDY3MjcxMCwtMTM4Mz
-M0NzA0LC0xNzE2Nzg2MzMzLDc0MTMzNjIyOCwtMTQ2NTY4OTYy
-Ml19
+eyJoaXN0b3J5IjpbLTczMjAwMzE0NywtMTU5ODE3MzI5NCwtOD
+YyMzIwMTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNCwxOTkzODI4
+ODgsLTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MDA3Nzc4NCwtMT
+U3MTIxNjAzNCwtMTM2MzU4NjQwMywxOTMyODM2OTQ2LDY3NDE3
+MTkyNCwyMTIzNDkzODQ3LDE3ODA3NDc2NCw3MDY3MjcxMCwtMT
+M4MzM0NzA0LC0xNzE2Nzg2MzMzLDc0MTMzNjIyOCwtMTQ2NTY4
+OTYyMl19
 -->
