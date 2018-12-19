@@ -178,6 +178,8 @@ oracle 文章的截图:
 2.  Concurrent Marking, 这个阶段不会暂停用户线程, 并行的标记老年代的所有存活的对象. 
 3.  Concurrent Preclean（并发预清理）此阶段同样是与应用线程并行执行的，不需要停止应用线程。因为前一阶段是与程序并发进行的，可能有一些引用已经改变。如果在并发标记过程中发生了引用关系变化，JVM 会通过 Card 将发生了改变的区域标记为「脏」区，这就是所谓的卡片标记（Card Marking）。本阶段也会执行一些必要的细节处理，并为 Final Remark 阶段做一些准备工作
 4. Concurrent Abortable Preclean(并发可取消的预清理）,不会暂停用户线程
+
+
 5.  Remark 最终标记, 本阶段的目标是完成老年代中剩余存活对象的标记,  因为之前的concurrent mask 是和用户线程并发执行的, 可能中间会产生浮动垃圾, 所以需要进行最终标记, 会STW, 通过耗时较长, 而且还可能还随着年轻代存活对象的数量的数量增多而时间变长.
 
 
@@ -319,7 +321,7 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 推荐配置, 基本适合大多数场景: 
 -XX:+UseConcMarkSweepGC -XX:+UseParNewGC  -XX:+CMSParallelRemarkEnabled  -XX:+UseCMSCompactAtFullCollection  -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=75% -XX:-DisableExplicitGC
 
-
+* 
 
 ### java heap 分代(基于jdk1.8)
 * 新生代(PSYoungGen)
@@ -614,11 +616,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTgxNzMyOTQsLTg2MjMyMDExNiwxMz
-QwMzgxMzMxLDEwOTk1NDQ3MzQsMTk5MzgyODg4LC0xNDUzMDU4
-MjIsMTk4ODUzMjAzNSw1NDAwNzc3ODQsLTE1NzEyMTYwMzQsLT
-EzNjM1ODY0MDMsMTkzMjgzNjk0Niw2NzQxNzE5MjQsMjEyMzQ5
-Mzg0NywxNzgwNzQ3NjQsNzA2NzI3MTAsLTEzODMzNDcwNCwtMT
-cxNjc4NjMzMyw3NDEzMzYyMjgsLTE0NjU2ODk2MjIsMjA0NjQ3
-NjE3Nl19
+eyJoaXN0b3J5IjpbMTU4MTQzMiwtMTU5ODE3MzI5NCwtODYyMz
+IwMTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNCwxOTkzODI4ODgs
+LTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MDA3Nzc4NCwtMTU3MT
+IxNjAzNCwtMTM2MzU4NjQwMywxOTMyODM2OTQ2LDY3NDE3MTky
+NCwyMTIzNDkzODQ3LDE3ODA3NDc2NCw3MDY3MjcxMCwtMTM4Mz
+M0NzA0LC0xNzE2Nzg2MzMzLDc0MTMzNjIyOCwtMTQ2NTY4OTYy
+Ml19
 -->
