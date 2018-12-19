@@ -301,6 +301,9 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
  吞吐量不够, 需要加大heap size; gc pause 时间太长, 需要减小heap size, 可能会导致heap size 在震荡, 如何协调. 
 
 
+* ParNew gc collector 调优, 和CMS 配套使用, 负责新生代
+ gc collector threads 是多线程的, 仍然会STW
+ 
 * CMS 调优
 常用参数解释: 
 ![enter image description here](https://drive.google.com/uc?id=1dxbRc-uCa9v2HbMKFPf3EAWs9FDeFDlm)
@@ -603,11 +606,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5OTU0NDczNCwxOTkzODI4ODgsLTE0NT
-MwNTgyMiwxOTg4NTMyMDM1LDU0MDA3Nzc4NCwtMTU3MTIxNjAz
-NCwtMTM2MzU4NjQwMywxOTMyODM2OTQ2LDY3NDE3MTkyNCwyMT
-IzNDkzODQ3LDE3ODA3NDc2NCw3MDY3MjcxMCwtMTM4MzM0NzA0
-LC0xNzE2Nzg2MzMzLDc0MTMzNjIyOCwtMTQ2NTY4OTYyMiwyMD
-Q2NDc2MTc2LC04OTMxMDkzMjIsMjYxNzU0NjM4LDEyMTAwOTMw
-NDFdfQ==
+eyJoaXN0b3J5IjpbMTM0MDM4MTMzMSwxMDk5NTQ0NzM0LDE5OT
+M4Mjg4OCwtMTQ1MzA1ODIyLDE5ODg1MzIwMzUsNTQwMDc3Nzg0
+LC0xNTcxMjE2MDM0LC0xMzYzNTg2NDAzLDE5MzI4MzY5NDYsNj
+c0MTcxOTI0LDIxMjM0OTM4NDcsMTc4MDc0NzY0LDcwNjcyNzEw
+LC0xMzgzMzQ3MDQsLTE3MTY3ODYzMzMsNzQxMzM2MjI4LC0xND
+Y1Njg5NjIyLDIwNDY0NzYxNzYsLTg5MzEwOTMyMiwyNjE3NTQ2
+MzhdfQ==
 -->
