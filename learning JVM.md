@@ -206,7 +206,7 @@ oracle 文章的截图:
   G1是一个有整理内存过程的垃圾收集器，不会产生很多内存碎片。
   G1的Stop The World(STW)更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间。
 
-不再分为young gc和old gc了, 而是young gc和mixed gc, 
+gc 的类型: young gc和mixed gc, full gc
 
 Young GC：选定年轻代里的一些Region。通过控制年轻代的region个数，即年轻代内存大小，来控制young GC的时间开销。
 大致过程: 
@@ -214,8 +214,11 @@ Young GC：选定年轻代里的一些Region。通过控制年轻代的region个
 
 
 Mixed GC 选定所有年轻代里的Region，外加根据concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
-大致过程: 
+大致过程: 当old区Heap的对象占总Heap的比例超过InitiatingHeapOccupancyPercent之后，就会开始ConcurentMarking, 完成了Concurrent Marking后，G1会从Young GC切换到Mixed GC, 在Mixed GC中，G1可以增加若干个Old区域的Region到CSet中。  Mixed GC的次数根据候选的Old CSet ?
 
+## Full GC
+
+和CMS一样，G1的一些收集过程是和应用程序并发执行的，所以可能还没有回收完成，是由于申请内存的速度比回收速度快，新的对象就占满了所有空间，在CMS中叫做Concurrent Mode Failure, 在G1中称为Allocation Failure，也会降级为一个STW的fullgc。
 > 什么情况触发 concurrent marking 
 
 A concurrent marking phase is started when the occupancy of the entire Java heap reaches the value of the parameter  `InitiatingHeapOccupancyPercent`. Set the value of this parameter with the command-line option  `-XX:InitiatingHeapOccupancyPercent=``<NN>`. The default value of  `InitiatingHeapOccupancyPercent`  is 45.
@@ -640,11 +643,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDg4NTM1MDYsLTU2NDgxNzE4NywtMj
-M4NzEzMjEwLDIwOTg0MTIxMDQsLTE0MjQ2NTMzMywtMTU5ODE3
-MzI5NCwtODYyMzIwMTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNC
-wxOTkzODI4ODgsLTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MDA3
-Nzc4NCwtMTU3MTIxNjAzNCwtMTM2MzU4NjQwMywxOTMyODM2OT
-Q2LDY3NDE3MTkyNCwyMTIzNDkzODQ3LDE3ODA3NDc2NCw3MDY3
-MjcxMF19
+eyJoaXN0b3J5IjpbOTU2NjQzMTAyLC01NjQ4MTcxODcsLTIzOD
+cxMzIxMCwyMDk4NDEyMTA0LC0xNDI0NjUzMzMsLTE1OTgxNzMy
+OTQsLTg2MjMyMDExNiwxMzQwMzgxMzMxLDEwOTk1NDQ3MzQsMT
+k5MzgyODg4LC0xNDUzMDU4MjIsMTk4ODUzMjAzNSw1NDAwNzc3
+ODQsLTE1NzEyMTYwMzQsLTEzNjM1ODY0MDMsMTkzMjgzNjk0Ni
+w2NzQxNzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3NjQsNzA2NzI3
+MTBdfQ==
 -->
