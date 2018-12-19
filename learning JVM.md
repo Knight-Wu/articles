@@ -195,8 +195,13 @@ oracle 文章的截图:
     
 * Garbage First(G1)
   
- > 比起CMS
+ > 比起CMS 的优点
 
+  G1是一个有整理内存过程的垃圾收集器，不会产生很多内存碎片。
+  G1的Stop The World(STW)更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间。
+
+> region
+新生代和老年代有
 
 ### GC回收过程
 > 大致过程
@@ -575,11 +580,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTQ5MTc2MjEsMTc4MDc0NzY0LDcwNj
-cyNzEwLC0xMzgzMzQ3MDQsLTE3MTY3ODYzMzMsNzQxMzM2MjI4
-LC0xNDY1Njg5NjIyLDIwNDY0NzYxNzYsLTg5MzEwOTMyMiwyNj
-E3NTQ2MzgsMTIxMDA5MzA0MSwyMTI3MzczMTk4LDI5NTM2NTI0
-NSwtMTQ2OTIzMDA2NCw2OTcyMTkwNjUsNjQxNTcyODk5LC0xMj
-Y4MTU3MTgsLTEyOTYxMzY4NTQsLTI3NDYyNjA1NiwtMTQ0NjQy
-ODgyMF19
+eyJoaXN0b3J5IjpbMTc4Njg3NzM0NiwxNzgwNzQ3NjQsNzA2Nz
+I3MTAsLTEzODMzNDcwNCwtMTcxNjc4NjMzMyw3NDEzMzYyMjgs
+LTE0NjU2ODk2MjIsMjA0NjQ3NjE3NiwtODkzMTA5MzIyLDI2MT
+c1NDYzOCwxMjEwMDkzMDQxLDIxMjczNzMxOTgsMjk1MzY1MjQ1
+LC0xNDY5MjMwMDY0LDY5NzIxOTA2NSw2NDE1NzI4OTksLTEyNj
+gxNTcxOCwtMTI5NjEzNjg1NCwtMjc0NjI2MDU2LC0xNDQ2NDI4
+ODIwXX0=
 -->
