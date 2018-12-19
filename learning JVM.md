@@ -237,7 +237,7 @@ A concurrent marking phase is started when the occupancy of the entire Java heap
 minorGC之前会检查老年代最大的连续内存空间是否大于新生代所有对象的大小,  或者检查最大的老年代的连续内存是否大于历史平均进入老年代的对象大小, 满足一个就进行minorGC, 否则fullGC
 
 * 新生代gc过程
-对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代, 或者 
+对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代, 或者 to区域满了就会直接晋升老年代. 
 
 
 
@@ -603,7 +603,7 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0NTQ2NzczNywxOTkzODI4ODgsLTE0NT
+eyJoaXN0b3J5IjpbMTA5OTU0NDczNCwxOTkzODI4ODgsLTE0NT
 MwNTgyMiwxOTg4NTMyMDM1LDU0MDA3Nzc4NCwtMTU3MTIxNjAz
 NCwtMTM2MzU4NjQwMywxOTMyODM2OTQ2LDY3NDE3MTkyNCwyMT
 IzNDkzODQ3LDE3ODA3NDc2NCw3MDY3MjcxMCwtMTM4MzM0NzA0
