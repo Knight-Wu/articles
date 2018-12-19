@@ -201,7 +201,7 @@ oracle 文章的截图:
   G1的Stop The World(STW)更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间。
 
 > region
-新生代和老年代有
+新生代和老年代由一系列的region 构成, 存储地址不是连续的, 
 
 ### GC回收过程
 > 大致过程
@@ -580,7 +580,7 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4Njg3NzM0NiwxNzgwNzQ3NjQsNzA2Nz
+eyJoaXN0b3J5IjpbMjEyMzQ5Mzg0NywxNzgwNzQ3NjQsNzA2Nz
 I3MTAsLTEzODMzNDcwNCwtMTcxNjc4NjMzMyw3NDEzMzYyMjgs
 LTE0NjU2ODk2MjIsMjA0NjQ3NjE3NiwtODkzMTA5MzIyLDI2MT
 c1NDYzOCwxMjEwMDkzMDQxLDIxMjczNzMxOTgsMjk1MzY1MjQ1
