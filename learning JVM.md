@@ -208,7 +208,7 @@ oracle 文章的截图:
 
 gc 的类型: young gc和mixed gc, full gc
 
-Young GC：选定年轻代里的所有Region。通过控制年轻代的region个数，即年轻代内存大小，来控制young GC的时间开销。
+Young GC：选定年轻代里的所有Region。通过控制年轻代的region**总数**，即年轻代内存大小，来控制young GC的时间开销。
 大致过程: 
 当Eden区域无法申请新的对象时（满了），就会进行Young GC, Young GC将Eden和Survivor区域的Region(称为Collection Set, CSet)中的活对象Copy到一些新Region中(即新的Survivor)，当对象的GC年龄达到阈值后会Copy到Old Region中。由于采取的是Copying算法，所以就避免了内存碎片的问题，不再需要单独的压缩。
 
@@ -651,11 +651,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjAyMDkzOTksLTE1NzA5MTM4MDEsMT
-MwOTA3MzUzOCwtNTY0ODE3MTg3LC0yMzg3MTMyMTAsMjA5ODQx
-MjEwNCwtMTQyNDY1MzMzLC0xNTk4MTczMjk0LC04NjIzMjAxMT
-YsMTM0MDM4MTMzMSwxMDk5NTQ0NzM0LDE5OTM4Mjg4OCwtMTQ1
-MzA1ODIyLDE5ODg1MzIwMzUsNTQwMDc3Nzg0LC0xNTcxMjE2MD
-M0LC0xMzYzNTg2NDAzLDE5MzI4MzY5NDYsNjc0MTcxOTI0LDIx
-MjM0OTM4NDddfQ==
+eyJoaXN0b3J5IjpbMTY4MDE4NTE3NiwtMTU3MDkxMzgwMSwxMz
+A5MDczNTM4LC01NjQ4MTcxODcsLTIzODcxMzIxMCwyMDk4NDEy
+MTA0LC0xNDI0NjUzMzMsLTE1OTgxNzMyOTQsLTg2MjMyMDExNi
+wxMzQwMzgxMzMxLDEwOTk1NDQ3MzQsMTk5MzgyODg4LC0xNDUz
+MDU4MjIsMTk4ODUzMjAzNSw1NDAwNzc3ODQsLTE1NzEyMTYwMz
+QsLTEzNjM1ODY0MDMsMTkzMjgzNjk0Niw2NzQxNzE5MjQsMjEy
+MzQ5Mzg0N119
 -->
