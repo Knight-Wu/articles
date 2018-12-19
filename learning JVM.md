@@ -306,9 +306,9 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 
 * 如何降低新生代的gc 暂停时间
 可以提高新生代的整体大小, 或者eden 区的大小, 降低young gc 的频率, 下次gc 时存活的对象越少, 暂停的时间越少, 当然取决于新生代对象的存活时间的分布. 举例如下: 
--   扩容前：新生代容量为R ，假设对象A的存活时间为750ms，Minor GC间隔500ms，那么本次Minor GC时间= T1（扫描新生代R）+T2（复制对象A到S）。
+扩容前：新生代容量为R ，假设对象A的存活时间为750ms，Minor GC间隔500ms，那么本次Minor GC时间= T1（扫描新生代R）+T2（复制对象A到S）。
     
--   扩容后：新生代容量为2R ，对象A的生命周期为750ms，那么Minor GC间隔增加为1000ms，此时Minor GC对象A已不再存活，不需要把它复制到Survivor区，那么本次GC时间 = 2 × T1（扫描新生代R），没有T2复制时间
+扩容后：新生代容量为2R ，对象A的生命周期为750ms，那么Minor GC间隔增加为1000ms，此时Minor GC对象A已不再存活，不需要把它复制到Survivor区，那么本次GC时间 = 2 × T1（扫描新生代R），没有T2复制时间
  
 * CMS 调优
 常用参数解释: 
@@ -612,7 +612,7 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1MDY1MzM0OSwxMzQwMzgxMzMxLDEwOT
+eyJoaXN0b3J5IjpbMTAzNTQ1OTIwNSwxMzQwMzgxMzMxLDEwOT
 k1NDQ3MzQsMTk5MzgyODg4LC0xNDUzMDU4MjIsMTk4ODUzMjAz
 NSw1NDAwNzc3ODQsLTE1NzEyMTYwMzQsLTEzNjM1ODY0MDMsMT
 kzMjgzNjk0Niw2NzQxNzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3
