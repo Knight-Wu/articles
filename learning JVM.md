@@ -174,7 +174,7 @@ java1.8的默认垃圾收集器是 parallel collector
 oracle 文章的截图: 
 ![enter image description here](https://drive.google.com/uc?id=12ASb1yk3McGByLQ0jEeNrAEcIvgfOCbK)
 过程: 
-1. 第一次STW 暂停,  initial mark , 标记老年代中被GC root 直接可达的对象, 以及被年轻代引用的对象,  比minor gc 还要快. 
+1. 第一次STW 暂停,  initial mark , 标记老年代中被GC root (可能来自新生代和老年代)直接可达的对象, 通常耗时很短,  比minor gc 还要快. 
 2.  Concurrent Marking, 这个阶段不会暂停用户线程, 并行的标记老年代的所有存活的对象. 
 3.  Concurrent Preclean（并发预清理）此阶段同样是与应用线程并行执行的，不需要停止应用线程。因为前一阶段是与程序并发进行的，可能有一些引用已经改变。如果在并发标记过程中发生了引用关系变化，JVM 会通过 Card 将发生了改变的区域标记为「脏」区，这就是所谓的卡片标记（Card Marking）。本阶段也会执行一些必要的细节处理，并为 Final Remark 阶段做一些准备工作
 4. Concurrent Abortable Preclean(并发可取消的预清理）,不会暂停用户线程
@@ -229,9 +229,10 @@ A concurrent marking phase is started when the occupancy of the entire Java heap
 对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代, 或者 to区域满了就会直接晋升老年代. 
 
 * 新生代晋升条件
-**动态年龄计算**：Hotspot遍历所有对象时，按照年龄从小到大对其所占用的大小进行累积，当累积的某个年龄大小超过了survivor区的一半时，取这个年龄和MaxTenuringThreshold中更小的一个值，作为新的晋升年龄阈值。
 
-某些对象大小超过指定的阈值, 则这种大对象直接分配到老年代
+     * **动态年龄计算**：Hotspot遍历所有对象时，按照年龄从小到大对其所占用的大小进行累积，当累积的某个年龄大小超过了survivor区的一半时，取这个年龄和MaxTenuringThreshold中更小的一个值，作为新的晋升年龄阈值。
+
+  * 某些对象大小超过指定的阈值, 则这种大对象直接分配到老年代
 
 
 
@@ -608,11 +609,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2MjMyMDExNiwxMzQwMzgxMzMxLDEwOT
-k1NDQ3MzQsMTk5MzgyODg4LC0xNDUzMDU4MjIsMTk4ODUzMjAz
-NSw1NDAwNzc3ODQsLTE1NzEyMTYwMzQsLTEzNjM1ODY0MDMsMT
-kzMjgzNjk0Niw2NzQxNzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3
-NjQsNzA2NzI3MTAsLTEzODMzNDcwNCwtMTcxNjc4NjMzMyw3ND
-EzMzYyMjgsLTE0NjU2ODk2MjIsMjA0NjQ3NjE3NiwtODkzMTA5
-MzIyXX0=
+eyJoaXN0b3J5IjpbLTg1MDUyOTE1OSwtODYyMzIwMTE2LDEzND
+AzODEzMzEsMTA5OTU0NDczNCwxOTkzODI4ODgsLTE0NTMwNTgy
+MiwxOTg4NTMyMDM1LDU0MDA3Nzc4NCwtMTU3MTIxNjAzNCwtMT
+M2MzU4NjQwMywxOTMyODM2OTQ2LDY3NDE3MTkyNCwyMTIzNDkz
+ODQ3LDE3ODA3NDc2NCw3MDY3MjcxMCwtMTM4MzM0NzA0LC0xNz
+E2Nzg2MzMzLDc0MTMzNjIyOCwtMTQ2NTY4OTYyMiwyMDQ2NDc2
+MTc2XX0=
 -->
