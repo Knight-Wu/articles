@@ -234,7 +234,11 @@ A concurrent marking phase is started when the occupancy of the entire Java heap
 * 新生代gc过程
 对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代, 或者 to区域满了就会直接晋升老年代. 
 
-> 新生代标记的过程中
+> 新生代标记的过程中, 如何避免像老年代的全堆扫描, 知道哪些新生代对象被老年代引用呢
+
+经过统计信息显示，老年代持有新生代对象引用的情况不足1%，根据这一特性JVM引入了卡表（card table）, 卡表的具体策略是将老年代的空间分成大小为512B的若干张卡（card）, 当laoni
+
+
 
 * 新生代晋升条件
 
@@ -620,11 +624,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzODk1NTc2OSwtMTU5ODE3MzI5NCwtOD
-YyMzIwMTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNCwxOTkzODI4
-ODgsLTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MDA3Nzc4NCwtMT
-U3MTIxNjAzNCwtMTM2MzU4NjQwMywxOTMyODM2OTQ2LDY3NDE3
-MTkyNCwyMTIzNDkzODQ3LDE3ODA3NDc2NCw3MDY3MjcxMCwtMT
-M4MzM0NzA0LC0xNzE2Nzg2MzMzLDc0MTMzNjIyOCwtMTQ2NTY4
-OTYyMl19
+eyJoaXN0b3J5IjpbLTgwNjkxMjk2LC0xNTk4MTczMjk0LC04Nj
+IzMjAxMTYsMTM0MDM4MTMzMSwxMDk5NTQ0NzM0LDE5OTM4Mjg4
+OCwtMTQ1MzA1ODIyLDE5ODg1MzIwMzUsNTQwMDc3Nzg0LC0xNT
+cxMjE2MDM0LC0xMzYzNTg2NDAzLDE5MzI4MzY5NDYsNjc0MTcx
+OTI0LDIxMjM0OTM4NDcsMTc4MDc0NzY0LDcwNjcyNzEwLC0xMz
+gzMzQ3MDQsLTE3MTY3ODYzMzMsNzQxMzM2MjI4LC0xNDY1Njg5
+NjIyXX0=
 -->
