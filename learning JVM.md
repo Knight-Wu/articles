@@ -228,7 +228,7 @@ https://www.zhihu.com/question/41922036/answer/93079526
 
 > Full GC时，就不在分 “young gen使用young gen自己的收集器(一般是copy算法)；old gen使用old gen的收集器(一般是mark-sweep-compact算法)”，而是，整个heap以及perm gen，所有内存，全部的统一使用 old gen的收集器(一般是mark-sweep-compact算法) 一站式搞定
 
- **所以, 简而言之, 降低full gc的频率, 一个方向是增大老年代的大小, 二是减小新生代晋升的对象的大小, 提高晋升门槛**
+ **所以, 简而言之, 降低full gc的频率, 一个方向是增大老年代的大小, 二是减小新生代晋升的对象的大小, 提高晋升门槛**, 如果是一次fullgc后，剩余对象不多, 证明很多都不是真正的老对象。那么说明你eden区设置太小，导致短生命周期的对象进入了old区。如果一次fullgc后，old区回收率不大，那么说明old区太小。
 
 * GC root
  1. local variable
@@ -576,11 +576,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQxMzM2MjI4LC0xNDY1Njg5NjIyLDIwND
-Y0NzYxNzYsLTg5MzEwOTMyMiwyNjE3NTQ2MzgsMTIxMDA5MzA0
-MSwyMTI3MzczMTk4LDI5NTM2NTI0NSwtMTQ2OTIzMDA2NCw2OT
-cyMTkwNjUsNjQxNTcyODk5LC0xMjY4MTU3MTgsLTEyOTYxMzY4
-NTQsLTI3NDYyNjA1NiwtMTQ0NjQyODgyMCwtNzQ2NjA2MDE2LC
-0xNDQ2NDI4ODIwLC0yMTI2NDU1MDcsLTE1OTg0ODY3MDMsMTM4
-MjY0MDQ0OF19
+eyJoaXN0b3J5IjpbLTE3MTY3ODYzMzMsNzQxMzM2MjI4LC0xND
+Y1Njg5NjIyLDIwNDY0NzYxNzYsLTg5MzEwOTMyMiwyNjE3NTQ2
+MzgsMTIxMDA5MzA0MSwyMTI3MzczMTk4LDI5NTM2NTI0NSwtMT
+Q2OTIzMDA2NCw2OTcyMTkwNjUsNjQxNTcyODk5LC0xMjY4MTU3
+MTgsLTEyOTYxMzY4NTQsLTI3NDYyNjA1NiwtMTQ0NjQyODgyMC
+wtNzQ2NjA2MDE2LC0xNDQ2NDI4ODIwLC0yMTI2NDU1MDcsLTE1
+OTg0ODY3MDNdfQ==
 -->
