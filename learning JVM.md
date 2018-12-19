@@ -194,11 +194,8 @@ oracle 文章的截图:
 使用 -XX:UseCMSCompactionAtFullCollection(默认开启, 开启内存碎片的整理工作), 但是会导致停顿时间变长,  也可采用 -XX:CMSFullGCsBeforeCompaction(表示执行了多少次不压缩的full GC后, 来一次压缩的full GC ,默认是0, 表示每次都压缩).
     
 * Garbage First(G1)
-  * 并行(多线程处理GC, 此时用户线程仍然等待)和并发(减少停顿时间, 和用户线程并行, 垃圾收集器在另一个CPU)
-  * 分代收集
-  * 空间整合
-  整体使用标记-整理, 局部采用标记-复制,故不会有内存碎片.
-  * 可预测的停顿
+  
+ > 比起CMS
 
 
 ### GC回收过程
@@ -578,11 +575,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4MDc0NzY0LDcwNjcyNzEwLC0xMzgzMz
-Q3MDQsLTE3MTY3ODYzMzMsNzQxMzM2MjI4LC0xNDY1Njg5NjIy
-LDIwNDY0NzYxNzYsLTg5MzEwOTMyMiwyNjE3NTQ2MzgsMTIxMD
-A5MzA0MSwyMTI3MzczMTk4LDI5NTM2NTI0NSwtMTQ2OTIzMDA2
-NCw2OTcyMTkwNjUsNjQxNTcyODk5LC0xMjY4MTU3MTgsLTEyOT
-YxMzY4NTQsLTI3NDYyNjA1NiwtMTQ0NjQyODgyMCwtNzQ2NjA2
-MDE2XX0=
+eyJoaXN0b3J5IjpbLTE5MTQ5MTc2MjEsMTc4MDc0NzY0LDcwNj
+cyNzEwLC0xMzgzMzQ3MDQsLTE3MTY3ODYzMzMsNzQxMzM2MjI4
+LC0xNDY1Njg5NjIyLDIwNDY0NzYxNzYsLTg5MzEwOTMyMiwyNj
+E3NTQ2MzgsMTIxMDA5MzA0MSwyMTI3MzczMTk4LDI5NTM2NTI0
+NSwtMTQ2OTIzMDA2NCw2OTcyMTkwNjUsNjQxNTcyODk5LC0xMj
+Y4MTU3MTgsLTEyOTYxMzY4NTQsLTI3NDYyNjA1NiwtMTQ0NjQy
+ODgyMF19
 -->
