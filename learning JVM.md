@@ -178,9 +178,14 @@ oracle 文章的截图:
 2.  Concurrent Marking, 这个阶段不会暂停用户线程, 并行的标记老年代的所有存活的对象. 
 3.  Concurrent Preclean（并发预清理）此阶段同样是与应用线程并行执行的，不需要停止应用线程。因为前一阶段是与程序并发进行的，可能有一些引用已经改变。如果在并发标记过程中发生了引用关系变化，JVM 会通过 Card 将发生了改变的区域标记为「脏」区，这就是所谓的卡片标记（Card Marking）。本阶段也会执行一些必要的细节处理，并为 Final Remark 阶段做一些准备工作
 4. Concurrent Abortable Preclean(并发可取消的预清理）,不会暂停用户线程
-5.  Remark 最终标记, 本阶段的目标是完成老年代中剩余存活对象的标记,  因为之前的concurrent mask 是和用户线程并发执行的, 可能中间会产生浮动垃圾, 所以需要进行最终标记, 会STW, 通过耗时较长, 而且还可能还随着年轻代存活对象的数量的数量增多
-6.  Concurrent Sweep（并发清除）此阶段与应用程序并发执行，不需要 STW。目的是删除未使用的对象，并收回他们占用的空间
-7. Concurrent Reset（并发重置）此阶段与应用程序并发执行，重置 CMS 算法相关的内部数据，为下一次 GC 循环做准备
+5.  Remark 最终标记, 本阶段的目标是完成老年代中剩余存活对象的标记,  因为之前的concurrent mask 是和用户线程并发执行的, 可能中间会产生浮动垃圾, 所以需要进行最终标记, 会STW, 通过耗时较长, 而且还可能还随着年轻代存活对象的数量的数量增多而时间变长.
+
+
+> The remark pause is often comparable in length to a minor collection. The remark pause is affected by certain application characteristics (for example, a high rate of object modification can increase this pause) and the time since the last minor collection (for example, more objects in the young generation may increase this pause)
+> [https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/cms.html](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/cms.html)
+
+7.  Concurrent Sweep（并发清除）此阶段与应用程序并发执行，不需要 STW。目的是删除未使用的对象，并收回他们占用的空间
+8. Concurrent Reset（并发重置）此阶段与应用程序并发执行，重置 CMS 算法相关的内部数据，为下一次 GC 循环做准备
 
 * 浮动垃圾(Floating Garbage)
 由于应用线程和gc 线程并行执行, gc 线程标记的可达的对象在标记结束后又不可达了, 这部分剩余的对象叫做浮动垃圾, 这部分对象会在下次gc 被回收.
@@ -609,7 +614,7 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTI3Nzg3OTcsLTg2MjMyMDExNiwxMz
+eyJoaXN0b3J5IjpbLTE1OTgxNzMyOTQsLTg2MjMyMDExNiwxMz
 QwMzgxMzMxLDEwOTk1NDQ3MzQsMTk5MzgyODg4LC0xNDUzMDU4
 MjIsMTk4ODUzMjAzNSw1NDAwNzc3ODQsLTE1NzEyMTYwMzQsLT
 EzNjM1ODY0MDMsMTkzMjgzNjk0Niw2NzQxNzE5MjQsMjEyMzQ5
