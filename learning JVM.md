@@ -243,13 +243,13 @@ minorGC之前会检查老年代最大的连续内存空间是否大于新生代�
 
 
 * major gc 
-指的老年代进行的gc
+指的老年代进行的gc, 老年代对象比例超过某个阈值, 通常有参数设置, 不可能是老年代百分百了才触发, 例如
 
 
 * full GC
 https://www.zhihu.com/question/41922036/answer/93079526  
 
-当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC（因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC）；或者，如果有perm gen的话，要在perm gen分配空间但已经没有足够空间时，也要触发一次full GC；或者System.gc()、heap dump带GC，默认也是触发full GC。
+当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC（因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC) , 这是预计的情况, 另外就是实际情况, 在新生代对象实际晋升到老年代的时候发生了 promotion failed , 则也会触发full gc. 或者System.gc()、heap dump带GC，默认也是触发full GC。
 
 > Full GC时，就不在分 “young gen使用young gen自己的收集器(一般是copy算法)；old gen使用old gen的收集器(一般是mark-sweep-compact算法)”，而是，整个heap以及perm gen，所有内存，全部的统一使用 old gen的收集器(一般是mark-sweep-compact算法) 一站式搞定
 
@@ -601,11 +601,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MD
-A3Nzc4NCwtMTU3MTIxNjAzNCwtMTM2MzU4NjQwMywxOTMyODM2
-OTQ2LDY3NDE3MTkyNCwyMTIzNDkzODQ3LDE3ODA3NDc2NCw3MD
-Y3MjcxMCwtMTM4MzM0NzA0LC0xNzE2Nzg2MzMzLDc0MTMzNjIy
-OCwtMTQ2NTY4OTYyMiwyMDQ2NDc2MTc2LC04OTMxMDkzMjIsMj
-YxNzU0NjM4LDEyMTAwOTMwNDEsMjEyNzM3MzE5OCwyOTUzNjUy
-NDVdfQ==
+eyJoaXN0b3J5IjpbLTc0Njk3OTkyNiwtMTQ1MzA1ODIyLDE5OD
+g1MzIwMzUsNTQwMDc3Nzg0LC0xNTcxMjE2MDM0LC0xMzYzNTg2
+NDAzLDE5MzI4MzY5NDYsNjc0MTcxOTI0LDIxMjM0OTM4NDcsMT
+c4MDc0NzY0LDcwNjcyNzEwLC0xMzgzMzQ3MDQsLTE3MTY3ODYz
+MzMsNzQxMzM2MjI4LC0xNDY1Njg5NjIyLDIwNDY0NzYxNzYsLT
+g5MzEwOTMyMiwyNjE3NTQ2MzgsMTIxMDA5MzA0MSwyMTI3Mzcz
+MTk4XX0=
 -->
