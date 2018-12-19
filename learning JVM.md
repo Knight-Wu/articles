@@ -237,7 +237,7 @@ A concurrent marking phase is started when the occupancy of the entire Java heap
 minorGC之前会检查老年代最大的连续内存空间是否大于新生代所有对象的大小,  或者检查最大的老年代的连续内存是否大于历史平均进入老年代的对象大小, 满足一个就进行minorGC, 否则fullGC
 
 * 新生代gc过程
-对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代.
+对象先在eden分配, 然后eden满了, 启动一次minor, 存活对象分配到from区, eden清空, 然后eden再次满了, 将eden和from中仍然存活的对象copy到to区, 然后eden和from清空, 之后to和from相对于就对换了, 随后的minor 会再次将eden和from区存活对象复制到to区, 若满足晋升条件则直接晋升到老年代, 或者 
 
 
 
@@ -280,7 +280,7 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 > In general, increase the memory as you increase the number of processors, since allocation can be parallelized.
 
 * gc pause 时间取决于什么
-qujueyu
+取决于存活的对象的数量, 而不是heap size, 所以只有进行gc 标记时大多数的对象都死了, 那么gc 暂停时间会比较短.
 
 * 如何提高晋升老年代的门槛
 1. 一是可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 可能可以降低full GC 的频率. 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 进而带来major gc 的频率升高, 反之如果新生代大小调小, 可以适当提高晋升的年龄大小, 来弥补会晋升老年代的门槛, 具体的调优值取决于对象的生命周期的组成, 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 参数:`-XX:NewRatio=3`  means that the ratio between the young and tenured generation is 1:3
@@ -603,11 +603,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTM5NTAyNzgsMTk5MzgyODg4LC0xND
-UzMDU4MjIsMTk4ODUzMjAzNSw1NDAwNzc3ODQsLTE1NzEyMTYw
-MzQsLTEzNjM1ODY0MDMsMTkzMjgzNjk0Niw2NzQxNzE5MjQsMj
-EyMzQ5Mzg0NywxNzgwNzQ3NjQsNzA2NzI3MTAsLTEzODMzNDcw
-NCwtMTcxNjc4NjMzMyw3NDEzMzYyMjgsLTE0NjU2ODk2MjIsMj
-A0NjQ3NjE3NiwtODkzMTA5MzIyLDI2MTc1NDYzOCwxMjEwMDkz
-MDQxXX0=
+eyJoaXN0b3J5IjpbMTE0NTQ2NzczNywxOTkzODI4ODgsLTE0NT
+MwNTgyMiwxOTg4NTMyMDM1LDU0MDA3Nzc4NCwtMTU3MTIxNjAz
+NCwtMTM2MzU4NjQwMywxOTMyODM2OTQ2LDY3NDE3MTkyNCwyMT
+IzNDkzODQ3LDE3ODA3NDc2NCw3MDY3MjcxMCwtMTM4MzM0NzA0
+LC0xNzE2Nzg2MzMzLDc0MTMzNjIyOCwtMTQ2NTY4OTYyMiwyMD
+Q2NDc2MTc2LC04OTMxMDkzMjIsMjYxNzU0NjM4LDEyMTAwOTMw
+NDFdfQ==
 -->
