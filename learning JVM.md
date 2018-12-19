@@ -264,13 +264,14 @@ Full GC时，就不在分 “young gen使用young gen自己的收集器(一般�
 1.  方法区空间不足
 
 > 如何避免这个原因
- 通过把-XX:PermSize参数和-XX:MaxPermSize设置成一样，强制虚拟机在启动的时候就把永久代的容量固定下来，避免运行时自动扩容。
-3.  CMS默认情况下不会回收Perm区，通过参数CMSPermGenSweepingEnabled、CMSClassUnloadingEnabled ，可以让CMS在Perm区容量不足时对其回收。
+
+ * 通过把-XX:PermSize参数和-XX:MaxPermSize设置成一样，强制虚拟机在启动的时候就把永久代的容量固定下来，避免运行时自动扩容。
+ * CMS默认情况下不会回收Perm区，通过参数CMSPermGenSweepingEnabled、CMSClassUnloadingEnabled ，可以让CMS在Perm区容量不足时对其回收。
 
 
-4.  CMS GC时出现promotion failed和concurrent mode failure；
-5.  统计得到的Young GC晋升到老年代的平均大小大于老年代的剩余空间；
-6.  主动触发Full GC（执行jmap -histo:live [pid]）来避免碎片问题, 可以通过参数禁止
+2.  CMS GC时出现promotion failed和concurrent mode failure；(日志中会有明细标志)
+3.  统计得到的Young GC晋升到老年代的平均大小大于老年代的剩余空间；(可以查看老年代发送full gc时的剩余空间)
+4.  主动触发Full GC（执行jmap -histo:live [pid]）来避免碎片问题, 可以通过参数禁止
 
 
  **所以, 简而言之, 降低full gc的频率, 一个方向是增大老年代的大小, 二是减小新生代晋升的对象的大小, 提高晋升门槛**, 如果是一次fullgc后，剩余对象不多, 证明很多都不是真正的老对象。那么说明你eden区设置太小，导致短生命周期的对象进入了old区。如果一次fullgc后，old区回收率不大，那么说明old区太小。
@@ -635,7 +636,7 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * cms 年轻代和年老带 gc 停顿时间过长如何处理, 如果是full gc 过长, 可以降低full gc 的频率, 通过提高老年代的大小, 或者提高晋升老年代的门槛.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2NjY3MTAyMywtMTU5ODE3MzI5NCwtOD
+eyJoaXN0b3J5IjpbLTE0MjQ2NTMzMywtMTU5ODE3MzI5NCwtOD
 YyMzIwMTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNCwxOTkzODI4
 ODgsLTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MDA3Nzc4NCwtMT
 U3MTIxNjAzNCwtMTM2MzU4NjQwMywxOTMyODM2OTQ2LDY3NDE3
