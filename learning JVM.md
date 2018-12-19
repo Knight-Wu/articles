@@ -202,6 +202,10 @@ oracle 文章的截图:
 
 不再分为young gc和old gc了, 而是young gc和mixed gc, young gc 的触发时机和原理基本和之前一致, Mixed GC 选定所有年轻代里的Region，外加根据global concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
 
+> 什么情况触发 global concurrent marking 
+
+A concurrent marking phase is started when the occupancy of the entire Java heap reaches the value of the parameter  `InitiatingHeapOccupancyPercent`. Set the value of this parameter with the command-line option  `-XX:InitiatingHeapOccupancyPercent=``<NN>`. The default value of  `InitiatingHeapOccupancyPercent`  is 45.
+
 > global concurrent marking 大致步骤
 
 -   初始标记（initial mark，STW）。它标记了从GC Root开始直接可达的对象。
@@ -594,11 +598,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNjM1ODY0MDMsMTkzMjgzNjk0Niw2Nz
-QxNzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3NjQsNzA2NzI3MTAs
-LTEzODMzNDcwNCwtMTcxNjc4NjMzMyw3NDEzMzYyMjgsLTE0Nj
-U2ODk2MjIsMjA0NjQ3NjE3NiwtODkzMTA5MzIyLDI2MTc1NDYz
-OCwxMjEwMDkzMDQxLDIxMjczNzMxOTgsMjk1MzY1MjQ1LC0xND
-Y5MjMwMDY0LDY5NzIxOTA2NSw2NDE1NzI4OTksLTEyNjgxNTcx
-OF19
+eyJoaXN0b3J5IjpbLTE1NzEyMTYwMzQsLTEzNjM1ODY0MDMsMT
+kzMjgzNjk0Niw2NzQxNzE5MjQsMjEyMzQ5Mzg0NywxNzgwNzQ3
+NjQsNzA2NzI3MTAsLTEzODMzNDcwNCwtMTcxNjc4NjMzMyw3ND
+EzMzYyMjgsLTE0NjU2ODk2MjIsMjA0NjQ3NjE3NiwtODkzMTA5
+MzIyLDI2MTc1NDYzOCwxMjEwMDkzMDQxLDIxMjczNzMxOTgsMj
+k1MzY1MjQ1LC0xNDY5MjMwMDY0LDY5NzIxOTA2NSw2NDE1NzI4
+OTldfQ==
 -->
