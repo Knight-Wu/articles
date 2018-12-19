@@ -175,10 +175,10 @@ oracle 文章的截图:
 ![enter image description here](https://drive.google.com/uc?id=12ASb1yk3McGByLQ0jEeNrAEcIvgfOCbK)
 过程: 
 1. 第一次STW 暂停,  initial mark , 标记老年代中可达的对象, 以及被年轻代引用的对象,  比minor gc 还要快. 
-2.  Concurrent Marking, 这个阶段不会暂停用户线程, 第一步找到的老年代的root 的直接引用, 标记所有可达的对象,  
+2.  Concurrent Marking, 这个阶段不会暂停用户线程, 并行的标记老年代的所有存活的对象. 
 3.  Concurrent Preclean（并发预清理）此阶段同样是与应用线程并行执行的，不需要停止应用线程。因为前一阶段是与程序并发进行的，可能有一些引用已经改变。如果在并发标记过程中发生了引用关系变化，JVM 会通过 Card 将发生了改变的区域标记为「脏」区，这就是所谓的卡片标记（Card Marking）。本阶段也会执行一些必要的细节处理，并为 Final Remark 阶段做一些准备工作
 4. Concurrent Abortable Preclean(并发可取消的预清理）,不会暂停用户线程
-5.  Remark 最终标记, 本阶段的目标是完成老年代中所有存活对象的标记, 因为之前的concurrent mask 是和用户线程并发执行的, 可能中间会产生浮动垃圾, 所以需要进行最终标记, 会STW
+5.  Remark 最终标记, 本阶段的目标是完成老年代中剩余存活对象的标记, 因为之前的concurrent mask 是和用户线程并发执行的, 可能中间会产生浮动垃圾, 所以需要进行最终标记, 会STW
 6.  Concurrent Sweep（并发清除）此阶段与应用程序并发执行，不需要 STW。目的是删除未使用的对象，并收回他们占用的空间
 7. Concurrent Reset（并发重置）此阶段与应用程序并发执行，重置 CMS 算法相关的内部数据，为下一次 GC 循环做准备
 
@@ -578,11 +578,11 @@ https://www.zhihu.com/question/27339390
 * Parallel Scavenage的gc pause和吞吐量这两个指标如何调节, 
 * 如何控制新生代的晋升老年代的频率, 提高门槛, 除了提高新生代的大小, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzA2NzI3MTAsLTEzODMzNDcwNCwtMTcxNj
-c4NjMzMyw3NDEzMzYyMjgsLTE0NjU2ODk2MjIsMjA0NjQ3NjE3
-NiwtODkzMTA5MzIyLDI2MTc1NDYzOCwxMjEwMDkzMDQxLDIxMj
-czNzMxOTgsMjk1MzY1MjQ1LC0xNDY5MjMwMDY0LDY5NzIxOTA2
-NSw2NDE1NzI4OTksLTEyNjgxNTcxOCwtMTI5NjEzNjg1NCwtMj
-c0NjI2MDU2LC0xNDQ2NDI4ODIwLC03NDY2MDYwMTYsLTE0NDY0
-Mjg4MjBdfQ==
+eyJoaXN0b3J5IjpbMTc4MDc0NzY0LDcwNjcyNzEwLC0xMzgzMz
+Q3MDQsLTE3MTY3ODYzMzMsNzQxMzM2MjI4LC0xNDY1Njg5NjIy
+LDIwNDY0NzYxNzYsLTg5MzEwOTMyMiwyNjE3NTQ2MzgsMTIxMD
+A5MzA0MSwyMTI3MzczMTk4LDI5NTM2NTI0NSwtMTQ2OTIzMDA2
+NCw2OTcyMTkwNjUsNjQxNTcyODk5LC0xMjY4MTU3MTgsLTEyOT
+YxMzY4NTQsLTI3NDYyNjA1NiwtMTQ0NjQyODgyMCwtNzQ2NjA2
+MDE2XX0=
 -->
