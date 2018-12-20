@@ -205,6 +205,9 @@ oracle 文章的截图:
 
   G1是一个有整理内存过程的垃圾收集器，不会产生很多内存碎片。
   G1的Stop The World(STW)更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间, 通过控制收集哪些region和region 的多少来控制停顿时间. 
+  
+停顿时间: 
+> You can specify the size of the young generation on the command line as with the other garbage collectors, but doing so may hamper the ability of G1 to attain the target pause time. In addition to the pause time goal, you can specify the length of the time period during which the pause can occur. You can specify the minimum mutator usage with this time span (`GCPauseIntervalMillis`) along with the pause time goal. The default value for  `MaxGCPauseMillis`  is 200 milliseconds. The default value for  `GCPauseIntervalMillis`  (0) is the equivalent of no requirement on the time span.
 
 > Applications running today with either the CMS or the with parallel compaction would benefit from switching to G1 if the application has one or more of the following traits: 
  More than 50% of the Java heap is occupied with live data.
@@ -659,11 +662,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQxODM4MDA3LC0xMDQ4NTk3NTEzLC0xMT
-A5NzE2ODI4LC0xNzUyODQ1Njc2LDE2ODAxODUxNzYsLTE1NzA5
-MTM4MDEsMTMwOTA3MzUzOCwtNTY0ODE3MTg3LC0yMzg3MTMyMT
-AsMjA5ODQxMjEwNCwtMTQyNDY1MzMzLC0xNTk4MTczMjk0LC04
-NjIzMjAxMTYsMTM0MDM4MTMzMSwxMDk5NTQ0NzM0LDE5OTM4Mj
-g4OCwtMTQ1MzA1ODIyLDE5ODg1MzIwMzUsNTQwMDc3Nzg0LC0x
-NTcxMjE2MDM0XX0=
+eyJoaXN0b3J5IjpbMTU4NDE1OTg1LDk0MTgzODAwNywtMTA0OD
+U5NzUxMywtMTEwOTcxNjgyOCwtMTc1Mjg0NTY3NiwxNjgwMTg1
+MTc2LC0xNTcwOTEzODAxLDEzMDkwNzM1MzgsLTU2NDgxNzE4Ny
+wtMjM4NzEzMjEwLDIwOTg0MTIxMDQsLTE0MjQ2NTMzMywtMTU5
+ODE3MzI5NCwtODYyMzIwMTE2LDEzNDAzODEzMzEsMTA5OTU0ND
+czNCwxOTkzODI4ODgsLTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0
+MDA3Nzc4NF19
 -->
