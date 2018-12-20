@@ -48,7 +48,7 @@ eventLog missing, grep ex-timestamp -C 1000  *executor.log  |less
 
 * hdfs 写入流程
 ![](https://drive.google.com/uc?id=1LjDrWGX6zhQzEJOzNWG615eKFyK2XHDF)
-异常场景: executor 写dn, 客户端检查这个块的时候发现一个副本也没有, 出现在上文第二步. 同时dn 出现"IOException: channel is broken " .
+异常场景: executor 写dn, 客户端检查这个块的时候发现一个副本也没有, 意味着第二步的写入出了问题. 同时dn 出现"IOException: channel is broken " .
 
 * IO 层面的异常
 ![enter image description here](https://drive.google.com/uc?id=1yJN8y_HmloD7eTdDSwcV4w67gk61hlW4)
