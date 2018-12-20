@@ -78,7 +78,7 @@ dfs.client.block.write.replace-datanode-on-failure.policy = always,
 dfs.client.block.write.replace-datanode-on-failure.best-effort = true
 
 
-* spark on yarn 的容错策略
+### spark on yarn 的容错策略
 
 * spark.task.maxFailures 
 spark运行task时候的task失败的最大重试限制，如果Task重试了4次失败，会导致整个job失败 spark.task.maxFailures 4 Number of individual task failures before giving up on the job. Should be greater than or equal to 1. Number of allowed retries = this value - 1. 比如下面日志就显示了4次重试 
@@ -148,8 +148,8 @@ ts=2018-12-03 19:16:51; [cost=1.280502ms] result=@ArrayList[
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyNjk1NTEzNywtMzE5Mjg0MDYxLDE3Nj
-g4MTg2MzQsLTExODYyOTE1OTEsODI1NTM2NjgzLC0xNTc1OTQ2
-NDg3LDM0NzQxMDkwMywxMDYzMzY0MTExLDE0OTQ0MDAxMzYsLT
-E0NjQzMzMzMDUsMzIzMjY0MDU0XX0=
+eyJoaXN0b3J5IjpbLTM3ODU0NDQ2NywtNTI2OTU1MTM3LC0zMT
+kyODQwNjEsMTc2ODgxODYzNCwtMTE4NjI5MTU5MSw4MjU1MzY2
+ODMsLTE1NzU5NDY0ODcsMzQ3NDEwOTAzLDEwNjMzNjQxMTEsMT
+Q5NDQwMDEzNiwtMTQ2NDMzMzMwNSwzMjMyNjQwNTRdfQ==
 -->
