@@ -214,8 +214,7 @@ gc 的类型: young gc和mixed gc, full gc
 
 Young GC：选定年轻代里的一些 Region。通过控制年轻代的region**总数**，即年轻代内存大小，来控制young GC的时间开销。
 大致过程: 
-当Eden区域无法申请新的对象时（满了），就会进行Young GC, Young GC将Eden和Survivor区域的Region(称为Collection Set, CSet)中的活对象Copy到一些新Region中(即新的Survivor)，当对象的GC年龄达到阈值后会Copy到Old Region中。由于采取的是Copying算法，所以就避免了内存碎片的问题，不再需要单独的压缩。
-
+当Eden区域无法申请新的对象时（满了），就会进行Young GC, Young GC将Eden和Survivor区域的Region(称为Collection Set, CSet)中的活对象Copy到一些新Region中(即新的Survivor)，当对象的GC年龄达到阈值后会Copy到Old Region中。由于采取的是Copying算法, 并且copy 途中会压缩，所以就避免了内存碎片的问题，
 
 Mixed GC 选定所有年轻代里的Region，外加根据concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
 大致过程: 当old区Heap的对象占总Heap的比例超过InitiatingHeapOccupancyPercent之后，就会开始ConcurentMarking, 完成了Concurrent Marking后，G1会从Young GC切换到Mixed GC, 在Mixed GC中，G1可以增加若干个Old区域的Region到CSet中。  Mixed GC的次数根据候选的Old CSet ?
@@ -655,11 +654,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTI4NDU2NzYsMTY4MDE4NTE3NiwtMT
-U3MDkxMzgwMSwxMzA5MDczNTM4LC01NjQ4MTcxODcsLTIzODcx
-MzIxMCwyMDk4NDEyMTA0LC0xNDI0NjUzMzMsLTE1OTgxNzMyOT
-QsLTg2MjMyMDExNiwxMzQwMzgxMzMxLDEwOTk1NDQ3MzQsMTk5
-MzgyODg4LC0xNDUzMDU4MjIsMTk4ODUzMjAzNSw1NDAwNzc3OD
-QsLTE1NzEyMTYwMzQsLTEzNjM1ODY0MDMsMTkzMjgzNjk0Niw2
-NzQxNzE5MjRdfQ==
+eyJoaXN0b3J5IjpbLTExMDk3MTY4MjgsLTE3NTI4NDU2NzYsMT
+Y4MDE4NTE3NiwtMTU3MDkxMzgwMSwxMzA5MDczNTM4LC01NjQ4
+MTcxODcsLTIzODcxMzIxMCwyMDk4NDEyMTA0LC0xNDI0NjUzMz
+MsLTE1OTgxNzMyOTQsLTg2MjMyMDExNiwxMzQwMzgxMzMxLDEw
+OTk1NDQ3MzQsMTk5MzgyODg4LC0xNDUzMDU4MjIsMTk4ODUzMj
+AzNSw1NDAwNzc3ODQsLTE1NzEyMTYwMzQsLTEzNjM1ODY0MDMs
+MTkzMjgzNjk0Nl19
 -->
