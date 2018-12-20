@@ -81,11 +81,13 @@ dfs.client.block.write.replace-datanode-on-failure.best-effort = true
 ### spark on yarn 的容错策略
 
 * spark.task.maxFailures 
+
 spark运行task时候的task失败的最大重试限制，如果Task重试了4次失败，会导致整个job失败 spark.task.maxFailures 4 Number of individual task failures before giving up on the job. Should be greater than or equal to 1. Number of allowed retries = this value - 1. 比如下面日志就显示了4次重试 
 
 > 86807: 17/10/17 02:00:20 ERROR Executor: Exception in task 3.0 in stage 0.0 (TID 3) 86808: java.io.FileNotFoundException: File does not exist: hdfs://Neptune/project/ecpdockets/datasets/hive/novusdoc/20171010/collection_name=N_STDCKLNK45 86904: 17/10/17 02:00:21 ERROR Executor: Exception in task 3.1 in stage 0.0 (TID 4) 86905: java.io.FileNotFoundException: File does not exist: hdfs://Neptune/project/ecpdockets/datasets/hive/novusdoc/20171010/collection_name=N_STDCKLNK45 86970: 17/10/17 02:00:21 ERROR Executor: Exception in task 3.2 in stage 0.0 (TID 9) 86971: java.io.FileNotFoundException: File does not exist: hdfs://Neptune/project/ecpdockets/datasets/hive/novusdoc/20171010/collection_name=N_STDCKLNK45 87005: 17/10/17 02:00:21 ERROR Executor: Exception in task 3.3 in stage 0.0 (TID 12) 87006: java.io.FileNotFoundException: File does not exist: hdfs://Neptune/project/ecpdockets/datasets/hive/novusdoc/20171010/collection_name=N_STDCKLNK45
 
 * spark.yarn.max.executor.failures 
+
 Spark executor失败的最大上限，如果达到，整个Job失败 
 
 > 5742:xx.xx.xx.xx.xx.xx.xx.xx.xx.[Reporter] INFO org.apache.spark.deploy.yarn.ApplicationMaster - Final app status: FAILED, exitCode: 11, (reason: Max number of executor failures (3) reached) 
@@ -148,8 +150,8 @@ ts=2018-12-03 19:16:51; [cost=1.280502ms] result=@ArrayList[
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM3ODU0NDQ2NywtNTI2OTU1MTM3LC0zMT
-kyODQwNjEsMTc2ODgxODYzNCwtMTE4NjI5MTU5MSw4MjU1MzY2
-ODMsLTE1NzU5NDY0ODcsMzQ3NDEwOTAzLDEwNjMzNjQxMTEsMT
-Q5NDQwMDEzNiwtMTQ2NDMzMzMwNSwzMjMyNjQwNTRdfQ==
+eyJoaXN0b3J5IjpbODk0MzI3Njk3LC01MjY5NTUxMzcsLTMxOT
+I4NDA2MSwxNzY4ODE4NjM0LC0xMTg2MjkxNTkxLDgyNTUzNjY4
+MywtMTU3NTk0NjQ4NywzNDc0MTA5MDMsMTA2MzM2NDExMSwxND
+k0NDAwMTM2LC0xNDY0MzMzMzA1LDMyMzI2NDA1NF19
 -->
