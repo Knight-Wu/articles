@@ -201,6 +201,7 @@ oracle 文章的截图:
     
 * Garbage First(G1)
   https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html#t4
+https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc_tuning.html
   
  > 比起CMS 的优点
 
@@ -663,11 +664,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3NTAzOTYxNywxNTg0MTU5ODUsOTQxOD
-M4MDA3LC0xMDQ4NTk3NTEzLC0xMTA5NzE2ODI4LC0xNzUyODQ1
-Njc2LDE2ODAxODUxNzYsLTE1NzA5MTM4MDEsMTMwOTA3MzUzOC
-wtNTY0ODE3MTg3LC0yMzg3MTMyMTAsMjA5ODQxMjEwNCwtMTQy
-NDY1MzMzLC0xNTk4MTczMjk0LC04NjIzMjAxMTYsMTM0MDM4MT
-MzMSwxMDk5NTQ0NzM0LDE5OTM4Mjg4OCwtMTQ1MzA1ODIyLDE5
-ODg1MzIwMzVdfQ==
+eyJoaXN0b3J5IjpbLTE3MzA1NTYwNDEsMTU4NDE1OTg1LDk0MT
+gzODAwNywtMTA0ODU5NzUxMywtMTEwOTcxNjgyOCwtMTc1Mjg0
+NTY3NiwxNjgwMTg1MTc2LC0xNTcwOTEzODAxLDEzMDkwNzM1Mz
+gsLTU2NDgxNzE4NywtMjM4NzEzMjEwLDIwOTg0MTIxMDQsLTE0
+MjQ2NTMzMywtMTU5ODE3MzI5NCwtODYyMzIwMTE2LDEzNDAzOD
+EzMzEsMTA5OTU0NDczNCwxOTkzODI4ODgsLTE0NTMwNTgyMiwx
+OTg4NTMyMDM1XX0=
 -->
