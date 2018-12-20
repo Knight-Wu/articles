@@ -200,6 +200,7 @@ oracle 文章的截图:
 使用 -XX:UseCMSCompactionAtFullCollection(默认开启, 开启内存碎片的整理工作), 但是会导致停顿时间变长,  也可采用 -XX:CMSFullGCsBeforeCompaction(表示执行了多少次不压缩的full GC后, 来一次压缩的full GC ,默认是0, 表示每次都压缩).
     
 * Garbage First(G1)
+  https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html#t4
   
  > 比起CMS 的优点
 
@@ -241,7 +242,7 @@ A concurrent marking phase is started when the occupancy of the entire Java heap
 -   初始标记（initial mark，STW）。它标记了从GC Root开始直接可达的对象。
 -   并发标记（Concurrent Marking）。这个阶段从GC Root开始对heap中的对象标记，标记线程与应用程序线程并行执行，并且收集各个Region的存活对象信息。
 -   最终标记（Remark，STW）。标记那些在并发标记阶段发生变化的对象，将被回收。
--   清除垃圾（Cleanup）。清除空Region（没有存活对象的），加入到free list。
+-   清除垃圾（Cleanup, STW）。清除空Region（没有存活对象的），加入到free list。
 
 
 > region
@@ -662,11 +663,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4NDE1OTg1LDk0MTgzODAwNywtMTA0OD
-U5NzUxMywtMTEwOTcxNjgyOCwtMTc1Mjg0NTY3NiwxNjgwMTg1
-MTc2LC0xNTcwOTEzODAxLDEzMDkwNzM1MzgsLTU2NDgxNzE4Ny
-wtMjM4NzEzMjEwLDIwOTg0MTIxMDQsLTE0MjQ2NTMzMywtMTU5
-ODE3MzI5NCwtODYyMzIwMTE2LDEzNDAzODEzMzEsMTA5OTU0ND
-czNCwxOTkzODI4ODgsLTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0
-MDA3Nzc4NF19
+eyJoaXN0b3J5IjpbMTM3NTAzOTYxNywxNTg0MTU5ODUsOTQxOD
+M4MDA3LC0xMDQ4NTk3NTEzLC0xMTA5NzE2ODI4LC0xNzUyODQ1
+Njc2LDE2ODAxODUxNzYsLTE1NzA5MTM4MDEsMTMwOTA3MzUzOC
+wtNTY0ODE3MTg3LC0yMzg3MTMyMTAsMjA5ODQxMjEwNCwtMTQy
+NDY1MzMzLC0xNTk4MTczMjk0LC04NjIzMjAxMTYsMTM0MDM4MT
+MzMSwxMDk5NTQ0NzM0LDE5OTM4Mjg4OCwtMTQ1MzA1ODIyLDE5
+ODg1MzIwMzVdfQ==
 -->
