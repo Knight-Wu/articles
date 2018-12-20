@@ -204,7 +204,7 @@ oracle 文章的截图:
  > 比起CMS 的优点
 
   G1是一个有整理内存过程的垃圾收集器，不会产生很多内存碎片。
-  G1的Stop The World(STW)更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间, 通过控制收集的region 的多少来控制停顿时间. 
+  G1的Stop The World(STW)更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间, 通过控制收集哪些region和region 的多少来控制停顿时间. 
 
 gc 的类型: young gc和mixed gc, full gc
 
@@ -651,7 +651,7 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxMDE2NDg0MCwxNjgwMTg1MTc2LC0xNT
+eyJoaXN0b3J5IjpbMTg4Mjc2MjM3MywxNjgwMTg1MTc2LC0xNT
 cwOTEzODAxLDEzMDkwNzM1MzgsLTU2NDgxNzE4NywtMjM4NzEz
 MjEwLDIwOTg0MTIxMDQsLTE0MjQ2NTMzMywtMTU5ODE3MzI5NC
 wtODYyMzIwMTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNCwxOTkz
