@@ -206,6 +206,10 @@ oracle 文章的截图:
   G1是一个有整理内存过程的垃圾收集器，不会产生很多内存碎片。
   G1的Stop The World(STW)更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间, 通过控制收集哪些region和region 的多少来控制停顿时间. 
 
+> Applications running today with either the CMS or the with parallel compaction would benefit from switching to G1 if the application has one or more of the following traits: 
+ More than 50% of the Java heap is occupied with live data.
+ The rate of object allocation rate or promotion varies significantly.
+ The application is experiencing undesired long garbage collection or compaction pauses (longer than 0.5 to 1 second).
 gc 的类型: young gc和mixed gc, full gc
 
 Young GC：选定年轻代里的一些 Region。通过控制年轻代的region**总数**，即年轻代内存大小，来控制young GC的时间开销。
@@ -651,11 +655,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4Mjc2MjM3MywxNjgwMTg1MTc2LC0xNT
-cwOTEzODAxLDEzMDkwNzM1MzgsLTU2NDgxNzE4NywtMjM4NzEz
-MjEwLDIwOTg0MTIxMDQsLTE0MjQ2NTMzMywtMTU5ODE3MzI5NC
-wtODYyMzIwMTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNCwxOTkz
-ODI4ODgsLTE0NTMwNTgyMiwxOTg4NTMyMDM1LDU0MDA3Nzc4NC
-wtMTU3MTIxNjAzNCwtMTM2MzU4NjQwMywxOTMyODM2OTQ2LDY3
-NDE3MTkyNF19
+eyJoaXN0b3J5IjpbLTE3NTI4NDU2NzYsMTY4MDE4NTE3NiwtMT
+U3MDkxMzgwMSwxMzA5MDczNTM4LC01NjQ4MTcxODcsLTIzODcx
+MzIxMCwyMDk4NDEyMTA0LC0xNDI0NjUzMzMsLTE1OTgxNzMyOT
+QsLTg2MjMyMDExNiwxMzQwMzgxMzMxLDEwOTk1NDQ3MzQsMTk5
+MzgyODg4LC0xNDUzMDU4MjIsMTk4ODUzMjAzNSw1NDAwNzc3OD
+QsLTE1NzEyMTYwMzQsLTEzNjM1ODY0MDMsMTkzMjgzNjk0Niw2
+NzQxNzE5MjRdfQ==
 -->
