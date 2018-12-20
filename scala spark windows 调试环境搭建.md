@@ -75,6 +75,8 @@ which contains the (client side) configuration files for the Hadoop cluster. The
  启动idea remote debug, port: 5005是本地的监听端口, 自定义的, 只要不冲突就行. 
 
 ![enter image description here](https://drive.google.com/uc?id=1OFfFTLlOSuTX6kgGGWqzK9GiFRZ5wAKn)
+https://docs.oracle.com/javase/7/docs/technotes/guides/jpda/conninv.html
+
 然后使用debug模式启动remote jvm,  先监听端口, 待spark 程序起来后就会进入断点, 然后再启动main 入口类, 下图是用命令行提交的截图, 用ide也是一样的
 
 ![](https://drive.google.com/uc?id=1EJmhS5q2AcLDxnpko7_MCg6J3GVKdpoB)
@@ -85,6 +87,6 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwNzc0OTk3MiwxMTQxMTE5MjI2LDExMT
-Y1OTc3NDldfQ==
+eyJoaXN0b3J5IjpbMTk0MTM4ODg4NywtNTA3NzQ5OTcyLDExND
+ExMTkyMjYsMTExNjU5Nzc0OV19
 -->
