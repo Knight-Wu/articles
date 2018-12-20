@@ -105,10 +105,10 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 有关Spark容错机制的文章，有博客。 https://blog.cloudera.com/blog/2017/04/blacklisting-in-apache-spark/ 
 
 
-* 远程调试环境搭建
+###  远程调试环境搭建
 [spark windows](https://github.com/Knight-Wu/articles/blob/master/scala%20spark%20windows%20%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.md)
 
-* 线上故障排查工具介绍: **arthas**
+### 线上故障排查工具介绍: **arthas**
 https://github.com/alibaba/arthas
 ![enter image description here](https://drive.google.com/uc?id=1NY996uHRRNWcX2Z8WpIjTkt8lq_JzC3d)
 
@@ -150,8 +150,8 @@ ts=2018-12-03 19:16:51; [cost=1.280502ms] result=@ArrayList[
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODk0MzI3Njk3LC01MjY5NTUxMzcsLTMxOT
-I4NDA2MSwxNzY4ODE4NjM0LC0xMTg2MjkxNTkxLDgyNTUzNjY4
-MywtMTU3NTk0NjQ4NywzNDc0MTA5MDMsMTA2MzM2NDExMSwxND
-k0NDAwMTM2LC0xNDY0MzMzMzA1LDMyMzI2NDA1NF19
+eyJoaXN0b3J5IjpbMTAwODkwNTQxNSwtNTI2OTU1MTM3LC0zMT
+kyODQwNjEsMTc2ODgxODYzNCwtMTE4NjI5MTU5MSw4MjU1MzY2
+ODMsLTE1NzU5NDY0ODcsMzQ3NDEwOTAzLDEwNjMzNjQxMTEsMT
+Q5NDQwMDEzNiwtMTQ2NDMzMzMwNSwzMjMyNjQwNTRdfQ==
 -->
