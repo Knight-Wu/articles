@@ -48,8 +48,9 @@ eventLog missing, grep ex-timestamp -C 1000  *executor.log  |less
 
 * hdfs 写入流程
 ![](https://drive.google.com/uc?id=1LjDrWGX6zhQzEJOzNWG615eKFyK2XHDF)
-异常场景: executor 写dn, 客户端检查这个块的时候发现一个副本也没有, 意味着第二步的写入出了问题. 同时dn 出现"IOException: channel is broken " .
+异常场景: executor 写dn, 客户端检查这个块的时候发现一个副本也没有, 意味着第二步的写入出了问题. 同时dn 出现"IOException: channel is broken " 
 
+[http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html](http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html)
 * IO 层面的异常
 ![enter image description here](https://drive.google.com/uc?id=1yJN8y_HmloD7eTdDSwcV4w67gk61hlW4)
 
@@ -150,8 +151,9 @@ ts=2018-12-03 19:16:51; [cost=1.280502ms] result=@ArrayList[
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAwODkwNTQxNSwtNTI2OTU1MTM3LC0zMT
-kyODQwNjEsMTc2ODgxODYzNCwtMTE4NjI5MTU5MSw4MjU1MzY2
-ODMsLTE1NzU5NDY0ODcsMzQ3NDEwOTAzLDEwNjMzNjQxMTEsMT
-Q5NDQwMDEzNiwtMTQ2NDMzMzMwNSwzMjMyNjQwNTRdfQ==
+eyJoaXN0b3J5IjpbLTE1ODg2ODAxMCwxMDA4OTA1NDE1LC01Mj
+Y5NTUxMzcsLTMxOTI4NDA2MSwxNzY4ODE4NjM0LC0xMTg2Mjkx
+NTkxLDgyNTUzNjY4MywtMTU3NTk0NjQ4NywzNDc0MTA5MDMsMT
+A2MzM2NDExMSwxNDk0NDAwMTM2LC0xNDY0MzMzMzA1LDMyMzI2
+NDA1NF19
 -->
