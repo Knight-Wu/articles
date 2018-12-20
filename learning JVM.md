@@ -217,7 +217,12 @@ Young GC：选定年轻代里的一些 Region。通过控制年轻代的region**
 当Eden区域无法申请新的对象时（满了），就会进行Young GC, Young GC将Eden和Survivor区域的Region(称为Collection Set, CSet)中的活对象Copy到一些新Region中(即新的Survivor)，当对象的GC年龄达到阈值后会Copy到Old Region中。由于采取的是Copying算法, 并且copy 途中会压缩，所以就避免了内存碎片的问题，
 
 Mixed GC 选定所有年轻代里的Region，外加根据concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
-大致过程: 当old区Heap的对象占总Heap的比例超过InitiatingHeapOccupancyPercent之后，就会开始ConcurentMarking, 完成了Concurrent Marking后，G1会从Young GC切换到Mixed GC, 在Mixed GC中，G1可以增加若干个Old区域的Region到CSet中。  Mixed GC的次数根据候选的Old CSet ?
+
+Mixed GC 的触发条件: 
+-   G1HeapWastePercent：在global concurrent marking结束之后，我们可以知道old gen regions中有多少空间要被回收，在每次YGC之后和再次发生Mixed GC之前，会检查垃圾占比是否达到此参数，只有达到了，下次才会发生Mixed GC。
+-   G1MixedGCLiveThresholdPercent：old generation region中的存活对象的占比，只有在此参数之下，才会被选入CSet。
+-   G1MixedGCCountTarget：一次global concurrent marking之后，最多执行Mixed GC的次数。
+-   G1OldCSetRegionThresholdPercent：一次Mixed GC中能被选入CSet的最多old generation region数量。
 
 Full GC:
 和CMS一样，G1的一些收集过程是和应用程序并发执行的，所以可能还没有回收完成，是由于申请内存的速度比回收速度快，新的对象就占满了所有空间，在CMS中叫做Concurrent Mode Failure, 在G1中称为Allocation Failure，也会降
@@ -654,11 +659,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDk3MTY4MjgsLTE3NTI4NDU2NzYsMT
-Y4MDE4NTE3NiwtMTU3MDkxMzgwMSwxMzA5MDczNTM4LC01NjQ4
-MTcxODcsLTIzODcxMzIxMCwyMDk4NDEyMTA0LC0xNDI0NjUzMz
-MsLTE1OTgxNzMyOTQsLTg2MjMyMDExNiwxMzQwMzgxMzMxLDEw
-OTk1NDQ3MzQsMTk5MzgyODg4LC0xNDUzMDU4MjIsMTk4ODUzMj
-AzNSw1NDAwNzc3ODQsLTE1NzEyMTYwMzQsLTEzNjM1ODY0MDMs
-MTkzMjgzNjk0Nl19
+eyJoaXN0b3J5IjpbLTEwNDg1OTc1MTMsLTExMDk3MTY4MjgsLT
+E3NTI4NDU2NzYsMTY4MDE4NTE3NiwtMTU3MDkxMzgwMSwxMzA5
+MDczNTM4LC01NjQ4MTcxODcsLTIzODcxMzIxMCwyMDk4NDEyMT
+A0LC0xNDI0NjUzMzMsLTE1OTgxNzMyOTQsLTg2MjMyMDExNiwx
+MzQwMzgxMzMxLDEwOTk1NDQ3MzQsMTk5MzgyODg4LC0xNDUzMD
+U4MjIsMTk4ODUzMjAzNSw1NDAwNzc3ODQsLTE1NzEyMTYwMzQs
+LTEzNjM1ODY0MDNdfQ==
 -->
