@@ -232,7 +232,7 @@
 
 The lease manager maintains a soft limit (1 minute) and hard limit (1 hour) for the expiration time (these limits are currently non-configurable), and all leases maintained by the lease manager abide by the same soft and hard limits. Before the soft limit expires, the client holding the lease of a file has exclusive write access to the file. If the soft limit expires and the client has not renewed the lease or closed the file (the lease of a file is released when the file is closed), another client can forcibly take over the lease. If the hard limit expires and the client has not renewed the lease, HDFS assumes that the client has quit and will automatically close the file on behalf of the client, thereby recovering the lease.
 
-The lease recovery process is triggered on the NameNode to recover leases for a given client, either by the monitor thread upon hard limit expiry, or when a client tries to take over lease from another client when the soft limit expires. It checks each file open for write by the same client, performs block recovery for the file if the last block of the file is not in COMPLETE state, and closes the file. Block recovery of a file is only triggered when recovering the lease of a file.(lease 过期之后, 检查文件的最后一个块是不是COMPLETE(必须有minimum replication number of FINALIZED replicas, 必须 minimum replication number是1, 那么当有一个副本是 FINALIZED ,这个block就是complete了), 如果不是就进行block recovery)
+The lease recovery process is triggered on the NameNode to recover leases for a given client, either by the monitor thread upon hard limit expiry, or when a client tries to take over lease from another client when the soft limit expires. It checks each file open for write by the same client, performs block recovery for the file if the last block of the file is not in COMPLETE state, and closes the file. Block recovery of a file is only triggered when recovering the lease of a file.(lease 过期之后, 检查文件的最后一个块是不是COMPLETE(必须有minimum replication number of FINALIZED replicas, 如果 minimum replication number是1, 那么当有一个副本是 FINALIZED ,这个block就是complete了), 如果不是就进行block recovery)
 
 2. block Recovery
 > If the last block of the file being written is not propagated to all DataNodes in the pipeline, then the amount of data written to different nodes may be different when lease recovery happens. Before lease recovery causes the file to be closed, it’s necessary to ensure that all replicas of the last block have the same length; this process is known as block recovery. Block recovery is only triggered during the lease recovery process, and lease recovery only triggers block recovery on the last block of a file if that block is not in COMPLETE state (defined in later section).
@@ -472,9 +472,9 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjU5NjE0NjYsLTE2NjQ5OTQ3MDYsLT
-EwMjIxNzMwNjcsLTExMzc5OTg1NTUsLTIzMTkxMTAxNyw2MzY3
-MDYxMzIsOTQ3MjYxMDMsLTE0NjA3NzQ5MSwxMzI5ODYyNzE4LC
-0xMTM4ODY2ODk2LDg5OTk1MjYwLDU4NDg3MDA0NSwxMjgyNzM1
-Mzg0XX0=
+eyJoaXN0b3J5IjpbLTI3ODM0MjkwMiwtMTY2NTk2MTQ2NiwtMT
+Y2NDk5NDcwNiwtMTAyMjE3MzA2NywtMTEzNzk5ODU1NSwtMjMx
+OTExMDE3LDYzNjcwNjEzMiw5NDcyNjEwMywtMTQ2MDc3NDkxLD
+EzMjk4NjI3MTgsLTExMzg4NjY4OTYsODk5OTUyNjAsNTg0ODcw
+MDQ1LDEyODI3MzUzODRdfQ==
 -->
