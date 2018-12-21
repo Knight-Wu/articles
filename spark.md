@@ -454,7 +454,7 @@ Spark prints the serialized size of each task on the master, so you can look at 
 > 使用 yarn logs -applicationId xxxId > tmp.log
 * executor log
 > 在下图目录下, 需要去hdfs 找applicationId下的目录
-如下图在/tmp/logs/${usr}/logs/${applicationId}
+如下图在hadoop /tmp/logs/${usr}/logs/${applicationId}
 ```
 yarn.nodemanager.remote-app-log-dir 		/tmp/logs
 yarn.nodemanager.remote-app-log-dir-suffix 	logs
@@ -728,11 +728,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY1MTk0OTM1NiwxMjAyMDc3MjM1LDIwOT
-M4MDMwOTcsLTEwMzg4NDEzMzEsMzMxMzg2NjUxLDYwNjcyNTUz
-MywtMTUwNzAyNzE5MCwxMTIyNTg4NzA3LC03OTgxNzA2NDIsLT
-gxNjU4MTg0NiwtMTM2NjM2NTYwMCw1OTE2ODgzNSwtNjYyNzQw
-NjU1LC0xOTMzNTUzMjk5LDE2Mzc0MDgzMywtMTY2ODgxNjk5OC
-wtMTYwMzIwMDIwMSwtMTE0NDg3OTkwMywtOTA5MzgwMzYyLC0y
-MTQ1ODA5MzEwXX0=
+eyJoaXN0b3J5IjpbNzEyMTI1MjE5LDE2NTE5NDkzNTYsMTIwMj
+A3NzIzNSwyMDkzODAzMDk3LC0xMDM4ODQxMzMxLDMzMTM4NjY1
+MSw2MDY3MjU1MzMsLTE1MDcwMjcxOTAsMTEyMjU4ODcwNywtNz
+k4MTcwNjQyLC04MTY1ODE4NDYsLTEzNjYzNjU2MDAsNTkxNjg4
+MzUsLTY2Mjc0MDY1NSwtMTkzMzU1MzI5OSwxNjM3NDA4MzMsLT
+E2Njg4MTY5OTgsLTE2MDMyMDAyMDEsLTExNDQ4Nzk5MDMsLTkw
+OTM4MDM2Ml19
 -->
