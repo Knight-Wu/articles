@@ -229,7 +229,7 @@
  2. 保证客户端已经挂了的情况下, lease能够释放, 数据能被其他客户端接着写, 类似于维持和客户端的心跳;
  3. lease recovery 的时候, 如果检测到最后一个block 不是写入完成的状态, 则会进行block recovery, 保证多副本下数据的一致性. 
 
-
+* 定义
  Before a client can write an HDFS file, it must obtain a lease, which is essentially a lock. This ensures the single-writer semantics. The lease must be renewed within a predefined period of time if the client wishes to keep writing. If a lease is not explicitly renewed or the client holding it dies, then it will expire. When this happens, HDFS will close the file and release the lease on behalf of the client so that other clients can write to the file. This process is called lease recovery. 
 
 The lease manager maintains a soft limit (1 minute) and hard limit (1 hour) for the expiration time (these limits are currently non-configurable), and all leases maintained by the lease manager abide by the same soft and hard limits. Before the soft limit expires, the client holding the lease of a file has exclusive write access to the file. If the soft limit expires and the client has not renewed the lease or closed the file (the lease of a file is released when the file is closed), another client can forcibly take over the lease. If the hard limit expires and the client has not renewed the lease, HDFS assumes that the client has quit and will automatically close the file on behalf of the client, thereby recovering the lease.
@@ -474,9 +474,9 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMDQ0NzIwNTQsLTI3ODM0MjkwMiwtMT
-Y2NTk2MTQ2NiwtMTY2NDk5NDcwNiwtMTAyMjE3MzA2NywtMTEz
-Nzk5ODU1NSwtMjMxOTExMDE3LDYzNjcwNjEzMiw5NDcyNjEwMy
-wtMTQ2MDc3NDkxLDEzMjk4NjI3MTgsLTExMzg4NjY4OTYsODk5
-OTUyNjAsNTg0ODcwMDQ1LDEyODI3MzUzODRdfQ==
+eyJoaXN0b3J5IjpbODc0NDA4NDk1LC0yNzgzNDI5MDIsLTE2Nj
+U5NjE0NjYsLTE2NjQ5OTQ3MDYsLTEwMjIxNzMwNjcsLTExMzc5
+OTg1NTUsLTIzMTkxMTAxNyw2MzY3MDYxMzIsOTQ3MjYxMDMsLT
+E0NjA3NzQ5MSwxMzI5ODYyNzE4LC0xMTM4ODY2ODk2LDg5OTk1
+MjYwLDU4NDg3MDA0NSwxMjgyNzM1Mzg0XX0=
 -->
