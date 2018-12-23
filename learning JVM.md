@@ -19,7 +19,7 @@
 ### 方法区(Method Area)
 线程间共享, 存储每个类的结构,包括运行时常量 *(包括string pool)* ,静态变量,即时编译器编译后的代码等数据.
 
-java 8之后, 没有了**PermGen space**, 用方法区代替, 且方法区不属于heap size的一部分, 属于进程的内存, 
+java 8之后, 没有了**PermGen space**, 用方法区代替, 且方法区不属于heap size的一部分, 属于进程的内存, 光监控java heap size 已经不够了, 需要用top 监控整个 jvm 进程的内存, 因为还包括方法区和native memory.
 
 ### 本地内存(native memory, C heap)
 1. 管理java heap的状态数据（用于GC）;
@@ -671,11 +671,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2NjA5NDE5NiwxODU1MTc5NTc0LDExNj
-I2MjI5NSwtMTczMDU1NjA0MSwxNTg0MTU5ODUsOTQxODM4MDA3
-LC0xMDQ4NTk3NTEzLC0xMTA5NzE2ODI4LC0xNzUyODQ1Njc2LD
-E2ODAxODUxNzYsLTE1NzA5MTM4MDEsMTMwOTA3MzUzOCwtNTY0
-ODE3MTg3LC0yMzg3MTMyMTAsMjA5ODQxMjEwNCwtMTQyNDY1Mz
-MzLC0xNTk4MTczMjk0LC04NjIzMjAxMTYsMTM0MDM4MTMzMSwx
-MDk5NTQ0NzM0XX0=
+eyJoaXN0b3J5IjpbODQ0ODU3Mjc4LDE4NTUxNzk1NzQsMTE2Mj
+YyMjk1LC0xNzMwNTU2MDQxLDE1ODQxNTk4NSw5NDE4MzgwMDcs
+LTEwNDg1OTc1MTMsLTExMDk3MTY4MjgsLTE3NTI4NDU2NzYsMT
+Y4MDE4NTE3NiwtMTU3MDkxMzgwMSwxMzA5MDczNTM4LC01NjQ4
+MTcxODcsLTIzODcxMzIxMCwyMDk4NDEyMTA0LC0xNDI0NjUzMz
+MsLTE1OTgxNzMyOTQsLTg2MjMyMDExNiwxMzQwMzgxMzMxLDEw
+OTk1NDQ3MzRdfQ==
 -->
