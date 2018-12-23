@@ -208,9 +208,9 @@
 
 #### hdfs 读写流程
 ![](https://drive.google.com/uc?id=1LjDrWGX6zhQzEJOzNWG615eKFyK2XHDF)
-1. 写流程, client通过 FileSystem.open()获取一个RPC 请求到nn, 然后创建一个文件,  并获取lease 保证只有一个writer, 多个reader(只有ack的packet可以读), 并且nn 检查client的权限等. 最后返回一个  FSDataOutputStream 给client写入数据,通过socket去写datanode
+1. 准备写, 当本地的临时目录超过一个block大小后,  client通过 FileSystem.open()获取一个RPC 请求到nn, 然后创建一个文件,  并获取lease 保证只有一个writer, 多个reader(只有ack的packet可以读), 并且nn 检查client的权限等. 最后返回一个  FSDataOutputStream 给client写入数据,通过socket去写datanode
 
-2. 真正开始写: client 直接与dn 通信, 通过 FSDataInputStream  发送一个写请求, 当本地的临时目录超过一个block大小后, 才会把数据发往dn, 这个过程中先把数据 packets(默认 64KB)  先写到本地的 data queue, 这个队列通过 DataStreamer去消费 , 这个dataStreamer 向nn收集新的 block的信息. 而dn组成了 pipeline,  假设副本数是3, pipeline 里面就是三个dn , 一个dn写完再把packets 交给下一个dn. 当packets写入第一个dn之后, 会转移到一个ack队列, 去保证数据的三份副本都写入成功后, 才把ack从队列中移除, 并且是等待一个block的所有ack返回之后, 才会发送下一个block.
+2. 真正开始写: client 直接与dn 通信, 通过 FSDataInputStream  发送一个写请求, 这个过程中先把数据 packets(默认 64KB)  先写到本地的 data queue, 这个队列通过 DataStreamer去消费 , 这个dataStreamer 向nn收集新的 block的信息. 而dn组成了 pipeline,  假设副本数是3, pipeline 里面就是三个dn , 一个dn写完再把packets 交给下一个dn. 当packets写入第一个dn之后, 会转移到一个ack队列, 去保证数据的三份副本都写入成功后, 才把ack从队列中移除, 并且是等待一个block的所有ack返回之后, 才会发送下一个block.
 
 3. 当client把最后一个block 提交到dn之后, 最后通过 DFSInputStream.close() 去关闭连接, 会将 actual generation stamp and the length of the block上报给nn, 并会轮训 nn 进行一系列的检查, 包括文件副本最小数必须大于1(默认配置), 否则抛出异常给client.
 如下图![enter image description here](https://drive.google.com/uc?id=1btvOQAEX6xNWRQvmm1yOxgi-VKtbp8Al)
@@ -471,10 +471,10 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDcyMTQzNyw4NzQ0MDg0OTUsLTI3OD
-M0MjkwMiwtMTY2NTk2MTQ2NiwtMTY2NDk5NDcwNiwtMTAyMjE3
-MzA2NywtMTEzNzk5ODU1NSwtMjMxOTExMDE3LDYzNjcwNjEzMi
-w5NDcyNjEwMywtMTQ2MDc3NDkxLDEzMjk4NjI3MTgsLTExMzg4
-NjY4OTYsODk5OTUyNjAsNTg0ODcwMDQ1LDEyODI3MzUzODRdfQ
-==
+eyJoaXN0b3J5IjpbMTI0MzQwMzE5MiwtMTEwNzIxNDM3LDg3ND
+QwODQ5NSwtMjc4MzQyOTAyLC0xNjY1OTYxNDY2LC0xNjY0OTk0
+NzA2LC0xMDIyMTczMDY3LC0xMTM3OTk4NTU1LC0yMzE5MTEwMT
+csNjM2NzA2MTMyLDk0NzI2MTAzLC0xNDYwNzc0OTEsMTMyOTg2
+MjcxOCwtMTEzODg2Njg5Niw4OTk5NTI2MCw1ODQ4NzAwNDUsMT
+I4MjczNTM4NF19
 -->
