@@ -222,11 +222,13 @@
 
 #### Understanding HDFS Recovery Processes
 [https://blog.cloudera.com/blog/2015/02/understanding-hdfs-recovery-processes-part-1/](https://blog.cloudera.com/blog/2015/02/understanding-hdfs-recovery-processes-part-1/)
-1. lease recovery
+*  lease recovery
 
 * 作用
-1. 保证一个时刻只有一个客户端写( 一个客户端进行多线程的分片写), 多个读
-2. 保证客户端已经挂了的情况下, lease能够释放, 数据能被其他客户端接着写, 类似于维持和客户端的心跳, 并检查写的最后一个块是不是COMPLETE的, 不是的话就进行block recovery
+ 1. 保证一个时刻只有一个客户端写( 一个客户端进行多线程的分片写), 多个读;
+ 2. 保证客户端已经挂了的情况下, lease能够释放, 数据能被其他客户端接着写, 类似于维持和客户端的心跳;
+ 3. lease recovery 的时候, 如果检测到最后一个block 不是写入完成的状态, 则会进行block recovery, 保证多副本下数据的一致性. 
+
 
  Before a client can write an HDFS file, it must obtain a lease, which is essentially a lock. This ensures the single-writer semantics. The lease must be renewed within a predefined period of time if the client wishes to keep writing. If a lease is not explicitly renewed or the client holding it dies, then it will expire. When this happens, HDFS will close the file and release the lease on behalf of the client so that other clients can write to the file. This process is called lease recovery. 
 
@@ -472,9 +474,9 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1MzczNTUzOCwtMjc4MzQyOTAyLC0xNj
-Y1OTYxNDY2LC0xNjY0OTk0NzA2LC0xMDIyMTczMDY3LC0xMTM3
-OTk4NTU1LC0yMzE5MTEwMTcsNjM2NzA2MTMyLDk0NzI2MTAzLC
-0xNDYwNzc0OTEsMTMyOTg2MjcxOCwtMTEzODg2Njg5Niw4OTk5
-NTI2MCw1ODQ4NzAwNDUsMTI4MjczNTM4NF19
+eyJoaXN0b3J5IjpbLTEzMDQ0NzIwNTQsLTI3ODM0MjkwMiwtMT
+Y2NTk2MTQ2NiwtMTY2NDk5NDcwNiwtMTAyMjE3MzA2NywtMTEz
+Nzk5ODU1NSwtMjMxOTExMDE3LDYzNjcwNjEzMiw5NDcyNjEwMy
+wtMTQ2MDc3NDkxLDEzMjk4NjI3MTgsLTExMzg4NjY4OTYsODk5
+OTUyNjAsNTg0ODcwMDQ1LDEyODI3MzUzODRdfQ==
 -->
