@@ -669,6 +669,16 @@ public class A{
     java -classpath . packageA.packageB.A
 ```
 
+* 实例化对象的过程
+
+虚拟机遇到一条 new 指令时：
+
+1.  检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已被加载、解析和初始化过
+2.  类加载检查通过
+3.  虚拟机java堆为新主对象分配内存，对象所需内存的大小在类加载完成后便可完全确定
+4.  虚拟机将分配到的内存空间都初始化为零值（不包括对象头）。所以有时候某些字段不赋初始值就能直接使用
+5.  设置对象头，对象头中存储了该对象是拿了类的实例等信息
+6.  执行 init 方法（否则所有字段还为零值），把对象按照程序员的意愿进行初始化
 
 
 #### 零散问题
@@ -679,11 +689,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTk5MDUxNDQwLDE4NTUxNzk1NzQsMTE2Mj
-YyMjk1LC0xNzMwNTU2MDQxLDE1ODQxNTk4NSw5NDE4MzgwMDcs
-LTEwNDg1OTc1MTMsLTExMDk3MTY4MjgsLTE3NTI4NDU2NzYsMT
-Y4MDE4NTE3NiwtMTU3MDkxMzgwMSwxMzA5MDczNTM4LC01NjQ4
-MTcxODcsLTIzODcxMzIxMCwyMDk4NDEyMTA0LC0xNDI0NjUzMz
-MsLTE1OTgxNzMyOTQsLTg2MjMyMDExNiwxMzQwMzgxMzMxLDEw
-OTk1NDQ3MzRdfQ==
+eyJoaXN0b3J5IjpbNjUyNDg4Njc5LDU5OTA1MTQ0MCwxODU1MT
+c5NTc0LDExNjI2MjI5NSwtMTczMDU1NjA0MSwxNTg0MTU5ODUs
+OTQxODM4MDA3LC0xMDQ4NTk3NTEzLC0xMTA5NzE2ODI4LC0xNz
+UyODQ1Njc2LDE2ODAxODUxNzYsLTE1NzA5MTM4MDEsMTMwOTA3
+MzUzOCwtNTY0ODE3MTg3LC0yMzg3MTMyMTAsMjA5ODQxMjEwNC
+wtMTQyNDY1MzMzLC0xNTk4MTczMjk0LC04NjIzMjAxMTYsMTM0
+MDM4MTMzMV19
 -->
