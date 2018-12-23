@@ -237,25 +237,17 @@ The lease manager maintains a soft limit (1 minute) and hard limit (1 hour) for 
 
 The lease recovery process is triggered on the NameNode to recover leases for a given client, either by the monitor thread upon hard limit expiry, or when a client tries to take over lease from another client when the soft limit expires. It checks each file open for write by the same client, performs block recovery for the file if the last block of the file is not in COMPLETE state, and closes the file. Block recovery of a file is only triggered when recovering the lease of a file.(lease 过期之后, 检查文件的最后一个块是不是COMPLETE(必须有minimum replication number of FINALIZED replicas, 如果 minimum replication number是1, 那么当有一个副本是 FINALIZED ,这个block就是complete了), 如果不是就进行block recovery)
 
-2. block Recovery
+* lease recovery的
 
+2. block Recovery
+* 定义
  If the last block of the file being written is not propagated to all DataNodes in the pipeline, then the amount of data written to different nodes may be different when lease recovery happens. Before lease recovery causes the file to be closed, it’s necessary to ensure that all replicas of the last block have the same length; this process is known as block recovery. Block recovery is only triggered during the lease recovery process, and lease recovery only triggers block recovery on the last block of a file if that block is not in COMPLETE state (defined in later section).
 
 * block recovery和 lease recovery 的流程
 >Below is the lease recovery algorithm for given file f. When a client dies, the same algorithm is applied to each file the client opened for write.
 
-1. Get the DataNodes which contain the last block of f.
-2. Assign one of the DataNodes as the primary DataNode p.
-3. p obtains a new generation stamp from the NameNode.
-4. p gets the block info from each DataNode.
-5. p computes the minimum block length.
-6. p updates the DataNodes, which have a valid generation  stamp, with the new generation stamp and the minimum block length.
-7. p acknowledges the NameNode the update results.
-8. NameNode updates the BlockInfo.
-9. NameNode remove f’s lease (other writer can now obtain the lease for writing to f).
-10. NameNode commit changes to edit log.
 
->Steps 3 through 7 are the block recovery parts of the algorithm. If a file needs block recovery, the NameNode picks a primary DataNode that has a replica of the last block of the file, and tells this DataNode to coordinate the block recovery work with other DataNodes. That DataNode reports back to the NameNode when it is done. The NameNode then updates its internal state of this block, removes the lease, and commits the change to edit log.
+
 * 问题
 
 1. 如果只针对最后一个block才能采用block recovery, 那么如果一个文件的中间block也出现副本不一致的问题, 该如何修复
@@ -476,10 +468,10 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2MzkzNjMwOSw4NzQ0MDg0OTUsLTI3OD
-M0MjkwMiwtMTY2NTk2MTQ2NiwtMTY2NDk5NDcwNiwtMTAyMjE3
-MzA2NywtMTEzNzk5ODU1NSwtMjMxOTExMDE3LDYzNjcwNjEzMi
-w5NDcyNjEwMywtMTQ2MDc3NDkxLDEzMjk4NjI3MTgsLTExMzg4
-NjY4OTYsODk5OTUyNjAsNTg0ODcwMDQ1LDEyODI3MzUzODRdfQ
-==
+eyJoaXN0b3J5IjpbLTE1MTEyMDA5MzgsODc0NDA4NDk1LC0yNz
+gzNDI5MDIsLTE2NjU5NjE0NjYsLTE2NjQ5OTQ3MDYsLTEwMjIx
+NzMwNjcsLTExMzc5OTg1NTUsLTIzMTkxMTAxNyw2MzY3MDYxMz
+IsOTQ3MjYxMDMsLTE0NjA3NzQ5MSwxMzI5ODYyNzE4LC0xMTM4
+ODY2ODk2LDg5OTk1MjYwLDU4NDg3MDA0NSwxMjgyNzM1Mzg0XX
+0=
 -->
