@@ -215,9 +215,8 @@
 3. 当client把最后一个block 提交到dn之后, 最后通过 DFSInputStream.close() 去关闭连接, 会将 actual generation stamp and the length of the block上报给nn, 并会轮训 nn 进行一系列的检查, 包括文件副本最小数必须大于1(默认配置), 否则抛出异常给client.
 如下图![enter image description here](https://drive.google.com/uc?id=1btvOQAEX6xNWRQvmm1yOxgi-VKtbp8Al)
 
-* 详细流程见
- [notebook-link](http://note.youdao.com/noteshare?id=1db8cf2911deed6b89523bd3feab696e&sub=A63DC7C4A24A4C759435BB12479B6BDB)
-原贴地址 [http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html](http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html)
+详细流程: [notebook-link](http://note.youdao.com/noteshare?id=1db8cf2911deed6b89523bd3feab696e&sub=A63DC7C4A24A4C759435BB12479B6BDB)
+原贴地址: [http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html](http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html)
 
 
 #### Understanding HDFS Recovery Processes
@@ -472,10 +471,10 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NjY2MzQyOTAsODc0NDA4NDk1LC0yNz
-gzNDI5MDIsLTE2NjU5NjE0NjYsLTE2NjQ5OTQ3MDYsLTEwMjIx
-NzMwNjcsLTExMzc5OTg1NTUsLTIzMTkxMTAxNyw2MzY3MDYxMz
-IsOTQ3MjYxMDMsLTE0NjA3NzQ5MSwxMzI5ODYyNzE4LC0xMTM4
-ODY2ODk2LDg5OTk1MjYwLDU4NDg3MDA0NSwxMjgyNzM1Mzg0XX
-0=
+eyJoaXN0b3J5IjpbLTExMDcyMTQzNyw4NzQ0MDg0OTUsLTI3OD
+M0MjkwMiwtMTY2NTk2MTQ2NiwtMTY2NDk5NDcwNiwtMTAyMjE3
+MzA2NywtMTEzNzk5ODU1NSwtMjMxOTExMDE3LDYzNjcwNjEzMi
+w5NDcyNjEwMywtMTQ2MDc3NDkxLDEzMjk4NjI3MTgsLTExMzg4
+NjY4OTYsODk5OTUyNjAsNTg0ODcwMDQ1LDEyODI3MzUzODRdfQ
+==
 -->
