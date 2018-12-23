@@ -18,6 +18,14 @@
 
 ### 方法区(Method Area)
 线程间共享, 存储每个类的结构,包括运行时常量 *(包括string pool)* ,静态变量,即时编译器编译后的代码等数据.
+程序中的字面量（literal）如直接书写的100、"hello"和常量都是放在常量池中，常量池是方法区的一部分，
+```
+String str = new String("hello");
+
+```
+
+上面的语句中变量str放在栈上，用new创建出来的字符串对象放在堆上，而"hello"这个字面量是放在方法区的。
+
 
 java 8之后, 没有了**PermGen space**, 用方法区代替, 且方法区不属于heap size的一部分, 属于进程的内存, 光监控java heap size 已经不够了, 需要用top 监控整个 jvm 进程的内存, 因为还包括方法区和native memory.
 
@@ -671,7 +679,7 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQ0ODU3Mjc4LDE4NTUxNzk1NzQsMTE2Mj
+eyJoaXN0b3J5IjpbNTk5MDUxNDQwLDE4NTUxNzk1NzQsMTE2Mj
 YyMjk1LC0xNzMwNTU2MDQxLDE1ODQxNTk4NSw5NDE4MzgwMDcs
 LTEwNDg1OTc1MTMsLTExMDk3MTY4MjgsLTE3NTI4NDU2NzYsMT
 Y4MDE4NTE3NiwtMTU3MDkxMzgwMSwxMzA5MDczNTM4LC01NjQ4
