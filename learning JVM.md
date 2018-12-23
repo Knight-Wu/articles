@@ -192,11 +192,13 @@ oracle 文章的截图:
 由于应用线程和gc 线程并行执行, gc 线程标记的可达的对象在标记结束后又不可达了, 这部分剩余的对象叫做浮动垃圾, 这部分对象会在下次gc 被回收.
 
 
-* concurrent mode failure
+> concurrent mode failure
+
     因为gc时用户线程继续产生新对象, 如果CMS 此时不能完成清除工作, 导致老年代空间满了, 会触发这个失败, 会停止所有的用户线程去做gc, 停顿会很长.
  所以需要预留至少一部分空间用作gc时新对象的产生, 所以可以设置 -XX: CMSInitiatingOccupancyFraction 作为开始老年代收集的百分比, 超过这个占用即开始收集, 减小concurrent mode failure 的概率
        
-* 采用标记清除算法, 内存碎片很多
+> 采用标记清除算法, 内存碎片很多
+
 使用 -XX:UseCMSCompactionAtFullCollection(默认开启, 开启内存碎片的整理工作), 但是会导致停顿时间变长,  也可采用 -XX:CMSFullGCsBeforeCompaction(表示执行了多少次不压缩的full GC后, 来一次压缩的full GC ,默认是0, 表示每次都压缩).
     
 * Garbage First(G1)
@@ -664,11 +666,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MzA1NTYwNDEsMTU4NDE1OTg1LDk0MT
-gzODAwNywtMTA0ODU5NzUxMywtMTEwOTcxNjgyOCwtMTc1Mjg0
-NTY3NiwxNjgwMTg1MTc2LC0xNTcwOTEzODAxLDEzMDkwNzM1Mz
-gsLTU2NDgxNzE4NywtMjM4NzEzMjEwLDIwOTg0MTIxMDQsLTE0
-MjQ2NTMzMywtMTU5ODE3MzI5NCwtODYyMzIwMTE2LDEzNDAzOD
-EzMzEsMTA5OTU0NDczNCwxOTkzODI4ODgsLTE0NTMwNTgyMiwx
-OTg4NTMyMDM1XX0=
+eyJoaXN0b3J5IjpbODE1MzIzNDgzLC0xNzMwNTU2MDQxLDE1OD
+QxNTk4NSw5NDE4MzgwMDcsLTEwNDg1OTc1MTMsLTExMDk3MTY4
+MjgsLTE3NTI4NDU2NzYsMTY4MDE4NTE3NiwtMTU3MDkxMzgwMS
+wxMzA5MDczNTM4LC01NjQ4MTcxODcsLTIzODcxMzIxMCwyMDk4
+NDEyMTA0LC0xNDI0NjUzMzMsLTE1OTgxNzMyOTQsLTg2MjMyMD
+ExNiwxMzQwMzgxMzMxLDEwOTk1NDQ3MzQsMTk5MzgyODg4LC0x
+NDUzMDU4MjJdfQ==
 -->
