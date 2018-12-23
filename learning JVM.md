@@ -202,9 +202,12 @@ oracle 文章的截图:
 使用 -XX:UseCMSCompactionAtFullCollection(默认开启, 开启内存碎片的整理工作), 但是会导致停顿时间变长,  也可采用 -XX:CMSFullGCsBeforeCompaction(表示执行了多少次不压缩的full GC后, 来一次压缩的full GC ,默认是0, 表示每次都压缩).
     
 * Garbage First(G1)
-  https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html#t4
-https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc_tuning.html
   
+https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html#t4
+  
+https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc_tuning.html
+
+https://tech.meituan.com/g1.html
  > 比起CMS 的优点
 
   G1是一个有整理内存过程的垃圾收集器，不会产生很多内存碎片。
@@ -666,11 +669,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2MjYyMjk1LC0xNzMwNTU2MDQxLDE1OD
-QxNTk4NSw5NDE4MzgwMDcsLTEwNDg1OTc1MTMsLTExMDk3MTY4
-MjgsLTE3NTI4NDU2NzYsMTY4MDE4NTE3NiwtMTU3MDkxMzgwMS
-wxMzA5MDczNTM4LC01NjQ4MTcxODcsLTIzODcxMzIxMCwyMDk4
-NDEyMTA0LC0xNDI0NjUzMzMsLTE1OTgxNzMyOTQsLTg2MjMyMD
-ExNiwxMzQwMzgxMzMxLDEwOTk1NDQ3MzQsMTk5MzgyODg4LC0x
-NDUzMDU4MjJdfQ==
+eyJoaXN0b3J5IjpbMTg1NTE3OTU3NCwxMTYyNjIyOTUsLTE3Mz
+A1NTYwNDEsMTU4NDE1OTg1LDk0MTgzODAwNywtMTA0ODU5NzUx
+MywtMTEwOTcxNjgyOCwtMTc1Mjg0NTY3NiwxNjgwMTg1MTc2LC
+0xNTcwOTEzODAxLDEzMDkwNzM1MzgsLTU2NDgxNzE4NywtMjM4
+NzEzMjEwLDIwOTg0MTIxMDQsLTE0MjQ2NTMzMywtMTU5ODE3Mz
+I5NCwtODYyMzIwMTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNCwx
+OTkzODI4ODhdfQ==
 -->
