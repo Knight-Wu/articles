@@ -233,6 +233,7 @@
  Before a client can write an HDFS file, it must obtain a lease, which is essentially a lock. This ensures the single-writer semantics. The lease must be renewed within a predefined period of time if the client wishes to keep writing. If a lease is not explicitly renewed or the client holding it dies, then it will expire. When this happens, HDFS will close the file and release the lease on behalf of the client so that other clients can write to the file. This process is called lease recovery. 
 
 The lease manager maintains a soft limit (1 minute) and hard limit (1 hour) for the expiration time (these limits are currently non-configurable), and all leases maintained by the lease manager abide by the same soft and hard limits. Before the soft limit expires, the client holding the lease of a file has exclusive write access to the file. If the soft limit expires and the client has not renewed the lease or closed the file (the lease of a file is released when the file is closed), another client can forcibly take over the lease. If the hard limit expires and the client has not renewed the lease, HDFS assumes that the client has quit and will automatically close the file on behalf of the client, thereby recovering the lease.
+> 为什么分为soft limit和hard limit, 前者是为了提高高并发下的吞吐量, 一个client 在一段时间内没有写入, 
 
 The lease recovery process is triggered on the NameNode to recover leases for a given client, either by the monitor thread upon hard limit expiry, or when a client tries to take over lease from another client when the soft limit expires. It checks each file open for write by the same client, performs block recovery for the file if the last block of the file is not in COMPLETE state, and closes the file. Block recovery of a file is only triggered when recovering the lease of a file.(lease 过期之后, 检查文件的最后一个块是不是COMPLETE(必须有minimum replication number of FINALIZED replicas, 如果 minimum replication number是1, 那么当有一个副本是 FINALIZED ,这个block就是complete了), 如果不是就进行block recovery)
 
@@ -474,9 +475,9 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODc0NDA4NDk1LC0yNzgzNDI5MDIsLTE2Nj
-U5NjE0NjYsLTE2NjQ5OTQ3MDYsLTEwMjIxNzMwNjcsLTExMzc5
-OTg1NTUsLTIzMTkxMTAxNyw2MzY3MDYxMzIsOTQ3MjYxMDMsLT
-E0NjA3NzQ5MSwxMzI5ODYyNzE4LC0xMTM4ODY2ODk2LDg5OTk1
-MjYwLDU4NDg3MDA0NSwxMjgyNzM1Mzg0XX0=
+eyJoaXN0b3J5IjpbMzMxNDkxOTk1LDg3NDQwODQ5NSwtMjc4Mz
+QyOTAyLC0xNjY1OTYxNDY2LC0xNjY0OTk0NzA2LC0xMDIyMTcz
+MDY3LC0xMTM3OTk4NTU1LC0yMzE5MTEwMTcsNjM2NzA2MTMyLD
+k0NzI2MTAzLC0xNDYwNzc0OTEsMTMyOTg2MjcxOCwtMTEzODg2
+Njg5Niw4OTk5NTI2MCw1ODQ4NzAwNDUsMTI4MjczNTM4NF19
 -->
