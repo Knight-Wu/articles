@@ -226,7 +226,7 @@
 
 * 作用
 1. 保证一个时刻只有一个客户端写( 一个客户端进行多线程的分片写), 多个读
-2. 保证客户端写失败的时候, lease能够释放, 并检查写的最后一个块是不是COMPLETE的, 不是的话就进行block recovery
+2. 保证客户端已经挂了的情况下, lease能够释放, 数据能被其他客户端接着写, 类似于维持和客户端的心跳, 并检查写的最后一个块是不是COMPLETE的, 不是的话就进行block recovery
 
  Before a client can write an HDFS file, it must obtain a lease, which is essentially a lock. This ensures the single-writer semantics. The lease must be renewed within a predefined period of time if the client wishes to keep writing. If a lease is not explicitly renewed or the client holding it dies, then it will expire. When this happens, HDFS will close the file and release the lease on behalf of the client so that other clients can write to the file. This process is called lease recovery. 
 
@@ -472,7 +472,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE0Njk3MjI0OCwtMjc4MzQyOTAyLC0xNj
+eyJoaXN0b3J5IjpbMTU1MzczNTUzOCwtMjc4MzQyOTAyLC0xNj
 Y1OTYxNDY2LC0xNjY0OTk0NzA2LC0xMDIyMTczMDY3LC0xMTM3
 OTk4NTU1LC0yMzE5MTEwMTcsNjM2NzA2MTMyLDk0NzI2MTAzLC
 0xNDYwNzc0OTEsMTMyOTg2MjcxOCwtMTEzODg2Njg5Niw4OTk5
