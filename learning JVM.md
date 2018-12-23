@@ -210,8 +210,8 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc_tuning.
   G1是一个有整理内存过程的垃圾收集器，不会产生很多内存碎片。
   G1的Stop The World(STW)更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间, 通过控制收集哪些region和region 的多少来控制停顿时间. 
   
-停顿时间: 
-> You can specify the size of the young generation on the command line as with the other garbage collectors, but doing so may hamper the ability of G1 to attain the target pause time. In addition to the pause time goal, you can specify the length of the time period during which the pause can occur. You can specify the minimum mutator usage with this time span (`GCPauseIntervalMillis`) along with the pause time goal. The default value for  `MaxGCPauseMillis`  is 200 milliseconds. The default value for  `GCPauseIntervalMillis`  (0) is the equivalent of no requirement on the time span.
+停顿时间: (和吞吐量是此消彼长的)
+> When you evaluate or tune any garbage collection, there is always a latency versus throughput trade-off. The G1 GC is an incremental garbage collector with uniform pauses, but also more overhead on the application threads. The throughput goal for the G1 GC is 90 percent application time and 10 percent garbage collection time. Compare this to the Java HotSpot VM parallel collector. The throughput goal of the parallel collector is 99 percent application time and 1 percent garbage collection time. Therefore, when you evaluate the G1 GC for throughput, relax your pause time target. Setting too aggressive a goal indicates that you are willing to bear an increase in garbage collection overhead, which has a direct effect on throughput. When you evaluate the G1 GC for latency, you set your desired (soft) real-time goal, and the G1 GC will try to meet it. As a side effect, throughput may suffer. See the section [Pause Time Goal](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc.html#pause_time_goal) in [Garbage-First Garbage Collector](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc.html#garbage_first_garbage_collection) for additional information
 
 > Applications running today with either the CMS or the with parallel compaction would benefit from switching to G1 if the application has one or more of the following traits: 
  More than 50% of the Java heap is occupied with live data.
@@ -666,7 +666,7 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODE1MzIzNDgzLC0xNzMwNTU2MDQxLDE1OD
+eyJoaXN0b3J5IjpbMTE2MjYyMjk1LC0xNzMwNTU2MDQxLDE1OD
 QxNTk4NSw5NDE4MzgwMDcsLTEwNDg1OTc1MTMsLTExMDk3MTY4
 MjgsLTE3NTI4NDU2NzYsMTY4MDE4NTE3NiwtMTU3MDkxMzgwMS
 wxMzA5MDczNTM4LC01NjQ4MTcxODcsLTIzODcxMzIxMCwyMDk4
