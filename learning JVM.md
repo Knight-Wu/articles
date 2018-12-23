@@ -17,7 +17,9 @@
 存放对象的实例和数组, 所有线程所共有; 如果堆中没有内存完成实例的分配, 并且堆也无法再扩展时,抛出 OutOfMemoryError
 
 ### 方法区(Method Area)
-线程间共享, 存储每个类的结构,包括运行时常量 *(包括string pool)* ,静态变量,即时编译器编译后的代码等数据
+线程间共享, 存储每个类的结构,包括运行时常量 *(包括string pool)* ,静态变量,即时编译器编译后的代码等数据.
+
+java 8之后, 没有了**PermGen space**, 用方法区代替, 且方法区不属于heap size的一部分, 属于进程的内存, 
 
 ### 本地内存(native memory, C heap)
 1. 管理java heap的状态数据（用于GC）;
@@ -669,11 +671,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1NTE3OTU3NCwxMTYyNjIyOTUsLTE3Mz
-A1NTYwNDEsMTU4NDE1OTg1LDk0MTgzODAwNywtMTA0ODU5NzUx
-MywtMTEwOTcxNjgyOCwtMTc1Mjg0NTY3NiwxNjgwMTg1MTc2LC
-0xNTcwOTEzODAxLDEzMDkwNzM1MzgsLTU2NDgxNzE4NywtMjM4
-NzEzMjEwLDIwOTg0MTIxMDQsLTE0MjQ2NTMzMywtMTU5ODE3Mz
-I5NCwtODYyMzIwMTE2LDEzNDAzODEzMzEsMTA5OTU0NDczNCwx
-OTkzODI4ODhdfQ==
+eyJoaXN0b3J5IjpbLTI2NjA5NDE5NiwxODU1MTc5NTc0LDExNj
+I2MjI5NSwtMTczMDU1NjA0MSwxNTg0MTU5ODUsOTQxODM4MDA3
+LC0xMDQ4NTk3NTEzLC0xMTA5NzE2ODI4LC0xNzUyODQ1Njc2LD
+E2ODAxODUxNzYsLTE1NzA5MTM4MDEsMTMwOTA3MzUzOCwtNTY0
+ODE3MTg3LC0yMzg3MTMyMTAsMjA5ODQxMjEwNCwtMTQyNDY1Mz
+MzLC0xNTk4MTczMjk0LC04NjIzMjAxMTYsMTM0MDM4MTMzMSwx
+MDk5NTQ0NzM0XX0=
 -->
