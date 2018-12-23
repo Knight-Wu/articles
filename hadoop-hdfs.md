@@ -213,7 +213,6 @@
 2. 真正开始写: client 直接与dn 通信, 通过 FSDataInputStream  发送一个写请求, 这个过程中先把数据 packets(默认 64KB)  先写到本地的 data queue, 这个队列通过 DataStreamer去消费 , 这个dataStreamer 向nn收集新的 block的信息. 而dn组成了 pipeline,  假设副本数是3, pipeline 里面就是三个dn , 一个dn写完再把packets 交给下一个dn. 当packets写入第一个dn之后, 会转移到一个ack队列, 去保证数据的三份副本都写入成功后, 才把ack从队列中移除, 并且是等待一个block的所有ack返回之后, 才会发送下一个block.
 
 3. 当client把这个文件的最后一个block 提交到dn之后, 最后通过 DFSInputStream.close() 去关闭连接, 会将 actual generation stamp and the length of the block上报给nn, 并会轮训 nn 进行一系列的检查, 包括文件副本最小数必须大于1(默认配置), 否则抛出异常给client.
-如下图![enter image description here](https://drive.google.com/uc?id=1btvOQAEX6xNWRQvmm1yOxgi-VKtbp8Al)
 
 详细流程: [notebook-link](http://note.youdao.com/noteshare?id=1db8cf2911deed6b89523bd3feab696e&sub=A63DC7C4A24A4C759435BB12479B6BDB)
 原贴地址: [http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html](http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html)
@@ -471,10 +470,10 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzNjU1NjA0MiwtMTEwNzIxNDM3LDg3ND
-QwODQ5NSwtMjc4MzQyOTAyLC0xNjY1OTYxNDY2LC0xNjY0OTk0
-NzA2LC0xMDIyMTczMDY3LC0xMTM3OTk4NTU1LC0yMzE5MTEwMT
-csNjM2NzA2MTMyLDk0NzI2MTAzLC0xNDYwNzc0OTEsMTMyOTg2
-MjcxOCwtMTEzODg2Njg5Niw4OTk5NTI2MCw1ODQ4NzAwNDUsMT
-I4MjczNTM4NF19
+eyJoaXN0b3J5IjpbLTE5NTMyNzM3MDQsLTMzNjU1NjA0MiwtMT
+EwNzIxNDM3LDg3NDQwODQ5NSwtMjc4MzQyOTAyLC0xNjY1OTYx
+NDY2LC0xNjY0OTk0NzA2LC0xMDIyMTczMDY3LC0xMTM3OTk4NT
+U1LC0yMzE5MTEwMTcsNjM2NzA2MTMyLDk0NzI2MTAzLC0xNDYw
+Nzc0OTEsMTMyOTg2MjcxOCwtMTEzODg2Njg5Niw4OTk5NTI2MC
+w1ODQ4NzAwNDUsMTI4MjczNTM4NF19
 -->
