@@ -696,7 +696,9 @@ public class A{
 因为Hotspot JVM 要求对象的总大小必须为8 字节的整数倍, 所以最后可能需要对齐部分来填充.
 
 * 访问对象
-通过fangfa
+通过方法栈区的局部变量表, 里面包含了基本类型和引用类型, 而引用类型是一个指向对象的指针.
+
+
 #### 零散问题
 * 字节码的文件格式
 https://www.jianshu.com/p/252f381a6bc4
@@ -705,7 +707,7 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDEzOTgwODksMTA0OTU5MDQwMyw5MT
+eyJoaXN0b3J5IjpbLTEwNjkwOTYyMDksMTA0OTU5MDQwMyw5MT
 M1ODA4MiwzNjUzNjg3MDAsNjUyNDg4Njc5LDU5OTA1MTQ0MCwx
 ODU1MTc5NTc0LDExNjI2MjI5NSwtMTczMDU1NjA0MSwxNTg0MT
 U5ODUsOTQxODM4MDA3LC0xMDQ4NTk3NTEzLC0xMTA5NzE2ODI4
