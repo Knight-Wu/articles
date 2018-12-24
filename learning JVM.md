@@ -677,6 +677,11 @@ public class A{
 1.  检查这个指令的参数是否能在常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已被加载、解析和初始化过
 2.  类加载检查通过
 3.  虚拟机java堆为新主对象分配内存，对象所需内存的大小在类加载完成后便可完全确定
+
+分配内存有两种方法: 指针碰撞和空闲列表
+> 指针碰撞
+
+
 4.  虚拟机将分配到的内存空间都初始化为零值（不包括对象头）。所以有时候某些字段不赋初始值就能直接使用
 5.  设置对象头，对象头中存储了该对象是拿了类的实例等信息
 6.  执行 init 方法（否则所有字段还为零值），把对象按照程序员的意愿进行初始化
@@ -690,11 +695,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0OTU5MDQwMyw5MTM1ODA4MiwzNjUzNj
-g3MDAsNjUyNDg4Njc5LDU5OTA1MTQ0MCwxODU1MTc5NTc0LDEx
-NjI2MjI5NSwtMTczMDU1NjA0MSwxNTg0MTU5ODUsOTQxODM4MD
-A3LC0xMDQ4NTk3NTEzLC0xMTA5NzE2ODI4LC0xNzUyODQ1Njc2
-LDE2ODAxODUxNzYsLTE1NzA5MTM4MDEsMTMwOTA3MzUzOCwtNT
-Y0ODE3MTg3LC0yMzg3MTMyMTAsMjA5ODQxMjEwNCwtMTQyNDY1
-MzMzXX0=
+eyJoaXN0b3J5IjpbMTg3MTkyMTUxNiwxMDQ5NTkwNDAzLDkxMz
+U4MDgyLDM2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUxNDQwLDE4
+NTUxNzk1NzQsMTE2MjYyMjk1LC0xNzMwNTU2MDQxLDE1ODQxNT
+k4NSw5NDE4MzgwMDcsLTEwNDg1OTc1MTMsLTExMDk3MTY4Mjgs
+LTE3NTI4NDU2NzYsMTY4MDE4NTE3NiwtMTU3MDkxMzgwMSwxMz
+A5MDczNTM4LC01NjQ4MTcxODcsLTIzODcxMzIxMCwyMDk4NDEy
+MTA0XX0=
 -->
