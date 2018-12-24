@@ -240,7 +240,7 @@ Save namespace successful for ip-172-31-1-163.ap-southeast-1.compute.internal/17
 ![](https://drive.google.com/uc?id=1LjDrWGX6zhQzEJOzNWG615eKFyK2XHDF)
 1. 准备写, 当本地的临时目录超过一个block大小后,  client通过 FileSystem.open()获取一个RPC 请求到nn, 然后创建一个文件,  并获取lease 保证只有一个writer, 多个reader(只有ack的packet可以读), 并且nn 检查client的权限等. 最后返回一个  FSDataOutputStream 给client写入数据,通过socket去写datanode
 
-2. 真正开始写: client 直接与dn 通信, 通过 FSDataInputStream  发送一个写请求, 这个过程中先把数据 packets(默认 64KB)  先写到本地的 data queue, 这个队列通过 DataStreamer去消费 , 这个dataStreamer 向nn收集新的 block的信息. 而dn组成了 pipeline,  假设副本数是3, pipeline 里面就是三个dn , 一个dn写完再把packets 交给下一个dn. 当packets写入第一个dn之后, 会转移到一个ack队列, 去保证数据的三份副本都写入成功后, 才把ack从队列中移除, 并且是等待一个block的所有ack返回之后, 才会发送下一个block.
+2. 真正开始写: client 直接与dn 通信, 通过 FSDataInputStream  发送一个写请求, 这个过程中先把数据 packets(默认 64KB)  先写到本地的 data queue, 这个队列通过 DataStreamer去消费 , 这个dataStreamer 向nn收集新的 block的信息. 而dn组成了 pipeline,  假设副本数是3, pipeline 里面就是三个dn , 一个dn写完再把packets 交给下一个dn. 当packets写入第一个dn之后, 会转移到一个ack队列, 当有ack 从一个dn 返回后, 就移除ack 队列中的消息, 并且是等待一个block的所有ack返回之后, 才会发送下一个block.
 
 3. 当client把这个文件的最后一个block 提交到dn之后, 最后通过 DFSInputStream.close() 去关闭连接, 会将 actual generation stamp and the length of the block上报给nn, 并会轮训 nn 进行一系列的检查, 包括文件副本最小数必须大于1(默认配置), 否则抛出异常给client.
 
@@ -500,11 +500,11 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwOTA0NjA2LDMwMTk1Mjk5MiwtMTA1Nz
-E4NTc3NywtNTM3MjM1NjYsNDc4NTQyMzA1LC0xODk5OTE4NDE1
-LC0xOTUzMjczNzA0LC0zMzY1NTYwNDIsLTExMDcyMTQzNyw4Nz
-Q0MDg0OTUsLTI3ODM0MjkwMiwtMTY2NTk2MTQ2NiwtMTY2NDk5
-NDcwNiwtMTAyMjE3MzA2NywtMTEzNzk5ODU1NSwtMjMxOTExMD
-E3LDYzNjcwNjEzMiw5NDcyNjEwMywtMTQ2MDc3NDkxLDEzMjk4
-NjI3MThdfQ==
+eyJoaXN0b3J5IjpbLTU5ODMyMDIxMiwxOTA5MDQ2MDYsMzAxOT
+UyOTkyLC0xMDU3MTg1Nzc3LC01MzcyMzU2Niw0Nzg1NDIzMDUs
+LTE4OTk5MTg0MTUsLTE5NTMyNzM3MDQsLTMzNjU1NjA0MiwtMT
+EwNzIxNDM3LDg3NDQwODQ5NSwtMjc4MzQyOTAyLC0xNjY1OTYx
+NDY2LC0xNjY0OTk0NzA2LC0xMDIyMTczMDY3LC0xMTM3OTk4NT
+U1LC0yMzE5MTEwMTcsNjM2NzA2MTMyLDk0NzI2MTAzLC0xNDYw
+Nzc0OTFdfQ==
 -->
