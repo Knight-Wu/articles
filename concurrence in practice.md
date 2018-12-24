@@ -376,7 +376,8 @@ public boolean isInterrupted() {
 
 #### volatile 
 
-  * The value of this variable will never be cached thread-locally: all reads and writes will go straight to "main memory",and read and write is atomic,means that when write is begined,then read must wait write end,so **volatile i++** is not ensured 一致性.(volatile 的变量如果A 线程发生了写入, 则会保证写入主存, 并且让其他线程的缓存失效, 根据缓存一致性原理, 其他线程的缓存失效后会将主存里更新后的值写到缓存, conger 然后)
+[https://www.cnblogs.com/xrq730/p/7048693.html](https://www.cnblogs.com/xrq730/p/7048693.html)
+  * The value of this variable will never be cached thread-locally: all reads and writes will go straight to "main memory",and read and write is atomic,means that when write is begined,then read must wait write end,so **volatile i++** is not ensured 一致性.(volatile 的变量如果A 线程发生了写入, 则会保证写入主存, 并且让其他线程的缓存失效, 根据缓存一致性原理, 其他线程的缓存失效后会将主存里更新后的值写到缓存, 从而保证volatile的可见性)
   * Access to the variable acts as though it is enclosed in a synchronized block, synchronized on itself.
   *  This can be useful for some actions where it is simply required that visibility of the variable be correct and order of accesses is not important. Using volatile also changes treatment of long and double to require accesses to them to be atomic.
   *  Happens-Before Guarantee:
@@ -790,11 +791,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0ODI0NzQzOCwtMTMyNjE1NDIzOSw5Mj
-E2NjMxMjYsNDAyOTczNjQ5LC0yMzI1MTIyMjQsMTgyMjgyNDA4
-MiwtMjA3MzE2MTMwNiwtNTc4MDAwNDMsMTA2MTQ1NTMwMyw4Mj
-cyMDkxMSwtMTYzMTAxNDMxNywtNTc4NDQ3NjgxLDE3MzYyNjMw
-MSwtNTkwMTY5ODcyLC01MDQ1OTc0MzksLTE4MzYxMjM4MDQsND
-Q4MzEwMDIwLDIwNjYwNjYxNzEsLTEwNTU1NzI4NDAsMzg3NzM2
-MTYzXX0=
+eyJoaXN0b3J5IjpbLTE0MjQ5NDczMTQsLTEzMjYxNTQyMzksOT
+IxNjYzMTI2LDQwMjk3MzY0OSwtMjMyNTEyMjI0LDE4MjI4MjQw
+ODIsLTIwNzMxNjEzMDYsLTU3ODAwMDQzLDEwNjE0NTUzMDMsOD
+I3MjA5MTEsLTE2MzEwMTQzMTcsLTU3ODQ0NzY4MSwxNzM2MjYz
+MDEsLTU5MDE2OTg3MiwtNTA0NTk3NDM5LC0xODM2MTIzODA0LD
+Q0ODMxMDAyMCwyMDY2MDY2MTcxLC0xMDU1NTcyODQwLDM4Nzcz
+NjE2M119
 -->
