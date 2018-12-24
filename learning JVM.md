@@ -690,8 +690,9 @@ public class A{
 5.  设置对象头，对象头中存储了该对象是拿了类的实例等信息
 6.  执行 init 方法（否则所有字段还为零值），把对象按照程序员的意愿进行初始化
 
+* 对象的格式
 
-
+分为对象头, 实例数据和对齐部分, 因为Hotspot JVM 要求对象的总大小必须为8 字节的整数倍, 所以最后可能需要对齐部分来填充.
 
 #### 零散问题
 * 字节码的文件格式
@@ -701,7 +702,7 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3NDc5NDgzMywxMDQ5NTkwNDAzLDkxMz
+eyJoaXN0b3J5IjpbMTcyNDE3NzEzNiwxMDQ5NTkwNDAzLDkxMz
 U4MDgyLDM2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUxNDQwLDE4
 NTUxNzk1NzQsMTE2MjYyMjk1LC0xNzMwNTU2MDQxLDE1ODQxNT
 k4NSw5NDE4MzgwMDcsLTEwNDg1OTc1MTMsLTExMDk3MTY4Mjgs
