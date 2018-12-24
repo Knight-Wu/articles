@@ -680,7 +680,11 @@ public class A{
 
 分配内存有两种方法: 指针碰撞和空闲列表, 前者
 > 指针碰撞
-用在垃圾回收算法回收后, 内存是连续的用一个指针来标示正在使用的内存和空闲内存的分界, 
+用在垃圾回收算法回收后, 内存是连续的, 所以可以用一个指针来标示正在使用的内存和空闲内存的分界, 当有内存分配的时候, 直接将指针往后移所需要的内存大小即可
+
+> 空闲列表
+
+如果内存空间不是连续的, 就只能用一个列表维护哪些内存是规整的
 
 4.  虚拟机将分配到的内存空间都初始化为零值（不包括对象头）。所以有时候某些字段不赋初始值就能直接使用
 5.  设置对象头，对象头中存储了该对象是拿了类的实例等信息
@@ -695,11 +699,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5ODI0MjYxNywxMDQ5NTkwNDAzLDkxMz
-U4MDgyLDM2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUxNDQwLDE4
-NTUxNzk1NzQsMTE2MjYyMjk1LC0xNzMwNTU2MDQxLDE1ODQxNT
-k4NSw5NDE4MzgwMDcsLTEwNDg1OTc1MTMsLTExMDk3MTY4Mjgs
-LTE3NTI4NDU2NzYsMTY4MDE4NTE3NiwtMTU3MDkxMzgwMSwxMz
-A5MDczNTM4LC01NjQ4MTcxODcsLTIzODcxMzIxMCwyMDk4NDEy
-MTA0XX0=
+eyJoaXN0b3J5IjpbNTY4ODk3ODM3LDEwNDk1OTA0MDMsOTEzNT
+gwODIsMzY1MzY4NzAwLDY1MjQ4ODY3OSw1OTkwNTE0NDAsMTg1
+NTE3OTU3NCwxMTYyNjIyOTUsLTE3MzA1NTYwNDEsMTU4NDE1OT
+g1LDk0MTgzODAwNywtMTA0ODU5NzUxMywtMTEwOTcxNjgyOCwt
+MTc1Mjg0NTY3NiwxNjgwMTg1MTc2LC0xNTcwOTEzODAxLDEzMD
+kwNzM1MzgsLTU2NDgxNzE4NywtMjM4NzEzMjEwLDIwOTg0MTIx
+MDRdfQ==
 -->
