@@ -34,7 +34,7 @@ hdfs 在做文件系统变更的时候, 先把修改信息保存在EditLog中, �
 
 The fsimage is a file that represents a point-in-time snapshot of the filesystem’s metadata. However, while the fsimage file format is very efficient to read, it’s unsuitable for making small incremental updates like renaming a single file. Thus, rather than writing a new fsimage every time the namespace is modified, the NameNode instead records the modifying operation in the edit log for durability.( 每次小的变更都写fsimage, 效率太低, 因为fsimage 是可读的格式, 文件大起来, 修改很困难)
 
-A typical edit ranges from 10s to 100s of bytes, but over time enough edits can accumulate to become unwieldy. A couple of problems can arise from these large edit logs. In extreme cases, it can fill up all the available disk capacity on a node, but more subtly, a large edit log can substantially delay NameNode startup as the NameNode reapplies all the edits. This is where checkpointing comes in.(但是edit log 的大小大概有100 字节, nn 的吞吐量很大, )
+A typical edit ranges from 10s to 100s of bytes, but over time enough edits can accumulate to become unwieldy. A couple of problems can arise from these large edit logs. In extreme cases, it can fill up all the available disk capacity on a node, but more subtly, a large edit log can substantially delay NameNode startup as the NameNode reapplies all the edits. This is where checkpointing comes in.(但是edit log 的大小大概有100 字节, nn 的吞吐量很大, edit log太多会占用大量的空间, 而且如果需要重启的话, 需要合并edit log和fsimage, 重启时间大大增加, 所以每隔一段时间和一定数量的事务会合并edit log和 fsimage 到最新的fsimage )
 
 * EditLog
 > 结构:正在写入的EditLog: edits_inprogress_${start_txid}, 写入完成的: edits_${start_txid}-${end_txid}.
@@ -477,11 +477,11 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwOTMxOTgxOSw0Nzg1NDIzMDUsLTE4OT
-k5MTg0MTUsLTE5NTMyNzM3MDQsLTMzNjU1NjA0MiwtMTEwNzIx
-NDM3LDg3NDQwODQ5NSwtMjc4MzQyOTAyLC0xNjY1OTYxNDY2LC
-0xNjY0OTk0NzA2LC0xMDIyMTczMDY3LC0xMTM3OTk4NTU1LC0y
-MzE5MTEwMTcsNjM2NzA2MTMyLDk0NzI2MTAzLC0xNDYwNzc0OT
-EsMTMyOTg2MjcxOCwtMTEzODg2Njg5Niw4OTk5NTI2MCw1ODQ4
-NzAwNDVdfQ==
+eyJoaXN0b3J5IjpbLTE1NTQzODY0MTAsNDc4NTQyMzA1LC0xOD
+k5OTE4NDE1LC0xOTUzMjczNzA0LC0zMzY1NTYwNDIsLTExMDcy
+MTQzNyw4NzQ0MDg0OTUsLTI3ODM0MjkwMiwtMTY2NTk2MTQ2Ni
+wtMTY2NDk5NDcwNiwtMTAyMjE3MzA2NywtMTEzNzk5ODU1NSwt
+MjMxOTExMDE3LDYzNjcwNjEzMiw5NDcyNjEwMywtMTQ2MDc3ND
+kxLDEzMjk4NjI3MTgsLTExMzg4NjY4OTYsODk5OTUyNjAsNTg0
+ODcwMDQ1XX0=
 -->
