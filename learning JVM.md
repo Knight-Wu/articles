@@ -692,8 +692,11 @@ public class A{
 
 * 对象的格式
 
-分为对象头, 实例数据和对齐部分, 因为Hotspot JVM 要求对象的总大小必须为8 字节的整数倍, 所以最后可能需要对齐部分来填充.
+分为对象头, 实例数据和对齐部分, 对象头包括: 哈希码、GC代年龄、锁状态、线程持有锁、偏向线程ID、时间戳等，另外还包含类型指针; 
+因为Hotspot JVM 要求对象的总大小必须为8 字节的整数倍, 所以最后可能需要对齐部分来填充.
 
+* 访问对象
+通过fangfa
 #### 零散问题
 * 字节码的文件格式
 https://www.jianshu.com/p/252f381a6bc4
@@ -702,11 +705,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyNDE3NzEzNiwxMDQ5NTkwNDAzLDkxMz
-U4MDgyLDM2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUxNDQwLDE4
-NTUxNzk1NzQsMTE2MjYyMjk1LC0xNzMwNTU2MDQxLDE1ODQxNT
-k4NSw5NDE4MzgwMDcsLTEwNDg1OTc1MTMsLTExMDk3MTY4Mjgs
-LTE3NTI4NDU2NzYsMTY4MDE4NTE3NiwtMTU3MDkxMzgwMSwxMz
-A5MDczNTM4LC01NjQ4MTcxODcsLTIzODcxMzIxMCwyMDk4NDEy
-MTA0XX0=
+eyJoaXN0b3J5IjpbLTE1MDEzOTgwODksMTA0OTU5MDQwMyw5MT
+M1ODA4MiwzNjUzNjg3MDAsNjUyNDg4Njc5LDU5OTA1MTQ0MCwx
+ODU1MTc5NTc0LDExNjI2MjI5NSwtMTczMDU1NjA0MSwxNTg0MT
+U5ODUsOTQxODM4MDA3LC0xMDQ4NTk3NTEzLC0xMTA5NzE2ODI4
+LC0xNzUyODQ1Njc2LDE2ODAxODUxNzYsLTE1NzA5MTM4MDEsMT
+MwOTA3MzUzOCwtNTY0ODE3MTg3LC0yMzg3MTMyMTAsMjA5ODQx
+MjEwNF19
 -->
