@@ -42,6 +42,11 @@ However, creating a new fsimage is an I/O- and CPU-intensive operation, sometime
 
 In either case though, checkpointing is triggered by one of two conditions: if enough time has elapsed since the last checkpoint (`dfs.namenode.checkpoint.period`), or if enough new edit log transactions have accumulated (`dfs.namenode.checkpoint.txns`). The checkpointing node periodically checks if either of these conditions are met (`dfs.namenode.checkpoint.check.period`), and if so, kicks off the checkpointing process.
 
+> checkpoint 的流程
+
+https://blog.cloudera.com/blog/2014/03/a-guide-to-checkpointing-in-hadoop/
+
+
 * EditLog
 > 结构:正在写入的EditLog: edits_inprogress_${start_txid}, 写入完成的: edits_${start_txid}-${end_txid}.
 
@@ -483,11 +488,11 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTcxODU3NzcsLTUzNzIzNTY2LDQ3OD
-U0MjMwNSwtMTg5OTkxODQxNSwtMTk1MzI3MzcwNCwtMzM2NTU2
-MDQyLC0xMTA3MjE0MzcsODc0NDA4NDk1LC0yNzgzNDI5MDIsLT
-E2NjU5NjE0NjYsLTE2NjQ5OTQ3MDYsLTEwMjIxNzMwNjcsLTEx
-Mzc5OTg1NTUsLTIzMTkxMTAxNyw2MzY3MDYxMzIsOTQ3MjYxMD
-MsLTE0NjA3NzQ5MSwxMzI5ODYyNzE4LC0xMTM4ODY2ODk2LDg5
-OTk1MjYwXX0=
+eyJoaXN0b3J5IjpbMzAxOTUyOTkyLC0xMDU3MTg1Nzc3LC01Mz
+cyMzU2Niw0Nzg1NDIzMDUsLTE4OTk5MTg0MTUsLTE5NTMyNzM3
+MDQsLTMzNjU1NjA0MiwtMTEwNzIxNDM3LDg3NDQwODQ5NSwtMj
+c4MzQyOTAyLC0xNjY1OTYxNDY2LC0xNjY0OTk0NzA2LC0xMDIy
+MTczMDY3LC0xMTM3OTk4NTU1LC0yMzE5MTEwMTcsNjM2NzA2MT
+MyLDk0NzI2MTAzLC0xNDYwNzc0OTEsMTMyOTg2MjcxOCwtMTEz
+ODg2Njg5Nl19
 -->
