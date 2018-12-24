@@ -282,8 +282,7 @@ MESI定律：在所有的脏缓存段（M状态）被回写后，任意缓存级
     * wait
     调用之前需要啊占用对象锁, 否则会抛出 IllegalMonitorStateException , 调用后会释放对象的monitor lock. 直到其他线程调用notify / notifyAll 或者超过指定的时间;
     * wait 与LockSupport, sleep 的区别
-    LockSupport不需要获取到 monitor lock , sleep调用后不会释放monitor lock
-    
+    LockSupport不需要获取到 monitor lock , sleep 是静态方法, 默认是执行方法的线程 sleep, 不需要获取到
     * notify 
     唤醒任意一个正在等待object monitor的线程, 当前线程必须持有monitor , 否则会抛出 IllegalMonitorStateException, 其他在等待monitor的线程会发生竞争
     
@@ -791,11 +790,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjQ5NDczMTQsLTEzMjYxNTQyMzksOT
-IxNjYzMTI2LDQwMjk3MzY0OSwtMjMyNTEyMjI0LDE4MjI4MjQw
-ODIsLTIwNzMxNjEzMDYsLTU3ODAwMDQzLDEwNjE0NTUzMDMsOD
-I3MjA5MTEsLTE2MzEwMTQzMTcsLTU3ODQ0NzY4MSwxNzM2MjYz
-MDEsLTU5MDE2OTg3MiwtNTA0NTk3NDM5LC0xODM2MTIzODA0LD
-Q0ODMxMDAyMCwyMDY2MDY2MTcxLC0xMDU1NTcyODQwLDM4Nzcz
-NjE2M119
+eyJoaXN0b3J5IjpbLTE3NDQxOTE0NCwtMTQyNDk0NzMxNCwtMT
+MyNjE1NDIzOSw5MjE2NjMxMjYsNDAyOTczNjQ5LC0yMzI1MTIy
+MjQsMTgyMjgyNDA4MiwtMjA3MzE2MTMwNiwtNTc4MDAwNDMsMT
+A2MTQ1NTMwMyw4MjcyMDkxMSwtMTYzMTAxNDMxNywtNTc4NDQ3
+NjgxLDE3MzYyNjMwMSwtNTkwMTY5ODcyLC01MDQ1OTc0MzksLT
+E4MzYxMjM4MDQsNDQ4MzEwMDIwLDIwNjYwNjYxNzEsLTEwNTU1
+NzI4NDBdfQ==
 -->
