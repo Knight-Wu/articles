@@ -46,6 +46,18 @@ In either case though, checkpointing is triggered by one of two conditions: if e
 
 https://blog.cloudera.com/blog/2014/03/a-guide-to-checkpointing-in-hadoop/
 
+> 可以用以下命令来手动checkpoint
+
+```
+[root@ip-172-31-4-109 ~]# sudo -u hdfs hdfs dfsadmin -safemode enter  
+Safe mode is  ON  in ip-172-31-4-109.ap-southeast-1.compute.internal/172.31.4.109:8020  
+Safe mode is  ON  in ip-172-31-1-163.ap-southeast-1.compute.internal/172.31.1.163:8020  
+[root@ip-172-31-4-109 ~]# sudo -u hdfs hdfs dfsadmin -saveNamespace  
+Save namespace successful for ip-172-31-4-109.ap-southeast-1.compute.internal/172.31.4.109:8020  
+Save namespace successful for ip-172-31-1-163.ap-southeast-1.compute.internal/172.31.1.163:8020  
+[root@ip-172-31-4-109 ~]# sudo -u hdfs hdfs dfsadmin -safemode leave
+
+```
 
 * EditLog
 > 结构:正在写入的EditLog: edits_inprogress_${start_txid}, 写入完成的: edits_${start_txid}-${end_txid}.
@@ -488,11 +500,11 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzAxOTUyOTkyLC0xMDU3MTg1Nzc3LC01Mz
-cyMzU2Niw0Nzg1NDIzMDUsLTE4OTk5MTg0MTUsLTE5NTMyNzM3
-MDQsLTMzNjU1NjA0MiwtMTEwNzIxNDM3LDg3NDQwODQ5NSwtMj
-c4MzQyOTAyLC0xNjY1OTYxNDY2LC0xNjY0OTk0NzA2LC0xMDIy
-MTczMDY3LC0xMTM3OTk4NTU1LC0yMzE5MTEwMTcsNjM2NzA2MT
-MyLDk0NzI2MTAzLC0xNDYwNzc0OTEsMTMyOTg2MjcxOCwtMTEz
-ODg2Njg5Nl19
+eyJoaXN0b3J5IjpbMTkwOTA0NjA2LDMwMTk1Mjk5MiwtMTA1Nz
+E4NTc3NywtNTM3MjM1NjYsNDc4NTQyMzA1LC0xODk5OTE4NDE1
+LC0xOTUzMjczNzA0LC0zMzY1NTYwNDIsLTExMDcyMTQzNyw4Nz
+Q0MDg0OTUsLTI3ODM0MjkwMiwtMTY2NTk2MTQ2NiwtMTY2NDk5
+NDcwNiwtMTAyMjE3MzA2NywtMTEzNzk5ODU1NSwtMjMxOTExMD
+E3LDYzNjcwNjEzMiw5NDcyNjEwMywtMTQ2MDc3NDkxLDEzMjk4
+NjI3MThdfQ==
 -->
