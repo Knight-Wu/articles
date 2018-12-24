@@ -2,7 +2,7 @@
   
 ##  运行时数据区域
 ### 程序计数器(programme counter register)
-若执行的是非native方法, 则保存下条指令的地址; 若是native方法, 则为空;每个线程独有, 互不影响; 用来保存
+若执行的是非native方法, 则保存下条指令的地址; 若是native方法, 则为空;每个线程独有, 互不影响; 因为多个线程在一个 cpu 是交替执行的, 需要用PCR 来保存线程切换后线程执行的状态, 
 
 ### 虚拟机栈(virtual machine stacks), 本地方法栈(native method stack)
 每个线程独有, 每个方法创建的时候都会创建一个栈帧(stack frame),用于存储方法的局部变量, 操作数栈等.
@@ -690,11 +690,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzAzMjEzNzkwLDM2NTM2ODcwMCw2NTI0OD
-g2NzksNTk5MDUxNDQwLDE4NTUxNzk1NzQsMTE2MjYyMjk1LC0x
-NzMwNTU2MDQxLDE1ODQxNTk4NSw5NDE4MzgwMDcsLTEwNDg1OT
-c1MTMsLTExMDk3MTY4MjgsLTE3NTI4NDU2NzYsMTY4MDE4NTE3
-NiwtMTU3MDkxMzgwMSwxMzA5MDczNTM4LC01NjQ4MTcxODcsLT
-IzODcxMzIxMCwyMDk4NDEyMTA0LC0xNDI0NjUzMzMsLTE1OTgx
-NzMyOTRdfQ==
+eyJoaXN0b3J5IjpbMTIxODA3NTE4MiwzNjUzNjg3MDAsNjUyND
+g4Njc5LDU5OTA1MTQ0MCwxODU1MTc5NTc0LDExNjI2MjI5NSwt
+MTczMDU1NjA0MSwxNTg0MTU5ODUsOTQxODM4MDA3LC0xMDQ4NT
+k3NTEzLC0xMTA5NzE2ODI4LC0xNzUyODQ1Njc2LDE2ODAxODUx
+NzYsLTE1NzA5MTM4MDEsMTMwOTA3MzUzOCwtNTY0ODE3MTg3LC
+0yMzg3MTMyMTAsMjA5ODQxMjEwNCwtMTQyNDY1MzMzLC0xNTk4
+MTczMjk0XX0=
 -->
