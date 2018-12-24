@@ -2,7 +2,7 @@
   
 ##  运行时数据区域
 ### 程序计数器(programme counter register)
-若执行的是非native方法, 则保存下条指令的地址; 若是native方法, 则为空;每个线程独有, 互不影响
+若执行的是非native方法, 则保存下条指令的地址; 若是native方法, 则为空;每个线程独有, 互不影响; 用来保存
 
 ### 虚拟机栈(virtual machine stacks), 本地方法栈(native method stack)
 每个线程独有, 每个方法创建的时候都会创建一个栈帧(stack frame),用于存储方法的局部变量, 操作数栈等.
@@ -192,7 +192,7 @@ oracle 文章的截图:
 5.  Remark 最终标记, 本阶段的目标是完成老年代中剩余存活对象的标记,  因为之前的concurrent mask 是和用户线程并发执行的, 可能中间会产生浮动垃圾, 所以需要进行最终标记, 会STW, 通过耗时较长, 而且还可能还随着年轻代存活对象的数量的数量增多而时间变长.
 
 
-> The remark pause is often comparable in length to a minor collection. The remark pause is affected by certain application characteristics (for example, a high rate of object modification can increase this pause) and the time since the last minor collection (for example, more objects in the young generation may increase this pause)
+> The remark pause is often comparable in length to a minor collection. The remark pause is affected by certain application characteristics (for example, a high rate of object modification can increase this pause) and the time since the last minor collection (for example, more objects nation may increase this pause)
 > [https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/cms.html](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/cms.html)
 
 7.  Concurrent Sweep（并发清除）此阶段与应用程序并发执行，不需要 STW。目的是删除未使用的对象，并收回他们占用的空间
@@ -224,7 +224,7 @@ https://tech.meituan.com/g1.html
   G1的Stop The World(STW)更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间, 通过控制收集哪些region和region 的多少来控制停顿时间. 
   
 停顿时间: (和吞吐量是此消彼长的)
-> When you evaluate or tune any garbage collection, there is always a latency versus throughput trade-off. The G1 GC is an incremental garbage collector with uniform pauses, but also more overhead on the application threads. The throughput goal for the G1 GC is 90 percent application time and 10 percent garbage collection time. Compare this to the Java HotSpot VM parallel collector. The throughput goal of the parallel collector is 99 percent application time and 1 percent garbage collection time. Therefore, when you evaluate the G1 GC for throughput, relax your pause time target. Setting too aggressive a goal indicates that you are willing to bear an increase in garbage collection overhead, which has a direct effect on throughput. When you evaluate the G1 GC for latency, you set your desired (soft) real-time goal, and the G1 GC will try to meet it. As a side effect, throughput may suffer. See the section [Pause Time Goal](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc.html#pause_time_goal) in [Garbage-First Garbage Collector](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc.html#garbage_first_garbage_collection) for additional information
+> When you evaluatize orf tune any garbage collection, there is always a latency versus throughput trade-off. The G1 GC is an incremental garbage collector with uniform pauses, but also more overhead on the application threads. The throughput goal for the G1 GC is 90 percent application time and 10 percent garbage collection time. Compare this to the Java HotSpot VM parallel collector. The throughput goal of the parallel collector is 99 percent application time and 1 percent garbage collection time. Therefore, when you evaluate the G1 GC for throughput, relax your pause time target. Setting too aggressive a goal indicates that you are willing to bear an increase in garbage collection overhead, which has a direct effect on throughput. When you evaluate the G1 GC for latency, you set your desired (soft) real-time goal, and the G1 GC will try to meet it. As a side effect, throughput may suffer. See the section [Pause Time Goal](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc.html#pause_time_goal) in [Garbage-First Garbage Collector](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc.html#garbage_first_garbage_collection) for additional informationhe young generat
 
 > Applications running today with either the CMS or the with parallel compaction would benefit from switching to G1 if the application has one or more of the following traits: 
  More than 50% of the Java heap is occupied with live data.
@@ -690,11 +690,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY1MzY4NzAwLDY1MjQ4ODY3OSw1OTkwNT
-E0NDAsMTg1NTE3OTU3NCwxMTYyNjIyOTUsLTE3MzA1NTYwNDEs
-MTU4NDE1OTg1LDk0MTgzODAwNywtMTA0ODU5NzUxMywtMTEwOT
-cxNjgyOCwtMTc1Mjg0NTY3NiwxNjgwMTg1MTc2LC0xNTcwOTEz
-ODAxLDEzMDkwNzM1MzgsLTU2NDgxNzE4NywtMjM4NzEzMjEwLD
-IwOTg0MTIxMDQsLTE0MjQ2NTMzMywtMTU5ODE3MzI5NCwtODYy
-MzIwMTE2XX0=
+eyJoaXN0b3J5IjpbMzAzMjEzNzkwLDM2NTM2ODcwMCw2NTI0OD
+g2NzksNTk5MDUxNDQwLDE4NTUxNzk1NzQsMTE2MjYyMjk1LC0x
+NzMwNTU2MDQxLDE1ODQxNTk4NSw5NDE4MzgwMDcsLTEwNDg1OT
+c1MTMsLTExMDk3MTY4MjgsLTE3NTI4NDU2NzYsMTY4MDE4NTE3
+NiwtMTU3MDkxMzgwMSwxMzA5MDczNTM4LC01NjQ4MTcxODcsLT
+IzODcxMzIxMCwyMDk4NDEyMTA0LC0xNDI0NjUzMzMsLTE1OTgx
+NzMyOTRdfQ==
 -->
