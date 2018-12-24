@@ -27,7 +27,13 @@
 #### The Persistence of File System Metadata
 ![enter image description here](https://drive.google.com/uc?id=15wVin8_CImgR1NzsEXNKxp0U9XTvnAwU)
 
-> hdfs 在做文件系统变更的时候, 先把修改信息保存在EditLog中, 再更新内存中的fs. 并且会定期进行checkPoint, 将内存的fs持久化到磁盘上形成FSImage, FSImage的文件名例如: fsimage_${end_txid}, nn启动的时候会进行数据恢复, 加载内存fs, 先把FSImage加载, 再把end_txid后的editLog回放到内存的fs上.
+
+hdfs 在做文件系统变更的时候, 先把修改信息保存在EditLog中, 再更新内存中的fs. 并且会定期进行checkPoint, 将内存的fs持久化到磁盘上形成FSImage, FSImage的文件名例如: fsimage_${end_txid}, nn启动的时候会进行数据恢复, 加载内存fs, 先把FSImage加载, 再把end_txid后的editLog回放到内存的fs上.
+
+> 为什么要有checkpoint 
+
+The fsimage is a file that represents a point-in-time snapshot of the filesystem’s metadata. However, while the fsimage file format is very efficient to read, it’s unsuitable for making small incremental updates like renaming a single file. Thus, rather than writing a new fsimage every time the namespace is modified, the NameNode instead records the modifying operation in the edit log for durability.( 每次小的变更都写fsimage, 效率太低, 因为fsimage 是)
+
 
 * EditLog
 > 结构:正在写入的EditLog: edits_inprogress_${start_txid}, 写入完成的: edits_${start_txid}-${end_txid}.
@@ -470,11 +476,11 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDc4NTQyMzA1LC0xODk5OTE4NDE1LC0xOT
-UzMjczNzA0LC0zMzY1NTYwNDIsLTExMDcyMTQzNyw4NzQ0MDg0
-OTUsLTI3ODM0MjkwMiwtMTY2NTk2MTQ2NiwtMTY2NDk5NDcwNi
-wtMTAyMjE3MzA2NywtMTEzNzk5ODU1NSwtMjMxOTExMDE3LDYz
-NjcwNjEzMiw5NDcyNjEwMywtMTQ2MDc3NDkxLDEzMjk4NjI3MT
-gsLTExMzg4NjY4OTYsODk5OTUyNjAsNTg0ODcwMDQ1LDEyODI3
-MzUzODRdfQ==
+eyJoaXN0b3J5IjpbMTA2MzA5ODAzNSw0Nzg1NDIzMDUsLTE4OT
+k5MTg0MTUsLTE5NTMyNzM3MDQsLTMzNjU1NjA0MiwtMTEwNzIx
+NDM3LDg3NDQwODQ5NSwtMjc4MzQyOTAyLC0xNjY1OTYxNDY2LC
+0xNjY0OTk0NzA2LC0xMDIyMTczMDY3LC0xMTM3OTk4NTU1LC0y
+MzE5MTEwMTcsNjM2NzA2MTMyLDk0NzI2MTAzLC0xNDYwNzc0OT
+EsMTMyOTg2MjcxOCwtMTEzODg2Njg5Niw4OTk5NTI2MCw1ODQ4
+NzAwNDVdfQ==
 -->
