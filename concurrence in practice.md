@@ -3,7 +3,7 @@
 
 ## 基本概念
 ### 什么叫线程安全
-  多线程调用一个对象时, 不需要考虑线程的交替执行,也不需要额外的同步,调用这个对象都能获得正确的结果; 可以简单分为两个方面, 
+  多线程调用一个线程安全的对象时, 不需要考虑线程的交替执行,也不需要额外的同步,调用这个对象都能获得正确的结果; 可以简单分为两个方面, 
     1. 多线程环境下代码的调用顺序
     可以依据happen-before原则保证代码执行的顺序如你所愿, 不被重排序 
     2. 存储的可见性
@@ -787,10 +787,10 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTIxNjYzMTI2LDQwMjk3MzY0OSwtMjMyNT
-EyMjI0LDE4MjI4MjQwODIsLTIwNzMxNjEzMDYsLTU3ODAwMDQz
-LDEwNjE0NTUzMDMsODI3MjA5MTEsLTE2MzEwMTQzMTcsLTU3OD
-Q0NzY4MSwxNzM2MjYzMDEsLTU5MDE2OTg3MiwtNTA0NTk3NDM5
-LC0xODM2MTIzODA0LDQ0ODMxMDAyMCwyMDY2MDY2MTcxLC0xMD
-U1NTcyODQwLDM4NzczNjE2M119
+eyJoaXN0b3J5IjpbLTEzMjYxNTQyMzksOTIxNjYzMTI2LDQwMj
+k3MzY0OSwtMjMyNTEyMjI0LDE4MjI4MjQwODIsLTIwNzMxNjEz
+MDYsLTU3ODAwMDQzLDEwNjE0NTUzMDMsODI3MjA5MTEsLTE2Mz
+EwMTQzMTcsLTU3ODQ0NzY4MSwxNzM2MjYzMDEsLTU5MDE2OTg3
+MiwtNTA0NTk3NDM5LC0xODM2MTIzODA0LDQ0ODMxMDAyMCwyMD
+Y2MDY2MTcxLC0xMDU1NTcyODQwLDM4NzczNjE2M119
 -->
