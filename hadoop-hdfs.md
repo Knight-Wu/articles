@@ -247,6 +247,7 @@ Save namespace successful for ip-172-31-1-163.ap-southeast-1.compute.internal/17
 详细流程: [notebook-link](http://note.youdao.com/noteshare?id=1db8cf2911deed6b89523bd3feab696e&sub=A63DC7C4A24A4C759435BB12479B6BDB)
 原贴地址: [http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html](http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html)
 
+小集群测试: 集群中只有三个dn, 一个dn 挂掉, 还是能完成客户端写入的, 会重建整个pipeline.
 
 #### Understanding HDFS Recovery Processes
 [https://blog.cloudera.com/blog/2015/02/understanding-hdfs-recovery-processes-part-1/](https://blog.cloudera.com/blog/2015/02/understanding-hdfs-recovery-processes-part-1/)
@@ -500,11 +501,11 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5ODMyMDIxMiwxOTA5MDQ2MDYsMzAxOT
-UyOTkyLC0xMDU3MTg1Nzc3LC01MzcyMzU2Niw0Nzg1NDIzMDUs
-LTE4OTk5MTg0MTUsLTE5NTMyNzM3MDQsLTMzNjU1NjA0MiwtMT
-EwNzIxNDM3LDg3NDQwODQ5NSwtMjc4MzQyOTAyLC0xNjY1OTYx
-NDY2LC0xNjY0OTk0NzA2LC0xMDIyMTczMDY3LC0xMTM3OTk4NT
-U1LC0yMzE5MTEwMTcsNjM2NzA2MTMyLDk0NzI2MTAzLC0xNDYw
-Nzc0OTFdfQ==
+eyJoaXN0b3J5IjpbMTY5OTc0MDk3OCwtNTk4MzIwMjEyLDE5MD
+kwNDYwNiwzMDE5NTI5OTIsLTEwNTcxODU3NzcsLTUzNzIzNTY2
+LDQ3ODU0MjMwNSwtMTg5OTkxODQxNSwtMTk1MzI3MzcwNCwtMz
+M2NTU2MDQyLC0xMTA3MjE0MzcsODc0NDA4NDk1LC0yNzgzNDI5
+MDIsLTE2NjU5NjE0NjYsLTE2NjQ5OTQ3MDYsLTEwMjIxNzMwNj
+csLTExMzc5OTg1NTUsLTIzMTkxMTAxNyw2MzY3MDYxMzIsOTQ3
+MjYxMDNdfQ==
 -->
