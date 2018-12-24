@@ -17,7 +17,7 @@
 存放对象的实例和数组, 所有线程所共有; 如果堆中没有内存完成实例的分配, 并且堆也无法再扩展时,抛出 OutOfMemoryError
 
 ### 方法区(Method Area)
-线程间共享, 存储每个类的结构,包括运行时常量 *(包括string pool)* ,静态变量,即时编译器编译后的代码等数据.
+线程间共享, 存储每个类的结构,包括运行时常量 ,也就是下面指的字面量 *(包括string pool)* ,静态变量,即时编译器编译后的代码等数据.
 程序中的字面量（literal）如直接书写的100、"hello"和常量都是放在常量池中，常量池是方法区的一部分，
 ```
 String str = new String("hello");
@@ -690,11 +690,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTEzNTgwODIsMzY1MzY4NzAwLDY1MjQ4OD
-Y3OSw1OTkwNTE0NDAsMTg1NTE3OTU3NCwxMTYyNjIyOTUsLTE3
-MzA1NTYwNDEsMTU4NDE1OTg1LDk0MTgzODAwNywtMTA0ODU5Nz
-UxMywtMTEwOTcxNjgyOCwtMTc1Mjg0NTY3NiwxNjgwMTg1MTc2
-LC0xNTcwOTEzODAxLDEzMDkwNzM1MzgsLTU2NDgxNzE4NywtMj
-M4NzEzMjEwLDIwOTg0MTIxMDQsLTE0MjQ2NTMzMywtMTU5ODE3
-MzI5NF19
+eyJoaXN0b3J5IjpbMTA0OTU5MDQwMyw5MTM1ODA4MiwzNjUzNj
+g3MDAsNjUyNDg4Njc5LDU5OTA1MTQ0MCwxODU1MTc5NTc0LDEx
+NjI2MjI5NSwtMTczMDU1NjA0MSwxNTg0MTU5ODUsOTQxODM4MD
+A3LC0xMDQ4NTk3NTEzLC0xMTA5NzE2ODI4LC0xNzUyODQ1Njc2
+LDE2ODAxODUxNzYsLTE1NzA5MTM4MDEsMTMwOTA3MzUzOCwtNT
+Y0ODE3MTg3LC0yMzg3MTMyMTAsMjA5ODQxMjEwNCwtMTQyNDY1
+MzMzXX0=
 -->
