@@ -38,6 +38,10 @@ A typical edit ranges from 10s to 100s of bytes, but over time enough edits can 
 
 However, creating a new fsimage is an I/O- and CPU-intensive operation, sometimes taking minutes to perform. During a checkpoint, the namesystem also needs to restrict concurrent access from other users. So, rather than pausing the active NameNode to perform a checkpoint, HDFS defers it to either the SecondaryNameNode or Standby NameNode(但是checkpoint 是一个很费资源, 且降低并发的操作, 如果采用了高可用, 则在standby nn 进行checkpoint)
 
+> checkpoint 触发的条件
+
+In either case though, checkpointing is triggered by one of two conditions: if enough time has elapsed since the last checkpoint (`dfs.namenode.checkpoint.period`), or if enough new edit log transactions have accumulated (`dfs.namenode.checkpoint.txns`). The checkpointing node periodically checks if either of these conditions are met (`dfs.namenode.checkpoint.check.period`), and if so, kicks off the checkpointing process.
+
 * EditLog
 > 结构:正在写入的EditLog: edits_inprogress_${start_txid}, 写入完成的: edits_${start_txid}-${end_txid}.
 
@@ -479,11 +483,11 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzNzIzNTY2LDQ3ODU0MjMwNSwtMTg5OT
-kxODQxNSwtMTk1MzI3MzcwNCwtMzM2NTU2MDQyLC0xMTA3MjE0
-MzcsODc0NDA4NDk1LC0yNzgzNDI5MDIsLTE2NjU5NjE0NjYsLT
-E2NjQ5OTQ3MDYsLTEwMjIxNzMwNjcsLTExMzc5OTg1NTUsLTIz
-MTkxMTAxNyw2MzY3MDYxMzIsOTQ3MjYxMDMsLTE0NjA3NzQ5MS
-wxMzI5ODYyNzE4LC0xMTM4ODY2ODk2LDg5OTk1MjYwLDU4NDg3
-MDA0NV19
+eyJoaXN0b3J5IjpbLTEwNTcxODU3NzcsLTUzNzIzNTY2LDQ3OD
+U0MjMwNSwtMTg5OTkxODQxNSwtMTk1MzI3MzcwNCwtMzM2NTU2
+MDQyLC0xMTA3MjE0MzcsODc0NDA4NDk1LC0yNzgzNDI5MDIsLT
+E2NjU5NjE0NjYsLTE2NjQ5OTQ3MDYsLTEwMjIxNzMwNjcsLTEx
+Mzc5OTg1NTUsLTIzMTkxMTAxNyw2MzY3MDYxMzIsOTQ3MjYxMD
+MsLTE0NjA3NzQ5MSwxMzI5ODYyNzE4LC0xMTM4ODY2ODk2LDg5
+OTk1MjYwXX0=
 -->
