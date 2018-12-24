@@ -32,8 +32,9 @@ hdfs 在做文件系统变更的时候, 先把修改信息保存在EditLog中, �
 
 > 为什么要有checkpoint 
 
-The fsimage is a file that represents a point-in-time snapshot of the filesystem’s metadata. However, while the fsimage file format is very efficient to read, it’s unsuitable for making small incremental updates like renaming a single file. Thus, rather than writing a new fsimage every time the namespace is modified, the NameNode instead records the modifying operation in the edit log for durability.( 每次小的变更都写fsimage, 效率太低, 因为fsimage 是)
+The fsimage is a file that represents a point-in-time snapshot of the filesystem’s metadata. However, while the fsimage file format is very efficient to read, it’s unsuitable for making small incremental updates like renaming a single file. Thus, rather than writing a new fsimage every time the namespace is modified, the NameNode instead records the modifying operation in the edit log for durability.( 每次小的变更都写fsimage, 效率太低, 因为fsimage 是可读的格式, 文件大起来, 修改很困难)
 
+A typical edit ranges from 10s to 100s of bytes, but over time enough edits can accumulate to become unwieldy. A couple of problems can arise from these large edit logs. In extreme cases, it can fill up all the available disk capacity on a node, but more subtly, a large edit log can substantially delay NameNode startup as the NameNode reapplies all the edits. This is where checkpointing comes in.(但是edit log 的大小大概有100 字节, nn 的吞吐量很大, )
 
 * EditLog
 > 结构:正在写入的EditLog: edits_inprogress_${start_txid}, 写入完成的: edits_${start_txid}-${end_txid}.
@@ -476,7 +477,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA2MzA5ODAzNSw0Nzg1NDIzMDUsLTE4OT
+eyJoaXN0b3J5IjpbMjEwOTMxOTgxOSw0Nzg1NDIzMDUsLTE4OT
 k5MTg0MTUsLTE5NTMyNzM3MDQsLTMzNjU1NjA0MiwtMTEwNzIx
 NDM3LDg3NDQwODQ5NSwtMjc4MzQyOTAyLC0xNjY1OTYxNDY2LC
 0xNjY0OTk0NzA2LC0xMDIyMTczMDY3LC0xMTM3OTk4NTU1LC0y
