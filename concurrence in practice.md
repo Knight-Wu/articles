@@ -280,7 +280,7 @@ MESI定律：在所有的脏缓存段（M状态）被回写后，任意缓存级
         
 * wait, notify, notifyAll
     * wait
-    见代码注释" this method causees the current thread to place itself "
+    见代码注释" this method causees the current thread to place itself in the wait set for this object , thread become disabled for thread scheduling , and 直到被notify"
     
     调用之前需要啊占用对象锁, 否则会抛出 IllegalMonitorStateException , 调用后会释放对象的monitor lock. 直到其他线程调用notify / notifyAll 或者超过指定的时间;
     * wait 与LockSupport, sleep 的区别
@@ -792,7 +792,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzNzAzNDAwOSwtMTg3NTEwNjg3OSwtMT
+eyJoaXN0b3J5IjpbMjA2NzY4MTcxMywtMTg3NTEwNjg3OSwtMT
 QyNDk0NzMxNCwtMTMyNjE1NDIzOSw5MjE2NjMxMjYsNDAyOTcz
 NjQ5LC0yMzI1MTIyMjQsMTgyMjgyNDA4MiwtMjA3MzE2MTMwNi
 wtNTc4MDAwNDMsMTA2MTQ1NTMwMyw4MjcyMDkxMSwtMTYzMTAx
