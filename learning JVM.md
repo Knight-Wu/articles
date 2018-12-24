@@ -678,9 +678,9 @@ public class A{
 2.  类加载检查通过
 3.  虚拟机java堆为新主对象分配内存，对象所需内存的大小在类加载完成后便可完全确定
 
-分配内存有两种方法: 指针碰撞和空闲列表
+分配内存有两种方法: 指针碰撞和空闲列表, 前者
 > 指针碰撞
-
+用在垃圾回收算法回收后, 内存是连续的用一个指针来标示正在使用的内存和空闲内存的分界, 
 
 4.  虚拟机将分配到的内存空间都初始化为零值（不包括对象头）。所以有时候某些字段不赋初始值就能直接使用
 5.  设置对象头，对象头中存储了该对象是拿了类的实例等信息
@@ -695,7 +695,7 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg3MTkyMTUxNiwxMDQ5NTkwNDAzLDkxMz
+eyJoaXN0b3J5IjpbLTk5ODI0MjYxNywxMDQ5NTkwNDAzLDkxMz
 U4MDgyLDM2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUxNDQwLDE4
 NTUxNzk1NzQsMTE2MjYyMjk1LC0xNzMwNTU2MDQxLDE1ODQxNT
 k4NSw5NDE4MzgwMDcsLTEwNDg1OTc1MTMsLTExMDk3MTY4Mjgs
