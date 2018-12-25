@@ -290,7 +290,9 @@ class GuradedClass{
 	protected boolean cond = false;
 	// PRE:lock held
 	protected void awaitCond() throw InterruptedException{
-	while(!cond) wait(); // 使用while 循环, 是为了当wait 被唤醒的时候, 再次检查一遍cond 是否满足, 因为有spurious wakeup的可能
+	while(!cond) wait(); 
+	// 使用while 循环, 是为了当wait 被唤醒的时候, 再次检查一遍cond 是否满足, 因为有spurious wakeup的可能; 
+	// wait() 执行完之后, 就接着释放了 monitor lock, 等待其他线程唤醒.
 }
 
 public synchronized void guardedAction(){ // 要用synchronized ,是因为防止其他对象误调用notify 方法, 因为notify是public 的,
@@ -817,11 +819,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2MjE3NzY5NSw4MTM4NjY1MCwtODY3Mz
-YzMDM0LC0xOTk3MTAzNzc3LC0xODc1MTA2ODc5LC0xNDI0OTQ3
-MzE0LC0xMzI2MTU0MjM5LDkyMTY2MzEyNiw0MDI5NzM2NDksLT
-IzMjUxMjIyNCwxODIyODI0MDgyLC0yMDczMTYxMzA2LC01Nzgw
-MDA0MywxMDYxNDU1MzAzLDgyNzIwOTExLC0xNjMxMDE0MzE3LC
-01Nzg0NDc2ODEsMTczNjI2MzAxLC01OTAxNjk4NzIsLTUwNDU5
-NzQzOV19
+eyJoaXN0b3J5IjpbMTcyNDUxNjMzMSwxOTYyMTc3Njk1LDgxMz
+g2NjUwLC04NjczNjMwMzQsLTE5OTcxMDM3NzcsLTE4NzUxMDY4
+NzksLTE0MjQ5NDczMTQsLTEzMjYxNTQyMzksOTIxNjYzMTI2LD
+QwMjk3MzY0OSwtMjMyNTEyMjI0LDE4MjI4MjQwODIsLTIwNzMx
+NjEzMDYsLTU3ODAwMDQzLDEwNjE0NTUzMDMsODI3MjA5MTEsLT
+E2MzEwMTQzMTcsLTU3ODQ0NzY4MSwxNzM2MjYzMDEsLTU5MDE2
+OTg3Ml19
 -->
