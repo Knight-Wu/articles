@@ -325,7 +325,7 @@ class Test{
 	ArrayDeque<String> queue = new ArrayDeque<String>(16);
 
 	class Producer{
-	public void produce(String msg){
+	public synchronized void produce(String msg){
 	while(queue.size()==16)
 }
 	}
@@ -832,11 +832,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4OTgxODE1LC00NjY1Mzc2MTgsLTY3Nz
-czODA2LDc0MjE3MjU5MCwxOTYyMTc3Njk1LDgxMzg2NjUwLC04
-NjczNjMwMzQsLTE5OTcxMDM3NzcsLTE4NzUxMDY4NzksLTE0Mj
-Q5NDczMTQsLTEzMjYxNTQyMzksOTIxNjYzMTI2LDQwMjk3MzY0
-OSwtMjMyNTEyMjI0LDE4MjI4MjQwODIsLTIwNzMxNjEzMDYsLT
-U3ODAwMDQzLDEwNjE0NTUzMDMsODI3MjA5MTEsLTE2MzEwMTQz
-MTddfQ==
+eyJoaXN0b3J5IjpbMTAyNDIxNzY5MywtNDY2NTM3NjE4LC02Nz
+c3MzgwNiw3NDIxNzI1OTAsMTk2MjE3NzY5NSw4MTM4NjY1MCwt
+ODY3MzYzMDM0LC0xOTk3MTAzNzc3LC0xODc1MTA2ODc5LC0xND
+I0OTQ3MzE0LC0xMzI2MTU0MjM5LDkyMTY2MzEyNiw0MDI5NzM2
+NDksLTIzMjUxMjIyNCwxODIyODI0MDgyLC0yMDczMTYxMzA2LC
+01NzgwMDA0MywxMDYxNDU1MzAzLDgyNzIwOTExLC0xNjMxMDE0
+MzE3XX0=
 -->
