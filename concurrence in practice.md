@@ -282,7 +282,7 @@ MESI定律：在所有的脏缓存段（M状态）被回写后，任意缓存级
     * wait
     见代码注释" this method causees the current thread to place itself in the wait set for this object , thread become disabled for thread scheduling , and 直到被other threads notify, notifyAll this object or interrupt this thread.  ", 
     
-    调用之前需要啊占用对象锁, 否则会抛出 IllegalMonitorStateException , 调用后wait 之后会释放lock, 线程变为waited 状态, 直到其他线程
+    调用之前需要啊占用对象锁, 否则会抛出 IllegalMonitorStateException , 调用后wait 之后会释放lock, 线程变为waited 状态, 直到其他线程调用了notify , notifyAll, 在 wait set的线程会变为blocked 状态, 
 
 > wait 例子, 见"concurrent programming in java second edition doug lea pdf, 3.2.3 Guraded Waits"
 ```
@@ -816,7 +816,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTExMjgyNzE0OCwtODY3MzYzMDM0LC0xOT
+eyJoaXN0b3J5IjpbLTcyNzI3NDQzMiwtODY3MzYzMDM0LC0xOT
 k3MTAzNzc3LC0xODc1MTA2ODc5LC0xNDI0OTQ3MzE0LC0xMzI2
 MTU0MjM5LDkyMTY2MzEyNiw0MDI5NzM2NDksLTIzMjUxMjIyNC
 wxODIyODI0MDgyLC0yMDczMTYxMzA2LC01NzgwMDA0MywxMDYx
