@@ -353,14 +353,13 @@ class Consumer{
 
 #### 其他线程方法
 join, yield, sleep
-
+线程状态: https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.State.html#TIMED_WAITING
 * sleep
     不释放正在占用的对象的monitor lock，线程处于TIME_WAITED 的状态
 * join
 
     在主线程中调用threadA.join(), 主线程需要等待threadA 死亡才会继续执行
 * yield
-
     把当前cpu的使用交给调度器进行分配, 调度器可以忽略该信息. 细节见
 [link](https://stackoverflow.com/questions/6979796/what-are-the-main-uses-of-yield-and-how-does-it-differ-from-join-and-interr)
 
@@ -851,11 +850,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjM2MjU0MTAsNDk4MzAxMDE1LDE0ND
-MyNTc2MDcsMTMxMTIzOTM1Niw4MDE0MDczMTQsLTQ2NjUzNzYx
-OCwtNjc3NzM4MDYsNzQyMTcyNTkwLDE5NjIxNzc2OTUsODEzOD
-Y2NTAsLTg2NzM2MzAzNCwtMTk5NzEwMzc3NywtMTg3NTEwNjg3
-OSwtMTQyNDk0NzMxNCwtMTMyNjE1NDIzOSw5MjE2NjMxMjYsND
-AyOTczNjQ5LC0yMzI1MTIyMjQsMTgyMjgyNDA4MiwtMjA3MzE2
-MTMwNl19
+eyJoaXN0b3J5IjpbMTM1Nzg4MTc3Niw0OTgzMDEwMTUsMTQ0Mz
+I1NzYwNywxMzExMjM5MzU2LDgwMTQwNzMxNCwtNDY2NTM3NjE4
+LC02Nzc3MzgwNiw3NDIxNzI1OTAsMTk2MjE3NzY5NSw4MTM4Nj
+Y1MCwtODY3MzYzMDM0LC0xOTk3MTAzNzc3LC0xODc1MTA2ODc5
+LC0xNDI0OTQ3MzE0LC0xMzI2MTU0MjM5LDkyMTY2MzEyNiw0MD
+I5NzM2NDksLTIzMjUxMjIyNCwxODIyODI0MDgyLC0yMDczMTYx
+MzA2XX0=
 -->
