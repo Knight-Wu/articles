@@ -307,13 +307,14 @@ public synchronized void guardedAction(){ // 要用synchronized ,是因为防止
 
 ```
  
-   * wait 与LockSupport, sleep 的区别
-    LockSupport不需要获取到 monitor lock , sleep 是Thread.java 的静态方法, 默认是执行方法的线程 sleep, 不需要获取到thread object 的monitor 锁; 但是wait 是 Object.java 的实例方法, 执行前需要获取到 monitor lock, 
-    * notify 
+* notify 
     唤醒任意一个正在等待object monitor的线程, 当前线程必须持有monitor , 否则会抛出 IllegalMonitorStateException, 其他在等待monitor的线程会发生竞争
     
-    * notifyAll
+  * notifyAll
     与notify的区别是, 会唤醒所有等待线程, 但是只有一个线程可以竞争到monitor, 其他线程在等待释放monitor
+    
+* wait 与LockSupport, sleep 的区别
+    LockSupport不需要获取到 monitor lock , sleep 是Thread.java 的静态方法, 默认是执行方法的线程 sleep, 不需要获取到thread object 的monitor 锁, 而且sleep 之后不需要唤醒, 但是wait 是 Object.java 的实例方法, 执行前需要获取到 monitor lock, 
 
 #### 其他线程方法
 join, yield, sleep
@@ -816,11 +817,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODEzODY2NTAsLTg2NzM2MzAzNCwtMTk5Nz
-EwMzc3NywtMTg3NTEwNjg3OSwtMTQyNDk0NzMxNCwtMTMyNjE1
-NDIzOSw5MjE2NjMxMjYsNDAyOTczNjQ5LC0yMzI1MTIyMjQsMT
-gyMjgyNDA4MiwtMjA3MzE2MTMwNiwtNTc4MDAwNDMsMTA2MTQ1
-NTMwMyw4MjcyMDkxMSwtMTYzMTAxNDMxNywtNTc4NDQ3NjgxLD
-E3MzYyNjMwMSwtNTkwMTY5ODcyLC01MDQ1OTc0MzksLTE4MzYx
-MjM4MDRdfQ==
+eyJoaXN0b3J5IjpbMTk2MjE3NzY5NSw4MTM4NjY1MCwtODY3Mz
+YzMDM0LC0xOTk3MTAzNzc3LC0xODc1MTA2ODc5LC0xNDI0OTQ3
+MzE0LC0xMzI2MTU0MjM5LDkyMTY2MzEyNiw0MDI5NzM2NDksLT
+IzMjUxMjIyNCwxODIyODI0MDgyLC0yMDczMTYxMzA2LC01Nzgw
+MDA0MywxMDYxNDU1MzAzLDgyNzIwOTExLC0xNjMxMDE0MzE3LC
+01Nzg0NDc2ODEsMTczNjI2MzAxLC01OTAxNjk4NzIsLTUwNDU5
+NzQzOV19
 -->
