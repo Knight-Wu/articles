@@ -322,11 +322,11 @@ https://docs.oracle.com/javase/tutorial/essential/concurrency/guardmeth.html
     LockSupport不需要获取到 monitor lock , sleep 是Thread.java 的静态方法, 默认是执行方法的线程 sleep, 不需要获取到thread object 的monitor 锁, 而且sleep 之后不需要唤醒, 但是wait 是 Object.java 的实例方法, 执行前需要获取到 monitor lock, 
 
 class Test{
-	ArrayDeque<String> queue = new ArrayDeque<String>;
+	ArrayDeque<String> queue = new ArrayDeque<String>(16);
 
 	class Producer{
 	public void produce(String msg){
-	
+	while(queue.size()==16)
 }
 	}
 }
@@ -832,7 +832,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQ0Mjg0ODQzLC00NjY1Mzc2MTgsLTY3Nz
+eyJoaXN0b3J5IjpbMTM4OTgxODE1LC00NjY1Mzc2MTgsLTY3Nz
 czODA2LDc0MjE3MjU5MCwxOTYyMTc3Njk1LDgxMzg2NjUwLC04
 NjczNjMwMzQsLTE5OTcxMDM3NzcsLTE4NzUxMDY4NzksLTE0Mj
 Q5NDczMTQsLTEzMjYxNTQyMzksOTIxNjYzMTI2LDQwMjk3MzY0
