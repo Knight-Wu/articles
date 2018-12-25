@@ -298,7 +298,7 @@ class GuradedClass{
 public synchronized void guardedAction(){ // 要用synchronized ,是因为防止其他对象误调用notify 方法, 因为notify是public 的,
  try{
    awaitCond();
-   // must regain this object monitor lock
+   //如果要执行到这一步, 线程必须竞争到monitor lock, 
  }
  catch(InterruptedException ie){
  // fail
@@ -819,11 +819,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyNDUxNjMzMSwxOTYyMTc3Njk1LDgxMz
-g2NjUwLC04NjczNjMwMzQsLTE5OTcxMDM3NzcsLTE4NzUxMDY4
-NzksLTE0MjQ5NDczMTQsLTEzMjYxNTQyMzksOTIxNjYzMTI2LD
-QwMjk3MzY0OSwtMjMyNTEyMjI0LDE4MjI4MjQwODIsLTIwNzMx
-NjEzMDYsLTU3ODAwMDQzLDEwNjE0NTUzMDMsODI3MjA5MTEsLT
-E2MzEwMTQzMTcsLTU3ODQ0NzY4MSwxNzM2MjYzMDEsLTU5MDE2
-OTg3Ml19
+eyJoaXN0b3J5IjpbNzQyMTcyNTkwLDE5NjIxNzc2OTUsODEzOD
+Y2NTAsLTg2NzM2MzAzNCwtMTk5NzEwMzc3NywtMTg3NTEwNjg3
+OSwtMTQyNDk0NzMxNCwtMTMyNjE1NDIzOSw5MjE2NjMxMjYsND
+AyOTczNjQ5LC0yMzI1MTIyMjQsMTgyMjgyNDA4MiwtMjA3MzE2
+MTMwNiwtNTc4MDAwNDMsMTA2MTQ1NTMwMyw4MjcyMDkxMSwtMT
+YzMTAxNDMxNywtNTc4NDQ3NjgxLDE3MzYyNjMwMSwtNTkwMTY5
+ODcyXX0=
 -->
