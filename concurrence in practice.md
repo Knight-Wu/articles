@@ -321,6 +321,10 @@ https://docs.oracle.com/javase/tutorial/essential/concurrency/guardmeth.html
 * wait 与LockSupport, sleep 的区别
     LockSupport不需要获取到 monitor lock , sleep 是Thread.java 的静态方法, 默认是执行方法的线程 sleep, 不需要获取到thread object 的monitor 锁, 而且sleep 之后不需要唤醒, 但是wait 是 Object.java 的实例方法, 执行前需要获取到 monitor lock, 
 
+class Test{
+	
+}
+
 #### 其他线程方法
 join, yield, sleep
 
@@ -822,11 +826,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3NzczODA2LDc0MjE3MjU5MCwxOTYyMT
-c3Njk1LDgxMzg2NjUwLC04NjczNjMwMzQsLTE5OTcxMDM3Nzcs
-LTE4NzUxMDY4NzksLTE0MjQ5NDczMTQsLTEzMjYxNTQyMzksOT
-IxNjYzMTI2LDQwMjk3MzY0OSwtMjMyNTEyMjI0LDE4MjI4MjQw
-ODIsLTIwNzMxNjEzMDYsLTU3ODAwMDQzLDEwNjE0NTUzMDMsOD
-I3MjA5MTEsLTE2MzEwMTQzMTcsLTU3ODQ0NzY4MSwxNzM2MjYz
-MDFdfQ==
+eyJoaXN0b3J5IjpbLTQ2NjUzNzYxOCwtNjc3NzM4MDYsNzQyMT
+cyNTkwLDE5NjIxNzc2OTUsODEzODY2NTAsLTg2NzM2MzAzNCwt
+MTk5NzEwMzc3NywtMTg3NTEwNjg3OSwtMTQyNDk0NzMxNCwtMT
+MyNjE1NDIzOSw5MjE2NjMxMjYsNDAyOTczNjQ5LC0yMzI1MTIy
+MjQsMTgyMjgyNDA4MiwtMjA3MzE2MTMwNiwtNTc4MDAwNDMsMT
+A2MTQ1NTMwMyw4MjcyMDkxMSwtMTYzMTAxNDMxNywtNTc4NDQ3
+NjgxXX0=
 -->
