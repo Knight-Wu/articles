@@ -335,7 +335,10 @@ class Producer{
 
 class Consumer{
 	public synchronized String consume(){
-	while(queue.isEmpty) notEmpty.wait(); // queue is empty
+	while(queue.isEmpty) {
+	try{notEmpty.wait();  // queue is empty
+	}catch(Interrupt
+
 		String msg = queue.getFirst;
 		assert msg!=null; 
 		notFull.notifyAll();
@@ -845,11 +848,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxMTIzOTM1Niw4MDE0MDczMTQsLTQ2Nj
-UzNzYxOCwtNjc3NzM4MDYsNzQyMTcyNTkwLDE5NjIxNzc2OTUs
-ODEzODY2NTAsLTg2NzM2MzAzNCwtMTk5NzEwMzc3NywtMTg3NT
-EwNjg3OSwtMTQyNDk0NzMxNCwtMTMyNjE1NDIzOSw5MjE2NjMx
-MjYsNDAyOTczNjQ5LC0yMzI1MTIyMjQsMTgyMjgyNDA4MiwtMj
-A3MzE2MTMwNiwtNTc4MDAwNDMsMTA2MTQ1NTMwMyw4MjcyMDkx
-MV19
+eyJoaXN0b3J5IjpbMjIyODc4NTQyLDEzMTEyMzkzNTYsODAxND
+A3MzE0LC00NjY1Mzc2MTgsLTY3NzczODA2LDc0MjE3MjU5MCwx
+OTYyMTc3Njk1LDgxMzg2NjUwLC04NjczNjMwMzQsLTE5OTcxMD
+M3NzcsLTE4NzUxMDY4NzksLTE0MjQ5NDczMTQsLTEzMjYxNTQy
+MzksOTIxNjYzMTI2LDQwMjk3MzY0OSwtMjMyNTEyMjI0LDE4Mj
+I4MjQwODIsLTIwNzMxNjEzMDYsLTU3ODAwMDQzLDEwNjE0NTUz
+MDNdfQ==
 -->
