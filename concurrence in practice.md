@@ -308,6 +308,9 @@ public synchronized void guardedAction(){ // 要用synchronized ,是因为防止
 }
 
 ```
+> wait的使用场景
+
+https://docs.oracle.com/javase/tutorial/essential/concurrency/guardmeth.html
  
 * notify 
     唤醒任意一个正在等待object monitor的线程, 当前线程必须持有monitor , 否则会抛出 IllegalMonitorStateException, 其他在等待monitor的线程会发生竞争
@@ -819,11 +822,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQyMTcyNTkwLDE5NjIxNzc2OTUsODEzOD
-Y2NTAsLTg2NzM2MzAzNCwtMTk5NzEwMzc3NywtMTg3NTEwNjg3
-OSwtMTQyNDk0NzMxNCwtMTMyNjE1NDIzOSw5MjE2NjMxMjYsND
-AyOTczNjQ5LC0yMzI1MTIyMjQsMTgyMjgyNDA4MiwtMjA3MzE2
-MTMwNiwtNTc4MDAwNDMsMTA2MTQ1NTMwMyw4MjcyMDkxMSwtMT
-YzMTAxNDMxNywtNTc4NDQ3NjgxLDE3MzYyNjMwMSwtNTkwMTY5
-ODcyXX0=
+eyJoaXN0b3J5IjpbLTY3NzczODA2LDc0MjE3MjU5MCwxOTYyMT
+c3Njk1LDgxMzg2NjUwLC04NjczNjMwMzQsLTE5OTcxMDM3Nzcs
+LTE4NzUxMDY4NzksLTE0MjQ5NDczMTQsLTEzMjYxNTQyMzksOT
+IxNjYzMTI2LDQwMjk3MzY0OSwtMjMyNTEyMjI0LDE4MjI4MjQw
+ODIsLTIwNzMxNjEzMDYsLTU3ODAwMDQzLDEwNjE0NTUzMDMsOD
+I3MjA5MTEsLTE2MzEwMTQzMTcsLTU3ODQ0NzY4MSwxNzM2MjYz
+MDFdfQ==
 -->
