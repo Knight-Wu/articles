@@ -355,8 +355,7 @@ class Consumer{
 join, yield, sleep
 
 * sleep
-
-    不释放正在占用的对象的monitor lock，线程处于block的状态
+    不释放正在占用的对象的monitor lock，线程处于TIME_WAITED 的状态
 * join
 
     在主线程中调用threadA.join(), 主线程需要等待threadA 死亡才会继续执行
@@ -852,11 +851,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDk4MzAxMDE1LDE0NDMyNTc2MDcsMTMxMT
-IzOTM1Niw4MDE0MDczMTQsLTQ2NjUzNzYxOCwtNjc3NzM4MDYs
-NzQyMTcyNTkwLDE5NjIxNzc2OTUsODEzODY2NTAsLTg2NzM2Mz
-AzNCwtMTk5NzEwMzc3NywtMTg3NTEwNjg3OSwtMTQyNDk0NzMx
-NCwtMTMyNjE1NDIzOSw5MjE2NjMxMjYsNDAyOTczNjQ5LC0yMz
-I1MTIyMjQsMTgyMjgyNDA4MiwtMjA3MzE2MTMwNiwtNTc4MDAw
-NDNdfQ==
+eyJoaXN0b3J5IjpbLTE2MjM2MjU0MTAsNDk4MzAxMDE1LDE0ND
+MyNTc2MDcsMTMxMTIzOTM1Niw4MDE0MDczMTQsLTQ2NjUzNzYx
+OCwtNjc3NzM4MDYsNzQyMTcyNTkwLDE5NjIxNzc2OTUsODEzOD
+Y2NTAsLTg2NzM2MzAzNCwtMTk5NzEwMzc3NywtMTg3NTEwNjg3
+OSwtMTQyNDk0NzMxNCwtMTMyNjE1NDIzOSw5MjE2NjMxMjYsND
+AyOTczNjQ5LC0yMzI1MTIyMjQsMTgyMjgyNDA4MiwtMjA3MzE2
+MTMwNl19
 -->
