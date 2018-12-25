@@ -286,7 +286,13 @@ MESI定律：在所有的脏缓存段（M状态）被回写后，任意缓存级
 
 > wait 例子
 ```
-
+class GuradedClass{
+	protected boolean cond = false;
+	// PRE:lock held
+ 
+ 	protected void awaitCond() throw InterruptedException{
+}
+}
 
 ```
  
@@ -799,7 +805,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwNzkxMjU0MSwtMTk5NzEwMzc3NywtMT
+eyJoaXN0b3J5IjpbMTA4NDU2MzQ3MywtMTk5NzEwMzc3NywtMT
 g3NTEwNjg3OSwtMTQyNDk0NzMxNCwtMTMyNjE1NDIzOSw5MjE2
 NjMxMjYsNDAyOTczNjQ5LC0yMzI1MTIyMjQsMTgyMjgyNDA4Mi
 wtMjA3MzE2MTMwNiwtNTc4MDAwNDMsMTA2MTQ1NTMwMyw4Mjcy
