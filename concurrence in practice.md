@@ -283,7 +283,14 @@ MESI定律：在所有的脏缓存段（M状态）被回写后，任意缓存级
     见代码注释" this method causees the current thread to place itself in the wait set for this object , thread become disabled for thread scheduling , and 直到被other threads notify, notifyAll this object or interrupt this thread.  "
     
     调用之前需要啊占用对象锁, 否则会抛出 IllegalMonitorStateException , 调用后会释放对象的monitor lock.
-    * wait 与LockSupport, sleep 的区别
+
+> wait 例子
+```
+
+
+```
+ 
+   * wait 与LockSupport, sleep 的区别
     LockSupport不需要获取到 monitor lock , sleep 是Thread.java 的静态方法, 默认是执行方法的线程 sleep, 不需要获取到thread object 的monitor 锁; 但是wait 是 Object.java 的实例方法, 执行前需要获取到 monitor lock, 
     * notify 
     唤醒任意一个正在等待object monitor的线程, 当前线程必须持有monitor , 否则会抛出 IllegalMonitorStateException, 其他在等待monitor的线程会发生竞争
@@ -792,11 +799,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTcxMDM3NzcsLTE4NzUxMDY4NzksLT
-E0MjQ5NDczMTQsLTEzMjYxNTQyMzksOTIxNjYzMTI2LDQwMjk3
-MzY0OSwtMjMyNTEyMjI0LDE4MjI4MjQwODIsLTIwNzMxNjEzMD
-YsLTU3ODAwMDQzLDEwNjE0NTUzMDMsODI3MjA5MTEsLTE2MzEw
-MTQzMTcsLTU3ODQ0NzY4MSwxNzM2MjYzMDEsLTU5MDE2OTg3Mi
-wtNTA0NTk3NDM5LC0xODM2MTIzODA0LDQ0ODMxMDAyMCwyMDY2
-MDY2MTcxXX0=
+eyJoaXN0b3J5IjpbMTMwNzkxMjU0MSwtMTk5NzEwMzc3NywtMT
+g3NTEwNjg3OSwtMTQyNDk0NzMxNCwtMTMyNjE1NDIzOSw5MjE2
+NjMxMjYsNDAyOTczNjQ5LC0yMzI1MTIyMjQsMTgyMjgyNDA4Mi
+wtMjA3MzE2MTMwNiwtNTc4MDAwNDMsMTA2MTQ1NTMwMyw4Mjcy
+MDkxMSwtMTYzMTAxNDMxNywtNTc4NDQ3NjgxLDE3MzYyNjMwMS
+wtNTkwMTY5ODcyLC01MDQ1OTc0MzksLTE4MzYxMjM4MDQsNDQ4
+MzEwMDIwXX0=
 -->
