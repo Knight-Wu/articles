@@ -791,6 +791,12 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
     * block 指等待获取monitor lock.都不会消耗cpu时间片
 
 ####  java memory model
+https://en.wikipedia.org/wiki/Java_memory_model
+
+The  **Java memory model**  describes how  [threads](https://en.wikipedia.org/wiki/Thread_(computer_science) "Thread (computer science)")  in the  [Java programming language](https://en.wikipedia.org/wiki/Java_(programming_language) "Java (programming language)")  interact through memory. Together with the description of single-threaded execution of code, the memory model provides the  [semantics](https://en.wikipedia.org/wiki/Formal_semantics_of_programming_languages "Formal semantics of programming languages")  of the Java programming language.
+
+The original Java memory model, developed in 1995, was widely perceived as broken, preventing many runtime optimizations and not providing strong enough guarantees for code safety. It was updated through the  [Java Community Process](https://en.wikipedia.org/wiki/Java_Community_Process "Java Community Process"), as Java Specification Request 133 (JSR-133), which took effect in 2004, for  [Tiger (Java 5.0)](https://en.wikipedia.org/wiki/Java_version_history#J2SE_5.0_(September_30,_2004) "Java version history").
+
 * 在多处理器的体系下, 处理器会牺牲一定程度的存储一致性(主存和处理器缓存的数据一致),来换取性能的提升,导致代码执行的顺序跟预想的不一样.
 * happens-before
     * 定义
@@ -850,11 +856,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1Nzg4MTc3Niw0OTgzMDEwMTUsMTQ0Mz
-I1NzYwNywxMzExMjM5MzU2LDgwMTQwNzMxNCwtNDY2NTM3NjE4
-LC02Nzc3MzgwNiw3NDIxNzI1OTAsMTk2MjE3NzY5NSw4MTM4Nj
-Y1MCwtODY3MzYzMDM0LC0xOTk3MTAzNzc3LC0xODc1MTA2ODc5
-LC0xNDI0OTQ3MzE0LC0xMzI2MTU0MjM5LDkyMTY2MzEyNiw0MD
-I5NzM2NDksLTIzMjUxMjIyNCwxODIyODI0MDgyLC0yMDczMTYx
-MzA2XX0=
+eyJoaXN0b3J5IjpbLTcxNTE4NTIzNiwxMzU3ODgxNzc2LDQ5OD
+MwMTAxNSwxNDQzMjU3NjA3LDEzMTEyMzkzNTYsODAxNDA3MzE0
+LC00NjY1Mzc2MTgsLTY3NzczODA2LDc0MjE3MjU5MCwxOTYyMT
+c3Njk1LDgxMzg2NjUwLC04NjczNjMwMzQsLTE5OTcxMDM3Nzcs
+LTE4NzUxMDY4NzksLTE0MjQ5NDczMTQsLTEzMjYxNTQyMzksOT
+IxNjYzMTI2LDQwMjk3MzY0OSwtMjMyNTEyMjI0LDE4MjI4MjQw
+ODJdfQ==
 -->
