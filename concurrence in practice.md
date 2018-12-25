@@ -284,7 +284,7 @@ MESI定律：在所有的脏缓存段（M状态）被回写后，任意缓存级
     
     调用之前需要啊占用对象锁, 否则会抛出 IllegalMonitorStateException , 调用后会释放对象的monitor lock.
 
-> wait 例子, jian
+> wait 例子, 见"concurrent programming in java second edition doug lea pdf, 3.2.3 Guraded Waits"
 ```
 class GuradedClass{
 	protected boolean cond = false;
@@ -815,7 +815,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyNjQ5MTk0MywtMTk5NzEwMzc3NywtMT
+eyJoaXN0b3J5IjpbLTg2NzM2MzAzNCwtMTk5NzEwMzc3NywtMT
 g3NTEwNjg3OSwtMTQyNDk0NzMxNCwtMTMyNjE1NDIzOSw5MjE2
 NjMxMjYsNDAyOTczNjQ5LC0yMzI1MTIyMjQsMTgyMjgyNDA4Mi
 wtMjA3MzE2MTMwNiwtNTc4MDAwNDMsMTA2MTQ1NTMwMyw4Mjcy
