@@ -326,7 +326,14 @@ class Test{
 
 	class Producer{
 	public synchronized void produce(String msg){
-	while(queue.size()==16)
+	while(queue.size()==16) wait(); // queue is full
+	queue.addlast(msg);
+}
+
+class Consumer{
+	public synchronized void consume(){
+	while(queue.isEmpty) wait(); // queue is empty
+	queue.addlast(msg);
 }
 	}
 }
@@ -832,7 +839,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyNDIxNzY5MywtNDY2NTM3NjE4LC02Nz
+eyJoaXN0b3J5IjpbMTY0NTYzNjMxMCwtNDY2NTM3NjE4LC02Nz
 c3MzgwNiw3NDIxNzI1OTAsMTk2MjE3NzY5NSw4MTM4NjY1MCwt
 ODY3MzYzMDM0LC0xOTk3MTAzNzc3LC0xODc1MTA2ODc5LC0xND
 I0OTQ3MzE0LC0xMzI2MTU0MjM5LDkyMTY2MzEyNiw0MDI5NzM2
