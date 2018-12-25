@@ -83,7 +83,7 @@ synchronized, wait notify,  reentrantLock, 阻塞队列
 参见 [link](https://segmentfault.com/a/1190000004935026)
 #### 自旋锁
 * 简单自旋锁
-线程a占用锁的时候, 线程b此时不能获取, 会等待一段时间, 跟互斥锁相反
+线程a占用锁的时候, 线程b此时不能获取, 线程b 不会阻塞 blocked, 会一直占用cpu, 跟互斥锁相反
 
 ```
 public class TASLock {
@@ -856,11 +856,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxNTE4NTIzNiwxMzU3ODgxNzc2LDQ5OD
-MwMTAxNSwxNDQzMjU3NjA3LDEzMTEyMzkzNTYsODAxNDA3MzE0
-LC00NjY1Mzc2MTgsLTY3NzczODA2LDc0MjE3MjU5MCwxOTYyMT
-c3Njk1LDgxMzg2NjUwLC04NjczNjMwMzQsLTE5OTcxMDM3Nzcs
-LTE4NzUxMDY4NzksLTE0MjQ5NDczMTQsLTEzMjYxNTQyMzksOT
-IxNjYzMTI2LDQwMjk3MzY0OSwtMjMyNTEyMjI0LDE4MjI4MjQw
-ODJdfQ==
+eyJoaXN0b3J5IjpbOTA0NzY3OTAzLC03MTUxODUyMzYsMTM1Nz
+g4MTc3Niw0OTgzMDEwMTUsMTQ0MzI1NzYwNywxMzExMjM5MzU2
+LDgwMTQwNzMxNCwtNDY2NTM3NjE4LC02Nzc3MzgwNiw3NDIxNz
+I1OTAsMTk2MjE3NzY5NSw4MTM4NjY1MCwtODY3MzYzMDM0LC0x
+OTk3MTAzNzc3LC0xODc1MTA2ODc5LC0xNDI0OTQ3MzE0LC0xMz
+I2MTU0MjM5LDkyMTY2MzEyNiw0MDI5NzM2NDksLTIzMjUxMjIy
+NF19
 -->
