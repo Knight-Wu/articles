@@ -327,15 +327,18 @@ private Objcet notFull = new Object();
 private Object notEmpty = new Object();
 
 class Producer{
-	public synchronized void produce(String msg){
+	public  void produce(String msg){
+	synchronized(queue){
 	while(queue.size()==16) notFull.wait(); // queue is full 
 	   // catch interruptedEx
-queue.addlast(msg);
+	queue.addlast(msg);
 	notEmpty.notifyAll();
+	}
 }
 
 class Consumer{
-	public synchronized String consume(){
+	public String consume(){
+	synchronized(queue){
 	while(queue.isEmpty) {
 	try{notEmpty.wait();  // queue is empty
 	}catch(Interrupted ex}{}
@@ -343,6 +346,7 @@ class Consumer{
 		assert msg!=null; 
 		notFull.notifyAll();
 		return msg;
+}
 }
 	}
 }
@@ -848,11 +852,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ0MzI1NzYwNywxMzExMjM5MzU2LDgwMT
-QwNzMxNCwtNDY2NTM3NjE4LC02Nzc3MzgwNiw3NDIxNzI1OTAs
-MTk2MjE3NzY5NSw4MTM4NjY1MCwtODY3MzYzMDM0LC0xOTk3MT
-AzNzc3LC0xODc1MTA2ODc5LC0xNDI0OTQ3MzE0LC0xMzI2MTU0
-MjM5LDkyMTY2MzEyNiw0MDI5NzM2NDksLTIzMjUxMjIyNCwxOD
-IyODI0MDgyLC0yMDczMTYxMzA2LC01NzgwMDA0MywxMDYxNDU1
-MzAzXX0=
+eyJoaXN0b3J5IjpbNDk4MzAxMDE1LDE0NDMyNTc2MDcsMTMxMT
+IzOTM1Niw4MDE0MDczMTQsLTQ2NjUzNzYxOCwtNjc3NzM4MDYs
+NzQyMTcyNTkwLDE5NjIxNzc2OTUsODEzODY2NTAsLTg2NzM2Mz
+AzNCwtMTk5NzEwMzc3NywtMTg3NTEwNjg3OSwtMTQyNDk0NzMx
+NCwtMTMyNjE1NDIzOSw5MjE2NjMxMjYsNDAyOTczNjQ5LC0yMz
+I1MTIyMjQsMTgyMjgyNDA4MiwtMjA3MzE2MTMwNiwtNTc4MDAw
+NDNdfQ==
 -->
