@@ -336,7 +336,10 @@ class Producer{
 class Consumer{
 	public synchronized String consume(){
 	while(queue.isEmpty) notEmpty.wait(); // queue is empty
-		return	queue.getFirst;
+		String msg = queue.getFirst;
+		assert msg!=null; 
+		notFull.notifyAll();
+		return msg;
 }
 	}
 }
@@ -842,7 +845,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc1MTMwNDE1Niw4MDE0MDczMTQsLTQ2Nj
+eyJoaXN0b3J5IjpbMTMxMTIzOTM1Niw4MDE0MDczMTQsLTQ2Nj
 UzNzYxOCwtNjc3NzM4MDYsNzQyMTcyNTkwLDE5NjIxNzc2OTUs
 ODEzODY2NTAsLTg2NzM2MzAzNCwtMTk5NzEwMzc3NywtMTg3NT
 EwNjg3OSwtMTQyNDk0NzMxNCwtMTMyNjE1NDIzOSw5MjE2NjMx
