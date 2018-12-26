@@ -365,13 +365,6 @@ spark-1.6 之后使用UnifiedMemoryManager, 之前使用StaticMemoryManager, 由
 
 指的是 off-heap memory per executor, 用来存储 VM overheads, interned strings, other native overheads, 默认值是 Max(384MB, 10% of spark.executor-memory), 所以每个executor使用的container的物理内存需要囊括spark.yarn.executor.memoryOverhead 和executor memory两部分.
 
-
-> 内存性能优化
-1. 尽量少使用类, 减少不必要的对象空间, 尽量使用基本数据类型, The [fastutil](http://fastutil.di.unimi.it/) library provides convenient collection classes for primitive types that are compatible with the Java standard library.
-2. 尽量用int作为key, 而不是string
-3. 把对象序列化存储, 使用MEMORY_ONLY_SER, 大大减少存储空间, 但是读的时候需要反序列化, 消耗cpu
-4. 使用kryo序列化, 需要预先注册, 并设置kryo的缓存大小
-
 > spark on yarn 内存实际使用计算
 
 executor实际使用的内存是: total = spark.executor.memory + spark.yarn.executor.memoryOverhead, 
@@ -386,6 +379,15 @@ total = yarn.scheduler.minimum-allocation-mb+ yarn.scheduler.increment-allocatio
 参考资料:
 
 1. [https://wongxingjun.github.io/](https://wongxingjun.github.io/2016/05/26/Spark%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/)
+
+
+
+> 内存性能优化
+1. 尽量少使用类, 减少不必要的对象空间, 尽量使用基本数据类型, The [fastutil](http://fastutil.di.unimi.it/) library provides convenient collection classes for primitive types that are compatible with the Java standard library.
+2. 尽量用int作为key, 而不是string
+3. 把对象序列化存储, 使用MEMORY_ONLY_SER, 大大减少存储空间, 但是读的时候需要反序列化, 消耗cpu
+4. 使用kryo序列化, 需要预先注册, 并设置kryo的缓存大小
+
 
 
 
@@ -728,11 +730,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzEyMTI1MjE5LDE2NTE5NDkzNTYsMTIwMj
-A3NzIzNSwyMDkzODAzMDk3LC0xMDM4ODQxMzMxLDMzMTM4NjY1
-MSw2MDY3MjU1MzMsLTE1MDcwMjcxOTAsMTEyMjU4ODcwNywtNz
-k4MTcwNjQyLC04MTY1ODE4NDYsLTEzNjYzNjU2MDAsNTkxNjg4
-MzUsLTY2Mjc0MDY1NSwtMTkzMzU1MzI5OSwxNjM3NDA4MzMsLT
-E2Njg4MTY5OTgsLTE2MDMyMDAyMDEsLTExNDQ4Nzk5MDMsLTkw
-OTM4MDM2Ml19
+eyJoaXN0b3J5IjpbLTIwNjAwODkzMDUsNzEyMTI1MjE5LDE2NT
+E5NDkzNTYsMTIwMjA3NzIzNSwyMDkzODAzMDk3LC0xMDM4ODQx
+MzMxLDMzMTM4NjY1MSw2MDY3MjU1MzMsLTE1MDcwMjcxOTAsMT
+EyMjU4ODcwNywtNzk4MTcwNjQyLC04MTY1ODE4NDYsLTEzNjYz
+NjU2MDAsNTkxNjg4MzUsLTY2Mjc0MDY1NSwtMTkzMzU1MzI5OS
+wxNjM3NDA4MzMsLTE2Njg4MTY5OTgsLTE2MDMyMDAyMDEsLTEx
+NDQ4Nzk5MDNdfQ==
 -->
