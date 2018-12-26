@@ -18,6 +18,7 @@
 * spark, hadoop release notes
 * logback 性能测试 https://github.com/ceki/logback-perf
 * logback v_1.3.0-alpha4 版本 AsyncAppenderBase 的worker thread 为什么只用一个thread, 用多个会不会有提升?
+* logback-v_1.3.0 OutputStreamAppender line 217 在加锁前面会不会有问题
 * https://issues.apache.org/jira/browse/HDFS-9572 这个需要等待comment 回复
 * https://en.wikipedia.org/wiki/Chaos_engineering 软件工程的严谨思想
 * http://www.runoob.com/design-pattern 设计模式每天两例
@@ -66,11 +67,11 @@ https://blog.csdn.net/flysqrlboy/article/details/79314521
 正常的, 消耗的内存和cpu都很少, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTc3NTkyOTMsLTExMzExMjI2ODUsMT
-Q2MDgxMTk1OSwxNDc3NTY5NzY4LC0xOTgwMjc2NjI5LDExNjcx
-OTA3MTksLTY5ODY3MzMzNCwxNjU3MjM1MDcwLC04OTc2NTQwOT
-QsLTEzODQxNTM2MzAsLTEzMDkwNzcxNTYsLTExNjg2MDI3MzYs
-LTE2MDAzNTYwNzIsLTE0NDMzNTMzMDksLTIxMzE1ODY5MzksND
-E0NjI4ODM1LC0xNjY2OTA2NjQ5LDg1ODI0NTEyNCwtNDI2Nzgz
-MDkzLC0xNDUyMTA0NjJdfQ==
+eyJoaXN0b3J5IjpbODkxNjY2ODYyLC0xMTMxMTIyNjg1LDE0Nj
+A4MTE5NTksMTQ3NzU2OTc2OCwtMTk4MDI3NjYyOSwxMTY3MTkw
+NzE5LC02OTg2NzMzMzQsMTY1NzIzNTA3MCwtODk3NjU0MDk0LC
+0xMzg0MTUzNjMwLC0xMzA5MDc3MTU2LC0xMTY4NjAyNzM2LC0x
+NjAwMzU2MDcyLC0xNDQzMzUzMzA5LC0yMTMxNTg2OTM5LDQxND
+YyODgzNSwtMTY2NjkwNjY0OSw4NTgyNDUxMjQsLTQyNjc4MzA5
+MywtMTQ1MjEwNDYyXX0=
 -->
