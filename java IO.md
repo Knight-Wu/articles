@@ -136,8 +136,15 @@ socketServer.accept(null,
 ```
 
 
+### java stream
+
+* how to gracefully close stream
+[use "Execute Around” idiom?](https://stackoverflow.com/questions/341971/what-is-the-execute-around-idiom)](https://stackoverflow.com/questions/341971/what-is-the-execute-around-idiom)
+
+
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5MTU3Mjc4NywtMTYzOTQwMzkxNV19
+eyJoaXN0b3J5IjpbOTg1MDE4MzY5LDE5OTE1NzI3ODcsLTE2Mz
+k0MDM5MTVdfQ==
 -->
