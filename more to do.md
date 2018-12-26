@@ -17,6 +17,7 @@
 * spark 集群容错的控制, 目前只知道task fail会触发 spark.task.maxFailures这个配置, 但是executor层, container层, job层, application层的配置控制还有待学习
 * spark, hadoop release notes
 * logback 性能测试 https://github.com/ceki/logback-perf
+* logback v_1.3.0-alpha4 版本 AsyncAppenderBase 的worker thread 为什么只用一个thread, 用多个会不会有提升?
 * https://issues.apache.org/jira/browse/HDFS-9572 这个需要等待comment 回复
 * https://en.wikipedia.org/wiki/Chaos_engineering 软件工程的严谨思想
 * http://www.runoob.com/design-pattern 设计模式每天两例
@@ -62,11 +63,11 @@ https://blog.csdn.net/flysqrlboy/article/details/79314521
 正常的, 消耗的内存和cpu都很少, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2MDgxMTk1OSwxNDc3NTY5NzY4LC0xOT
-gwMjc2NjI5LDExNjcxOTA3MTksLTY5ODY3MzMzNCwxNjU3MjM1
-MDcwLC04OTc2NTQwOTQsLTEzODQxNTM2MzAsLTEzMDkwNzcxNT
-YsLTExNjg2MDI3MzYsLTE2MDAzNTYwNzIsLTE0NDMzNTMzMDks
-LTIxMzE1ODY5MzksNDE0NjI4ODM1LC0xNjY2OTA2NjQ5LDg1OD
-I0NTEyNCwtNDI2NzgzMDkzLC0xNDUyMTA0NjIsNDI5Mzk0Mjks
-LTU0MTk2MDczOV19
+eyJoaXN0b3J5IjpbMTU0ODI0MDc2OCwxNDYwODExOTU5LDE0Nz
+c1Njk3NjgsLTE5ODAyNzY2MjksMTE2NzE5MDcxOSwtNjk4Njcz
+MzM0LDE2NTcyMzUwNzAsLTg5NzY1NDA5NCwtMTM4NDE1MzYzMC
+wtMTMwOTA3NzE1NiwtMTE2ODYwMjczNiwtMTYwMDM1NjA3Miwt
+MTQ0MzM1MzMwOSwtMjEzMTU4NjkzOSw0MTQ2Mjg4MzUsLTE2Nj
+Y5MDY2NDksODU4MjQ1MTI0LC00MjY3ODMwOTMsLTE0NTIxMDQ2
+Miw0MjkzOTQyOV19
 -->
