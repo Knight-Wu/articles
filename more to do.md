@@ -30,7 +30,8 @@
 * Build highly concurrent, distributed, and resilient message-driven applications on the JVM [http://akka.io](http://akka.io/)
 * spark executor task java.net.connectException 拒绝连接
 * spark.yarn.executor.memoryOverhead 结合内存理解, 如何调优
-* 
+* yarn 虚拟内存和虚拟cpu 用来干啥
+* 如何知道hive on spark 整个application 运行阶段的内存使用情况
 ### DOING
 
 
@@ -61,11 +62,11 @@ https://blog.csdn.net/flysqrlboy/article/details/79314521
 正常的, 消耗的内存和cpu都很少, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3NzU2OTc2OCwtMTk4MDI3NjYyOSwxMT
-Y3MTkwNzE5LC02OTg2NzMzMzQsMTY1NzIzNTA3MCwtODk3NjU0
-MDk0LC0xMzg0MTUzNjMwLC0xMzA5MDc3MTU2LC0xMTY4NjAyNz
-M2LC0xNjAwMzU2MDcyLC0xNDQzMzUzMzA5LC0yMTMxNTg2OTM5
-LDQxNDYyODgzNSwtMTY2NjkwNjY0OSw4NTgyNDUxMjQsLTQyNj
-c4MzA5MywtMTQ1MjEwNDYyLDQyOTM5NDI5LC01NDE5NjA3Mzks
-LTEyNzE1NTU0MDldfQ==
+eyJoaXN0b3J5IjpbMTQ2MDgxMTk1OSwxNDc3NTY5NzY4LC0xOT
+gwMjc2NjI5LDExNjcxOTA3MTksLTY5ODY3MzMzNCwxNjU3MjM1
+MDcwLC04OTc2NTQwOTQsLTEzODQxNTM2MzAsLTEzMDkwNzcxNT
+YsLTExNjg2MDI3MzYsLTE2MDAzNTYwNzIsLTE0NDMzNTMzMDks
+LTIxMzE1ODY5MzksNDE0NjI4ODM1LC0xNjY2OTA2NjQ5LDg1OD
+I0NTEyNCwtNDI2NzgzMDkzLC0xNDUyMTA0NjIsNDI5Mzk0Mjks
+LTU0MTk2MDczOV19
 -->
