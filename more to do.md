@@ -28,6 +28,9 @@
 * 多个应用服务器的性能之和如何算, 
 * mysql 的常见问题, java的常见问题, 集合, 并发, jvm, concurrentHashMap, 红黑树, 
 * Build highly concurrent, distributed, and resilient message-driven applications on the JVM [http://akka.io](http://akka.io/)
+* spark executor task java.net.connectException 拒绝连接
+* spark.yarn.executor.memoryOverhead 结合内存理解, 如何调优
+* 
 ### DOING
 
 
@@ -58,11 +61,11 @@ https://blog.csdn.net/flysqrlboy/article/details/79314521
 正常的, 消耗的内存和cpu都很少, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODAyNzY2MjksMTE2NzE5MDcxOSwtNj
-k4NjczMzM0LDE2NTcyMzUwNzAsLTg5NzY1NDA5NCwtMTM4NDE1
-MzYzMCwtMTMwOTA3NzE1NiwtMTE2ODYwMjczNiwtMTYwMDM1Nj
-A3MiwtMTQ0MzM1MzMwOSwtMjEzMTU4NjkzOSw0MTQ2Mjg4MzUs
-LTE2NjY5MDY2NDksODU4MjQ1MTI0LC00MjY3ODMwOTMsLTE0NT
-IxMDQ2Miw0MjkzOTQyOSwtNTQxOTYwNzM5LC0xMjcxNTU1NDA5
-LC0yODM1MDM5MzddfQ==
+eyJoaXN0b3J5IjpbMTQ3NzU2OTc2OCwtMTk4MDI3NjYyOSwxMT
+Y3MTkwNzE5LC02OTg2NzMzMzQsMTY1NzIzNTA3MCwtODk3NjU0
+MDk0LC0xMzg0MTUzNjMwLC0xMzA5MDc3MTU2LC0xMTY4NjAyNz
+M2LC0xNjAwMzU2MDcyLC0xNDQzMzUzMzA5LC0yMTMxNTg2OTM5
+LDQxNDYyODgzNSwtMTY2NjkwNjY0OSw4NTgyNDUxMjQsLTQyNj
+c4MzA5MywtMTQ1MjEwNDYyLDQyOTM5NDI5LC01NDE5NjA3Mzks
+LTEyNzE1NTU0MDldfQ==
 -->
