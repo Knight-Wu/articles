@@ -19,7 +19,7 @@
 * logback 性能测试 https://github.com/ceki/logback-perf
 * logback v_1.3.0-alpha4 版本 AsyncAppenderBase 的worker thread 为什么只用一个thread, 用多个会不会有提升?
 * logback-v_1.3.0 OutputStreamAppender line 217 在加锁前面会不会有问题
-* line 138 写footer 不强制flush 会不会daozhi
+* OutputStreamAppender  line 138 写footer 不强制flush 会不会导致丢失?
 * https://issues.apache.org/jira/browse/HDFS-9572 这个需要等待comment 回复
 * https://en.wikipedia.org/wiki/Chaos_engineering 软件工程的严谨思想
 * http://www.runoob.com/design-pattern 设计模式每天两例
@@ -68,7 +68,7 @@ https://blog.csdn.net/flysqrlboy/article/details/79314521
 正常的, 消耗的内存和cpu都很少, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzMDczMjkxLC0xMTMxMTIyNjg1LDE0Nj
+eyJoaXN0b3J5IjpbMjE2Nzg5Nzc4LC0xMTMxMTIyNjg1LDE0Nj
 A4MTE5NTksMTQ3NzU2OTc2OCwtMTk4MDI3NjYyOSwxMTY3MTkw
 NzE5LC02OTg2NzMzMzQsMTY1NzIzNTA3MCwtODk3NjU0MDk0LC
 0xMzg0MTUzNjMwLC0xMzA5MDc3MTU2LC0xMTY4NjAyNzM2LC0x
