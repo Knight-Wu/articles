@@ -34,7 +34,7 @@
 * yarn 虚拟内存和虚拟cpu 用来干啥
 * 如何知道hive on spark 整个application 运行阶段的内存使用情况, spark metric 好像不支持spark executor memory, 那么如何知道executor memory 或者cpu 等资源是否设置得合理? 
 https://github.com/uber-common/jvm-profiler 这个可以试试
-
+* yarn 用mr 作业收集container使用情况的yua
 
 ### DOING
 
@@ -66,11 +66,11 @@ https://blog.csdn.net/flysqrlboy/article/details/79314521
 正常的, 消耗的内存和cpu都很少, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzExMjI2ODUsMTQ2MDgxMTk1OSwxND
-c3NTY5NzY4LC0xOTgwMjc2NjI5LDExNjcxOTA3MTksLTY5ODY3
-MzMzNCwxNjU3MjM1MDcwLC04OTc2NTQwOTQsLTEzODQxNTM2Mz
-AsLTEzMDkwNzcxNTYsLTExNjg2MDI3MzYsLTE2MDAzNTYwNzIs
-LTE0NDMzNTMzMDksLTIxMzE1ODY5MzksNDE0NjI4ODM1LC0xNj
-Y2OTA2NjQ5LDg1ODI0NTEyNCwtNDI2NzgzMDkzLC0xNDUyMTA0
-NjIsNDI5Mzk0MjldfQ==
+eyJoaXN0b3J5IjpbLTEzNjIxNjQ5NjksLTExMzExMjI2ODUsMT
+Q2MDgxMTk1OSwxNDc3NTY5NzY4LC0xOTgwMjc2NjI5LDExNjcx
+OTA3MTksLTY5ODY3MzMzNCwxNjU3MjM1MDcwLC04OTc2NTQwOT
+QsLTEzODQxNTM2MzAsLTEzMDkwNzcxNTYsLTExNjg2MDI3MzYs
+LTE2MDAzNTYwNzIsLTE0NDMzNTMzMDksLTIxMzE1ODY5MzksND
+E0NjI4ODM1LC0xNjY2OTA2NjQ5LDg1ODI0NTEyNCwtNDI2Nzgz
+MDkzLC0xNDUyMTA0NjJdfQ==
 -->
