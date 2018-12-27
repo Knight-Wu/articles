@@ -142,11 +142,35 @@ socketServer.accept(null,
 
 1. [use "Execute Around” idiom](https://stackoverflow.com/questions/341971/what-is-the-execute-around-idiom)
 2. since java7 , can use try-with
-3. 
+3. write a IOUtils
+
+```
+public final class IOUtil {
+  private IOUtil() {}
+
+  public static void closeQuietly(Closeable... closeables) {
+    for (Closeable c : closeables) {
+        if (c != null) try {
+          c.close();
+        } catch(Exception ex) {}
+    }
+  }
+}
+```
+
+Then your code would be reduced to:
+
+```
+try {
+  copy(in, out);
+} finally {
+  IOUtil.closeQuietly(in, out);
+}
+```
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTgwMDk5NzUsMTk5MTU3Mjc4NywtMT
-YzOTQwMzkxNV19
+eyJoaXN0b3J5IjpbODgwODMzOTQxLDE5OTE1NzI3ODcsLTE2Mz
+k0MDM5MTVdfQ==
 -->
