@@ -139,12 +139,14 @@ socketServer.accept(null,
 ### java stream
 
 * how to gracefully close stream
-[use "Execute Around” idiom?](https://stackoverflow.com/questions/341971/what-is-the-execute-around-idiom)](https://stackoverflow.com/questions/341971/what-is-the-execute-around-idiom)
 
+1. [use "Execute Around” idiom](https://stackoverflow.com/questions/341971/what-is-the-execute-around-idiom)
+2. since java7 , can use try-with
+3. 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTg1MDE4MzY5LDE5OTE1NzI3ODcsLTE2Mz
-k0MDM5MTVdfQ==
+eyJoaXN0b3J5IjpbLTE5NTgwMDk5NzUsMTk5MTU3Mjc4NywtMT
+YzOTQwMzkxNV19
 -->
