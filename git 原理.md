@@ -31,9 +31,10 @@ git reset 大致与git checkout 一致, 只是会清除掉历史记录, 并不�
 #### git merge
 
 * 如何刚刚checkout 一个分支, 并没有任何commit 的时候, 就进行merge
+https://stackoverflow.com/questions/4657009/how-to-merge-all-files-manually-in-git/36563486
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0NzUwNDQ3NSwyODU4MDQ3MjEsLTE4Mj
+eyJoaXN0b3J5IjpbLTg5MTU2OTM4MCwyODU4MDQ3MjEsLTE4Mj
 Y1MTIyNDUsLTg0OTgyOTY2OCwxMzkzMTAxMjQxLC02MzgyMDQx
 ODQsLTE5MDc3ODBdfQ==
 -->
