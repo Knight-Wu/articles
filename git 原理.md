@@ -26,9 +26,10 @@ git reset 大致与git checkout 一致, 只是会清除掉历史记录, 并不�
 
 * revert
 用于 public(公共)的修改, 与项目其他成员共享, 产生历史记录.
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjg1ODA0NzIxLC0xODI2NTEyMjQ1LC04ND
-k4Mjk2NjgsMTM5MzEwMTI0MSwtNjM4MjA0MTg0LC0xOTA3Nzgw
-XX0=
+eyJoaXN0b3J5IjpbMjc0MDY0MDMxLDI4NTgwNDcyMSwtMTgyNj
+UxMjI0NSwtODQ5ODI5NjY4LDEzOTMxMDEyNDEsLTYzODIwNDE4
+NCwtMTkwNzc4MF19
 -->
