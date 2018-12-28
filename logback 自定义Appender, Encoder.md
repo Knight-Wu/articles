@@ -35,8 +35,11 @@ logback也是推荐encoder 而不是layout, 所以配置里面不应该配置Pat
 * I/O concept flush vs sync 
  其中还发现了这个帖子, [I/O concept flush vs sync](https://stackoverflow.com/questions/4072878/i-o-concept-flush-vs-sync), 可以记录一下, 个人的理解是flush 只是基于file 这个类将buffer 清空到操作系统的缓存, 但是操作系统的缓存persist into disk 需要调用sync 
  
+ * 2018-12-28 update
+logback-1.0.13 没有实现shutdo
 ### 目前问题
 * 有可能刚刚达到了bufferSize进行了flush, 又进行period 的flush
+但是如果buffer 里面是空的, 对性能影响还是挺小的
 * 如果后续压测还是性能提升较小的话, 如何提升
 
 ### 总结
@@ -53,5 +56,6 @@ logback也是推荐encoder 而不是layout, 所以配置里面不应该配置Pat
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDI2NDgzMjY4LC02Mzc4OTY2ODhdfQ==
+eyJoaXN0b3J5IjpbMTY2NzQ5ODc3Niw0MjY0ODMyNjgsLTYzNz
+g5NjY4OF19
 -->
