@@ -46,7 +46,6 @@ logback-1.0.13 没有实现shutdownhook, 自己加了一个, 跟1.3.0的hook 是
 * logback v_1.3.0-alpha4 版本 AsyncAppenderBase 的worker thread 为什么只用一个thread, 用多个会不会有提升?
 * logback-v_1.3.0 OutputStreamAppender line 217 在加锁前面会不会有问题
 * logback-v_1.3.0 OutputStreamAppender  line 138 写footer 不强制flush 会不会导致丢失?
-* logback 每个appender 为什么不用多线程去写数据
 
 ### 总结
 
@@ -62,6 +61,6 @@ logback-1.0.13 没有实现shutdownhook, 自己加了一个, 跟1.3.0的hook 是
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTIxNDYwMjcsNDI2NDgzMjY4LC02Mz
-c4OTY2ODhdfQ==
+eyJoaXN0b3J5IjpbNjYxNzI3OTA5LC0xODUyMTQ2MDI3LDQyNj
+Q4MzI2OCwtNjM3ODk2Njg4XX0=
 -->
