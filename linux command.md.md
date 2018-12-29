@@ -202,16 +202,37 @@ set +x; command; set -x // 可以将每一行执行的详细命令都解析到�
 
 * 执行脚本
 ```
+1. 在当前目录下执行
 ./shellscript  
-// 
 
-#### Execute using sh interpreter
+
+2. Execute using sh/ bash interpreter
 
 $ sh scriptfile
 
-#### Execute using bash interpreter
-
 $ bash scriptfile
+
+
+3. executes the commands specified in the scriptfile in the current shell
+$ . ./scriptfile
+
+In other words, this , and prepares the environment for you.
+
+#### “dot space dot slash” Usage Example:
+
+Typically we use this method, anytime we change something in the .bashrc or .bash_profile. i.e After changing the .bashrc or .bash_profile we can either logout and login for the changes to take place (or) use “dot space dot slash” to execute .bashrc or .bash_profile for the changes to take effect without logout and login.
+
+$ cd ~
+
+$ . ./.bashrc
+
+$ . ./.bash_profile
+
+###  Execute Shell Script Using Source Command
+
+The builtin source command is synonym for the . (dot) explained above. If you are not comfortable with the “dot space dot slash” method, then you can use source command as shown below, as both are same.
+
+$ source ~/.bashrc
 
 ```
 ---
@@ -262,8 +283,8 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDQ5Mjc0LC02MDgwNTA5NTEsLTMyMD
-gxNTcyMywtMTU1ODg4MDA1NiwzMzEyNzAxOTEsMTIwMDE2NTgz
-NywxMjI2NDIzNzk5LC0xMzU4MTkzOTEwLDEwMTI2MTg3NTIsMT
-AyODQ2NjAzOSwtNjI2OTcxNTk0XX0=
+eyJoaXN0b3J5IjpbMTk2NDY5NjQwOSwtMTE0NDkyNzQsLTYwOD
+A1MDk1MSwtMzIwODE1NzIzLC0xNTU4ODgwMDU2LDMzMTI3MDE5
+MSwxMjAwMTY1ODM3LDEyMjY0MjM3OTksLTEzNTgxOTM5MTAsMT
+AxMjYxODc1MiwxMDI4NDY2MDM5LC02MjY5NzE1OTRdfQ==
 -->
