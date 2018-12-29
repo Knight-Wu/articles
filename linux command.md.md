@@ -200,7 +200,20 @@ nohup command > myOutPut.out 2>&1 & // 把标准输入和输出重定向到自�
 set +x; command; set -x // 可以将每一行执行的详细命令都解析到屏幕上输出
 ```
 
+* 执行脚本
+```
+./shellscript  
+// 
 
+#### Execute using sh interpreter
+
+$ sh scriptfile
+
+#### Execute using bash interpreter
+
+$ bash scriptfile
+
+```
 ---
 #### 搭建cdh测试环境总结
 1. 机器
@@ -249,8 +262,8 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwODA1MDk1MSwtMzIwODE1NzIzLC0xNT
-U4ODgwMDU2LDMzMTI3MDE5MSwxMjAwMTY1ODM3LDEyMjY0MjM3
-OTksLTEzNTgxOTM5MTAsMTAxMjYxODc1MiwxMDI4NDY2MDM5LC
-02MjY5NzE1OTRdfQ==
+eyJoaXN0b3J5IjpbLTExNDQ5Mjc0LC02MDgwNTA5NTEsLTMyMD
+gxNTcyMywtMTU1ODg4MDA1NiwzMzEyNzAxOTEsMTIwMDE2NTgz
+NywxMjI2NDIzNzk5LC0xMzU4MTkzOTEwLDEwMTI2MTg3NTIsMT
+AyODQ2NjAzOSwtNjI2OTcxNTk0XX0=
 -->
