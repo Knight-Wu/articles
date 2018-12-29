@@ -213,12 +213,10 @@ $ sh scriptfile
 $ bash scriptfile
 
 
-3. executes the commands specified in the scriptfile in the current shell
+3. executes the commands specified in the scriptfile in the current shell, In other words, this  prepares the environment for you.
 $ . ./scriptfile
 
-In other words, this , and prepares the environment for you.
-
-#### “dot space dot slash” Usage Example:
+ “dot space dot slash” Usage Example:
 
 Typically we use this method, anytime we change something in the .bashrc or .bash_profile. i.e After changing the .bashrc or .bash_profile we can either logout and login for the changes to take place (or) use “dot space dot slash” to execute .bashrc or .bash_profile for the changes to take effect without logout and login.
 
@@ -228,7 +226,7 @@ $ . ./.bashrc
 
 $ . ./.bash_profile
 
-###  Execute Shell Script Using Source Command
+4. Execute Shell Script Using Source Command, 和3 是一样的效果
 
 The builtin source command is synonym for the . (dot) explained above. If you are not comfortable with the “dot space dot slash” method, then you can use source command as shown below, as both are same.
 
@@ -283,8 +281,8 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2NDY5NjQwOSwtMTE0NDkyNzQsLTYwOD
-A1MDk1MSwtMzIwODE1NzIzLC0xNTU4ODgwMDU2LDMzMTI3MDE5
-MSwxMjAwMTY1ODM3LDEyMjY0MjM3OTksLTEzNTgxOTM5MTAsMT
-AxMjYxODc1MiwxMDI4NDY2MDM5LC02MjY5NzE1OTRdfQ==
+eyJoaXN0b3J5IjpbLTE0NjA4OTM0MzYsLTExNDQ5Mjc0LC02MD
+gwNTA5NTEsLTMyMDgxNTcyMywtMTU1ODg4MDA1NiwzMzEyNzAx
+OTEsMTIwMDE2NTgzNywxMjI2NDIzNzk5LC0xMzU4MTkzOTEwLD
+EwMTI2MTg3NTIsMTAyODQ2NjAzOSwtNjI2OTcxNTk0XX0=
 -->
