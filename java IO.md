@@ -190,10 +190,12 @@ while 循环发起recvform 调用(消耗cpu ), 询问数据是否准备好, 若�
 
 ![enter image description here](https://drive.google.com/uc?id=1fBCsvLomiJ_MP2T1ga5a9o05puj8rQCh)
 
-4. 
+4. signal driven io
+注册信号到内核, 当有数据到达之后通知应用, 应用在发起系统调用, 同步阻塞等待数据kao
+![enter image description here](https://drive.google.com/uc?id=1tnnPtlxvxb_vNzj-4A9avOCcxrRmtDwP)
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTkwMjU0ODcsMTM0NTAzODcwLC0xOT
-kwODE2ODMwLC0xMTE1ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcy
-Nzg3LC0xNjM5NDAzOTE1XX0=
+eyJoaXN0b3J5IjpbODYzMDE5MTA3LDEzNDUwMzg3MCwtMTk5MD
+gxNjgzMCwtMTExNTgxNTY0OSw4ODA4MzM5NDEsMTk5MTU3Mjc4
+NywtMTYzOTQwMzkxNV19
 -->
