@@ -171,8 +171,9 @@ try {
 ## UNIX network programming
 
 ####  6.2 IO model
+![enter image description here](![https](https://drive.google.com/uc?id=1Ie2B8Iwl61DjxYJIE9gi2ccIdFa2FjMD)://drive.google.com/uc?id=1PPqk_KLN34g5aPNV6nCTHHU-SuaHCI8H)
 
-分为五种, blocking io, 
+分为五种, blocking io, non blocking io, sigal driven io, io 多路复用, aio 完全异步的io.
 对于一个输入操作, 主要分为两个阶段, 一是等待数据从网络到达, 二是将数据从内核态拷到用户态.
 
 1. blocking io
@@ -184,7 +185,7 @@ try {
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3MjIxOTE3NCwxMzQ1MDM4NzAsLTE5OT
+eyJoaXN0b3J5IjpbLTkxMTExMzQ1NywxMzQ1MDM4NzAsLTE5OT
 A4MTY4MzAsLTExMTU4MTU2NDksODgwODMzOTQxLDE5OTE1NzI3
 ODcsLTE2Mzk0MDM5MTVdfQ==
 -->
