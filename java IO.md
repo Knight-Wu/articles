@@ -182,18 +182,18 @@ try {
 ![enter image description here](https://drive.google.com/uc?id=1Ie2B8Iwl61DjxYJIE9gi2ccIdFa2FjMD)
 
 2. non blocking io
-while 循环发起recvform 调用, 询问数据是否准备好, 若没有准备好就直接返回, 数据准备好之后, 再发起系统调用去等待数据从内核态拷贝到用户态, 总之是同步非阻塞.
+while 循环发起recvform 调用(消耗cpu ), 询问数据是否准备好, 若没有准备好就直接返回, 数据准备好之后, 再发起系统调用去等待数据从内核态拷贝到用户态, 总之是同步非阻塞.
 ![enter image description here](https://drive.google.com/uc?id=1JVZTgB7uCilJdHJFnlEP4eW1B_J7cyk6)
 
 3. io 多路复用
-目前java nio 就是这个模型, 
+目前java nio 就是这个模型, select 调用阻塞, 有数据返回, 就发起系统调用去等待数据拷贝到用户态, 跟第二个模型多了一次select 系统调用, 但是不需要一直轮训获取, 减少cpu 消耗
 
 ![enter image description here](https://drive.google.com/uc?id=1fBCsvLomiJ_MP2T1ga5a9o05puj8rQCh)
 
-
+4. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ0NzE4NTEyLDEzNDUwMzg3MCwtMTk5MD
-gxNjgzMCwtMTExNTgxNTY0OSw4ODA4MzM5NDEsMTk5MTU3Mjc4
-NywtMTYzOTQwMzkxNV19
+eyJoaXN0b3J5IjpbLTExMTkwMjU0ODcsMTM0NTAzODcwLC0xOT
+kwODE2ODMwLC0xMTE1ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcy
+Nzg3LC0xNjM5NDAzOTE1XX0=
 -->
