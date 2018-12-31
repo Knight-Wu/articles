@@ -177,15 +177,19 @@ try {
 对于一个输入操作, 主要分为两个阶段, 一是等待数据从网络到达, 二是将数据从内核态拷到用户态.
 
 1. blocking io
+两个阶段全是阻塞的
 
 ![enter image description here](https://drive.google.com/uc?id=1Ie2B8Iwl61DjxYJIE9gi2ccIdFa2FjMD)
 
+2. non blocking io
+f
+![enter image description here](https://drive.google.com/uc?id=1JVZTgB7uCilJdHJFnlEP4eW1B_J7cyk6)
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjY3ODQ3NjI0LDEzNDUwMzg3MCwtMTk5MD
+eyJoaXN0b3J5IjpbMzUxNDQ2ODc4LDEzNDUwMzg3MCwtMTk5MD
 gxNjgzMCwtMTExNTgxNTY0OSw4ODA4MzM5NDEsMTk5MTU3Mjc4
 NywtMTYzOTQwMzkxNV19
 -->
