@@ -178,14 +178,14 @@ try {
 
 1. blocking io
 
-
+![enter image description here](https://drive.google.com/uc?id=1Ie2B8Iwl61DjxYJIE9gi2ccIdFa2FjMD)
 
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkxMTExMzQ1NywxMzQ1MDM4NzAsLTE5OT
-A4MTY4MzAsLTExMTU4MTU2NDksODgwODMzOTQxLDE5OTE1NzI3
-ODcsLTE2Mzk0MDM5MTVdfQ==
+eyJoaXN0b3J5IjpbMjY3ODQ3NjI0LDEzNDUwMzg3MCwtMTk5MD
+gxNjgzMCwtMTExNTgxNTY0OSw4ODA4MzM5NDEsMTk5MTU3Mjc4
+NywtMTYzOTQwMzkxNV19
 -->
