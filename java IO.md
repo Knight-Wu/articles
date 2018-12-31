@@ -200,6 +200,10 @@ while 循环发起recvform 调用(消耗cpu ), 询问数据是否准备好, 若�
 ![enter image description here](https://drive.google.com/uc?id=1dfK2SGuXzaszMGewnraT9Nv9YPrq4hpE)
 
 
+## netty
+
+* 为什么要用netty, netty 解决了什么问题
+
 
 
 ### 疑问
@@ -215,7 +219,7 @@ while 循环发起recvform 调用(消耗cpu ), 询问数据是否准备好, 若�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTk4MTAyMTM3LC0xMDI4ODYyOTY1LDEzND
-UwMzg3MCwtMTk5MDgxNjgzMCwtMTExNTgxNTY0OSw4ODA4MzM5
-NDEsMTk5MTU3Mjc4NywtMTYzOTQwMzkxNV19
+eyJoaXN0b3J5IjpbLTE0NTUzNjQ4NjYsLTEwMjg4NjI5NjUsMT
+M0NTAzODcwLC0xOTkwODE2ODMwLC0xMTE1ODE1NjQ5LDg4MDgz
+Mzk0MSwxOTkxNTcyNzg3LC0xNjM5NDAzOTE1XX0=
 -->
