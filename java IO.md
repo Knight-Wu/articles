@@ -170,7 +170,10 @@ try {
 ```
 ## UNIX network programming
 
+####  6.2 IO model
 
+
+1. blocking io
 
 
 
@@ -178,7 +181,7 @@ try {
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI2MDExMTgxNCwtMTk5MDgxNjgzMCwtMT
-ExNTgxNTY0OSw4ODA4MzM5NDEsMTk5MTU3Mjc4NywtMTYzOTQw
-MzkxNV19
+eyJoaXN0b3J5IjpbNjI1MzAwNjUzLC0xOTkwODE2ODMwLC0xMT
+E1ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcyNzg3LC0xNjM5NDAz
+OTE1XX0=
 -->
