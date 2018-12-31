@@ -172,6 +172,7 @@ try {
 
 ####  6.2 IO model
 
+分为五种, blocking io, 
 对于一个输入操作, 主要分为两个阶段, 一是等待数据从网络到达, 二是将数据从内核态拷到用户态.
 
 1. blocking io
@@ -183,7 +184,7 @@ try {
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0NTAzODcwLC0xOTkwODE2ODMwLC0xMT
-E1ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcyNzg3LC0xNjM5NDAz
-OTE1XX0=
+eyJoaXN0b3J5IjpbMjA3MjIxOTE3NCwxMzQ1MDM4NzAsLTE5OT
+A4MTY4MzAsLTExMTU4MTU2NDksODgwODMzOTQxLDE5OTE1NzI3
+ODcsLTE2Mzk0MDM5MTVdfQ==
 -->
