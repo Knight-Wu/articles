@@ -201,7 +201,10 @@ while 循环发起recvform 调用(消耗cpu ), 询问数据是否准备好, 若�
 
 
 
+### 疑问
 
+* Listen socket and connected socket 
+* What is file descripter
 
 
 
@@ -211,7 +214,7 @@ while 循环发起recvform 调用(消耗cpu ), 询问数据是否准备好, 若�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTkzMDUyMTUsMTM0NTAzODcwLC0xOT
+eyJoaXN0b3J5IjpbLTEwMjg4NjI5NjUsMTM0NTAzODcwLC0xOT
 kwODE2ODMwLC0xMTE1ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcy
 Nzg3LC0xNjM5NDAzOTE1XX0=
 -->
