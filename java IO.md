@@ -182,14 +182,14 @@ try {
 ![enter image description here](https://drive.google.com/uc?id=1Ie2B8Iwl61DjxYJIE9gi2ccIdFa2FjMD)
 
 2. non blocking io
-f
+while 循环发起recvform 调用, 询问数据是否准备好, 若没有准备好就直接返回,
 ![enter image description here](https://drive.google.com/uc?id=1JVZTgB7uCilJdHJFnlEP4eW1B_J7cyk6)
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzUxNDQ2ODc4LDEzNDUwMzg3MCwtMTk5MD
-gxNjgzMCwtMTExNTgxNTY0OSw4ODA4MzM5NDEsMTk5MTU3Mjc4
-NywtMTYzOTQwMzkxNV19
+eyJoaXN0b3J5IjpbMTY3NzA3MjM3MSwxMzQ1MDM4NzAsLTE5OT
+A4MTY4MzAsLTExMTU4MTU2NDksODgwODMzOTQxLDE5OTE1NzI3
+ODcsLTE2Mzk0MDM5MTVdfQ==
 -->
