@@ -195,8 +195,9 @@ while 循环发起recvform 调用(消耗cpu ), 询问数据是否准备好, 若�
 ![enter image description here](https://drive.google.com/uc?id=1tnnPtlxvxb_vNzj-4A9avOCcxrRmtDwP)
 
 5. AIO 
-完全异步的IO, 注册handler 到内核, 一直到内核
+完全异步的IO, 调用aio 函数, 注册handler 到内核, 一直到内核将数据拷贝到用户态之后才通知用户态, 异步非阻塞的, 但是却不是所有的操作系统都支持
 
+![enter image description here](https://drive.google.com/uc?id=1dfK2SGuXzaszMGewnraT9Nv9YPrq4hpE)
 
 
 
@@ -210,7 +211,7 @@ while 循环发起recvform 调用(消耗cpu ), 询问数据是否准备好, 若�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MTU3MDIwNDYsMTM0NTAzODcwLC0xOT
+eyJoaXN0b3J5IjpbLTEyMTkzMDUyMTUsMTM0NTAzODcwLC0xOT
 kwODE2ODMwLC0xMTE1ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcy
 Nzg3LC0xNjM5NDAzOTE1XX0=
 -->
