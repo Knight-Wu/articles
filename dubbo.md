@@ -85,10 +85,12 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
 * java 是怎么实现把被代理类的所有方法都转移到invocationHandler 的invoke 方法的? https://docs.oracle.com/javase/8/docs/technotes/guides/reflection/proxy.html
 
 
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4ODg1MzMsNDM0MTAxNzY3LC0yMTA5OT
-c1MTQ0LDExNTI4NTQ2MjcsLTE0ODE2MTkyMzcsLTU2Nzc2Mjgx
-NiwyMDY4MDQ0NDQzLDc1MDU1MDA0OCwtMjAwNDQ1Mzk4LC0xND
-Y0MTE1MzMsLTM2MTE0MTcwOSwtMTE5NDY5NzMyXX0=
+eyJoaXN0b3J5IjpbOTU1NjEyNDE5LDEzODg4NTMzLDQzNDEwMT
+c2NywtMjEwOTk3NTE0NCwxMTUyODU0NjI3LC0xNDgxNjE5MjM3
+LC01Njc3NjI4MTYsMjA2ODA0NDQ0Myw3NTA1NTAwNDgsLTIwMD
+Q0NTM5OCwtMTQ2NDExNTMzLC0zNjExNDE3MDksLTExOTQ2OTcz
+Ml19
 -->
