@@ -89,11 +89,11 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
 * jdk 动态代理
 用一个weakCache 实现, 有两级缓存,
  一级缓存key 是classloader, 是一个 weakReference (当只被弱引用引用时, 下次gc 则被清除掉), value 为valueMap.
-二级缓存, key 是
+二级缓存, key 是classloader 和interface 接口所组成的key 对象, 由接口数量而决定, value 是代理类.
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNzI1MDU3OTIsLTEzNzgyOTY1OTgsMT
+eyJoaXN0b3J5IjpbLTE4MDMwMzc3MDgsLTEzNzgyOTY1OTgsMT
 M4ODg1MzMsNDM0MTAxNzY3LC0yMTA5OTc1MTQ0LDExNTI4NTQ2
 MjcsLTE0ODE2MTkyMzcsLTU2Nzc2MjgxNiwyMDY4MDQ0NDQzLD
 c1MDU1MDA0OCwtMjAwNDQ1Mzk4LC0xNDY0MTE1MzMsLTM2MTE0
