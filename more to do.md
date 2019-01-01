@@ -14,7 +14,7 @@
 * datanode 磁盘中某个volume 的容量快满时会有何影响
 * yarn container如何用起来. 写一个使用的小demo
 * linux 文件权限和用户权限的彻底理解
-* spark 集群容错的控制, 目前只知道task fail会触发 spark.task.maxFailures这个配置, 但是executor层, container层, job层, application层的配置控制还有待学习
+
 * spark, hadoop release notes
 
 * https://issues.apache.org/jira/browse/HDFS-9572 这个需要等待comment 回复
@@ -26,7 +26,7 @@
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
 * dubbo 线程池的核心线程数量如何设置, 取决于什么, 数据库还是机器?
 * 多个应用服务器的性能之和如何算, 
-* mysql 的常见问题, java的常见问题, 集合, 并发, jvm, concurrentHashMap, 红黑树, 
+* mysql 的常见问题, 
 * Build highly concurrent, distributed, and resilient message-driven applications on the JVM [http://akka.io](http://akka.io/)
 * spark executor task java.net.connectException 拒绝连接
 * spark.yarn.executor.memoryOverhead 结合内存理解, 如何调优
@@ -34,6 +34,10 @@
 * 如何知道hive on spark 整个application 运行阶段的内存使用情况, spark metric 好像不支持spark executor memory, 那么如何知道executor memory 或者cpu 等资源是否设置得合理? 
 https://github.com/uber-common/jvm-profiler 这个可以试试
 * yarn 用mr 作业收集container使用情况的原理和作用
+* 手写一个动态代理
+* dubbo 的几种序列化的方式以及原理
+* protocol buffer 
+* 为啥nio 要用byte buffer, 懂了io 模型之后还要知道设计api 的时候, 各种api 的好处以及作用
 
 ### DOING
 
@@ -47,29 +51,41 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 * 本地进程通信大量time_wait 连接
 正常的, 消耗的内存和cpu都很少, 
 
-* git 问题: 如果本地不小心删了一个文件, 怎么从remote 更新下来, 只更新这个文件; 如果想根据revision number 检出一个新的分支, 用于maven deploy , 如何操作: git reset revision_num; 在用 git pull 还原到origin/master 
-见"git 原理" 已解决
+
+
 
 * top 命令如何定位到某个线程的问题, 假设cpu 百分百如何排查
 https://blog.csdn.net/flysqrlboy/article/details/79314521
 
-* maven archtype 直接构建flink-quick-start, 解决一个classNotFoundEx 
-新下载了一个 maven ,就解决了这个问题, 可以用archetype:generate 去新建一个和模板一致的maven 项目top 命令如何定位到某个线程的问题, 假设cpu 百分百如何排查
+
 
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
   mae rcte linsar, lassotu
-### DONE
+  
 * 如何进行hdfs 磁盘的balance
 已查到资料
 * 本地进程通信大量time_wait 连接
 正常的, 消耗的内存和cpu都很少, 
+
+* spark 集群容错的控制, 目前只知道task fail会触发 spark.task.maxFailures这个配置, 但是executor层, container层, job层, application层的配置控制还有待学习
+
+已经总结
+
+* maven archtype 直接构建flink-quick-start, 解决一个classNotFoundEx 
+
+新下载了一个 maven ,就解决了这个问题, 可以用archetype:generate 去新建一个和模板一致的maven 项目top 命令如何定位到某个线程的问题, 假设cpu 百分百如何排查
+
+
+* git 问题: 如果本地不小心删了一个文件, 怎么从remote 更新下来, 只更新这个文件; 如果想根据revision number 检出一个新的分支, 用于maven deploy , 如何操作: git reset revision_num; 在用 git pull 还原到origin/master 
+见"git 原理" 已解决
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDY1MzA1MzcsLTg0ODU3NDQ0NiwyMT
-Y3ODk3NzgsLTExMzExMjI2ODUsMTQ2MDgxMTk1OSwxNDc3NTY5
-NzY4LC0xOTgwMjc2NjI5LDExNjcxOTA3MTksLTY5ODY3MzMzNC
-wxNjU3MjM1MDcwLC04OTc2NTQwOTQsLTEzODQxNTM2MzAsLTEz
-MDkwNzcxNTYsLTExNjg2MDI3MzYsLTE2MDAzNTYwNzIsLTE0ND
-MzNTMzMDksLTIxMzE1ODY5MzksNDE0NjI4ODM1LC0xNjY2OTA2
-NjQ5LDg1ODI0NTEyNF19
+eyJoaXN0b3J5IjpbMTY2MjE0NzE5MSwtMTM0NjUzMDUzNywtOD
+Q4NTc0NDQ2LDIxNjc4OTc3OCwtMTEzMTEyMjY4NSwxNDYwODEx
+OTU5LDE0Nzc1Njk3NjgsLTE5ODAyNzY2MjksMTE2NzE5MDcxOS
+wtNjk4NjczMzM0LDE2NTcyMzUwNzAsLTg5NzY1NDA5NCwtMTM4
+NDE1MzYzMCwtMTMwOTA3NzE1NiwtMTE2ODYwMjczNiwtMTYwMD
+M1NjA3MiwtMTQ0MzM1MzMwOSwtMjEzMTU4NjkzOSw0MTQ2Mjg4
+MzUsLTE2NjY5MDY2NDldfQ==
 -->
