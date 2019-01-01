@@ -92,9 +92,10 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
  一级缓存key 是classloader, 是一个 weakReference (当只被弱引用引用时, 下次gc 则被清除掉), value 为valueMap.
 二级缓存, key 是classloader 和interface 接口所组成的key 对象, 由接口数量而决定, value 是代理类.
 
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNDI0MTk3MDAsLTE4MDMwMzc3MDgsLT
+eyJoaXN0b3J5IjpbLTEwODIzNjI4MjIsLTE4MDMwMzc3MDgsLT
 EzNzgyOTY1OTgsMTM4ODg1MzMsNDM0MTAxNzY3LC0yMTA5OTc1
 MTQ0LDExNTI4NTQ2MjcsLTE0ODE2MTkyMzcsLTU2Nzc2MjgxNi
 wyMDY4MDQ0NDQzLDc1MDU1MDA0OCwtMjAwNDQ1Mzk4LC0xNDY0
