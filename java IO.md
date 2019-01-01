@@ -203,7 +203,7 @@ while 循环发起recvform 调用(消耗cpu ), 询问数据是否准备好, 若�
 ## netty
 
 * 为什么要用netty, netty 解决了什么问题
-netty 简化了网络编程, 
+netty 简化了网络编程, 使得网络编程变得容易, 兼容老版本, 高性能, 并支持各种协议
 _[The Netty project](https://netty.io/)_ is an effort to provide an asynchronous event-driven network application framework and tooling for the rapid development of maintainable high-performance · high-scalability protocol servers and clients.
 
 Netty is an NIO client server framework that enables quick and easy development of network applications such as protocol servers and clients. It greatly simplifies and streamlines network programming such as TCP and UDP socket server development.
@@ -222,7 +222,8 @@ Netty is an NIO client server framework that enables quick and easy development 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzk4ODQ2MjE2LC0xMDI4ODYyOTY1LDEzND
-UwMzg3MCwtMTk5MDgxNjgzMCwtMTExNTgxNTY0OSw4ODA4MzM5
-NDEsMTk5MTU3Mjc4NywtMTYzOTQwMzkxNV19
+eyJoaXN0b3J5IjpbMjEyODEyMjg3NywzOTg4NDYyMTYsLTEwMj
+g4NjI5NjUsMTM0NTAzODcwLC0xOTkwODE2ODMwLC0xMTE1ODE1
+NjQ5LDg4MDgzMzk0MSwxOTkxNTcyNzg3LC0xNjM5NDAzOTE1XX
+0=
 -->
