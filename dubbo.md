@@ -84,11 +84,14 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
 
 * java 是怎么实现把被代理类的所有方法都转移到invocationHandler 的invoke 方法的? https://docs.oracle.com/javase/8/docs/technotes/guides/reflection/proxy.html
 
+#### 动态代理
 
+* jdk 动态代理
+用一个weakCache 实现, 有两级缓存, 一级缓存是classloader, weakReference (当zhibei)作为key, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTU1NjEyNDE5LDEzODg4NTMzLDQzNDEwMT
+eyJoaXN0b3J5IjpbNDAxMDk2NDk2LDEzODg4NTMzLDQzNDEwMT
 c2NywtMjEwOTk3NTE0NCwxMTUyODU0NjI3LC0xNDgxNjE5MjM3
 LC01Njc3NjI4MTYsMjA2ODA0NDQ0Myw3NTA1NTAwNDgsLTIwMD
 Q0NTM5OCwtMTQ2NDExNTMzLC0zNjExNDE3MDksLTExOTQ2OTcz
