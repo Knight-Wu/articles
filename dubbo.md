@@ -93,6 +93,11 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
 二级缓存, key 是classloader 和interface 接口所组成的key 对象, 由接口数量而决定, value 是代理类.
 
 * 为什么要二级缓存 
+* 生成的代理类的结构
+https://blog.csdn.net/mhmyqn/article/details/48474815
+
+因为是继承了Proxy, 并implements 
+
 
 #### 序列化
 * Dubbo 对int的序列化细节
@@ -103,7 +108,7 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzMzU4OTc5NSwxNTAyNjg4MjUsMTU0MT
+eyJoaXN0b3J5IjpbLTQyMjcxNDk4MywxNTAyNjg4MjUsMTU0MT
 MzMzQ5NSwtMTgwMzAzNzcwOCwtMTM3ODI5NjU5OCwxMzg4ODUz
 Myw0MzQxMDE3NjcsLTIxMDk5NzUxNDQsMTE1Mjg1NDYyNywtMT
 Q4MTYxOTIzNywtNTY3NzYyODE2LDIwNjgwNDQ0NDMsNzUwNTUw
