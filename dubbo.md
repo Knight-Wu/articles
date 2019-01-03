@@ -92,14 +92,21 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
  一级缓存key 是classloader, 是一个 weakReference (当只被弱引用引用时, 下次gc 则被清除掉), value 为valueMap.
 二级缓存, key 是classloader 和interface 接口所组成的key 对象, 由接口数量而决定, value 是代理类.
 
-为什么要二级缓存
+为什么要二级缓存 
 
+#### 序列化
+* Dubbo 对int的序列化细节
+* 多种序列化方式, 对比hessian 和dubbo
+https://cloud.tencent.com/developer/
+*  thrift hessian 这两个rpc 框架
+* 海量数据下的典型架构设计和性能优化之道, 精通常用架构原则
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0MTMzMzQ5NSwtMTgwMzAzNzcwOCwtMT
-M3ODI5NjU5OCwxMzg4ODUzMyw0MzQxMDE3NjcsLTIxMDk5NzUx
-NDQsMTE1Mjg1NDYyNywtMTQ4MTYxOTIzNywtNTY3NzYyODE2LD
-IwNjgwNDQ0NDMsNzUwNTUwMDQ4LC0yMDA0NDUzOTgsLTE0NjQx
-MTUzMywtMzYxMTQxNzA5LC0xMTk0Njk3MzJdfQ==
+eyJoaXN0b3J5IjpbMTUwMjY4ODI1LDE1NDEzMzM0OTUsLTE4MD
+MwMzc3MDgsLTEzNzgyOTY1OTgsMTM4ODg1MzMsNDM0MTAxNzY3
+LC0yMTA5OTc1MTQ0LDExNTI4NTQ2MjcsLTE0ODE2MTkyMzcsLT
+U2Nzc2MjgxNiwyMDY4MDQ0NDQzLDc1MDU1MDA0OCwtMjAwNDQ1
+Mzk4LC0xNDY0MTE1MzMsLTM2MTE0MTcwOSwtMTE5NDY5NzMyXX
+0=
 -->
