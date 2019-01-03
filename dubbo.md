@@ -110,7 +110,7 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 
 1. 生成 invoker 代理
 
-用weakhashmap 生成, key 是 classloader的weakReference , 不会阻止classloader 被gc, 所以当classloader 被gc 之后, 这个map 里面的entry 也会被清空, 防止内存泄漏
+用weakhashmap 生成, key 是 classloader的weakReference , 不会阻止classloader 被gc, 所以当classloader 被gc 之后, 这个map 里面的entry 也会被清空, 防止内存泄漏; value 是一个valueMap, key 是
 
 * 生成的代理类的具体结构, 比jdk 快在哪里
 
@@ -125,11 +125,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg2NzQ5MTQ4LDIzOTk3NjY5MywxNzc1Nj
-EzMDI4LDE2MTYxMTk1MjUsLTEwNzUyODExNTcsMTE3OTU2Nzgz
-NSwxNTAyNjg4MjUsMTU0MTMzMzQ5NSwtMTgwMzAzNzcwOCwtMT
-M3ODI5NjU5OCwxMzg4ODUzMyw0MzQxMDE3NjcsLTIxMDk5NzUx
-NDQsMTE1Mjg1NDYyNywtMTQ4MTYxOTIzNywtNTY3NzYyODE2LD
-IwNjgwNDQ0NDMsNzUwNTUwMDQ4LC0yMDA0NDUzOTgsLTE0NjQx
-MTUzM119
+eyJoaXN0b3J5IjpbLTEyMjE3NDQyMTgsNDg2NzQ5MTQ4LDIzOT
+k3NjY5MywxNzc1NjEzMDI4LDE2MTYxMTk1MjUsLTEwNzUyODEx
+NTcsMTE3OTU2NzgzNSwxNTAyNjg4MjUsMTU0MTMzMzQ5NSwtMT
+gwMzAzNzcwOCwtMTM3ODI5NjU5OCwxMzg4ODUzMyw0MzQxMDE3
+NjcsLTIxMDk5NzUxNDQsMTE1Mjg1NDYyNywtMTQ4MTYxOTIzNy
+wtNTY3NzYyODE2LDIwNjgwNDQ0NDMsNzUwNTUwMDQ4LC0yMDA0
+NDUzOThdfQ==
 -->
