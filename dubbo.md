@@ -106,6 +106,13 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 
 采用继承委托类的形式, 如果是 static方法,private方法,final方法等描述的方法是不能被代理的。默认代理Object中equals,toString,hashCode,clone等方法。比JDK代理多了clone。
 
+> dubbo javaassist 代理
+
+用weakhashmap 生成, 当classloader 
+* 生成的代理类的具体结构, 比jdk 快在哪里
+
+
+
 #### 序列化
 * Dubbo 对int的序列化细节
 * 多种序列化方式, 对比hessian 和dubbo
@@ -115,10 +122,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxNjExOTUyNSwtMTA3NTI4MTE1NywxMT
-c5NTY3ODM1LDE1MDI2ODgyNSwxNTQxMzMzNDk1LC0xODAzMDM3
-NzA4LC0xMzc4Mjk2NTk4LDEzODg4NTMzLDQzNDEwMTc2NywtMj
-EwOTk3NTE0NCwxMTUyODU0NjI3LC0xNDgxNjE5MjM3LC01Njc3
-NjI4MTYsMjA2ODA0NDQ0Myw3NTA1NTAwNDgsLTIwMDQ0NTM5OC
-wtMTQ2NDExNTMzLC0zNjExNDE3MDksLTExOTQ2OTczMl19
+eyJoaXN0b3J5IjpbLTE1NDAwMDI5NTQsMTYxNjExOTUyNSwtMT
+A3NTI4MTE1NywxMTc5NTY3ODM1LDE1MDI2ODgyNSwxNTQxMzMz
+NDk1LC0xODAzMDM3NzA4LC0xMzc4Mjk2NTk4LDEzODg4NTMzLD
+QzNDEwMTc2NywtMjEwOTk3NTE0NCwxMTUyODU0NjI3LC0xNDgx
+NjE5MjM3LC01Njc3NjI4MTYsMjA2ODA0NDQ0Myw3NTA1NTAwND
+gsLTIwMDQ0NTM5OCwtMTQ2NDExNTMzLC0zNjExNDE3MDksLTEx
+OTQ2OTczMl19
 -->
