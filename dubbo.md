@@ -88,6 +88,15 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
 
 > jdk 动态代理
 
+1包：如果所代理的接口都是 public 的，那么它将被定义在顶层包（即包路径为空），如果所代理的接口中有非 public 的接口（因为接口不能被定义为 protect 或 private，所以除 public 之外就是默认的 package 访问级别），那么它将被定义在该接口所在包（假设代理了 com.ibm.developerworks 包中的某非 public 接口 A，那么新生成的代理类所在的包就是 com.ibm.developerworks），这样设计的目的是为了最大程度的保证动态代理类不会因为包管理的问题而无法被成功定义并访问；  
+2、类修饰符：该代理类具有 final 和 public 修饰符，意味着它可以被所有的类访问，但是不能被再度继承；
+
+  
+  
+作者：FX_SKY  
+链接：https://www.jianshu.com/p/dcd7ce106370  
+來源：简书  
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
 用一个weakCache 实现, key, subkey, value, 其中1,3是弱引用, 就是classloader 和代理类是作为弱引用使用, 
 有两级缓存,
  一级缓存key 是classloader, 是一个 weakReference (当只被弱引用引用时, 下次gc 则被清除掉), value 为valueMap.
@@ -113,11 +122,10 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjQwMjc5MjcsLTEwNzUyODExNTcsMT
-E3OTU2NzgzNSwxNTAyNjg4MjUsMTU0MTMzMzQ5NSwtMTgwMzAz
-NzcwOCwtMTM3ODI5NjU5OCwxMzg4ODUzMyw0MzQxMDE3NjcsLT
-IxMDk5NzUxNDQsMTE1Mjg1NDYyNywtMTQ4MTYxOTIzNywtNTY3
-NzYyODE2LDIwNjgwNDQ0NDMsNzUwNTUwMDQ4LC0yMDA0NDUzOT
-gsLTE0NjQxMTUzMywtMzYxMTQxNzA5LC0xMTk0Njk3MzJdfQ==
-
+eyJoaXN0b3J5IjpbLTMxMDE0MDA3MywtMTA3NTI4MTE1NywxMT
+c5NTY3ODM1LDE1MDI2ODgyNSwxNTQxMzMzNDk1LC0xODAzMDM3
+NzA4LC0xMzc4Mjk2NTk4LDEzODg4NTMzLDQzNDEwMTc2NywtMj
+EwOTk3NTE0NCwxMTUyODU0NjI3LC0xNDgxNjE5MjM3LC01Njc3
+NjI4MTYsMjA2ODA0NDQ0Myw3NTA1NTAwNDgsLTIwMDQ0NTM5OC
+wtMTQ2NDExNTMzLC0zNjExNDE3MDksLTExOTQ2OTczMl19
 -->
