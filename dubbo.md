@@ -96,7 +96,7 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
 * 生成的代理类的结构
 https://blog.csdn.net/mhmyqn/article/details/48474815
 
-因为是继承了Proxy, 并implements 
+因为是继承了Proxy, 并implements 相应的接口, java 不能多继承, 所以只支持对接口的代理, 另外也代理了Object.java 的hashcode, toString, equal 方法, 可以对这些方法做特殊处理
 
 
 #### 序列化
@@ -108,7 +108,7 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyMjcxNDk4MywxNTAyNjg4MjUsMTU0MT
+eyJoaXN0b3J5IjpbLTQwMTMwNjY1NCwxNTAyNjg4MjUsMTU0MT
 MzMzQ5NSwtMTgwMzAzNzcwOCwtMTM3ODI5NjU5OCwxMzg4ODUz
 Myw0MzQxMDE3NjcsLTIxMDk5NzUxNDQsMTE1Mjg1NDYyNywtMT
 Q4MTYxOTIzNywtNTY3NzYyODE2LDIwNjgwNDQ0NDMsNzUwNTUw
