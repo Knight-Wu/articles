@@ -112,7 +112,7 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 
 用weakhashmap 生成, key 是 classloader的weakReference , 不会阻止classloader 被gc, 所以当classloader 被gc 之后, 这个map 里面的entry 也会被清空, 防止内存泄漏. value 是一个valueMap, key 是接口名, value 是代理类的弱引用. 
 
-* 生成的代理类的具体结构, 比jdk 快在哪里
+
 
 
 
@@ -125,11 +125,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2MDEzNTc3OCw0ODY3NDkxNDgsMjM5OT
-c2NjkzLDE3NzU2MTMwMjgsMTYxNjExOTUyNSwtMTA3NTI4MTE1
-NywxMTc5NTY3ODM1LDE1MDI2ODgyNSwxNTQxMzMzNDk1LC0xOD
-AzMDM3NzA4LC0xMzc4Mjk2NTk4LDEzODg4NTMzLDQzNDEwMTc2
-NywtMjEwOTk3NTE0NCwxMTUyODU0NjI3LC0xNDgxNjE5MjM3LC
-01Njc3NjI4MTYsMjA2ODA0NDQ0Myw3NTA1NTAwNDgsLTIwMDQ0
-NTM5OF19
+eyJoaXN0b3J5IjpbODAzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3Nj
+Y5MywxNzc1NjEzMDI4LDE2MTYxMTk1MjUsLTEwNzUyODExNTcs
+MTE3OTU2NzgzNSwxNTAyNjg4MjUsMTU0MTMzMzQ5NSwtMTgwMz
+AzNzcwOCwtMTM3ODI5NjU5OCwxMzg4ODUzMyw0MzQxMDE3Njcs
+LTIxMDk5NzUxNDQsMTE1Mjg1NDYyNywtMTQ4MTYxOTIzNywtNT
+Y3NzYyODE2LDIwNjgwNDQ0NDMsNzUwNTUwMDQ4LC0yMDA0NDUz
+OThdfQ==
 -->
