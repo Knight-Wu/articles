@@ -108,6 +108,8 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 
 > dubbo javaassist 代理
 
+1. 生成 invoker 代理
+
 用weakhashmap 生成, key 是 classloader的weakReference , 不会阻止classloader 被gc, 所以当classloader 被gc 之后, 这个map 里面的entry 也会被清空, 防止内存泄漏
 
 * 生成的代理类的具体结构, 比jdk 快在哪里
@@ -123,11 +125,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjM5OTc2NjkzLDE3NzU2MTMwMjgsMTYxNj
-ExOTUyNSwtMTA3NTI4MTE1NywxMTc5NTY3ODM1LDE1MDI2ODgy
-NSwxNTQxMzMzNDk1LC0xODAzMDM3NzA4LC0xMzc4Mjk2NTk4LD
-EzODg4NTMzLDQzNDEwMTc2NywtMjEwOTk3NTE0NCwxMTUyODU0
-NjI3LC0xNDgxNjE5MjM3LC01Njc3NjI4MTYsMjA2ODA0NDQ0My
-w3NTA1NTAwNDgsLTIwMDQ0NTM5OCwtMTQ2NDExNTMzLC0zNjEx
-NDE3MDldfQ==
+eyJoaXN0b3J5IjpbNDg2NzQ5MTQ4LDIzOTk3NjY5MywxNzc1Nj
+EzMDI4LDE2MTYxMTk1MjUsLTEwNzUyODExNTcsMTE3OTU2Nzgz
+NSwxNTAyNjg4MjUsMTU0MTMzMzQ5NSwtMTgwMzAzNzcwOCwtMT
+M3ODI5NjU5OCwxMzg4ODUzMyw0MzQxMDE3NjcsLTIxMDk5NzUx
+NDQsMTE1Mjg1NDYyNywtMTQ4MTYxOTIzNywtNTY3NzYyODE2LD
+IwNjgwNDQ0NDMsNzUwNTUwMDQ4LC0yMDA0NDUzOTgsLTE0NjQx
+MTUzM119
 -->
