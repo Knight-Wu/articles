@@ -86,7 +86,8 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
 
 #### 动态代理
 
-* jdk 动态代理
+> jdk 动态代理
+
 用一个weakCache 实现, key, subkey, value, 其中1,3是弱引用, 就是classloader 和代理类是作为弱引用使用, 
 有两级缓存,
  一级缓存key 是classloader, 是一个 weakReference (当只被弱引用引用时, 下次gc 则被清除掉), value 为valueMap.
@@ -99,6 +100,9 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 因为是继承了Proxy, 并implements 相应的接口, java 不能多继承, 所以只支持对接口的代理, 另外也代理了Object.java 的hashcode, toString, equal 方法, 可以对这些方法做特殊处理.
 另外代理类是怎么调用委托类的方法呢, 通过反射去调用.
 
+> cglib 代理
+
+采用继承委托类的形式, 如果是 static方法,private方法,final方法等描述的方法是不能被代理的。默认代理Object中equals,toString,hashCode,clone等方法。比JDK代理多了clone。
 
 #### 序列化
 * Dubbo 对int的序列化细节
@@ -109,10 +113,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNzUyODExNTcsMTE3OTU2NzgzNSwxNT
-AyNjg4MjUsMTU0MTMzMzQ5NSwtMTgwMzAzNzcwOCwtMTM3ODI5
-NjU5OCwxMzg4ODUzMyw0MzQxMDE3NjcsLTIxMDk5NzUxNDQsMT
-E1Mjg1NDYyNywtMTQ4MTYxOTIzNywtNTY3NzYyODE2LDIwNjgw
-NDQ0NDMsNzUwNTUwMDQ4LC0yMDA0NDUzOTgsLTE0NjQxMTUzMy
-wtMzYxMTQxNzA5LC0xMTk0Njk3MzJdfQ==
+eyJoaXN0b3J5IjpbLTE2NjQwMjc5MjcsLTEwNzUyODExNTcsMT
+E3OTU2NzgzNSwxNTAyNjg4MjUsMTU0MTMzMzQ5NSwtMTgwMzAz
+NzcwOCwtMTM3ODI5NjU5OCwxMzg4ODUzMyw0MzQxMDE3NjcsLT
+IxMDk5NzUxNDQsMTE1Mjg1NDYyNywtMTQ4MTYxOTIzNywtNTY3
+NzYyODE2LDIwNjgwNDQ0NDMsNzUwNTUwMDQ4LC0yMDA0NDUzOT
+gsLTE0NjQxMTUzMywtMzYxMTQxNzA5LC0xMTk0Njk3MzJdfQ==
+
 -->
