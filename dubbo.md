@@ -111,10 +111,10 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 1. 生成 invoker 代理
 
 用weakhashmap 生成, key 是 classloader的weakReference , 不会阻止classloader 被gc, 所以当classloader 被gc 之后, 这个map 里面的entry 也会被清空, 防止内存泄漏. value 是一个valueMap, key 是接口名, value 是代理类的弱引用. 
-生成的代理类的结构如下: 
+通过javaassist 生成的代理类的结构如下: 
 
 等于说把所有方法的调用都转化为对InvocationHandler invoke  方法的调用. 
-而
+而实际发起调用的时候, 通过Wrapper 转化为对接口提供者的调用
 
 
 
@@ -128,11 +128,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1Njg4MjMwNyw4MDMyMzE0Niw0ODY3ND
-kxNDgsMjM5OTc2NjkzLDE3NzU2MTMwMjgsMTYxNjExOTUyNSwt
-MTA3NTI4MTE1NywxMTc5NTY3ODM1LDE1MDI2ODgyNSwxNTQxMz
-MzNDk1LC0xODAzMDM3NzA4LC0xMzc4Mjk2NTk4LDEzODg4NTMz
-LDQzNDEwMTc2NywtMjEwOTk3NTE0NCwxMTUyODU0NjI3LC0xND
-gxNjE5MjM3LC01Njc3NjI4MTYsMjA2ODA0NDQ0Myw3NTA1NTAw
-NDhdfQ==
+eyJoaXN0b3J5IjpbNTQ0ODA4NjI2LDgwMzIzMTQ2LDQ4Njc0OT
+E0OCwyMzk5NzY2OTMsMTc3NTYxMzAyOCwxNjE2MTE5NTI1LC0x
+MDc1MjgxMTU3LDExNzk1Njc4MzUsMTUwMjY4ODI1LDE1NDEzMz
+M0OTUsLTE4MDMwMzc3MDgsLTEzNzgyOTY1OTgsMTM4ODg1MzMs
+NDM0MTAxNzY3LC0yMTA5OTc1MTQ0LDExNTI4NTQ2MjcsLTE0OD
+E2MTkyMzcsLTU2Nzc2MjgxNiwyMDY4MDQ0NDQzLDc1MDU1MDA0
+OF19
 -->
