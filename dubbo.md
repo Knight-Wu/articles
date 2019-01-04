@@ -50,6 +50,8 @@
 
 例如生成的Protocol$Adpative 的类文件如下, 
 
+这样就可以根据url 获取相应的字段, 例如当protocol 是dubbo 时, 只实例化 DubboProtocol 这个对象, 并发起调用, 并不初始化其他Protocol .
+
 
 
 
@@ -158,11 +160,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTc5NDYyNzksMTY1NTMwODE1OSwtMT
-c1NTIwMTAwMCwxMjM5ODAxMzg1LDE4MDQ0ODkzMzAsLTE5NTA0
-MjQwNDQsLTEwMTc4NzE5OTgsLTE4NzE0MDE4ODksLTE4ODY1OT
-M3NDMsLTIxMzE5MDExMDAsODAzMjMxNDYsNDg2NzQ5MTQ4LDIz
-OTk3NjY5MywxNzc1NjEzMDI4LDE2MTYxMTk1MjUsLTEwNzUyOD
-ExNTcsMTE3OTU2NzgzNSwxNTAyNjg4MjUsMTU0MTMzMzQ5NSwt
-MTgwMzAzNzcwOF19
+eyJoaXN0b3J5IjpbNzY1MTQwOTQsMTY1NTMwODE1OSwtMTc1NT
+IwMTAwMCwxMjM5ODAxMzg1LDE4MDQ0ODkzMzAsLTE5NTA0MjQw
+NDQsLTEwMTc4NzE5OTgsLTE4NzE0MDE4ODksLTE4ODY1OTM3ND
+MsLTIxMzE5MDExMDAsODAzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3
+NjY5MywxNzc1NjEzMDI4LDE2MTYxMTk1MjUsLTEwNzUyODExNT
+csMTE3OTU2NzgzNSwxNTAyNjg4MjUsMTU0MTMzMzQ5NSwtMTgw
+MzAzNzcwOF19
 -->
