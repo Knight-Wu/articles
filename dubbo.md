@@ -41,11 +41,12 @@ http://jm.taobao.org/2013/11/14/3138/
  向注册中心暴露服务, 构建出url : registry://registry-host/com.alibaba.dubbo.registry.RegistryService?export=URL.encode("dubbo://service-host/com.foo.FooService?version=1.0.0"), 通过url 的registry协议, 调用 RegistryProtocol 的 export()方法 将url注册到注册中心, 然后再根据dubbo协议头, 通过 DubboProtocol 的 export()将本地提供者的端口打开.
 
 export的过程中, 首先将实现类, 例如HelloWorldImpl通过 ProxyFactory 类的 getInvoker 方法使用 ref 生成一个 AbstractProxyInvoker 实例, 从而得到Invoker, 再后, 就是将Invoker转化为 Exporter .分为两种情况
-> 1. Dubbo的实现, 打开socket服务, 监听客户端的请求, 并返回.
-> 2. RMI 的实现,  RMI 协议的 Invoker 转为 Exporter 发生在 RmiProtocol类的 export 方法，它通过 Spring 或 Dubbo 或 JDK 来实现 RMI 服务，通讯细节这一块由 JDK 底层来实现，这就省了不少工作量
+1. Dubbo的实现, 打开socket服务, 监听客户端的请求, 并返回.
+2. RMI 的实现,  RMI 协议的 Invoker 转为 Exporter 发生在 RmiProtocol类的 export 方法，它通过 Spring 或 Dubbo 或 JDK 来实现 RMI 服务，通讯细节这一块由 JDK 底层来实现，这就省了不少工作量
 
-* 服务引用
-> 直接引用提供者的服务, 根据url 的dubbo协议头识别, 直接调用 DubboProtocol 的 refer()方法,返回提供者引用. 
+> 服务引用
+
+ 直接引用提供者的服务, 根据url 的dubbo协议头识别, 直接调用 DubboProtocol 的 refer()方法,返回提供者引用. 
 
 > 引用注册中心的服务
 
@@ -138,11 +139,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTY4MTYyODMzLDE4MDQ0ODkzMzAsLTE5NT
-A0MjQwNDQsLTEwMTc4NzE5OTgsLTE4NzE0MDE4ODksLTE4ODY1
-OTM3NDMsLTIxMzE5MDExMDAsODAzMjMxNDYsNDg2NzQ5MTQ4LD
-IzOTk3NjY5MywxNzc1NjEzMDI4LDE2MTYxMTk1MjUsLTEwNzUy
-ODExNTcsMTE3OTU2NzgzNSwxNTAyNjg4MjUsMTU0MTMzMzQ5NS
-wtMTgwMzAzNzcwOCwtMTM3ODI5NjU5OCwxMzg4ODUzMyw0MzQx
-MDE3NjddfQ==
+eyJoaXN0b3J5IjpbMTIzOTgwMTM4NSwxODA0NDg5MzMwLC0xOT
+UwNDI0MDQ0LC0xMDE3ODcxOTk4LC0xODcxNDAxODg5LC0xODg2
+NTkzNzQzLC0yMTMxOTAxMTAwLDgwMzIzMTQ2LDQ4Njc0OTE0OC
+wyMzk5NzY2OTMsMTc3NTYxMzAyOCwxNjE2MTE5NTI1LC0xMDc1
+MjgxMTU3LDExNzk1Njc4MzUsMTUwMjY4ODI1LDE1NDEzMzM0OT
+UsLTE4MDMwMzc3MDgsLTEzNzgyOTY1OTgsMTM4ODg1MzMsNDM0
+MTAxNzY3XX0=
 -->
