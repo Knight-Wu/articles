@@ -39,9 +39,9 @@
 预备知识: 
 > dubbo SPI
 
-http://cxis.me/2017/02/18/Dubbo%E4%B8%ADSPI%E6%89%A9%E5%B1%95%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/
-相比于jdk 的SPI, 不需要一次性去加载所有的实现类, 有可能有些实现类是完全不用的, 例如有些Protocol
+参考了 http://cxis.me/2017/02/18/Dubbo%E4%B8%ADSPI%E6%89%A9%E5%B1%95%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/
 
+相比于jdk 的SPI, 不需要一次性去加载所有的实现类, 有可能有些实现类是完全不用的, 例如有些Protocol 在某些情况下肯定不用加载的, 
 例如 Protocol 有多个实现类, 何时加载, 如何调用. Protocol 的实现类
 
 
@@ -150,11 +150,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjA2MDAyMzUsMTY1NTMwODE1OSwtMT
-c1NTIwMTAwMCwxMjM5ODAxMzg1LDE4MDQ0ODkzMzAsLTE5NTA0
-MjQwNDQsLTEwMTc4NzE5OTgsLTE4NzE0MDE4ODksLTE4ODY1OT
-M3NDMsLTIxMzE5MDExMDAsODAzMjMxNDYsNDg2NzQ5MTQ4LDIz
-OTk3NjY5MywxNzc1NjEzMDI4LDE2MTYxMTk1MjUsLTEwNzUyOD
-ExNTcsMTE3OTU2NzgzNSwxNTAyNjg4MjUsMTU0MTMzMzQ5NSwt
-MTgwMzAzNzcwOF19
+eyJoaXN0b3J5IjpbMTAyODU1ODk4OSwxNjU1MzA4MTU5LC0xNz
+U1MjAxMDAwLDEyMzk4MDEzODUsMTgwNDQ4OTMzMCwtMTk1MDQy
+NDA0NCwtMTAxNzg3MTk5OCwtMTg3MTQwMTg4OSwtMTg4NjU5Mz
+c0MywtMjEzMTkwMTEwMCw4MDMyMzE0Niw0ODY3NDkxNDgsMjM5
+OTc2NjkzLDE3NzU2MTMwMjgsMTYxNjExOTUyNSwtMTA3NTI4MT
+E1NywxMTc5NTY3ODM1LDE1MDI2ODgyNSwxNTQxMzMzNDk1LC0x
+ODAzMDM3NzA4XX0=
 -->
