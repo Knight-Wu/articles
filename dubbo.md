@@ -99,92 +99,6 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
 * 生成的代理类的结构
 https://blog.csdn.net/mhmyqn/article/details/48474815
 
-```
-package com.sun.proxy;
- 
-import com.mikan.proxy.HelloWorld;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.lang.reflect.UndeclaredThrowableException;
- 
-public final class $Proxy0 extends Proxy implements HelloWorld {
-  private static Method m1;
-  private static Method m3;
-  private static Method m0;
-  private static Method m2;
- 
-  public $Proxy0(InvocationHandler paramInvocationHandler) {
-    super(paramInvocationHandler);
-  }
- 
-  public final boolean equals(Object paramObject) {
-    try {
-      return ((Boolean)this.h.invoke(this, m1, new Object[] { paramObject })).booleanValue();
-    }
-    catch (Error|RuntimeException localError) {
-      throw localError;
-    }
-    catch (Throwable localThrowable) {
-      throw new UndeclaredThrowableException(localThrowable);
-    }
-  }
- 
-  public final void sayHello(String paramString) {
-    try {
-      this.h.invoke(this, m3, new Object[] { paramString });
-      return;
-    }
-    catch (Error|RuntimeException localError) {
-      throw localError;
-    }
-    catch (Throwable localThrowable) {
-      throw new UndeclaredThrowableException(localThrowable);
-    }
-  }
- 
-  public final int hashCode() {
-    try {
-      return ((Integer)this.h.invoke(this, m0, null)).intValue();
-    }
-    catch (Error|RuntimeException localError) {
-      throw localError;
-    }
-    catch (Throwable localThrowable) {
-      throw new UndeclaredThrowableException(localThrowable);
-    }
-  }
- 
-  public final String toString() {
-    try {
-      return (String)this.h.invoke(this, m2, null);
-    }
-    catch (Error|RuntimeException localError) {
-      throw localError;
-    }
-    catch (Throwable localThrowable) {
-      throw new UndeclaredThrowableException(localThrowable);
-    }
-  }
- 
-  static {
-    try {
-      m1 = Class.forName("java.lang.Object").getMethod("equals", new Class[] { Class.forName("java.lang.Object") });
-      m3 = Class.forName("com.mikan.proxy.HelloWorld").getMethod("sayHello", new Class[] { Class.forName("java.lang.String") });
-      m0 = Class.forName("java.lang.Object").getMethod("hashCode", new Class[0]);
-      m2 = Class.forName("java.lang.Object").getMethod("toString", new Class[0]);
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException) {
-      throw new NoSuchMethodError(localNoSuchMethodException.getMessage());
-    }
-    catch (ClassNotFoundException localClassNotFoundException) {
-      throw new NoClassDefFoundError(localClassNotFoundException.getMessage());
-    }
-  }
-}
-
-```
 
 因为是继承了Proxy, 并implements 相应的接口, java 不能多继承, 所以只支持对接口的代理, 另外也代理了Object.java 的hashcode, toString, equal 方法, 可以对这些方法做特殊处理.
 另外代理类是怎么调用委托类的方法呢, 通过反射去调用.
@@ -221,11 +135,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU5MzU4MzQ3OCwtMTAxNzg3MTk5OCwtMT
-g3MTQwMTg4OSwtMTg4NjU5Mzc0MywtMjEzMTkwMTEwMCw4MDMy
-MzE0Niw0ODY3NDkxNDgsMjM5OTc2NjkzLDE3NzU2MTMwMjgsMT
-YxNjExOTUyNSwtMTA3NTI4MTE1NywxMTc5NTY3ODM1LDE1MDI2
-ODgyNSwxNTQxMzMzNDk1LC0xODAzMDM3NzA4LC0xMzc4Mjk2NT
-k4LDEzODg4NTMzLDQzNDEwMTc2NywtMjEwOTk3NTE0NCwxMTUy
-ODU0NjI3XX0=
+eyJoaXN0b3J5IjpbLTE5NTA0MjQwNDQsLTEwMTc4NzE5OTgsLT
+E4NzE0MDE4ODksLTE4ODY1OTM3NDMsLTIxMzE5MDExMDAsODAz
+MjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5MywxNzc1NjEzMDI4LD
+E2MTYxMTk1MjUsLTEwNzUyODExNTcsMTE3OTU2NzgzNSwxNTAy
+Njg4MjUsMTU0MTMzMzQ5NSwtMTgwMzAzNzcwOCwtMTM3ODI5Nj
+U5OCwxMzg4ODUzMyw0MzQxMDE3NjcsLTIxMDk5NzUxNDQsMTE1
+Mjg1NDYyN119
 -->
