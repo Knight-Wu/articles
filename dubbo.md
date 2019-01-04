@@ -112,12 +112,13 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 
 用weakhashmap 生成, key 是 classloader的weakReference , 不会阻止classloader 被gc, 所以当classloader 被gc 之后, 这个map 里面的entry 也会被清空, 防止内存泄漏. value 是一个valueMap, key 是接口名, value 是代理类的弱引用. 
 通过javaassist 生成的代理类的结构如下: 
-
+![enter image description here](https://drive.google.com/uc?id=1Lhp2LuIa2m-fZ93pbSwfeSRXqgf6cyBr)
 
 等于说把所有方法的调用都转化为对InvocationHandler invoke  方法的调用. 
 而实际发起调用的时候, 通过Wrapper 转化为对接口提供者的调用. wrapper 在服务暴露时就初始化好
  
  wrapper 的生成如图: 
+ ![enter image description here](https://drive.google.com/uc?id=1msOglqWEjCpftwgeqqslA5KyWsC1v3MZ)
  
  
 
@@ -133,11 +134,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzE0MDE4ODksLTE4ODY1OTM3NDMsLT
-IxMzE5MDExMDAsODAzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5
-MywxNzc1NjEzMDI4LDE2MTYxMTk1MjUsLTEwNzUyODExNTcsMT
-E3OTU2NzgzNSwxNTAyNjg4MjUsMTU0MTMzMzQ5NSwtMTgwMzAz
-NzcwOCwtMTM3ODI5NjU5OCwxMzg4ODUzMyw0MzQxMDE3NjcsLT
-IxMDk5NzUxNDQsMTE1Mjg1NDYyNywtMTQ4MTYxOTIzNywtNTY3
-NzYyODE2XX0=
+eyJoaXN0b3J5IjpbLTEwMTc4NzE5OTgsLTE4NzE0MDE4ODksLT
+E4ODY1OTM3NDMsLTIxMzE5MDExMDAsODAzMjMxNDYsNDg2NzQ5
+MTQ4LDIzOTk3NjY5MywxNzc1NjEzMDI4LDE2MTYxMTk1MjUsLT
+EwNzUyODExNTcsMTE3OTU2NzgzNSwxNTAyNjg4MjUsMTU0MTMz
+MzQ5NSwtMTgwMzAzNzcwOCwtMTM3ODI5NjU5OCwxMzg4ODUzMy
+w0MzQxMDE3NjcsLTIxMDk5NzUxNDQsMTE1Mjg1NDYyNywtMTQ4
+MTYxOTIzN119
 -->
