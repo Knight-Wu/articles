@@ -41,7 +41,7 @@
 
 http://cxis.me/2017/02/18/Dubbo%E4%B8%ADSPI%E6%89%A9%E5%B1%95%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/
 
-例如 Protocol 有多个实现类, 何时加载, 如何调用. 
+例如 Protocol 有多个实现类, 何时加载, 如何调用. Protocol 的实现类
 
 
 
@@ -149,7 +149,7 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNzU1ODU4NCwtMTc1NTIwMTAwMCwxMj
+eyJoaXN0b3J5IjpbMTY1NTMwODE1OSwtMTc1NTIwMTAwMCwxMj
 M5ODAxMzg1LDE4MDQ0ODkzMzAsLTE5NTA0MjQwNDQsLTEwMTc4
 NzE5OTgsLTE4NzE0MDE4ODksLTE4ODY1OTM3NDMsLTIxMzE5MD
 ExMDAsODAzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5MywxNzc1
