@@ -42,7 +42,9 @@
 参考了 http://cxis.me/2017/02/18/Dubbo%E4%B8%ADSPI%E6%89%A9%E5%B1%95%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/
 
 相比于jdk 的SPI, 不需要一次性去加载所有的实现类, 有可能有些实现类是完全不用的, 例如有些Protocol 在某些情况下肯定不用加载的, 
-例如 Protocol 有多个实现类, 何时加载, 如何调用. Protocol 的实现类
+例如 Protocol 有多个实现类, 何时加载, 如何调用. Protocol 的实现类通过如下方式进行配置: 
+
+启动时
 
 
 
@@ -150,7 +152,7 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyODU1ODk4OSwxNjU1MzA4MTU5LC0xNz
+eyJoaXN0b3J5IjpbMTAzNDM1NTAxMCwxNjU1MzA4MTU5LC0xNz
 U1MjAxMDAwLDEyMzk4MDEzODUsMTgwNDQ4OTMzMCwtMTk1MDQy
 NDA0NCwtMTAxNzg3MTk5OCwtMTg3MTQwMTg4OSwtMTg4NjU5Mz
 c0MywtMjEzMTkwMTEwMCw4MDMyMzE0Niw0ODY3NDkxNDgsMjM5
