@@ -114,7 +114,7 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 通过javaassist 生成的代理类的结构如下: 
 
 等于说把所有方法的调用都转化为对InvocationHandler invoke  方法的调用. 
-而实际发起调用的时候, 通过Wrapper 转化为对接口提供者的调用.
+而实际发起调用的时候, 通过Wrapper 转化为对接口提供者的调用. wrapper 在服务暴露时就初始化好
  
  wrapper 的生成如图: 
  
@@ -131,11 +131,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzE5MDExMDAsODAzMjMxNDYsNDg2Nz
-Q5MTQ4LDIzOTk3NjY5MywxNzc1NjEzMDI4LDE2MTYxMTk1MjUs
-LTEwNzUyODExNTcsMTE3OTU2NzgzNSwxNTAyNjg4MjUsMTU0MT
-MzMzQ5NSwtMTgwMzAzNzcwOCwtMTM3ODI5NjU5OCwxMzg4ODUz
-Myw0MzQxMDE3NjcsLTIxMDk5NzUxNDQsMTE1Mjg1NDYyNywtMT
-Q4MTYxOTIzNywtNTY3NzYyODE2LDIwNjgwNDQ0NDMsNzUwNTUw
-MDQ4XX0=
+eyJoaXN0b3J5IjpbLTE4ODY1OTM3NDMsLTIxMzE5MDExMDAsOD
+AzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5MywxNzc1NjEzMDI4
+LDE2MTYxMTk1MjUsLTEwNzUyODExNTcsMTE3OTU2NzgzNSwxNT
+AyNjg4MjUsMTU0MTMzMzQ5NSwtMTgwMzAzNzcwOCwtMTM3ODI5
+NjU5OCwxMzg4ODUzMyw0MzQxMDE3NjcsLTIxMDk5NzUxNDQsMT
+E1Mjg1NDYyNywtMTQ4MTYxOTIzNywtNTY3NzYyODE2LDIwNjgw
+NDQ0NDNdfQ==
 -->
