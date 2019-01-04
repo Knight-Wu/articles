@@ -132,15 +132,16 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 https://cloud.tencent.com/developer/
 *  thrift hessian 这两个rpc 框架
 * dubbo 怎么组织filter 和invoker 的链式调用, 用的什么设计模式
+* Dubbo 消费者使用单一链接的方式，什么时候达到网络瓶紧
 * 海量数据下的典型架构设计和性能优化之道, 精通常用架构原则
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTI3MTgxOTE2LC0xOTUwNDI0MDQ0LC0xMD
-E3ODcxOTk4LC0xODcxNDAxODg5LC0xODg2NTkzNzQzLC0yMTMx
-OTAxMTAwLDgwMzIzMTQ2LDQ4Njc0OTE0OCwyMzk5NzY2OTMsMT
-c3NTYxMzAyOCwxNjE2MTE5NTI1LC0xMDc1MjgxMTU3LDExNzk1
-Njc4MzUsMTUwMjY4ODI1LDE1NDEzMzM0OTUsLTE4MDMwMzc3MD
-gsLTEzNzgyOTY1OTgsMTM4ODg1MzMsNDM0MTAxNzY3LC0yMTA5
-OTc1MTQ0XX0=
+eyJoaXN0b3J5IjpbMTgwNDQ4OTMzMCwtMTk1MDQyNDA0NCwtMT
+AxNzg3MTk5OCwtMTg3MTQwMTg4OSwtMTg4NjU5Mzc0MywtMjEz
+MTkwMTEwMCw4MDMyMzE0Niw0ODY3NDkxNDgsMjM5OTc2NjkzLD
+E3NzU2MTMwMjgsMTYxNjExOTUyNSwtMTA3NTI4MTE1NywxMTc5
+NTY3ODM1LDE1MDI2ODgyNSwxNTQxMzMzNDk1LC0xODAzMDM3Nz
+A4LC0xMzc4Mjk2NTk4LDEzODg4NTMzLDQzNDEwMTc2NywtMjEw
+OTk3NTE0NF19
 -->
