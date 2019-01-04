@@ -64,8 +64,10 @@
 
 
 
-参考了 http://jm.taobao.org/2013/11/14/3138/
+
 >  服务暴露
+
+参考了 http://jm.taobao.org/2013/11/14/3138/
 
 直接在本机暴露服务, 先构建出url, 例如 dubbo://service-host/com.foo.FooService?version=1.0.0, 然后再把本机的服务端口打开
 
@@ -167,11 +169,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTQwOTA2MzIsNzY1MTQwOTQsMTY1NT
-MwODE1OSwtMTc1NTIwMTAwMCwxMjM5ODAxMzg1LDE4MDQ0ODkz
-MzAsLTE5NTA0MjQwNDQsLTEwMTc4NzE5OTgsLTE4NzE0MDE4OD
-ksLTE4ODY1OTM3NDMsLTIxMzE5MDExMDAsODAzMjMxNDYsNDg2
-NzQ5MTQ4LDIzOTk3NjY5MywxNzc1NjEzMDI4LDE2MTYxMTk1Mj
-UsLTEwNzUyODExNTcsMTE3OTU2NzgzNSwxNTAyNjg4MjUsMTU0
-MTMzMzQ5NV19
+eyJoaXN0b3J5IjpbLTIwMTY2MjkyNzQsLTEwOTQwOTA2MzIsNz
+Y1MTQwOTQsMTY1NTMwODE1OSwtMTc1NTIwMTAwMCwxMjM5ODAx
+Mzg1LDE4MDQ0ODkzMzAsLTE5NTA0MjQwNDQsLTEwMTc4NzE5OT
+gsLTE4NzE0MDE4ODksLTE4ODY1OTM3NDMsLTIxMzE5MDExMDAs
+ODAzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5MywxNzc1NjEzMD
+I4LDE2MTYxMTk1MjUsLTEwNzUyODExNTcsMTE3OTU2NzgzNSwx
+NTAyNjg4MjVdfQ==
 -->
