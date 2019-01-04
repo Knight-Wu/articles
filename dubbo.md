@@ -39,8 +39,14 @@
 预备知识: 
 > dubbo SPI
 
+http://cxis.me/2017/02/18/Dubbo%E4%B8%ADSPI%E6%89%A9%E5%B1%95%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/
 
-http://jm.taobao.org/2013/11/14/3138/
+
+
+
+
+
+参考了 http://jm.taobao.org/2013/11/14/3138/
 >  服务暴露
 
 直接在本机暴露服务, 先构建出url, 例如 dubbo://service-host/com.foo.FooService?version=1.0.0, 然后再把本机的服务端口打开
@@ -143,11 +149,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwNTI5MTcyNywtMTc1NTIwMTAwMCwxMj
-M5ODAxMzg1LDE4MDQ0ODkzMzAsLTE5NTA0MjQwNDQsLTEwMTc4
-NzE5OTgsLTE4NzE0MDE4ODksLTE4ODY1OTM3NDMsLTIxMzE5MD
-ExMDAsODAzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5MywxNzc1
-NjEzMDI4LDE2MTYxMTk1MjUsLTEwNzUyODExNTcsMTE3OTU2Nz
-gzNSwxNTAyNjg4MjUsMTU0MTMzMzQ5NSwtMTgwMzAzNzcwOCwt
-MTM3ODI5NjU5OF19
+eyJoaXN0b3J5IjpbMjAzNjE3NDQ5LC0xNzU1MjAxMDAwLDEyMz
+k4MDEzODUsMTgwNDQ4OTMzMCwtMTk1MDQyNDA0NCwtMTAxNzg3
+MTk5OCwtMTg3MTQwMTg4OSwtMTg4NjU5Mzc0MywtMjEzMTkwMT
+EwMCw4MDMyMzE0Niw0ODY3NDkxNDgsMjM5OTc2NjkzLDE3NzU2
+MTMwMjgsMTYxNjExOTUyNSwtMTA3NTI4MTE1NywxMTc5NTY3OD
+M1LDE1MDI2ODgyNSwxNTQxMzMzNDk1LC0xODAzMDM3NzA4LC0x
+Mzc4Mjk2NTk4XX0=
 -->
