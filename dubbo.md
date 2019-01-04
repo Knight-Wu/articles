@@ -131,15 +131,16 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 * 多种序列化方式, 对比hessian 和dubbo
 https://cloud.tencent.com/developer/
 *  thrift hessian 这两个rpc 框架
+* dubbo 怎么组织filter 和invoker 的链式调用, 用的什么设计模式
 * 海量数据下的典型架构设计和性能优化之道, 精通常用架构原则
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTA0MjQwNDQsLTEwMTc4NzE5OTgsLT
-E4NzE0MDE4ODksLTE4ODY1OTM3NDMsLTIxMzE5MDExMDAsODAz
-MjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5MywxNzc1NjEzMDI4LD
-E2MTYxMTk1MjUsLTEwNzUyODExNTcsMTE3OTU2NzgzNSwxNTAy
-Njg4MjUsMTU0MTMzMzQ5NSwtMTgwMzAzNzcwOCwtMTM3ODI5Nj
-U5OCwxMzg4ODUzMyw0MzQxMDE3NjcsLTIxMDk5NzUxNDQsMTE1
-Mjg1NDYyN119
+eyJoaXN0b3J5IjpbOTI3MTgxOTE2LC0xOTUwNDI0MDQ0LC0xMD
+E3ODcxOTk4LC0xODcxNDAxODg5LC0xODg2NTkzNzQzLC0yMTMx
+OTAxMTAwLDgwMzIzMTQ2LDQ4Njc0OTE0OCwyMzk5NzY2OTMsMT
+c3NTYxMzAyOCwxNjE2MTE5NTI1LC0xMDc1MjgxMTU3LDExNzk1
+Njc4MzUsMTUwMjY4ODI1LDE1NDEzMzM0OTUsLTE4MDMwMzc3MD
+gsLTEzNzgyOTY1OTgsMTM4ODg1MzMsNDM0MTAxNzY3LC0yMTA5
+OTc1MTQ0XX0=
 -->
