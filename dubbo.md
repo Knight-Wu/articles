@@ -51,9 +51,11 @@
 ![enter image description here](https://drive.google.com/uc?id=1s652rCYIfBrvNj211rqufmOU6VQ1LqAk)
 
 然后手动拼装代码生成, 编译生成 AdativeClass. 
-
+![enter image description here](https://drive.google.com/uc?id=1WFz-UZzrNiEuu32GiQeGWEfXFvp81H5k)
 
 例如生成的Protocol$Adpative 的类文件如下, 
+
+![enter image description here](https://drive.google.com/uc?id=1MHDklXncWwDYBzJ4rqCNw6PqxyrAysAL)
 
 这样就可以根据url 获取相应的字段, 例如当protocol 是dubbo 时, 只实例化 DubboProtocol 这个对象, 并发起调用, 并不初始化其他Protocol .
 
@@ -165,11 +167,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1Mjc0Njk1LDc2NTE0MDk0LDE2NTUzMD
-gxNTksLTE3NTUyMDEwMDAsMTIzOTgwMTM4NSwxODA0NDg5MzMw
-LC0xOTUwNDI0MDQ0LC0xMDE3ODcxOTk4LC0xODcxNDAxODg5LC
-0xODg2NTkzNzQzLC0yMTMxOTAxMTAwLDgwMzIzMTQ2LDQ4Njc0
-OTE0OCwyMzk5NzY2OTMsMTc3NTYxMzAyOCwxNjE2MTE5NTI1LC
-0xMDc1MjgxMTU3LDExNzk1Njc4MzUsMTUwMjY4ODI1LDE1NDEz
-MzM0OTVdfQ==
+eyJoaXN0b3J5IjpbLTEwOTQwOTA2MzIsNzY1MTQwOTQsMTY1NT
+MwODE1OSwtMTc1NTIwMTAwMCwxMjM5ODAxMzg1LDE4MDQ0ODkz
+MzAsLTE5NTA0MjQwNDQsLTEwMTc4NzE5OTgsLTE4NzE0MDE4OD
+ksLTE4ODY1OTM3NDMsLTIxMzE5MDExMDAsODAzMjMxNDYsNDg2
+NzQ5MTQ4LDIzOTk3NjY5MywxNzc1NjEzMDI4LDE2MTYxMTk1Mj
+UsLTEwNzUyODExNTcsMTE3OTU2NzgzNSwxNTAyNjg4MjUsMTU0
+MTMzMzQ5NV19
 -->
