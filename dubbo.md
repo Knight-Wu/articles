@@ -44,11 +44,8 @@ export的过程中, 首先将实现类, 例如HelloWorldImpl通过 ProxyFactory 
 1. Dubbo的实现, 打开socket服务, 监听客户端的请求, 并返回.
 2. RMI 的实现,  RMI 协议的 Invoker 转为 Exporter 发生在 RmiProtocol类的 export 方法，它通过 Spring 或 Dubbo 或 JDK 来实现 RMI 服务，通讯细节这一块由 JDK 底层来实现，这就省了不少工作量
 
+
 > 服务引用
-
- 直接引用提供者的服务, 根据url 的dubbo协议头识别, 直接调用 DubboProtocol 的 refer()方法,返回提供者引用. 
-
-> 引用注册中心的服务
 
 初始化: 
 1. DubboNamespaceHandler 等类通过解析xml 配置文件, 去初始化ReferenceBean,  解析参数配置构造url: registry://registry-host/com.alibaba.dubbo.registry.RegistryService?refer=URL.encode("consumer://consumer-host/com.foo.FooService?version=1.0.0"),  
@@ -139,11 +136,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzOTgwMTM4NSwxODA0NDg5MzMwLC0xOT
-UwNDI0MDQ0LC0xMDE3ODcxOTk4LC0xODcxNDAxODg5LC0xODg2
-NTkzNzQzLC0yMTMxOTAxMTAwLDgwMzIzMTQ2LDQ4Njc0OTE0OC
-wyMzk5NzY2OTMsMTc3NTYxMzAyOCwxNjE2MTE5NTI1LC0xMDc1
-MjgxMTU3LDExNzk1Njc4MzUsMTUwMjY4ODI1LDE1NDEzMzM0OT
-UsLTE4MDMwMzc3MDgsLTEzNzgyOTY1OTgsMTM4ODg1MzMsNDM0
-MTAxNzY3XX0=
+eyJoaXN0b3J5IjpbOTUwMTYzMTAyLDEyMzk4MDEzODUsMTgwND
+Q4OTMzMCwtMTk1MDQyNDA0NCwtMTAxNzg3MTk5OCwtMTg3MTQw
+MTg4OSwtMTg4NjU5Mzc0MywtMjEzMTkwMTEwMCw4MDMyMzE0Ni
+w0ODY3NDkxNDgsMjM5OTc2NjkzLDE3NzU2MTMwMjgsMTYxNjEx
+OTUyNSwtMTA3NTI4MTE1NywxMTc5NTY3ODM1LDE1MDI2ODgyNS
+wxNTQxMzMzNDk1LC0xODAzMDM3NzA4LC0xMzc4Mjk2NTk4LDEz
+ODg4NTMzXX0=
 -->
