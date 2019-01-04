@@ -54,7 +54,7 @@ export的过程中, 首先将实现类, 例如HelloWorldImpl通过 ProxyFactory 
 4. 再根据invoker 创建动态代理, 根据代理去封装invoker.invoke() , 最后返回代理给spring 容器
 
 调用: 
-1. 通过Invoker 的调用链去发起调用, 会经过cluster 和loadBalance, filter等, 最后发起请求, 等待提供者返回.
+1. 通过Invoker 的调用链去发起调用, 所有的调用都会转发到InvokerInvocationHandler invoke 方法, 会经过cluster 和loadBalance, filter等, 最后发起请求, 等待提供者返回.
 
 
 ### dubbo默认的心跳
@@ -136,11 +136,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTUwMTYzMTAyLDEyMzk4MDEzODUsMTgwND
-Q4OTMzMCwtMTk1MDQyNDA0NCwtMTAxNzg3MTk5OCwtMTg3MTQw
-MTg4OSwtMTg4NjU5Mzc0MywtMjEzMTkwMTEwMCw4MDMyMzE0Ni
-w0ODY3NDkxNDgsMjM5OTc2NjkzLDE3NzU2MTMwMjgsMTYxNjEx
-OTUyNSwtMTA3NTI4MTE1NywxMTc5NTY3ODM1LDE1MDI2ODgyNS
-wxNTQxMzMzNDk1LC0xODAzMDM3NzA4LC0xMzc4Mjk2NTk4LDEz
-ODg4NTMzXX0=
+eyJoaXN0b3J5IjpbLTE3NTUyMDEwMDAsMTIzOTgwMTM4NSwxOD
+A0NDg5MzMwLC0xOTUwNDI0MDQ0LC0xMDE3ODcxOTk4LC0xODcx
+NDAxODg5LC0xODg2NTkzNzQzLC0yMTMxOTAxMTAwLDgwMzIzMT
+Q2LDQ4Njc0OTE0OCwyMzk5NzY2OTMsMTc3NTYxMzAyOCwxNjE2
+MTE5NTI1LC0xMDc1MjgxMTU3LDExNzk1Njc4MzUsMTUwMjY4OD
+I1LDE1NDEzMzM0OTUsLTE4MDMwMzc3MDgsLTEzNzgyOTY1OTgs
+MTM4ODg1MzNdfQ==
 -->
