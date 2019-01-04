@@ -34,7 +34,12 @@
 
 ### dubbo的大致流程
 
-搞清dubbo 流程很关键的一步就是需要弄懂filter 和invoker 的调用链,
+ 搞清dubbo 流程很关键的一步就是需要弄懂filter 和invoker 的调用链, 什么时候调用哪个, 如何能通过看代码就直接弄懂这个调用链. 
+
+预备知识: 
+> dubbo SPI
+
+
 http://jm.taobao.org/2013/11/14/3138/
 >  服务暴露
 
@@ -138,7 +143,7 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgyMDQwMjQ4MSwtMTc1NTIwMTAwMCwxMj
+eyJoaXN0b3J5IjpbMTcwNTI5MTcyNywtMTc1NTIwMTAwMCwxMj
 M5ODAxMzg1LDE4MDQ0ODkzMzAsLTE5NTA0MjQwNDQsLTEwMTc4
 NzE5OTgsLTE4NzE0MDE4ODksLTE4ODY1OTM3NDMsLTIxMzE5MD
 ExMDAsODAzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5MywxNzc1
