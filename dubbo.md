@@ -63,7 +63,7 @@
 
 先调用 ProtocolFilterWrapper, ProtocolListenerWrapper 构建调用链和listener. **至于为什么是最先调用ProtocolFilterWrapper, 还有待研究**, 
 
-ProtocolFilterWrapper 构建了filter 和invoker 的调用链, 如下图所示, 从代理类的 InvocationHandler 开始, 选出此次调用的invoker(代表哪台机器), 经过多个filter 传递, 传递到dubboInvoker 发起远程调用
+ProtocolFilterWrapper 构建了filter 和invoker 的调用链, 如下图所示, 从代理类的 InvocationHandler 开始, 选出此次调用的invoker(代表哪台机器), 经过多个filter 传递, 传递到dubboInvoker 发起远程调用.
 
 
 
@@ -173,7 +173,7 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDg3ODk1MTQsLTE3OTgxNDA4NjEsLT
+eyJoaXN0b3J5IjpbLTE1OTQ1MzA0ODIsLTE3OTgxNDA4NjEsLT
 IwMTY2MjkyNzQsLTEwOTQwOTA2MzIsNzY1MTQwOTQsMTY1NTMw
 ODE1OSwtMTc1NTIwMTAwMCwxMjM5ODAxMzg1LDE4MDQ0ODkzMz
 AsLTE5NTA0MjQwNDQsLTEwMTc4NzE5OTgsLTE4NzE0MDE4ODks
