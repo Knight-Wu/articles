@@ -74,7 +74,7 @@ ProtocolFilterWrapper(Protocol protocol){
 
 初始化的时候, 在调用具体协议之前, 先调用 ProtocolFilterWrapper, ProtocolListenerWrapper 
 
-ProtocolFilterWrapper 基于责任链模式(添加代码de), 构建了filter 和invoker 的调用链, 如下图所示, 从代理类的 InvocationHandler 开始, 选出此次调用的invoker(代表哪台机器), 经过多个filter 传递, 传递到dubboInvoker.doInvoke 发起远程调用.
+ProtocolFilterWrapper 基于责任链模式(添加代码的时候, 不影响已有代码, 只是重新构造这个责任链 ), 构建了filter 和invoker 的调用链, 如下图所示, 从代理类的 InvocationHandler 开始, 选出此次调用的invoker(代表哪台机器), 经过多个filter 传递, 传递到dubboInvoker.doInvoke 发起远程调用.
 
 ![enter image description here](https://drive.google.com/uc?id=1q2spxJAwxa0cccftYg16qqI5_gLMBX4k)
 
@@ -180,17 +180,16 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 * 多种序列化方式, 对比hessian 和dubbo
 https://cloud.tencent.com/developer/
 *  thrift hessian 这两个rpc 框架
-* dubbo 怎么组织filter 和invoker 的链式调用, 用的什么设计模式
 * Dubbo 消费者使用单一链接的方式，什么时候达到网络瓶紧
 * 海量数据下的典型架构设计和性能优化之道, 精通常用架构原则
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1MzE1NzY0MywtMTU5NDUzMDQ4MiwtMT
-c5ODE0MDg2MSwtMjAxNjYyOTI3NCwtMTA5NDA5MDYzMiw3NjUx
-NDA5NCwxNjU1MzA4MTU5LC0xNzU1MjAxMDAwLDEyMzk4MDEzOD
-UsMTgwNDQ4OTMzMCwtMTk1MDQyNDA0NCwtMTAxNzg3MTk5OCwt
-MTg3MTQwMTg4OSwtMTg4NjU5Mzc0MywtMjEzMTkwMTEwMCw4MD
-MyMzE0Niw0ODY3NDkxNDgsMjM5OTc2NjkzLDE3NzU2MTMwMjgs
-MTYxNjExOTUyNV19
+eyJoaXN0b3J5IjpbLTEwODAzOTk5NTAsLTE1OTQ1MzA0ODIsLT
+E3OTgxNDA4NjEsLTIwMTY2MjkyNzQsLTEwOTQwOTA2MzIsNzY1
+MTQwOTQsMTY1NTMwODE1OSwtMTc1NTIwMTAwMCwxMjM5ODAxMz
+g1LDE4MDQ0ODkzMzAsLTE5NTA0MjQwNDQsLTEwMTc4NzE5OTgs
+LTE4NzE0MDE4ODksLTE4ODY1OTM3NDMsLTIxMzE5MDExMDAsOD
+AzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5MywxNzc1NjEzMDI4
+LDE2MTYxMTk1MjVdfQ==
 -->
