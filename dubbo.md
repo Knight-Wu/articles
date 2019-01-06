@@ -176,19 +176,17 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 
 
 #### 序列化
-* 多种序列化方式, 对比hessian 和dubbo, 例如int 序列化的细节
-https://cloud.tencent.com/developer/
 *  thrift hessian 这两个rpc 框架
 * Dubbo 消费者使用单一链接的方式，什么时候达到网络瓶紧
 * 海量数据下的典型架构设计和性能优化之道, 精通常用架构原则
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQzNzcwNjIsLTEwODAzOTk5NTAsLTE1OT
-Q1MzA0ODIsLTE3OTgxNDA4NjEsLTIwMTY2MjkyNzQsLTEwOTQw
-OTA2MzIsNzY1MTQwOTQsMTY1NTMwODE1OSwtMTc1NTIwMTAwMC
-wxMjM5ODAxMzg1LDE4MDQ0ODkzMzAsLTE5NTA0MjQwNDQsLTEw
-MTc4NzE5OTgsLTE4NzE0MDE4ODksLTE4ODY1OTM3NDMsLTIxMz
-E5MDExMDAsODAzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5Mywx
-Nzc1NjEzMDI4XX0=
+eyJoaXN0b3J5IjpbMTI2NzczMTI2OSw2NDM3NzA2MiwtMTA4MD
+M5OTk1MCwtMTU5NDUzMDQ4MiwtMTc5ODE0MDg2MSwtMjAxNjYy
+OTI3NCwtMTA5NDA5MDYzMiw3NjUxNDA5NCwxNjU1MzA4MTU5LC
+0xNzU1MjAxMDAwLDEyMzk4MDEzODUsMTgwNDQ4OTMzMCwtMTk1
+MDQyNDA0NCwtMTAxNzg3MTk5OCwtMTg3MTQwMTg4OSwtMTg4Nj
+U5Mzc0MywtMjEzMTkwMTEwMCw4MDMyMzE0Niw0ODY3NDkxNDgs
+MjM5OTc2NjkzXX0=
 -->
