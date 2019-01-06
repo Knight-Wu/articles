@@ -34,8 +34,6 @@
 
 ### dubbo的大致流程
 
- 搞清dubbo 流程很关键的一步就是需要弄懂filter 和invoker 的调用链, 什么时候调用哪个, 如何能通过看代码就直接弄懂这个调用链. 
-
 预备知识: 
 > dubbo SPI
 
@@ -182,11 +180,11 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI2NzczMTI2OSw2NDM3NzA2MiwtMTA4MD
-M5OTk1MCwtMTU5NDUzMDQ4MiwtMTc5ODE0MDg2MSwtMjAxNjYy
-OTI3NCwtMTA5NDA5MDYzMiw3NjUxNDA5NCwxNjU1MzA4MTU5LC
-0xNzU1MjAxMDAwLDEyMzk4MDEzODUsMTgwNDQ4OTMzMCwtMTk1
-MDQyNDA0NCwtMTAxNzg3MTk5OCwtMTg3MTQwMTg4OSwtMTg4Nj
-U5Mzc0MywtMjEzMTkwMTEwMCw4MDMyMzE0Niw0ODY3NDkxNDgs
-MjM5OTc2NjkzXX0=
+eyJoaXN0b3J5IjpbMTczMzkxNTc3NCwxMjY3NzMxMjY5LDY0Mz
+c3MDYyLC0xMDgwMzk5OTUwLC0xNTk0NTMwNDgyLC0xNzk4MTQw
+ODYxLC0yMDE2NjI5Mjc0LC0xMDk0MDkwNjMyLDc2NTE0MDk0LD
+E2NTUzMDgxNTksLTE3NTUyMDEwMDAsMTIzOTgwMTM4NSwxODA0
+NDg5MzMwLC0xOTUwNDI0MDQ0LC0xMDE3ODcxOTk4LC0xODcxND
+AxODg5LC0xODg2NTkzNzQzLC0yMTMxOTAxMTAwLDgwMzIzMTQ2
+LDQ4Njc0OTE0OF19
 -->
