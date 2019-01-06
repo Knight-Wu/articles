@@ -72,9 +72,9 @@ ProtocolFilterWrapper(Protocol protocol){
 
 > 构建调用链
 
-先调用 ProtocolFilterWrapper, ProtocolListenerWrapper 构建调用链和listener. **至于为什么是最先调用ProtocolFilterWrapper, 还有待研究**, 
+初始化的时候, 在调用具体协议之前, 先调用 ProtocolFilterWrapper, ProtocolListenerWrapper 
 
-ProtocolFilterWrapper 构建了filter 和invoker 的调用链, 如下图所示, 从代理类的 InvocationHandler 开始, 选出此次调用的invoker(代表哪台机器), 经过多个filter 传递, 传递到dubboInvoker.doInvoke 发起远程调用.
+ProtocolFilterWrapper 基于责任链模式(添加代码de), 构建了filter 和invoker 的调用链, 如下图所示, 从代理类的 InvocationHandler 开始, 选出此次调用的invoker(代表哪台机器), 经过多个filter 传递, 传递到dubboInvoker.doInvoke 发起远程调用.
 
 ![enter image description here](https://drive.google.com/uc?id=1q2spxJAwxa0cccftYg16qqI5_gLMBX4k)
 
@@ -186,7 +186,7 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzOTkwMzg0MiwtMTU5NDUzMDQ4MiwtMT
+eyJoaXN0b3J5IjpbLTU1MzE1NzY0MywtMTU5NDUzMDQ4MiwtMT
 c5ODE0MDg2MSwtMjAxNjYyOTI3NCwtMTA5NDA5MDYzMiw3NjUx
 NDA5NCwxNjU1MzA4MTU5LC0xNzU1MjAxMDAwLDEyMzk4MDEzOD
 UsMTgwNDQ4OTMzMCwtMTk1MDQyNDA0NCwtMTAxNzg3MTk5OCwt
