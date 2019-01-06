@@ -9,6 +9,7 @@
 * opentsdb 数据结构研究
 * holt winters 算法用R 跑出例子, 用于监控系统告警阈值, 智能化预测
 * flink的学习, flink 和JStorm的对比
+* flink 动态伸缩jira 跟踪
 * google drive add articles to read-later-list
 * centOS redhat内核关系, 以及在修改hostname的时候命令的不同
 * datanode 磁盘中某个volume 的容量快满时会有何影响
@@ -82,11 +83,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4NzQ0MTA4NCwxNjYyMTQ3MTkxLC0xMz
-Q2NTMwNTM3LC04NDg1NzQ0NDYsMjE2Nzg5Nzc4LC0xMTMxMTIy
-Njg1LDE0NjA4MTE5NTksMTQ3NzU2OTc2OCwtMTk4MDI3NjYyOS
-wxMTY3MTkwNzE5LC02OTg2NzMzMzQsMTY1NzIzNTA3MCwtODk3
-NjU0MDk0LC0xMzg0MTUzNjMwLC0xMzA5MDc3MTU2LC0xMTY4Nj
-AyNzM2LC0xNjAwMzU2MDcyLC0xNDQzMzUzMzA5LC0yMTMxNTg2
-OTM5LDQxNDYyODgzNV19
+eyJoaXN0b3J5IjpbODg3MzAxNywtOTg3NDQxMDg0LDE2NjIxND
+cxOTEsLTEzNDY1MzA1MzcsLTg0ODU3NDQ0NiwyMTY3ODk3Nzgs
+LTExMzExMjI2ODUsMTQ2MDgxMTk1OSwxNDc3NTY5NzY4LC0xOT
+gwMjc2NjI5LDExNjcxOTA3MTksLTY5ODY3MzMzNCwxNjU3MjM1
+MDcwLC04OTc2NTQwOTQsLTEzODQxNTM2MzAsLTEzMDkwNzcxNT
+YsLTExNjg2MDI3MzYsLTE2MDAzNTYwNzIsLTE0NDMzNTMzMDks
+LTIxMzE1ODY5MzldfQ==
 -->
