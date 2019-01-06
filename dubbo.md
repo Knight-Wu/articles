@@ -59,6 +59,17 @@
 
 这样就可以根据url 获取相应的字段, 例如当protocol 是dubbo 时, 只实例化 DubboProtocol 这个对象, 并发起调用, 并不初始化其他Protocol .
 
+> dubbo AOP
+
+wrapper 类具有复制的构造函数, 例如ProtocolFilterWrapper 的构造函数是
+
+```
+ProtocolFilterWrapper(Protocol protocol){
+  this.protocol = protocol;
+}
+```
+这类ju
+
 > 构建调用链
 
 先调用 ProtocolFilterWrapper, ProtocolListenerWrapper 构建调用链和listener. **至于为什么是最先调用ProtocolFilterWrapper, 还有待研究**, 
@@ -175,11 +186,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjE4NjMzOTMsLTE1OTQ1MzA0ODIsLT
-E3OTgxNDA4NjEsLTIwMTY2MjkyNzQsLTEwOTQwOTA2MzIsNzY1
-MTQwOTQsMTY1NTMwODE1OSwtMTc1NTIwMTAwMCwxMjM5ODAxMz
-g1LDE4MDQ0ODkzMzAsLTE5NTA0MjQwNDQsLTEwMTc4NzE5OTgs
-LTE4NzE0MDE4ODksLTE4ODY1OTM3NDMsLTIxMzE5MDExMDAsOD
-AzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5MywxNzc1NjEzMDI4
-LDE2MTYxMTk1MjVdfQ==
+eyJoaXN0b3J5IjpbLTMzMTQwNTIwNCwtMTU5NDUzMDQ4MiwtMT
+c5ODE0MDg2MSwtMjAxNjYyOTI3NCwtMTA5NDA5MDYzMiw3NjUx
+NDA5NCwxNjU1MzA4MTU5LC0xNzU1MjAxMDAwLDEyMzk4MDEzOD
+UsMTgwNDQ4OTMzMCwtMTk1MDQyNDA0NCwtMTAxNzg3MTk5OCwt
+MTg3MTQwMTg4OSwtMTg4NjU5Mzc0MywtMjEzMTkwMTEwMCw4MD
+MyMzE0Niw0ODY3NDkxNDgsMjM5OTc2NjkzLDE3NzU2MTMwMjgs
+MTYxNjExOTUyNV19
 -->
