@@ -63,7 +63,7 @@
 
 先调用 ProtocolFilterWrapper, ProtocolListenerWrapper 构建调用链和listener. **至于为什么是最先调用ProtocolFilterWrapper, 还有待研究**, 
 
-ProtocolFilterWrapper 构建了filter 和invoker 的调用链, 如下图所示, 从代理类的 Invocation
+ProtocolFilterWrapper 构建了filter 和invoker 的调用链, 如下图所示, 从代理类的 InvocationHandler 开始, 选出此次调用的invoker(代表哪台机器), 经过多个filter 传递, 传递到dubboInvoker 发起远程调用
 
 
 
@@ -173,11 +173,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3MDEzNjQ2MCwtMTc5ODE0MDg2MSwtMj
-AxNjYyOTI3NCwtMTA5NDA5MDYzMiw3NjUxNDA5NCwxNjU1MzA4
-MTU5LC0xNzU1MjAxMDAwLDEyMzk4MDEzODUsMTgwNDQ4OTMzMC
-wtMTk1MDQyNDA0NCwtMTAxNzg3MTk5OCwtMTg3MTQwMTg4OSwt
-MTg4NjU5Mzc0MywtMjEzMTkwMTEwMCw4MDMyMzE0Niw0ODY3ND
-kxNDgsMjM5OTc2NjkzLDE3NzU2MTMwMjgsMTYxNjExOTUyNSwt
-MTA3NTI4MTE1N119
+eyJoaXN0b3J5IjpbLTIwNDg3ODk1MTQsLTE3OTgxNDA4NjEsLT
+IwMTY2MjkyNzQsLTEwOTQwOTA2MzIsNzY1MTQwOTQsMTY1NTMw
+ODE1OSwtMTc1NTIwMTAwMCwxMjM5ODAxMzg1LDE4MDQ0ODkzMz
+AsLTE5NTA0MjQwNDQsLTEwMTc4NzE5OTgsLTE4NzE0MDE4ODks
+LTE4ODY1OTM3NDMsLTIxMzE5MDExMDAsODAzMjMxNDYsNDg2Nz
+Q5MTQ4LDIzOTk3NjY5MywxNzc1NjEzMDI4LDE2MTYxMTk1MjUs
+LTEwNzUyODExNTddfQ==
 -->
