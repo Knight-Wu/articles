@@ -68,7 +68,7 @@ ProtocolFilterWrapper(Protocol protocol){
   this.protocol = protocol;
 }
 ```
-这类ju
+这类具有复制构造函数的会作为AOP 去封装对应的被调用的对象(**具体如何做到 ProtocolFilterWrapper 作为被最先调用的 Protocol ?**)
 
 > 构建调用链
 
@@ -144,7 +144,7 @@ dubbo 代理层的作用, 见官网文档: [http://dubbo.apache.org/zh-cn/docs/d
  一级缓存key 是classloader, 是一个 weakReference (当只被弱引用引用时, 下次gc 则被清除掉), value 为valueMap.
 二级缓存, key 是classloader 和interface 接口所组成的key 对象, 由接口数量而决定, value 是代理类.
 
-* 为什么要二级缓存 ??
+
 * 生成的代理类的结构
 https://blog.csdn.net/mhmyqn/article/details/48474815
 
@@ -186,7 +186,7 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzMTQwNTIwNCwtMTU5NDUzMDQ4MiwtMT
+eyJoaXN0b3J5IjpbLTUzOTkwMzg0MiwtMTU5NDUzMDQ4MiwtMT
 c5ODE0MDg2MSwtMjAxNjYyOTI3NCwtMTA5NDA5MDYzMiw3NjUx
 NDA5NCwxNjU1MzA4MTU5LC0xNzU1MjAxMDAwLDEyMzk4MDEzOD
 UsMTgwNDQ4OTMzMCwtMTk1MDQyNDA0NCwtMTAxNzg3MTk5OCwt
