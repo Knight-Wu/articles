@@ -176,8 +176,7 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 
 
 #### 序列化
-* Dubbo 对int的序列化细节
-* 多种序列化方式, 对比hessian 和dubbo
+* 多种序列化方式, 对比hessian 和dubbo, 例如int 序列化的细节
 https://cloud.tencent.com/developer/
 *  thrift hessian 这两个rpc 框架
 * Dubbo 消费者使用单一链接的方式，什么时候达到网络瓶紧
@@ -185,11 +184,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODAzOTk5NTAsLTE1OTQ1MzA0ODIsLT
-E3OTgxNDA4NjEsLTIwMTY2MjkyNzQsLTEwOTQwOTA2MzIsNzY1
-MTQwOTQsMTY1NTMwODE1OSwtMTc1NTIwMTAwMCwxMjM5ODAxMz
-g1LDE4MDQ0ODkzMzAsLTE5NTA0MjQwNDQsLTEwMTc4NzE5OTgs
-LTE4NzE0MDE4ODksLTE4ODY1OTM3NDMsLTIxMzE5MDExMDAsOD
-AzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5MywxNzc1NjEzMDI4
-LDE2MTYxMTk1MjVdfQ==
+eyJoaXN0b3J5IjpbNjQzNzcwNjIsLTEwODAzOTk5NTAsLTE1OT
+Q1MzA0ODIsLTE3OTgxNDA4NjEsLTIwMTY2MjkyNzQsLTEwOTQw
+OTA2MzIsNzY1MTQwOTQsMTY1NTMwODE1OSwtMTc1NTIwMTAwMC
+wxMjM5ODAxMzg1LDE4MDQ0ODkzMzAsLTE5NTA0MjQwNDQsLTEw
+MTc4NzE5OTgsLTE4NzE0MDE4ODksLTE4ODY1OTM3NDMsLTIxMz
+E5MDExMDAsODAzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5Mywx
+Nzc1NjEzMDI4XX0=
 -->
