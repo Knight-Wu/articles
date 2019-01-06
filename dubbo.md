@@ -59,7 +59,9 @@
 
 这样就可以根据url 获取相应的字段, 例如当protocol 是dubbo 时, 只实例化 DubboProtocol 这个对象, 并发起调用, 并不初始化其他Protocol .
 
+> 构建调用链
 
+先调用 ProtocolFilterWrapper, ProtocolListenerWrapper 构建调用链和listener. 至于为什么
 
 
 
@@ -169,11 +171,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTY2MjkyNzQsLTEwOTQwOTA2MzIsNz
-Y1MTQwOTQsMTY1NTMwODE1OSwtMTc1NTIwMTAwMCwxMjM5ODAx
-Mzg1LDE4MDQ0ODkzMzAsLTE5NTA0MjQwNDQsLTEwMTc4NzE5OT
-gsLTE4NzE0MDE4ODksLTE4ODY1OTM3NDMsLTIxMzE5MDExMDAs
-ODAzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3NjY5MywxNzc1NjEzMD
-I4LDE2MTYxMTk1MjUsLTEwNzUyODExNTcsMTE3OTU2NzgzNSwx
-NTAyNjg4MjVdfQ==
+eyJoaXN0b3J5IjpbMjA0NjMzNzcxMiwtMjAxNjYyOTI3NCwtMT
+A5NDA5MDYzMiw3NjUxNDA5NCwxNjU1MzA4MTU5LC0xNzU1MjAx
+MDAwLDEyMzk4MDEzODUsMTgwNDQ4OTMzMCwtMTk1MDQyNDA0NC
+wtMTAxNzg3MTk5OCwtMTg3MTQwMTg4OSwtMTg4NjU5Mzc0Mywt
+MjEzMTkwMTEwMCw4MDMyMzE0Niw0ODY3NDkxNDgsMjM5OTc2Nj
+kzLDE3NzU2MTMwMjgsMTYxNjExOTUyNSwtMTA3NTI4MTE1Nywx
+MTc5NTY3ODM1XX0=
 -->
