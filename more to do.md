@@ -31,11 +31,8 @@
 * spark executor task java.net.connectException 拒绝连接
 * spark.yarn.executor.memoryOverhead 结合内存理解, 如何调优
 * yarn 虚拟内存和虚拟cpu 用来干啥
-* 如何知道hive on spark 整个application 运行阶段的内存使用情况, spark metric 好像不支持spark executor memory, 那么如何知道executor memory 或者cpu 等资源是否设置得合理? 
-https://github.com/uber-common/jvm-profiler 这个可以试试
+
 * yarn 用mr 作业收集container使用情况的原理和作用
-* 手写一个动态代理
-* dubbo 的几种序列化的方式以及原理
 * protocol buffer 
 * 为啥nio 要用byte buffer, 懂了io 模型之后还要知道设计api 的时候, 各种api 的好处以及作用
 
@@ -79,13 +76,17 @@ https://blog.csdn.net/flysqrlboy/article/details/79314521
 * git 问题: 如果本地不小心删了一个文件, 怎么从remote 更新下来, 只更新这个文件; 如果想根据revision number 检出一个新的分支, 用于maven deploy , 如何操作: git reset revision_num; 在用 git pull 还原到origin/master 
 见"git 原理" 已解决
 
+* 如何知道hive on spark 整个application 运行阶段的内存使用情况, spark metric 好像不支持spark executor memory, 那么如何知道executor memory 或者cpu 等资源是否设置得合理? 
+
+https://github.com/uber-common/jvm-profiler 这个可以试试
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY2MjE0NzE5MSwtMTM0NjUzMDUzNywtOD
-Q4NTc0NDQ2LDIxNjc4OTc3OCwtMTEzMTEyMjY4NSwxNDYwODEx
-OTU5LDE0Nzc1Njk3NjgsLTE5ODAyNzY2MjksMTE2NzE5MDcxOS
-wtNjk4NjczMzM0LDE2NTcyMzUwNzAsLTg5NzY1NDA5NCwtMTM4
-NDE1MzYzMCwtMTMwOTA3NzE1NiwtMTE2ODYwMjczNiwtMTYwMD
-M1NjA3MiwtMTQ0MzM1MzMwOSwtMjEzMTU4NjkzOSw0MTQ2Mjg4
-MzUsLTE2NjY5MDY2NDldfQ==
+eyJoaXN0b3J5IjpbLTk4NzQ0MTA4NCwxNjYyMTQ3MTkxLC0xMz
+Q2NTMwNTM3LC04NDg1NzQ0NDYsMjE2Nzg5Nzc4LC0xMTMxMTIy
+Njg1LDE0NjA4MTE5NTksMTQ3NzU2OTc2OCwtMTk4MDI3NjYyOS
+wxMTY3MTkwNzE5LC02OTg2NzMzMzQsMTY1NzIzNTA3MCwtODk3
+NjU0MDk0LC0xMzg0MTUzNjMwLC0xMzA5MDc3MTU2LC0xMTY4Nj
+AyNzM2LC0xNjAwMzU2MDcyLC0xNDQzMzUzMzA5LC0yMTMxNTg2
+OTM5LDQxNDYyODgzNV19
 -->
