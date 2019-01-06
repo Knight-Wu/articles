@@ -61,7 +61,9 @@
 
 > 构建调用链
 
-先调用 ProtocolFilterWrapper, ProtocolListenerWrapper 构建调用链和listener. 至于为什么
+先调用 ProtocolFilterWrapper, ProtocolListenerWrapper 构建调用链和listener. **至于为什么是最先调用ProtocolFilterWrapper, 还有待研究**, 
+
+ProtocolFilterWrapper 构建了filter 和invoker 的调用链, 
 
 
 
@@ -171,11 +173,11 @@ https://cloud.tencent.com/developer/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0NjMzNzcxMiwtMjAxNjYyOTI3NCwtMT
-A5NDA5MDYzMiw3NjUxNDA5NCwxNjU1MzA4MTU5LC0xNzU1MjAx
-MDAwLDEyMzk4MDEzODUsMTgwNDQ4OTMzMCwtMTk1MDQyNDA0NC
-wtMTAxNzg3MTk5OCwtMTg3MTQwMTg4OSwtMTg4NjU5Mzc0Mywt
-MjEzMTkwMTEwMCw4MDMyMzE0Niw0ODY3NDkxNDgsMjM5OTc2Nj
-kzLDE3NzU2MTMwMjgsMTYxNjExOTUyNSwtMTA3NTI4MTE1Nywx
-MTc5NTY3ODM1XX0=
+eyJoaXN0b3J5IjpbLTE3OTgxNDA4NjEsLTIwMTY2MjkyNzQsLT
+EwOTQwOTA2MzIsNzY1MTQwOTQsMTY1NTMwODE1OSwtMTc1NTIw
+MTAwMCwxMjM5ODAxMzg1LDE4MDQ0ODkzMzAsLTE5NTA0MjQwND
+QsLTEwMTc4NzE5OTgsLTE4NzE0MDE4ODksLTE4ODY1OTM3NDMs
+LTIxMzE5MDExMDAsODAzMjMxNDYsNDg2NzQ5MTQ4LDIzOTk3Nj
+Y5MywxNzc1NjEzMDI4LDE2MTYxMTk1MjUsLTEwNzUyODExNTcs
+MTE3OTU2NzgzNV19
 -->
