@@ -1,5 +1,6 @@
 #### spark执行的大致流程
-1. 一个application 如何能手动画出RDD 之间的转化关系, 这是逻辑执行图, 如何画出物理执行图, 也就是task 的转化
+1. 一个application 如何能手动画出RDD 之间的转化关系, 这是逻辑执行图, 如何画出物理执行图, 也就是task 的转化关系.
+
  To summarize, the following phases occur during Spark execution: 
  1. User code defines a DAG (directed acyclic graph) of RDDs
 Operations on RDDs create new RDDs that refer back to their parents, thereby
@@ -731,11 +732,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5NjkxNzE1MCwtMjA2MDA4OTMwNSw3MT
-IxMjUyMTksMTY1MTk0OTM1NiwxMjAyMDc3MjM1LDIwOTM4MDMw
-OTcsLTEwMzg4NDEzMzEsMzMxMzg2NjUxLDYwNjcyNTUzMywtMT
-UwNzAyNzE5MCwxMTIyNTg4NzA3LC03OTgxNzA2NDIsLTgxNjU4
-MTg0NiwtMTM2NjM2NTYwMCw1OTE2ODgzNSwtNjYyNzQwNjU1LC
-0xOTMzNTUzMjk5LDE2Mzc0MDgzMywtMTY2ODgxNjk5OCwtMTYw
-MzIwMDIwMV19
+eyJoaXN0b3J5IjpbLTgwNDAyMDk4LC0yMDYwMDg5MzA1LDcxMj
+EyNTIxOSwxNjUxOTQ5MzU2LDEyMDIwNzcyMzUsMjA5MzgwMzA5
+NywtMTAzODg0MTMzMSwzMzEzODY2NTEsNjA2NzI1NTMzLC0xNT
+A3MDI3MTkwLDExMjI1ODg3MDcsLTc5ODE3MDY0MiwtODE2NTgx
+ODQ2LC0xMzY2MzY1NjAwLDU5MTY4ODM1LC02NjI3NDA2NTUsLT
+E5MzM1NTMyOTksMTYzNzQwODMzLC0xNjY4ODE2OTk4LC0xNjAz
+MjAwMjAxXX0=
 -->
