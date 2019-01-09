@@ -1,4 +1,6 @@
 #### spark执行的大致流程
+参考自 https://github.com/JerryLead/SparkInternals/blob/master/markdown/5-Architecture.md
+
 1. new sparkContext, 初始化 driver 的通信, job 执行等一些对象
 2. 生成逻辑执行图 
 driver 中的transformation(), 建立血统, rdd的执行图, rdd.compute() 定义数据来了之后怎么计算, rdd.getDependencies() 定义rdd的依赖
@@ -19,7 +21,7 @@ task 执行的结果主要分为shuffleMapTask 和resultTask, shuffleMapTask 生
 结果如果是indirectResult, 则需要调用 blockManager.getRemoteBytes 去取, 取到的结果如果是resultTask, 则用resultHandler 去算, 如果shuffleMapTask的结果则需要将输出的结果存放到 mapOutputTrackerMaster 的mapStatus 结构, 以便shuffle read 去查询. 如果driver 收到的task 是stage 中最后一个task, 则告诉dagScheduler 则可以开始下一个stage, 如果是最后一个stage, 则可以开始下一个job. 
 
 * shuffle read 如何知道去哪里获取数据
-shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster, HashMap<stageId, Array[MapStatus]>, 根据stageId 就可以获取到shuffle
+shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster, HashMap<stageId, Array[MapStatus]>, 根据stageId 就可以获取到shuffleMapTask 输出的位置信息, 
 
 ![image](https://user-images.githubusercontent.com/20329409/42255995-3835ea58-7f81-11e8-9003-78b446c332cf.png)
 
@@ -737,7 +739,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTcyNjk3NDcsLTE1MTEzNTg1MjYsMT
+eyJoaXN0b3J5IjpbLTExMDgwNDM3OTUsLTE1MTEzNTg1MjYsMT
 I0MDU2MjU1NywtODA0MDIwOTgsLTIwNjAwODkzMDUsNzEyMTI1
 MjE5LDE2NTE5NDkzNTYsMTIwMjA3NzIzNSwyMDkzODAzMDk3LC
 0xMDM4ODQxMzMxLDMzMTM4NjY1MSw2MDY3MjU1MzMsLTE1MDcw
