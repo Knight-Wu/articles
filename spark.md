@@ -27,7 +27,9 @@ shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster,
 
 
 #### spark 逻辑执行图的生成
-
+1. 根据最初的数据源生成最初的RDD, 
+2. 对RDD 进行一系列的transformation 操作, 每次transformation 会产生一个或多个新的RDD 
+3. 对final RDD 进行action , 对每个partition 计算后产生结果返回到driver 端
 
 #### task、partition关系
 1. stage里面的task = 当前RDD其依赖或上一次的RDD partition，若是从file生成的RDD依赖指定的partition数量
@@ -740,11 +742,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyNjM3MjAxOSwtMTQ4MTM5NDIwMiwtMT
-EwODA0Mzc5NSwtMTUxMTM1ODUyNiwxMjQwNTYyNTU3LC04MDQw
-MjA5OCwtMjA2MDA4OTMwNSw3MTIxMjUyMTksMTY1MTk0OTM1Ni
-wxMjAyMDc3MjM1LDIwOTM4MDMwOTcsLTEwMzg4NDEzMzEsMzMx
-Mzg2NjUxLDYwNjcyNTUzMywtMTUwNzAyNzE5MCwxMTIyNTg4Nz
-A3LC03OTgxNzA2NDIsLTgxNjU4MTg0NiwtMTM2NjM2NTYwMCw1
-OTE2ODgzNV19
+eyJoaXN0b3J5IjpbMTIzMDg3NTg2MiwtMjI2MzcyMDE5LC0xND
+gxMzk0MjAyLC0xMTA4MDQzNzk1LC0xNTExMzU4NTI2LDEyNDA1
+NjI1NTcsLTgwNDAyMDk4LC0yMDYwMDg5MzA1LDcxMjEyNTIxOS
+wxNjUxOTQ5MzU2LDEyMDIwNzcyMzUsMjA5MzgwMzA5NywtMTAz
+ODg0MTMzMSwzMzEzODY2NTEsNjA2NzI1NTMzLC0xNTA3MDI3MT
+kwLDExMjI1ODg3MDcsLTc5ODE3MDY0MiwtODE2NTgxODQ2LC0x
+MzY2MzY1NjAwXX0=
 -->
