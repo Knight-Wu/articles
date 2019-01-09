@@ -265,6 +265,9 @@ shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manag
 假设该阶段的partition的数量是r个, 
 可以当做reducer阶段,会去driver 的MapOutputTrackerMaster询问shuffleMapTask 的数据输出的位置.
  
+ * 什么时候reducer 进行fetch
+当shuffle map 所有task都写完之后, 为了符合stage 的概念
+* 边fetch 边处理还是, fetch
 > Hash-Based Shuffle 的不足
 1. 会产生大量的小文件, 数量是m*r个, mapper端和reducer端的内存消耗变大, 进而导致GC 压力很大, 可以通过 consolidateFiles的配置优化, 将文件数下降为 num(cores) * r.
 如下图: 
@@ -754,11 +757,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ5NjQ3ODQwNCwtMTM1NDY5ODc5NCw4ND
-I2NTEzMTgsLTEzMzc1MjY5NTIsMTc2NzQ1OTYzNiwtMTkxMDAy
-OTIyMSwtNDg0NjM1OTM4LC0xNDk5ODk3NDI0LDEyMzA4NzU4Nj
-IsLTIyNjM3MjAxOSwtMTQ4MTM5NDIwMiwtMTEwODA0Mzc5NSwt
-MTUxMTM1ODUyNiwxMjQwNTYyNTU3LC04MDQwMjA5OCwtMjA2MD
-A4OTMwNSw3MTIxMjUyMTksMTY1MTk0OTM1NiwxMjAyMDc3MjM1
-LDIwOTM4MDMwOTddfQ==
+eyJoaXN0b3J5IjpbLTEzNTE3NTM0OTEsLTEzNTQ2OTg3OTQsOD
+QyNjUxMzE4LC0xMzM3NTI2OTUyLDE3Njc0NTk2MzYsLTE5MTAw
+MjkyMjEsLTQ4NDYzNTkzOCwtMTQ5OTg5NzQyNCwxMjMwODc1OD
+YyLC0yMjYzNzIwMTksLTE0ODEzOTQyMDIsLTExMDgwNDM3OTUs
+LTE1MTEzNTg1MjYsMTI0MDU2MjU1NywtODA0MDIwOTgsLTIwNj
+AwODkzMDUsNzEyMTI1MjE5LDE2NTE5NDkzNTYsMTIwMjA3NzIz
+NSwyMDkzODAzMDk3XX0=
 -->
