@@ -51,7 +51,7 @@ shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster,
 https://github.com/JerryLead/SparkInternals/blob/master/markdown/7-Broadcast.md
 
 * 大致流程
-driver 会先建一个文件夹存放需要广播的数据, 并启动一个可以访问该文件夹的httpServer , 并同时将数据写入driver 的blockmanager, 
+driver 会先建一个文件夹存放需要广播的数据, 并启动一个可以访问该文件夹的httpServer , 并同时将数据写入driver 的blockmanager. 当executor 反序列化task, 开始使用广播对象之后, 会调用广播对象的readObject 方法, 先从executor blockmanager 里面去查这个数据, 不在的话, 就会通过 HttpBroadcast或
 
 #### spark 具体使用一些算子, 才会体会
 
@@ -763,11 +763,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2NDMwNDA5NywxNDEwMTUxODc5LC00MT
-A2ODc0MjYsMTEzOTA5NzIzNCwtMTM1NDY5ODc5NCw4NDI2NTEz
-MTgsLTEzMzc1MjY5NTIsMTc2NzQ1OTYzNiwtMTkxMDAyOTIyMS
-wtNDg0NjM1OTM4LC0xNDk5ODk3NDI0LDEyMzA4NzU4NjIsLTIy
-NjM3MjAxOSwtMTQ4MTM5NDIwMiwtMTEwODA0Mzc5NSwtMTUxMT
-M1ODUyNiwxMjQwNTYyNTU3LC04MDQwMjA5OCwtMjA2MDA4OTMw
-NSw3MTIxMjUyMTldfQ==
+eyJoaXN0b3J5IjpbNDI5Nzc3MDUsMTQxMDE1MTg3OSwtNDEwNj
+g3NDI2LDExMzkwOTcyMzQsLTEzNTQ2OTg3OTQsODQyNjUxMzE4
+LC0xMzM3NTI2OTUyLDE3Njc0NTk2MzYsLTE5MTAwMjkyMjEsLT
+Q4NDYzNTkzOCwtMTQ5OTg5NzQyNCwxMjMwODc1ODYyLC0yMjYz
+NzIwMTksLTE0ODEzOTQyMDIsLTExMDgwNDM3OTUsLTE1MTEzNT
+g1MjYsMTI0MDU2MjU1NywtODA0MDIwOTgsLTIwNjAwODkzMDUs
+NzEyMTI1MjE5XX0=
 -->
