@@ -32,7 +32,9 @@ shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster,
 3. 对final RDD 进行action , 对每个partition 计算后产生结果返回到driver 端
 
 #### spark 物理执行图生成
-在同一个stage 中, 一个 task 只会算某些特定的task, 到了shuffle 阶段,  shuffle read 和write 阶段是用的不同的两批task, 
+在同一个stage 中, 一个 task 只会算某些特定的task, 到了shuffle 阶段,  shuffle read 和write 阶段是用的不同的两批task, 前后两批task 的数量如何决定?
+
+
 
 #### spark 具体使用一些算子, 才会体会
 
@@ -737,11 +739,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1MTg4NDYzLC0xOTEwMDI5MjIxLC00OD
-Q2MzU5MzgsLTE0OTk4OTc0MjQsMTIzMDg3NTg2MiwtMjI2Mzcy
-MDE5LC0xNDgxMzk0MjAyLC0xMTA4MDQzNzk1LC0xNTExMzU4NT
-I2LDEyNDA1NjI1NTcsLTgwNDAyMDk4LC0yMDYwMDg5MzA1LDcx
-MjEyNTIxOSwxNjUxOTQ5MzU2LDEyMDIwNzcyMzUsMjA5MzgwMz
-A5NywtMTAzODg0MTMzMSwzMzEzODY2NTEsNjA2NzI1NTMzLC0x
-NTA3MDI3MTkwXX0=
+eyJoaXN0b3J5IjpbMTc2NzQ1OTYzNiwtMTkxMDAyOTIyMSwtND
+g0NjM1OTM4LC0xNDk5ODk3NDI0LDEyMzA4NzU4NjIsLTIyNjM3
+MjAxOSwtMTQ4MTM5NDIwMiwtMTEwODA0Mzc5NSwtMTUxMTM1OD
+UyNiwxMjQwNTYyNTU3LC04MDQwMjA5OCwtMjA2MDA4OTMwNSw3
+MTIxMjUyMTksMTY1MTk0OTM1NiwxMjAyMDc3MjM1LDIwOTM4MD
+MwOTcsLTEwMzg4NDEzMzEsMzMxMzg2NjUxLDYwNjcyNTUzMywt
+MTUwNzAyNzE5MF19
 -->
