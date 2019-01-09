@@ -44,6 +44,9 @@ shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster,
 
 在同一个stage 中, 一个 task 只会算某些特定的task, 到了shuffle 阶段,  shuffle read 和write 阶段是用的不同的两批task, 前后两批task 的数量如何决定?
 
+* task的数量
+在同一个stage 中的, 由上游的partition 数量决定task 的数量, 若上游的partition 来自数据源, 由数据源的split 数量juedi
+
 
 
 #### spark 具体使用一些算子, 才会体会
@@ -749,7 +752,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0MDU1MjU5MiwtMTMzNzUyNjk1MiwxNz
+eyJoaXN0b3J5IjpbMTY4MDc5NDc5NywtMTMzNzUyNjk1MiwxNz
 Y3NDU5NjM2LC0xOTEwMDI5MjIxLC00ODQ2MzU5MzgsLTE0OTk4
 OTc0MjQsMTIzMDg3NTg2MiwtMjI2MzcyMDE5LC0xNDgxMzk0Mj
 AyLC0xMTA4MDQzNzk1LC0xNTExMzU4NTI2LDEyNDA1NjI1NTcs
