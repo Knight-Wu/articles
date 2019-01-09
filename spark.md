@@ -31,6 +31,8 @@ shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster,
 2. 对RDD 进行一系列的transformation 操作, 每次transformation 会产生一个或多个新的RDD 
 3. 对final RDD 进行action , 对每个partition 计算后产生结果返回到driver 端
 
+#### spark 物理执行图生成
+1. 
 
 #### spark 具体使用一些算子, 才会体会
 
@@ -735,11 +737,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4NDYzNTkzOCwtMTQ5OTg5NzQyNCwxMj
-MwODc1ODYyLC0yMjYzNzIwMTksLTE0ODEzOTQyMDIsLTExMDgw
-NDM3OTUsLTE1MTEzNTg1MjYsMTI0MDU2MjU1NywtODA0MDIwOT
-gsLTIwNjAwODkzMDUsNzEyMTI1MjE5LDE2NTE5NDkzNTYsMTIw
-MjA3NzIzNSwyMDkzODAzMDk3LC0xMDM4ODQxMzMxLDMzMTM4Nj
-Y1MSw2MDY3MjU1MzMsLTE1MDcwMjcxOTAsMTEyMjU4ODcwNywt
-Nzk4MTcwNjQyXX0=
+eyJoaXN0b3J5IjpbLTE5MTAwMjkyMjEsLTQ4NDYzNTkzOCwtMT
+Q5OTg5NzQyNCwxMjMwODc1ODYyLC0yMjYzNzIwMTksLTE0ODEz
+OTQyMDIsLTExMDgwNDM3OTUsLTE1MTEzNTg1MjYsMTI0MDU2Mj
+U1NywtODA0MDIwOTgsLTIwNjAwODkzMDUsNzEyMTI1MjE5LDE2
+NTE5NDkzNTYsMTIwMjA3NzIzNSwyMDkzODAzMDk3LC0xMDM4OD
+QxMzMxLDMzMTM4NjY1MSw2MDY3MjU1MzMsLTE1MDcwMjcxOTAs
+MTEyMjU4ODcwN119
 -->
