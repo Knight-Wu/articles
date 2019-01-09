@@ -33,6 +33,7 @@ shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster,
 
 #### spark 物理执行图生成
 
+
 在同一个stage 中, 一个 task 只会算某些特定的task, 到了shuffle 阶段,  shuffle read 和write 阶段是用的不同的两批task, 前后两批task 的数量如何决定?
 
 
@@ -740,11 +741,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4MTIyMDIzMCwxNzY3NDU5NjM2LC0xOT
-EwMDI5MjIxLC00ODQ2MzU5MzgsLTE0OTk4OTc0MjQsMTIzMDg3
-NTg2MiwtMjI2MzcyMDE5LC0xNDgxMzk0MjAyLC0xMTA4MDQzNz
-k1LC0xNTExMzU4NTI2LDEyNDA1NjI1NTcsLTgwNDAyMDk4LC0y
-MDYwMDg5MzA1LDcxMjEyNTIxOSwxNjUxOTQ5MzU2LDEyMDIwNz
-cyMzUsMjA5MzgwMzA5NywtMTAzODg0MTMzMSwzMzEzODY2NTEs
-NjA2NzI1NTMzXX0=
+eyJoaXN0b3J5IjpbLTEzMzc1MjY5NTIsMTc2NzQ1OTYzNiwtMT
+kxMDAyOTIyMSwtNDg0NjM1OTM4LC0xNDk5ODk3NDI0LDEyMzA4
+NzU4NjIsLTIyNjM3MjAxOSwtMTQ4MTM5NDIwMiwtMTEwODA0Mz
+c5NSwtMTUxMTM1ODUyNiwxMjQwNTYyNTU3LC04MDQwMjA5OCwt
+MjA2MDA4OTMwNSw3MTIxMjUyMTksMTY1MTk0OTM1NiwxMjAyMD
+c3MjM1LDIwOTM4MDMwOTcsLTEwMzg4NDEzMzEsMzMxMzg2NjUx
+LDYwNjcyNTUzM119
 -->
