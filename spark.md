@@ -58,7 +58,7 @@ HttpBroadcast 最大的问题就是 **driver 所在的节点可能会出现网�
 
 * TorrentBroadcast
 基本思想是将数据分块, 当有一些executor fetch 到了一些data blocks, 那么这台executor 就可以被当做data server了. 
-driver 先把data 序列化成 byteArray, 然后切割成BLOCK_SIZE（由 `spark.broadcast.blockSize = 4MB` 设置）大小的 data block, 每个block 由TorrentBlock 对象持有, 切割完dataArray 会将其回收, 将分块信息存放到driver blockManager, 
+driver 先把data 序列化成 byteArray, 然后切割成BLOCK_SIZE（由 `spark.broadcast.blockSize = 4MB` 设置）大小的 data block, 每个block 由TorrentBlock 对象持有, 切割完dataArray 会将其回收, 将分块信息存放到driver blockManager, 同时会通知**blockManagerMaster** , 可以被driver 和executor 访问到.
 
 #### spark 具体使用一些算子, 才会体会
 
@@ -770,11 +770,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0NDM0NTU4NiwtMTkxOTY0ODgyMywxND
-EwMTUxODc5LC00MTA2ODc0MjYsMTEzOTA5NzIzNCwtMTM1NDY5
-ODc5NCw4NDI2NTEzMTgsLTEzMzc1MjY5NTIsMTc2NzQ1OTYzNi
-wtMTkxMDAyOTIyMSwtNDg0NjM1OTM4LC0xNDk5ODk3NDI0LDEy
-MzA4NzU4NjIsLTIyNjM3MjAxOSwtMTQ4MTM5NDIwMiwtMTEwOD
-A0Mzc5NSwtMTUxMTM1ODUyNiwxMjQwNTYyNTU3LC04MDQwMjA5
-OCwtMjA2MDA4OTMwNV19
+eyJoaXN0b3J5IjpbMTQ1NjkzOTQ2LC0xOTE5NjQ4ODIzLDE0MT
+AxNTE4NzksLTQxMDY4NzQyNiwxMTM5MDk3MjM0LC0xMzU0Njk4
+Nzk0LDg0MjY1MTMxOCwtMTMzNzUyNjk1MiwxNzY3NDU5NjM2LC
+0xOTEwMDI5MjIxLC00ODQ2MzU5MzgsLTE0OTk4OTc0MjQsMTIz
+MDg3NTg2MiwtMjI2MzcyMDE5LC0xNDgxMzk0MjAyLC0xMTA4MD
+QzNzk1LC0xNTExMzU4NTI2LDEyNDA1NjI1NTcsLTgwNDAyMDk4
+LC0yMDYwMDg5MzA1XX0=
 -->
