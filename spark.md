@@ -53,6 +53,12 @@ https://github.com/JerryLead/SparkInternals/blob/master/markdown/7-Broadcast.md
 * 大致流程
 driver 会先建一个文件夹存放需要广播的数据, 并启动一个可以访问该文件夹的httpServer , 并同时将数据写入driver 的blockmanager. 当executor 反序列化task, 开始使用广播对象之后, 会调用广播对象的readObject 方法, 先从executor blockmanager 里面去查这个数据, 不在的话, 就会通过 HttpBroadcast或 TorrentBroadcast 两种方式之一去获取数据, 并存放在executor 的blockmanager.
 
+* HttpBroadcast
+HttpBroadcast 最大的问题就是 **driver 所在的节点可能会出现网络拥堵**，因为 worker 上的 executor 都会去 driver 那里 fetch 数据。
+
+* TorrentBroadcast
+
+
 
 
 #### spark 具体使用一些算子, 才会体会
@@ -765,11 +771,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjYxMTYzMywxNDEwMTUxODc5LC00MT
-A2ODc0MjYsMTEzOTA5NzIzNCwtMTM1NDY5ODc5NCw4NDI2NTEz
-MTgsLTEzMzc1MjY5NTIsMTc2NzQ1OTYzNiwtMTkxMDAyOTIyMS
-wtNDg0NjM1OTM4LC0xNDk5ODk3NDI0LDEyMzA4NzU4NjIsLTIy
-NjM3MjAxOSwtMTQ4MTM5NDIwMiwtMTEwODA0Mzc5NSwtMTUxMT
-M1ODUyNiwxMjQwNTYyNTU3LC04MDQwMjA5OCwtMjA2MDA4OTMw
-NSw3MTIxMjUyMTldfQ==
+eyJoaXN0b3J5IjpbLTE5MTk2NDg4MjMsMTQxMDE1MTg3OSwtND
+EwNjg3NDI2LDExMzkwOTcyMzQsLTEzNTQ2OTg3OTQsODQyNjUx
+MzE4LC0xMzM3NTI2OTUyLDE3Njc0NTk2MzYsLTE5MTAwMjkyMj
+EsLTQ4NDYzNTkzOCwtMTQ5OTg5NzQyNCwxMjMwODc1ODYyLC0y
+MjYzNzIwMTksLTE0ODEzOTQyMDIsLTExMDgwNDM3OTUsLTE1MT
+EzNTg1MjYsMTI0MDU2MjU1NywtODA0MDIwOTgsLTIwNjAwODkz
+MDUsNzEyMTI1MjE5XX0=
 -->
