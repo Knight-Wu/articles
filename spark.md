@@ -6,15 +6,22 @@
 
 
 
-1. new sparkContext, 初始化 driver 的通信, job 执行等一些对象
-2. 生成逻辑执行图 
-driver 中的transformation(), 建立血统, rdd的执行图, rdd.compute() 定义数据来了之后怎么计算, rdd.getDependencies() 定义rdd的依赖
+ 包,  生成sparkContext, 初始化 driver 的通信, job 执行等一些对象
+2. 生成端的 ?
+2. 建立job 逻辑执行图 
+ driver 中的transformation(), 建立血统, rdd的执行图, rdd.compute() 定义数据来了之后怎么计算, rdd.getDependencies() 定义rdd的依赖
 3. 生成物理执行图
-每个action 算子会生成一个job, 在DAGScheduler.runJob() 进行stage 划分, 在submitStage() 生成stage 最后产生的是shuffleMapTask 还是ResultTask, 然后将task 打包成taskSet 给taskScheduler 去执行, 如果taskSet 可以运行就将task 交给sparkDeploySchedulerBackend 去分配
+每个端建立job 的逻辑执行图, 包括rdd.getDependencies() , 以及rdd.compute() 计算将来的数据
+3. 建立job 物理执行图
+ 只要触发了一次action 算子会就生成一个job, 在DAGdagScheduler.runJob() 进行stage 划分, 在submitStage() 生成stage 最后产生的是的task, shuffleMapTask 还是或ResultTask, 然后将task 打包成taskSet 给交给 taskScheduler 去执行, 如果, 当taskSet 可以运行就将task 的时候就交给 sparkDeploySchedulerBackend 去分配
 
-4. task 分配
-sparkDeploySchedulerBackend  接受到taskSet 之后, 通过自带的DriverActor 将序列化之后的task 发送到worker 节点的CoarseGrainedExecutorBackend Actor 
-5. executor 将task 包装成taskRunner, 并从线程池抽出一个线程运行task. 一个 CoarseGrainedExecutorBackend 进程有且仅有一个 executor 对象。
+执行. 
+ 4. 分配task 分配
+sparkDeploySchedulerBackend  接受到taskSet 之后, 通过自带的DdriverActor 将序列化之后的task 发送到worker 节点executor 的CoarseGrainedExecutorBackend Actor 
+5. 执行.
+ 
+ 5. executor 执行task
+executor 将task 包装成tTaskRunner, 并从线程池抽出里抽取一个线程运来执行task. 一个 CoarseGrainedExecutorBackend 进程有且仅有一个 executor 对象。
 
 下图是任务提交流程:
 ![enter image description here](https://drive.google.com/uc?id=1iKFppKl4pyWyEEeBoFsOvxGa0tCow64w)
@@ -29,7 +36,12 @@ task 执行的结果主要分为shuffleMapTask 和resultTask, shuffleMapTask 生
 结果如果是indirectResult, 则需要调用 blockManager.getRemoteBytes 去取, 取到的结果如果是resultTask, 则用resultHandler 去算, 如果shuffleMapTask的结果则需要将输出的结果存放到 mapOutputTrackerMaster 的mapStatus 结构, 以便shuffle read 去查询. 如果driver 收到的task 是stage 中最后一个task, 则告诉dagScheduler 则可以开始下一个stage, 如果是最后一个stage, 则可以开始下一个job. 
 
 * shuffle read 如何知道去哪里获取数据
-shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster, HashMap<stageId, Array[MapStatus]>, 根据stageId 就可以获取到shuffleMapTask 输出的位置信息. Spark 为每个reducer 启动默认5个 fetch线程, fetch 来的数据需要在内存中做缓冲, 总的缓冲的内存空间不能超过spark.reducer.maxMbInFlight＝48MB, 
+shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster, HashMap<stageId, Array[MapStatus]>, 根据stageId 就可以获取到shuffleMapTask 输出的位置信息Runner. 
+
+
+
+ To summarize,paon 化 逻辑执行图
+rie t o hedurrun se  sitag) stae shfeapas etas tas taet tasceders sparDeleducler 启动默认5个 fetch线程, fetch 来的数据需要在内存中做缓冲, 总的缓冲的内存空间不能超过spark.reducer.maxMbInFlight＝48MB, 
 
 
 #### spark 逻辑执行图的生成
@@ -54,13 +66,16 @@ https://github.com/JerryLead/SparkInternals/blob/master/markdown/7-Broadcast.md
 driver 会先建一个文件夹存放需要广播的数据, 并启动一个可以访问该文件夹的httpServer , 并同时将数据写入driver 的blockmanager. 当executor 反序列化task, 开始使用广播对象之后, 会调用广播对象的readObject 方法, 先从executor blockmanager 里面去查这个数据, 不在的话, 就会通过 HttpBroadcast或 TorrentBroadcast 两种方式之一去获取数据, 并存放在executor 的blockmanager.
 
 * HttpBroadcast
-HttpBroadcast 最大的问题就是 **driver 所在的节点可能会出现网络拥堵**，因为 worker 上的 executor 都会去 driver 那里 fetch 数据。
+HttpBroadcast 最大的问题就是 **driver 所在的节点可能会出现网络拥堵**，因为 wsubmits a job to compute all needed
+RDDs. That job will have one or more stages, which Scheduleracend. tassarepleleaced tasket  rieAtor task arseandxecut a cluster
+ 3. Stages are processed in orkder 上的 executor 都会去 driver 那里 fetch 数据。
 
 * TorrentBroadcast
 基本思想是将数据分块, 当有一些executor fetch 到了一些data blocks, 那么这台executor 就可以被当做data server了. 
 driver 先把data 序列化成 byteArray, 然后切割成BLOCK_SIZE（由 `spark.broadcast.blockSize = 4MB` 设置）大小的 data block, 每个block 由TorrentBlock 对象持有, 切割完dataArray 会将其回收, 将分块信息存放到driver blockManager, 同时会通知**blockManagerMaster** , 可以被driver 和executor 访问到.
 
-#### spark 具体使用一些算子, 才会体会
+#### spark 具体使用一些算子, 才会体会, with individual tasks launching to compute segments
+of the RDD. Once the final stage is finished in a joboace eecor task asRnne, tas pareueroe
 
 
 #### task、partition关系
@@ -770,11 +785,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1NjkzOTQ2LC0xOTE5NjQ4ODIzLDE0MT
-AxNTE4NzksLTQxMDY4NzQyNiwxMTM5MDk3MjM0LC0xMzU0Njk4
-Nzk0LDg0MjY1MTMxOCwtMTMzNzUyNjk1MiwxNzY3NDU5NjM2LC
-0xOTEwMDI5MjIxLC00ODQ2MzU5MzgsLTE0OTk4OTc0MjQsMTIz
-MDg3NTg2MiwtMjI2MzcyMDE5LC0xNDgxMzk0MjAyLC0xMTA4MD
-QzNzk1LC0xNTExMzU4NTI2LDEyNDA1NjI1NTcsLTgwNDAyMDk4
-LC0yMDYwMDg5MzA1XX0=
+eyJoaXN0b3J5IjpbLTE2MTk3MTc3ODIsMTQ1NjkzOTQ2LC0xOT
+E5NjQ4ODIzLDE0MTAxNTE4NzksLTQxMDY4NzQyNiwxMTM5MDk3
+MjM0LC0xMzU0Njk4Nzk0LDg0MjY1MTMxOCwtMTMzNzUyNjk1Mi
+wxNzY3NDU5NjM2LC0xOTEwMDI5MjIxLC00ODQ2MzU5MzgsLTE0
+OTk4OTc0MjQsMTIzMDg3NTg2MiwtMjI2MzcyMDE5LC0xNDgxMz
+k0MjAyLC0xMTA4MDQzNzk1LC0xNTExMzU4NTI2LDEyNDA1NjI1
+NTcsLTgwNDAyMDk4XX0=
 -->
