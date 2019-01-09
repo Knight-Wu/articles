@@ -42,6 +42,7 @@ shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster,
 如何根据上图, 知道具体如何划分stage 和task, task 中的数据从哪些来, 
 ![enter image description here](https://drive.google.com/uc?id=1CWkUowX518EV6-JBQIrlavQ5FDRLh4bh)
 
+整个computing chain 由后向前建立, 遇到shuffle 就新建一个stage, 每个stage 中, rdd 调用parentRdd.iterator
 在同一个stage 中, 一个 task 只会算某些特定的task, 到了shuffle 阶段,  shuffle read 和write 阶段是用的不同的两批task, 前后两批task 的数量如何决定?
 
 * task的数量
@@ -752,11 +753,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQyNjUxMzE4LC0xMzM3NTI2OTUyLDE3Nj
-c0NTk2MzYsLTE5MTAwMjkyMjEsLTQ4NDYzNTkzOCwtMTQ5OTg5
-NzQyNCwxMjMwODc1ODYyLC0yMjYzNzIwMTksLTE0ODEzOTQyMD
-IsLTExMDgwNDM3OTUsLTE1MTEzNTg1MjYsMTI0MDU2MjU1Nywt
-ODA0MDIwOTgsLTIwNjAwODkzMDUsNzEyMTI1MjE5LDE2NTE5ND
-kzNTYsMTIwMjA3NzIzNSwyMDkzODAzMDk3LC0xMDM4ODQxMzMx
-LDMzMTM4NjY1MV19
+eyJoaXN0b3J5IjpbODMyMDM1MzIzLDg0MjY1MTMxOCwtMTMzNz
+UyNjk1MiwxNzY3NDU5NjM2LC0xOTEwMDI5MjIxLC00ODQ2MzU5
+MzgsLTE0OTk4OTc0MjQsMTIzMDg3NTg2MiwtMjI2MzcyMDE5LC
+0xNDgxMzk0MjAyLC0xMTA4MDQzNzk1LC0xNTExMzU4NTI2LDEy
+NDA1NjI1NTcsLTgwNDAyMDk4LC0yMDYwMDg5MzA1LDcxMjEyNT
+IxOSwxNjUxOTQ5MzU2LDEyMDIwNzcyMzUsMjA5MzgwMzA5Nywt
+MTAzODg0MTMzMV19
 -->
