@@ -561,17 +561,6 @@ uuid time url result
 5. 将表D与表B join, 则可以获取所有的result. 
 
 
-
-
-
-
-#### driver的作用
-1. 生成lineage, 将用户提交的程序划分成多个task去执行, 
-2. 作为调度的角色, 提交请求到executor
-
-
-
-
 ### spark sql和presto的区别
 * spark sql更方便进行数据的分析, 适合做OLAP(On-Line Analytical Processing)
 * presto更适合做实时的响应, 更适合做交互式查询, 在数据量和内存差不多的时候性能较好, 因为完全基于内存做计算,适合做OLTP(on-line transaction processing)
@@ -744,11 +733,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNjMxMzE2NiwxMjMwODc1ODYyLC0yMj
-YzNzIwMTksLTE0ODEzOTQyMDIsLTExMDgwNDM3OTUsLTE1MTEz
-NTg1MjYsMTI0MDU2MjU1NywtODA0MDIwOTgsLTIwNjAwODkzMD
-UsNzEyMTI1MjE5LDE2NTE5NDkzNTYsMTIwMjA3NzIzNSwyMDkz
-ODAzMDk3LC0xMDM4ODQxMzMxLDMzMTM4NjY1MSw2MDY3MjU1Mz
-MsLTE1MDcwMjcxOTAsMTEyMjU4ODcwNywtNzk4MTcwNjQyLC04
-MTY1ODE4NDZdfQ==
+eyJoaXN0b3J5IjpbLTE0OTk4OTc0MjQsMTIzMDg3NTg2MiwtMj
+I2MzcyMDE5LC0xNDgxMzk0MjAyLC0xMTA4MDQzNzk1LC0xNTEx
+MzU4NTI2LDEyNDA1NjI1NTcsLTgwNDAyMDk4LC0yMDYwMDg5Mz
+A1LDcxMjEyNTIxOSwxNjUxOTQ5MzU2LDEyMDIwNzcyMzUsMjA5
+MzgwMzA5NywtMTAzODg0MTMzMSwzMzEzODY2NTEsNjA2NzI1NT
+MzLC0xNTA3MDI3MTkwLDExMjI1ODg3MDcsLTc5ODE3MDY0Miwt
+ODE2NTgxODQ2XX0=
 -->
