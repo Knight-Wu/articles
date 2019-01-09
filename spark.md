@@ -16,7 +16,7 @@ executor 执行完task 之后的结果, 需要返回到driver, 如果这个结�
 task 执行的结果主要分为shuffleMapTask 和resultTask, shuffleMapTask 生成的是MapStatus, 一是该task 所在的blockManager 的blockManagerId(由executorId+host, port, nettyPort 组成), 二是task输出的FileSegment 大小, resultTask 输出的结果则是partition 最后输出的结果. 
 
 * driver 接收到task 返回的结果后, 做什么处理
-结果如果是indirectResult, 则需要调用 blockManager.getRemoteBytes 去取, 取到的结果如果是resultTask, 则用resultHandler 去算, 
+结果如果是indirectResult, 则需要调用 blockManager.getRemoteBytes 去取, 取到的结果如果是resultTask, 则用resultHandler 去算, 如果shuffleMapTask的结果则需要将输出的结果存放到 mapOutputTrackerMaster 的mapStatus 结构, 
 
 
 ![image](https://user-images.githubusercontent.com/20329409/42255995-3835ea58-7f81-11e8-9003-78b446c332cf.png)
@@ -735,11 +735,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjcyMzEwNDYxLDEyNDA1NjI1NTcsLTgwND
-AyMDk4LC0yMDYwMDg5MzA1LDcxMjEyNTIxOSwxNjUxOTQ5MzU2
-LDEyMDIwNzcyMzUsMjA5MzgwMzA5NywtMTAzODg0MTMzMSwzMz
-EzODY2NTEsNjA2NzI1NTMzLC0xNTA3MDI3MTkwLDExMjI1ODg3
-MDcsLTc5ODE3MDY0MiwtODE2NTgxODQ2LC0xMzY2MzY1NjAwLD
-U5MTY4ODM1LC02NjI3NDA2NTUsLTE5MzM1NTMyOTksMTYzNzQw
-ODMzXX0=
+eyJoaXN0b3J5IjpbLTE4NjQxODE3NiwxMjQwNTYyNTU3LC04MD
+QwMjA5OCwtMjA2MDA4OTMwNSw3MTIxMjUyMTksMTY1MTk0OTM1
+NiwxMjAyMDc3MjM1LDIwOTM4MDMwOTcsLTEwMzg4NDEzMzEsMz
+MxMzg2NjUxLDYwNjcyNTUzMywtMTUwNzAyNzE5MCwxMTIyNTg4
+NzA3LC03OTgxNzA2NDIsLTgxNjU4MTg0NiwtMTM2NjM2NTYwMC
+w1OTE2ODgzNSwtNjYyNzQwNjU1LC0xOTMzNTUzMjk5LDE2Mzc0
+MDgzM119
 -->
