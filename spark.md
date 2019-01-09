@@ -1,9 +1,10 @@
 #### spark执行的大致流程
-1. 
+1. new sparkContext, 初始化 driver 的通信, job 执行等一些对象
+2. driver 中的transformation(), 建立血统, rdd的
 
 
 
-1. 一个application 如何能手动画出RDD 之间的转化关系, 这是逻辑执行图, 如何画出物理执行图, 也就是task 的转化关系.
+3. 一个application 如何能手动画出RDD 之间的转化关系, 这是逻辑执行图, 如何画出物理执行图, 也就是task 的转化关系.
 
  To summarize, the following phases occur during Spark execution: 
  1. User code defines a DAG (directed acyclic graph) of RDDs
@@ -736,11 +737,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0MDU2MjU1NywtODA0MDIwOTgsLTIwNj
-AwODkzMDUsNzEyMTI1MjE5LDE2NTE5NDkzNTYsMTIwMjA3NzIz
-NSwyMDkzODAzMDk3LC0xMDM4ODQxMzMxLDMzMTM4NjY1MSw2MD
-Y3MjU1MzMsLTE1MDcwMjcxOTAsMTEyMjU4ODcwNywtNzk4MTcw
-NjQyLC04MTY1ODE4NDYsLTEzNjYzNjU2MDAsNTkxNjg4MzUsLT
-Y2Mjc0MDY1NSwtMTkzMzU1MzI5OSwxNjM3NDA4MzMsLTE2Njg4
-MTY5OThdfQ==
+eyJoaXN0b3J5IjpbMTM5NTM2NjEzOSwxMjQwNTYyNTU3LC04MD
+QwMjA5OCwtMjA2MDA4OTMwNSw3MTIxMjUyMTksMTY1MTk0OTM1
+NiwxMjAyMDc3MjM1LDIwOTM4MDMwOTcsLTEwMzg4NDEzMzEsMz
+MxMzg2NjUxLDYwNjcyNTUzMywtMTUwNzAyNzE5MCwxMTIyNTg4
+NzA3LC03OTgxNzA2NDIsLTgxNjU4MTg0NiwtMTM2NjM2NTYwMC
+w1OTE2ODgzNSwtNjYyNzQwNjU1LC0xOTMzNTUzMjk5LDE2Mzc0
+MDgzM119
 -->
