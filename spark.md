@@ -47,6 +47,7 @@ shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster,
 * task的数量
 在同一个stage 中的, 由上游的partition 数量决定task 的数量, 若上游的partition 来自数据源, 由数据源的split 数量决定; 然后这个task 依次调用一个stage 的多个rdd.compute 函数, 不需要保留中间结果, 除非有cache. 例如上图中的粗线条均有一个task 完成.下游的task 的数量 spark 一般提供了参数取决定.
 
+#### spark 广播
 
 
 #### spark 具体使用一些算子, 才会体会
@@ -759,11 +760,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxMDY4NzQyNiwxMTM5MDk3MjM0LC0xMz
-U0Njk4Nzk0LDg0MjY1MTMxOCwtMTMzNzUyNjk1MiwxNzY3NDU5
-NjM2LC0xOTEwMDI5MjIxLC00ODQ2MzU5MzgsLTE0OTk4OTc0Mj
-QsMTIzMDg3NTg2MiwtMjI2MzcyMDE5LC0xNDgxMzk0MjAyLC0x
-MTA4MDQzNzk1LC0xNTExMzU4NTI2LDEyNDA1NjI1NTcsLTgwND
-AyMDk4LC0yMDYwMDg5MzA1LDcxMjEyNTIxOSwxNjUxOTQ5MzU2
-LDEyMDIwNzcyMzVdfQ==
+eyJoaXN0b3J5IjpbMTQxMDE1MTg3OSwtNDEwNjg3NDI2LDExMz
+kwOTcyMzQsLTEzNTQ2OTg3OTQsODQyNjUxMzE4LC0xMzM3NTI2
+OTUyLDE3Njc0NTk2MzYsLTE5MTAwMjkyMjEsLTQ4NDYzNTkzOC
+wtMTQ5OTg5NzQyNCwxMjMwODc1ODYyLC0yMjYzNzIwMTksLTE0
+ODEzOTQyMDIsLTExMDgwNDM3OTUsLTE1MTEzNTg1MjYsMTI0MD
+U2MjU1NywtODA0MDIwOTgsLTIwNjAwODkzMDUsNzEyMTI1MjE5
+LDE2NTE5NDkzNTZdfQ==
 -->
