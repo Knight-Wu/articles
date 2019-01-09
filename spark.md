@@ -11,7 +11,7 @@ sparkDeploySchedulerBackend  接受到taskSet 之后, 通过自带的DriverActor
 
 * task 执行完成之后的结果如何返回给driver
 
-executor 执行完task 之后的结果, 需要返回到driver, 如果这个结果过大, 超过spark.akka.frameSize = 10M, 就先把结果存放到executor blockManager 管理, 存储结构由storageLevel 决定, 存储大小为
+executor 执行完task 之后的结果, 需要返回到driver, 如果这个结果过大, 超过spark.akka.frameSize = 10M, 就先把结果存放到executor blockManager 管理, 存储结构由storageLevel 决定, 存储大小为spark.storage.memory 决定, 并把位置信息返回, 之后由driver http qu; 如果结果小于 10M, 
 
 
 ![image](https://user-images.githubusercontent.com/20329409/42255995-3835ea58-7f81-11e8-9003-78b446c332cf.png)
@@ -730,11 +730,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDYzMDIyNjMsMTI0MDU2MjU1NywtOD
-A0MDIwOTgsLTIwNjAwODkzMDUsNzEyMTI1MjE5LDE2NTE5NDkz
-NTYsMTIwMjA3NzIzNSwyMDkzODAzMDk3LC0xMDM4ODQxMzMxLD
-MzMTM4NjY1MSw2MDY3MjU1MzMsLTE1MDcwMjcxOTAsMTEyMjU4
-ODcwNywtNzk4MTcwNjQyLC04MTY1ODE4NDYsLTEzNjYzNjU2MD
-AsNTkxNjg4MzUsLTY2Mjc0MDY1NSwtMTkzMzU1MzI5OSwxNjM3
-NDA4MzNdfQ==
+eyJoaXN0b3J5IjpbOTgwNjkwNTMzLDEyNDA1NjI1NTcsLTgwND
+AyMDk4LC0yMDYwMDg5MzA1LDcxMjEyNTIxOSwxNjUxOTQ5MzU2
+LDEyMDIwNzcyMzUsMjA5MzgwMzA5NywtMTAzODg0MTMzMSwzMz
+EzODY2NTEsNjA2NzI1NTMzLC0xNTA3MDI3MTkwLDExMjI1ODg3
+MDcsLTc5ODE3MDY0MiwtODE2NTgxODQ2LC0xMzY2MzY1NjAwLD
+U5MTY4ODM1LC02NjI3NDA2NTUsLTE5MzM1NTMyOTksMTYzNzQw
+ODMzXX0=
 -->
