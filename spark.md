@@ -21,7 +21,7 @@ task 执行的结果主要分为shuffleMapTask 和resultTask, shuffleMapTask 生
 结果如果是indirectResult, 则需要调用 blockManager.getRemoteBytes 去取, 取到的结果如果是resultTask, 则用resultHandler 去算, 如果shuffleMapTask的结果则需要将输出的结果存放到 mapOutputTrackerMaster 的mapStatus 结构, 以便shuffle read 去查询. 如果driver 收到的task 是stage 中最后一个task, 则告诉dagScheduler 则可以开始下一个stage, 如果是最后一个stage, 则可以开始下一个job. 
 
 * shuffle read 如何知道去哪里获取数据
-shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster, HashMap<stageId, Array[MapStatus]>, 根据stageId 就可以获取到shuffleMapTask 输出的位置信息, 
+shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster, HashMap<stageId, Array[MapStatus]>, 根据stageId 就可以获取到shuffleMapTask 输出的位置信息. Spark 为每个reducer 启动默认5个 fetch线程, fetch 来的数据需要在内存中做缓冲, 总的缓冲的内存空间不能超过spark.reducer.maxMbInFlight＝48MB, 
 
 ![image](https://user-images.githubusercontent.com/20329409/42255995-3835ea58-7f81-11e8-9003-78b446c332cf.png)
 
@@ -739,11 +739,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDgwNDM3OTUsLTE1MTEzNTg1MjYsMT
-I0MDU2MjU1NywtODA0MDIwOTgsLTIwNjAwODkzMDUsNzEyMTI1
-MjE5LDE2NTE5NDkzNTYsMTIwMjA3NzIzNSwyMDkzODAzMDk3LC
-0xMDM4ODQxMzMxLDMzMTM4NjY1MSw2MDY3MjU1MzMsLTE1MDcw
-MjcxOTAsMTEyMjU4ODcwNywtNzk4MTcwNjQyLC04MTY1ODE4ND
-YsLTEzNjYzNjU2MDAsNTkxNjg4MzUsLTY2Mjc0MDY1NSwtMTkz
-MzU1MzI5OV19
+eyJoaXN0b3J5IjpbLTE0ODEzOTQyMDIsLTExMDgwNDM3OTUsLT
+E1MTEzNTg1MjYsMTI0MDU2MjU1NywtODA0MDIwOTgsLTIwNjAw
+ODkzMDUsNzEyMTI1MjE5LDE2NTE5NDkzNTYsMTIwMjA3NzIzNS
+wyMDkzODAzMDk3LC0xMDM4ODQxMzMxLDMzMTM4NjY1MSw2MDY3
+MjU1MzMsLTE1MDcwMjcxOTAsMTEyMjU4ODcwNywtNzk4MTcwNj
+QyLC04MTY1ODE4NDYsLTEzNjYzNjU2MDAsNTkxNjg4MzUsLTY2
+Mjc0MDY1NV19
 -->
