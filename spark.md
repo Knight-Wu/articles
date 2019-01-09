@@ -9,7 +9,9 @@ driver 中的transformation(), 建立血统, rdd的执行图, rdd.compute() 定�
 sparkDeploySchedulerBackend  接受到taskSet 之后, 通过自带的DriverActor 将序列化之后的task 发送到worker 节点的CoarseGrainedExecutorBackend Actor 
 5. executor 将task 包装成taskRunner, 并从线程池抽出一个线程运行task. 一个 CoarseGrainedExecutorBackend 进程有且仅有一个 executor 对象。
 
-* task 执行
+* task 执行完成之后的结果如何返回给driver
+
+executor 执行完task 之后的结果, 需要返回到driver, 如果这个结果过大, 超过spark.akka.frameSize = 10M, 就先把结果cu
 
 
 ![image](https://user-images.githubusercontent.com/20329409/42255995-3835ea58-7f81-11e8-9003-78b446c332cf.png)
@@ -728,7 +730,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTA4MzQyMjEsMTI0MDU2MjU1NywtOD
+eyJoaXN0b3J5IjpbLTEyMjA5MTM2NjMsMTI0MDU2MjU1NywtOD
 A0MDIwOTgsLTIwNjAwODkzMDUsNzEyMTI1MjE5LDE2NTE5NDkz
 NTYsMTIwMjA3NzIzNSwyMDkzODAzMDk3LC0xMDM4ODQxMzMxLD
 MzMTM4NjY1MSw2MDY3MjU1MzMsLTE1MDcwMjcxOTAsMTEyMjU4
