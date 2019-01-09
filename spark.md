@@ -57,7 +57,7 @@ driver 会先建一个文件夹存放需要广播的数据, 并启动一个可�
 HttpBroadcast 最大的问题就是 **driver 所在的节点可能会出现网络拥堵**，因为 worker 上的 executor 都会去 driver 那里 fetch 数据。
 
 * TorrentBroadcast
-基本思想是将数据分块, 当有一些executor fetch 到了一些data blocks, 那么这台executor 
+基本思想是将数据分块, 当有一些executor fetch 到了一些data blocks, 那么这台executor 就可以被当做data server了. 
 
 
 
@@ -771,11 +771,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzU4ODk2NDUsLTE5MTk2NDg4MjMsMT
-QxMDE1MTg3OSwtNDEwNjg3NDI2LDExMzkwOTcyMzQsLTEzNTQ2
-OTg3OTQsODQyNjUxMzE4LC0xMzM3NTI2OTUyLDE3Njc0NTk2Mz
-YsLTE5MTAwMjkyMjEsLTQ4NDYzNTkzOCwtMTQ5OTg5NzQyNCwx
-MjMwODc1ODYyLC0yMjYzNzIwMTksLTE0ODEzOTQyMDIsLTExMD
-gwNDM3OTUsLTE1MTEzNTg1MjYsMTI0MDU2MjU1NywtODA0MDIw
-OTgsLTIwNjAwODkzMDVdfQ==
+eyJoaXN0b3J5IjpbMTgwMjEyNzkwMSwtMTkxOTY0ODgyMywxND
+EwMTUxODc5LC00MTA2ODc0MjYsMTEzOTA5NzIzNCwtMTM1NDY5
+ODc5NCw4NDI2NTEzMTgsLTEzMzc1MjY5NTIsMTc2NzQ1OTYzNi
+wtMTkxMDAyOTIyMSwtNDg0NjM1OTM4LC0xNDk5ODk3NDI0LDEy
+MzA4NzU4NjIsLTIyNjM3MjAxOSwtMTQ4MTM5NDIwMiwtMTEwOD
+A0Mzc5NSwtMTUxMTM1ODUyNiwxMjQwNTYyNTU3LC04MDQwMjA5
+OCwtMjA2MDA4OTMwNV19
 -->
