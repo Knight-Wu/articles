@@ -1,5 +1,6 @@
 #### spark执行的大致流程
 参考自 https://github.com/JerryLead/SparkInternals/blob/master/markdown/5-Architecture.md
+![enter image description here](https://drive.google.com/uc?id=1bHUSmMyvvt0AExkVkPJx9wplKzlnCWxr)
 
 1. new sparkContext, 初始化 driver 的通信, job 执行等一些对象
 2. 生成逻辑执行图 
@@ -741,11 +742,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzc1MjY5NTIsMTc2NzQ1OTYzNiwtMT
-kxMDAyOTIyMSwtNDg0NjM1OTM4LC0xNDk5ODk3NDI0LDEyMzA4
-NzU4NjIsLTIyNjM3MjAxOSwtMTQ4MTM5NDIwMiwtMTEwODA0Mz
-c5NSwtMTUxMTM1ODUyNiwxMjQwNTYyNTU3LC04MDQwMjA5OCwt
-MjA2MDA4OTMwNSw3MTIxMjUyMTksMTY1MTk0OTM1NiwxMjAyMD
-c3MjM1LDIwOTM4MDMwOTcsLTEwMzg4NDEzMzEsMzMxMzg2NjUx
-LDYwNjcyNTUzM119
+eyJoaXN0b3J5IjpbNzM5MDA2ODk3LC0xMzM3NTI2OTUyLDE3Nj
+c0NTk2MzYsLTE5MTAwMjkyMjEsLTQ4NDYzNTkzOCwtMTQ5OTg5
+NzQyNCwxMjMwODc1ODYyLC0yMjYzNzIwMTksLTE0ODEzOTQyMD
+IsLTExMDgwNDM3OTUsLTE1MTEzNTg1MjYsMTI0MDU2MjU1Nywt
+ODA0MDIwOTgsLTIwNjAwODkzMDUsNzEyMTI1MjE5LDE2NTE5ND
+kzNTYsMTIwMjA3NzIzNSwyMDkzODAzMDk3LC0xMDM4ODQxMzMx
+LDMzMTM4NjY1MV19
 -->
