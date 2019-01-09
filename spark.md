@@ -9,23 +9,7 @@ driver 中的transformation(), 建立血统, rdd的执行图, rdd.compute() 定�
 sparkDeploySchedulerBackend  接受到taskSet 之后, 通过自带的DriverActor 将序列化之后的task 发送到worker 节点的CoarseGrainedExecutorBackend Actor 
 5. executor 将task 包装成taskRunner, 并从线程池抽出一个线程运行task. 一个 CoarseGrainedExecutorBackend 进程有且仅有一个 executor 对象。
 
-
-
-5. 一个application 如何能手动画出RDD 之间的转化关系, 这是逻辑执行图, 如何画出物理执行图, 也就是task 的转化关系.
-
- To summarize, the following phases occur during Spark execution: 
- 1. User code defines a DAG (directed acyclic graph) of RDDs
-Operations on RDDs create new RDDs that refer back to their parents, thereby
-creating a graph.
- 2. Actions force translation of the DAG to an execution plan
-When you call an action on an RDD it must be computed. This requires computing
-its parent RDDs as well. Spark’s scheduler submits a job to compute all needed
-RDDs. That job will have one or more stages, which are parallel waves of
-computation composed of tasks. Each stage will correspond to one or more RDDs in
-the DAG. A single stage can correspond to multiple RDDs due to pipelining.
-Tasks are scheduled and executed on a cluster
- 3. Stages are processed in order, with individual tasks launching to compute segments
-of the RDD. Once the final stage is finished in a job, the action is complete.
+* task 执行
 
 
 ![image](https://user-images.githubusercontent.com/20329409/42255995-3835ea58-7f81-11e8-9003-78b446c332cf.png)
@@ -744,7 +728,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzM1Mzg1NzksMTI0MDU2MjU1NywtOD
+eyJoaXN0b3J5IjpbLTExNTA4MzQyMjEsMTI0MDU2MjU1NywtOD
 A0MDIwOTgsLTIwNjAwODkzMDUsNzEyMTI1MjE5LDE2NTE5NDkz
 NTYsMTIwMjA3NzIzNSwyMDkzODAzMDk3LC0xMDM4ODQxMzMxLD
 MzMTM4NjY1MSw2MDY3MjU1MzMsLTE1MDcwMjcxOTAsMTEyMjU4
