@@ -26,6 +26,7 @@ shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster,
 ![image](https://user-images.githubusercontent.com/20329409/42255995-3835ea58-7f81-11e8-9003-78b446c332cf.png)
 
 
+#### spark 逻辑执行图的生成
 
 
 #### task、partition关系
@@ -739,11 +740,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0ODEzOTQyMDIsLTExMDgwNDM3OTUsLT
-E1MTEzNTg1MjYsMTI0MDU2MjU1NywtODA0MDIwOTgsLTIwNjAw
-ODkzMDUsNzEyMTI1MjE5LDE2NTE5NDkzNTYsMTIwMjA3NzIzNS
-wyMDkzODAzMDk3LC0xMDM4ODQxMzMxLDMzMTM4NjY1MSw2MDY3
-MjU1MzMsLTE1MDcwMjcxOTAsMTEyMjU4ODcwNywtNzk4MTcwNj
-QyLC04MTY1ODE4NDYsLTEzNjYzNjU2MDAsNTkxNjg4MzUsLTY2
-Mjc0MDY1NV19
+eyJoaXN0b3J5IjpbLTIyNjM3MjAxOSwtMTQ4MTM5NDIwMiwtMT
+EwODA0Mzc5NSwtMTUxMTM1ODUyNiwxMjQwNTYyNTU3LC04MDQw
+MjA5OCwtMjA2MDA4OTMwNSw3MTIxMjUyMTksMTY1MTk0OTM1Ni
+wxMjAyMDc3MjM1LDIwOTM4MDMwOTcsLTEwMzg4NDEzMzEsMzMx
+Mzg2NjUxLDYwNjcyNTUzMywtMTUwNzAyNzE5MCwxMTIyNTg4Nz
+A3LC03OTgxNzA2NDIsLTgxNjU4MTg0NiwtMTM2NjM2NTYwMCw1
+OTE2ODgzNV19
 -->
