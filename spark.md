@@ -2,6 +2,10 @@
 参考自 https://github.com/JerryLead/SparkInternals/blob/master/markdown/5-Architecture.md
 ![enter image description here](https://drive.google.com/uc?id=1bHUSmMyvvt0AExkVkPJx9wplKzlnCWxr)
 
+![image](https://user-images.githubusercontent.com/20329409/42255995-3835ea58-7f81-11e8-9003-78b446c332cf.png)
+
+
+
 1. new sparkContext, 初始化 driver 的通信, job 执行等一些对象
 2. 生成逻辑执行图 
 driver 中的transformation(), 建立血统, rdd的执行图, rdd.compute() 定义数据来了之后怎么计算, rdd.getDependencies() 定义rdd的依赖
@@ -11,6 +15,9 @@ driver 中的transformation(), 建立血统, rdd的执行图, rdd.compute() 定�
 4. task 分配
 sparkDeploySchedulerBackend  接受到taskSet 之后, 通过自带的DriverActor 将序列化之后的task 发送到worker 节点的CoarseGrainedExecutorBackend Actor 
 5. executor 将task 包装成taskRunner, 并从线程池抽出一个线程运行task. 一个 CoarseGrainedExecutorBackend 进程有且仅有一个 executor 对象。
+
+下图是任务提交流程:
+![enter image description here](https://drive.google.com/uc?id=1iKFppKl4pyWyEEeBoFsOvxGa0tCow64w)
 
 * task 执行完成之后的结果如何返回给driver
 
@@ -24,16 +31,15 @@ task 执行的结果主要分为shuffleMapTask 和resultTask, shuffleMapTask 生
 * shuffle read 如何知道去哪里获取数据
 shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster, HashMap<stageId, Array[MapStatus]>, 根据stageId 就可以获取到shuffleMapTask 输出的位置信息. Spark 为每个reducer 启动默认5个 fetch线程, fetch 来的数据需要在内存中做缓冲, 总的缓冲的内存空间不能超过spark.reducer.maxMbInFlight＝48MB, 
 
-![image](https://user-images.githubusercontent.com/20329409/42255995-3835ea58-7f81-11e8-9003-78b446c332cf.png)
-
 
 #### spark 逻辑执行图的生成
 1. 根据最初的数据源生成最初的RDD, 
 2. 对RDD 进行一系列的transformation 操作, 每次transformation 会产生一个或多个新的RDD 
 3. 对final RDD 进行action , 对每个partition 计算后产生结果返回到driver 端
 
-#### spark 物理执行图生成
 
+#### spark 物理执行图生成
+如何根据上图, 知道具体如何划分task, task 中的数据从哪些来, 
 
 在同一个stage 中, 一个 task 只会算某些特定的task, 到了shuffle 阶段,  shuffle read 和write 阶段是用的不同的两批task, 前后两批task 的数量如何决定?
 
@@ -742,11 +748,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzM5MDA2ODk3LC0xMzM3NTI2OTUyLDE3Nj
-c0NTk2MzYsLTE5MTAwMjkyMjEsLTQ4NDYzNTkzOCwtMTQ5OTg5
-NzQyNCwxMjMwODc1ODYyLC0yMjYzNzIwMTksLTE0ODEzOTQyMD
-IsLTExMDgwNDM3OTUsLTE1MTEzNTg1MjYsMTI0MDU2MjU1Nywt
-ODA0MDIwOTgsLTIwNjAwODkzMDUsNzEyMTI1MjE5LDE2NTE5ND
-kzNTYsMTIwMjA3NzIzNSwyMDkzODAzMDk3LC0xMDM4ODQxMzMx
-LDMzMTM4NjY1MV19
+eyJoaXN0b3J5IjpbLTgwOTg4NjUyMiwtMTMzNzUyNjk1MiwxNz
+Y3NDU5NjM2LC0xOTEwMDI5MjIxLC00ODQ2MzU5MzgsLTE0OTk4
+OTc0MjQsMTIzMDg3NTg2MiwtMjI2MzcyMDE5LC0xNDgxMzk0Mj
+AyLC0xMTA4MDQzNzk1LC0xNTExMzU4NTI2LDEyNDA1NjI1NTcs
+LTgwNDAyMDk4LC0yMDYwMDg5MzA1LDcxMjEyNTIxOSwxNjUxOT
+Q5MzU2LDEyMDIwNzcyMzUsMjA5MzgwMzA5NywtMTAzODg0MTMz
+MSwzMzEzODY2NTFdfQ==
 -->
