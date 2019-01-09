@@ -267,7 +267,10 @@ shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manag
  
  * 什么时候reducer 进行fetch
 当shuffle map 所有task都写完之后, 为了符合stage 的概念
-* 边fetch 边处理还是, fetch
+* 边fetch 边处理还是, fetch 结束后再处理
+边fetch 边处理, 
+* fetch 来的数据存放在哪里
+存放在reducer 的内存缓冲区, 当内存缓冲区达到一定的阈值, 再split 到磁盘, 
 > Hash-Based Shuffle 的不足
 1. 会产生大量的小文件, 数量是m*r个, mapper端和reducer端的内存消耗变大, 进而导致GC 压力很大, 可以通过 consolidateFiles的配置优化, 将文件数下降为 num(cores) * r.
 如下图: 
@@ -757,7 +760,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNTE3NTM0OTEsLTEzNTQ2OTg3OTQsOD
+eyJoaXN0b3J5IjpbLTE5MzQwNTYzNzIsLTEzNTQ2OTg3OTQsOD
 QyNjUxMzE4LC0xMzM3NTI2OTUyLDE3Njc0NTk2MzYsLTE5MTAw
 MjkyMjEsLTQ4NDYzNTkzOCwtMTQ5OTg5NzQyNCwxMjMwODc1OD
 YyLC0yMjYzNzIwMTksLTE0ODEzOTQyMDIsLTExMDgwNDM3OTUs
