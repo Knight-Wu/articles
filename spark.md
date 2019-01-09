@@ -3,7 +3,7 @@
 2. 生成逻辑执行图 
 driver 中的transformation(), 建立血统, rdd的执行图, rdd.compute() 定义数据来了之后怎么计算, rdd.getDependencies() 定义rdd的依赖
 3. 生成物理执行图
-每个action 算子h
+每个action 算子会生成一个job, 在DAGScheduler.runJob() 进行stage 划分, 在submitStage() 生成stage 最后产生的是shuffleMapTask 还是ResultTask, 然后将task 打包成taskSet 给taskScheduler 
 
 
 
@@ -740,11 +740,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzA0ODM1NDk4LDEyNDA1NjI1NTcsLTgwND
-AyMDk4LC0yMDYwMDg5MzA1LDcxMjEyNTIxOSwxNjUxOTQ5MzU2
-LDEyMDIwNzcyMzUsMjA5MzgwMzA5NywtMTAzODg0MTMzMSwzMz
-EzODY2NTEsNjA2NzI1NTMzLC0xNTA3MDI3MTkwLDExMjI1ODg3
-MDcsLTc5ODE3MDY0MiwtODE2NTgxODQ2LC0xMzY2MzY1NjAwLD
-U5MTY4ODM1LC02NjI3NDA2NTUsLTE5MzM1NTMyOTksMTYzNzQw
-ODMzXX0=
+eyJoaXN0b3J5IjpbMTU3Nzc3MzI5MiwxMjQwNTYyNTU3LC04MD
+QwMjA5OCwtMjA2MDA4OTMwNSw3MTIxMjUyMTksMTY1MTk0OTM1
+NiwxMjAyMDc3MjM1LDIwOTM4MDMwOTcsLTEwMzg4NDEzMzEsMz
+MxMzg2NjUxLDYwNjcyNTUzMywtMTUwNzAyNzE5MCwxMTIyNTg4
+NzA3LC03OTgxNzA2NDIsLTgxNjU4MTg0NiwtMTM2NjM2NTYwMC
+w1OTE2ODgzNSwtNjYyNzQwNjU1LC0xOTMzNTUzMjk5LDE2Mzc0
+MDgzM119
 -->
