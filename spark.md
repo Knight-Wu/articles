@@ -3,11 +3,14 @@
 2. 生成逻辑执行图 
 driver 中的transformation(), 建立血统, rdd的执行图, rdd.compute() 定义数据来了之后怎么计算, rdd.getDependencies() 定义rdd的依赖
 3. 生成物理执行图
-每个action 算子会生成一个job, 在DAGScheduler.runJob() 进行stage 划分, 在submitStage() 生成stage 最后产生的是shuffleMapTask 还是ResultTask, 然后将task 打包成taskSet 给taskScheduler 
+每个action 算子会生成一个job, 在DAGScheduler.runJob() 进行stage 划分, 在submitStage() 生成stage 最后产生的是shuffleMapTask 还是ResultTask, 然后将task 打包成taskSet 给taskScheduler 去执行, 如果taskSet 可以运行就将task 交给sparkDeploySchedulerBackend 去分配
+
+4. task 分配
+sparkDeploySchedulerBackend  接受到taskSet 之后, 通过自带的DriverActor 将序列化之后的task 发送到worker
 
 
 
-4. 一个application 如何能手动画出RDD 之间的转化关系, 这是逻辑执行图, 如何画出物理执行图, 也就是task 的转化关系.
+5. 一个application 如何能手动画出RDD 之间的转化关系, 这是逻辑执行图, 如何画出物理执行图, 也就是task 的转化关系.
 
  To summarize, the following phases occur during Spark execution: 
  1. User code defines a DAG (directed acyclic graph) of RDDs
@@ -740,11 +743,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3Nzc3MzI5MiwxMjQwNTYyNTU3LC04MD
-QwMjA5OCwtMjA2MDA4OTMwNSw3MTIxMjUyMTksMTY1MTk0OTM1
-NiwxMjAyMDc3MjM1LDIwOTM4MDMwOTcsLTEwMzg4NDEzMzEsMz
-MxMzg2NjUxLDYwNjcyNTUzMywtMTUwNzAyNzE5MCwxMTIyNTg4
-NzA3LC03OTgxNzA2NDIsLTgxNjU4MTg0NiwtMTM2NjM2NTYwMC
-w1OTE2ODgzNSwtNjYyNzQwNjU1LC0xOTMzNTUzMjk5LDE2Mzc0
-MDgzM119
+eyJoaXN0b3J5IjpbLTIxMDE0ODQzMjEsMTI0MDU2MjU1NywtOD
+A0MDIwOTgsLTIwNjAwODkzMDUsNzEyMTI1MjE5LDE2NTE5NDkz
+NTYsMTIwMjA3NzIzNSwyMDkzODAzMDk3LC0xMDM4ODQxMzMxLD
+MzMTM4NjY1MSw2MDY3MjU1MzMsLTE1MDcwMjcxOTAsMTEyMjU4
+ODcwNywtNzk4MTcwNjQyLC04MTY1ODE4NDYsLTEzNjYzNjU2MD
+AsNTkxNjg4MzUsLTY2Mjc0MDY1NSwtMTkzMzU1MzI5OSwxNjM3
+NDA4MzNdfQ==
 -->
