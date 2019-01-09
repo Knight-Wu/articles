@@ -45,7 +45,7 @@ shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster,
 在同一个stage 中, 一个 task 只会算某些特定的task, 到了shuffle 阶段,  shuffle read 和write 阶段是用的不同的两批task, 前后两批task 的数量如何决定?
 
 * task的数量
-在同一个stage 中的, 由上游的partition 数量决定task 的数量, 若上游的partition 来自数据源, 由数据源的split 数量juedi
+在同一个stage 中的, 由上游的partition 数量决定task 的数量, 若上游的partition 来自数据源, 由数据源的split 数量决定; 然后这个task 依次调用一个stage 的多个rdd.compute 函数, 不需要保留中间结果, 除非有cache. 
 
 
 
@@ -752,11 +752,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4MDc5NDc5NywtMTMzNzUyNjk1MiwxNz
-Y3NDU5NjM2LC0xOTEwMDI5MjIxLC00ODQ2MzU5MzgsLTE0OTk4
-OTc0MjQsMTIzMDg3NTg2MiwtMjI2MzcyMDE5LC0xNDgxMzk0Mj
-AyLC0xMTA4MDQzNzk1LC0xNTExMzU4NTI2LDEyNDA1NjI1NTcs
-LTgwNDAyMDk4LC0yMDYwMDg5MzA1LDcxMjEyNTIxOSwxNjUxOT
-Q5MzU2LDEyMDIwNzcyMzUsMjA5MzgwMzA5NywtMTAzODg0MTMz
-MSwzMzEzODY2NTFdfQ==
+eyJoaXN0b3J5IjpbLTE5OTI3MzYxOTQsLTEzMzc1MjY5NTIsMT
+c2NzQ1OTYzNiwtMTkxMDAyOTIyMSwtNDg0NjM1OTM4LC0xNDk5
+ODk3NDI0LDEyMzA4NzU4NjIsLTIyNjM3MjAxOSwtMTQ4MTM5ND
+IwMiwtMTEwODA0Mzc5NSwtMTUxMTM1ODUyNiwxMjQwNTYyNTU3
+LC04MDQwMjA5OCwtMjA2MDA4OTMwNSw3MTIxMjUyMTksMTY1MT
+k0OTM1NiwxMjAyMDc3MjM1LDIwOTM4MDMwOTcsLTEwMzg4NDEz
+MzEsMzMxMzg2NjUxXX0=
 -->
