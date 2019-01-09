@@ -13,7 +13,7 @@ sparkDeploySchedulerBackend  接受到taskSet 之后, 通过自带的DriverActor
 
 executor 执行完task 之后的结果, 需要返回到driver, 如果这个结果过大, 超过spark.akka.frameSize = 10M, 就先把结果存放到executor blockManager 管理, 存储结构由storageLevel 决定, 存储大小为spark.storage.memory 决定, 并把位置信息返回, 之后由driver http 去取; 如果结果小于 10M, 则直接返回. 
 
-task 执行的结果主要分为shuffleMapTask 和resultTask, shuffleMapTask 生成的是MapStatus, 一是该task 所在的blockManager 的blockManagerId(由executorId+host, port, nettyPort 组成), 二是task输出de
+task 执行的结果主要分为shuffleMapTask 和resultTask, shuffleMapTask 生成的是MapStatus, 一是该task 所在的blockManager 的blockManagerId(由executorId+host, port, nettyPort 组成), 二是task输出的FileSegment 大小, resultTask 输出的结果则是partition 最后输出的结果. 
 
 
 ![image](https://user-images.githubusercontent.com/20329409/42255995-3835ea58-7f81-11e8-9003-78b446c332cf.png)
@@ -732,11 +732,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjY0NzczMzQ2LDEyNDA1NjI1NTcsLTgwND
-AyMDk4LC0yMDYwMDg5MzA1LDcxMjEyNTIxOSwxNjUxOTQ5MzU2
-LDEyMDIwNzcyMzUsMjA5MzgwMzA5NywtMTAzODg0MTMzMSwzMz
-EzODY2NTEsNjA2NzI1NTMzLC0xNTA3MDI3MTkwLDExMjI1ODg3
-MDcsLTc5ODE3MDY0MiwtODE2NTgxODQ2LC0xMzY2MzY1NjAwLD
-U5MTY4ODM1LC02NjI3NDA2NTUsLTE5MzM1NTMyOTksMTYzNzQw
-ODMzXX0=
+eyJoaXN0b3J5IjpbMTA4ODU5OTE1OCwxMjQwNTYyNTU3LC04MD
+QwMjA5OCwtMjA2MDA4OTMwNSw3MTIxMjUyMTksMTY1MTk0OTM1
+NiwxMjAyMDc3MjM1LDIwOTM4MDMwOTcsLTEwMzg4NDEzMzEsMz
+MxMzg2NjUxLDYwNjcyNTUzMywtMTUwNzAyNzE5MCwxMTIyNTg4
+NzA3LC03OTgxNzA2NDIsLTgxNjU4MTg0NiwtMTM2NjM2NTYwMC
+w1OTE2ODgzNSwtNjYyNzQwNjU1LC0xOTMzNTUzMjk5LDE2Mzc0
+MDgzM119
 -->
