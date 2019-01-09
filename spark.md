@@ -39,7 +39,8 @@ shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster,
 
 
 #### spark 物理执行图生成
-如何根据上图, 知道具体如何划分task, task 中的数据从哪些来, 
+如何根据上图, 知道具体如何划分stage 和task, task 中的数据从哪些来, 
+![enter image description here](https://drive.google.com/uc?id=1CWkUowX518EV6-JBQIrlavQ5FDRLh4bh)
 
 在同一个stage 中, 一个 task 只会算某些特定的task, 到了shuffle 阶段,  shuffle read 和write 阶段是用的不同的两批task, 前后两批task 的数量如何决定?
 
@@ -748,7 +749,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwOTg4NjUyMiwtMTMzNzUyNjk1MiwxNz
+eyJoaXN0b3J5IjpbLTI0MDU1MjU5MiwtMTMzNzUyNjk1MiwxNz
 Y3NDU5NjM2LC0xOTEwMDI5MjIxLC00ODQ2MzU5MzgsLTE0OTk4
 OTc0MjQsMTIzMDg3NTg2MiwtMjI2MzcyMDE5LC0xNDgxMzk0Mj
 AyLC0xMTA4MDQzNzk1LC0xNTExMzU4NTI2LDEyNDA1NjI1NTcs
