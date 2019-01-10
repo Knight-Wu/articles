@@ -208,6 +208,8 @@ _[The Netty project](https://netty.io/)_ is an effort to provide an asynchronous
 
 Netty is an NIO client server framework that enables quick and easy development of network applications such as protocol servers and clients. It greatly simplifies and streamlines network programming such as TCP and UDP socket server development.
 
+* 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
+
 
 ### 疑问
 
@@ -222,8 +224,8 @@ Netty is an NIO client server framework that enables quick and easy development 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyODEyMjg3NywzOTg4NDYyMTYsLTEwMj
-g4NjI5NjUsMTM0NTAzODcwLC0xOTkwODE2ODMwLC0xMTE1ODE1
-NjQ5LDg4MDgzMzk0MSwxOTkxNTcyNzg3LC0xNjM5NDAzOTE1XX
-0=
+eyJoaXN0b3J5IjpbLTE2MzA3NjAzMjksMjEyODEyMjg3NywzOT
+g4NDYyMTYsLTEwMjg4NjI5NjUsMTM0NTAzODcwLC0xOTkwODE2
+ODMwLC0xMTE1ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcyNzg3LC
+0xNjM5NDAzOTE1XX0=
 -->
