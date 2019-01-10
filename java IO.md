@@ -222,7 +222,7 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 * netty channel and linux socket
 * Listen socket and connected socket 
 * What is file descripter
-
+* ## MappedByteBuffer
 
 
 
@@ -231,9 +231,9 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNjE5MTA5MDUsLTQ4ODgwNTMyNiw2MT
-QxMDU0OTgsLTc3NDMxNTMwMCwyMTI4MTIyODc3LDM5ODg0NjIx
-NiwtMTAyODg2Mjk2NSwxMzQ1MDM4NzAsLTE5OTA4MTY4MzAsLT
-ExMTU4MTU2NDksODgwODMzOTQxLDE5OTE1NzI3ODcsLTE2Mzk0
-MDM5MTVdfQ==
+eyJoaXN0b3J5IjpbMzk1MjIxMzg0LC0xMzYxOTEwOTA1LC00OD
+g4MDUzMjYsNjE0MTA1NDk4LC03NzQzMTUzMDAsMjEyODEyMjg3
+NywzOTg4NDYyMTYsLTEwMjg4NjI5NjUsMTM0NTAzODcwLC0xOT
+kwODE2ODMwLC0xMTE1ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcy
+Nzg3LC0xNjM5NDAzOTE1XX0=
 -->
