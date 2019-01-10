@@ -210,6 +210,8 @@ Netty is an NIO client server framework that enables quick and easy development 
 
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
+公式: Nthread = (1+Tio/Tcpu)*Ncpu, 
+Tio/Tcpu 根据理解为线程切换的次数, 举例cpu=1, Tio=1秒, Tcpu
 
 ### 疑问
 
@@ -224,7 +226,7 @@ Netty is an NIO client server framework that enables quick and easy development 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MzA3NjAzMjksMjEyODEyMjg3NywzOT
+eyJoaXN0b3J5IjpbLTEwNzM0ODE3MjksMjEyODEyMjg3NywzOT
 g4NDYyMTYsLTEwMjg4NjI5NjUsMTM0NTAzODcwLC0xOTkwODE2
 ODMwLC0xMTE1ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcyNzg3LC
 0xNjM5NDAzOTE1XX0=
