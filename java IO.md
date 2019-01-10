@@ -213,6 +213,7 @@ Netty is an NIO client server framework that enables quick and easy development 
 公式: Nthread = (1+Tio/Tcpu)*Ncpu, 
 Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=1秒, Tcpu=1s, Nt= 2个线程, 那么在一个完整的执行周期 2S 内, 这个cpu 需要切换线程一次, 才能效率最高. 
 
+
 ### 疑问
 
 * Listen socket and connected socket 
@@ -226,8 +227,8 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3NDMxNTMwMCwyMTI4MTIyODc3LDM5OD
-g0NjIxNiwtMTAyODg2Mjk2NSwxMzQ1MDM4NzAsLTE5OTA4MTY4
-MzAsLTExMTU4MTU2NDksODgwODMzOTQxLDE5OTE1NzI3ODcsLT
-E2Mzk0MDM5MTVdfQ==
+eyJoaXN0b3J5IjpbNDA1MjcyMzMwLC03NzQzMTUzMDAsMjEyOD
+EyMjg3NywzOTg4NDYyMTYsLTEwMjg4NjI5NjUsMTM0NTAzODcw
+LC0xOTkwODE2ODMwLC0xMTE1ODE1NjQ5LDg4MDgzMzk0MSwxOT
+kxNTcyNzg3LC0xNjM5NDAzOTE1XX0=
 -->
