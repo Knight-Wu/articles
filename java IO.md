@@ -217,8 +217,9 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 和java 的NIO 一样, 基于selector, 相当于传统IO 模型中是IO 多路复用.  
 [`NioEventLoopGroup`](https://netty.io/4.1/api/io/netty/channel/nio/NioEventLoopGroup.html) 可以初始化两种线程, boss 和worker, boss 线程负责接收connection, worker 线程负责处理connection
 
-### 疑问
 
+### 疑问
+* netty channel and linux socket
 * Listen socket and connected socket 
 * What is file descripter
 
@@ -230,8 +231,9 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4ODgwNTMyNiw2MTQxMDU0OTgsLTc3ND
-MxNTMwMCwyMTI4MTIyODc3LDM5ODg0NjIxNiwtMTAyODg2Mjk2
-NSwxMzQ1MDM4NzAsLTE5OTA4MTY4MzAsLTExMTU4MTU2NDksOD
-gwODMzOTQxLDE5OTE1NzI3ODcsLTE2Mzk0MDM5MTVdfQ==
+eyJoaXN0b3J5IjpbLTEzNjE5MTA5MDUsLTQ4ODgwNTMyNiw2MT
+QxMDU0OTgsLTc3NDMxNTMwMCwyMTI4MTIyODc3LDM5ODg0NjIx
+NiwtMTAyODg2Mjk2NSwxMzQ1MDM4NzAsLTE5OTA4MTY4MzAsLT
+ExMTU4MTU2NDksODgwODMzOTQxLDE5OTE1NzI3ODcsLTE2Mzk0
+MDM5MTVdfQ==
 -->
