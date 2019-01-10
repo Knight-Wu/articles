@@ -214,7 +214,7 @@ Netty is an NIO client server framework that enables quick and easy development 
 Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=1秒, Tcpu=1s, Nt= 2个线程, 那么在一个完整的执行周期 2S 内, 这个cpu 需要切换线程一次, 才能效率最高. 
 
 * netty 的IO 模型
-和java 的NIO 一样, 基于selector, 相当于传统IO 模型中是IO 多路复用. 
+和java 的NIO 一样, 基于selector, 相当于传统IO 模型中是IO 多路复用.  
 
 ### 疑问
 
@@ -229,8 +229,8 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjE0MTA1NDk4LC03NzQzMTUzMDAsMjEyOD
-EyMjg3NywzOTg4NDYyMTYsLTEwMjg4NjI5NjUsMTM0NTAzODcw
-LC0xOTkwODE2ODMwLC0xMTE1ODE1NjQ5LDg4MDgzMzk0MSwxOT
-kxNTcyNzg3LC0xNjM5NDAzOTE1XX0=
+eyJoaXN0b3J5IjpbMTc5ODQxNzk1NCw2MTQxMDU0OTgsLTc3ND
+MxNTMwMCwyMTI4MTIyODc3LDM5ODg0NjIxNiwtMTAyODg2Mjk2
+NSwxMzQ1MDM4NzAsLTE5OTA4MTY4MzAsLTExMTU4MTU2NDksOD
+gwODMzOTQxLDE5OTE1NzI3ODcsLTE2Mzk0MDM5MTVdfQ==
 -->
