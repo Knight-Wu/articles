@@ -224,7 +224,7 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 * What is file descripter
 * MappedByteBuffer and directByteBuffer
 * java original NIO 的写法, 如何高性能, 这样才知道netty 优化了什么
-* fileChannel 把数据读到byteBuffer 的每次的
+* fileChannel 把数据读到byteBuffer 的每次的bytes 量如何控制的
 
 
 
@@ -232,9 +232,9 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI4MDY1Mjg5LC0xNTAwMTc2OTIsLTEzNj
-E5MTA5MDUsLTQ4ODgwNTMyNiw2MTQxMDU0OTgsLTc3NDMxNTMw
-MCwyMTI4MTIyODc3LDM5ODg0NjIxNiwtMTAyODg2Mjk2NSwxMz
-Q1MDM4NzAsLTE5OTA4MTY4MzAsLTExMTU4MTU2NDksODgwODMz
-OTQxLDE5OTE1NzI3ODcsLTE2Mzk0MDM5MTVdfQ==
+eyJoaXN0b3J5IjpbLTE0NDQ1MjM2MzMsLTE1MDAxNzY5MiwtMT
+M2MTkxMDkwNSwtNDg4ODA1MzI2LDYxNDEwNTQ5OCwtNzc0MzE1
+MzAwLDIxMjgxMjI4NzcsMzk4ODQ2MjE2LC0xMDI4ODYyOTY1LD
+EzNDUwMzg3MCwtMTk5MDgxNjgzMCwtMTExNTgxNTY0OSw4ODA4
+MzM5NDEsMTk5MTU3Mjc4NywtMTYzOTQwMzkxNV19
 -->
