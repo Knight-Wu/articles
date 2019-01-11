@@ -214,7 +214,7 @@ while 循环发起recvform 调用(消耗cpu ), 询问数据是否准备好, 若�
 ![enter image description here](https://drive.google.com/uc?id=1dfK2SGuXzaszMGewnraT9Nv9YPrq4hpE)
 
 
-## netty
+## netty in action 笔记
 
 * 为什么要用netty, netty 解决了什么问题
 netty 简化了网络编程, 使得网络编程变得容易, 兼容老版本, 高性能, 并支持各种协议;
@@ -223,7 +223,9 @@ _[The Netty project](https://netty.io/)_ is an effort to provide an asynchronous
 
 Netty is an NIO client server framework that enables quick and easy development of network applications such as protocol servers and clients. It greatly simplifies and streamlines network programming such as TCP and UDP socket server development.
 
-* 事件驱动和异步
+#### 1.3  netty core components
+* channel 
+
 异步的两种方式: 实现callback(主动回调, 等于说把函数作为参数传递), executor future(多次轮训)
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
@@ -250,11 +252,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODM1MDE5MzI4LDEyMzgzOTU2NjYsLTU0OT
-U0MTQ4OCwtMjQwNTAxMjE3LC0xMDQyNTYzNTU5LC05MDIxNjcx
-MSwtMTk0MDg3NDEyMCwxMDUwNzA3NjI4LC0xNDQ0NTIzNjMzLC
-0xNTAwMTc2OTIsLTEzNjE5MTA5MDUsLTQ4ODgwNTMyNiw2MTQx
-MDU0OTgsLTc3NDMxNTMwMCwyMTI4MTIyODc3LDM5ODg0NjIxNi
-wtMTAyODg2Mjk2NSwxMzQ1MDM4NzAsLTE5OTA4MTY4MzAsLTEx
-MTU4MTU2NDldfQ==
+eyJoaXN0b3J5IjpbLTY4NzEzNDg5Miw4MzUwMTkzMjgsMTIzOD
+M5NTY2NiwtNTQ5NTQxNDg4LC0yNDA1MDEyMTcsLTEwNDI1NjM1
+NTksLTkwMjE2NzExLC0xOTQwODc0MTIwLDEwNTA3MDc2MjgsLT
+E0NDQ1MjM2MzMsLTE1MDAxNzY5MiwtMTM2MTkxMDkwNSwtNDg4
+ODA1MzI2LDYxNDEwNTQ5OCwtNzc0MzE1MzAwLDIxMjgxMjI4Nz
+csMzk4ODQ2MjE2LC0xMDI4ODYyOTY1LDEzNDUwMzg3MCwtMTk5
+MDgxNjgzMF19
 -->
