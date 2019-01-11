@@ -230,7 +230,12 @@ network socket, or a program component that is capable of performing
 one or more distinct I/O operations, for example reading or writing.
 可以把channel 理解为装载着数据的即将到来(或者离开的)车
 
-
+* callback
+A callback is simply a method, a reference to which has been provided to another
+method. This enables the latter to call the former at an appropriate time. Callbacks
+are used in a broad range of programming situations and represent one of the most
+common ways to notify an interested party that an operation has completed.
+可以理解为把需要执行的函数的引用传递给另一个函数, 并在适当的时机执行
 
 异步的两种方式: 实现callback(主动回调, 等于说把函数作为参数传递), executor future(多次轮训)
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
@@ -258,7 +263,7 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0MDYyMDc3LDgzNTAxOTMyOCwxMjM4Mz
+eyJoaXN0b3J5IjpbLTgxMTg4NzgxLDgzNTAxOTMyOCwxMjM4Mz
 k1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNywtMTA0MjU2MzU1
 OSwtOTAyMTY3MTEsLTE5NDA4NzQxMjAsMTA1MDcwNzYyOCwtMT
 Q0NDUyMzYzMywtMTUwMDE3NjkyLC0xMzYxOTEwOTA1LC00ODg4
