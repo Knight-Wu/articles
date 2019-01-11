@@ -59,6 +59,9 @@ https://docs.oracle.com/javase/7/docs/api/java/nio/channels/SocketChannel.html#r
 >Reads a sequence of bytes from this channel into the given buffer.
 An attempt is made to read up to  _r_  bytes from the channel, where  _r_  is the number of bytes remaining in the buffer, that is,  dst.remaining(), at the moment this method is invoked.
 故需要在每次读满buffer 之后, 进行flip(buffer 准备写), 或者
+clear, 保证还有remaning, 因为remaning = limit- position
+
+> 
 
 示例如图: 
 ![enter image description here](https://drive.google.com/uc?id=1vpf2cAFewS2ODiCrEKZkJporZcRyId8O)
@@ -242,10 +245,10 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NDc3MDgyNDEsLTE5NDA4NzQxMjAsMT
-A1MDcwNzYyOCwtMTQ0NDUyMzYzMywtMTUwMDE3NjkyLC0xMzYx
-OTEwOTA1LC00ODg4MDUzMjYsNjE0MTA1NDk4LC03NzQzMTUzMD
-AsMjEyODEyMjg3NywzOTg4NDYyMTYsLTEwMjg4NjI5NjUsMTM0
-NTAzODcwLC0xOTkwODE2ODMwLC0xMTE1ODE1NjQ5LDg4MDgzMz
-k0MSwxOTkxNTcyNzg3LC0xNjM5NDAzOTE1XX0=
+eyJoaXN0b3J5IjpbLTkwMjE2NzExLC0xOTQwODc0MTIwLDEwNT
+A3MDc2MjgsLTE0NDQ1MjM2MzMsLTE1MDAxNzY5MiwtMTM2MTkx
+MDkwNSwtNDg4ODA1MzI2LDYxNDEwNTQ5OCwtNzc0MzE1MzAwLD
+IxMjgxMjI4NzcsMzk4ODQ2MjE2LC0xMDI4ODYyOTY1LDEzNDUw
+Mzg3MCwtMTk5MDgxNjgzMCwtMTExNTgxNTY0OSw4ODA4MzM5ND
+EsMTk5MTU3Mjc4NywtMTYzOTQwMzkxNV19
 -->
