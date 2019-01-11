@@ -58,10 +58,11 @@ https://docs.oracle.com/javase/7/docs/api/java/nio/channels/SocketChannel.html#r
 
 >Reads a sequence of bytes from this channel into the given buffer.
 An attempt is made to read up to  _r_  bytes from the channel, where  _r_  is the number of bytes remaining in the buffer, that is,  dst.remaining(), at the moment this method is invoked.
-故需要在每次读满buffer 之后, 进行flip(buffer 准备写), 或者
+// 故需要在每次读满buffer 之后, 进行flip(buffer 准备写), 或者
 clear, 保证还有remaning, 因为remaning = limit- position
 
-> 
+> A read operation might not fill the buffer, and in fact it might not read any bytes at all. Whether or not it does so depends upon the nature and state of the channel. A socket channel in non-blocking mode, for example, cannot read any more bytes than are immediately available from the socket's input buffer; similarly, a file channel cannot read any more bytes than remain in the file. It is guaranteed, however, that if a channel is in blocking mode and there is at least one byte remaining in the buffer then this method will block until at least one byte is read.
+// read 方法是不是阻塞的取决于channel 是不是blocking, 
 
 示例如图: 
 ![enter image description here](https://drive.google.com/uc?id=1vpf2cAFewS2ODiCrEKZkJporZcRyId8O)
@@ -245,10 +246,11 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwMjE2NzExLC0xOTQwODc0MTIwLDEwNT
-A3MDc2MjgsLTE0NDQ1MjM2MzMsLTE1MDAxNzY5MiwtMTM2MTkx
-MDkwNSwtNDg4ODA1MzI2LDYxNDEwNTQ5OCwtNzc0MzE1MzAwLD
-IxMjgxMjI4NzcsMzk4ODQ2MjE2LC0xMDI4ODYyOTY1LDEzNDUw
-Mzg3MCwtMTk5MDgxNjgzMCwtMTExNTgxNTY0OSw4ODA4MzM5ND
-EsMTk5MTU3Mjc4NywtMTYzOTQwMzkxNV19
+eyJoaXN0b3J5IjpbLTEwNDI1NjM1NTksLTkwMjE2NzExLC0xOT
+QwODc0MTIwLDEwNTA3MDc2MjgsLTE0NDQ1MjM2MzMsLTE1MDAx
+NzY5MiwtMTM2MTkxMDkwNSwtNDg4ODA1MzI2LDYxNDEwNTQ5OC
+wtNzc0MzE1MzAwLDIxMjgxMjI4NzcsMzk4ODQ2MjE2LC0xMDI4
+ODYyOTY1LDEzNDUwMzg3MCwtMTk5MDgxNjgzMCwtMTExNTgxNT
+Y0OSw4ODA4MzM5NDEsMTk5MTU3Mjc4NywtMTYzOTQwMzkxNV19
+
 -->
