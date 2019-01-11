@@ -53,7 +53,7 @@ interface ChannelHandler{
 ```
 
 * buffer
-缓冲区, byteBuffer看看源码很简单, 有position, mark, limit, capacity来控制字节数组读写的位置, 读之前需要flip() 回到数组头部开始读.
+缓冲区, byteBuffer看看源码很简单, 有position 表示读写到哪了, mark 只是个标记位, 用来回溯, limit 表示可以读写的边界, capacity 表示字节数组的大小, 来控制字节数组读写的位置, 读之前需要flip() 回到数组头部开始读.
 
     * DirectByteBuffer, HeapByteBuffer
         
@@ -232,9 +232,10 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDQ1MjM2MzMsLTE1MDAxNzY5MiwtMT
-M2MTkxMDkwNSwtNDg4ODA1MzI2LDYxNDEwNTQ5OCwtNzc0MzE1
-MzAwLDIxMjgxMjI4NzcsMzk4ODQ2MjE2LC0xMDI4ODYyOTY1LD
-EzNDUwMzg3MCwtMTk5MDgxNjgzMCwtMTExNTgxNTY0OSw4ODA4
-MzM5NDEsMTk5MTU3Mjc4NywtMTYzOTQwMzkxNV19
+eyJoaXN0b3J5IjpbMTA1MDcwNzYyOCwtMTQ0NDUyMzYzMywtMT
+UwMDE3NjkyLC0xMzYxOTEwOTA1LC00ODg4MDUzMjYsNjE0MTA1
+NDk4LC03NzQzMTUzMDAsMjEyODEyMjg3NywzOTg4NDYyMTYsLT
+EwMjg4NjI5NjUsMTM0NTAzODcwLC0xOTkwODE2ODMwLC0xMTE1
+ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcyNzg3LC0xNjM5NDAzOT
+E1XX0=
 -->
