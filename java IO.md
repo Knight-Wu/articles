@@ -217,7 +217,8 @@ while 循环发起recvform 调用(消耗cpu ), 询问数据是否准备好, 若�
 ## netty
 
 * 为什么要用netty, netty 解决了什么问题
-netty 简化了网络编程, 使得网络编程变得容易, 兼容老版本, 高性能, 并支持各种协议
+netty 简化了网络编程, 使得网络编程变得容易, 兼容老版本, 高性能, 并支持各种协议;
+要想实现高性能的网络处理, 光利用java NIO api 是容易出错, 且很工作量浩大的事
 _[The Netty project](https://netty.io/)_ is an effort to provide an asynchronous event-driven network application framework and tooling for the rapid development of maintainable high-performance · high-scalability protocol servers and clients.
 
 Netty is an NIO client server framework that enables quick and easy development of network applications such as protocol servers and clients. It greatly simplifies and streamlines network programming such as TCP and UDP socket server development.
@@ -247,11 +248,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0MDUwMTIxNywtMTA0MjU2MzU1OSwtOT
-AyMTY3MTEsLTE5NDA4NzQxMjAsMTA1MDcwNzYyOCwtMTQ0NDUy
-MzYzMywtMTUwMDE3NjkyLC0xMzYxOTEwOTA1LC00ODg4MDUzMj
-YsNjE0MTA1NDk4LC03NzQzMTUzMDAsMjEyODEyMjg3NywzOTg4
-NDYyMTYsLTEwMjg4NjI5NjUsMTM0NTAzODcwLC0xOTkwODE2OD
-MwLC0xMTE1ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcyNzg3LC0x
-NjM5NDAzOTE1XX0=
+eyJoaXN0b3J5IjpbLTU0OTU0MTQ4OCwtMjQwNTAxMjE3LC0xMD
+QyNTYzNTU5LC05MDIxNjcxMSwtMTk0MDg3NDEyMCwxMDUwNzA3
+NjI4LC0xNDQ0NTIzNjMzLC0xNTAwMTc2OTIsLTEzNjE5MTA5MD
+UsLTQ4ODgwNTMyNiw2MTQxMDU0OTgsLTc3NDMxNTMwMCwyMTI4
+MTIyODc3LDM5ODg0NjIxNiwtMTAyODg2Mjk2NSwxMzQ1MDM4Nz
+AsLTE5OTA4MTY4MzAsLTExMTU4MTU2NDksODgwODMzOTQxLDE5
+OTE1NzI3ODddfQ==
 -->
