@@ -228,7 +228,9 @@ Netty is an NIO client server framework that enables quick and easy development 
 an open connection to an entity such as a hardware device, a file, a
 network socket, or a program component that is capable of performing
 one or more distinct I/O operations, for example reading or writing.
-可以把channel 理解为装载着数据的
+可以把channel 理解为装载着数据的即将到来(或者离开的)车
+
+
 
 异步的两种方式: 实现callback(主动回调, 等于说把函数作为参数传递), executor future(多次轮训)
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
@@ -256,11 +258,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3MjUzNzQyMCw4MzUwMTkzMjgsMTIzOD
-M5NTY2NiwtNTQ5NTQxNDg4LC0yNDA1MDEyMTcsLTEwNDI1NjM1
-NTksLTkwMjE2NzExLC0xOTQwODc0MTIwLDEwNTA3MDc2MjgsLT
-E0NDQ1MjM2MzMsLTE1MDAxNzY5MiwtMTM2MTkxMDkwNSwtNDg4
-ODA1MzI2LDYxNDEwNTQ5OCwtNzc0MzE1MzAwLDIxMjgxMjI4Nz
-csMzk4ODQ2MjE2LC0xMDI4ODYyOTY1LDEzNDUwMzg3MCwtMTk5
-MDgxNjgzMF19
+eyJoaXN0b3J5IjpbMTM0MDYyMDc3LDgzNTAxOTMyOCwxMjM4Mz
+k1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNywtMTA0MjU2MzU1
+OSwtOTAyMTY3MTEsLTE5NDA4NzQxMjAsMTA1MDcwNzYyOCwtMT
+Q0NDUyMzYzMywtMTUwMDE3NjkyLC0xMzYxOTEwOTA1LC00ODg4
+MDUzMjYsNjE0MTA1NDk4LC03NzQzMTUzMDAsMjEyODEyMjg3Ny
+wzOTg4NDYyMTYsLTEwMjg4NjI5NjUsMTM0NTAzODcwLC0xOTkw
+ODE2ODMwXX0=
 -->
