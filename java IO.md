@@ -253,7 +253,12 @@ System.out.println(
 }
 // 这是一个channel connected的callback
 ```
-异步的两种方式: 实现callback(主动回调, 等于说把函数作为参数传递), executor future(多次轮训)
+
+* future
+* 
+不同于jdk 的future, netty 提供了futureListener , 不需要轮训结果
+
+
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
 公式: Nthread = (1+Tio/Tcpu)*Ncpu, 
@@ -279,11 +284,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0NTg5OTc4LDgzNTAxOTMyOCwxMjM4Mz
-k1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNywtMTA0MjU2MzU1
-OSwtOTAyMTY3MTEsLTE5NDA4NzQxMjAsMTA1MDcwNzYyOCwtMT
-Q0NDUyMzYzMywtMTUwMDE3NjkyLC0xMzYxOTEwOTA1LC00ODg4
-MDUzMjYsNjE0MTA1NDk4LC03NzQzMTUzMDAsMjEyODEyMjg3Ny
-wzOTg4NDYyMTYsLTEwMjg4NjI5NjUsMTM0NTAzODcwLC0xOTkw
-ODE2ODMwXX0=
+eyJoaXN0b3J5IjpbOTExOTU1NTAxLC04NDU4OTk3OCw4MzUwMT
+kzMjgsMTIzODM5NTY2NiwtNTQ5NTQxNDg4LC0yNDA1MDEyMTcs
+LTEwNDI1NjM1NTksLTkwMjE2NzExLC0xOTQwODc0MTIwLDEwNT
+A3MDc2MjgsLTE0NDQ1MjM2MzMsLTE1MDAxNzY5MiwtMTM2MTkx
+MDkwNSwtNDg4ODA1MzI2LDYxNDEwNTQ5OCwtNzc0MzE1MzAwLD
+IxMjgxMjI4NzcsMzk4ODQ2MjE2LC0xMDI4ODYyOTY1LDEzNDUw
+Mzg3MF19
 -->
