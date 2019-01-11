@@ -61,22 +61,20 @@ interface ChannelHandler{
 缓冲区, byteBuffer看看源码很简单, 有position 表示读写到哪了, mark 只是个标记位, 用来回溯, limit 表示可以读写的边界, capacity 表示字节数组的大小, 来控制字节数组读写的位置, 读之前需要flip() 回到数组头部开始读.
 
  * DirectByteBuffer, HeapByteBuffer
-        
-        DirectByteBuffer 字节数组直接存储在native memory, 避免了native memory和java heap 的来回拷贝, 但是分配和回收native memory的速度会比heap memory要慢;
+  DirectByteBuffer 字节数组直接存储在native memory, 避免了native memory和java heap 的来回拷贝, 但是分配和回收native memory的速度会比heap memory要慢;
         在网络读写和文件读写的时候, 基于buffer 进行读写, 需要保证buffer 的地址在读写时不能改变(调用操作系统函数的时候, 传入buffer的起始地址和size), 而GC的时候很有可能改变buffer的地址, 所以需要将buffer 先拷贝到堆外内存, 就是native memory, 而HeapByteBuffer的数组一开始是在java heap的, 故需要先拷贝到native memory, 因此效率会比 DirectByteBuffer 要慢.
         
 1. 如何GC的
             
-            GC压力更小。虽然GC仍然管理着DirectBuffer的回收，但它是使用PhantomReference来达到的，在平常的Young GC或者mark and compact的时候却不会在内存里搬动。如果IO的数量比较大，比如在网络发送很大的文件，那么GC的压力下降就会很明显。但是具体GC的细节和发生条件, 和时间还不清楚, 可以参见这篇帖子 [PhantomReference & Cleaner](https://zhuanlan.zhihu.com/p/29454205)
+ GC压力更小。虽然GC仍然管理着DirectBuffer的回收，但它是使用PhantomReference来达到的，在平常的Young GC或者mark and compact的时候却不会在内存里搬动。如果IO的数量比较大，比如在网络发送很大的文件，那么GC的压力下降就会很明显。但是具体GC的细节和发生条件, 和时间还不清楚, 可以参见这篇帖子 [PhantomReference & Cleaner](https://zhuanlan.zhihu.com/p/29454205)
             
-            >    // Doubly-linked list of live cleaners, which prevents the cleaners themselves from being GC'd before their referents ??
+ >    // Doubly-linked list of live cleaners, which prevents the cleaners themselves from being GC'd before their referents ??
         
-       底层通过write、read、pwrite，pread函数进行系统调用时，需要传入buffer的起始地址和buffer count作为参数。具体参见：write(2): to file descriptor，read(2): read from file descriptor，pread(2) - Linux man page，pwrite(2) - Linux man page。如果使用java heap的话，我们知道jvm中buffer往往以byte[] 的形式存在，这是一个特殊的对象，由于java heap GC的存在，这里对象在堆中的位置往往会发生移动，移动后我们传入系统函数的地址参数就不是真正的buffer地址了，这样的话无论读写都会发生出错。而C Heap仅仅受Full GC的影响，相对来说地址稳定 
+     底层通过write、read、pwrite，pread函数进行系统调用时，需要传入buffer的起始地址和buffer count作为参数。具体参见：write(2): to file descriptor，read(2): read from file descriptor，pread(2) - Linux man page，pwrite(2) - Linux man page。如果使用java heap的话，我们知道jvm中buffer往往以byte[] 的形式存在，这是一个特殊的对象，由于java heap GC的存在，这里对象在堆中的位置往往会发生移动，移动后我们传入系统函数的地址参数就不是真正的buffer地址了，这样的话无论读写都会发生出错。而C Heap仅仅受Full GC的影响，相对来说地址稳定 
         
-        2. 传统的文件IO的流程
-    * MappedByteBuffer 
-    
-        可以作为利用内存来映射region of file, 可以快速进行大文件的读写, 详见 jdk官方文档.
+2. 传统的文件IO的流程
+ * MappedByteBuffer 
+   可以作为利用内存来映射region of file, 可以快速进行大文件的读写, 详见 jdk官方文档.
 
 * channel
 > A Java NIO FileChannel is a channel that is connected to a file. Using a file channel you can read data from a file, and write data to a file. The Java NIO FileChannel class is NIO's an alternative to reading files with the standard Java IO API. A FileChannel cannot be set into non-blocking mode. It always runs in blocking mode.
@@ -229,7 +227,7 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 * What is file descripter
 * MappedByteBuffer and directByteBuffer
 * java original NIO 的写法, 如何高性能, 这样才知道netty 优化了什么
-* fileChannel 把数据读到byteBuffer 的每次的bytes 量如何控制的
+
 
 
 
@@ -237,10 +235,10 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxNDY3ODgwMCwxMDUwNzA3NjI4LC0xND
-Q0NTIzNjMzLC0xNTAwMTc2OTIsLTEzNjE5MTA5MDUsLTQ4ODgw
-NTMyNiw2MTQxMDU0OTgsLTc3NDMxNTMwMCwyMTI4MTIyODc3LD
-M5ODg0NjIxNiwtMTAyODg2Mjk2NSwxMzQ1MDM4NzAsLTE5OTA4
-MTY4MzAsLTExMTU4MTU2NDksODgwODMzOTQxLDE5OTE1NzI3OD
-csLTE2Mzk0MDM5MTVdfQ==
+eyJoaXN0b3J5IjpbLTE5NDA4NzQxMjAsMTA1MDcwNzYyOCwtMT
+Q0NDUyMzYzMywtMTUwMDE3NjkyLC0xMzYxOTEwOTA1LC00ODg4
+MDUzMjYsNjE0MTA1NDk4LC03NzQzMTUzMDAsMjEyODEyMjg3Ny
+wzOTg4NDYyMTYsLTEwMjg4NjI5NjUsMTM0NTAzODcwLC0xOTkw
+ODE2ODMwLC0xMTE1ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcyNz
+g3LC0xNjM5NDAzOTE1XX0=
 -->
