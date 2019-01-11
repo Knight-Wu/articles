@@ -53,14 +53,19 @@ interface ChannelHandler{
 ```
 
 * buffer
+示例如图: 
+![enter image description here](https://drive.google.com/uc?id=1vpf2cAFewS2ODiCrEKZkJporZcRyId8O)
+
+![enter image description here](https://drive.google.com/uc?id=1GExlB0WE2cGSTpjmZNEdY_oygxB0KD95)
+
 缓冲区, byteBuffer看看源码很简单, 有position 表示读写到哪了, mark 只是个标记位, 用来回溯, limit 表示可以读写的边界, capacity 表示字节数组的大小, 来控制字节数组读写的位置, 读之前需要flip() 回到数组头部开始读.
 
-    * DirectByteBuffer, HeapByteBuffer
+ * DirectByteBuffer, HeapByteBuffer
         
         DirectByteBuffer 字节数组直接存储在native memory, 避免了native memory和java heap 的来回拷贝, 但是分配和回收native memory的速度会比heap memory要慢;
         在网络读写和文件读写的时候, 基于buffer 进行读写, 需要保证buffer 的地址在读写时不能改变(调用操作系统函数的时候, 传入buffer的起始地址和size), 而GC的时候很有可能改变buffer的地址, 所以需要将buffer 先拷贝到堆外内存, 就是native memory, 而HeapByteBuffer的数组一开始是在java heap的, 故需要先拷贝到native memory, 因此效率会比 DirectByteBuffer 要慢.
         
-        1. 如何GC的
+1. 如何GC的
             
             GC压力更小。虽然GC仍然管理着DirectBuffer的回收，但它是使用PhantomReference来达到的，在平常的Young GC或者mark and compact的时候却不会在内存里搬动。如果IO的数量比较大，比如在网络发送很大的文件，那么GC的压力下降就会很明显。但是具体GC的细节和发生条件, 和时间还不清楚, 可以参见这篇帖子 [PhantomReference & Cleaner](https://zhuanlan.zhihu.com/p/29454205)
             
@@ -232,10 +237,10 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA1MDcwNzYyOCwtMTQ0NDUyMzYzMywtMT
-UwMDE3NjkyLC0xMzYxOTEwOTA1LC00ODg4MDUzMjYsNjE0MTA1
-NDk4LC03NzQzMTUzMDAsMjEyODEyMjg3NywzOTg4NDYyMTYsLT
-EwMjg4NjI5NjUsMTM0NTAzODcwLC0xOTkwODE2ODMwLC0xMTE1
-ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcyNzg3LC0xNjM5NDAzOT
-E1XX0=
+eyJoaXN0b3J5IjpbMTgxNDY3ODgwMCwxMDUwNzA3NjI4LC0xND
+Q0NTIzNjMzLC0xNTAwMTc2OTIsLTEzNjE5MTA5MDUsLTQ4ODgw
+NTMyNiw2MTQxMDU0OTgsLTc3NDMxNTMwMCwyMTI4MTIyODc3LD
+M5ODg0NjIxNiwtMTAyODg2Mjk2NSwxMzQ1MDM4NzAsLTE5OTA4
+MTY4MzAsLTExMTU4MTU2NDksODgwODMzOTQxLDE5OTE1NzI3OD
+csLTE2Mzk0MDM5MTVdfQ==
 -->
