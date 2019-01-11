@@ -255,7 +255,10 @@ System.out.println(
 ```
 
 * future
-* 
+
+In short, the notification mechanism
+provided by the ChannelFutureListener eliminates the need for manually checking
+operation completion.
 不同于jdk 的future, netty 提供了futureListener , 不需要轮训结果
 
 
@@ -284,11 +287,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTExOTU1NTAxLC04NDU4OTk3OCw4MzUwMT
-kzMjgsMTIzODM5NTY2NiwtNTQ5NTQxNDg4LC0yNDA1MDEyMTcs
-LTEwNDI1NjM1NTksLTkwMjE2NzExLC0xOTQwODc0MTIwLDEwNT
-A3MDc2MjgsLTE0NDQ1MjM2MzMsLTE1MDAxNzY5MiwtMTM2MTkx
-MDkwNSwtNDg4ODA1MzI2LDYxNDEwNTQ5OCwtNzc0MzE1MzAwLD
-IxMjgxMjI4NzcsMzk4ODQ2MjE2LC0xMDI4ODYyOTY1LDEzNDUw
-Mzg3MF19
+eyJoaXN0b3J5IjpbMTk1MzEzNzIzNSwtODQ1ODk5NzgsODM1MD
+E5MzI4LDEyMzgzOTU2NjYsLTU0OTU0MTQ4OCwtMjQwNTAxMjE3
+LC0xMDQyNTYzNTU5LC05MDIxNjcxMSwtMTk0MDg3NDEyMCwxMD
+UwNzA3NjI4LC0xNDQ0NTIzNjMzLC0xNTAwMTc2OTIsLTEzNjE5
+MTA5MDUsLTQ4ODgwNTMyNiw2MTQxMDU0OTgsLTc3NDMxNTMwMC
+wyMTI4MTIyODc3LDM5ODg0NjIxNiwtMTAyODg2Mjk2NSwxMzQ1
+MDM4NzBdfQ==
 -->
