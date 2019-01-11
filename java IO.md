@@ -240,18 +240,18 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 * java original NIO 的写法, 如何高性能, 这样才知道netty 优化了什么
 https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
-
+* 在io和cpu的公式中, 如何确定两个的时间比例
 
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTg3OTUyMjcsLTEwNDI1NjM1NTksLT
-kwMjE2NzExLC0xOTQwODc0MTIwLDEwNTA3MDc2MjgsLTE0NDQ1
-MjM2MzMsLTE1MDAxNzY5MiwtMTM2MTkxMDkwNSwtNDg4ODA1Mz
-I2LDYxNDEwNTQ5OCwtNzc0MzE1MzAwLDIxMjgxMjI4NzcsMzk4
-ODQ2MjE2LC0xMDI4ODYyOTY1LDEzNDUwMzg3MCwtMTk5MDgxNj
-gzMCwtMTExNTgxNTY0OSw4ODA4MzM5NDEsMTk5MTU3Mjc4Nywt
-MTYzOTQwMzkxNV19
+eyJoaXN0b3J5IjpbLTI0MDUwMTIxNywtMTA0MjU2MzU1OSwtOT
+AyMTY3MTEsLTE5NDA4NzQxMjAsMTA1MDcwNzYyOCwtMTQ0NDUy
+MzYzMywtMTUwMDE3NjkyLC0xMzYxOTEwOTA1LC00ODg4MDUzMj
+YsNjE0MTA1NDk4LC03NzQzMTUzMDAsMjEyODEyMjg3NywzOTg4
+NDYyMTYsLTEwMjg4NjI5NjUsMTM0NTAzODcwLC0xOTkwODE2OD
+MwLC0xMTE1ODE1NjQ5LDg4MDgzMzk0MSwxOTkxNTcyNzg3LC0x
+NjM5NDAzOTE1XX0=
 -->
