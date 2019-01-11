@@ -223,6 +223,8 @@ _[The Netty project](https://netty.io/)_ is an effort to provide an asynchronous
 
 Netty is an NIO client server framework that enables quick and easy development of network applications such as protocol servers and clients. It greatly simplifies and streamlines network programming such as TCP and UDP socket server development.
 
+* 事件驱动和异步
+异步的两种方式: 实现callback(主动回调), executor future(多次轮训)
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
 公式: Nthread = (1+Tio/Tcpu)*Ncpu, 
@@ -248,11 +250,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzODM5NTY2NiwtNTQ5NTQxNDg4LC0yND
-A1MDEyMTcsLTEwNDI1NjM1NTksLTkwMjE2NzExLC0xOTQwODc0
-MTIwLDEwNTA3MDc2MjgsLTE0NDQ1MjM2MzMsLTE1MDAxNzY5Mi
-wtMTM2MTkxMDkwNSwtNDg4ODA1MzI2LDYxNDEwNTQ5OCwtNzc0
-MzE1MzAwLDIxMjgxMjI4NzcsMzk4ODQ2MjE2LC0xMDI4ODYyOT
-Y1LDEzNDUwMzg3MCwtMTk5MDgxNjgzMCwtMTExNTgxNTY0OSw4
-ODA4MzM5NDFdfQ==
+eyJoaXN0b3J5IjpbNDk0NjU5NDU2LDEyMzgzOTU2NjYsLTU0OT
+U0MTQ4OCwtMjQwNTAxMjE3LC0xMDQyNTYzNTU5LC05MDIxNjcx
+MSwtMTk0MDg3NDEyMCwxMDUwNzA3NjI4LC0xNDQ0NTIzNjMzLC
+0xNTAwMTc2OTIsLTEzNjE5MTA5MDUsLTQ4ODgwNTMyNiw2MTQx
+MDU0OTgsLTc3NDMxNTMwMCwyMTI4MTIyODc3LDM5ODg0NjIxNi
+wtMTAyODg2Mjk2NSwxMzQ1MDM4NzAsLTE5OTA4MTY4MzAsLTEx
+MTU4MTU2NDldfQ==
 -->
