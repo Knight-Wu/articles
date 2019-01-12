@@ -283,6 +283,7 @@ The Echo client will
 4 Close the connection
 
 
+#### EventLoop
 
 
 
@@ -306,17 +307,17 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 * 在io和cpu的公式中, 如何确定两个的时间比例
-
+* eventloop boss thread和worker thread 的数量
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2NDM2NzY2NSwtMTIyMjU3ODE3NCwxOT
-UzMTM3MjM1LC04NDU4OTk3OCw4MzUwMTkzMjgsMTIzODM5NTY2
-NiwtNTQ5NTQxNDg4LC0yNDA1MDEyMTcsLTEwNDI1NjM1NTksLT
-kwMjE2NzExLC0xOTQwODc0MTIwLDEwNTA3MDc2MjgsLTE0NDQ1
-MjM2MzMsLTE1MDAxNzY5MiwtMTM2MTkxMDkwNSwtNDg4ODA1Mz
-I2LDYxNDEwNTQ5OCwtNzc0MzE1MzAwLDIxMjgxMjI4NzcsMzk4
-ODQ2MjE2XX0=
+eyJoaXN0b3J5IjpbMTUxNDYxMjg1NSwxMTY0MzY3NjY1LC0xMj
+IyNTc4MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LDgzNTAxOTMy
+OCwxMjM4Mzk1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNywtMT
+A0MjU2MzU1OSwtOTAyMTY3MTEsLTE5NDA4NzQxMjAsMTA1MDcw
+NzYyOCwtMTQ0NDUyMzYzMywtMTUwMDE3NjkyLC0xMzYxOTEwOT
+A1LC00ODg4MDUzMjYsNjE0MTA1NDk4LC03NzQzMTUzMDAsMjEy
+ODEyMjg3N119
 -->
