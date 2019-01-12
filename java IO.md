@@ -300,9 +300,12 @@ installs a custom set of ChannelHandlers in the pipeline.
 c. The ChannelInitializer removes itself from the ChannelPipeline.
 
 #### ChannelHandler
+
 > ChannelHandler has been designed specifically to support a broad range of uses,
 and you can think of it as a generic container for any code that processes events
 (including data) coming and going through the ChannelPipeline // 理解为用户业务代码和将要处理的事件和数据的容器
+
+
 
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
@@ -329,11 +332,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1NjI1MTAzMSwxNTE0NjEyODU1LDExNj
-QzNjc2NjUsLTEyMjI1NzgxNzQsMTk1MzEzNzIzNSwtODQ1ODk5
-NzgsODM1MDE5MzI4LDEyMzgzOTU2NjYsLTU0OTU0MTQ4OCwtMj
-QwNTAxMjE3LC0xMDQyNTYzNTU5LC05MDIxNjcxMSwtMTk0MDg3
-NDEyMCwxMDUwNzA3NjI4LC0xNDQ0NTIzNjMzLC0xNTAwMTc2OT
-IsLTEzNjE5MTA5MDUsLTQ4ODgwNTMyNiw2MTQxMDU0OTgsLTc3
-NDMxNTMwMF19
+eyJoaXN0b3J5IjpbLTE4OTc0NDc1ODMsMTI1NjI1MTAzMSwxNT
+E0NjEyODU1LDExNjQzNjc2NjUsLTEyMjI1NzgxNzQsMTk1MzEz
+NzIzNSwtODQ1ODk5NzgsODM1MDE5MzI4LDEyMzgzOTU2NjYsLT
+U0OTU0MTQ4OCwtMjQwNTAxMjE3LC0xMDQyNTYzNTU5LC05MDIx
+NjcxMSwtMTk0MDg3NDEyMCwxMDUwNzA3NjI4LC0xNDQ0NTIzNj
+MzLC0xNTAwMTc2OTIsLTEzNjE5MTA5MDUsLTQ4ODgwNTMyNiw2
+MTQxMDU0OThdfQ==
 -->
