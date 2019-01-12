@@ -321,11 +321,10 @@ only a single EventLoopGroup, but a ServerBootstrap requires two (which can be t
 same instance). Why?
 A server needs two distinct sets of Channels. The first set will contain a single
 ServerChannel representing the server’s own listening socket, bound to a local port.
-The second set will contain all of the Channels that have been created to handle incoming  client connections—one for each connection the server has accepted. Figure 3.4
-illustrates this model, and shows why two distinct EventLoopGroups are required.
+The second set will contain all of the Channels that have been created to handle incoming  client connections—one for each connection the server has accepted. Figure 3.4 illustrates this model, and shows why two distinct EventLoopGroups are required.
 The EventLoopGroup associated with the ServerChannel assigns an EventLoop
 that is responsible for creating Channels for incoming connection requests. Once a connection has been accepted, the second EventLoopGroup assigns an EventLoop to
-its Channel
+its Channel. // server Bootstrapping 有两个EventLoopGroup , 一个绑定了ServerChannel  负责chuangj
 
 #### netty 的IO 模型
 和java 的NIO 一样, 基于selector, 相当于传统IO 模型中是IO 多路复用.  
@@ -352,7 +351,7 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY1OTcyNjU3NywxODIzMjgzMjQxLDEyNT
+eyJoaXN0b3J5IjpbLTMxNjM0MDc2MywxODIzMjgzMjQxLDEyNT
 YyNTEwMzEsMTUxNDYxMjg1NSwxMTY0MzY3NjY1LC0xMjIyNTc4
 MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LDgzNTAxOTMyOCwxMj
 M4Mzk1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNywtMTA0MjU2
