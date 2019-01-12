@@ -309,6 +309,15 @@ c. The ChannelInitializer removes itself from the ChannelPipeline.
 and you can think of it as a generic container for any code that processes events
 (including data) coming and going through the ChannelPipeline // 理解为用户业务代码和将要处理的事件和数据的容器
 
+* 作用
+Typical uses for ChannelHandlers include:
+■ Transforming data from one format to another
+■ Providing notification of exceptions
+■ Providing notification of a Channel becoming active or inactive
+■ Providing notification when a Channel is registered with or deregistered from
+an EventLoop
+■ Providing notification about user-defined events
+
 * ChannelHandlerAdapter
 ![enter image description here](https://drive.google.com/uc?id=1vSj4o-xRlC2oIp3rsQLQ6lV-8Rflw7ix)
 
@@ -355,7 +364,7 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1NDI2MTM5NCwtMTgyMDk2NTI4MSwxOD
+eyJoaXN0b3J5IjpbMTcyNjMzODYxNCwtMTgyMDk2NTI4MSwxOD
 IzMjgzMjQxLDEyNTYyNTEwMzEsMTUxNDYxMjg1NSwxMTY0MzY3
 NjY1LC0xMjIyNTc4MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LD
 gzNTAxOTMyOCwxMjM4Mzk1NjY2LC01NDk1NDE0ODgsLTI0MDUw
