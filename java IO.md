@@ -289,6 +289,16 @@ The Echo client will
 #### ChannelFuture
 在netty 中所有的netty 操作都是异步的, 
 
+#### ChannelPipeline
+>A ChannelPipeline provides a container for a chain of ChannelHandlers and defines
+an API for propagating the flow of inbound and outbound events along the chain.
+When a Channel is created, it is automatically assigned its own ChannelPipeline.
+ChannelHandlers are installed in the ChannelPipeline as follows:
+a. A ChannelInitializer implementation is registered with a ServerBootstrap.
+b. When ChannelInitializer.initChannel() is called, the ChannelInitializer
+installs a custom set of ChannelHandlers in the pipeline.
+c. The ChannelInitializer removes itself from the ChannelPipeline.
+
 
 
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
@@ -316,11 +326,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODk3NDk2NzYxLDE1MTQ2MTI4NTUsMTE2ND
-M2NzY2NSwtMTIyMjU3ODE3NCwxOTUzMTM3MjM1LC04NDU4OTk3
-OCw4MzUwMTkzMjgsMTIzODM5NTY2NiwtNTQ5NTQxNDg4LC0yND
-A1MDEyMTcsLTEwNDI1NjM1NTksLTkwMjE2NzExLC0xOTQwODc0
-MTIwLDEwNTA3MDc2MjgsLTE0NDQ1MjM2MzMsLTE1MDAxNzY5Mi
-wtMTM2MTkxMDkwNSwtNDg4ODA1MzI2LDYxNDEwNTQ5OCwtNzc0
-MzE1MzAwXX0=
+eyJoaXN0b3J5IjpbLTEwOTk0NjIxMjYsMTUxNDYxMjg1NSwxMT
+Y0MzY3NjY1LC0xMjIyNTc4MTc0LDE5NTMxMzcyMzUsLTg0NTg5
+OTc4LDgzNTAxOTMyOCwxMjM4Mzk1NjY2LC01NDk1NDE0ODgsLT
+I0MDUwMTIxNywtMTA0MjU2MzU1OSwtOTAyMTY3MTEsLTE5NDA4
+NzQxMjAsMTA1MDcwNzYyOCwtMTQ0NDUyMzYzMywtMTUwMDE3Nj
+kyLC0xMzYxOTEwOTA1LC00ODg4MDUzMjYsNjE0MTA1NDk4LC03
+NzQzMTUzMDBdfQ==
 -->
