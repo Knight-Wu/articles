@@ -286,6 +286,8 @@ The Echo client will
 #### EventLoop
 
 
+###
+
 
 
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
@@ -313,11 +315,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxNDYxMjg1NSwxMTY0MzY3NjY1LC0xMj
-IyNTc4MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LDgzNTAxOTMy
-OCwxMjM4Mzk1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNywtMT
-A0MjU2MzU1OSwtOTAyMTY3MTEsLTE5NDA4NzQxMjAsMTA1MDcw
-NzYyOCwtMTQ0NDUyMzYzMywtMTUwMDE3NjkyLC0xMzYxOTEwOT
-A1LC00ODg4MDUzMjYsNjE0MTA1NDk4LC03NzQzMTUzMDAsMjEy
-ODEyMjg3N119
+eyJoaXN0b3J5IjpbLTExNTA3MTI3MDYsMTUxNDYxMjg1NSwxMT
+Y0MzY3NjY1LC0xMjIyNTc4MTc0LDE5NTMxMzcyMzUsLTg0NTg5
+OTc4LDgzNTAxOTMyOCwxMjM4Mzk1NjY2LC01NDk1NDE0ODgsLT
+I0MDUwMTIxNywtMTA0MjU2MzU1OSwtOTAyMTY3MTEsLTE5NDA4
+NzQxMjAsMTA1MDcwNzYyOCwtMTQ0NDUyMzYzMywtMTUwMDE3Nj
+kyLC0xMzYxOTEwOTA1LC00ODg4MDUzMjYsNjE0MTA1NDk4LC03
+NzQzMTUzMDBdfQ==
 -->
