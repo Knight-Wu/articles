@@ -313,6 +313,18 @@ and you can think of it as a generic container for any code that processes event
 network layer, which involves either binding a process to a given port or connecting
 one process to another one running on a specified host at a specified port. // 实现连接服务器, 或者监听端口的功能
 
+* server Bootstrapping 和client 
+> The second difference is perhaps more significant. Bootstrapping a client requires
+only a single EventLoopGroup, but a ServerBootstrap requires two (which can be the
+same instance). Why?
+A server needs two distinct sets of Channels. The first set will contain a single
+ServerChannel representing the server’s own listening socket, bound to a local port.
+The second set will contain all of the Channels that have been created to handle incoming
+client connections—one for each connection the server has accepted. Figure 3.4
+illustrates this model, and shows why two distinct EventLoopGroups are required.
+The EventLoopGroup associated with the ServerChannel assigns an EventLoop
+that is responsible for creating Channels for incoming connection requests. Once a
+
 #### netty 的IO 模型
 和java 的NIO 一样, 基于selector, 相当于传统IO 模型中是IO 多路复用.  
 [`NioEventLoopGroup`](https://netty.io/4.1/api/io/netty/channel/nio/NioEventLoopGroup.html) 可以初始化两种线程, boss 和worker, boss 线程负责接收connection, worker 线程负责处理connection
@@ -338,11 +350,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2MTI0MTMwNiwxODIzMjgzMjQxLDEyNT
-YyNTEwMzEsMTUxNDYxMjg1NSwxMTY0MzY3NjY1LC0xMjIyNTc4
-MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LDgzNTAxOTMyOCwxMj
-M4Mzk1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNywtMTA0MjU2
-MzU1OSwtOTAyMTY3MTEsLTE5NDA4NzQxMjAsMTA1MDcwNzYyOC
-wtMTQ0NDUyMzYzMywtMTUwMDE3NjkyLC0xMzYxOTEwOTA1LC00
-ODg4MDUzMjZdfQ==
+eyJoaXN0b3J5IjpbLTE4Njg5NDY5MjAsMTgyMzI4MzI0MSwxMj
+U2MjUxMDMxLDE1MTQ2MTI4NTUsMTE2NDM2NzY2NSwtMTIyMjU3
+ODE3NCwxOTUzMTM3MjM1LC04NDU4OTk3OCw4MzUwMTkzMjgsMT
+IzODM5NTY2NiwtNTQ5NTQxNDg4LC0yNDA1MDEyMTcsLTEwNDI1
+NjM1NTksLTkwMjE2NzExLC0xOTQwODc0MTIwLDEwNTA3MDc2Mj
+gsLTE0NDQ1MjM2MzMsLTE1MDAxNzY5MiwtMTM2MTkxMDkwNSwt
+NDg4ODA1MzI2XX0=
 -->
