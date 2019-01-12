@@ -275,7 +275,12 @@ interface ChannelInboundHandler, which defines methods for acting on inbound
 events. This simple application will require only a few of these methods, so it will be
 sufficient to subclass ChannelInboundHandlerAdapter, which provides a default implementation of ChannelInboundHandler // 根据到来的事件, 应该选择channelInboundHandler, 或他的子类 ChannelInboundHandlerAdapter
 
-
+* echoClient
+The Echo client will
+1 Connect to the server
+2 Send one or more messages
+3 For each message, wait for and receive the same message back from the server
+4 Close the connection
 
 
 
@@ -307,11 +312,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjI1NzgxNzQsMTk1MzEzNzIzNSwtOD
-Q1ODk5NzgsODM1MDE5MzI4LDEyMzgzOTU2NjYsLTU0OTU0MTQ4
-OCwtMjQwNTAxMjE3LC0xMDQyNTYzNTU5LC05MDIxNjcxMSwtMT
-k0MDg3NDEyMCwxMDUwNzA3NjI4LC0xNDQ0NTIzNjMzLC0xNTAw
-MTc2OTIsLTEzNjE5MTA5MDUsLTQ4ODgwNTMyNiw2MTQxMDU0OT
-gsLTc3NDMxNTMwMCwyMTI4MTIyODc3LDM5ODg0NjIxNiwtMTAy
-ODg2Mjk2NV19
+eyJoaXN0b3J5IjpbMTE2NDM2NzY2NSwtMTIyMjU3ODE3NCwxOT
+UzMTM3MjM1LC04NDU4OTk3OCw4MzUwMTkzMjgsMTIzODM5NTY2
+NiwtNTQ5NTQxNDg4LC0yNDA1MDEyMTcsLTEwNDI1NjM1NTksLT
+kwMjE2NzExLC0xOTQwODc0MTIwLDEwNTA3MDc2MjgsLTE0NDQ1
+MjM2MzMsLTE1MDAxNzY5MiwtMTM2MTkxMDkwNSwtNDg4ODA1Mz
+I2LDYxNDEwNTQ5OCwtNzc0MzE1MzAwLDIxMjgxMjI4NzcsMzk4
+ODQ2MjE2XX0=
 -->
