@@ -261,6 +261,7 @@ provided by the ChannelFutureListener eliminates the need for manually checking
 operation completion.
 不同于jdk 的future, netty 提供了futureListener , 不需要轮训结果
 
+* e
 
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
@@ -287,11 +288,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1MzEzNzIzNSwtODQ1ODk5NzgsODM1MD
-E5MzI4LDEyMzgzOTU2NjYsLTU0OTU0MTQ4OCwtMjQwNTAxMjE3
-LC0xMDQyNTYzNTU5LC05MDIxNjcxMSwtMTk0MDg3NDEyMCwxMD
-UwNzA3NjI4LC0xNDQ0NTIzNjMzLC0xNTAwMTc2OTIsLTEzNjE5
-MTA5MDUsLTQ4ODgwNTMyNiw2MTQxMDU0OTgsLTc3NDMxNTMwMC
-wyMTI4MTIyODc3LDM5ODg0NjIxNiwtMTAyODg2Mjk2NSwxMzQ1
-MDM4NzBdfQ==
+eyJoaXN0b3J5IjpbLTE1NDE3ODc0NTgsMTk1MzEzNzIzNSwtOD
+Q1ODk5NzgsODM1MDE5MzI4LDEyMzgzOTU2NjYsLTU0OTU0MTQ4
+OCwtMjQwNTAxMjE3LC0xMDQyNTYzNTU5LC05MDIxNjcxMSwtMT
+k0MDg3NDEyMCwxMDUwNzA3NjI4LC0xNDQ0NTIzNjMzLC0xNTAw
+MTc2OTIsLTEzNjE5MTA5MDUsLTQ4ODgwNTMyNiw2MTQxMDU0OT
+gsLTc3NDMxNTMwMCwyMTI4MTIyODc3LDM5ODg0NjIxNiwtMTAy
+ODg2Mjk2NV19
 -->
