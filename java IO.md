@@ -286,6 +286,12 @@ The Echo client will
 #### EventLoop
 ![enter image description here](https://drive.google.com/uc?id=1Ul-aPtMSynBht574s51DFaiOIHG4ddi2)
 
+包括两个部分, 一是concurrent, 二是networking, 
+>Netty’s EventLoop is part of a collaborative design that employs two fundamental APIs:
+concurrency and networking. First, the package io.netty.util.concurrent builds
+on the JDK package java.util.concurrent to provide thread executors. Second, the
+classes in the package io.netty.channel extend these in order to interface with
+Channel events.
 #### Channel
 ![enter image description here](https://drive.google.com/uc?id=1aaIWakV2GzVZKYT0fhbKbDEJoO27GG9z)
 
@@ -372,11 +378,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTczODI0NTU3OCwxNzI2MzM4NjE0LC0xOD
-IwOTY1MjgxLDE4MjMyODMyNDEsMTI1NjI1MTAzMSwxNTE0NjEy
-ODU1LDExNjQzNjc2NjUsLTEyMjI1NzgxNzQsMTk1MzEzNzIzNS
-wtODQ1ODk5NzgsODM1MDE5MzI4LDEyMzgzOTU2NjYsLTU0OTU0
-MTQ4OCwtMjQwNTAxMjE3LC0xMDQyNTYzNTU5LC05MDIxNjcxMS
-wtMTk0MDg3NDEyMCwxMDUwNzA3NjI4LC0xNDQ0NTIzNjMzLC0x
-NTAwMTc2OTJdfQ==
+eyJoaXN0b3J5IjpbLTM4NTk0NTM2MSwtNzM4MjQ1NTc4LDE3Mj
+YzMzg2MTQsLTE4MjA5NjUyODEsMTgyMzI4MzI0MSwxMjU2MjUx
+MDMxLDE1MTQ2MTI4NTUsMTE2NDM2NzY2NSwtMTIyMjU3ODE3NC
+wxOTUzMTM3MjM1LC04NDU4OTk3OCw4MzUwMTkzMjgsMTIzODM5
+NTY2NiwtNTQ5NTQxNDg4LC0yNDA1MDEyMTcsLTEwNDI1NjM1NT
+ksLTkwMjE2NzExLC0xOTQwODc0MTIwLDEwNTA3MDc2MjgsLTE0
+NDQ1MjM2MzNdfQ==
 -->
