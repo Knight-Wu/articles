@@ -269,10 +269,10 @@ of data received from the client—its business logic.
 it binds the server to the port on which it will listen for connection requests
 
 * echoServer
-Because your Echo server will respond to incoming messages, it will need to implement
+> Because your Echo server will respond to incoming messages, it will need to implement
 interface ChannelInboundHandler, which defines methods for acting on inbound
 events. This simple application will require only a few of these methods, so it will be
-sufficient to subclass ChannelInboundHandlerAdapter, which provides a default implementation of ChannelInboundHandler // 根据到来的事件
+sufficient to subclass ChannelInboundHandlerAdapter, which provides a default implementation of ChannelInboundHandler // 根据到来的事件, 应该选择channelInboundHandler, 或他的子类 ChannelInboundHandlerAdapter
 
 
 
@@ -306,11 +306,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTM5NjMwMTAyLDE5NTMxMzcyMzUsLTg0NT
-g5OTc4LDgzNTAxOTMyOCwxMjM4Mzk1NjY2LC01NDk1NDE0ODgs
-LTI0MDUwMTIxNywtMTA0MjU2MzU1OSwtOTAyMTY3MTEsLTE5ND
-A4NzQxMjAsMTA1MDcwNzYyOCwtMTQ0NDUyMzYzMywtMTUwMDE3
-NjkyLC0xMzYxOTEwOTA1LC00ODg4MDUzMjYsNjE0MTA1NDk4LC
-03NzQzMTUzMDAsMjEyODEyMjg3NywzOTg4NDYyMTYsLTEwMjg4
-NjI5NjVdfQ==
+eyJoaXN0b3J5IjpbLTk2Njk3NDc3NywxOTUzMTM3MjM1LC04ND
+U4OTk3OCw4MzUwMTkzMjgsMTIzODM5NTY2NiwtNTQ5NTQxNDg4
+LC0yNDA1MDEyMTcsLTEwNDI1NjM1NTksLTkwMjE2NzExLC0xOT
+QwODc0MTIwLDEwNTA3MDc2MjgsLTE0NDQ1MjM2MzMsLTE1MDAx
+NzY5MiwtMTM2MTkxMDkwNSwtNDg4ODA1MzI2LDYxNDEwNTQ5OC
+wtNzc0MzE1MzAwLDIxMjgxMjI4NzcsMzk4ODQ2MjE2LC0xMDI4
+ODYyOTY1XX0=
 -->
