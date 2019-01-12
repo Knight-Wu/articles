@@ -309,9 +309,9 @@ and you can think of it as a generic container for any code that processes event
 ![enter image description here](https://drive.google.com/uc?id=1vSj4o-xRlC2oIp3rsQLQ6lV-8Rflw7ix)
 
 #### Bootstrapping
-Netty’s bootstrap classes provide containers for the configuration of an application’s
+> Netty’s bootstrap classes provide containers for the configuration of an application’s
 network layer, which involves either binding a process to a given port or connecting
-one process to another one running on a specified host at a specified port.
+one process to another one running on a specified host at a specified port. // 实现连接服务器, 或者监听端口的功能
 
 #### netty 的IO 模型
 和java 的NIO 一样, 基于selector, 相当于传统IO 模型中是IO 多路复用.  
@@ -338,11 +338,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODI5ODg2NzksMTgyMzI4MzI0MSwxMj
-U2MjUxMDMxLDE1MTQ2MTI4NTUsMTE2NDM2NzY2NSwtMTIyMjU3
-ODE3NCwxOTUzMTM3MjM1LC04NDU4OTk3OCw4MzUwMTkzMjgsMT
-IzODM5NTY2NiwtNTQ5NTQxNDg4LC0yNDA1MDEyMTcsLTEwNDI1
-NjM1NTksLTkwMjE2NzExLC0xOTQwODc0MTIwLDEwNTA3MDc2Mj
-gsLTE0NDQ1MjM2MzMsLTE1MDAxNzY5MiwtMTM2MTkxMDkwNSwt
-NDg4ODA1MzI2XX0=
+eyJoaXN0b3J5IjpbLTM2MTI0MTMwNiwxODIzMjgzMjQxLDEyNT
+YyNTEwMzEsMTUxNDYxMjg1NSwxMTY0MzY3NjY1LC0xMjIyNTc4
+MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LDgzNTAxOTMyOCwxMj
+M4Mzk1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNywtMTA0MjU2
+MzU1OSwtOTAyMTY3MTEsLTE5NDA4NzQxMjAsMTA1MDcwNzYyOC
+wtMTQ0NDUyMzYzMywtMTUwMDE3NjkyLC0xMzYxOTEwOTA1LC00
+ODg4MDUzMjZdfQ==
 -->
