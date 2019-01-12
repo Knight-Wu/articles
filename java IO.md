@@ -268,6 +268,19 @@ of data received from the client—its business logic.
  Bootstrapping—This is the startup code that configures the server. At a minimum,
 it binds the server to the port on which it will listen for connection requests
 
+* echoServer
+Because your Echo server will respond to incoming messages, it will need to implement
+interface ChannelInboundHandler, which defines methods for acting on inbound
+events. This simple application will require only a few of these methods, so it will be
+sufficient to subclass ChannelInboundHandlerAdapter, which provides a default implementation of ChannelInboundHandler // 根据到来的事件
+
+
+
+
+
+
+
+
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
 公式: Nthread = (1+Tio/Tcpu)*Ncpu, 
@@ -293,11 +306,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDkxMDM0OTMsMTk1MzEzNzIzNSwtOD
-Q1ODk5NzgsODM1MDE5MzI4LDEyMzgzOTU2NjYsLTU0OTU0MTQ4
-OCwtMjQwNTAxMjE3LC0xMDQyNTYzNTU5LC05MDIxNjcxMSwtMT
-k0MDg3NDEyMCwxMDUwNzA3NjI4LC0xNDQ0NTIzNjMzLC0xNTAw
-MTc2OTIsLTEzNjE5MTA5MDUsLTQ4ODgwNTMyNiw2MTQxMDU0OT
-gsLTc3NDMxNTMwMCwyMTI4MTIyODc3LDM5ODg0NjIxNiwtMTAy
-ODg2Mjk2NV19
+eyJoaXN0b3J5IjpbNTM5NjMwMTAyLDE5NTMxMzcyMzUsLTg0NT
+g5OTc4LDgzNTAxOTMyOCwxMjM4Mzk1NjY2LC01NDk1NDE0ODgs
+LTI0MDUwMTIxNywtMTA0MjU2MzU1OSwtOTAyMTY3MTEsLTE5ND
+A4NzQxMjAsMTA1MDcwNzYyOCwtMTQ0NDUyMzYzMywtMTUwMDE3
+NjkyLC0xMzYxOTEwOTA1LC00ODg4MDUzMjYsNjE0MTA1NDk4LC
+03NzQzMTUzMDAsMjEyODEyMjg3NywzOTg4NDYyMTYsLTEwMjg4
+NjI5NjVdfQ==
 -->
