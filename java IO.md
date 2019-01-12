@@ -300,22 +300,24 @@ installs a custom set of ChannelHandlers in the pipeline.
 c. The ChannelInitializer removes itself from the ChannelPipeline.
 
 #### ChannelHandler
-
+![enter image description here](https://drive.google.com/uc?id=15_bQwwS2_OILQjbevtzfNynUsDZSXsMK)
 > ChannelHandler has been designed specifically to support a broad range of uses,
 and you can think of it as a generic container for any code that processes events
 (including data) coming and going through the ChannelPipeline // 理解为用户业务代码和将要处理的事件和数据的容器
 
 * ChannelHandlerAdapter
+![enter image description here](https://drive.google.com/uc?id=1vSj4o-xRlC2oIp3rsQLQ6lV-8Rflw7ix)
+
+
+
+#### netty 的IO 模型
+和java 的NIO 一样, 基于selector, 相当于传统IO 模型中是IO 多路复用.  
+[`NioEventLoopGroup`](https://netty.io/4.1/api/io/netty/channel/nio/NioEventLoopGroup.html) 可以初始化两种线程, boss 和worker, boss 线程负责接收connection, worker 线程负责处理connection
 
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
 公式: Nthread = (1+Tio/Tcpu)*Ncpu, 
 Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=1秒, Tcpu=1s, Nt= 2个线程, 那么在一个完整的执行周期 2S 内, 这个cpu 需要切换线程一次, 才能效率最高. 
-
-* netty 的IO 模型
-和java 的NIO 一样, 基于selector, 相当于传统IO 模型中是IO 多路复用.  
-[`NioEventLoopGroup`](https://netty.io/4.1/api/io/netty/channel/nio/NioEventLoopGroup.html) 可以初始化两种线程, boss 和worker, boss 线程负责接收connection, worker 线程负责处理connection
-
 
 ### 疑问
 * netty channel and linux socket
@@ -333,11 +335,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjAxNDExMjMyLDE4MjMyODMyNDEsMTI1Nj
-I1MTAzMSwxNTE0NjEyODU1LDExNjQzNjc2NjUsLTEyMjI1Nzgx
-NzQsMTk1MzEzNzIzNSwtODQ1ODk5NzgsODM1MDE5MzI4LDEyMz
-gzOTU2NjYsLTU0OTU0MTQ4OCwtMjQwNTAxMjE3LC0xMDQyNTYz
-NTU5LC05MDIxNjcxMSwtMTk0MDg3NDEyMCwxMDUwNzA3NjI4LC
-0xNDQ0NTIzNjMzLC0xNTAwMTc2OTIsLTEzNjE5MTA5MDUsLTQ4
-ODgwNTMyNl19
+eyJoaXN0b3J5IjpbMTcyNjUxOTM2OCwxODIzMjgzMjQxLDEyNT
+YyNTEwMzEsMTUxNDYxMjg1NSwxMTY0MzY3NjY1LC0xMjIyNTc4
+MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LDgzNTAxOTMyOCwxMj
+M4Mzk1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNywtMTA0MjU2
+MzU1OSwtOTAyMTY3MTEsLTE5NDA4NzQxMjAsMTA1MDcwNzYyOC
+wtMTQ0NDUyMzYzMywtMTUwMDE3NjkyLC0xMzYxOTEwOTA1LC00
+ODg4MDUzMjZdfQ==
 -->
