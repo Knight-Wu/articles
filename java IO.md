@@ -327,16 +327,17 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 * 在io和cpu的公式中, 如何确定两个的时间比例
 * eventloop boss thread和worker thread 的数量
+* protobuf 在netty 的作用
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyMzI4MzI0MSwxMjU2MjUxMDMxLDE1MT
-Q2MTI4NTUsMTE2NDM2NzY2NSwtMTIyMjU3ODE3NCwxOTUzMTM3
-MjM1LC04NDU4OTk3OCw4MzUwMTkzMjgsMTIzODM5NTY2NiwtNT
-Q5NTQxNDg4LC0yNDA1MDEyMTcsLTEwNDI1NjM1NTksLTkwMjE2
-NzExLC0xOTQwODc0MTIwLDEwNTA3MDc2MjgsLTE0NDQ1MjM2Mz
-MsLTE1MDAxNzY5MiwtMTM2MTkxMDkwNSwtNDg4ODA1MzI2LDYx
-NDEwNTQ5OF19
+eyJoaXN0b3J5IjpbNjAxNDExMjMyLDE4MjMyODMyNDEsMTI1Nj
+I1MTAzMSwxNTE0NjEyODU1LDExNjQzNjc2NjUsLTEyMjI1Nzgx
+NzQsMTk1MzEzNzIzNSwtODQ1ODk5NzgsODM1MDE5MzI4LDEyMz
+gzOTU2NjYsLTU0OTU0MTQ4OCwtMjQwNTAxMjE3LC0xMDQyNTYz
+NTU5LC05MDIxNjcxMSwtMTk0MDg3NDEyMCwxMDUwNzA3NjI4LC
+0xNDQ0NTIzNjMzLC0xNTAwMTc2OTIsLTEzNjE5MTA5MDUsLTQ4
+ODgwNTMyNl19
 -->
