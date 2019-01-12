@@ -340,7 +340,10 @@ that is responsible for creating Channels for incoming connection requests. Once
 its Channel. // server Bootstrapping 有两个EventLoopGroup , 一个绑定了ServerChannel  负责根据新来的connection 创建Channels , 另一个负责处理已经accepted conncetions, 
 
 #### linux epoll
-作为linux 默认的NIO API, 比java 的NIO api 更高效, 因为java 的nio 为了多平台的兼容性 做了某些妥协.
+作为linux 默认的NIO API, 比java 的NIO api 更高效, 因为java 的nio 为了多平台的兼容性 做了某些妥协. 
+> To substitute epoll for NIO
+in that listing, replace NioEventLoopGroup with EpollEventLoopGroup and NioServer-
+SocketChannel.class with EpollServerSocketChannel.class. // 使用基于epoll 的netty api
 
 #### netty 的IO 模型
 和java 的NIO 一样, 基于selector, 相当于传统IO 模型中是IO 多路复用.  
@@ -369,7 +372,7 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3MTgzMDE2NSwxNzI2MzM4NjE0LC0xOD
+eyJoaXN0b3J5IjpbLTczODI0NTU3OCwxNzI2MzM4NjE0LC0xOD
 IwOTY1MjgxLDE4MjMyODMyNDEsMTI1NjI1MTAzMSwxNTE0NjEy
 ODU1LDExNjQzNjc2NjUsLTEyMjI1NzgxNzQsMTk1MzEzNzIzNS
 wtODQ1ODk5NzgsODM1MDE5MzI4LDEyMzgzOTU2NjYsLTU0OTU0
