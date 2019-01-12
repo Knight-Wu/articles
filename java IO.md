@@ -286,6 +286,10 @@ The Echo client will
 #### EventLoop
 ![enter image description here](https://drive.google.com/uc?id=1Ul-aPtMSynBht574s51DFaiOIHG4ddi2)
 
+#### Channel
+![enter image description here](https://drive.google.com/uc?id=1aaIWakV2GzVZKYT0fhbKbDEJoO27GG9z)
+
+
 #### ChannelFuture
 在netty 中所有的netty 操作都是异步的, 
 
@@ -351,11 +355,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjA5NjUyODEsMTgyMzI4MzI0MSwxMj
-U2MjUxMDMxLDE1MTQ2MTI4NTUsMTE2NDM2NzY2NSwtMTIyMjU3
-ODE3NCwxOTUzMTM3MjM1LC04NDU4OTk3OCw4MzUwMTkzMjgsMT
-IzODM5NTY2NiwtNTQ5NTQxNDg4LC0yNDA1MDEyMTcsLTEwNDI1
-NjM1NTksLTkwMjE2NzExLC0xOTQwODc0MTIwLDEwNTA3MDc2Mj
-gsLTE0NDQ1MjM2MzMsLTE1MDAxNzY5MiwtMTM2MTkxMDkwNSwt
-NDg4ODA1MzI2XX0=
+eyJoaXN0b3J5IjpbLTg1NDI2MTM5NCwtMTgyMDk2NTI4MSwxOD
+IzMjgzMjQxLDEyNTYyNTEwMzEsMTUxNDYxMjg1NSwxMTY0MzY3
+NjY1LC0xMjIyNTc4MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LD
+gzNTAxOTMyOCwxMjM4Mzk1NjY2LC01NDk1NDE0ODgsLTI0MDUw
+MTIxNywtMTA0MjU2MzU1OSwtOTAyMTY3MTEsLTE5NDA4NzQxMj
+AsMTA1MDcwNzYyOCwtMTQ0NDUyMzYzMywtMTUwMDE3NjkyLC0x
+MzYxOTEwOTA1XX0=
 -->
