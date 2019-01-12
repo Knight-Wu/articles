@@ -267,7 +267,7 @@ All Netty servers require the following:
 of data received from the client—its business logic.
  Bootstrapping—This is the startup code that configures the server. At a minimum,
 it binds the server to the port on which it will listen for connection requests
-
+// 需要ChannelHandler 去处理业务逻辑, Bootstrapping 把服务器绑定到端口去
 * echoServer
 > Because your Echo server will respond to incoming messages, it will need to implement
 interface ChannelInboundHandler, which defines methods for acting on inbound
@@ -306,11 +306,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2Njk3NDc3NywxOTUzMTM3MjM1LC04ND
-U4OTk3OCw4MzUwMTkzMjgsMTIzODM5NTY2NiwtNTQ5NTQxNDg4
-LC0yNDA1MDEyMTcsLTEwNDI1NjM1NTksLTkwMjE2NzExLC0xOT
-QwODc0MTIwLDEwNTA3MDc2MjgsLTE0NDQ1MjM2MzMsLTE1MDAx
-NzY5MiwtMTM2MTkxMDkwNSwtNDg4ODA1MzI2LDYxNDEwNTQ5OC
-wtNzc0MzE1MzAwLDIxMjgxMjI4NzcsMzk4ODQ2MjE2LC0xMDI4
-ODYyOTY1XX0=
+eyJoaXN0b3J5IjpbMzE1ODkxNzI1LDE5NTMxMzcyMzUsLTg0NT
+g5OTc4LDgzNTAxOTMyOCwxMjM4Mzk1NjY2LC01NDk1NDE0ODgs
+LTI0MDUwMTIxNywtMTA0MjU2MzU1OSwtOTAyMTY3MTEsLTE5ND
+A4NzQxMjAsMTA1MDcwNzYyOCwtMTQ0NDUyMzYzMywtMTUwMDE3
+NjkyLC0xMzYxOTEwOTA1LC00ODg4MDUzMjYsNjE0MTA1NDk4LC
+03NzQzMTUzMDAsMjEyODEyMjg3NywzOTg4NDYyMTYsLTEwMjg4
+NjI5NjVdfQ==
 -->
