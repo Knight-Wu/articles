@@ -324,7 +324,7 @@ ServerChannel representing the server’s own listening socket, bound to a local
 The second set will contain all of the Channels that have been created to handle incoming  client connections—one for each connection the server has accepted. Figure 3.4 illustrates this model, and shows why two distinct EventLoopGroups are required.
 The EventLoopGroup associated with the ServerChannel assigns an EventLoop
 that is responsible for creating Channels for incoming connection requests. Once a connection has been accepted, the second EventLoopGroup assigns an EventLoop to
-its Channel. // server Bootstrapping 有两个EventLoopGroup , 一个绑定了ServerChannel  负责chuangj
+its Channel. // server Bootstrapping 有两个EventLoopGroup , 一个绑定了ServerChannel  负责根据新来的connection 创建Channels , 另一个负责处理已经accepted conncetions, 相当于一个是Listen socket 另一个是 connected socket . 
 
 #### netty 的IO 模型
 和java 的NIO 一样, 基于selector, 相当于传统IO 模型中是IO 多路复用.  
@@ -351,11 +351,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxNjM0MDc2MywxODIzMjgzMjQxLDEyNT
-YyNTEwMzEsMTUxNDYxMjg1NSwxMTY0MzY3NjY1LC0xMjIyNTc4
-MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LDgzNTAxOTMyOCwxMj
-M4Mzk1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNywtMTA0MjU2
-MzU1OSwtOTAyMTY3MTEsLTE5NDA4NzQxMjAsMTA1MDcwNzYyOC
-wtMTQ0NDUyMzYzMywtMTUwMDE3NjkyLC0xMzYxOTEwOTA1LC00
-ODg4MDUzMjZdfQ==
+eyJoaXN0b3J5IjpbNTQxMDkzMTcwLDE4MjMyODMyNDEsMTI1Nj
+I1MTAzMSwxNTE0NjEyODU1LDExNjQzNjc2NjUsLTEyMjI1Nzgx
+NzQsMTk1MzEzNzIzNSwtODQ1ODk5NzgsODM1MDE5MzI4LDEyMz
+gzOTU2NjYsLTU0OTU0MTQ4OCwtMjQwNTAxMjE3LC0xMDQyNTYz
+NTU5LC05MDIxNjcxMSwtMTk0MDg3NDEyMCwxMDUwNzA3NjI4LC
+0xNDQ0NTIzNjMzLC0xNTAwMTc2OTIsLTEzNjE5MTA5MDUsLTQ4
+ODgwNTMyNl19
 -->
