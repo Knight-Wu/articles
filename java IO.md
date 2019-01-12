@@ -305,7 +305,7 @@ c. The ChannelInitializer removes itself from the ChannelPipeline.
 and you can think of it as a generic container for any code that processes events
 (including data) coming and going through the ChannelPipeline // 理解为用户业务代码和将要处理的事件和数据的容器
 
-
+* ChannelHandlerAdapter
 
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
@@ -332,11 +332,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTc0NDc1ODMsMTI1NjI1MTAzMSwxNT
-E0NjEyODU1LDExNjQzNjc2NjUsLTEyMjI1NzgxNzQsMTk1MzEz
-NzIzNSwtODQ1ODk5NzgsODM1MDE5MzI4LDEyMzgzOTU2NjYsLT
-U0OTU0MTQ4OCwtMjQwNTAxMjE3LC0xMDQyNTYzNTU5LC05MDIx
-NjcxMSwtMTk0MDg3NDEyMCwxMDUwNzA3NjI4LC0xNDQ0NTIzNj
-MzLC0xNTAwMTc2OTIsLTEzNjE5MTA5MDUsLTQ4ODgwNTMyNiw2
-MTQxMDU0OThdfQ==
+eyJoaXN0b3J5IjpbMTgyMzI4MzI0MSwxMjU2MjUxMDMxLDE1MT
+Q2MTI4NTUsMTE2NDM2NzY2NSwtMTIyMjU3ODE3NCwxOTUzMTM3
+MjM1LC04NDU4OTk3OCw4MzUwMTkzMjgsMTIzODM5NTY2NiwtNT
+Q5NTQxNDg4LC0yNDA1MDEyMTcsLTEwNDI1NjM1NTksLTkwMjE2
+NzExLC0xOTQwODc0MTIwLDEwNTA3MDc2MjgsLTE0NDQ1MjM2Mz
+MsLTE1MDAxNzY5MiwtMTM2MTkxMDkwNSwtNDg4ODA1MzI2LDYx
+NDEwNTQ5OF19
 -->
