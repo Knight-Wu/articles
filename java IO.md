@@ -339,6 +339,9 @@ The EventLoopGroup associated with the ServerChannel assigns an EventLoop
 that is responsible for creating Channels for incoming connection requests. Once a connection has been accepted, the second EventLoopGroup assigns an EventLoop to
 its Channel. // server Bootstrapping 有两个EventLoopGroup , 一个绑定了ServerChannel  负责根据新来的connection 创建Channels , 另一个负责处理已经accepted conncetions, 
 
+#### linux epoll
+作为linux 默认的NIO API, 比java 的NIO api 更高效, 因为java 的nio 为了多平台的兼容性 做了某些妥协.
+
 #### netty 的IO 模型
 和java 的NIO 一样, 基于selector, 相当于传统IO 模型中是IO 多路复用.  
 [`NioEventLoopGroup`](https://netty.io/4.1/api/io/netty/channel/nio/NioEventLoopGroup.html) 可以初始化两种线程, boss 和worker, boss 线程负责接收connection, worker 线程负责处理connection
@@ -360,12 +363,13 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 * eventloop boss thread和worker thread 的数量
 * protobuf 在netty 的作用
 * zero copy
+* epoll 作为linux 默认的NIO api
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3OTY3MDc1NywxNzI2MzM4NjE0LC0xOD
+eyJoaXN0b3J5IjpbLTk3MTgzMDE2NSwxNzI2MzM4NjE0LC0xOD
 IwOTY1MjgxLDE4MjMyODMyNDEsMTI1NjI1MTAzMSwxNTE0NjEy
 ODU1LDExNjQzNjc2NjUsLTEyMjI1NzgxNzQsMTk1MzEzNzIzNS
 wtODQ1ODk5NzgsODM1MDE5MzI4LDEyMzgzOTU2NjYsLTU0OTU0
