@@ -284,7 +284,7 @@ The Echo client will
 
 #### netty 新连接的建立过程
 1. boss 线程检查到有新来的连接, 即accept 事件, 则将该channel 注册到worker EventLoopGroup
-2. 从EventLoopGroup 选择一个EventLoop 线程来关注channel 上面的所有事件.
+2. 从 worker EventLoopGroup 选择一个EventLoop 线程来关注channel 的其余事件, 例如read, write, connect, channelHandler 事件.
 
 #### EventLoop
 ![enter image description here](https://drive.google.com/uc?id=1Ul-aPtMSynBht574s51DFaiOIHG4ddi2)
@@ -379,11 +379,11 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0Mjg1MTY0MjgsLTg5OTEzMzQwMywtMT
-E0OTI0OTEwMSwtNzk1NDMxMDg1LDExNzM3MzE1ODgsNzY0OTgx
-NzUzLC0xNzk1NzU3MzI0LC00NzUzNTM4NTYsMTgxMTk4Mjc1MS
-wtMzg1OTQ1MzYxLC03MzgyNDU1NzgsMTcyNjMzODYxNCwtMTgy
-MDk2NTI4MSwxODIzMjgzMjQxLDEyNTYyNTEwMzEsMTUxNDYxMj
-g1NSwxMTY0MzY3NjY1LC0xMjIyNTc4MTc0LDE5NTMxMzcyMzUs
-LTg0NTg5OTc4XX0=
+eyJoaXN0b3J5IjpbLTI1NjM3MTE3OCwtMTQyODUxNjQyOCwtOD
+k5MTMzNDAzLC0xMTQ5MjQ5MTAxLC03OTU0MzEwODUsMTE3Mzcz
+MTU4OCw3NjQ5ODE3NTMsLTE3OTU3NTczMjQsLTQ3NTM1Mzg1Ni
+wxODExOTgyNzUxLC0zODU5NDUzNjEsLTczODI0NTU3OCwxNzI2
+MzM4NjE0LC0xODIwOTY1MjgxLDE4MjMyODMyNDEsMTI1NjI1MT
+AzMSwxNTE0NjEyODU1LDExNjQzNjc2NjUsLTEyMjI1NzgxNzQs
+MTk1MzEzNzIzNV19
 -->
