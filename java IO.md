@@ -284,7 +284,7 @@ The Echo client will
 
 #### netty 新连接的建立过程
 1. boss 线程检查到有新来的连接, 即accept 事件, 则将该channel 注册到worker EventLoopGroup
-2. 从EventLoopGroup 选择一个EventLoop 线程来
+2. 从EventLoopGroup 选择一个EventLoop 线程来关注channel 上面的所有事件.
 
 #### EventLoop
 ![enter image description here](https://drive.google.com/uc?id=1Ul-aPtMSynBht574s51DFaiOIHG4ddi2)
@@ -383,7 +383,7 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDQ5ODE3Miw3NjQ5ODE3NTMsLTE3OT
+eyJoaXN0b3J5IjpbMTE3MzczMTU4OCw3NjQ5ODE3NTMsLTE3OT
 U3NTczMjQsLTQ3NTM1Mzg1NiwxODExOTgyNzUxLC0zODU5NDUz
 NjEsLTczODI0NTU3OCwxNzI2MzM4NjE0LC0xODIwOTY1MjgxLD
 E4MjMyODMyNDEsMTI1NjI1MTAzMSwxNTE0NjEyODU1LDExNjQz
