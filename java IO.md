@@ -294,7 +294,8 @@ classes in the package io.netty.channel extend these in order to interface with
 Channel events.
 
 * netty IO thread model
-boss EventLoopGroup 负责accept connection, 如果不指定构造函数, 使用的是默认的CacheThreadPool, worker EventLoopGroup 负责connect, read, write connections, 
+**boss EventLoopGroup** 负责accept connection, 并把channel registe to worker threads, 如果不指定构造函数, 使用的是默认的CacheThreadPool
+**worker EventLoopGroup** 负责connect, read, write channel, 
 
 #### Channel
 ![enter image description here](https://drive.google.com/uc?id=1aaIWakV2GzVZKYT0fhbKbDEJoO27GG9z)
@@ -382,11 +383,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2NjgzOTA1NCwtMzg1OTQ1MzYxLC03Mz
-gyNDU1NzgsMTcyNjMzODYxNCwtMTgyMDk2NTI4MSwxODIzMjgz
-MjQxLDEyNTYyNTEwMzEsMTUxNDYxMjg1NSwxMTY0MzY3NjY1LC
-0xMjIyNTc4MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LDgzNTAx
-OTMyOCwxMjM4Mzk1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNy
-wtMTA0MjU2MzU1OSwtOTAyMTY3MTEsLTE5NDA4NzQxMjAsMTA1
-MDcwNzYyOF19
+eyJoaXN0b3J5IjpbNDc3NTE1MTQsLTM4NTk0NTM2MSwtNzM4Mj
+Q1NTc4LDE3MjYzMzg2MTQsLTE4MjA5NjUyODEsMTgyMzI4MzI0
+MSwxMjU2MjUxMDMxLDE1MTQ2MTI4NTUsMTE2NDM2NzY2NSwtMT
+IyMjU3ODE3NCwxOTUzMTM3MjM1LC04NDU4OTk3OCw4MzUwMTkz
+MjgsMTIzODM5NTY2NiwtNTQ5NTQxNDg4LC0yNDA1MDEyMTcsLT
+EwNDI1NjM1NTksLTkwMjE2NzExLC0xOTQwODc0MTIwLDEwNTA3
+MDc2MjhdfQ==
 -->
