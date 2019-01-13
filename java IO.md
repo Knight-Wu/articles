@@ -283,7 +283,7 @@ The Echo client will
 4 Close the connection
 
 #### netty 新连接的建立过程
-1. boss 线程检查到有新来的连接, 即accept 事件, 
+1. boss 线程检查到有新来的连接, 即accept 事件, 则将该channel 注册到worker EventLoop. 
 
 #### EventLoop
 ![enter image description here](https://drive.google.com/uc?id=1Ul-aPtMSynBht574s51DFaiOIHG4ddi2)
@@ -382,11 +382,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTU3NTczMjQsLTQ3NTM1Mzg1NiwxOD
-ExOTgyNzUxLC0zODU5NDUzNjEsLTczODI0NTU3OCwxNzI2MzM4
-NjE0LC0xODIwOTY1MjgxLDE4MjMyODMyNDEsMTI1NjI1MTAzMS
-wxNTE0NjEyODU1LDExNjQzNjc2NjUsLTEyMjI1NzgxNzQsMTk1
-MzEzNzIzNSwtODQ1ODk5NzgsODM1MDE5MzI4LDEyMzgzOTU2Nj
-YsLTU0OTU0MTQ4OCwtMjQwNTAxMjE3LC0xMDQyNTYzNTU5LC05
-MDIxNjcxMV19
+eyJoaXN0b3J5IjpbNzY0OTgxNzUzLC0xNzk1NzU3MzI0LC00Nz
+UzNTM4NTYsMTgxMTk4Mjc1MSwtMzg1OTQ1MzYxLC03MzgyNDU1
+NzgsMTcyNjMzODYxNCwtMTgyMDk2NTI4MSwxODIzMjgzMjQxLD
+EyNTYyNTEwMzEsMTUxNDYxMjg1NSwxMTY0MzY3NjY1LC0xMjIy
+NTc4MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LDgzNTAxOTMyOC
+wxMjM4Mzk1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNywtMTA0
+MjU2MzU1OV19
 -->
