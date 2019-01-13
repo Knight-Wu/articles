@@ -298,7 +298,7 @@ Channel events.
 
 * netty IO thread model
 **boss EventLoopGroup** 负责accept connection, 并把channel registe to worker threads. EventLoopGroup 如果不指定构造函数, 使用的是默认的jdk ScheduledThreadPool, 线程数量是cpu 核心数*2. 
-**worker EventLoopGroup** 负责执行具体的io operation, 一个channel 的所有事件, 包括connect, read, write和注册的所有 channelHandlers 都会由一个 worker threads 执行, channel 和thread 的模型是: N:1, 所以一个事件的延迟会阻塞到这个channel 的其他事件和其他channel 事件
+**worker EventLoopGroup** 负责执行具体的io operation, 一个channel 的所有事件, 包括connect, read, write和注册的所有 channelHandlers 都会由一个 worker threads 执行, channel 和thread 的模型是: N:1, 所以一个事件的延迟会阻塞到这个channel 的其他事件和其他channel 事件, 这个同步阻塞问题如何解决? 
 
 #### Channel
 ![enter image description here](https://drive.google.com/uc?id=1aaIWakV2GzVZKYT0fhbKbDEJoO27GG9z)
@@ -383,7 +383,7 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3MzM0NjUyNCwxMTczNzMxNTg4LDc2ND
+eyJoaXN0b3J5IjpbLTc5NTQzMTA4NSwxMTczNzMxNTg4LDc2ND
 k4MTc1MywtMTc5NTc1NzMyNCwtNDc1MzUzODU2LDE4MTE5ODI3
 NTEsLTM4NTk0NTM2MSwtNzM4MjQ1NTc4LDE3MjYzMzg2MTQsLT
 E4MjA5NjUyODEsMTgyMzI4MzI0MSwxMjU2MjUxMDMxLDE1MTQ2
