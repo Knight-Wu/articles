@@ -374,7 +374,6 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 * 在io和cpu的公式中, 如何确定两个的时间比例
-* eventloop boss thread和worker thread 的数量
 * protobuf 在netty 的作用
 * zero copy
 * epoll 作为linux 默认的NIO api
@@ -383,11 +382,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5NTQzMTA4NSwxMTczNzMxNTg4LDc2ND
-k4MTc1MywtMTc5NTc1NzMyNCwtNDc1MzUzODU2LDE4MTE5ODI3
-NTEsLTM4NTk0NTM2MSwtNzM4MjQ1NTc4LDE3MjYzMzg2MTQsLT
-E4MjA5NjUyODEsMTgyMzI4MzI0MSwxMjU2MjUxMDMxLDE1MTQ2
-MTI4NTUsMTE2NDM2NzY2NSwtMTIyMjU3ODE3NCwxOTUzMTM3Mj
-M1LC04NDU4OTk3OCw4MzUwMTkzMjgsMTIzODM5NTY2NiwtNTQ5
-NTQxNDg4XX0=
+eyJoaXN0b3J5IjpbLTExNDkyNDkxMDEsLTc5NTQzMTA4NSwxMT
+czNzMxNTg4LDc2NDk4MTc1MywtMTc5NTc1NzMyNCwtNDc1MzUz
+ODU2LDE4MTE5ODI3NTEsLTM4NTk0NTM2MSwtNzM4MjQ1NTc4LD
+E3MjYzMzg2MTQsLTE4MjA5NjUyODEsMTgyMzI4MzI0MSwxMjU2
+MjUxMDMxLDE1MTQ2MTI4NTUsMTE2NDM2NzY2NSwtMTIyMjU3OD
+E3NCwxOTUzMTM3MjM1LC04NDU4OTk3OCw4MzUwMTkzMjgsMTIz
+ODM5NTY2Nl19
 -->
