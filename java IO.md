@@ -356,9 +356,6 @@ its Channel. // server Bootstrapping 有两个EventLoopGroup , 一个绑定了Se
 in that listing, replace NioEventLoopGroup with EpollEventLoopGroup and NioServer-
 SocketChannel.class with EpollServerSocketChannel.class. // 使用基于epoll 的netty api
 
-#### netty 的IO 模型
-和java 的NIO 一样, 基于selector, 相当于传统IO 模型中是IO 多路复用.  
-[`NioEventLoopGroup`](https://netty.io/4.1/api/io/netty/channel/nio/NioEventLoopGroup.html) 可以初始化两种线程, boss 和worker, boss 线程负责接收connection, worker 线程负责处理connection
 
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
@@ -383,11 +380,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTM3NDUyMjU5LC0zODU5NDUzNjEsLTczOD
-I0NTU3OCwxNzI2MzM4NjE0LC0xODIwOTY1MjgxLDE4MjMyODMy
-NDEsMTI1NjI1MTAzMSwxNTE0NjEyODU1LDExNjQzNjc2NjUsLT
-EyMjI1NzgxNzQsMTk1MzEzNzIzNSwtODQ1ODk5NzgsODM1MDE5
-MzI4LDEyMzgzOTU2NjYsLTU0OTU0MTQ4OCwtMjQwNTAxMjE3LC
-0xMDQyNTYzNTU5LC05MDIxNjcxMSwtMTk0MDg3NDEyMCwxMDUw
-NzA3NjI4XX0=
+eyJoaXN0b3J5IjpbMTgxMTk4Mjc1MSwtMzg1OTQ1MzYxLC03Mz
+gyNDU1NzgsMTcyNjMzODYxNCwtMTgyMDk2NTI4MSwxODIzMjgz
+MjQxLDEyNTYyNTEwMzEsMTUxNDYxMjg1NSwxMTY0MzY3NjY1LC
+0xMjIyNTc4MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LDgzNTAx
+OTMyOCwxMjM4Mzk1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNy
+wtMTA0MjU2MzU1OSwtOTAyMTY3MTEsLTE5NDA4NzQxMjAsMTA1
+MDcwNzYyOF19
 -->
