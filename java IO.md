@@ -305,7 +305,7 @@ Channel events.
 
 
 #### ChannelFuture
-在netty 中所有的netty 操作都是异步的, 
+在netty 中所有的IO 操作都是异步的, 
 
 #### ChannelPipeline
 >A ChannelPipeline provides a container for a chain of ChannelHandlers and defines
@@ -382,11 +382,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDkyNDkxMDEsLTc5NTQzMTA4NSwxMT
-czNzMxNTg4LDc2NDk4MTc1MywtMTc5NTc1NzMyNCwtNDc1MzUz
-ODU2LDE4MTE5ODI3NTEsLTM4NTk0NTM2MSwtNzM4MjQ1NTc4LD
-E3MjYzMzg2MTQsLTE4MjA5NjUyODEsMTgyMzI4MzI0MSwxMjU2
-MjUxMDMxLDE1MTQ2MTI4NTUsMTE2NDM2NzY2NSwtMTIyMjU3OD
-E3NCwxOTUzMTM3MjM1LC04NDU4OTk3OCw4MzUwMTkzMjgsMTIz
-ODM5NTY2Nl19
+eyJoaXN0b3J5IjpbLTg5OTEzMzQwMywtMTE0OTI0OTEwMSwtNz
+k1NDMxMDg1LDExNzM3MzE1ODgsNzY0OTgxNzUzLC0xNzk1NzU3
+MzI0LC00NzUzNTM4NTYsMTgxMTk4Mjc1MSwtMzg1OTQ1MzYxLC
+03MzgyNDU1NzgsMTcyNjMzODYxNCwtMTgyMDk2NTI4MSwxODIz
+MjgzMjQxLDEyNTYyNTEwMzEsMTUxNDYxMjg1NSwxMTY0MzY3Nj
+Y1LC0xMjIyNTc4MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LDgz
+NTAxOTMyOF19
 -->
