@@ -292,6 +292,10 @@ concurrency and networking. First, the package io.netty.util.concurrent builds
 on the JDK package java.util.concurrent to provide thread executors. Second, the
 classes in the package io.netty.channel extend these in order to interface with
 Channel events.
+
+* netty IO thread model
+boss EventLoopGroup 
+
 #### Channel
 ![enter image description here](https://drive.google.com/uc?id=1aaIWakV2GzVZKYT0fhbKbDEJoO27GG9z)
 
@@ -378,11 +382,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM4NTk0NTM2MSwtNzM4MjQ1NTc4LDE3Mj
-YzMzg2MTQsLTE4MjA5NjUyODEsMTgyMzI4MzI0MSwxMjU2MjUx
-MDMxLDE1MTQ2MTI4NTUsMTE2NDM2NzY2NSwtMTIyMjU3ODE3NC
-wxOTUzMTM3MjM1LC04NDU4OTk3OCw4MzUwMTkzMjgsMTIzODM5
-NTY2NiwtNTQ5NTQxNDg4LC0yNDA1MDEyMTcsLTEwNDI1NjM1NT
-ksLTkwMjE2NzExLC0xOTQwODc0MTIwLDEwNTA3MDc2MjgsLTE0
-NDQ1MjM2MzNdfQ==
+eyJoaXN0b3J5IjpbLTE5NzE0MzYwMjIsLTM4NTk0NTM2MSwtNz
+M4MjQ1NTc4LDE3MjYzMzg2MTQsLTE4MjA5NjUyODEsMTgyMzI4
+MzI0MSwxMjU2MjUxMDMxLDE1MTQ2MTI4NTUsMTE2NDM2NzY2NS
+wtMTIyMjU3ODE3NCwxOTUzMTM3MjM1LC04NDU4OTk3OCw4MzUw
+MTkzMjgsMTIzODM5NTY2NiwtNTQ5NTQxNDg4LC0yNDA1MDEyMT
+csLTEwNDI1NjM1NTksLTkwMjE2NzExLC0xOTQwODc0MTIwLDEw
+NTA3MDc2MjhdfQ==
 -->
