@@ -370,9 +370,6 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 * Listen socket and connected socket 
 * What is file descripter
 * MappedByteBuffer and directByteBuffer
-* java original NIO 的写法, 如何高性能, 这样才知道netty 优化了什么
-https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
-
 * 在io和cpu的公式中, 如何确定两个的时间比例
 * protobuf 在netty 的作用
 * zero copy
@@ -382,11 +379,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5OTEzMzQwMywtMTE0OTI0OTEwMSwtNz
-k1NDMxMDg1LDExNzM3MzE1ODgsNzY0OTgxNzUzLC0xNzk1NzU3
-MzI0LC00NzUzNTM4NTYsMTgxMTk4Mjc1MSwtMzg1OTQ1MzYxLC
-03MzgyNDU1NzgsMTcyNjMzODYxNCwtMTgyMDk2NTI4MSwxODIz
-MjgzMjQxLDEyNTYyNTEwMzEsMTUxNDYxMjg1NSwxMTY0MzY3Nj
-Y1LC0xMjIyNTc4MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LDgz
-NTAxOTMyOF19
+eyJoaXN0b3J5IjpbLTE0Mjg1MTY0MjgsLTg5OTEzMzQwMywtMT
+E0OTI0OTEwMSwtNzk1NDMxMDg1LDExNzM3MzE1ODgsNzY0OTgx
+NzUzLC0xNzk1NzU3MzI0LC00NzUzNTM4NTYsMTgxMTk4Mjc1MS
+wtMzg1OTQ1MzYxLC03MzgyNDU1NzgsMTcyNjMzODYxNCwtMTgy
+MDk2NTI4MSwxODIzMjgzMjQxLDEyNTYyNTEwMzEsMTUxNDYxMj
+g1NSwxMTY0MzY3NjY1LC0xMjIyNTc4MTc0LDE5NTMxMzcyMzUs
+LTg0NTg5OTc4XX0=
 -->
