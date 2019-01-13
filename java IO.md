@@ -295,7 +295,7 @@ Channel events.
 
 * netty IO thread model
 **boss EventLoopGroup** 负责accept connection, 并把channel registe to worker threads, 如果不指定构造函数, 使用的是默认的CacheThreadPool
-**worker EventLoopGroup** 负责执行具体的io operation, 一个channel 的所有事件, 包括connect, read, write和注册的所有
+**worker EventLoopGroup** 负责执行具体的io operation, 一个channel 的所有事件, 包括connect, read, write和注册的所有 channelHandlers 都会由一个 worker threads 执行, 所以一个事件的延迟会zuse
 
 #### Channel
 ![enter image description here](https://drive.google.com/uc?id=1aaIWakV2GzVZKYT0fhbKbDEJoO27GG9z)
@@ -383,11 +383,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2NDY2NDA1MiwtMzg1OTQ1MzYxLC03Mz
-gyNDU1NzgsMTcyNjMzODYxNCwtMTgyMDk2NTI4MSwxODIzMjgz
-MjQxLDEyNTYyNTEwMzEsMTUxNDYxMjg1NSwxMTY0MzY3NjY1LC
-0xMjIyNTc4MTc0LDE5NTMxMzcyMzUsLTg0NTg5OTc4LDgzNTAx
-OTMyOCwxMjM4Mzk1NjY2LC01NDk1NDE0ODgsLTI0MDUwMTIxNy
-wtMTA0MjU2MzU1OSwtOTAyMTY3MTEsLTE5NDA4NzQxMjAsMTA1
-MDcwNzYyOF19
+eyJoaXN0b3J5IjpbOTE4MTc3NDY4LC0zODU5NDUzNjEsLTczOD
+I0NTU3OCwxNzI2MzM4NjE0LC0xODIwOTY1MjgxLDE4MjMyODMy
+NDEsMTI1NjI1MTAzMSwxNTE0NjEyODU1LDExNjQzNjc2NjUsLT
+EyMjI1NzgxNzQsMTk1MzEzNzIzNSwtODQ1ODk5NzgsODM1MDE5
+MzI4LDEyMzgzOTU2NjYsLTU0OTU0MTQ4OCwtMjQwNTAxMjE3LC
+0xMDQyNTYzNTU5LC05MDIxNjcxMSwtMTk0MDg3NDEyMCwxMDUw
+NzA3NjI4XX0=
 -->
