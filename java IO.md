@@ -282,7 +282,8 @@ The Echo client will
 3 For each message, wait for and receive the same message back from the server
 4 Close the connection
 
-#### netty 
+#### netty 新连接的建立过程
+1. boss 线程检查到有新来的连接, 即accept 事件, 
 
 #### EventLoop
 ![enter image description here](https://drive.google.com/uc?id=1Ul-aPtMSynBht574s51DFaiOIHG4ddi2)
@@ -381,11 +382,11 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/io/example/Ping.java
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjI1MjkxMCwtNDc1MzUzODU2LDE4MTE5OD
-I3NTEsLTM4NTk0NTM2MSwtNzM4MjQ1NTc4LDE3MjYzMzg2MTQs
-LTE4MjA5NjUyODEsMTgyMzI4MzI0MSwxMjU2MjUxMDMxLDE1MT
-Q2MTI4NTUsMTE2NDM2NzY2NSwtMTIyMjU3ODE3NCwxOTUzMTM3
-MjM1LC04NDU4OTk3OCw4MzUwMTkzMjgsMTIzODM5NTY2NiwtNT
-Q5NTQxNDg4LC0yNDA1MDEyMTcsLTEwNDI1NjM1NTksLTkwMjE2
-NzExXX0=
+eyJoaXN0b3J5IjpbLTE3OTU3NTczMjQsLTQ3NTM1Mzg1NiwxOD
+ExOTgyNzUxLC0zODU5NDUzNjEsLTczODI0NTU3OCwxNzI2MzM4
+NjE0LC0xODIwOTY1MjgxLDE4MjMyODMyNDEsMTI1NjI1MTAzMS
+wxNTE0NjEyODU1LDExNjQzNjc2NjUsLTEyMjI1NzgxNzQsMTk1
+MzEzNzIzNSwtODQ1ODk5NzgsODM1MDE5MzI4LDEyMzgzOTU2Nj
+YsLTU0OTU0MTQ4OCwtMjQwNTAxMjE3LC0xMDQyNTYzNTU5LC05
+MDIxNjcxMV19
 -->
