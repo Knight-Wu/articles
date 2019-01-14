@@ -289,7 +289,8 @@ The Echo client will
 #### EventLoop
 ![enter image description here](https://drive.google.com/uc?id=1Ul-aPtMSynBht574s51DFaiOIHG4ddi2)
 
-events 在EventLoopGroup间传递
+events 在eventloop 的逻辑执行图
+![enter image description here](https://drive.google.com/uc?id=1c8Ey4mUgM0MPOU6DYRySq5eoX-y77_EV)
 
 
 包括两个部分, 一是concurrent, 二是networking, 
@@ -437,11 +438,11 @@ java -Dio.netty.leakDetectionLevel=ADVANCED
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODM0OTE0MzYxLC0xOTg2NDA2OTg1LDEwNj
-UzNDk3MDAsLTk4MjcwMzgxNSwtOTMyMDc4NTgsMzYwMDg3Njgz
-LC0xNzM3NTQ4MjY3LC01NDg3Mzc5NSwxMDE0NDQ3MTcyLC0yMD
-E5MzQxNzQwLC0yNTYzNzExNzgsLTE0Mjg1MTY0MjgsLTg5OTEz
-MzQwMywtMTE0OTI0OTEwMSwtNzk1NDMxMDg1LDExNzM3MzE1OD
-gsNzY0OTgxNzUzLC0xNzk1NzU3MzI0LC00NzUzNTM4NTYsMTgx
-MTk4Mjc1MV19
+eyJoaXN0b3J5IjpbMTY5NTM5OTg2NSw4MzQ5MTQzNjEsLTE5OD
+Y0MDY5ODUsMTA2NTM0OTcwMCwtOTgyNzAzODE1LC05MzIwNzg1
+OCwzNjAwODc2ODMsLTE3Mzc1NDgyNjcsLTU0ODczNzk1LDEwMT
+Q0NDcxNzIsLTIwMTkzNDE3NDAsLTI1NjM3MTE3OCwtMTQyODUx
+NjQyOCwtODk5MTMzNDAzLC0xMTQ5MjQ5MTAxLC03OTU0MzEwOD
+UsMTE3MzczMTU4OCw3NjQ5ODE3NTMsLTE3OTU3NTczMjQsLTQ3
+NTM1Mzg1Nl19
 -->
