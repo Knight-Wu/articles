@@ -394,7 +394,7 @@ public class TimeDecoder extends ReplayingDecoder<Void> {
 以dubbo decode 为例, 每次channel 读取了一部分字节, 就decode 一部分数据看看是否已经得到了完整的数据对象, 因为编码的时候会把数据长度也编码到字节流的header 中, 如果字节长度不够, 则会跳过此次轮训, 等待下次轮训的时候再次检查字节长度, 如果超过了, 则取字节长度的字节流, dubbo 字节头部的编码方式如图: 
 ![enter image description here](https://drive.google.com/uc?id=1Af-c0cPmH_qwpaMZkEHgKVF2dvFqCWwB)
 dubbo encode data header length: 16 bytes
-包括: magic number, 
+包括: magic number, request id, 序列化的contentTypeId, 是否
 
 
 #### 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
@@ -444,7 +444,7 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzU4ODQwOTMsLTIwMzE2MzczOTAsNz
+eyJoaXN0b3J5IjpbLTIwOTc4OTExNDAsLTIwMzE2MzczOTAsNz
 M3MzU4NjMwLC0yNzY0NTM4NDksMTE1NjIyOTg2NiwxNjk1Mzk5
 ODY1LDgzNDkxNDM2MSwtMTk4NjQwNjk4NSwxMDY1MzQ5NzAwLC
 05ODI3MDM4MTUsLTkzMjA3ODU4LDM2MDA4NzY4MywtMTczNzU0
