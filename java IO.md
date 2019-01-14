@@ -397,7 +397,11 @@ System.out.println((char)buf.getByte(0));
 assert readerIndex == buf.readerIndex();
 assert writerIndex == buf.writerIndex();
 ```
-* 
+* 工厂方法
+ByteBufAllocator, ByteBufHolder, Unpooled
+
+* 工具方法
+ByteBufUtil
 
 ### 疑问
 * netty channel and linux socket
@@ -412,11 +416,11 @@ assert writerIndex == buf.writerIndex();
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5ODQzNjYzNywtOTMyMDc4NTgsMzYwMD
-g3NjgzLC0xNzM3NTQ4MjY3LC01NDg3Mzc5NSwxMDE0NDQ3MTcy
-LC0yMDE5MzQxNzQwLC0yNTYzNzExNzgsLTE0Mjg1MTY0MjgsLT
-g5OTEzMzQwMywtMTE0OTI0OTEwMSwtNzk1NDMxMDg1LDExNzM3
-MzE1ODgsNzY0OTgxNzUzLC0xNzk1NzU3MzI0LC00NzUzNTM4NT
-YsMTgxMTk4Mjc1MSwtMzg1OTQ1MzYxLC03MzgyNDU1NzgsMTcy
-NjMzODYxNF19
+eyJoaXN0b3J5IjpbNjk5NDE5MzgyLC05MzIwNzg1OCwzNjAwOD
+c2ODMsLTE3Mzc1NDgyNjcsLTU0ODczNzk1LDEwMTQ0NDcxNzIs
+LTIwMTkzNDE3NDAsLTI1NjM3MTE3OCwtMTQyODUxNjQyOCwtOD
+k5MTMzNDAzLC0xMTQ5MjQ5MTAxLC03OTU0MzEwODUsMTE3Mzcz
+MTU4OCw3NjQ5ODE3NTMsLTE3OTU3NTczMjQsLTQ3NTM1Mzg1Ni
+wxODExOTgyNzUxLC0zODU5NDUzNjEsLTczODI0NTU3OCwxNzI2
+MzM4NjE0XX0=
 -->
