@@ -361,7 +361,7 @@ in that listing, replace NioEventLoopGroup with EpollEventLoopGroup and NioServe
 SocketChannel.class with EpollServerSocketChannel.class. // 使用基于epoll 的netty api
 
 #### Dealing with a Stream-based Transport
-网络传输的单位是字节, 并且接收和发送都有缓存, 有可能接收到的字节未达到一个单位消息的字节大小, 那么收到的消息就是不完全的, 所以需要额外的解码和编码. 具体见 https://netty.io/wiki/user-guide-for-4.x.html " Dealing with a Stream-based Transport", 在CHANELPipeline 添加handler 
+网络传输的单位是字节, 并且接收和发送都有缓存, 有可能接收到的字节未达到一个单位消息的字节大小, 那么收到的消息就是不完全的, 所以需要额外的解码和编码. 具体见 https://netty.io/wiki/user-guide-for-4.x.html " Dealing with a Stream-based Transport", 解决方法是在CHANELPipeline 添加handler 
 ```
 public class TimeDecoder extends ReplayingDecoder<Void> {
     @Override
@@ -391,11 +391,11 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjIzNzA4MTg2LC01NDg3Mzc5NSwxMDE0ND
-Q3MTcyLC0yMDE5MzQxNzQwLC0yNTYzNzExNzgsLTE0Mjg1MTY0
-MjgsLTg5OTEzMzQwMywtMTE0OTI0OTEwMSwtNzk1NDMxMDg1LD
-ExNzM3MzE1ODgsNzY0OTgxNzUzLC0xNzk1NzU3MzI0LC00NzUz
-NTM4NTYsMTgxMTk4Mjc1MSwtMzg1OTQ1MzYxLC03MzgyNDU1Nz
-gsMTcyNjMzODYxNCwtMTgyMDk2NTI4MSwxODIzMjgzMjQxLDEy
-NTYyNTEwMzFdfQ==
+eyJoaXN0b3J5IjpbLTE3Mzc1NDgyNjcsLTU0ODczNzk1LDEwMT
+Q0NDcxNzIsLTIwMTkzNDE3NDAsLTI1NjM3MTE3OCwtMTQyODUx
+NjQyOCwtODk5MTMzNDAzLC0xMTQ5MjQ5MTAxLC03OTU0MzEwOD
+UsMTE3MzczMTU4OCw3NjQ5ODE3NTMsLTE3OTU3NTczMjQsLTQ3
+NTM1Mzg1NiwxODExOTgyNzUxLC0zODU5NDUzNjEsLTczODI0NT
+U3OCwxNzI2MzM4NjE0LC0xODIwOTY1MjgxLDE4MjMyODMyNDEs
+MTI1NjI1MTAzMV19
 -->
