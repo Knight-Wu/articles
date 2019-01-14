@@ -309,6 +309,10 @@ Channel events.
 在netty 中所有的IO 操作都是异步的, 
 
 #### ChannelPipeline
+* channelHandler, channelPipeline, channelHandlerContext 关系
+![enter image description here](https://drive.google.com/uc?id=1siMHP8xl-eThZ8S1Z6t09eDXbdgZ1NCD)
+
+
 >A ChannelPipeline provides a container for a chain of ChannelHandlers and defines
 an API for propagating the flow of inbound and outbound events along the chain.
 When a Channel is created, it is automatically assigned its own ChannelPipeline.
@@ -420,11 +424,11 @@ java -Dio.netty.leakDetectionLevel=ADVANCED
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjkzMDAxNjE5LC05ODI3MDM4MTUsLTkzMj
-A3ODU4LDM2MDA4NzY4MywtMTczNzU0ODI2NywtNTQ4NzM3OTUs
-MTAxNDQ0NzE3MiwtMjAxOTM0MTc0MCwtMjU2MzcxMTc4LC0xND
-I4NTE2NDI4LC04OTkxMzM0MDMsLTExNDkyNDkxMDEsLTc5NTQz
-MTA4NSwxMTczNzMxNTg4LDc2NDk4MTc1MywtMTc5NTc1NzMyNC
-wtNDc1MzUzODU2LDE4MTE5ODI3NTEsLTM4NTk0NTM2MSwtNzM4
-MjQ1NTc4XX0=
+eyJoaXN0b3J5IjpbMTA2NTM0OTcwMCwtOTgyNzAzODE1LC05Mz
+IwNzg1OCwzNjAwODc2ODMsLTE3Mzc1NDgyNjcsLTU0ODczNzk1
+LDEwMTQ0NDcxNzIsLTIwMTkzNDE3NDAsLTI1NjM3MTE3OCwtMT
+QyODUxNjQyOCwtODk5MTMzNDAzLC0xMTQ5MjQ5MTAxLC03OTU0
+MzEwODUsMTE3MzczMTU4OCw3NjQ5ODE3NTMsLTE3OTU3NTczMj
+QsLTQ3NTM1Mzg1NiwxODExOTgyNzUxLC0zODU5NDUzNjEsLTcz
+ODI0NTU3OF19
 -->
