@@ -328,6 +328,15 @@ c. The ChannelInitializer removes itself from the ChannelPipeline.
 and you can think of it as a generic container for any code that processes events
 (including data) coming and going through the ChannelPipeline // 理解为用户业务代码和将要处理的事件和数据的容器
 
+* sharable
+A ChannelHandler intended
+for this use must be annotated with @Sharable; otherwise, attempting to add it to
+more than one ChannelPipeline will trigger an exception.
+
+> WHY SHARE A CHANNELHANDLER? A common reason for installing a single
+ChannelHandler in multiple ChannelPipelines is to gather statistics across
+multiple Channels
+
 * 作用
 Typical uses for ChannelHandlers include:
 ■ Transforming data from one format to another
@@ -424,11 +433,11 @@ java -Dio.netty.leakDetectionLevel=ADVANCED
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA2NTM0OTcwMCwtOTgyNzAzODE1LC05Mz
-IwNzg1OCwzNjAwODc2ODMsLTE3Mzc1NDgyNjcsLTU0ODczNzk1
-LDEwMTQ0NDcxNzIsLTIwMTkzNDE3NDAsLTI1NjM3MTE3OCwtMT
-QyODUxNjQyOCwtODk5MTMzNDAzLC0xMTQ5MjQ5MTAxLC03OTU0
-MzEwODUsMTE3MzczMTU4OCw3NjQ5ODE3NTMsLTE3OTU3NTczMj
-QsLTQ3NTM1Mzg1NiwxODExOTgyNzUxLC0zODU5NDUzNjEsLTcz
-ODI0NTU3OF19
+eyJoaXN0b3J5IjpbLTE5ODY0MDY5ODUsMTA2NTM0OTcwMCwtOT
+gyNzAzODE1LC05MzIwNzg1OCwzNjAwODc2ODMsLTE3Mzc1NDgy
+NjcsLTU0ODczNzk1LDEwMTQ0NDcxNzIsLTIwMTkzNDE3NDAsLT
+I1NjM3MTE3OCwtMTQyODUxNjQyOCwtODk5MTMzNDAzLC0xMTQ5
+MjQ5MTAxLC03OTU0MzEwODUsMTE3MzczMTU4OCw3NjQ5ODE3NT
+MsLTE3OTU3NTczMjQsLTQ3NTM1Mzg1NiwxODExOTgyNzUxLC0z
+ODU5NDUzNjFdfQ==
 -->
