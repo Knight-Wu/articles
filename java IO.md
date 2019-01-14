@@ -426,7 +426,8 @@ java -Dio.netty.leakDetectionLevel=ADVANCED
 ```
 
 ### 疑问
-* netty channel and linux socket
+* netty timeout and idle connection
+* dubbo 如何把b
 * Listen socket and connected socket 
 * What is file descripter
 * MappedByteBuffer and directByteBuffer
@@ -438,11 +439,11 @@ java -Dio.netty.leakDetectionLevel=ADVANCED
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5NTM5OTg2NSw4MzQ5MTQzNjEsLTE5OD
-Y0MDY5ODUsMTA2NTM0OTcwMCwtOTgyNzAzODE1LC05MzIwNzg1
-OCwzNjAwODc2ODMsLTE3Mzc1NDgyNjcsLTU0ODczNzk1LDEwMT
-Q0NDcxNzIsLTIwMTkzNDE3NDAsLTI1NjM3MTE3OCwtMTQyODUx
-NjQyOCwtODk5MTMzNDAzLC0xMTQ5MjQ5MTAxLC03OTU0MzEwOD
-UsMTE3MzczMTU4OCw3NjQ5ODE3NTMsLTE3OTU3NTczMjQsLTQ3
-NTM1Mzg1Nl19
+eyJoaXN0b3J5IjpbMjQ2OTU5NTQ1LDE2OTUzOTk4NjUsODM0OT
+E0MzYxLC0xOTg2NDA2OTg1LDEwNjUzNDk3MDAsLTk4MjcwMzgx
+NSwtOTMyMDc4NTgsMzYwMDg3NjgzLC0xNzM3NTQ4MjY3LC01ND
+g3Mzc5NSwxMDE0NDQ3MTcyLC0yMDE5MzQxNzQwLC0yNTYzNzEx
+NzgsLTE0Mjg1MTY0MjgsLTg5OTEzMzQwMywtMTE0OTI0OTEwMS
+wtNzk1NDMxMDg1LDExNzM3MzE1ODgsNzY0OTgxNzUzLC0xNzk1
+NzU3MzI0XX0=
 -->
