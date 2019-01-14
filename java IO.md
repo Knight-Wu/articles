@@ -298,7 +298,8 @@ Channel events.
 
 * netty IO thread model
 **boss EventLoopGroup** 负责accept connection, 并把channel registe to worker threads. EventLoopGroup 如果不指定构造函数, 使用的是默认的jdk ScheduledThreadPool, 线程数量是cpu 核心数*2. 
-**worker EventLoopGroup** 负责执行具体的io operation, 一个channel 的所有事件, 包括connect, read, write和注册的所有 channelHandlers 都会由一个 worker threads 执行, 避免了多线程的同步和线程切换问题, channel 和thread 的模型是: N:1, 所以一个事件的延迟会阻塞到这个channel 的其他事件和其他channel 事件, 这个同步阻塞问题如何解决? 
+**worker EventLoopGroup** 负责执行具体的io operation, 一个channel 的所有事件, 包括connect, read, write和注册的所有 channelHandlers 都会由一个 worker threads 执行, 避免了多线程的同步和线程切换问题, channel 和thread 的模型是: N:1, 所以一个事件的延迟会阻塞到这个channel 的其他事件和其他channel 事件, 所以长时间运行的event 需要新建线程池处理, 如下图
+![enter image description here](https://drive.google.com/uc?id=1WQUx6bJJBY0baCRcIRK167g80UmE4eqj)
 
 #### Channel
 ![enter image description here](https://drive.google.com/uc?id=1aaIWakV2GzVZKYT0fhbKbDEJoO27GG9z)
@@ -379,11 +380,11 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxNDQ0NzE3MiwtMjAxOTM0MTc0MCwtMj
-U2MzcxMTc4LC0xNDI4NTE2NDI4LC04OTkxMzM0MDMsLTExNDky
-NDkxMDEsLTc5NTQzMTA4NSwxMTczNzMxNTg4LDc2NDk4MTc1My
-wtMTc5NTc1NzMyNCwtNDc1MzUzODU2LDE4MTE5ODI3NTEsLTM4
-NTk0NTM2MSwtNzM4MjQ1NTc4LDE3MjYzMzg2MTQsLTE4MjA5Nj
-UyODEsMTgyMzI4MzI0MSwxMjU2MjUxMDMxLDE1MTQ2MTI4NTUs
-MTE2NDM2NzY2NV19
+eyJoaXN0b3J5IjpbLTU0ODczNzk1LDEwMTQ0NDcxNzIsLTIwMT
+kzNDE3NDAsLTI1NjM3MTE3OCwtMTQyODUxNjQyOCwtODk5MTMz
+NDAzLC0xMTQ5MjQ5MTAxLC03OTU0MzEwODUsMTE3MzczMTU4OC
+w3NjQ5ODE3NTMsLTE3OTU3NTczMjQsLTQ3NTM1Mzg1NiwxODEx
+OTgyNzUxLC0zODU5NDUzNjEsLTczODI0NTU3OCwxNzI2MzM4Nj
+E0LC0xODIwOTY1MjgxLDE4MjMyODMyNDEsMTI1NjI1MTAzMSwx
+NTE0NjEyODU1XX0=
 -->
