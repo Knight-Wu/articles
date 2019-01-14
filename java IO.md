@@ -391,7 +391,7 @@ public class TimeDecoder extends ReplayingDecoder<Void> {
 ```
 
 * 如何将字节数组转化为对象呢
-可以通过 MessageToByteEncoder 实现, 但是需要事先知道对象的字节大小?
+y可以通过 MessageToByteEncoder 实现, 但是需要事先知道对象的字节大小?
 
 #### 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
@@ -440,11 +440,11 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3NjQ1Mzg0OSwxMTU2MjI5ODY2LDE2OT
-UzOTk4NjUsODM0OTE0MzYxLC0xOTg2NDA2OTg1LDEwNjUzNDk3
-MDAsLTk4MjcwMzgxNSwtOTMyMDc4NTgsMzYwMDg3NjgzLC0xNz
-M3NTQ4MjY3LC01NDg3Mzc5NSwxMDE0NDQ3MTcyLC0yMDE5MzQx
-NzQwLC0yNTYzNzExNzgsLTE0Mjg1MTY0MjgsLTg5OTEzMzQwMy
-wtMTE0OTI0OTEwMSwtNzk1NDMxMDg1LDExNzM3MzE1ODgsNzY0
-OTgxNzUzXX0=
+eyJoaXN0b3J5IjpbLTEyMDU1ODA4NTAsLTI3NjQ1Mzg0OSwxMT
+U2MjI5ODY2LDE2OTUzOTk4NjUsODM0OTE0MzYxLC0xOTg2NDA2
+OTg1LDEwNjUzNDk3MDAsLTk4MjcwMzgxNSwtOTMyMDc4NTgsMz
+YwMDg3NjgzLC0xNzM3NTQ4MjY3LC01NDg3Mzc5NSwxMDE0NDQ3
+MTcyLC0yMDE5MzQxNzQwLC0yNTYzNzExNzgsLTE0Mjg1MTY0Mj
+gsLTg5OTEzMzQwMywtMTE0OTI0OTEwMSwtNzk1NDMxMDg1LDEx
+NzM3MzE1ODhdfQ==
 -->
