@@ -382,6 +382,8 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 #### netty bytebuffer
 相比于jdk 原生的bytebuffer, 没有类似flip() 的方法用于读写的转变, 因为它有读写两个指针, 如图
+![enter image description here](https://drive.google.com/uc?id=1kfRUR1sa27tBjPhQ_9XHffPO6JqKTi15)
+
 
 ### 疑问
 * netty channel and linux socket
@@ -396,7 +398,7 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk3MTE4ODk2LDM2MDA4NzY4MywtMTczNz
+eyJoaXN0b3J5IjpbLTkzMjA3ODU4LDM2MDA4NzY4MywtMTczNz
 U0ODI2NywtNTQ4NzM3OTUsMTAxNDQ0NzE3MiwtMjAxOTM0MTc0
 MCwtMjU2MzcxMTc4LC0xNDI4NTE2NDI4LC04OTkxMzM0MDMsLT
 ExNDkyNDkxMDEsLTc5NTQzMTA4NSwxMTczNzMxNTg4LDc2NDk4
