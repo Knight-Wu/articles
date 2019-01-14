@@ -34,7 +34,6 @@
 * yarn 虚拟内存和虚拟cpu 用来干啥
 
 * yarn 用mr 作业收集container使用情况的原理和作用
-* protocol buffer 
 * 为啥nio 要用byte buffer, 懂了io 模型之后还要知道设计api 的时候, 各种api 的好处以及作用
 
 ### DOING
@@ -83,11 +82,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODg3MzAxNywtOTg3NDQxMDg0LDE2NjIxND
-cxOTEsLTEzNDY1MzA1MzcsLTg0ODU3NDQ0NiwyMTY3ODk3Nzgs
-LTExMzExMjI2ODUsMTQ2MDgxMTk1OSwxNDc3NTY5NzY4LC0xOT
-gwMjc2NjI5LDExNjcxOTA3MTksLTY5ODY3MzMzNCwxNjU3MjM1
-MDcwLC04OTc2NTQwOTQsLTEzODQxNTM2MzAsLTEzMDkwNzcxNT
-YsLTExNjg2MDI3MzYsLTE2MDAzNTYwNzIsLTE0NDMzNTMzMDks
-LTIxMzE1ODY5MzldfQ==
+eyJoaXN0b3J5IjpbMTczMjI0MDc5Myw4ODczMDE3LC05ODc0ND
+EwODQsMTY2MjE0NzE5MSwtMTM0NjUzMDUzNywtODQ4NTc0NDQ2
+LDIxNjc4OTc3OCwtMTEzMTEyMjY4NSwxNDYwODExOTU5LDE0Nz
+c1Njk3NjgsLTE5ODAyNzY2MjksMTE2NzE5MDcxOSwtNjk4Njcz
+MzM0LDE2NTcyMzUwNzAsLTg5NzY1NDA5NCwtMTM4NDE1MzYzMC
+wtMTMwOTA3NzE1NiwtMTE2ODYwMjczNiwtMTYwMDM1NjA3Miwt
+MTQ0MzM1MzMwOV19
 -->
