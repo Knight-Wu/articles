@@ -375,10 +375,12 @@ public class TimeDecoder extends ReplayingDecoder<Void> {
 * 如何将字节数组转化为对象呢
 可以通过 MessageToByteEncoder 实现, 但是需要事先知道对象的字节大小?
 
-* 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
+#### 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
 公式: Nthread = (1+Tio/Tcpu)*Ncpu, 
 Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=1秒, Tcpu=1s, Nt= 2个线程, 那么在一个完整的执行周期 2S 内, 这个cpu 需要切换线程一次, 才能效率最高. 
+
+####
 
 ### 疑问
 * netty channel and linux socket
@@ -393,11 +395,11 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzYwMDg3NjgzLC0xNzM3NTQ4MjY3LC01ND
-g3Mzc5NSwxMDE0NDQ3MTcyLC0yMDE5MzQxNzQwLC0yNTYzNzEx
-NzgsLTE0Mjg1MTY0MjgsLTg5OTEzMzQwMywtMTE0OTI0OTEwMS
-wtNzk1NDMxMDg1LDExNzM3MzE1ODgsNzY0OTgxNzUzLC0xNzk1
-NzU3MzI0LC00NzUzNTM4NTYsMTgxMTk4Mjc1MSwtMzg1OTQ1Mz
-YxLC03MzgyNDU1NzgsMTcyNjMzODYxNCwtMTgyMDk2NTI4MSwx
-ODIzMjgzMjQxXX0=
+eyJoaXN0b3J5IjpbMTA2MjgxNzAzMywzNjAwODc2ODMsLTE3Mz
+c1NDgyNjcsLTU0ODczNzk1LDEwMTQ0NDcxNzIsLTIwMTkzNDE3
+NDAsLTI1NjM3MTE3OCwtMTQyODUxNjQyOCwtODk5MTMzNDAzLC
+0xMTQ5MjQ5MTAxLC03OTU0MzEwODUsMTE3MzczMTU4OCw3NjQ5
+ODE3NTMsLTE3OTU3NTczMjQsLTQ3NTM1Mzg1NiwxODExOTgyNz
+UxLC0zODU5NDUzNjEsLTczODI0NTU3OCwxNzI2MzM4NjE0LC0x
+ODIwOTY1MjgxXX0=
 -->
