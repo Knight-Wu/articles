@@ -360,6 +360,8 @@ its Channel. // server Bootstrapping 有两个EventLoopGroup , 一个绑定了Se
 in that listing, replace NioEventLoopGroup with EpollEventLoopGroup and NioServer-
 SocketChannel.class with EpollServerSocketChannel.class. // 使用基于epoll 的netty api
 
+#### Dealing with a Stream-based Transport
+网络传输的单位是字节, 并且接收和发送都有缓存, 有可能jiesho
 
 * 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
@@ -380,11 +382,11 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0ODczNzk1LDEwMTQ0NDcxNzIsLTIwMT
-kzNDE3NDAsLTI1NjM3MTE3OCwtMTQyODUxNjQyOCwtODk5MTMz
-NDAzLC0xMTQ5MjQ5MTAxLC03OTU0MzEwODUsMTE3MzczMTU4OC
-w3NjQ5ODE3NTMsLTE3OTU3NTczMjQsLTQ3NTM1Mzg1NiwxODEx
-OTgyNzUxLC0zODU5NDUzNjEsLTczODI0NTU3OCwxNzI2MzM4Nj
-E0LC0xODIwOTY1MjgxLDE4MjMyODMyNDEsMTI1NjI1MTAzMSwx
-NTE0NjEyODU1XX0=
+eyJoaXN0b3J5IjpbMTE5MDg3NDg5OCwtNTQ4NzM3OTUsMTAxND
+Q0NzE3MiwtMjAxOTM0MTc0MCwtMjU2MzcxMTc4LC0xNDI4NTE2
+NDI4LC04OTkxMzM0MDMsLTExNDkyNDkxMDEsLTc5NTQzMTA4NS
+wxMTczNzMxNTg4LDc2NDk4MTc1MywtMTc5NTc1NzMyNCwtNDc1
+MzUzODU2LDE4MTE5ODI3NTEsLTM4NTk0NTM2MSwtNzM4MjQ1NT
+c4LDE3MjYzMzg2MTQsLTE4MjA5NjUyODEsMTgyMzI4MzI0MSwx
+MjU2MjUxMDMxXX0=
 -->
