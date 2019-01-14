@@ -380,7 +380,8 @@ public class TimeDecoder extends ReplayingDecoder<Void> {
 公式: Nthread = (1+Tio/Tcpu)*Ncpu, 
 Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=1秒, Tcpu=1s, Nt= 2个线程, 那么在一个完整的执行周期 2S 内, 这个cpu 需要切换线程一次, 才能效率最高. 
 
-####
+#### netty bytebuffer
+相比于jdk 原生的bytebuffer, 没有类似flip() 的方法用于读写的转变, 因为它有读写两个指针, 如图
 
 ### 疑问
 * netty channel and linux socket
@@ -395,11 +396,11 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA2MjgxNzAzMywzNjAwODc2ODMsLTE3Mz
-c1NDgyNjcsLTU0ODczNzk1LDEwMTQ0NDcxNzIsLTIwMTkzNDE3
-NDAsLTI1NjM3MTE3OCwtMTQyODUxNjQyOCwtODk5MTMzNDAzLC
-0xMTQ5MjQ5MTAxLC03OTU0MzEwODUsMTE3MzczMTU4OCw3NjQ5
-ODE3NTMsLTE3OTU3NTczMjQsLTQ3NTM1Mzg1NiwxODExOTgyNz
-UxLC0zODU5NDUzNjEsLTczODI0NTU3OCwxNzI2MzM4NjE0LC0x
-ODIwOTY1MjgxXX0=
+eyJoaXN0b3J5IjpbOTk3MTE4ODk2LDM2MDA4NzY4MywtMTczNz
+U0ODI2NywtNTQ4NzM3OTUsMTAxNDQ0NzE3MiwtMjAxOTM0MTc0
+MCwtMjU2MzcxMTc4LC0xNDI4NTE2NDI4LC04OTkxMzM0MDMsLT
+ExNDkyNDkxMDEsLTc5NTQzMTA4NSwxMTczNzMxNTg4LDc2NDk4
+MTc1MywtMTc5NTc1NzMyNCwtNDc1MzUzODU2LDE4MTE5ODI3NT
+EsLTM4NTk0NTM2MSwtNzM4MjQ1NTc4LDE3MjYzMzg2MTQsLTE4
+MjA5NjUyODFdfQ==
 -->
