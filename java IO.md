@@ -397,6 +397,8 @@ System.out.println((char)buf.getByte(0));
 assert readerIndex == buf.readerIndex();
 assert writerIndex == buf.writerIndex();
 ```
+* 
+
 ### 疑问
 * netty channel and linux socket
 * Listen socket and connected socket 
@@ -410,11 +412,11 @@ assert writerIndex == buf.writerIndex();
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMjM3NTMyNzEsLTkzMjA3ODU4LDM2MD
-A4NzY4MywtMTczNzU0ODI2NywtNTQ4NzM3OTUsMTAxNDQ0NzE3
-MiwtMjAxOTM0MTc0MCwtMjU2MzcxMTc4LC0xNDI4NTE2NDI4LC
-04OTkxMzM0MDMsLTExNDkyNDkxMDEsLTc5NTQzMTA4NSwxMTcz
-NzMxNTg4LDc2NDk4MTc1MywtMTc5NTc1NzMyNCwtNDc1MzUzOD
-U2LDE4MTE5ODI3NTEsLTM4NTk0NTM2MSwtNzM4MjQ1NTc4LDE3
-MjYzMzg2MTRdfQ==
+eyJoaXN0b3J5IjpbLTU5ODQzNjYzNywtOTMyMDc4NTgsMzYwMD
+g3NjgzLC0xNzM3NTQ4MjY3LC01NDg3Mzc5NSwxMDE0NDQ3MTcy
+LC0yMDE5MzQxNzQwLC0yNTYzNzExNzgsLTE0Mjg1MTY0MjgsLT
+g5OTEzMzQwMywtMTE0OTI0OTEwMSwtNzk1NDMxMDg1LDExNzM3
+MzE1ODgsNzY0OTgxNzUzLC0xNzk1NzU3MzI0LC00NzUzNTM4NT
+YsMTgxMTk4Mjc1MSwtMzg1OTQ1MzYxLC03MzgyNDU1NzgsMTcy
+NjMzODYxNF19
 -->
