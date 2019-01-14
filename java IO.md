@@ -391,7 +391,7 @@ public class TimeDecoder extends ReplayingDecoder<Void> {
 ```
 
 * 如何将字节数组转化为对象呢
-以dubbo decode 为例, 每次channel 读取了一部分字节, 就decode 一部分数据看看是否已经得到了完整的数据对象, 因为编码的时候会把数据长度也编码到字节流中, 如果字节长度bu可以通过 MessageToByteEncoder 实现, 但是需要事先知道对象的字节大小?
+以dubbo decode 为例, 每次channel 读取了一部分字节, 就decode 一部分数据看看是否已经得到了完整的数据对象, 因为编码的时候会把数据长度也编码到字节流中, 如果字节长度不够, 则会跳过此次轮训, 等待下次轮训的时候再次检查字节长度, 
 
 #### 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
 
@@ -440,11 +440,11 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4NjI5NTkxMSwtMjc2NDUzODQ5LDExNT
-YyMjk4NjYsMTY5NTM5OTg2NSw4MzQ5MTQzNjEsLTE5ODY0MDY5
-ODUsMTA2NTM0OTcwMCwtOTgyNzAzODE1LC05MzIwNzg1OCwzNj
-AwODc2ODMsLTE3Mzc1NDgyNjcsLTU0ODczNzk1LDEwMTQ0NDcx
-NzIsLTIwMTkzNDE3NDAsLTI1NjM3MTE3OCwtMTQyODUxNjQyOC
-wtODk5MTMzNDAzLC0xMTQ5MjQ5MTAxLC03OTU0MzEwODUsMTE3
-MzczMTU4OF19
+eyJoaXN0b3J5IjpbNzM3MzU4NjMwLC0yNzY0NTM4NDksMTE1Nj
+IyOTg2NiwxNjk1Mzk5ODY1LDgzNDkxNDM2MSwtMTk4NjQwNjk4
+NSwxMDY1MzQ5NzAwLC05ODI3MDM4MTUsLTkzMjA3ODU4LDM2MD
+A4NzY4MywtMTczNzU0ODI2NywtNTQ4NzM3OTUsMTAxNDQ0NzE3
+MiwtMjAxOTM0MTc0MCwtMjU2MzcxMTc4LC0xNDI4NTE2NDI4LC
+04OTkxMzM0MDMsLTExNDkyNDkxMDEsLTc5NTQzMTA4NSwxMTcz
+NzMxNTg4XX0=
 -->
