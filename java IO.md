@@ -385,6 +385,18 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 ![enter image description here](https://drive.google.com/uc?id=1kfRUR1sa27tBjPhQ_9XHffPO6JqKTi15)
 
 
+* 用法
+```
+Charset utf8 = Charset.forName("UTF-8");
+ByteBuf buf = Unpooled.copiedBuffer("Netty in Action rocks!", utf8);
+System.out.println((char)buf.getByte(0));
+int readerIndex = buf.readerIndex();
+int writerIndex = buf.writerIndex();
+buf.setByte(0, (byte)'B');
+System.out.println((char)buf.getByte(0));
+assert readerIndex == buf.readerIndex();
+assert writerIndex == buf.writerIndex();
+```
 ### 疑问
 * netty channel and linux socket
 * Listen socket and connected socket 
@@ -398,11 +410,11 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzMjA3ODU4LDM2MDA4NzY4MywtMTczNz
-U0ODI2NywtNTQ4NzM3OTUsMTAxNDQ0NzE3MiwtMjAxOTM0MTc0
-MCwtMjU2MzcxMTc4LC0xNDI4NTE2NDI4LC04OTkxMzM0MDMsLT
-ExNDkyNDkxMDEsLTc5NTQzMTA4NSwxMTczNzMxNTg4LDc2NDk4
-MTc1MywtMTc5NTc1NzMyNCwtNDc1MzUzODU2LDE4MTE5ODI3NT
-EsLTM4NTk0NTM2MSwtNzM4MjQ1NTc4LDE3MjYzMzg2MTQsLTE4
-MjA5NjUyODFdfQ==
+eyJoaXN0b3J5IjpbLTIwMjM3NTMyNzEsLTkzMjA3ODU4LDM2MD
+A4NzY4MywtMTczNzU0ODI2NywtNTQ4NzM3OTUsMTAxNDQ0NzE3
+MiwtMjAxOTM0MTc0MCwtMjU2MzcxMTc4LC0xNDI4NTE2NDI4LC
+04OTkxMzM0MDMsLTExNDkyNDkxMDEsLTc5NTQzMTA4NSwxMTcz
+NzMxNTg4LDc2NDk4MTc1MywtMTc5NTc1NzMyNCwtNDc1MzUzOD
+U2LDE4MTE5ODI3NTEsLTM4NTk0NTM2MSwtNzM4MjQ1NTc4LDE3
+MjYzMzg2MTRdfQ==
 -->
