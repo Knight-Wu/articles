@@ -401,7 +401,11 @@ assert writerIndex == buf.writerIndex();
 ByteBufAllocator, ByteBufHolder, Unpooled
 
 * 工具方法
-ByteBufUtil, ReferenceCounted 对ByteBuffer 引用计数法回收
+ByteBufUtil, ReferenceCounted 对ByteBuffer 引用计数法回收, 
+```
+java -Dio.netty.leakDetectionLevel=ADVANCED 
+// 可以用netty 抽样检查bytebuffer 是否有泄漏
+```
 
 ### 疑问
 * netty channel and linux socket
@@ -416,11 +420,11 @@ ByteBufUtil, ReferenceCounted 对ByteBuffer 引用计数法回收
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4MjcwMzgxNSwtOTMyMDc4NTgsMzYwMD
-g3NjgzLC0xNzM3NTQ4MjY3LC01NDg3Mzc5NSwxMDE0NDQ3MTcy
-LC0yMDE5MzQxNzQwLC0yNTYzNzExNzgsLTE0Mjg1MTY0MjgsLT
-g5OTEzMzQwMywtMTE0OTI0OTEwMSwtNzk1NDMxMDg1LDExNzM3
-MzE1ODgsNzY0OTgxNzUzLC0xNzk1NzU3MzI0LC00NzUzNTM4NT
-YsMTgxMTk4Mjc1MSwtMzg1OTQ1MzYxLC03MzgyNDU1NzgsMTcy
-NjMzODYxNF19
+eyJoaXN0b3J5IjpbMjkzMDAxNjE5LC05ODI3MDM4MTUsLTkzMj
+A3ODU4LDM2MDA4NzY4MywtMTczNzU0ODI2NywtNTQ4NzM3OTUs
+MTAxNDQ0NzE3MiwtMjAxOTM0MTc0MCwtMjU2MzcxMTc4LC0xND
+I4NTE2NDI4LC04OTkxMzM0MDMsLTExNDkyNDkxMDEsLTc5NTQz
+MTA4NSwxMTczNzMxNTg4LDc2NDk4MTc1MywtMTc5NTc1NzMyNC
+wtNDc1MzUzODU2LDE4MTE5ODI3NTEsLTM4NTk0NTM2MSwtNzM4
+MjQ1NTc4XX0=
 -->
