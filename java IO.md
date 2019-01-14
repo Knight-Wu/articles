@@ -289,6 +289,9 @@ The Echo client will
 #### EventLoop
 ![enter image description here](https://drive.google.com/uc?id=1Ul-aPtMSynBht574s51DFaiOIHG4ddi2)
 
+events 在EventLoopGroup间传递
+
+
 包括两个部分, 一是concurrent, 二是networking, 
 >Netty’s EventLoop is part of a collaborative design that employs two fundamental APIs:
 concurrency and networking. First, the package io.netty.util.concurrent builds
@@ -297,6 +300,7 @@ classes in the package io.netty.channel extend these in order to interface with
 Channel events.
 
 * netty IO thread model
+
 **boss EventLoopGroup** 负责accept connection, 并把channel registe to worker threads. EventLoopGroup 如果不指定构造函数, 使用的是默认的jdk ScheduledThreadPool, 线程数量是cpu 核心数*2. 
 **worker EventLoopGroup** 负责执行具体的io operation, 一个channel 的所有事件, 包括connect, read, write和注册的所有 channelHandlers 都会由一个 worker threads 执行, 避免了多线程的同步和线程切换问题, channel 和thread 的模型是: N:1, 所以一个事件的延迟会阻塞到这个channel 的其他事件和其他channel 事件, 所以长时间运行的event 需要新建线程池处理, 如下图
 ![enter image description here](https://drive.google.com/uc?id=1WQUx6bJJBY0baCRcIRK167g80UmE4eqj)
@@ -433,11 +437,11 @@ java -Dio.netty.leakDetectionLevel=ADVANCED
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODY0MDY5ODUsMTA2NTM0OTcwMCwtOT
-gyNzAzODE1LC05MzIwNzg1OCwzNjAwODc2ODMsLTE3Mzc1NDgy
-NjcsLTU0ODczNzk1LDEwMTQ0NDcxNzIsLTIwMTkzNDE3NDAsLT
-I1NjM3MTE3OCwtMTQyODUxNjQyOCwtODk5MTMzNDAzLC0xMTQ5
-MjQ5MTAxLC03OTU0MzEwODUsMTE3MzczMTU4OCw3NjQ5ODE3NT
-MsLTE3OTU3NTczMjQsLTQ3NTM1Mzg1NiwxODExOTgyNzUxLC0z
-ODU5NDUzNjFdfQ==
+eyJoaXN0b3J5IjpbODM0OTE0MzYxLC0xOTg2NDA2OTg1LDEwNj
+UzNDk3MDAsLTk4MjcwMzgxNSwtOTMyMDc4NTgsMzYwMDg3Njgz
+LC0xNzM3NTQ4MjY3LC01NDg3Mzc5NSwxMDE0NDQ3MTcyLC0yMD
+E5MzQxNzQwLC0yNTYzNzExNzgsLTE0Mjg1MTY0MjgsLTg5OTEz
+MzQwMywtMTE0OTI0OTEwMSwtNzk1NDMxMDg1LDExNzM3MzE1OD
+gsNzY0OTgxNzUzLC0xNzk1NzU3MzI0LC00NzUzNTM4NTYsMTgx
+MTk4Mjc1MV19
 -->
