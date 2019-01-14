@@ -374,16 +374,16 @@ Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, 
 * protobuf 在netty 的作用
 * zero copy
 * epoll 作为linux 默认的NIO api
-
+*  Dealing with a Stream-based Transport ,  Speaking in POJO instead of  `ByteBuf` https://netty.io/wiki/user-guide-for-4.x.html
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTkzNDE3NDAsLTI1NjM3MTE3OCwtMT
-QyODUxNjQyOCwtODk5MTMzNDAzLC0xMTQ5MjQ5MTAxLC03OTU0
-MzEwODUsMTE3MzczMTU4OCw3NjQ5ODE3NTMsLTE3OTU3NTczMj
-QsLTQ3NTM1Mzg1NiwxODExOTgyNzUxLC0zODU5NDUzNjEsLTcz
-ODI0NTU3OCwxNzI2MzM4NjE0LC0xODIwOTY1MjgxLDE4MjMyOD
-MyNDEsMTI1NjI1MTAzMSwxNTE0NjEyODU1LDExNjQzNjc2NjUs
-LTEyMjI1NzgxNzRdfQ==
+eyJoaXN0b3J5IjpbMTAxNDQ0NzE3MiwtMjAxOTM0MTc0MCwtMj
+U2MzcxMTc4LC0xNDI4NTE2NDI4LC04OTkxMzM0MDMsLTExNDky
+NDkxMDEsLTc5NTQzMTA4NSwxMTczNzMxNTg4LDc2NDk4MTc1My
+wtMTc5NTc1NzMyNCwtNDc1MzUzODU2LDE4MTE5ODI3NTEsLTM4
+NTk0NTM2MSwtNzM4MjQ1NTc4LDE3MjYzMzg2MTQsLTE4MjA5Nj
+UyODEsMTgyMzI4MzI0MSwxMjU2MjUxMDMxLDE1MTQ2MTI4NTUs
+MTE2NDM2NzY2NV19
 -->
