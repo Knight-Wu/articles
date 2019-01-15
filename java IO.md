@@ -390,11 +390,7 @@ public class TimeDecoder extends ReplayingDecoder<Void> {
 }
 ```
 
-* 如何将字节数组转化为对象呢
-以dubbo decode 为例, 每次channel 读取了一部分字节, 就decode 一部分数据看看是否已经得到了完整的数据对象, 因为编码的时候会把数据长度也编码到字节流的header 中, 如果字节长度不够, 则会跳过此次轮训, 等待下次轮训的时候再次检查字节长度, 如果超过了, 则取字节长度的字节流, dubbo 字节头部的编码方式如图: 
-![enter image description here](https://drive.google.com/uc?id=1Af-c0cPmH_qwpaMZkEHgKVF2dvFqCWwB)
-dubbo encode data header length: 16 bytes
-包括: magic number, request id, 序列化的contentTypeId, 是否
+
 
 
 #### 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
@@ -422,6 +418,18 @@ assert writerIndex == buf.writerIndex();
 * 工厂方法
 ByteBufAllocator, ByteBufHolder, Unpooled
 
+#### TCP 拆包, 封包
+* 拆包
+通过看dubbo 服务端接收的源码, 大致明白了
+
+* 如何将字节数组转化为对象呢
+以dubbo decode 为例, 每次channel 读取了一部分字节, 就decode 一部分数据看看是否已经得到了完整的数据对象, 因为编码的时候会把数据长度也编码到字节流的header 中, 如果字节长度不够, 则会跳过此次轮训, 等待下次轮训的时候再次检查字节长度, 如果超过了, 则取字节长度的字节流, dubbo 字节头部的编码方式如图: 
+![enter image description here](https://drive.google.com/uc?id=1Af-c0cPmH_qwpaMZkEHgKVF2dvFqCWwB)
+dubbo encode data header length: 16 bytes
+包括: magic number, request id, 序列化的contentTypeId, 是否
+
+
+
 #### netty 性能
 https://github.com/netty/netty/issues/3919
 
@@ -447,11 +455,11 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyMDQ2NTUyMSwtMTA3OTczNzMxNiwxMz
-Q2MjEwNDY5LDU3MDYwMDQ5Niw0MDUyNjE1NTMsLTIwOTc4OTEx
-NDAsLTIwMzE2MzczOTAsNzM3MzU4NjMwLC0yNzY0NTM4NDksMT
-E1NjIyOTg2NiwxNjk1Mzk5ODY1LDgzNDkxNDM2MSwtMTk4NjQw
-Njk4NSwxMDY1MzQ5NzAwLC05ODI3MDM4MTUsLTkzMjA3ODU4LD
-M2MDA4NzY4MywtMTczNzU0ODI2NywtNTQ4NzM3OTUsMTAxNDQ0
-NzE3Ml19
+eyJoaXN0b3J5IjpbNDMyNDExNDE3LDE5MjA0NjU1MjEsLTEwNz
+k3MzczMTYsMTM0NjIxMDQ2OSw1NzA2MDA0OTYsNDA1MjYxNTUz
+LC0yMDk3ODkxMTQwLC0yMDMxNjM3MzkwLDczNzM1ODYzMCwtMj
+c2NDUzODQ5LDExNTYyMjk4NjYsMTY5NTM5OTg2NSw4MzQ5MTQz
+NjEsLTE5ODY0MDY5ODUsMTA2NTM0OTcwMCwtOTgyNzAzODE1LC
+05MzIwNzg1OCwzNjAwODc2ODMsLTE3Mzc1NDgyNjcsLTU0ODcz
+Nzk1XX0=
 -->
