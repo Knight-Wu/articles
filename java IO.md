@@ -439,17 +439,16 @@ java -Dio.netty.leakDetectionLevel=ADVANCED
 * epoll 作为linux 默认的NIO api
 * netty NIO, 如果上一个请求有数据超出一次发送的数据包限制, 没有发送完, 如何处理 
 * 多个用户线程操作一个channel, 和多个channel 的测试案例
-* 
 * hi, [@trustin](https://github.com/trustin) i am newer to netty. I have read the above comments , but i am still not clear about current thread model. I want to make sure that all events from one channel, including channelHandlers, read and write events is always done by one eventloop from worker eventloop, and not executed by other threads, is that right ? Then, if two channels bind to the same threads, one channelHandler may block other events, is that right ? So, if there are long time events, we should use new threadpool to handle , is that right, and are there any examples to show ?  
 Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTQ4NDQ2ODAsNDA1MjYxNTUzLC0yMD
-k3ODkxMTQwLC0yMDMxNjM3MzkwLDczNzM1ODYzMCwtMjc2NDUz
-ODQ5LDExNTYyMjk4NjYsMTY5NTM5OTg2NSw4MzQ5MTQzNjEsLT
-E5ODY0MDY5ODUsMTA2NTM0OTcwMCwtOTgyNzAzODE1LC05MzIw
-Nzg1OCwzNjAwODc2ODMsLTE3Mzc1NDgyNjcsLTU0ODczNzk1LD
-EwMTQ0NDcxNzIsLTIwMTkzNDE3NDAsLTI1NjM3MTE3OCwtMTQy
-ODUxNjQyOF19
+eyJoaXN0b3J5IjpbNTcwNjAwNDk2LDQwNTI2MTU1MywtMjA5Nz
+g5MTE0MCwtMjAzMTYzNzM5MCw3MzczNTg2MzAsLTI3NjQ1Mzg0
+OSwxMTU2MjI5ODY2LDE2OTUzOTk4NjUsODM0OTE0MzYxLC0xOT
+g2NDA2OTg1LDEwNjUzNDk3MDAsLTk4MjcwMzgxNSwtOTMyMDc4
+NTgsMzYwMDg3NjgzLC0xNzM3NTQ4MjY3LC01NDg3Mzc5NSwxMD
+E0NDQ3MTcyLC0yMDE5MzQxNzQwLC0yNTYzNzExNzgsLTE0Mjg1
+MTY0MjhdfQ==
 -->
