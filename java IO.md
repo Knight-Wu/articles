@@ -420,7 +420,7 @@ ByteBufAllocator, ByteBufHolder, Unpooled
 
 #### TCP 拆包, 封包
 * 拆包
-通过看dubbo 服务端接收的源码, 大致明白了
+通过看dubbo 服务端接收的源码, 大致明白了服务端本地持有一个buffer, 读剩下的数据都保存在这个buffer 里, 每次来了新的数据都先合并到这个buffer, 然后取出去的是实际qingq
 
 * 如何将字节数组转化为对象呢
 以dubbo decode 为例, 每次channel 读取了一部分字节, 就decode 一部分数据看看是否已经得到了完整的数据对象, 因为编码的时候会把数据长度也编码到字节流的header 中, 如果字节长度不够, 则会跳过此次轮训, 等待下次轮训的时候再次检查字节长度, 如果超过了, 则取字节长度的字节流, dubbo 字节头部的编码方式如图: 
@@ -455,7 +455,7 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDMyNDExNDE3LDE5MjA0NjU1MjEsLTEwNz
+eyJoaXN0b3J5IjpbLTgyMzA0NjUyLDE5MjA0NjU1MjEsLTEwNz
 k3MzczMTYsMTM0NjIxMDQ2OSw1NzA2MDA0OTYsNDA1MjYxNTUz
 LC0yMDk3ODkxMTQwLC0yMDMxNjM3MzkwLDczNzM1ODYzMCwtMj
 c2NDUzODQ5LDExNTYyMjk4NjYsMTY5NTM5OTg2NSw4MzQ5MTQz
