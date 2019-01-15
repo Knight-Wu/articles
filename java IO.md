@@ -422,6 +422,7 @@ assert writerIndex == buf.writerIndex();
 * 工厂方法
 ByteBufAllocator, ByteBufHolder, Unpooled
 
+
 * 工具方法
 ByteBufUtil, ReferenceCounted 对ByteBuffer 引用计数法回收, 
 ```
@@ -444,11 +445,11 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTcwNjAwNDk2LDQwNTI2MTU1MywtMjA5Nz
-g5MTE0MCwtMjAzMTYzNzM5MCw3MzczNTg2MzAsLTI3NjQ1Mzg0
-OSwxMTU2MjI5ODY2LDE2OTUzOTk4NjUsODM0OTE0MzYxLC0xOT
-g2NDA2OTg1LDEwNjUzNDk3MDAsLTk4MjcwMzgxNSwtOTMyMDc4
-NTgsMzYwMDg3NjgzLC0xNzM3NTQ4MjY3LC01NDg3Mzc5NSwxMD
-E0NDQ3MTcyLC0yMDE5MzQxNzQwLC0yNTYzNzExNzgsLTE0Mjg1
-MTY0MjhdfQ==
+eyJoaXN0b3J5IjpbLTE1OTg3ODcxOCw1NzA2MDA0OTYsNDA1Mj
+YxNTUzLC0yMDk3ODkxMTQwLC0yMDMxNjM3MzkwLDczNzM1ODYz
+MCwtMjc2NDUzODQ5LDExNTYyMjk4NjYsMTY5NTM5OTg2NSw4Mz
+Q5MTQzNjEsLTE5ODY0MDY5ODUsMTA2NTM0OTcwMCwtOTgyNzAz
+ODE1LC05MzIwNzg1OCwzNjAwODc2ODMsLTE3Mzc1NDgyNjcsLT
+U0ODczNzk1LDEwMTQ0NDcxNzIsLTIwMTkzNDE3NDAsLTI1NjM3
+MTE3OF19
 -->
