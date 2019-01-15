@@ -422,6 +422,8 @@ assert writerIndex == buf.writerIndex();
 * 工厂方法
 ByteBufAllocator, ByteBufHolder, Unpooled
 
+#### netty 性能
+https://github.com/netty/netty/issues/3919
 
 * 工具方法
 ByteBufUtil, ReferenceCounted 对ByteBuffer 引用计数法回收, 
@@ -445,7 +447,7 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTg3ODcxOCw1NzA2MDA0OTYsNDA1Mj
+eyJoaXN0b3J5IjpbMTM0NjIxMDQ2OSw1NzA2MDA0OTYsNDA1Mj
 YxNTUzLC0yMDk3ODkxMTQwLC0yMDMxNjM3MzkwLDczNzM1ODYz
 MCwtMjc2NDUzODQ5LDExNTYyMjk4NjYsMTY5NTM5OTg2NSw4Mz
 Q5MTQzNjEsLTE5ODY0MDY5ODUsMTA2NTM0OTcwMCwtOTgyNzAz
