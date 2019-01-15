@@ -426,7 +426,7 @@ ByteBufAllocator, ByteBufHolder, Unpooled
 以dubbo decode 为例, 每次channel 读取了一部分字节, 就decode 一部分数据看看是否已经得到了完整的数据对象, 因为编码的时候会把数据长度也编码到字节流的header 中, 如果字节长度不够, 则会跳过此次轮训, 等待下次轮训的时候再次检查字节长度, 如果超过了, 则取字节长度的字节流, 剩下的保留在本地的buffer 里, 用于与下次发送的数据先进行合并.  dubbo 字节头部的编码方式如图: 
 ![enter image description here](https://drive.google.com/uc?id=1Af-c0cPmH_qwpaMZkEHgKVF2dvFqCWwB)
 dubbo encode data header length: 16 bytes
-包括: magic number, request id, 序列化的contentTypeId, 是否
+包括: magic number, request id, 序列化的contentTypeId, 是否是异步的等. 
 
 
 
@@ -455,11 +455,11 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5Njc2Mjg0MCwxOTIwNDY1NTIxLC0xMD
-c5NzM3MzE2LDEzNDYyMTA0NjksNTcwNjAwNDk2LDQwNTI2MTU1
-MywtMjA5Nzg5MTE0MCwtMjAzMTYzNzM5MCw3MzczNTg2MzAsLT
-I3NjQ1Mzg0OSwxMTU2MjI5ODY2LDE2OTUzOTk4NjUsODM0OTE0
-MzYxLC0xOTg2NDA2OTg1LDEwNjUzNDk3MDAsLTk4MjcwMzgxNS
-wtOTMyMDc4NTgsMzYwMDg3NjgzLC0xNzM3NTQ4MjY3LC01NDg3
-Mzc5NV19
+eyJoaXN0b3J5IjpbLTEzNzU2OTE0MzUsMTkyMDQ2NTUyMSwtMT
+A3OTczNzMxNiwxMzQ2MjEwNDY5LDU3MDYwMDQ5Niw0MDUyNjE1
+NTMsLTIwOTc4OTExNDAsLTIwMzE2MzczOTAsNzM3MzU4NjMwLC
+0yNzY0NTM4NDksMTE1NjIyOTg2NiwxNjk1Mzk5ODY1LDgzNDkx
+NDM2MSwtMTk4NjQwNjk4NSwxMDY1MzQ5NzAwLC05ODI3MDM4MT
+UsLTkzMjA3ODU4LDM2MDA4NzY4MywtMTczNzU0ODI2NywtNTQ4
+NzM3OTVdfQ==
 -->
