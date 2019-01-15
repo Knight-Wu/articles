@@ -420,10 +420,10 @@ ByteBufAllocator, ByteBufHolder, Unpooled
 
 #### TCP 拆包, 封包
 * 拆包
-通过看dubbo 服务端接收的源码, 大致明白了服务端本地持有一个buffer, 读剩下的数据都保存在这个buffer 里, 每次来了新的数据都先合并到这个buffer, 然后取出去的是实际qingq
+通过看dubbo 服务端接收的源码, 大致明白了服务端本地持有一个buffer, 读剩下的数据都保存在这个buffer 里, 每次来了新的数据都先合并到这个buffer
 
 * 如何将字节数组转化为对象呢
-以dubbo decode 为例, 每次channel 读取了一部分字节, 就decode 一部分数据看看是否已经得到了完整的数据对象, 因为编码的时候会把数据长度也编码到字节流的header 中, 如果字节长度不够, 则会跳过此次轮训, 等待下次轮训的时候再次检查字节长度, 如果超过了, 则取字节长度的字节流, dubbo 字节头部的编码方式如图: 
+以dubbo decode 为例, 每次channel 读取了一部分字节, 就decode 一部分数据看看是否已经得到了完整的数据对象, 因为编码的时候会把数据长度也编码到字节流的header 中, 如果字节长度不够, 则会跳过此次轮训, 等待下次轮训的时候再次检查字节长度, 如果超过了, 则取字节长度的字节流, 剩下的保留在b dubbo 字节头部的编码方式如图: 
 ![enter image description here](https://drive.google.com/uc?id=1Af-c0cPmH_qwpaMZkEHgKVF2dvFqCWwB)
 dubbo encode data header length: 16 bytes
 包括: magic number, request id, 序列化的contentTypeId, 是否
@@ -455,11 +455,11 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgyMzA0NjUyLDE5MjA0NjU1MjEsLTEwNz
-k3MzczMTYsMTM0NjIxMDQ2OSw1NzA2MDA0OTYsNDA1MjYxNTUz
-LC0yMDk3ODkxMTQwLC0yMDMxNjM3MzkwLDczNzM1ODYzMCwtMj
-c2NDUzODQ5LDExNTYyMjk4NjYsMTY5NTM5OTg2NSw4MzQ5MTQz
-NjEsLTE5ODY0MDY5ODUsMTA2NTM0OTcwMCwtOTgyNzAzODE1LC
-05MzIwNzg1OCwzNjAwODc2ODMsLTE3Mzc1NDgyNjcsLTU0ODcz
-Nzk1XX0=
+eyJoaXN0b3J5IjpbLTE3NDY1NDMxOTEsMTkyMDQ2NTUyMSwtMT
+A3OTczNzMxNiwxMzQ2MjEwNDY5LDU3MDYwMDQ5Niw0MDUyNjE1
+NTMsLTIwOTc4OTExNDAsLTIwMzE2MzczOTAsNzM3MzU4NjMwLC
+0yNzY0NTM4NDksMTE1NjIyOTg2NiwxNjk1Mzk5ODY1LDgzNDkx
+NDM2MSwtMTk4NjQwNjk4NSwxMDY1MzQ5NzAwLC05ODI3MDM4MT
+UsLTkzMjA3ODU4LDM2MDA4NzY4MywtMTczNzU0ODI2NywtNTQ4
+NzM3OTVdfQ==
 -->
