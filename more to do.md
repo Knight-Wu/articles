@@ -23,7 +23,6 @@
 * http://www.runoob.com/design-pattern 设计模式每天两例
 * https://mp.weixin.qq.com/s/5Yj6UckTabrQbgJ9TLV1gQ   java生产监控工具, 试用一下
 * 为什么java 需要三个CL, 只用一个行不行, 因为子类也是能获取到上层的CL 加载的类的 
-* netty 的线程模型, 是用着NIO 还是AIO , 优点在哪
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
 * dubbo 线程池的核心线程数量如何设置, 取决于什么, 数据库还是机器?
 * 多个应用服务器的性能之和如何算, 
@@ -32,7 +31,6 @@
 * spark executor task java.net.connectException 拒绝连接
 * spark.yarn.executor.memoryOverhead 结合内存理解, 如何调优
 * yarn 虚拟内存和虚拟cpu 用来干啥
-
 * yarn 用mr 作业收集container使用情况的原理和作用
 * 为啥nio 要用byte buffer, 懂了io 模型之后还要知道设计api 的时候, 各种api 的好处以及作用
 
@@ -82,11 +80,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTczMjI0MDc5Myw4ODczMDE3LC05ODc0ND
-EwODQsMTY2MjE0NzE5MSwtMTM0NjUzMDUzNywtODQ4NTc0NDQ2
-LDIxNjc4OTc3OCwtMTEzMTEyMjY4NSwxNDYwODExOTU5LDE0Nz
-c1Njk3NjgsLTE5ODAyNzY2MjksMTE2NzE5MDcxOSwtNjk4Njcz
-MzM0LDE2NTcyMzUwNzAsLTg5NzY1NDA5NCwtMTM4NDE1MzYzMC
-wtMTMwOTA3NzE1NiwtMTE2ODYwMjczNiwtMTYwMDM1NjA3Miwt
-MTQ0MzM1MzMwOV19
+eyJoaXN0b3J5IjpbLTQxMjk1NDg1NSwxNzMyMjQwNzkzLDg4Nz
+MwMTcsLTk4NzQ0MTA4NCwxNjYyMTQ3MTkxLC0xMzQ2NTMwNTM3
+LC04NDg1NzQ0NDYsMjE2Nzg5Nzc4LC0xMTMxMTIyNjg1LDE0Nj
+A4MTE5NTksMTQ3NzU2OTc2OCwtMTk4MDI3NjYyOSwxMTY3MTkw
+NzE5LC02OTg2NzMzMzQsMTY1NzIzNTA3MCwtODk3NjU0MDk0LC
+0xMzg0MTUzNjMwLC0xMzA5MDc3MTU2LC0xMTY4NjAyNzM2LC0x
+NjAwMzU2MDcyXX0=
 -->
