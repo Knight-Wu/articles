@@ -6,9 +6,9 @@
 支持事务, 支持行锁
 https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
-*
+* mysql 索引
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTY5MjAzNjMsNzMwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbLTE1ODAxMzk1MTgsNzMwOTk4MTE2XX0=
 -->
