@@ -24,7 +24,6 @@
 * https://mp.weixin.qq.com/s/5Yj6UckTabrQbgJ9TLV1gQ   java生产监控工具, 试用一下
 * 为什么java 需要三个CL, 只用一个行不行, 因为子类也是能获取到上层的CL 加载的类的 
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
-* dubbo 线程池的核心线程数量如何设置, 取决于什么, 数据库还是机器?
 * 多个应用服务器的性能之和如何算, 
 * mysql 的常见问题, 
 * Build highly concurrent, distributed, and resilient message-driven applications on the JVM [http://akka.io](http://akka.io/)
@@ -80,11 +79,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxMjk1NDg1NSwxNzMyMjQwNzkzLDg4Nz
-MwMTcsLTk4NzQ0MTA4NCwxNjYyMTQ3MTkxLC0xMzQ2NTMwNTM3
-LC04NDg1NzQ0NDYsMjE2Nzg5Nzc4LC0xMTMxMTIyNjg1LDE0Nj
-A4MTE5NTksMTQ3NzU2OTc2OCwtMTk4MDI3NjYyOSwxMTY3MTkw
-NzE5LC02OTg2NzMzMzQsMTY1NzIzNTA3MCwtODk3NjU0MDk0LC
-0xMzg0MTUzNjMwLC0xMzA5MDc3MTU2LC0xMTY4NjAyNzM2LC0x
-NjAwMzU2MDcyXX0=
+eyJoaXN0b3J5IjpbLTkyMTM1ODg0NCwtNDEyOTU0ODU1LDE3Mz
+IyNDA3OTMsODg3MzAxNywtOTg3NDQxMDg0LDE2NjIxNDcxOTEs
+LTEzNDY1MzA1MzcsLTg0ODU3NDQ0NiwyMTY3ODk3NzgsLTExMz
+ExMjI2ODUsMTQ2MDgxMTk1OSwxNDc3NTY5NzY4LC0xOTgwMjc2
+NjI5LDExNjcxOTA3MTksLTY5ODY3MzMzNCwxNjU3MjM1MDcwLC
+04OTc2NTQwOTQsLTEzODQxNTM2MzAsLTEzMDkwNzcxNTYsLTEx
+Njg2MDI3MzZdfQ==
 -->
