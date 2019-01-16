@@ -176,6 +176,9 @@ W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait 
  
 另外线程数量不仅由cpu 数量决定, 还由其他资源决定, 例如数据库连接, file descriptor 等,  例如数据库连接和线程数量息息相关, 假设业务是接受请求, 直接写入数据库, 那么数据库连接的数量大于线程数量就是浪费了连接, 线程数量多于数据库连接就是额外的线程在等待.
 
+并且对于计算密集型任务, 可以把线程数量设置为cpu 数量加1, 防止有可能的cpu 空闲.
+
+可以采取几个估计值, 并加以测试, 得到最佳值. 
 
 
 #### 序列化
@@ -185,11 +188,11 @@ W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzUzODMxNzMsLTQzMDI2OTY0OSwxNz
-MzOTE1Nzc0LDEyNjc3MzEyNjksNjQzNzcwNjIsLTEwODAzOTk5
-NTAsLTE1OTQ1MzA0ODIsLTE3OTgxNDA4NjEsLTIwMTY2MjkyNz
-QsLTEwOTQwOTA2MzIsNzY1MTQwOTQsMTY1NTMwODE1OSwtMTc1
-NTIwMTAwMCwxMjM5ODAxMzg1LDE4MDQ0ODkzMzAsLTE5NTA0Mj
-QwNDQsLTEwMTc4NzE5OTgsLTE4NzE0MDE4ODksLTE4ODY1OTM3
-NDMsLTIxMzE5MDExMDBdfQ==
+eyJoaXN0b3J5IjpbOTI0NDMzMTkyLC0xODc1MzgzMTczLC00Mz
+AyNjk2NDksMTczMzkxNTc3NCwxMjY3NzMxMjY5LDY0Mzc3MDYy
+LC0xMDgwMzk5OTUwLC0xNTk0NTMwNDgyLC0xNzk4MTQwODYxLC
+0yMDE2NjI5Mjc0LC0xMDk0MDkwNjMyLDc2NTE0MDk0LDE2NTUz
+MDgxNTksLTE3NTUyMDEwMDAsMTIzOTgwMTM4NSwxODA0NDg5Mz
+MwLC0xOTUwNDI0MDQ0LC0xMDE3ODcxOTk4LC0xODcxNDAxODg5
+LC0xODg2NTkzNzQzXX0=
 -->
