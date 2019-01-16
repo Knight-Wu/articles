@@ -389,15 +389,6 @@ public class TimeDecoder extends ReplayingDecoder<Void> {
     }
 }
 ```
-
-
-
-
-#### 怎么根据IO操作的时间和占用cpu 的时间来决定线程数, 因为io 操作的时候最好切换线程, 不然线程就会空等io 结束, 浪费cpu 了.
-
-公式: Nthread = (1+Tio/Tcpu)*Ncpu, 
-Tio/Tcpu 根据理解为对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=1秒, Tcpu=1s, Nt= 2个线程, 那么在一个完整的执行周期 2S 内, 这个cpu 需要切换线程一次, 才能效率最高. 
-
 #### netty bytebuffer
 相比于jdk 原生的bytebuffer, 没有类似flip() 的方法用于读写的转变, 因为它有读写两个指针, 如图
 ![enter image description here](https://drive.google.com/uc?id=1kfRUR1sa27tBjPhQ_9XHffPO6JqKTi15)
@@ -453,11 +444,11 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODc1ODY4MjcyLC0xNzQ3MTU0Mjc1LDE5Mj
-A0NjU1MjEsLTEwNzk3MzczMTYsMTM0NjIxMDQ2OSw1NzA2MDA0
-OTYsNDA1MjYxNTUzLC0yMDk3ODkxMTQwLC0yMDMxNjM3MzkwLD
-czNzM1ODYzMCwtMjc2NDUzODQ5LDExNTYyMjk4NjYsMTY5NTM5
-OTg2NSw4MzQ5MTQzNjEsLTE5ODY0MDY5ODUsMTA2NTM0OTcwMC
-wtOTgyNzAzODE1LC05MzIwNzg1OCwzNjAwODc2ODMsLTE3Mzc1
-NDgyNjddfQ==
+eyJoaXN0b3J5IjpbLTMyNzY0NzY0MSw4NzU4NjgyNzIsLTE3ND
+cxNTQyNzUsMTkyMDQ2NTUyMSwtMTA3OTczNzMxNiwxMzQ2MjEw
+NDY5LDU3MDYwMDQ5Niw0MDUyNjE1NTMsLTIwOTc4OTExNDAsLT
+IwMzE2MzczOTAsNzM3MzU4NjMwLC0yNzY0NTM4NDksMTE1NjIy
+OTg2NiwxNjk1Mzk5ODY1LDgzNDkxNDM2MSwtMTk4NjQwNjk4NS
+wxMDY1MzQ5NzAwLC05ODI3MDM4MTUsLTkzMjA3ODU4LDM2MDA4
+NzY4M119
 -->
