@@ -172,8 +172,9 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 #### 如何确定dubbo 线程池线程数大小
 根据java concurrence in practice 描述:
 ![enter image description here](https://drive.google.com/uc?id=1eV2LsH19Hw8OswiT_A8lvzSlMoTdJZye)
-W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait time=1秒, Tcpu=computing time=1s, Nt= 2个线程, 那么在一个完整的执行周期 2S 内, 这个cpu 需要切换线程一次, 才能效率最高. 
-另外线程数量不仅由cpu 数量决定, 还由其他资源决定, 例如数据库连接, file descriptor 等,  例如数据库连接和线程数量息息相关, 假设业务是接受请求, 直接写入数据库, 那么数据库连接的数量
+W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait time=1秒, Tcpu=computing time=1s, Nt= 2个线程, 那么在一个完整的执行周期 2S 内, 这个cpu 需要切换线程一次, 才能效率最高. 可以根据一次调用的各个阶段的耗时来确定这个比例. 
+ 
+另外线程数量不仅由cpu 数量决定, 还由其他资源决定, 例如数据库连接, file descriptor 等,  例如数据库连接和线程数量息息相关, 假设业务是接受请求, 直接写入数据库, 那么数据库连接的数量大于线程数量就是浪费了连接, 线程数量多于数据库连接就是额外的线程在等待.
 
 
 
@@ -184,11 +185,11 @@ W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzMjQ1OTg3MSwtNDMwMjY5NjQ5LDE3Mz
-M5MTU3NzQsMTI2NzczMTI2OSw2NDM3NzA2MiwtMTA4MDM5OTk1
-MCwtMTU5NDUzMDQ4MiwtMTc5ODE0MDg2MSwtMjAxNjYyOTI3NC
-wtMTA5NDA5MDYzMiw3NjUxNDA5NCwxNjU1MzA4MTU5LC0xNzU1
-MjAxMDAwLDEyMzk4MDEzODUsMTgwNDQ4OTMzMCwtMTk1MDQyND
-A0NCwtMTAxNzg3MTk5OCwtMTg3MTQwMTg4OSwtMTg4NjU5Mzc0
-MywtMjEzMTkwMTEwMF19
+eyJoaXN0b3J5IjpbLTE4NzUzODMxNzMsLTQzMDI2OTY0OSwxNz
+MzOTE1Nzc0LDEyNjc3MzEyNjksNjQzNzcwNjIsLTEwODAzOTk5
+NTAsLTE1OTQ1MzA0ODIsLTE3OTgxNDA4NjEsLTIwMTY2MjkyNz
+QsLTEwOTQwOTA2MzIsNzY1MTQwOTQsMTY1NTMwODE1OSwtMTc1
+NTIwMTAwMCwxMjM5ODAxMzg1LDE4MDQ0ODkzMzAsLTE5NTA0Mj
+QwNDQsLTEwMTc4NzE5OTgsLTE4NzE0MDE4ODksLTE4ODY1OTM3
+NDMsLTIxMzE5MDExMDBdfQ==
 -->
