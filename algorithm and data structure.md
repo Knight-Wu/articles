@@ -36,10 +36,15 @@ According to Knuth's definition, a B-tree of order _m_ is a tree which satisfies
 
 B树相对于平衡二叉树的不同是，每个节点包含的关键字增多了，特别是在B树应用到数据库中的时候，数据库充分利用了磁盘块的原理（磁盘数据存储是采用块的形式存储的，每个块的大小为4K，每次IO进行数据读取时，同一个磁盘块的数据可以一次性读取出来）把节点大小限制和充分使用在磁盘快大小范围；把树的节点关键字增多后树的深度比原来的二叉树少了，减少数据查找的次数和复杂度;
 
+#### 资源
+* 算法第四版
+https://algs4.cs.princeton.edu/33balanced/
+* coursera
+https://www.coursera.org/learn/algorithms-part1/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxNDkyODg3Niw4MDE4MTIzNzUsLTExMz
-A4NjA2MzMsMTYwMzM1NDQyMiwtMTMxNDIzMTAzMiwxNzA2NTA2
-MjA4LDE3NzEwOTI1MzAsODcwMDc5NTE2LDE1NDcyMTc3MTNdfQ
-==
+eyJoaXN0b3J5IjpbMTAyMjk5NTg1MSwxOTE0OTI4ODc2LDgwMT
+gxMjM3NSwtMTEzMDg2MDYzMywxNjAzMzU0NDIyLC0xMzE0MjMx
+MDMyLDE3MDY1MDYyMDgsMTc3MTA5MjUzMCw4NzAwNzk1MTYsMT
+U0NzIxNzcxM119
 -->
