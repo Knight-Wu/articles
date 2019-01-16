@@ -24,6 +24,7 @@
 
 #### B树
 https://en.wikipedia.org/wiki/B-tree
+
 According to Knuth's definition, a B-tree of order _m_ is a tree which satisfies the following properties:
 1.  Every node has at most  _m_  children.
 2.  Every non-leaf node (except root) has at least ⌈_m_/2⌉ child nodes.
@@ -31,11 +32,12 @@ According to Knuth's definition, a B-tree of order _m_ is a tree which satisfies
 4.  A non-leaf node with  _k_  children contains  _k_  − 1 keys.
 5.  All leaves appear in the same level.
 
+
 B树相对于平衡二叉树的不同是，每个节点包含的关键字增多了，特别是在B树应用到数据库中的时候，数据库充分利用了磁盘块的原理（磁盘数据存储是采用块的形式存储的，每个块的大小为4K，每次IO进行数据读取时，同一个磁盘块的数据可以一次性读取出来）把节点大小限制和充分使用在磁盘快大小范围；把树的节点关键字增多后树的深度比原来的二叉树少了，减少数据查找的次数和复杂度;
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODEzNDk5ODI2LDgwMTgxMjM3NSwtMTEzMD
+eyJoaXN0b3J5IjpbNzQ3MTY4MTc4LDgwMTgxMjM3NSwtMTEzMD
 g2MDYzMywxNjAzMzU0NDIyLC0xMzE0MjMxMDMyLDE3MDY1MDYy
 MDgsMTc3MTA5MjUzMCw4NzAwNzk1MTYsMTU0NzIxNzcxM119
 -->
