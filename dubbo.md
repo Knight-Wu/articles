@@ -173,7 +173,7 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 根据java concurrence in practice 描述:
 ![enter image description here](https://drive.google.com/uc?id=1eV2LsH19Hw8OswiT_A8lvzSlMoTdJZye)
 W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait time=1秒, Tcpu=computing time=1s, Nt= 2个线程, 那么在一个完整的执行周期 2S 内, 这个cpu 需要切换线程一次, 才能效率最高. 
-另外线程数量不仅由cpu 数量决定, 还由其他资源决定, li
+另外线程数量不仅由cpu 数量决定, 还由其他资源决定, 例如数据库连接, file descriptor 等,  例如数据库连接和线程数量息息相关, 假设业务是接受请求, 直接写入数据库, 那么数据库连接的数量
 
 
 
@@ -184,7 +184,7 @@ W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyNjQ4MDU3NCwtNDMwMjY5NjQ5LDE3Mz
+eyJoaXN0b3J5IjpbLTMzMjQ1OTg3MSwtNDMwMjY5NjQ5LDE3Mz
 M5MTU3NzQsMTI2NzczMTI2OSw2NDM3NzA2MiwtMTA4MDM5OTk1
 MCwtMTU5NDUzMDQ4MiwtMTc5ODE0MDg2MSwtMjAxNjYyOTI3NC
 wtMTA5NDA5MDYzMiw3NjUxNDA5NCwxNjU1MzA4MTU5LC0xNzU1
