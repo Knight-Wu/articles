@@ -42,6 +42,9 @@ B树相对于平衡二叉树的不同是，每个节点包含的关键字增多�
 2.  节点的关键字表示的是子树中的最大数，在子树中同样含有这个数据(根节点的最大关键字其实就表示整个 B+ 树的最大元素。)
 3.  叶子节点包含了全部数据，同时符合左小右大的顺序
 
+* 为什么更适合做数据库和文件系统的数据类型呢
+由于中间节点除了关键字之外不含其它数据, 所以一个磁盘块中可以含有更多的中间节点, 
+
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/33balanced/
@@ -49,9 +52,9 @@ https://algs4.cs.princeton.edu/33balanced/
 https://www.coursera.org/learn/algorithms-part1/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzcwNjk0NTYsLTE3NjAzNDI5NiwtMT
-k1MDc3NDA5LDEwMjI5OTU4NTEsMTkxNDkyODg3Niw4MDE4MTIz
-NzUsLTExMzA4NjA2MzMsMTYwMzM1NDQyMiwtMTMxNDIzMTAzMi
-wxNzA2NTA2MjA4LDE3NzEwOTI1MzAsODcwMDc5NTE2LDE1NDcy
-MTc3MTNdfQ==
+eyJoaXN0b3J5IjpbMTk0MzYzMDQ5LC0xNzYwMzQyOTYsLTE5NT
+A3NzQwOSwxMDIyOTk1ODUxLDE5MTQ5Mjg4NzYsODAxODEyMzc1
+LC0xMTMwODYwNjMzLDE2MDMzNTQ0MjIsLTEzMTQyMzEwMzIsMT
+cwNjUwNjIwOCwxNzcxMDkyNTMwLDg3MDA3OTUxNiwxNTQ3MjE3
+NzEzXX0=
 -->
