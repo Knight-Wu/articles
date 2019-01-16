@@ -43,7 +43,7 @@ B树相对于平衡二叉树的不同是，每个节点包含的关键字增多�
 3.  叶子节点包含了全部数据，同时符合左小右大的顺序
 
 * 为什么更适合做数据库和文件系统的数据类型呢
-由于中间节点除了关键字之外不含其它数据,  所以一个磁盘块中可以含有更多的中间节点, IO 次数相对更低. 
+由于中间节点除了关键字和子节点的指针之外不含其它数据,  所以一个磁盘块中可以含有更多的中间节点, IO 次数相对更低. 
 
 #### 资源
 * 算法第四版
@@ -52,9 +52,9 @@ https://algs4.cs.princeton.edu/33balanced/
 https://www.coursera.org/learn/algorithms-part1/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDE4MTAzMDU5LC0xNzYwMzQyOTYsLTE5NT
-A3NzQwOSwxMDIyOTk1ODUxLDE5MTQ5Mjg4NzYsODAxODEyMzc1
-LC0xMTMwODYwNjMzLDE2MDMzNTQ0MjIsLTEzMTQyMzEwMzIsMT
-cwNjUwNjIwOCwxNzcxMDkyNTMwLDg3MDA3OTUxNiwxNTQ3MjE3
-NzEzXX0=
+eyJoaXN0b3J5IjpbNzgxNzUxNDI1LDQxODEwMzA1OSwtMTc2MD
+M0Mjk2LC0xOTUwNzc0MDksMTAyMjk5NTg1MSwxOTE0OTI4ODc2
+LDgwMTgxMjM3NSwtMTEzMDg2MDYzMywxNjAzMzU0NDIyLC0xMz
+E0MjMxMDMyLDE3MDY1MDYyMDgsMTc3MTA5MjUzMCw4NzAwNzk1
+MTYsMTU0NzIxNzcxM119
 -->
