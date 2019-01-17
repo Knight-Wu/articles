@@ -69,7 +69,10 @@ spark.driver.extraJavaOptions=-verbose:class
 
 * 根本原因
 终于找到了, 准备年终这段时间不忙, 自己抽空重新看了异常栈, 发现根本原因如此简单, TaskResultGetter 线程在反序列化failReason 的时候没有处理 NoClassDefFoundError 这种error 类的异常, 导致这个线程就挂掉了, task 被driver 误认为一直是ACTIVE 状态. 
-后找到这个issue: https://github.com/apache/spark/pull/12775, 已经修复了, 但是2.2和1.
+后找到这个issue: https://github.com/apache/spark/pull/12775, 已经修复了, 但是2.2和1.6版本仍然是没合进去的. 
+
+测试代码很牛, 学习下: 
+
 
  
 
@@ -84,7 +87,7 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjI2NjE5MTg0LDEwODg1NzY4MTMsODAyOT
+eyJoaXN0b3J5IjpbMjc1ODM4NjU5LDEwODg1NzY4MTMsODAyOT
 IyMTE0LDc5OTM0NTYxMiwxNzY4ODIxMDQ2LC0xMTg3NjI1MjA0
 LDE5MTc4NzczNTQsLTI4NTY0NDk0OSwxMTU0MzAyMzYxLC0xOD
 kxNzMyNzY5XX0=
