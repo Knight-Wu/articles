@@ -59,7 +59,7 @@ spark.driver.extraJavaOptions=-verbose:class
 
 **一直没有来反馈** ， 经过后续的观察，再也没有出现commonTree的报错了， 证明解决问题的思路是正确的！
 
-* 根本原因
+* 底层原因
 
 应该是dn 写入失败, executor 报错而终止job, 至于为什么dn 会写入失败, 这个情况只在凌晨hive 跑批, 集群压力大的时候出现, 其他时间均为出现, 后来查询到可能是CentOS 的一个bug, 其他团队在升级了操作系统版本之后解决, 这个还有待考察. 
 
@@ -67,6 +67,8 @@ spark.driver.extraJavaOptions=-verbose:class
 * 问题
   * 因为具体的blocken pipe的错误日志找不到了, 为什么没有触发spark 的集群容错有点困惑, 一个task 写异常至少是会根据 spark.task.maxFailures 这个配置重试的啊, 不知道这个异常抛到哪个层面了
 
+* 根本原因
+终于找到了, 准备年终这段时间不忙, 自己抽空重新看了异常栈, 发现根本原因如此简单, TaskResultGetter 线程
 
  
 
@@ -81,7 +83,8 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODAyOTIyMTE0LDc5OTM0NTYxMiwxNzY4OD
-IxMDQ2LC0xMTg3NjI1MjA0LDE5MTc4NzczNTQsLTI4NTY0NDk0
-OSwxMTU0MzAyMzYxLC0xODkxNzMyNzY5XX0=
+eyJoaXN0b3J5IjpbMTIzMTYzNzI2OCw4MDI5MjIxMTQsNzk5Mz
+Q1NjEyLDE3Njg4MjEwNDYsLTExODc2MjUyMDQsMTkxNzg3NzM1
+NCwtMjg1NjQ0OTQ5LDExNTQzMDIzNjEsLTE4OTE3MzI3NjldfQ
+==
 -->
