@@ -68,7 +68,7 @@ spark.driver.extraJavaOptions=-verbose:class
   * 因为具体的blocken pipe的错误日志找不到了, 为什么没有触发spark 的集群容错有点困惑, 一个task 写异常至少是会根据 spark.task.maxFailures 这个配置重试的啊, 不知道这个异常抛到哪个层面了
 
 * 根本原因
-终于找到了, 准备年终这段时间不忙, 自己抽空重新看了异常栈, 发现根本原因如此简单, TaskResultGetter 线程
+终于找到了, 准备年终这段时间不忙, 自己抽空重新看了异常栈, 发现根本原因如此简单, TaskResultGetter 线程在反序列化failReason 的时候没有处理 NoClassDefFoundError 这种error 类的异常, 导致这个线程就挂掉了, task 被driver 误认为一直是ACTIVE 状态
 
  
 
@@ -83,7 +83,7 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzMTYzNzI2OCw4MDI5MjIxMTQsNzk5Mz
+eyJoaXN0b3J5IjpbMTA4ODU3NjgxMyw4MDI5MjIxMTQsNzk5Mz
 Q1NjEyLDE3Njg4MjEwNDYsLTExODc2MjUyMDQsMTkxNzg3NzM1
 NCwtMjg1NjQ0OTQ5LDExNTQzMDIzNjEsLTE4OTE3MzI3NjldfQ
 ==
