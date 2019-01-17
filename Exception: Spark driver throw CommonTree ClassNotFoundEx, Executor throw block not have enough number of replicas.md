@@ -72,9 +72,9 @@ spark.driver.extraJavaOptions=-verbose:class
 后找到这个issue: https://github.com/apache/spark/pull/12775, 已经修复了, 但是2.2和1.6版本仍然是没合进去的. 
 
 测试代码很牛, 学习下: 
+![enter image description here](https://drive.google.com/uc?id=1Kq1N5-yNbLI1dCdcRCRDCoLJQfpt8S6X)
 
-
- 
+ 在issue 之前, 跑这个test, 应用是会挂住的, issue 之后, 应用可以正常结束
 
 
 
@@ -87,8 +87,8 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjc1ODM4NjU5LDEwODg1NzY4MTMsODAyOT
-IyMTE0LDc5OTM0NTYxMiwxNzY4ODIxMDQ2LC0xMTg3NjI1MjA0
-LDE5MTc4NzczNTQsLTI4NTY0NDk0OSwxMTU0MzAyMzYxLC0xOD
-kxNzMyNzY5XX0=
+eyJoaXN0b3J5IjpbLTExMjMwNjc5NDMsMTA4ODU3NjgxMyw4MD
+I5MjIxMTQsNzk5MzQ1NjEyLDE3Njg4MjEwNDYsLTExODc2MjUy
+MDQsMTkxNzg3NzM1NCwtMjg1NjQ0OTQ5LDExNTQzMDIzNjEsLT
+E4OTE3MzI3NjldfQ==
 -->
