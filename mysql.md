@@ -1,6 +1,6 @@
 ####  存储引擎
 * InnoDB 
-支持事务, 支持行锁
+是mysql 默认的事务型引擎, 支持事务, 支持行锁, 支持崩溃后自动恢复
 https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 * MyISAM
@@ -11,5 +11,6 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4NTExNDE5Nyw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbOTQxMzEzNjc5LDE0ODUxMTQxOTcsNzMwOT
+k4MTE2XX0=
 -->
