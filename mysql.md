@@ -17,13 +17,15 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 #### 慢查询优化
 用explain 语句查看执行计划, 目标是降低 rows
+https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
+
 1. 先设置sql_no_cache , 看查询是否真的很慢
 2. 把where 条件应用到表中, 从返回记录数最小的表开始查起
 3. order by limit 形式的sql语句让排序的表优先查
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTA1MDY4OTYyLDE1OTI0NTYxODAsNzI0OD
-E5Mzg3LDkwOTkyMDY3MCwtMTM1ODIyNDUyOCwxNDg1MTE0MTk3
-LDczMDk5ODExNl19
+eyJoaXN0b3J5IjpbLTE0NTQ2MDU2NTgsMTU5MjQ1NjE4MCw3Mj
+Q4MTkzODcsOTA5OTIwNjcwLC0xMzU4MjI0NTI4LDE0ODUxMTQx
+OTcsNzMwOTk4MTE2XX0=
 -->
