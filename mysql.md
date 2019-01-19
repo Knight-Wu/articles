@@ -16,11 +16,12 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 索引列的值不能作为函数入参进行计算, 比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’)
 
 #### 慢查询优化
-
+1. 先设置sql_no_cache , 看查询是否真的很慢
+2. 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MzQ1NDAxNzAsNzI0ODE5Mzg3LDkwOT
-kyMDY3MCwtMTM1ODIyNDUyOCwxNDg1MTE0MTk3LDczMDk5ODEx
-Nl19
+eyJoaXN0b3J5IjpbMTU5MjQ1NjE4MCw3MjQ4MTkzODcsOTA5OT
+IwNjcwLC0xMzU4MjI0NTI4LDE0ODUxMTQxOTcsNzMwOTk4MTE2
+XX0=
 -->
