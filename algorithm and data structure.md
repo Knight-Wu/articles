@@ -47,19 +47,23 @@ B树相对于平衡二叉树的不同是，每个节点包含的关键字增多�
 
 #### 排序
 * 手写堆排序, 建立堆的时间复杂度O(nlgn)
-* 回文字符串
-https://leetcode.com/problems/rotate-string/solution/
+
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/33balanced/
 * coursera
 https://www.coursera.org/learn/algorithms-part1/
+
+#### 问题
+* paxos 的应用
+* 回文字符串
+https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyMjIyOTAxLC02ODU2NzU0NjQsLTE0Mz
-QwMzM4MDMsNDE4MTAzMDU5LDc4MTc1MTQyNSw0MTgxMDMwNTks
-LTE3NjAzNDI5NiwtMTk1MDc3NDA5LDEwMjI5OTU4NTEsMTkxND
-kyODg3Niw4MDE4MTIzNzUsLTExMzA4NjA2MzMsMTYwMzM1NDQy
-MiwtMTMxNDIzMTAzMiwxNzA2NTA2MjA4LDE3NzEwOTI1MzAsOD
-cwMDc5NTE2LDE1NDcyMTc3MTNdfQ==
+eyJoaXN0b3J5IjpbMTc1MDAzODgzMCwtNjg1Njc1NDY0LC0xND
+M0MDMzODAzLDQxODEwMzA1OSw3ODE3NTE0MjUsNDE4MTAzMDU5
+LC0xNzYwMzQyOTYsLTE5NTA3NzQwOSwxMDIyOTk1ODUxLDE5MT
+Q5Mjg4NzYsODAxODEyMzc1LC0xMTMwODYwNjMzLDE2MDMzNTQ0
+MjIsLTEzMTQyMzEwMzIsMTcwNjUwNjIwOCwxNzcxMDkyNTMwLD
+g3MDA3OTUxNiwxNTQ3MjE3NzEzXX0=
 -->
