@@ -28,14 +28,14 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 * innodb 的文件结构
 * mysql 几种索引
 * mysql 语句执行的大致流程
-
+* mysql 的B+ 树索引如何跟磁盘页对齐, 如何配置
 
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyODAxODUxMiwtMTQ1NDYwNTY1OCwxNT
-kyNDU2MTgwLDcyNDgxOTM4Nyw5MDk5MjA2NzAsLTEzNTgyMjQ1
-MjgsMTQ4NTExNDE5Nyw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbNTc4NTkwOTEwLC02MjgwMTg1MTIsLTE0NT
+Q2MDU2NTgsMTU5MjQ1NjE4MCw3MjQ4MTkzODcsOTA5OTIwNjcw
+LC0xMzU4MjI0NTI4LDE0ODUxMTQxOTcsNzMwOTk4MTE2XX0=
 -->
