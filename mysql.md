@@ -23,9 +23,19 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 2. 把where 条件应用到表中, 从返回记录数最小的表开始查起
 3. order by limit 形式的sql语句让排序的表优先查
 
+
+#### 问题
+* innodb 的文件结构
+* mysql 几种索引
+* mysql 语句执行的大致流程
+
+
+
+
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTQ2MDU2NTgsMTU5MjQ1NjE4MCw3Mj
-Q4MTkzODcsOTA5OTIwNjcwLC0xMzU4MjI0NTI4LDE0ODUxMTQx
-OTcsNzMwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbLTYyODAxODUxMiwtMTQ1NDYwNTY1OCwxNT
+kyNDU2MTgwLDcyNDgxOTM4Nyw5MDk5MjA2NzAsLTEzNTgyMjQ1
+MjgsMTQ4NTExNDE5Nyw3MzA5OTgxMTZdfQ==
 -->
