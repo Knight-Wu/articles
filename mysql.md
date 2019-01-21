@@ -31,9 +31,9 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 根据以上结构, 支持全值匹配, 最左匹配, 范围匹配, 而且因为index value 也是排序的, 所以也优化了 order by, 
 * 缺点
-不支持列顺序混乱的匹配, 例如index: (A,B,C), 查询顺序是(A,C,B), 只支持到A 列, 因为不知道B 列的长度.
-不支持跳列, 必须指定前几个列的值. 
-
+1. 不支持列顺序混乱的匹配, 例如index: (A,B,C), 查询顺序是(A,C,B), 只支持到A 列, 因为不知道B 列的长度.
+2. 不支持跳列, 必须指定前几个列的值. 
+3. if your query is WHERE last_name="Smith" AND first_name LIKE 'J%' AND dob='1976-12-23' , the index access will use only the first two columns in the index, because the LIKE is a range condition
 
 * 建索引的原则
 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。 2.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。
@@ -62,10 +62,10 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDYwNzkzNDYsMTU4Mjg3NzgwNCwzMj
-U2ODYwMzMsNTQ4Nzk2MjU0LDIwODcwNjc3MjYsLTIxMDQ0NDY2
-MTEsMTkxMzIzNjY3MSwxOTgxNTE4MzA5LDU3ODU5MDkxMCwtNj
-I4MDE4NTEyLC0xNDU0NjA1NjU4LDE1OTI0NTYxODAsNzI0ODE5
-Mzg3LDkwOTkyMDY3MCwtMTM1ODIyNDUyOCwxNDg1MTE0MTk3LD
-czMDk5ODExNl19
+eyJoaXN0b3J5IjpbMTIzNTAxODAxNSwxNTgyODc3ODA0LDMyNT
+Y4NjAzMyw1NDg3OTYyNTQsMjA4NzA2NzcyNiwtMjEwNDQ0NjYx
+MSwxOTEzMjM2NjcxLDE5ODE1MTgzMDksNTc4NTkwOTEwLC02Mj
+gwMTg1MTIsLTE0NTQ2MDU2NTgsMTU5MjQ1NjE4MCw3MjQ4MTkz
+ODcsOTA5OTIwNjcwLC0xMzU4MjI0NTI4LDE0ODUxMTQxOTcsNz
+MwOTk4MTE2XX0=
 -->
