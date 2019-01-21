@@ -19,8 +19,11 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 > In `InnoDB`, each record in a secondary index contains the primary key columns for the row, as well as the columns specified for the secondary index. (每一条在secondary index 的记录都包含主键, 所以主键尽可能短)
 
 * B+ tree index structure in INNODB 
+
 ![enter image description here](https://drive.google.com/uc?id=1jOIFUv2qT3d__lWSkkqsfuff2_N7LDoK)
-logical page size 是16KB, ke
+
+* logical page size 是16KB, 可以在初始化mysql instance 的时候进行配置, **配置原则是什么?**
+* 所有数据都由叶子节点保管
 
 * 建索引的原则
 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。 2.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。
@@ -49,9 +52,9 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjgxMDA3NjksMjA4NzA2NzcyNiwtMjEwND
-Q0NjYxMSwxOTEzMjM2NjcxLDE5ODE1MTgzMDksNTc4NTkwOTEw
-LC02MjgwMTg1MTIsLTE0NTQ2MDU2NTgsMTU5MjQ1NjE4MCw3Mj
-Q4MTkzODcsOTA5OTIwNjcwLC0xMzU4MjI0NTI4LDE0ODUxMTQx
-OTcsNzMwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbMzYxODQ1MzQ0LDIwODcwNjc3MjYsLTIxMD
+Q0NDY2MTEsMTkxMzIzNjY3MSwxOTgxNTE4MzA5LDU3ODU5MDkx
+MCwtNjI4MDE4NTEyLC0xNDU0NjA1NjU4LDE1OTI0NTYxODAsNz
+I0ODE5Mzg3LDkwOTkyMDY3MCwtMTM1ODIyNDUyOCwxNDg1MTE0
+MTk3LDczMDk5ODExNl19
 -->
