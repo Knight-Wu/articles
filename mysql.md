@@ -45,6 +45,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 #### hash index
 > only the Memory storage engine supports explicit hash indexes. They are
 the default index type for Memory tables, though Memory tables can have B-Tree indexes, too.
+ ![enter image description here](https://drive.google.com/uc?id=1MWG_sNbdCIJ5SodnSlhs5k1lNgHU0i9J)
 
 
 #### 慢查询优化
@@ -67,10 +68,10 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjE5NDYzMTcsMTIzNTAxODAxNSwxNT
-gyODc3ODA0LDMyNTY4NjAzMyw1NDg3OTYyNTQsMjA4NzA2Nzcy
-NiwtMjEwNDQ0NjYxMSwxOTEzMjM2NjcxLDE5ODE1MTgzMDksNT
-c4NTkwOTEwLC02MjgwMTg1MTIsLTE0NTQ2MDU2NTgsMTU5MjQ1
-NjE4MCw3MjQ4MTkzODcsOTA5OTIwNjcwLC0xMzU4MjI0NTI4LD
-E0ODUxMTQxOTcsNzMwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbMTc1OTAzNzY0MSwxMjM1MDE4MDE1LDE1OD
+I4Nzc4MDQsMzI1Njg2MDMzLDU0ODc5NjI1NCwyMDg3MDY3NzI2
+LC0yMTA0NDQ2NjExLDE5MTMyMzY2NzEsMTk4MTUxODMwOSw1Nz
+g1OTA5MTAsLTYyODAxODUxMiwtMTQ1NDYwNTY1OCwxNTkyNDU2
+MTgwLDcyNDgxOTM4Nyw5MDk5MjA2NzAsLTEzNTgyMjQ1MjgsMT
+Q4NTExNDE5Nyw3MzA5OTgxMTZdfQ==
 -->
