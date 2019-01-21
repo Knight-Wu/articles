@@ -18,10 +18,9 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 > All indexes other than the clustered index are known as [secondary indexes](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_secondary_index "secondary index").
 > In `InnoDB`, each record in a secondary index contains the primary key columns for the row, as well as the columns specified for the secondary index. (每一条在secondary index 的记录都包含主键, 所以主键尽可能短)
 
-* build mysql B+ tree index  
-分为三个步骤:
-> There are three phases to an index build. In the first phase, the [clustered index](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_clustered_index "clustered index") is scanned, and index entries are generated and added to the sort buffer.
-
+* B+ tree index structure in INNODB 
+![enter image description here](https://drive.google.com/uc?id=1jOIFUv2qT3d__lWSkkqsfuff2_N7LDoK)
+logical page size 是16KB, ke
 
 * 建索引的原则
 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。 2.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。
@@ -50,9 +49,9 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4NzA2NzcyNiwtMjEwNDQ0NjYxMSwxOT
-EzMjM2NjcxLDE5ODE1MTgzMDksNTc4NTkwOTEwLC02MjgwMTg1
-MTIsLTE0NTQ2MDU2NTgsMTU5MjQ1NjE4MCw3MjQ4MTkzODcsOT
-A5OTIwNjcwLC0xMzU4MjI0NTI4LDE0ODUxMTQxOTcsNzMwOTk4
-MTE2XX0=
+eyJoaXN0b3J5IjpbNjgxMDA3NjksMjA4NzA2NzcyNiwtMjEwND
+Q0NjYxMSwxOTEzMjM2NjcxLDE5ODE1MTgzMDksNTc4NTkwOTEw
+LC02MjgwMTg1MTIsLTE0NTQ2MDU2NTgsMTU5MjQ1NjE4MCw3Mj
+Q4MTkzODcsOTA5OTIwNjcwLC0xMzU4MjI0NTI4LDE0ODUxMTQx
+OTcsNzMwOTk4MTE2XX0=
 -->
