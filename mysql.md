@@ -20,6 +20,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 
 
+
 * 建索引的原则
 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。 2.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。
 
@@ -47,8 +48,8 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxMzIzNjY3MSwxOTgxNTE4MzA5LDU3OD
-U5MDkxMCwtNjI4MDE4NTEyLC0xNDU0NjA1NjU4LDE1OTI0NTYx
-ODAsNzI0ODE5Mzg3LDkwOTkyMDY3MCwtMTM1ODIyNDUyOCwxND
-g1MTE0MTk3LDczMDk5ODExNl19
+eyJoaXN0b3J5IjpbLTIxMDQ0NDY2MTEsMTkxMzIzNjY3MSwxOT
+gxNTE4MzA5LDU3ODU5MDkxMCwtNjI4MDE4NTEyLC0xNDU0NjA1
+NjU4LDE1OTI0NTYxODAsNzI0ODE5Mzg3LDkwOTkyMDY3MCwtMT
+M1ODIyNDUyOCwxNDg1MTE0MTk3LDczMDk5ODExNl19
 -->
