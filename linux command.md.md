@@ -258,6 +258,19 @@ The above commands can be run on CentOS, Ubuntu, Redhat, Fedora, Debian, and man
 ```
 
 
+* 给某个用户, 赋予操作某个文件的权限
+You can use chown and chgrp commands to change the owner or the group of a particular file or directory.
+
+```
+# ls -lart tmpfile
+-rw-r--r-- 1 himanshu family 0 2012-05-22 20:03 tmpfile
+
+# chown root tmpfile
+
+# ls -l tmpfile
+-rw-r--r-- 1 root family 0 2012-05-22 20:03 tmpfile
+```
+
 
 ---
 #### 搭建cdh测试环境总结
@@ -307,9 +320,9 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1OTA3NDkzMywxMDkxMjA3MTExLC0xND
-YwODkzNDM2LC0xMTQ0OTI3NCwtNjA4MDUwOTUxLC0zMjA4MTU3
-MjMsLTE1NTg4ODAwNTYsMzMxMjcwMTkxLDEyMDAxNjU4MzcsMT
-IyNjQyMzc5OSwtMTM1ODE5MzkxMCwxMDEyNjE4NzUyLDEwMjg0
-NjYwMzksLTYyNjk3MTU5NF19
+eyJoaXN0b3J5IjpbMTYxMTUzOTEzLDEwOTEyMDcxMTEsLTE0Nj
+A4OTM0MzYsLTExNDQ5Mjc0LC02MDgwNTA5NTEsLTMyMDgxNTcy
+MywtMTU1ODg4MDA1NiwzMzEyNzAxOTEsMTIwMDE2NTgzNywxMj
+I2NDIzNzk5LC0xMzU4MTkzOTEwLDEwMTI2MTg3NTIsMTAyODQ2
+NjAzOSwtNjI2OTcxNTk0XX0=
 -->
