@@ -47,6 +47,9 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 the default index type for Memory tables, though Memory tables can have B-Tree indexes, too.
  ![enter image description here](https://drive.google.com/uc?id=1MWG_sNbdCIJ5SodnSlhs5k1lNgHU0i9J)
 
+* 缺点
+1. 不支持row 排序, 因为只是hash value是排序的
+2. 
 
 #### 慢查询优化
 用explain 语句查看执行计划, 目标是降低 rows
@@ -68,7 +71,7 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1OTAzNzY0MSwxMjM1MDE4MDE1LDE1OD
+eyJoaXN0b3J5IjpbLTMyNjkyNDU4MywxMjM1MDE4MDE1LDE1OD
 I4Nzc4MDQsMzI1Njg2MDMzLDU0ODc5NjI1NCwyMDg3MDY3NzI2
 LC0yMTA0NDQ2NjExLDE5MTMyMzY2NzEsMTk4MTUxODMwOSw1Nz
 g1OTA5MTAsLTYyODAxODUxMiwtMTQ1NDYwNTY1OCwxNTkyNDU2
