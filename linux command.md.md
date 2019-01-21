@@ -258,6 +258,7 @@ The above commands can be run on CentOS, Ubuntu, Redhat, Fedora, Debian, and man
 ```
 
 
+
 ---
 #### 搭建cdh测试环境总结
 1. 机器
@@ -306,9 +307,9 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5MTIwNzExMSwtMTQ2MDg5MzQzNiwtMT
-E0NDkyNzQsLTYwODA1MDk1MSwtMzIwODE1NzIzLC0xNTU4ODgw
-MDU2LDMzMTI3MDE5MSwxMjAwMTY1ODM3LDEyMjY0MjM3OTksLT
-EzNTgxOTM5MTAsMTAxMjYxODc1MiwxMDI4NDY2MDM5LC02MjY5
-NzE1OTRdfQ==
+eyJoaXN0b3J5IjpbMTM1OTA3NDkzMywxMDkxMjA3MTExLC0xND
+YwODkzNDM2LC0xMTQ0OTI3NCwtNjA4MDUwOTUxLC0zMjA4MTU3
+MjMsLTE1NTg4ODAwNTYsMzMxMjcwMTkxLDEyMDAxNjU4MzcsMT
+IyNjQyMzc5OSwtMTM1ODE5MzkxMCwxMDEyNjE4NzUyLDEwMjg0
+NjYwMzksLTYyNjk3MTU5NF19
 -->
