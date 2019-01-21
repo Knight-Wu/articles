@@ -32,6 +32,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 根据以上结构, 支持全值匹配, 最左匹配, 范围匹配, 而且因为index value 也是排序的, 所以也优化了 order by, 
 * 缺点
 不支持列顺序混乱的匹配, 例如index: (A,B,C), 查询顺序是(A,C,B), 只支持到A 列, 因为不知道B 列的长度.
+不支持跳列, 必须指定前几个列的值. 
 
 
 * 建索引的原则
@@ -61,9 +62,10 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4Mjg3NzgwNCwzMjU2ODYwMzMsNTQ4Nz
-k2MjU0LDIwODcwNjc3MjYsLTIxMDQ0NDY2MTEsMTkxMzIzNjY3
-MSwxOTgxNTE4MzA5LDU3ODU5MDkxMCwtNjI4MDE4NTEyLC0xND
-U0NjA1NjU4LDE1OTI0NTYxODAsNzI0ODE5Mzg3LDkwOTkyMDY3
-MCwtMTM1ODIyNDUyOCwxNDg1MTE0MTk3LDczMDk5ODExNl19
+eyJoaXN0b3J5IjpbLTIwMDYwNzkzNDYsMTU4Mjg3NzgwNCwzMj
+U2ODYwMzMsNTQ4Nzk2MjU0LDIwODcwNjc3MjYsLTIxMDQ0NDY2
+MTEsMTkxMzIzNjY3MSwxOTgxNTE4MzA5LDU3ODU5MDkxMCwtNj
+I4MDE4NTEyLC0xNDU0NjA1NjU4LDE1OTI0NTYxODAsNzI0ODE5
+Mzg3LDkwOTkyMDY3MCwtMTM1ODIyNDUyOCwxNDg1MTE0MTk3LD
+czMDk5ODExNl19
 -->
