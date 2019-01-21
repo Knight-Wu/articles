@@ -12,7 +12,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 * clustered index
 >  When you define a  `PRIMARY KEY`  on your table,  `InnoDB`  uses it as the clustered index. Define a primary key for each table that you create. If there is no logical unique and non-null column or set of columns, add a new  [auto-increment](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_auto_increment "auto-increment")  column, whose values are filled in automatically.(如果有主键的话, 就把主键作为 clustered index )
     
->  If you do not define a  `PRIMARY KEY`  for your table, MySQL locates the first  `UNIQUE`  index where all the key columns are  `NOT NULL`  and  `InnoDB`  uses it as the clustered index. (如果没有主键, )
+>  If you do not define a  `PRIMARY KEY`  for your table, MySQL locates the first  `UNIQUE`  index where all the key columns are  `NOT NULL`  and  `InnoDB`  uses it as the clustered index. (如果没有主键, 把所有非空的列都当做索引? )
 
 
 
@@ -45,8 +45,8 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzk1ODYxMDcxLDU3ODU5MDkxMCwtNjI4MD
-E4NTEyLC0xNDU0NjA1NjU4LDE1OTI0NTYxODAsNzI0ODE5Mzg3
-LDkwOTkyMDY3MCwtMTM1ODIyNDUyOCwxNDg1MTE0MTk3LDczMD
-k5ODExNl19
+eyJoaXN0b3J5IjpbMTk4MTUxODMwOSw1Nzg1OTA5MTAsLTYyOD
+AxODUxMiwtMTQ1NDYwNTY1OCwxNTkyNDU2MTgwLDcyNDgxOTM4
+Nyw5MDk5MjA2NzAsLTEzNTgyMjQ1MjgsMTQ4NTExNDE5Nyw3Mz
+A5OTgxMTZdfQ==
 -->
