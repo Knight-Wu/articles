@@ -233,6 +233,31 @@ The builtin source command is synonym for the . (dot) explained above. If you ar
 $ source ~/.bashrc
 
 ```
+
+* system service operation
+
+systemctl usage
+
+The complication ends here. In fact, the stopping|starting|restarting of services on Linux is now quite simple. Let's say we're on CentOS and we want to stop the Apache server. To do this we'd open up a terminal window and issue the command:
+```
+sudo systemctl stop httpd
+
+The Apache server would stop and you'd be returned to the bash prompt. To start the same service, we'd issue the command:
+
+sudo systemctl start httpd
+
+The service would start and you'd be returned to your bash prompt.
+
+To restart the same service, we'd issue the command:
+
+sudo systemctl restart httpd
+
+The service would restart and you'd be returned to the bash prompt.
+
+The above commands can be run on CentOS, Ubuntu, Redhat, Fedora, Debian, and many more
+```
+
+
 ---
 #### 搭建cdh测试环境总结
 1. 机器
@@ -281,8 +306,9 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjA4OTM0MzYsLTExNDQ5Mjc0LC02MD
-gwNTA5NTEsLTMyMDgxNTcyMywtMTU1ODg4MDA1NiwzMzEyNzAx
-OTEsMTIwMDE2NTgzNywxMjI2NDIzNzk5LC0xMzU4MTkzOTEwLD
-EwMTI2MTg3NTIsMTAyODQ2NjAzOSwtNjI2OTcxNTk0XX0=
+eyJoaXN0b3J5IjpbMTA5MTIwNzExMSwtMTQ2MDg5MzQzNiwtMT
+E0NDkyNzQsLTYwODA1MDk1MSwtMzIwODE1NzIzLC0xNTU4ODgw
+MDU2LDMzMTI3MDE5MSwxMjAwMTY1ODM3LDEyMjY0MjM3OTksLT
+EzNTgxOTM5MTAsMTAxMjYxODc1MiwxMDI4NDY2MDM5LC02MjY5
+NzE1OTRdfQ==
 -->
