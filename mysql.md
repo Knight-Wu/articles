@@ -51,7 +51,7 @@ the default index type for Memory tables, though Memory tables can have B-Tree i
 1. 不支持row 排序, 因为只是hash value是排序的
 2. 不支持部分列匹配, 因为hash value是根据所有列的值计算的, 如果index : (A,B), 只指定where A=someVal , 是不起作用的
 3. 不支持范围查询
-4. 
+4. 当hash entry 冲突很多的时候, 冲突的值会退化成列表
 
 #### 慢查询优化
 用explain 语句查看执行计划, 目标是降低 rows
@@ -73,10 +73,10 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3OTcxOTE2NCwxMjM1MDE4MDE1LDE1OD
-I4Nzc4MDQsMzI1Njg2MDMzLDU0ODc5NjI1NCwyMDg3MDY3NzI2
-LC0yMTA0NDQ2NjExLDE5MTMyMzY2NzEsMTk4MTUxODMwOSw1Nz
-g1OTA5MTAsLTYyODAxODUxMiwtMTQ1NDYwNTY1OCwxNTkyNDU2
-MTgwLDcyNDgxOTM4Nyw5MDk5MjA2NzAsLTEzNTgyMjQ1MjgsMT
-Q4NTExNDE5Nyw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbLTk2MjMwODcsMTIzNTAxODAxNSwxNTgyOD
+c3ODA0LDMyNTY4NjAzMyw1NDg3OTYyNTQsMjA4NzA2NzcyNiwt
+MjEwNDQ0NjYxMSwxOTEzMjM2NjcxLDE5ODE1MTgzMDksNTc4NT
+kwOTEwLC02MjgwMTg1MTIsLTE0NTQ2MDU2NTgsMTU5MjQ1NjE4
+MCw3MjQ4MTkzODcsOTA5OTIwNjcwLC0xMzU4MjI0NTI4LDE0OD
+UxMTQxOTcsNzMwOTk4MTE2XX0=
 -->
