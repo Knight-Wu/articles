@@ -29,7 +29,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 一个实际的数据例子阐述innodb 索引: 
 ![enter image description here](https://drive.google.com/uc?id=1CCbvzgDAKugLkRhRx-7d7kg1bLVsLWL2)
 
-根据以上结构, 支持全值匹配, 最左匹配, 范围匹配, 而且因为index value 也是排序的, 所以也优化了 order by, 不支持列顺序混乱的pi
+根据以上结构, 支持全值匹配, 最左匹配, 范围匹配, 而且因为index value 也是排序的, 所以也优化了 order by, 不支持列顺序混乱的匹配, 例如index: (A,B,C), 查询顺序是(A,C,B), 只支持到A 列, 因为不知道B 列的长度
 
 * 建索引的原则
 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。 2.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。
@@ -58,9 +58,9 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDYxMjAyNDUsNTQ4Nzk2MjU0LDIwOD
-cwNjc3MjYsLTIxMDQ0NDY2MTEsMTkxMzIzNjY3MSwxOTgxNTE4
-MzA5LDU3ODU5MDkxMCwtNjI4MDE4NTEyLC0xNDU0NjA1NjU4LD
-E1OTI0NTYxODAsNzI0ODE5Mzg3LDkwOTkyMDY3MCwtMTM1ODIy
-NDUyOCwxNDg1MTE0MTk3LDczMDk5ODExNl19
+eyJoaXN0b3J5IjpbMzI1Njg2MDMzLDU0ODc5NjI1NCwyMDg3MD
+Y3NzI2LC0yMTA0NDQ2NjExLDE5MTMyMzY2NzEsMTk4MTUxODMw
+OSw1Nzg1OTA5MTAsLTYyODAxODUxMiwtMTQ1NDYwNTY1OCwxNT
+kyNDU2MTgwLDcyNDgxOTM4Nyw5MDk5MjA2NzAsLTEzNTgyMjQ1
+MjgsMTQ4NTExNDE5Nyw3MzA5OTgxMTZdfQ==
 -->
