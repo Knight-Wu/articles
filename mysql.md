@@ -16,6 +16,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 * Secondary Indexes
 > All indexes other than the clustered index are known as [secondary indexes](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_secondary_index "secondary index").
+> In `InnoDB`, each record in a secondary index contains the primary key columns for the row, as well as the columns specified for the secondary index. (每一条在secondary index 的记录都包含主键, 所以主键尽可能短)
 
 
 
@@ -46,7 +47,7 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3NTA0NTY2MCwxOTgxNTE4MzA5LDU3OD
+eyJoaXN0b3J5IjpbMTkxMzIzNjY3MSwxOTgxNTE4MzA5LDU3OD
 U5MDkxMCwtNjI4MDE4NTEyLC0xNDU0NjA1NjU4LDE1OTI0NTYx
 ODAsNzI0ODE5Mzg3LDkwOTkyMDY3MCwtMTM1ODIyNDUyOCwxND
 g1MTE0MTk3LDczMDk5ODExNl19
