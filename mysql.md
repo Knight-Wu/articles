@@ -35,12 +35,17 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 2. 不支持跳列, 必须指定前几个列的值. 
 3. if your query is WHERE last_name="Smith" AND first_name LIKE 'J%' AND dob='1976-12-23' , the index access will use only the first two columns in the index, because the LIKE is a range condition
 
-* 建索引的原则
+* 使用B+ tree 索引的原则
 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。 2.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。
 
 尽量选择区分度高的列作为索引, 
 
 索引列的值不能作为函数入参进行计算, 比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’)
+
+#### hash index
+> only the Memory storage engine supports explicit hash indexes. They are
+the default index type for Memory tables, though Memory tables can have B-Tree indexes, too.
+
 
 #### 慢查询优化
 用explain 语句查看执行计划, 目标是降低 rows
@@ -62,10 +67,10 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzNTAxODAxNSwxNTgyODc3ODA0LDMyNT
-Y4NjAzMyw1NDg3OTYyNTQsMjA4NzA2NzcyNiwtMjEwNDQ0NjYx
-MSwxOTEzMjM2NjcxLDE5ODE1MTgzMDksNTc4NTkwOTEwLC02Mj
-gwMTg1MTIsLTE0NTQ2MDU2NTgsMTU5MjQ1NjE4MCw3MjQ4MTkz
-ODcsOTA5OTIwNjcwLC0xMzU4MjI0NTI4LDE0ODUxMTQxOTcsNz
-MwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbLTE1MjE5NDYzMTcsMTIzNTAxODAxNSwxNT
+gyODc3ODA0LDMyNTY4NjAzMyw1NDg3OTYyNTQsMjA4NzA2Nzcy
+NiwtMjEwNDQ0NjYxMSwxOTEzMjM2NjcxLDE5ODE1MTgzMDksNT
+c4NTkwOTEwLC02MjgwMTg1MTIsLTE0NTQ2MDU2NTgsMTU5MjQ1
+NjE4MCw3MjQ4MTkzODcsOTA5OTIwNjcwLC0xMzU4MjI0NTI4LD
+E0ODUxMTQxOTcsNzMwOTk4MTE2XX0=
 -->
