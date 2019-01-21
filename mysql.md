@@ -18,7 +18,9 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 > All indexes other than the clustered index are known as [secondary indexes](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_secondary_index "secondary index").
 > In `InnoDB`, each record in a secondary index contains the primary key columns for the row, as well as the columns specified for the secondary index. (每一条在secondary index 的记录都包含主键, 所以主键尽可能短)
 
-
+* build mysql B+ tree index  
+分为三个步骤:
+> There are three phases to an index build. In the first phase, the [clustered index](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_clustered_index "clustered index") is scanned, and index entries are generated and added to the sort buffer.
 
 
 * 建索引的原则
@@ -48,8 +50,9 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDQ0NDY2MTEsMTkxMzIzNjY3MSwxOT
-gxNTE4MzA5LDU3ODU5MDkxMCwtNjI4MDE4NTEyLC0xNDU0NjA1
-NjU4LDE1OTI0NTYxODAsNzI0ODE5Mzg3LDkwOTkyMDY3MCwtMT
-M1ODIyNDUyOCwxNDg1MTE0MTk3LDczMDk5ODExNl19
+eyJoaXN0b3J5IjpbMjA4NzA2NzcyNiwtMjEwNDQ0NjYxMSwxOT
+EzMjM2NjcxLDE5ODE1MTgzMDksNTc4NTkwOTEwLC02MjgwMTg1
+MTIsLTE0NTQ2MDU2NTgsMTU5MjQ1NjE4MCw3MjQ4MTkzODcsOT
+A5OTIwNjcwLC0xMzU4MjI0NTI4LDE0ODUxMTQxOTcsNzMwOTk4
+MTE2XX0=
 -->
