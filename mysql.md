@@ -7,8 +7,15 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 不支持行锁, 只支持表锁, 不支持事务, 不支持崩溃后快速回复, 不支持外键, 适合读的场景
 
 
-#### 索引
+### 索引
+#### INNODB 索引
+* cluster index
+如果有主键的话, 就ba
 
+
+
+
+* 建索引的原则
 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。 2.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。
 
 尽量选择区分度高的列作为索引, 
@@ -35,7 +42,8 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTc4NTkwOTEwLC02MjgwMTg1MTIsLTE0NT
-Q2MDU2NTgsMTU5MjQ1NjE4MCw3MjQ4MTkzODcsOTA5OTIwNjcw
-LC0xMzU4MjI0NTI4LDE0ODUxMTQxOTcsNzMwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbLTI3NzQ4MTA5Miw1Nzg1OTA5MTAsLTYyOD
+AxODUxMiwtMTQ1NDYwNTY1OCwxNTkyNDU2MTgwLDcyNDgxOTM4
+Nyw5MDk5MjA2NzAsLTEzNTgyMjQ1MjgsMTQ4NTExNDE5Nyw3Mz
+A5OTgxMTZdfQ==
 -->
