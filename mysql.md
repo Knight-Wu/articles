@@ -51,7 +51,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 > 聚簇索引和非聚簇索引的区别
 
 1. 聚簇索引数据访问更快, row 直接保存在索引的叶子节点; 非聚簇索引查找行, 需要两次查找, 因为非聚簇索引的叶子节点保存的是主键列, 再通过主键列去聚簇索引中找到对应的行. 
-2. 
+2. 聚簇索引的更新代价更大, 
 
 #### hash index
 > only the Memory storage engine supports explicit hash indexes. They are
@@ -84,7 +84,7 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5MDcwMTMxOCwtNjE5NzgyNjY3LDYyNT
+eyJoaXN0b3J5IjpbLTEyMTgxNDQ5MSwtNjE5NzgyNjY3LDYyNT
 c0Njc0MCw1ODQwNzA0MzcsLTc2ODgzNDQyNCwtOTYyMzA4Nywx
 MjM1MDE4MDE1LDE1ODI4Nzc4MDQsMzI1Njg2MDMzLDU0ODc5Nj
 I1NCwyMDg3MDY3NzI2LC0yMTA0NDQ2NjExLDE5MTMyMzY2NzEs
