@@ -38,10 +38,11 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 5. 多列索引, 可能会引起索引的合并, 
 
 * clustered index
-聚簇索引并不是一个索引类型, 而是一种数据存储方式, 而IN
+聚簇索引并不是一个索引类型, 而是一种数据存储方式, 而InnoDB 的聚簇索引实际上就是B+ tree 的叶子节点将key 和data row 存放在一起. 
+
 >  When you define a  `PRIMARY KEY`  on your table,  `InnoDB`  uses it as the clustered index. Define a primary key for each table that you create. If there is no logical unique and non-null column or set of columns, add a new  [auto-increment](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_auto_increment "auto-increment")  column, whose values are filled in automatically.(如果有主键的话, 就把主键作为 clustered index )
     
->  If you do not define a  `PRIMARY KEY`  for your table, MySQL locates the first  `UNIQUE`  index where all the key columns are  `NOT NULL`  and  `InnoDB`  uses it as the clustered index. (如果没有主键, 把所有非空的列都当做索引? )
+>  If you do not define a  `PRIMARY KEY`  for your table, MySQL locates the first  `UNIQUE`  index where all the key columns are  `NOT NULL`  and  `InnoDB`  uses it as the clustered index. (如果没有主键, 选择一个unique 的非null 的列作为聚簇索引 )
 
 * Secondary Indexes
 > All indexes other than the clustered index are known as [secondary indexes](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_secondary_index "secondary index").
@@ -79,11 +80,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2MjA3NDIxOSw1ODQwNzA0MzcsLTc2OD
-gzNDQyNCwtOTYyMzA4NywxMjM1MDE4MDE1LDE1ODI4Nzc4MDQs
-MzI1Njg2MDMzLDU0ODc5NjI1NCwyMDg3MDY3NzI2LC0yMTA0ND
-Q2NjExLDE5MTMyMzY2NzEsMTk4MTUxODMwOSw1Nzg1OTA5MTAs
-LTYyODAxODUxMiwtMTQ1NDYwNTY1OCwxNTkyNDU2MTgwLDcyND
-gxOTM4Nyw5MDk5MjA2NzAsLTEzNTgyMjQ1MjgsMTQ4NTExNDE5
-N119
+eyJoaXN0b3J5IjpbNjI1NzQ2NzQwLDU4NDA3MDQzNywtNzY4OD
+M0NDI0LC05NjIzMDg3LDEyMzUwMTgwMTUsMTU4Mjg3NzgwNCwz
+MjU2ODYwMzMsNTQ4Nzk2MjU0LDIwODcwNjc3MjYsLTIxMDQ0ND
+Y2MTEsMTkxMzIzNjY3MSwxOTgxNTE4MzA5LDU3ODU5MDkxMCwt
+NjI4MDE4NTEyLC0xNDU0NjA1NjU4LDE1OTI0NTYxODAsNzI0OD
+E5Mzg3LDkwOTkyMDY3MCwtMTM1ODIyNDUyOCwxNDg1MTE0MTk3
+XX0=
 -->
