@@ -52,7 +52,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 1. 聚簇索引数据访问更快, row 直接保存在索引的叶子节点; 非聚簇索引查找行, 需要两次查找, 因为非聚簇索引的叶子节点保存的是主键列, 再通过主键列去聚簇索引中找到对应的行. 
 2. 聚簇索引的更新代价更大, 
-3. 因为聚簇索引, 
+3. 因为聚簇索引的是按顺序排列的, 如果是主键作为了聚簇索引, 则最好设置为AUTO_INCREMENT, 插入的效率会很高, 否则如果是使用uuid 作为主键, 可能引起page split, 因为后面的
 
 #### hash index
 > only the Memory storage engine supports explicit hash indexes. They are
@@ -85,7 +85,7 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA5MTYxODI2MCwtMTg0NDU2MDQ0LC02MT
+eyJoaXN0b3J5IjpbMTM4Mzc3MzY4MSwtMTg0NDU2MDQ0LC02MT
 k3ODI2NjcsNjI1NzQ2NzQwLDU4NDA3MDQzNywtNzY4ODM0NDI0
 LC05NjIzMDg3LDEyMzUwMTgwMTUsMTU4Mjg3NzgwNCwzMjU2OD
 YwMzMsNTQ4Nzk2MjU0LDIwODcwNjc3MjYsLTIxMDQ0NDY2MTEs
