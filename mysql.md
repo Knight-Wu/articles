@@ -50,7 +50,8 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 > 聚簇索引和非聚簇索引的区别
 
-聚簇索引数据访问更快, row 直接保存在索引的叶子节点; 非聚簇索引查找行, 需要两次查找, 因为非聚簇索引的叶子节点保存的是主键列, 再通过zhujian
+1. 聚簇索引数据访问更快, row 直接保存在索引的叶子节点; 非聚簇索引查找行, 需要两次查找, 因为非聚簇索引的叶子节点保存的是主键列, 再通过主键列去聚簇索引中找到对应的行. 
+2. 
 
 #### hash index
 > only the Memory storage engine supports explicit hash indexes. They are
@@ -83,11 +84,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTIzNDEzOTcsLTYxOTc4MjY2Nyw2Mj
-U3NDY3NDAsNTg0MDcwNDM3LC03Njg4MzQ0MjQsLTk2MjMwODcs
-MTIzNTAxODAxNSwxNTgyODc3ODA0LDMyNTY4NjAzMyw1NDg3OT
-YyNTQsMjA4NzA2NzcyNiwtMjEwNDQ0NjYxMSwxOTEzMjM2Njcx
-LDE5ODE1MTgzMDksNTc4NTkwOTEwLC02MjgwMTg1MTIsLTE0NT
-Q2MDU2NTgsMTU5MjQ1NjE4MCw3MjQ4MTkzODcsOTA5OTIwNjcw
-XX0=
+eyJoaXN0b3J5IjpbLTg5MDcwMTMxOCwtNjE5NzgyNjY3LDYyNT
+c0Njc0MCw1ODQwNzA0MzcsLTc2ODgzNDQyNCwtOTYyMzA4Nywx
+MjM1MDE4MDE1LDE1ODI4Nzc4MDQsMzI1Njg2MDMzLDU0ODc5Nj
+I1NCwyMDg3MDY3NzI2LC0yMTA0NDQ2NjExLDE5MTMyMzY2NzEs
+MTk4MTUxODMwOSw1Nzg1OTA5MTAsLTYyODAxODUxMiwtMTQ1ND
+YwNTY1OCwxNTkyNDU2MTgwLDcyNDgxOTM4Nyw5MDk5MjA2NzBd
+fQ==
 -->
