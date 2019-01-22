@@ -9,15 +9,6 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 ### 索引
 #### INNODB 索引
-* clustered index
->  When you define a  `PRIMARY KEY`  on your table,  `InnoDB`  uses it as the clustered index. Define a primary key for each table that you create. If there is no logical unique and non-null column or set of columns, add a new  [auto-increment](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_auto_increment "auto-increment")  column, whose values are filled in automatically.(如果有主键的话, 就把主键作为 clustered index )
-    
->  If you do not define a  `PRIMARY KEY`  for your table, MySQL locates the first  `UNIQUE`  index where all the key columns are  `NOT NULL`  and  `InnoDB`  uses it as the clustered index. (如果没有主键, 把所有非空的列都当做索引? )
-
-* Secondary Indexes
-> All indexes other than the clustered index are known as [secondary indexes](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_secondary_index "secondary index").
-> In `InnoDB`, each record in a secondary index contains the primary key columns for the row, as well as the columns specified for the secondary index. (每一条在secondary index 的记录都包含主键, 所以主键尽可能短)
-
 * B+ tree index structure in INNODB 
 
 ![enter image description here](https://drive.google.com/uc?id=1jOIFUv2qT3d__lWSkkqsfuff2_N7LDoK)
@@ -45,6 +36,18 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 4. 前缀索引
  只采取索引列的前缀作为索引, 减少空间, 但是这个前缀要能一定程度上的获取你想要的结果. 可以具体参考"高性能mysql 5.3.2"
 5. 多列索引, 可能会引起索引的合并, 
+
+* clustered index
+聚簇索引并不是一个索引类型, 而是一种数据存储方式, 而IN
+>  When you define a  `PRIMARY KEY`  on your table,  `InnoDB`  uses it as the clustered index. Define a primary key for each table that you create. If there is no logical unique and non-null column or set of columns, add a new  [auto-increment](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_auto_increment "auto-increment")  column, whose values are filled in automatically.(如果有主键的话, 就把主键作为 clustered index )
+    
+>  If you do not define a  `PRIMARY KEY`  for your table, MySQL locates the first  `UNIQUE`  index where all the key columns are  `NOT NULL`  and  `InnoDB`  uses it as the clustered index. (如果没有主键, 把所有非空的列都当做索引? )
+
+* Secondary Indexes
+> All indexes other than the clustered index are known as [secondary indexes](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_secondary_index "secondary index").
+> In `InnoDB`, each record in a secondary index contains the primary key columns for the row, as well as the columns specified for the secondary index. (每一条在secondary index 的记录都包含主键, 所以主键尽可能短)
+
+
 #### hash index
 > only the Memory storage engine supports explicit hash indexes. They are
 the default index type for Memory tables, though Memory tables can have B-Tree indexes, too.
@@ -76,11 +79,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTg0MDcwNDM3LC03Njg4MzQ0MjQsLTk2Mj
-MwODcsMTIzNTAxODAxNSwxNTgyODc3ODA0LDMyNTY4NjAzMyw1
-NDg3OTYyNTQsMjA4NzA2NzcyNiwtMjEwNDQ0NjYxMSwxOTEzMj
-M2NjcxLDE5ODE1MTgzMDksNTc4NTkwOTEwLC02MjgwMTg1MTIs
-LTE0NTQ2MDU2NTgsMTU5MjQ1NjE4MCw3MjQ4MTkzODcsOTA5OT
-IwNjcwLC0xMzU4MjI0NTI4LDE0ODUxMTQxOTcsNzMwOTk4MTE2
-XX0=
+eyJoaXN0b3J5IjpbMTU2MjA3NDIxOSw1ODQwNzA0MzcsLTc2OD
+gzNDQyNCwtOTYyMzA4NywxMjM1MDE4MDE1LDE1ODI4Nzc4MDQs
+MzI1Njg2MDMzLDU0ODc5NjI1NCwyMDg3MDY3NzI2LC0yMTA0ND
+Q2NjExLDE5MTMyMzY2NzEsMTk4MTUxODMwOSw1Nzg1OTA5MTAs
+LTYyODAxODUxMiwtMTQ1NDYwNTY1OCwxNTkyNDU2MTgwLDcyND
+gxOTM4Nyw5MDk5MjA2NzAsLTEzNTgyMjQ1MjgsMTQ4NTExNDE5
+N119
 -->
