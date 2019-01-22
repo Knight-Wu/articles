@@ -11,8 +11,11 @@ hdfs 的HA 是通过zookeeper和zkfc 来协同的, 故检查zkfc 的日志
 ![enter image description here](https://drive.google.com/uc?id=1VbpDrK0x9QlACs4IFoPH6ahdKg--DKQJ)
 
 
-然后zkfc 再次进行选举, 日志如下图, 因为 old  active nn 信息weikong
+然后zkfc 再次进行选举, 日志如下图, 因为 old  active nn 信息为空了, 跳过了fencing, 成功注册了 active nn.
+
+![enter image description here](https://drive.google.com/uc?id=1_2_IJK96wFAC4xyvlIFECFXAWKUaYpFN)
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5NzcyMjQ3NV19
+eyJoaXN0b3J5IjpbMTEyNDIzOTE3NV19
 -->
