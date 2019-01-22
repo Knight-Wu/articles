@@ -48,6 +48,8 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 > All indexes other than the clustered index are known as [secondary indexes](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_secondary_index "secondary index").(非聚簇索引都是二级索引)
 > In `InnoDB`, each record in a secondary index contains the primary key columns for the row, as well as the columns specified for the secondary index. (每一条在secondary index 的记录都包含主键, 所以主键尽可能短)
 
+> 聚簇索引和非聚簇索引的区别
+ju
 
 #### hash index
 > only the Memory storage engine supports explicit hash indexes. They are
@@ -80,11 +82,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxOTc4MjY2Nyw2MjU3NDY3NDAsNTg0MD
-cwNDM3LC03Njg4MzQ0MjQsLTk2MjMwODcsMTIzNTAxODAxNSwx
-NTgyODc3ODA0LDMyNTY4NjAzMyw1NDg3OTYyNTQsMjA4NzA2Nz
-cyNiwtMjEwNDQ0NjYxMSwxOTEzMjM2NjcxLDE5ODE1MTgzMDks
-NTc4NTkwOTEwLC02MjgwMTg1MTIsLTE0NTQ2MDU2NTgsMTU5Mj
-Q1NjE4MCw3MjQ4MTkzODcsOTA5OTIwNjcwLC0xMzU4MjI0NTI4
-XX0=
+eyJoaXN0b3J5IjpbNDc4NDM0NjQ5LC02MTk3ODI2NjcsNjI1Nz
+Q2NzQwLDU4NDA3MDQzNywtNzY4ODM0NDI0LC05NjIzMDg3LDEy
+MzUwMTgwMTUsMTU4Mjg3NzgwNCwzMjU2ODYwMzMsNTQ4Nzk2Mj
+U0LDIwODcwNjc3MjYsLTIxMDQ0NDY2MTEsMTkxMzIzNjY3MSwx
+OTgxNTE4MzA5LDU3ODU5MDkxMCwtNjI4MDE4NTEyLC0xNDU0Nj
+A1NjU4LDE1OTI0NTYxODAsNzI0ODE5Mzg3LDkwOTkyMDY3MF19
+
 -->
