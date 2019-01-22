@@ -52,7 +52,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 1. 聚簇索引数据访问更快, row 直接保存在索引的叶子节点; 非聚簇索引查找行, 需要两次查找, 因为非聚簇索引的叶子节点保存的是主键列, 再通过主键列去聚簇索引中找到对应的行. 
 2. 聚簇索引的更新代价更大, 
-3. 使用聚簇索引的时候, 最好保证
+3. 因为聚簇索引, 
 
 #### hash index
 > only the Memory storage engine supports explicit hash indexes. They are
@@ -85,11 +85,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzQyNzUyNTksLTE4NDQ1NjA0NCwtNj
-E5NzgyNjY3LDYyNTc0Njc0MCw1ODQwNzA0MzcsLTc2ODgzNDQy
-NCwtOTYyMzA4NywxMjM1MDE4MDE1LDE1ODI4Nzc4MDQsMzI1Nj
-g2MDMzLDU0ODc5NjI1NCwyMDg3MDY3NzI2LC0yMTA0NDQ2NjEx
-LDE5MTMyMzY2NzEsMTk4MTUxODMwOSw1Nzg1OTA5MTAsLTYyOD
-AxODUxMiwtMTQ1NDYwNTY1OCwxNTkyNDU2MTgwLDcyNDgxOTM4
-N119
+eyJoaXN0b3J5IjpbMjA5MTYxODI2MCwtMTg0NDU2MDQ0LC02MT
+k3ODI2NjcsNjI1NzQ2NzQwLDU4NDA3MDQzNywtNzY4ODM0NDI0
+LC05NjIzMDg3LDEyMzUwMTgwMTUsMTU4Mjg3NzgwNCwzMjU2OD
+YwMzMsNTQ4Nzk2MjU0LDIwODcwNjc3MjYsLTIxMDQ0NDY2MTEs
+MTkxMzIzNjY3MSwxOTgxNTE4MzA5LDU3ODU5MDkxMCwtNjI4MD
+E4NTEyLC0xNDU0NjA1NjU4LDE1OTI0NTYxODAsNzI0ODE5Mzg3
+XX0=
 -->
