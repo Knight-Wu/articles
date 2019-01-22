@@ -45,7 +45,7 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 
 基于spark-2.2.0 , 使用local[*] 模式
 
-> main 启动类
+> main 启动类/
 
 配置里 driver_extra_java_options 是从remote debug复制过来的, 具体后面会讲解.
 ![enter image description here](https://drive.google.com/uc?id=1ymtejwlzml7ub5b6uYB0A_BmJqZEz9LS)
@@ -87,5 +87,5 @@ https://docs.oracle.com/javase/7/docs/technotes/guides/jpda/conninv.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0MTM4ODg4N119
+eyJoaXN0b3J5IjpbODUzNzE2NDUyLDE5NDEzODg4ODddfQ==
 -->
