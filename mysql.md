@@ -22,7 +22,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 ![enter image description here](https://drive.google.com/uc?id=1jOIFUv2qT3d__lWSkkqsfuff2_N7LDoK)
 
-* logical page size 是16KB, 可以在初始化mysql instance 的时候进行配置, **配置原则是什么?**
+* node size=disk page size=16KB , 可以在初始化mysql instance 的时候进行配置
 * 所有数据都由叶子节点保管
 * Because B-Trees store the indexed columns in order, they’re useful for searching for ranges of data.
 
@@ -73,10 +73,10 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2MjMwODcsMTIzNTAxODAxNSwxNTgyOD
-c3ODA0LDMyNTY4NjAzMyw1NDg3OTYyNTQsMjA4NzA2NzcyNiwt
-MjEwNDQ0NjYxMSwxOTEzMjM2NjcxLDE5ODE1MTgzMDksNTc4NT
-kwOTEwLC02MjgwMTg1MTIsLTE0NTQ2MDU2NTgsMTU5MjQ1NjE4
-MCw3MjQ4MTkzODcsOTA5OTIwNjcwLC0xMzU4MjI0NTI4LDE0OD
-UxMTQxOTcsNzMwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbLTc2ODgzNDQyNCwtOTYyMzA4NywxMjM1MD
+E4MDE1LDE1ODI4Nzc4MDQsMzI1Njg2MDMzLDU0ODc5NjI1NCwy
+MDg3MDY3NzI2LC0yMTA0NDQ2NjExLDE5MTMyMzY2NzEsMTk4MT
+UxODMwOSw1Nzg1OTA5MTAsLTYyODAxODUxMiwtMTQ1NDYwNTY1
+OCwxNTkyNDU2MTgwLDcyNDgxOTM4Nyw5MDk5MjA2NzAsLTEzNT
+gyMjQ1MjgsMTQ4NTExNDE5Nyw3MzA5OTgxMTZdfQ==
 -->
