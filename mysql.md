@@ -36,12 +36,15 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 3. if your query is WHERE last_name="Smith" AND first_name LIKE 'J%' AND dob='1976-12-23' , the index access will use only the first two columns in the index, because the LIKE is a range condition
 
 * 使用B+ tree 索引的原则
-最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。 2.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。
 
-尽量选择区分度高的列作为索引, 
+1. 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。 2.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。
 
-索引列的值不能作为函数入参进行计算, 比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’)
+2. 当不需要排序和分组的时候, 将选择性高的列放到多列索引的前边
 
+3. 索引列的值不能作为函数入参进行计算, 比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’)
+4. 前缀索引
+ 只采取索引列的前缀作为索引, 减少空间, 但是这个前缀要能一定程度上的获取你想要的结果. 可以具体参考"高性能mysql 5.3.2"
+5. 多列索引, 可能会引起索引的合并, 
 #### hash index
 > only the Memory storage engine supports explicit hash indexes. They are
 the default index type for Memory tables, though Memory tables can have B-Tree indexes, too.
@@ -67,16 +70,17 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 * mysql 几种索引
 * mysql 语句执行的大致流程
 * mysql 的B+ 树索引如何跟磁盘页对齐, 如何配置
-
+* 全文索引
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2ODgzNDQyNCwtOTYyMzA4NywxMjM1MD
-E4MDE1LDE1ODI4Nzc4MDQsMzI1Njg2MDMzLDU0ODc5NjI1NCwy
-MDg3MDY3NzI2LC0yMTA0NDQ2NjExLDE5MTMyMzY2NzEsMTk4MT
-UxODMwOSw1Nzg1OTA5MTAsLTYyODAxODUxMiwtMTQ1NDYwNTY1
-OCwxNTkyNDU2MTgwLDcyNDgxOTM4Nyw5MDk5MjA2NzAsLTEzNT
-gyMjQ1MjgsMTQ4NTExNDE5Nyw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbNTg0MDcwNDM3LC03Njg4MzQ0MjQsLTk2Mj
+MwODcsMTIzNTAxODAxNSwxNTgyODc3ODA0LDMyNTY4NjAzMyw1
+NDg3OTYyNTQsMjA4NzA2NzcyNiwtMjEwNDQ0NjYxMSwxOTEzMj
+M2NjcxLDE5ODE1MTgzMDksNTc4NTkwOTEwLC02MjgwMTg1MTIs
+LTE0NTQ2MDU2NTgsMTU5MjQ1NjE4MCw3MjQ4MTkzODcsOTA5OT
+IwNjcwLC0xMzU4MjI0NTI4LDE0ODUxMTQxOTcsNzMwOTk4MTE2
+XX0=
 -->
