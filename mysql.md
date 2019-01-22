@@ -49,7 +49,8 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 > In `InnoDB`, each record in a secondary index contains the primary key columns for the row, as well as the columns specified for the secondary index. (每一条在secondary index 的记录都包含主键, 所以主键尽可能短)
 
 > 聚簇索引和非聚簇索引的区别
-ju
+
+聚簇索引数据访问更快, row 直接保存在索引的叶子节点; 非聚簇索引查找行, 需要两次查找, 因为非聚簇索引的叶子节点保存的是主键列, 再通过zhujian
 
 #### hash index
 > only the Memory storage engine supports explicit hash indexes. They are
@@ -82,11 +83,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDc4NDM0NjQ5LC02MTk3ODI2NjcsNjI1Nz
-Q2NzQwLDU4NDA3MDQzNywtNzY4ODM0NDI0LC05NjIzMDg3LDEy
-MzUwMTgwMTUsMTU4Mjg3NzgwNCwzMjU2ODYwMzMsNTQ4Nzk2Mj
-U0LDIwODcwNjc3MjYsLTIxMDQ0NDY2MTEsMTkxMzIzNjY3MSwx
-OTgxNTE4MzA5LDU3ODU5MDkxMCwtNjI4MDE4NTEyLC0xNDU0Nj
-A1NjU4LDE1OTI0NTYxODAsNzI0ODE5Mzg3LDkwOTkyMDY3MF19
-
+eyJoaXN0b3J5IjpbLTE4MTIzNDEzOTcsLTYxOTc4MjY2Nyw2Mj
+U3NDY3NDAsNTg0MDcwNDM3LC03Njg4MzQ0MjQsLTk2MjMwODcs
+MTIzNTAxODAxNSwxNTgyODc3ODA0LDMyNTY4NjAzMyw1NDg3OT
+YyNTQsMjA4NzA2NzcyNiwtMjEwNDQ0NjYxMSwxOTEzMjM2Njcx
+LDE5ODE1MTgzMDksNTc4NTkwOTEwLC02MjgwMTg1MTIsLTE0NT
+Q2MDU2NTgsMTU5MjQ1NjE4MCw3MjQ4MTkzODcsOTA5OTIwNjcw
+XX0=
 -->
