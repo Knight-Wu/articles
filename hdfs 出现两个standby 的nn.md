@@ -1,5 +1,5 @@
 #### 异常现象
-启用HA 的hdfs 集群的两个NN 都是standby, ls 命令报错也是"operation is not support in standBy nn"
+启用HA 的hdfs 集群的两个NN 都是standby, hdfs ls 命令报错也是"operation is not support in standBy nn"
 
 #### 解决思路
 hdfs 的HA 是通过zookeeper和zkfc 来协同的, 故检查zkfc 的日志
@@ -17,5 +17,5 @@ hdfs 的HA 是通过zookeeper和zkfc 来协同的, 故检查zkfc 的日志
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyNDIzOTE3NV19
+eyJoaXN0b3J5IjpbLTg0NDE4MDc0OF19
 -->
