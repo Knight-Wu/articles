@@ -45,7 +45,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 >  If you do not define a  `PRIMARY KEY`  for your table, MySQL locates the first  `UNIQUE`  index where all the key columns are  `NOT NULL`  and  `InnoDB`  uses it as the clustered index. (如果没有主键, 选择一个unique 的非null 的列作为聚簇索引 )
 
 * Secondary Indexes
-> All indexes other than the clustered index are known as [secondary indexes](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_secondary_index "secondary index").
+> All indexes other than the clustered index are known as [secondary indexes](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_secondary_index "secondary index").(非聚簇索引都是二级索引)
 > In `InnoDB`, each record in a secondary index contains the primary key columns for the row, as well as the columns specified for the secondary index. (每一条在secondary index 的记录都包含主键, 所以主键尽可能短)
 
 
@@ -80,11 +80,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjI1NzQ2NzQwLDU4NDA3MDQzNywtNzY4OD
-M0NDI0LC05NjIzMDg3LDEyMzUwMTgwMTUsMTU4Mjg3NzgwNCwz
-MjU2ODYwMzMsNTQ4Nzk2MjU0LDIwODcwNjc3MjYsLTIxMDQ0ND
-Y2MTEsMTkxMzIzNjY3MSwxOTgxNTE4MzA5LDU3ODU5MDkxMCwt
-NjI4MDE4NTEyLC0xNDU0NjA1NjU4LDE1OTI0NTYxODAsNzI0OD
-E5Mzg3LDkwOTkyMDY3MCwtMTM1ODIyNDUyOCwxNDg1MTE0MTk3
+eyJoaXN0b3J5IjpbLTYxOTc4MjY2Nyw2MjU3NDY3NDAsNTg0MD
+cwNDM3LC03Njg4MzQ0MjQsLTk2MjMwODcsMTIzNTAxODAxNSwx
+NTgyODc3ODA0LDMyNTY4NjAzMyw1NDg3OTYyNTQsMjA4NzA2Nz
+cyNiwtMjEwNDQ0NjYxMSwxOTEzMjM2NjcxLDE5ODE1MTgzMDks
+NTc4NTkwOTEwLC02MjgwMTg1MTIsLTE0NTQ2MDU2NTgsMTU5Mj
+Q1NjE4MCw3MjQ4MTkzODcsOTA5OTIwNjcwLC0xMzU4MjI0NTI4
 XX0=
 -->
