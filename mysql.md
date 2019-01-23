@@ -59,8 +59,11 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 ![enter image description here](https://drive.google.com/uc?id=1z1I_cejEGOnx70mEMPEB6724PqfTKy8_)
 
 * 好处
-1. 能减少数据量
+1. 能减少数据量, 减少随机IO
 
+
+* 使用索引来排序
+最好设计索引的时候覆盖
 
 
 
@@ -98,11 +101,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2ODA1MzY3NSwxMTQyNDExODM5LC05MD
-c4NjU3OTAsMTkxODA4NzQ0MCw0MzA2NzE5ODMsLTE4NDQ1NjA0
-NCwtNjE5NzgyNjY3LDYyNTc0Njc0MCw1ODQwNzA0MzcsLTc2OD
-gzNDQyNCwtOTYyMzA4NywxMjM1MDE4MDE1LDE1ODI4Nzc4MDQs
-MzI1Njg2MDMzLDU0ODc5NjI1NCwyMDg3MDY3NzI2LC0yMTA0ND
-Q2NjExLDE5MTMyMzY2NzEsMTk4MTUxODMwOSw1Nzg1OTA5MTBd
-fQ==
+eyJoaXN0b3J5IjpbLTE0MjY0NTkzNjIsMjA2ODA1MzY3NSwxMT
+QyNDExODM5LC05MDc4NjU3OTAsMTkxODA4NzQ0MCw0MzA2NzE5
+ODMsLTE4NDQ1NjA0NCwtNjE5NzgyNjY3LDYyNTc0Njc0MCw1OD
+QwNzA0MzcsLTc2ODgzNDQyNCwtOTYyMzA4NywxMjM1MDE4MDE1
+LDE1ODI4Nzc4MDQsMzI1Njg2MDMzLDU0ODc5NjI1NCwyMDg3MD
+Y3NzI2LC0yMTA0NDQ2NjExLDE5MTMyMzY2NzEsMTk4MTUxODMw
+OV19
 -->
