@@ -55,7 +55,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 3. 因为聚簇索引的是按顺序排列的, 如果是主键作为了聚簇索引, 则按主键进行排序, 主键最好设置为AUTO_INCREMENT, 插入的效率会很高, 否则如果是使用uuid 作为主键, 可能引起page split, 因为后面的插入的记录可能在之前形成的索引的page 中间, 引起page split; 但是设置为自增, 插入的热点集中在主键的上界, 引起gap lock的竞争.
 
 * 覆盖索引
-这是B+ tree 索引的一个特性, 优秀的索引不仅需要包含where 条件, 还需要包含查询所需要的所有col, 
+这是B+ tree 索引的在某些情况下的一个特性, 直接从索引就返回数据了, 并不需要再次查询具体的表数据, 而且在B+ tree 聚簇索引的情况下, 特别适用, 
 
 
 
@@ -96,11 +96,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxODA4NzQ0MCw0MzA2NzE5ODMsLTE4ND
-Q1NjA0NCwtNjE5NzgyNjY3LDYyNTc0Njc0MCw1ODQwNzA0Mzcs
-LTc2ODgzNDQyNCwtOTYyMzA4NywxMjM1MDE4MDE1LDE1ODI4Nz
-c4MDQsMzI1Njg2MDMzLDU0ODc5NjI1NCwyMDg3MDY3NzI2LC0y
-MTA0NDQ2NjExLDE5MTMyMzY2NzEsMTk4MTUxODMwOSw1Nzg1OT
-A5MTAsLTYyODAxODUxMiwtMTQ1NDYwNTY1OCwxNTkyNDU2MTgw
+eyJoaXN0b3J5IjpbLTkwNzg2NTc5MCwxOTE4MDg3NDQwLDQzMD
+Y3MTk4MywtMTg0NDU2MDQ0LC02MTk3ODI2NjcsNjI1NzQ2NzQw
+LDU4NDA3MDQzNywtNzY4ODM0NDI0LC05NjIzMDg3LDEyMzUwMT
+gwMTUsMTU4Mjg3NzgwNCwzMjU2ODYwMzMsNTQ4Nzk2MjU0LDIw
+ODcwNjc3MjYsLTIxMDQ0NDY2MTEsMTkxMzIzNjY3MSwxOTgxNT
+E4MzA5LDU3ODU5MDkxMCwtNjI4MDE4NTEyLC0xNDU0NjA1NjU4
 XX0=
 -->
