@@ -58,7 +58,8 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 这是B+ tree 索引的在某些情况下的一个特性, 直接从索引就返回需要查询的数据了, 并不需要再次查询具体的表数据, 在这种情况下, 可以称为covering index, 而且在B+ tree 聚簇索引的情况下, 特别适用, 直接根据二级索引返回索引列和主键. 如下图
 ![enter image description here](https://drive.google.com/uc?id=1z1I_cejEGOnx70mEMPEB6724PqfTKy8_)
 
-
+* 好处
+1. 能减少数据量
 
 
 
@@ -97,7 +98,7 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3ODcyMTk0OSwtOTA3ODY1NzkwLDE5MT
+eyJoaXN0b3J5IjpbMTE0MjQxMTgzOSwtOTA3ODY1NzkwLDE5MT
 gwODc0NDAsNDMwNjcxOTgzLC0xODQ0NTYwNDQsLTYxOTc4MjY2
 Nyw2MjU3NDY3NDAsNTg0MDcwNDM3LC03Njg4MzQ0MjQsLTk2Mj
 MwODcsMTIzNTAxODAxNSwxNTgyODc3ODA0LDMyNTY4NjAzMyw1
