@@ -63,7 +63,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 
 * 使用索引来排序
-最好设计索引的时候覆盖
+最好设计索引的时候覆盖查询和排序两种任务, 只有当索引列的顺序和order by 的列顺序一致时, 且所有列的排序方向也一样, 具体参考"高性能 mysql 5.3.7"
 
 
 
@@ -101,11 +101,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjY0NTkzNjIsMjA2ODA1MzY3NSwxMT
-QyNDExODM5LC05MDc4NjU3OTAsMTkxODA4NzQ0MCw0MzA2NzE5
-ODMsLTE4NDQ1NjA0NCwtNjE5NzgyNjY3LDYyNTc0Njc0MCw1OD
-QwNzA0MzcsLTc2ODgzNDQyNCwtOTYyMzA4NywxMjM1MDE4MDE1
-LDE1ODI4Nzc4MDQsMzI1Njg2MDMzLDU0ODc5NjI1NCwyMDg3MD
-Y3NzI2LC0yMTA0NDQ2NjExLDE5MTMyMzY2NzEsMTk4MTUxODMw
-OV19
+eyJoaXN0b3J5IjpbMTkxMjY4NTUzMiwyMDY4MDUzNjc1LDExND
+I0MTE4MzksLTkwNzg2NTc5MCwxOTE4MDg3NDQwLDQzMDY3MTk4
+MywtMTg0NDU2MDQ0LC02MTk3ODI2NjcsNjI1NzQ2NzQwLDU4ND
+A3MDQzNywtNzY4ODM0NDI0LC05NjIzMDg3LDEyMzUwMTgwMTUs
+MTU4Mjg3NzgwNCwzMjU2ODYwMzMsNTQ4Nzk2MjU0LDIwODcwNj
+c3MjYsLTIxMDQ0NDY2MTEsMTkxMzIzNjY3MSwxOTgxNTE4MzA5
+XX0=
 -->
