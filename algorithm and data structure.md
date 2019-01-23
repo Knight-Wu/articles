@@ -54,16 +54,25 @@ https://algs4.cs.princeton.edu/33balanced/
 * coursera
 https://www.coursera.org/learn/algorithms-part1/
 
+
+#### 题目
+> 排序
+
+* 医院有M个医生，需要做的手术的手术时间用一个数组来描述，比如第2分钟、第5分钟、第8分钟等等，要求写一个函数，返回每一个手术由哪个医生做，要尽可能安排合理，即避免发生有的医生做很多手术有的医生一直在闲置的情况；
+
+按照手术完成时间, 构建一个最小堆, 并用map 将医生id和手术完成时间关联起来; 碰到这种返回一个值的, 可以想最后返回的是哪个值, 比如这次是手术完成时间的最小值, 就可以往排序方面想. 
+
+
 #### 问题
 * paxos 的应用
 * 回文字符串
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1MDAzODgzMCwtNjg1Njc1NDY0LC0xND
-M0MDMzODAzLDQxODEwMzA1OSw3ODE3NTE0MjUsNDE4MTAzMDU5
-LC0xNzYwMzQyOTYsLTE5NTA3NzQwOSwxMDIyOTk1ODUxLDE5MT
-Q5Mjg4NzYsODAxODEyMzc1LC0xMTMwODYwNjMzLDE2MDMzNTQ0
-MjIsLTEzMTQyMzEwMzIsMTcwNjUwNjIwOCwxNzcxMDkyNTMwLD
-g3MDA3OTUxNiwxNTQ3MjE3NzEzXX0=
+eyJoaXN0b3J5IjpbMTgxNTM1ODQ0OSwxNzUwMDM4ODMwLC02OD
+U2NzU0NjQsLTE0MzQwMzM4MDMsNDE4MTAzMDU5LDc4MTc1MTQy
+NSw0MTgxMDMwNTksLTE3NjAzNDI5NiwtMTk1MDc3NDA5LDEwMj
+I5OTU4NTEsMTkxNDkyODg3Niw4MDE4MTIzNzUsLTExMzA4NjA2
+MzMsMTYwMzM1NDQyMiwtMTMxNDIzMTAzMiwxNzA2NTA2MjA4LD
+E3NzEwOTI1MzAsODcwMDc5NTE2LDE1NDcyMTc3MTNdfQ==
 -->
