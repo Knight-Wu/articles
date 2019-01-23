@@ -54,6 +54,17 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 2. 聚簇索引的更新代价更大, 
 3. 因为聚簇索引的是按顺序排列的, 如果是主键作为了聚簇索引, 则按主键进行排序, 主键最好设置为AUTO_INCREMENT, 插入的效率会很高, 否则如果是使用uuid 作为主键, 可能引起page split, 因为后面的插入的记录可能在之前形成的索引的page 中间, 引起page split; 但是设置为自增, 插入的热点集中在主键的上界, 引起gap lock的竞争.
 
+* 覆盖索引
+这是B+ tree 索引的一个特性, 索引不仅xuy
+
+
+
+
+
+
+
+
+
 #### hash index
 > only the Memory storage engine supports explicit hash indexes. They are
 the default index type for Memory tables, though Memory tables can have B-Tree indexes, too.
@@ -85,11 +96,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDMwNjcxOTgzLC0xODQ0NTYwNDQsLTYxOT
-c4MjY2Nyw2MjU3NDY3NDAsNTg0MDcwNDM3LC03Njg4MzQ0MjQs
-LTk2MjMwODcsMTIzNTAxODAxNSwxNTgyODc3ODA0LDMyNTY4Nj
-AzMyw1NDg3OTYyNTQsMjA4NzA2NzcyNiwtMjEwNDQ0NjYxMSwx
-OTEzMjM2NjcxLDE5ODE1MTgzMDksNTc4NTkwOTEwLC02MjgwMT
-g1MTIsLTE0NTQ2MDU2NTgsMTU5MjQ1NjE4MCw3MjQ4MTkzODdd
-fQ==
+eyJoaXN0b3J5IjpbLTg3MDk3MDA1Myw0MzA2NzE5ODMsLTE4ND
+Q1NjA0NCwtNjE5NzgyNjY3LDYyNTc0Njc0MCw1ODQwNzA0Mzcs
+LTc2ODgzNDQyNCwtOTYyMzA4NywxMjM1MDE4MDE1LDE1ODI4Nz
+c4MDQsMzI1Njg2MDMzLDU0ODc5NjI1NCwyMDg3MDY3NzI2LC0y
+MTA0NDQ2NjExLDE5MTMyMzY2NzEsMTk4MTUxODMwOSw1Nzg1OT
+A5MTAsLTYyODAxODUxMiwtMTQ1NDYwNTY1OCwxNTkyNDU2MTgw
+XX0=
 -->
