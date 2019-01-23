@@ -26,7 +26,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 2. 不支持跳列, 必须指定前几个列的值. 
 3. if your query is WHERE last_name="Smith" AND first_name LIKE 'J%' AND dob='1976-12-23' , the index access will use only the first two columns in the index, because the LIKE is a range condition
 
-* 使用B+ tree 索引的原则
+> 使用B+ tree 索引的原则
 
 1. 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。 2.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。
 
@@ -98,11 +98,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0MjQxMTgzOSwtOTA3ODY1NzkwLDE5MT
-gwODc0NDAsNDMwNjcxOTgzLC0xODQ0NTYwNDQsLTYxOTc4MjY2
-Nyw2MjU3NDY3NDAsNTg0MDcwNDM3LC03Njg4MzQ0MjQsLTk2Mj
-MwODcsMTIzNTAxODAxNSwxNTgyODc3ODA0LDMyNTY4NjAzMyw1
-NDg3OTYyNTQsMjA4NzA2NzcyNiwtMjEwNDQ0NjYxMSwxOTEzMj
-M2NjcxLDE5ODE1MTgzMDksNTc4NTkwOTEwLC02MjgwMTg1MTJd
+eyJoaXN0b3J5IjpbMjA2ODA1MzY3NSwxMTQyNDExODM5LC05MD
+c4NjU3OTAsMTkxODA4NzQ0MCw0MzA2NzE5ODMsLTE4NDQ1NjA0
+NCwtNjE5NzgyNjY3LDYyNTc0Njc0MCw1ODQwNzA0MzcsLTc2OD
+gzNDQyNCwtOTYyMzA4NywxMjM1MDE4MDE1LDE1ODI4Nzc4MDQs
+MzI1Njg2MDMzLDU0ODc5NjI1NCwyMDg3MDY3NzI2LC0yMTA0ND
+Q2NjExLDE5MTMyMzY2NzEsMTk4MTUxODMwOSw1Nzg1OTA5MTBd
 fQ==
 -->
