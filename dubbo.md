@@ -183,8 +183,8 @@ W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait 
 
 
 #### 序列化#### 简单的RPC 调用的例子
-转自 dubbo 作者梁飞的博客: 
-
+转自 dubbo 作者梁飞的博客:  https://javatar.iteye.com/blog/1123915
+``` 
 1.  /*
 2.  * Copyright 2011 Alibaba.com All right reserved. This software is the
 3.  * confidential and proprietary information of Alibaba.com ("Confidential
@@ -315,10 +315,10 @@ W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait 
 
 129.  }
 
+  ```
   
-  
-用起来也像模像样：  
-  
+ 
+  ```
 **(1) 定义服务接口**  
 
 Java代码  ![收藏代码](https://javatar.iteye.com/images/icon_star.png)
@@ -343,12 +343,11 @@ Java代码  ![收藏代码](https://javatar.iteye.com/images/icon_star.png)
 
 19.  }
 
-  
+  ```
   
 **(2) 实现服务**  
 
-Java代码  ![收藏代码](https://javatar.iteye.com/images/icon_star.png)
-
+```
 1.  /*
 2.  * Copyright 2011 Alibaba.com All right reserved. This software is the
 3.  * confidential and proprietary information of Alibaba.com ("Confidential
@@ -370,13 +369,11 @@ Java代码  ![收藏代码](https://javatar.iteye.com/images/icon_star.png)
 19.  }
 
 21.  }
-
+```
   
   
 **(3) 暴露服务**  
-
-Java代码  ![收藏代码](https://javatar.iteye.com/images/icon_star.png)
-
+```
 1.  /*
 2.  * Copyright 2011 Alibaba.com All right reserved. This software is the
 3.  * confidential and proprietary information of Alibaba.com ("Confidential
@@ -446,11 +443,11 @@ Java代码  ![收藏代码](https://javatar.iteye.com/images/icon_star.png)
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTk5NzM2NCwzMTQwNzAwMzgsLTg4OD
-UyMDMyMCwtODg4NTIwMzIwLDEyODE3NDAwNTAsOTI0NDMzMTky
-LC0xODc1MzgzMTczLC00MzAyNjk2NDksMTczMzkxNTc3NCwxMj
-Y3NzMxMjY5LDY0Mzc3MDYyLC0xMDgwMzk5OTUwLC0xNTk0NTMw
-NDgyLC0xNzk4MTQwODYxLC0yMDE2NjI5Mjc0LC0xMDk0MDkwNj
-MyLDc2NTE0MDk0LDE2NTUzMDgxNTksLTE3NTUyMDEwMDAsMTIz
-OTgwMTM4NV19
+eyJoaXN0b3J5IjpbNzc1ODIxODc4LDMxNDA3MDAzOCwtODg4NT
+IwMzIwLC04ODg1MjAzMjAsMTI4MTc0MDA1MCw5MjQ0MzMxOTIs
+LTE4NzUzODMxNzMsLTQzMDI2OTY0OSwxNzMzOTE1Nzc0LDEyNj
+c3MzEyNjksNjQzNzcwNjIsLTEwODAzOTk5NTAsLTE1OTQ1MzA0
+ODIsLTE3OTgxNDA4NjEsLTIwMTY2MjkyNzQsLTEwOTQwOTA2Mz
+IsNzY1MTQwOTQsMTY1NTMwODE1OSwtMTc1NTIwMTAwMCwxMjM5
+ODAxMzg1XX0=
 -->
