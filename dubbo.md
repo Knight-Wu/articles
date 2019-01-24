@@ -168,6 +168,7 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
  wrapper 的生成如图: 
  ![enter image description here](https://drive.google.com/uc?id=1msOglqWEjCpftwgeqqslA5KyWsC1v3MZ)
  
+ wrapper 类是在提供者端调用的?
  
 #### 如何确定dubbo 线程池线程数大小
 根据java concurrence in practice 描述:
@@ -188,11 +189,11 @@ W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4ODUyMDMyMCwtODg4NTIwMzIwLDEyOD
-E3NDAwNTAsOTI0NDMzMTkyLC0xODc1MzgzMTczLC00MzAyNjk2
-NDksMTczMzkxNTc3NCwxMjY3NzMxMjY5LDY0Mzc3MDYyLC0xMD
-gwMzk5OTUwLC0xNTk0NTMwNDgyLC0xNzk4MTQwODYxLC0yMDE2
-NjI5Mjc0LC0xMDk0MDkwNjMyLDc2NTE0MDk0LDE2NTUzMDgxNT
-ksLTE3NTUyMDEwMDAsMTIzOTgwMTM4NSwxODA0NDg5MzMwLC0x
-OTUwNDI0MDQ0XX0=
+eyJoaXN0b3J5IjpbLTE1NzgxMDY2MzgsLTg4ODUyMDMyMCwtOD
+g4NTIwMzIwLDEyODE3NDAwNTAsOTI0NDMzMTkyLC0xODc1Mzgz
+MTczLC00MzAyNjk2NDksMTczMzkxNTc3NCwxMjY3NzMxMjY5LD
+Y0Mzc3MDYyLC0xMDgwMzk5OTUwLC0xNTk0NTMwNDgyLC0xNzk4
+MTQwODYxLC0yMDE2NjI5Mjc0LC0xMDk0MDkwNjMyLDc2NTE0MD
+k0LDE2NTUzMDgxNTksLTE3NTUyMDEwMDAsMTIzOTgwMTM4NSwx
+ODA0NDg5MzMwXX0=
 -->
