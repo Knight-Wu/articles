@@ -183,17 +183,15 @@ W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait 
 
 
 #### 序列化
-*  thrift hessian 这两个rpc 框架
-* Dubbo 消费者使用单一链接的方式，什么时候达到网络瓶紧
 * 海量数据下的典型架构设计和性能优化之道, 精通常用架构原则
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NzgxMDY2MzgsLTg4ODUyMDMyMCwtOD
-g4NTIwMzIwLDEyODE3NDAwNTAsOTI0NDMzMTkyLC0xODc1Mzgz
-MTczLC00MzAyNjk2NDksMTczMzkxNTc3NCwxMjY3NzMxMjY5LD
-Y0Mzc3MDYyLC0xMDgwMzk5OTUwLC0xNTk0NTMwNDgyLC0xNzk4
-MTQwODYxLC0yMDE2NjI5Mjc0LC0xMDk0MDkwNjMyLDc2NTE0MD
-k0LDE2NTUzMDgxNTksLTE3NTUyMDEwMDAsMTIzOTgwMTM4NSwx
-ODA0NDg5MzMwXX0=
+eyJoaXN0b3J5IjpbMzE0MDcwMDM4LC04ODg1MjAzMjAsLTg4OD
+UyMDMyMCwxMjgxNzQwMDUwLDkyNDQzMzE5MiwtMTg3NTM4MzE3
+MywtNDMwMjY5NjQ5LDE3MzM5MTU3NzQsMTI2NzczMTI2OSw2ND
+M3NzA2MiwtMTA4MDM5OTk1MCwtMTU5NDUzMDQ4MiwtMTc5ODE0
+MDg2MSwtMjAxNjYyOTI3NCwtMTA5NDA5MDYzMiw3NjUxNDA5NC
+wxNjU1MzA4MTU5LC0xNzU1MjAxMDAwLDEyMzk4MDEzODUsMTgw
+NDQ4OTMzMF19
 -->
