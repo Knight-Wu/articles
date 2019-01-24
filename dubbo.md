@@ -182,16 +182,275 @@ W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait 
 可以采取几个估计值, 并加以测试, 得到最佳值. 
 
 
+#### 序列化#### 简单的RPC 调用的例子
+转自 dubbo 作者梁飞的博客: 
+
+1.  /*
+2.  * Copyright 2011 Alibaba.com All right reserved. This software is the
+3.  * confidential and proprietary information of Alibaba.com ("Confidential
+4.  * Information"). You shall not disclose such Confidential Information and shall
+5.  * use it only in accordance with the terms of the license agreement you entered
+6.  * into with Alibaba.com.
+7.  */
+8.  package com.alibaba.study.rpc.framework;
+
+10.  import java.io.ObjectInputStream;
+11.  import java.io.ObjectOutputStream;
+12.  import java.lang.reflect.InvocationHandler;
+13.  import java.lang.reflect.Method;
+14.  import java.lang.reflect.Proxy;
+15.  import java.net.ServerSocket;
+16.  import java.net.Socket;
+
+18.  /**
+19.  * RpcFramework
+20.  *
+21.  * @author william.liangf
+22.  */
+23.  public  class RpcFramework {
+
+25.  /**
+26.  * 暴露服务
+27.  *
+28.  * @param service 服务实现
+29.  * @param port 服务端口
+30.  * @throws Exception
+31.  */
+32.  public  static  void export(final Object service, int port) throws Exception {
+33.  if (service == null)
+34.  throw  new IllegalArgumentException("service instance == null");
+35.  if (port <= 0 || port > 65535)
+36.  throw  new IllegalArgumentException("Invalid port " + port);
+37.  System.out.println("Export service " + service.getClass().getName() + " on port " + port);
+38.  ServerSocket server = new ServerSocket(port);
+39.  for(;;) {
+40.  try {
+41.  final Socket socket = server.accept();
+42.  new Thread(new Runnable() {
+43.  @Override
+44.  public  void run() {
+45.  try {
+46.  try {
+47.  ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
+48.  try {
+49.  String methodName = input.readUTF();
+50.  Class<?>[] parameterTypes = (Class<?>[])input.readObject();
+51.  Object[] arguments = (Object[])input.readObject();
+52.  ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+53.  try {
+54.  Method method = service.getClass().getMethod(methodName, parameterTypes);
+55.  Object result = method.invoke(service, arguments);
+56.  output.writeObject(result);
+57.  } catch (Throwable t) {
+58.  output.writeObject(t);
+59.  } finally {
+60.  output.close();
+61.  }
+62.  } finally {
+63.  input.close();
+64.  }
+65.  } finally {
+66.  socket.close();
+67.  }
+68.  } catch (Exception e) {
+69.  e.printStackTrace();
+70.  }
+71.  }
+72.  }).start();
+73.  } catch (Exception e) {
+74.  e.printStackTrace();
+75.  }
+76.  }
+77.  }
+
+79.  /**
+80.  * 引用服务
+81.  *
+82.  * @param <T> 接口泛型
+83.  * @param interfaceClass 接口类型
+84.  * @param host 服务器主机名
+85.  * @param port 服务器端口
+86.  * @return 远程服务
+87.  * @throws Exception
+88.  */
+89.  @SuppressWarnings("unchecked")
+90.  public  static <T> T refer(final Class<T> interfaceClass, final String host, final  int port) throws Exception {
+91.  if (interfaceClass == null)
+92.  throw  new IllegalArgumentException("Interface class == null");
+93.  if (! interfaceClass.isInterface())
+94.  throw  new IllegalArgumentException("The " + interfaceClass.getName() + " must be interface class!");
+95.  if (host == null || host.length() == 0)
+96.  throw  new IllegalArgumentException("Host == null!");
+97.  if (port <= 0 || port > 65535)
+98.  throw  new IllegalArgumentException("Invalid port " + port);
+99.  System.out.println("Get remote service " + interfaceClass.getName() + " from server " + host + ":" + port);
+100.  return (T) Proxy.newProxyInstance(interfaceClass.getClassLoader(), new Class<?>[] {interfaceClass}, new InvocationHandler() {
+101.  public Object invoke(Object proxy, Method method, Object[] arguments) throws Throwable {
+102.  Socket socket = new Socket(host, port);
+103.  try {
+104.  ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
+105.  try {
+106.  output.writeUTF(method.getName());
+107.  output.writeObject(method.getParameterTypes());
+108.  output.writeObject(arguments);
+109.  ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
+110.  try {
+111.  Object result = input.readObject();
+112.  if (result instanceof Throwable) {
+113.  throw (Throwable) result;
+114.  }
+115.  return result;
+116.  } finally {
+117.  input.close();
+118.  }
+119.  } finally {
+120.  output.close();
+121.  }
+122.  } finally {
+123.  socket.close();
+124.  }
+125.  }
+126.  });
+127.  }
+
+129.  }
+
+  
+  
+用起来也像模像样：  
+  
+**(1) 定义服务接口**  
+
+Java代码  ![收藏代码](https://javatar.iteye.com/images/icon_star.png)
+
+1.  /*
+2.  * Copyright 2011 Alibaba.com All right reserved. This software is the
+3.  * confidential and proprietary information of Alibaba.com ("Confidential
+4.  * Information"). You shall not disclose such Confidential Information and shall
+5.  * use it only in accordance with the terms of the license agreement you entered
+6.  * into with Alibaba.com.
+7.  */
+8.  package com.alibaba.study.rpc.test;
+
+10.  /**
+11.  * HelloService
+12.  *
+13.  * @author william.liangf
+14.  */
+15.  public  interface HelloService {
+
+17.  String hello(String name);
+
+19.  }
+
+  
+  
+**(2) 实现服务**  
+
+Java代码  ![收藏代码](https://javatar.iteye.com/images/icon_star.png)
+
+1.  /*
+2.  * Copyright 2011 Alibaba.com All right reserved. This software is the
+3.  * confidential and proprietary information of Alibaba.com ("Confidential
+4.  * Information"). You shall not disclose such Confidential Information and shall
+5.  * use it only in accordance with the terms of the license agreement you entered
+6.  * into with Alibaba.com.
+7.  */
+8.  package com.alibaba.study.rpc.test;
+
+10.  /**
+11.  * HelloServiceImpl
+12.  *
+13.  * @author william.liangf
+14.  */
+15.  public  class HelloServiceImpl implements HelloService {
+
+17.  public String hello(String name) {
+18.  return  "Hello " + name;
+19.  }
+
+21.  }
+
+  
+  
+**(3) 暴露服务**  
+
+Java代码  ![收藏代码](https://javatar.iteye.com/images/icon_star.png)
+
+1.  /*
+2.  * Copyright 2011 Alibaba.com All right reserved. This software is the
+3.  * confidential and proprietary information of Alibaba.com ("Confidential
+4.  * Information"). You shall not disclose such Confidential Information and shall
+5.  * use it only in accordance with the terms of the license agreement you entered
+6.  * into with Alibaba.com.
+7.  */
+8.  package com.alibaba.study.rpc.test;
+
+10.  import com.alibaba.study.rpc.framework.RpcFramework;
+
+12.  /**
+13.  * RpcProvider
+14.  *
+15.  * @author william.liangf
+16.  */
+17.  public  class RpcProvider {
+
+19.  public  static  void main(String[] args) throws Exception {
+20.  HelloService service = new HelloServiceImpl();
+21.  RpcFramework.export(service, 1234);
+22.  }
+
+24.  }
+```
+  
+  
+**(4) 引用服务**  
+
+
+```
+1.  /*
+2.  * Copyright 2011 Alibaba.com All right reserved. This software is the
+3.  * confidential and proprietary information of Alibaba.com ("Confidential
+4.  * Information"). You shall not disclose such Confidential Information and shall
+5.  * use it only in accordance with the terms of the license agreement you entered
+6.  * into with Alibaba.com.
+7.  */
+8.  package com.alibaba.study.rpc.test;
+
+9.  import com.alibaba.study.rpc.framework.RpcFramework;
+
+10.  /**
+11.  * RpcConsumer
+12.  *
+13.  * @author william.liangf
+14.  */
+15.  public  class RpcConsumer {
+
+16.  public  static  void main(String[] args) throws Exception {
+17.  HelloService service = RpcFramework.refer(HelloService.class, "127.0.0.1", 1234);
+18.  for (int i = 0; i < Integer.MAX_VALUE; i ++) {
+19.  String hello = service.hello("World" + i);
+20.  System.out.println(hello);
+21.  Thread.sleep(1000);
+22.  }
+23.  }
+
+24.  }
+25. 
+```
+
 #### 序列化
+*  thrift hessian 这两个rpc 框架
+* Dubbo 消费者使用单一链接的方式，什么时候达到网络瓶紧
 * 海量数据下的典型架构设计和性能优化之道, 精通常用架构原则
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzE0MDcwMDM4LC04ODg1MjAzMjAsLTg4OD
-UyMDMyMCwxMjgxNzQwMDUwLDkyNDQzMzE5MiwtMTg3NTM4MzE3
-MywtNDMwMjY5NjQ5LDE3MzM5MTU3NzQsMTI2NzczMTI2OSw2ND
-M3NzA2MiwtMTA4MDM5OTk1MCwtMTU5NDUzMDQ4MiwtMTc5ODE0
-MDg2MSwtMjAxNjYyOTI3NCwtMTA5NDA5MDYzMiw3NjUxNDA5NC
-wxNjU1MzA4MTU5LC0xNzU1MjAxMDAwLDEyMzk4MDEzODUsMTgw
-NDQ4OTMzMF19
+eyJoaXN0b3J5IjpbLTE2NTk5NzM2NCwzMTQwNzAwMzgsLTg4OD
+UyMDMyMCwtODg4NTIwMzIwLDEyODE3NDAwNTAsOTI0NDMzMTky
+LC0xODc1MzgzMTczLC00MzAyNjk2NDksMTczMzkxNTc3NCwxMj
+Y3NzMxMjY5LDY0Mzc3MDYyLC0xMDgwMzk5OTUwLC0xNTk0NTMw
+NDgyLC0xNzk4MTQwODYxLC0yMDE2NjI5Mjc0LC0xMDk0MDkwNj
+MyLDc2NTE0MDk0LDE2NTUzMDgxNTksLTE3NTUyMDEwMDAsMTIz
+OTgwMTM4NV19
 -->
