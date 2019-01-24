@@ -97,7 +97,7 @@ export的过程中, 首先将实现类, 例如HelloWorldImpl通过 ProxyFactory 
 
 初始化: 
 1. DubboNamespaceHandler 等类通过解析xml 配置文件, 去初始化ReferenceBean,  解析参数配置构造url: registry://registry-host/com.alibaba.dubbo.registry.RegistryService?refer=URL.encode("consumer://consumer-host/com.foo.FooService?version=1.0.0"),  
-2. 通过RegistryProtocol 获取注册中心, 并注册消费者, 再订阅注册中心的服务(就是建立zkClient 监听服务的变化), 
+2. 通过RegistryProtocol 获取注册中心, 并注册消费者, 再订阅注册中心的服务(就是建立zkClient watch服务的变化), 
 3. 初始化DubboProtocol, 建立连接(默认一个消费者应用共用一个netty 连接, ), 这样初始化invoker 就完成了.
 4. 再根据invoker 创建动态代理, 根据代理去封装invoker.invoke() , 最后返回代理给spring 容器
 
@@ -188,11 +188,11 @@ W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4MTc0MDA1MCw5MjQ0MzMxOTIsLTE4Nz
-UzODMxNzMsLTQzMDI2OTY0OSwxNzMzOTE1Nzc0LDEyNjc3MzEy
-NjksNjQzNzcwNjIsLTEwODAzOTk5NTAsLTE1OTQ1MzA0ODIsLT
-E3OTgxNDA4NjEsLTIwMTY2MjkyNzQsLTEwOTQwOTA2MzIsNzY1
-MTQwOTQsMTY1NTMwODE1OSwtMTc1NTIwMTAwMCwxMjM5ODAxMz
-g1LDE4MDQ0ODkzMzAsLTE5NTA0MjQwNDQsLTEwMTc4NzE5OTgs
-LTE4NzE0MDE4ODldfQ==
+eyJoaXN0b3J5IjpbLTg4ODUyMDMyMCwxMjgxNzQwMDUwLDkyND
+QzMzE5MiwtMTg3NTM4MzE3MywtNDMwMjY5NjQ5LDE3MzM5MTU3
+NzQsMTI2NzczMTI2OSw2NDM3NzA2MiwtMTA4MDM5OTk1MCwtMT
+U5NDUzMDQ4MiwtMTc5ODE0MDg2MSwtMjAxNjYyOTI3NCwtMTA5
+NDA5MDYzMiw3NjUxNDA5NCwxNjU1MzA4MTU5LC0xNzU1MjAxMD
+AwLDEyMzk4MDEzODUsMTgwNDQ4OTMzMCwtMTk1MDQyNDA0NCwt
+MTAxNzg3MTk5OF19
 -->
