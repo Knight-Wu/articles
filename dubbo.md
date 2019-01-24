@@ -435,19 +435,19 @@ Java代码  ![收藏代码](https://javatar.iteye.com/images/icon_star.png)
 24.  }
 25. 
 ```
+#### dubbo 性能测试报告
+https://dubbo.incubator.apache.org/zh-cn/docs/user/perf-test.html
 
 #### 序列化
-*  thrift hessian 这两个rpc 框架
-* Dubbo 消费者使用单一链接的方式，什么时候达到网络瓶紧
 * 海量数据下的典型架构设计和性能优化之道, 精通常用架构原则
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzc1ODIxODc4LDMxNDA3MDAzOCwtODg4NT
-IwMzIwLC04ODg1MjAzMjAsMTI4MTc0MDA1MCw5MjQ0MzMxOTIs
-LTE4NzUzODMxNzMsLTQzMDI2OTY0OSwxNzMzOTE1Nzc0LDEyNj
-c3MzEyNjksNjQzNzcwNjIsLTEwODAzOTk5NTAsLTE1OTQ1MzA0
-ODIsLTE3OTgxNDA4NjEsLTIwMTY2MjkyNzQsLTEwOTQwOTA2Mz
-IsNzY1MTQwOTQsMTY1NTMwODE1OSwtMTc1NTIwMTAwMCwxMjM5
-ODAxMzg1XX0=
+eyJoaXN0b3J5IjpbMTM1NDIyMTg5OCw3NzU4MjE4NzgsMzE0MD
+cwMDM4LC04ODg1MjAzMjAsLTg4ODUyMDMyMCwxMjgxNzQwMDUw
+LDkyNDQzMzE5MiwtMTg3NTM4MzE3MywtNDMwMjY5NjQ5LDE3Mz
+M5MTU3NzQsMTI2NzczMTI2OSw2NDM3NzA2MiwtMTA4MDM5OTk1
+MCwtMTU5NDUzMDQ4MiwtMTc5ODE0MDg2MSwtMjAxNjYyOTI3NC
+wtMTA5NDA5MDYzMiw3NjUxNDA5NCwxNjU1MzA4MTU5LC0xNzU1
+MjAxMDAwXX0=
 -->
