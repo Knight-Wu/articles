@@ -159,11 +159,8 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
 1. 生成 invoker 代理
 
 用weakhashmap 生成, key 是 classloader的weakReference , 不会阻止classloader 被gc, 所以当classloader 被gc 之后, 这个map 里面的entry 也会被清空, 防止内存泄漏. value 是一个valueMap, key 是接口名, value 是代理类的弱引用. 
-通过javaassist 生成的代理类的结构如下: 
-![enter image description here](https://drive.google.com/uc?id=1Lhp2LuIa2m-fZ93pbSwfeSRXqgf6cyBr)
-
 等于说把所有方法的调用都转化为对InvocationHandler invoke  方法的调用. 
-而实际发起调用的时候, 通过Wrapper 转化为对接口提供者的调用. wrapper 在服务暴露时就初始化好
+而实际发起调用的时候, 通过提供者Wrapper 转化为对接口提供者的调用. wrapper 在服务暴露时就初始化好
  
  wrapper 的生成如图: 
  ![enter image description here](https://drive.google.com/uc?id=1msOglqWEjCpftwgeqqslA5KyWsC1v3MZ)
@@ -188,11 +185,11 @@ W/C : 指的是对一个cpu, 多个线程切换的次数, 举例cpu=1, Tio=wait 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4ODUyMDMyMCwxMjgxNzQwMDUwLDkyND
-QzMzE5MiwtMTg3NTM4MzE3MywtNDMwMjY5NjQ5LDE3MzM5MTU3
-NzQsMTI2NzczMTI2OSw2NDM3NzA2MiwtMTA4MDM5OTk1MCwtMT
-U5NDUzMDQ4MiwtMTc5ODE0MDg2MSwtMjAxNjYyOTI3NCwtMTA5
-NDA5MDYzMiw3NjUxNDA5NCwxNjU1MzA4MTU5LC0xNzU1MjAxMD
-AwLDEyMzk4MDEzODUsMTgwNDQ4OTMzMCwtMTk1MDQyNDA0NCwt
-MTAxNzg3MTk5OF19
+eyJoaXN0b3J5IjpbLTE1NTYxNzY5OTksLTg4ODUyMDMyMCwxMj
+gxNzQwMDUwLDkyNDQzMzE5MiwtMTg3NTM4MzE3MywtNDMwMjY5
+NjQ5LDE3MzM5MTU3NzQsMTI2NzczMTI2OSw2NDM3NzA2MiwtMT
+A4MDM5OTk1MCwtMTU5NDUzMDQ4MiwtMTc5ODE0MDg2MSwtMjAx
+NjYyOTI3NCwtMTA5NDA5MDYzMiw3NjUxNDA5NCwxNjU1MzA4MT
+U5LC0xNzU1MjAxMDAwLDEyMzk4MDEzODUsMTgwNDQ4OTMzMCwt
+MTk1MDQyNDA0NF19
 -->
