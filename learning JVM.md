@@ -343,11 +343,12 @@ gc 的频率和时间都降低
 直接方法: 
 1. 提供老年代的大小
 2. 提高晋升老年代的门槛
-*  一是可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 可能可以降低full GC 的频率. 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 进而带来major gc 的频率升高, 反之如果新生代大小调小, 可以适当提高晋升的年龄大小, 来弥补会晋升老年代的门槛, 具体的调优值取决于对象的生命周期的组成, 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 参数:`-XX:NewRatio=3`  means that the ratio between the young and old generation is 1:3
+>  可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 可能可以降低full GC 的频率. 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 进而带来major gc 的频率升高, 反之如果新生代大小调小, 可以适当提高晋升的年龄大小, 来弥补会晋升老年代的门槛, 具体的调优值取决于对象的生命周期的组成, 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 参数:`-XX:NewRatio=3`  means that the ratio between the young and old generation is 1:3
 
-2. 增大surivor 区域, SurvivorRatio 默认为8
+> 增大surivor 区域, SurvivorRatio 默认为8
 SurvivorRatio 为2,   eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 防止surivor 区域太小而导致新生带对象过早进入老年代.
 
+> 
 
 * jvm heap 大小初始化如何设置
 简而言之, 一开始可以根据默认值或者一个大概的估计值去配置, 并设置最大堆和最小堆的范围, 然后触发了 full gc 之后将老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
@@ -363,14 +364,6 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 > In general, increase the memory as you increase the number of processors, since allocation can be parallelized.
 
 
-
-* 如何提高晋升老年代的门槛
-
-
-
-
-
->The parameters  `NewSize`  and  `MaxNewSize`  bound the young generation size from below and above. Setting these to the same value fixes the young generation, just as setting  `-Xms`  and  `-Xmx`  to the same value fixes the total heap size.
 
 
 * parallel gc 参数调优: 
@@ -724,11 +717,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5NDIzMDYyMiwxNzEwODgxMjA0LC0xOT
-I2OTg3OTk3LC0xMzg1MzA2Nzk1LC04MTA5MzA1ODcsMTU2MTYw
-OTA5MCwyMDczMjYxMDk0LC02MzgxNTE2LC0xMDUzNzgzOTIwLD
-EyNzA0MDUwNTMsMTYxOTA4OTU5MCwtNTg0MjkxMzgxLDE2MTkw
-ODk1OTAsLTM0MjYyMDU3MiwxMDQ5NTkwNDAzLDkxMzU4MDgyLD
-M2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUxNDQwLDE4NTUxNzk1
-NzRdfQ==
+eyJoaXN0b3J5IjpbLTE2MTQ0OTcxMzYsMTcxMDg4MTIwNCwtMT
+kyNjk4Nzk5NywtMTM4NTMwNjc5NSwtODEwOTMwNTg3LDE1NjE2
+MDkwOTAsMjA3MzI2MTA5NCwtNjM4MTUxNiwtMTA1Mzc4MzkyMC
+wxMjcwNDA1MDUzLDE2MTkwODk1OTAsLTU4NDI5MTM4MSwxNjE5
+MDg5NTkwLC0zNDI2MjA1NzIsMTA0OTU5MDQwMyw5MTM1ODA4Mi
+wzNjUzNjg3MDAsNjUyNDg4Njc5LDU5OTA1MTQ0MCwxODU1MTc5
+NTc0XX0=
 -->
