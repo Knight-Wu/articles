@@ -271,10 +271,16 @@ public void setClass(A a){
 
 #### String 注意事项
 https://juejin.im/entry/5a4ed02a51882573541c29d5
+
+>  String 为什么是Immutable 不可变的
+
+* 什么是Immutable  类
+一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDk3NDk4MTcsMTQ0NjIzMzk0NywtMT
-c1MDI0NzQ4MiwxMzQ1MDM3MjQ0LC04NzU4OTA2MTIsLTExODk5
-NTk1NDIsLTE4NjU2OTcxNywxNTIwMTk3NzcxLDI4NTU5MDA0Ny
-wxMTU2Nzk1NywxMzI5Mjg3MzM5LDE3ODk0MjAzNTRdfQ==
+eyJoaXN0b3J5IjpbMjA4NDcwMzk0MywtMTIwOTc0OTgxNywxND
+Q2MjMzOTQ3LC0xNzUwMjQ3NDgyLDEzNDUwMzcyNDQsLTg3NTg5
+MDYxMiwtMTE4OTk1OTU0MiwtMTg2NTY5NzE3LDE1MjAxOTc3Nz
+EsMjg1NTkwMDQ3LDExNTY3OTU3LDEzMjkyODczMzksMTc4OTQy
+MDM1NF19
 -->
