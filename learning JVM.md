@@ -319,6 +319,15 @@ Full GC时，就不在分 “young gen使用young gen自己的收集器(一般�
 * 定理
 Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal三者只能取其二, 特别是1和2是互相矛盾的, heap size 越大, 频率会降低, 但是当gc 的时候, 存活的对象很多的话, gc 的时间就很长
 
+> 目标
+
+gc 的频率和时间都降低
+
+> 新生代
+
+* 降低gc 频率
+eden 区
+
 
 * jvm heap 大小初始化如何设置
 简而言之, 一开始可以根据默认值或者一个大概的估计值去配置, 并设置最大堆和最小堆的范围, 然后触发了 full gc 之后将老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
@@ -702,11 +711,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxMDg4MTIwNCwtMTkyNjk4Nzk5NywtMT
-M4NTMwNjc5NSwtODEwOTMwNTg3LDE1NjE2MDkwOTAsMjA3MzI2
-MTA5NCwtNjM4MTUxNiwtMTA1Mzc4MzkyMCwxMjcwNDA1MDUzLD
-E2MTkwODk1OTAsLTU4NDI5MTM4MSwxNjE5MDg5NTkwLC0zNDI2
-MjA1NzIsMTA0OTU5MDQwMyw5MTM1ODA4MiwzNjUzNjg3MDAsNj
-UyNDg4Njc5LDU5OTA1MTQ0MCwxODU1MTc5NTc0LDExNjI2MjI5
-NV19
+eyJoaXN0b3J5IjpbLTIyNTY4ODA5NCwxNzEwODgxMjA0LC0xOT
+I2OTg3OTk3LC0xMzg1MzA2Nzk1LC04MTA5MzA1ODcsMTU2MTYw
+OTA5MCwyMDczMjYxMDk0LC02MzgxNTE2LC0xMDUzNzgzOTIwLD
+EyNzA0MDUwNTMsMTYxOTA4OTU5MCwtNTg0MjkxMzgxLDE2MTkw
+ODk1OTAsLTM0MjYyMDU3MiwxMDQ5NTkwNDAzLDkxMzU4MDgyLD
+M2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUxNDQwLDE4NTUxNzk1
+NzRdfQ==
 -->
