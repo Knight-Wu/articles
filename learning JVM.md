@@ -287,22 +287,8 @@ A concurrent marking phase is started when the occupancy of the entire Java heap
 https://www.zhihu.com/question/41922036/answer/93079526  
 Full GC时，就不在分 “young gen使用young gen自己的收集器(一般是copy算法)；old gen使用old gen的收集器(一般是mark-sweep-compact算法)”，而是，整个heap以及perm gen，所有内存，全部的统一使用 old gen的收集器(一般是mark-sweep-compact算法) 一站式搞定
 
-> 触发full gc 的原因
-
-1.  方法区空间不足
-
-> 如何避免这个原因
-
- * 通过把-XX:PermSize参数和-XX:MaxPermSize设置成一样，强制虚拟机在启动的时候就把永久代的容量固定下来，避免运行时自动扩容。
- * CMS默认情况下不会回收Perm区，通过参数CMSPermGenSweepingEnabled、CMSClassUnloadingEnabled ，可以让CMS在Perm区容量不足时对其回收。
 
 
-2.  CMS GC时出现promotion failed和concurrent mode failure；(日志中会有明细标志)
-3.  统计得到的Young GC晋升到老年代的平均大小大于老年代的剩余空间；(可以查看老年代发送full gc时的剩余空间)
-4.  主动触发Full GC（执行jmap -histo:live [pid]）来避免碎片问题, 可以通过参数禁止
-
-
- **所以, 简而言之, 降低full gc的频率, 一个方向是增大老年代的大小, 二是减小新生代晋升的对象的大小, 提高晋升门槛**, 如果是一次fullgc后，剩余对象不多, 证明很多都不是真正的老对象。那么说明你eden区设置太小，导致短生命周期的对象进入了old区。如果一次fullgc后，old区回收率不大，那么说明old区太小。
 
 * GC root
  1. local variable
@@ -347,8 +333,24 @@ SurvivorRatio 为2,   eden: surivor1: surivor2的比例为 2:1:1, 增大了suriv
 > 如果一次old gc之后, old gc 的剩余对象很小, 则证明很多都不是真正的老对象, 需要提升门槛;
 
 * 降低old gc 的时间
+目前还没有比较普遍适用的方法, 
+
+> full gc
+直接yuany 方法区空间不足
+
+> 如何避免这个原因
+
+ * 通过把-XX:PermSize参数和-XX:MaxPermSize设置成一样，强制虚拟机在启动的时候就把永久代的容量固定下来，避免运行时自动扩容。
+ * CMS默认情况下不会回收Perm区，通过参数CMSPermGenSweepingEnabled、CMSClassUnloadingEnabled ，可以让CMS在Perm区容量不足时对其回收。
 
 
+2.  CMS GC时出现promotion failed和concurrent mode failure；(日志中会有明细标志)
+3.  统计得到的Young GC晋升到老年代的平均大小大于老年代的剩余空间；(可以查看老年代发送full gc时的剩余空间)
+4.  主动触发Full GC（执行jmap -histo:live [pid]）来避免碎片问题, 可以通过参数禁止
+
+
+ **所以, 简而言之, 降低full gc的频率, 一个方向是增大老年代的大小, 二是减小新生代晋升的对象的大小, 提高晋升门槛**, 如果是一次fullgc后，剩余对象不多, 证明很多都不是真正的老对象。那么说明你eden区设置太小，导致短生命周期的对象进入了old区。如果一次fullgc后，old区回收率不大，那么说明old区太小。
+ 
 * jvm heap 大小初始化如何设置
 简而言之, 一开始可以根据默认值或者一个大概的估计值去配置, 并设置最大堆和最小堆的范围, 然后触发了 full gc 之后将老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
 https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
@@ -716,7 +718,7 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTExNzI1NjYsMTcxMDg4MTIwNCwtMT
+eyJoaXN0b3J5IjpbLTEwMzQyNDkwODUsMTcxMDg4MTIwNCwtMT
 kyNjk4Nzk5NywtMTM4NTMwNjc5NSwtODEwOTMwNTg3LDE1NjE2
 MDkwOTAsMjA3MzI2MTA5NCwtNjM4MTUxNiwtMTA1Mzc4MzkyMC
 wxMjcwNDA1MDUzLDE2MTkwODk1OTAsLTU4NDI5MTM4MSwxNjE5
