@@ -5,7 +5,8 @@
 1. 程序和你的预期相违背时, 程序不会错乱, 错的是你的预期. 
 2. 越急躁越难找出bug, 打字要快, 思维要缜密. 
 3. 思路最重要, 当朝一个假设寻觅了半小时无结果时, 停下来整理思路五分钟, 一个小时的时候, 出去阳台走五分钟.
-4. 一切线索都隐藏在代码中, 当网上资料混乱的时候, 静下心来看代码
+4. 一切线索都隐藏在代码中, 当网上资料混乱的时候, 静下心来看代码是最有效率的. 
+
 
 #### 操作篇
 1. 服务器上的问题, 当需要debug code 的时候, 可以使用arthas 和IDE remote debugger. 如果发现实际的代码调用和预期的不一致时, 例如应该进入Aclass.Bmethod 时, 却没有进入, 可以考虑是否是类冲突, 
@@ -14,6 +15,6 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTY0MzIwMTgsMTU4NzQwMDU0MSwxNz
-k3NjE1NDI5XX0=
+eyJoaXN0b3J5IjpbNzgzODM5MjYxLDE1ODc0MDA1NDEsMTc5Nz
+YxNTQyOV19
 -->
