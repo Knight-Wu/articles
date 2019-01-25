@@ -337,7 +337,7 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 取决于存活的对象的数量, 而不是heap size, 所以只有进行gc 标记时大多数的对象都死了, 那么gc 暂停时间会比较短.
 
 * 如何提高晋升老年代的门槛
-1. 一是可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 可能可以降低full GC 的频率. 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 进而带来major gc 的频率升高, 反之如果新生代大小调小, 可以适当提高晋升的年龄大小, 来弥补会晋升老年代的门槛, 具体的调优值取决于对象的生命周期的组成, 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 参数:`-XX:NewRatio=3`  means that the ratio between the young and tenured generation is 1:3
+1. 一是可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 可能可以降低full GC 的频率. 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 进而带来major gc 的频率升高, 反之如果新生代大小调小, 可以适当提高晋升的年龄大小, 来弥补会晋升老年代的门槛, 具体的调优值取决于对象的生命周期的组成, 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 参数:`-XX:NewRatio=3`  means that the ratio between the young and old generation is 1:3
 
 2. 增大surivor 区域, SurvivorRatio 默认为8
 SurvivorRatio 为2,   eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 防止surivor 区域太小而导致新生带对象过早进入老年代.
@@ -702,11 +702,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0MDIxMTE4NSwtMTM4NTMwNjc5NSwtOD
-EwOTMwNTg3LDE1NjE2MDkwOTAsMjA3MzI2MTA5NCwtNjM4MTUx
-NiwtMTA1Mzc4MzkyMCwxMjcwNDA1MDUzLDE2MTkwODk1OTAsLT
-U4NDI5MTM4MSwxNjE5MDg5NTkwLC0zNDI2MjA1NzIsMTA0OTU5
-MDQwMyw5MTM1ODA4MiwzNjUzNjg3MDAsNjUyNDg4Njc5LDU5OT
-A1MTQ0MCwxODU1MTc5NTc0LDExNjI2MjI5NSwtMTczMDU1NjA0
-MV19
+eyJoaXN0b3J5IjpbLTE5MjY5ODc5OTcsLTEzODUzMDY3OTUsLT
+gxMDkzMDU4NywxNTYxNjA5MDkwLDIwNzMyNjEwOTQsLTYzODE1
+MTYsLTEwNTM3ODM5MjAsMTI3MDQwNTA1MywxNjE5MDg5NTkwLC
+01ODQyOTEzODEsMTYxOTA4OTU5MCwtMzQyNjIwNTcyLDEwNDk1
+OTA0MDMsOTEzNTgwODIsMzY1MzY4NzAwLDY1MjQ4ODY3OSw1OT
+kwNTE0NDAsMTg1NTE3OTU3NCwxMTYyNjIyOTUsLTE3MzA1NTYw
+NDFdfQ==
 -->
