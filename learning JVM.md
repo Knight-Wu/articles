@@ -224,6 +224,7 @@ a. More than 50% of the Java heap is occupied with live data.
  c. The application is experiencing undesired long garbage collection or compaction pauses (longer than 0.5 to 1 second).
  
 > gc 的类型: young gc和mixed gc
+具体流程可以参考: https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html
 
 Young GC：选定年轻代里的一些 Region。通过控制年轻代的region**总数**，即年轻代内存大小，来控制young GC的时间开销。
 大致过程: 
@@ -700,11 +701,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTk5NjYxODM3LDE1NjE2MDkwOTAsMjA3Mz
-I2MTA5NCwtNjM4MTUxNiwtMTA1Mzc4MzkyMCwxMjcwNDA1MDUz
-LDE2MTkwODk1OTAsLTU4NDI5MTM4MSwxNjE5MDg5NTkwLC0zND
-I2MjA1NzIsMTA0OTU5MDQwMyw5MTM1ODA4MiwzNjUzNjg3MDAs
-NjUyNDg4Njc5LDU5OTA1MTQ0MCwxODU1MTc5NTc0LDExNjI2Mj
-I5NSwtMTczMDU1NjA0MSwxNTg0MTU5ODUsOTQxODM4MDA3XX0=
+eyJoaXN0b3J5IjpbLTgxMDkzMDU4NywxNTYxNjA5MDkwLDIwNz
+MyNjEwOTQsLTYzODE1MTYsLTEwNTM3ODM5MjAsMTI3MDQwNTA1
+MywxNjE5MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4OTU5MCwtMz
+QyNjIwNTcyLDEwNDk1OTA0MDMsOTEzNTgwODIsMzY1MzY4NzAw
+LDY1MjQ4ODY3OSw1OTkwNTE0NDAsMTg1NTE3OTU3NCwxMTYyNj
+IyOTUsLTE3MzA1NTYwNDEsMTU4NDE1OTg1LDk0MTgzODAwN119
 
 -->
