@@ -242,16 +242,6 @@ Full GC:
 和CMS一样，G1的一些收集过程是和应用程序并发执行的，所以可能还没有回收完成，是由于申请内存的速度比回收速度快，新的对象就占满了所有空间，在CMS中叫做Concurrent Mode Failure, 在G1中称为Evacuation Failure，
 >  https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html **How to avoid Evacuation Failure**
 
-To avoid evacuation failure, consider the following options.
-
--   Increase heap size
-
--   Increase the  **`-XX:G1ReservePercent=n`**, the default is 10.
--   G1 creates a false ceiling by trying to leave the reserve memory free in case more 'to-space' is desired.
-
--   Start the marking cycle earlier
--   Increase the number of marking threads using the  **`-XX:ConcGCThreads=n`**  option.
-
 
 > 什么情况触发 concurrent marking 
 
@@ -711,7 +701,7 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0Mjc3MTg3MTEsLTgxMDkzMDU4NywxNT
+eyJoaXN0b3J5IjpbLTEzODUzMDY3OTUsLTgxMDkzMDU4NywxNT
 YxNjA5MDkwLDIwNzMyNjEwOTQsLTYzODE1MTYsLTEwNTM3ODM5
 MjAsMTI3MDQwNTA1MywxNjE5MDg5NTkwLC01ODQyOTEzODEsMT
 YxOTA4OTU5MCwtMzQyNjIwNTcyLDEwNDk1OTA0MDMsOTEzNTgw
