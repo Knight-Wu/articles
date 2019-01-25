@@ -409,6 +409,7 @@ https://tech.meituan.com/jvm_optimize.html
 
 
 #### GC 常用命令
+具体要参考oracle jvm option
 * -verbose:class , -verbose:gc ,-verbose:jni 
  [https://dzone.com/articles/how-use-verbose-options-java](https://dzone.com/articles/how-use-verbose-options-java)
  -verbose:class is used to display the information about classes being loaded by JVM. This is useful when using class loaders for loading classes dynamically or for analysing what all classes are getting loaded in a particular scenario. 
@@ -720,11 +721,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTA4MzkxMjEsMTcxMDg4MTIwNCwtMT
-kyNjk4Nzk5NywtMTM4NTMwNjc5NSwtODEwOTMwNTg3LDE1NjE2
-MDkwOTAsMjA3MzI2MTA5NCwtNjM4MTUxNiwtMTA1Mzc4MzkyMC
-wxMjcwNDA1MDUzLDE2MTkwODk1OTAsLTU4NDI5MTM4MSwxNjE5
-MDg5NTkwLC0zNDI2MjA1NzIsMTA0OTU5MDQwMyw5MTM1ODA4Mi
-wzNjUzNjg3MDAsNjUyNDg4Njc5LDU5OTA1MTQ0MCwxODU1MTc5
-NTc0XX0=
+eyJoaXN0b3J5IjpbLTM3MDAzNDc2NywtMTc5MDgzOTEyMSwxNz
+EwODgxMjA0LC0xOTI2OTg3OTk3LC0xMzg1MzA2Nzk1LC04MTA5
+MzA1ODcsMTU2MTYwOTA5MCwyMDczMjYxMDk0LC02MzgxNTE2LC
+0xMDUzNzgzOTIwLDEyNzA0MDUwNTMsMTYxOTA4OTU5MCwtNTg0
+MjkxMzgxLDE2MTkwODk1OTAsLTM0MjYyMDU3MiwxMDQ5NTkwND
+AzLDkxMzU4MDgyLDM2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUx
+NDQwXX0=
 -->
