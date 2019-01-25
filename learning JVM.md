@@ -14,15 +14,13 @@
 
 
 ### java 堆(heap)
-存放对象的实例和数组, 所有线程所共有; 如果堆中没有内存完成实例的分配, 并且堆也无法再扩展时,抛出 OutOfMemoryError, 
+存放对象的实例和数组, 所有线程所共有; 如果堆中没有内存完成实例的分配, 并且堆也无法再扩展时,抛出 OutOfMemoryError, 从java 7开始, constant pool 从永久代移到了堆, 包括string pool ,
+
+String str = new String("hello");
+程序中的字面量（literal）如直接书写的100、"hello"和常量都是放在常量池中，常量池是方法区的一部分，
 
 ### 方法区(Method Area)
-线程间共享, 存储每个类的结构,包括运行时常量 ,也就是下面指的字面量 *(包括string pool)* ,静态变量,即时编译器编译后的代码等数据.
-程序中的字面量（literal）如直接书写的100、"hello"和常量都是放在常量池中，常量池是方法区的一部分，
-```
-String str = new String("hello");
-
-```
+线程间共享, 存储每个类的结构,包括运行时常量 ,也就是下面指的
 
 上面的语句中变量str放在栈上，用new创建出来的字符串对象放在堆上，而"hello"这个字面量是放在方法区的。
 
@@ -707,11 +705,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTc3NDY1NCwxNjE5MDg5NTkwLC01OD
-QyOTEzODEsMTYxOTA4OTU5MCwtMzQyNjIwNTcyLDEwNDk1OTA0
-MDMsOTEzNTgwODIsMzY1MzY4NzAwLDY1MjQ4ODY3OSw1OTkwNT
-E0NDAsMTg1NTE3OTU3NCwxMTYyNjIyOTUsLTE3MzA1NTYwNDEs
-MTU4NDE1OTg1LDk0MTgzODAwNywtMTA0ODU5NzUxMywtMTEwOT
-cxNjgyOCwtMTc1Mjg0NTY3NiwxNjgwMTg1MTc2LC0xNTcwOTEz
-ODAxXX0=
+eyJoaXN0b3J5IjpbMzEwMTgyNjM3LDE2MTkwODk1OTAsLTU4ND
+I5MTM4MSwxNjE5MDg5NTkwLC0zNDI2MjA1NzIsMTA0OTU5MDQw
+Myw5MTM1ODA4MiwzNjUzNjg3MDAsNjUyNDg4Njc5LDU5OTA1MT
+Q0MCwxODU1MTc5NTc0LDExNjI2MjI5NSwtMTczMDU1NjA0MSwx
+NTg0MTU5ODUsOTQxODM4MDA3LC0xMDQ4NTk3NTEzLC0xMTA5Nz
+E2ODI4LC0xNzUyODQ1Njc2LDE2ODAxODUxNzYsLTE1NzA5MTM4
+MDFdfQ==
 -->
