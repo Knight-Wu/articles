@@ -337,14 +337,14 @@ gc 的频率和时间都降低
 
 * 降低gc 频率
 直接方法: 
-1. 提供老年代的大小
+1. 提高老年代的大小
 2. 提高晋升老年代的门槛
->  可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 可能可以降低full GC 的频率. 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 进而带来major gc 的频率升高, 反之如果新生代大小调小, 可以适当提高晋升的年龄大小, 来提高门槛, 具体的调优值取决于对象的生命周期的组成, 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 参数:`-XX:NewRatio=3`  means that the ratio between the young and old generation is 1:3
+>  可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 可能可以降低full GC 的频率. 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 进而带来major gc 的频率升高, 反之如果新生代大小调小, 可以适当提高晋升的年龄大小,  还有一种情况是 具体的调优值取决于对象的生命周期的组成, 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 参数:`-XX:NewRatio=3`  means that the ratio between the young and old generation is 1:3
 
 > 增大surivor 区域, SurvivorRatio 默认为8
 SurvivorRatio 为2,   eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 防止surivor 区域太小而导致新生带对象过早进入老年代.
 
-> 
+> 如果一次old gc之后, old gc 的剩余对象很小, 则证明很多都不是真正的老对象, 需要提升门槛; 如果是对象大小
 
 * jvm heap 大小初始化如何设置
 简而言之, 一开始可以根据默认值或者一个大概的估计值去配置, 并设置最大堆和最小堆的范围, 然后触发了 full gc 之后将老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
@@ -713,11 +713,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5NDM1MDQ5MCwxNzEwODgxMjA0LC0xOT
-I2OTg3OTk3LC0xMzg1MzA2Nzk1LC04MTA5MzA1ODcsMTU2MTYw
-OTA5MCwyMDczMjYxMDk0LC02MzgxNTE2LC0xMDUzNzgzOTIwLD
-EyNzA0MDUwNTMsMTYxOTA4OTU5MCwtNTg0MjkxMzgxLDE2MTkw
-ODk1OTAsLTM0MjYyMDU3MiwxMDQ5NTkwNDAzLDkxMzU4MDgyLD
-M2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUxNDQwLDE4NTUxNzk1
-NzRdfQ==
+eyJoaXN0b3J5IjpbNjMwODYwMTIyLDE3MTA4ODEyMDQsLTE5Mj
+Y5ODc5OTcsLTEzODUzMDY3OTUsLTgxMDkzMDU4NywxNTYxNjA5
+MDkwLDIwNzMyNjEwOTQsLTYzODE1MTYsLTEwNTM3ODM5MjAsMT
+I3MDQwNTA1MywxNjE5MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4
+OTU5MCwtMzQyNjIwNTcyLDEwNDk1OTA0MDMsOTEzNTgwODIsMz
+Y1MzY4NzAwLDY1MjQ4ODY3OSw1OTkwNTE0NDAsMTg1NTE3OTU3
+NF19
 -->
