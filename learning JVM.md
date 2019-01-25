@@ -222,6 +222,7 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc_tuning.
 https://tech.meituan.com/g1.html
  > 比起CMS 的优点
 
+可以参考[http://openinx.github.io/ppt/hbaseconasia2017_paper_18.pdf](http://openinx.github.io/ppt/hbaseconasia2017_paper_18.pdf)
   G1是一个有整理内存过程的垃圾收集器，不会产生很多内存碎片。
   G1的Stop The World(STW)更可控，G1在停顿时间上添加了预测机制，用户可以指定期望停顿时间, 通过控制收集哪些region和region 的多少来控制停顿时间. 
   
@@ -721,11 +722,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzOTE1Njk5MSwtMzcwMDM0NzY3LC0xNz
-kwODM5MTIxLDE3MTA4ODEyMDQsLTE5MjY5ODc5OTcsLTEzODUz
-MDY3OTUsLTgxMDkzMDU4NywxNTYxNjA5MDkwLDIwNzMyNjEwOT
-QsLTYzODE1MTYsLTEwNTM3ODM5MjAsMTI3MDQwNTA1MywxNjE5
-MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4OTU5MCwtMzQyNjIwNT
-cyLDEwNDk1OTA0MDMsOTEzNTgwODIsMzY1MzY4NzAwLDY1MjQ4
-ODY3OV19
+eyJoaXN0b3J5IjpbLTE3NTM5NTI0MTcsMTQzOTE1Njk5MSwtMz
+cwMDM0NzY3LC0xNzkwODM5MTIxLDE3MTA4ODEyMDQsLTE5MjY5
+ODc5OTcsLTEzODUzMDY3OTUsLTgxMDkzMDU4NywxNTYxNjA5MD
+kwLDIwNzMyNjEwOTQsLTYzODE1MTYsLTEwNTM3ODM5MjAsMTI3
+MDQwNTA1MywxNjE5MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4OT
+U5MCwtMzQyNjIwNTcyLDEwNDk1OTA0MDMsOTEzNTgwODIsMzY1
+MzY4NzAwXX0=
 -->
