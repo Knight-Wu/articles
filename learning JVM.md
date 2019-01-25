@@ -359,7 +359,7 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
  gc collector threads 是多线程的, 仍然会STW
 
 * 如何降低新生代的gc 暂停时间
-可以提高新生代的整体大小, 或者eden 区的大小, 降低young gc 的频率, 下次gc 时存活的对象越少, 暂停的时间越少, 当然取决于新生代对象的存活时间的分布. 举例如下: 
+可以提高新生代的整体大小, 或者eden 区的大小, 也正好可以降低young gc 的频率, **满足吞吐量和暂停时间都变小的目标**, 下次gc 时存活的对象越少, 暂停的时间越少, 当然取决于新生代对象的存活时间的分布. 举例如下: 
 扩容前：新生代容量为R ，假设对象A的存活时间为750ms，Minor GC间隔500ms，那么本次Minor GC时间= T1（扫描新生代R）+T2（复制对象A到S）。
     
 扩容后：新生代容量为2R ，对象A的生命周期为750ms，那么Minor GC间隔增加为1000ms，此时Minor GC对象A已不再存活，不需要把它复制到Survivor区，那么本次GC时间 = 2 × T1（扫描新生代R），没有T2复制时间
@@ -702,11 +702,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjY5ODc5OTcsLTEzODUzMDY3OTUsLT
-gxMDkzMDU4NywxNTYxNjA5MDkwLDIwNzMyNjEwOTQsLTYzODE1
-MTYsLTEwNTM3ODM5MjAsMTI3MDQwNTA1MywxNjE5MDg5NTkwLC
-01ODQyOTEzODEsMTYxOTA4OTU5MCwtMzQyNjIwNTcyLDEwNDk1
-OTA0MDMsOTEzNTgwODIsMzY1MzY4NzAwLDY1MjQ4ODY3OSw1OT
-kwNTE0NDAsMTg1NTE3OTU3NCwxMTYyNjIyOTUsLTE3MzA1NTYw
-NDFdfQ==
+eyJoaXN0b3J5IjpbMTcxMDg4MTIwNCwtMTkyNjk4Nzk5NywtMT
+M4NTMwNjc5NSwtODEwOTMwNTg3LDE1NjE2MDkwOTAsMjA3MzI2
+MTA5NCwtNjM4MTUxNiwtMTA1Mzc4MzkyMCwxMjcwNDA1MDUzLD
+E2MTkwODk1OTAsLTU4NDI5MTM4MSwxNjE5MDg5NTkwLC0zNDI2
+MjA1NzIsMTA0OTU5MDQwMyw5MTM1ODA4MiwzNjUzNjg3MDAsNj
+UyNDg4Njc5LDU5OTA1MTQ0MCwxODU1MTc5NTc0LDExNjI2MjI5
+NV19
 -->
