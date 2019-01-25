@@ -324,10 +324,10 @@ gc 的频率和时间都降低
 
 > 新生代
 
-* 降低gc 频率
+* 降低young gc 频率
 直接原因: eden 区满了, 
 直接方法: 增大eden区的大小, 间接方法: 增大young 区, 增大heap, 
-* 降低gc 的时间
+* 降低 young gc 的时间
 增大eden区的大小, 假设young gc 的间隔越久, 则存活的对象越少, 当然取决于新生代对象的存活时间的分布. 举例如下: 
 扩容前：新生代容量为R ，假设对象A的存活时间为750ms，Minor GC间隔500ms，那么本次Minor GC时间= T1（扫描新生代R）+T2（复制对象A到S）。
     
@@ -335,7 +335,7 @@ gc 的频率和时间都降低
 
 > 老年代
 
-* 降低gc 频率
+* 降低old gc 频率
 直接方法: 
 1. 提高老年代的大小
 2. 提高晋升老年代的门槛
@@ -344,7 +344,10 @@ gc 的频率和时间都降低
 > 增大surivor 区域, SurvivorRatio 默认为8
 SurvivorRatio 为2,   eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 防止surivor 区域太小而导致新生带对象过早进入老年代.
 
-> 如果一次old gc之后, old gc 的剩余对象很小, 则证明很多都不是真正的老对象, 需要提升门槛; 如果是对象大小
+> 如果一次old gc之后, old gc 的剩余对象很小, 则证明很多都不是真正的老对象, 需要提升门槛;
+
+* 降低old gc 的时间
+
 
 * jvm heap 大小初始化如何设置
 简而言之, 一开始可以根据默认值或者一个大概的估计值去配置, 并设置最大堆和最小堆的范围, 然后触发了 full gc 之后将老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
@@ -713,11 +716,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjMwODYwMTIyLDE3MTA4ODEyMDQsLTE5Mj
-Y5ODc5OTcsLTEzODUzMDY3OTUsLTgxMDkzMDU4NywxNTYxNjA5
-MDkwLDIwNzMyNjEwOTQsLTYzODE1MTYsLTEwNTM3ODM5MjAsMT
-I3MDQwNTA1MywxNjE5MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4
-OTU5MCwtMzQyNjIwNTcyLDEwNDk1OTA0MDMsOTEzNTgwODIsMz
-Y1MzY4NzAwLDY1MjQ4ODY3OSw1OTkwNTE0NDAsMTg1NTE3OTU3
-NF19
+eyJoaXN0b3J5IjpbLTEyNTExNzI1NjYsMTcxMDg4MTIwNCwtMT
+kyNjk4Nzk5NywtMTM4NTMwNjc5NSwtODEwOTMwNTg3LDE1NjE2
+MDkwOTAsMjA3MzI2MTA5NCwtNjM4MTUxNiwtMTA1Mzc4MzkyMC
+wxMjcwNDA1MDUzLDE2MTkwODk1OTAsLTU4NDI5MTM4MSwxNjE5
+MDg5NTkwLC0zNDI2MjA1NzIsMTA0OTU5MDQwMyw5MTM1ODA4Mi
+wzNjUzNjg3MDAsNjUyNDg4Njc5LDU5OTA1MTQ0MCwxODU1MTc5
+NTc0XX0=
 -->
