@@ -229,7 +229,7 @@ Young GC：选定年轻代里的一些 Region。通过控制年轻代的region**
 大致过程: 
 当Eden区域无法申请新的对象时（满了），就会进行Young GC, Young GC将Eden和Survivor区域的Region(**称为Collection Set, CSet**)中的活对象Copy到一些新Region中(即新的Survivor)，当对象的GC年龄达到阈值后会Copy到Old Region中。由于采取的是Copying算法, 并且copy 途中会压缩，所以就避免了内存碎片的问题，
 
-Mixed GC 选定所有年轻代里的Region，外加根据concurrent marking统计得出收集收益高的若干老年代Region。在用户指定的开销目标范围内尽可能选择收益高的老年代Region。
+Mixed GC 选定所有年轻代里的Region，外加根据concurrent marking统计得出lowest "liveness" 老年代Region( 回收最快), 在用户指定的开销目标范围内.
 
 Mixed GC 的触发条件: 
 -   G1HeapWastePercent：在global concurrent marking结束之后，我们可以知道old gen regions中有多少空间要被回收，在每次YGC之后和再次发生Mixed GC之前，会检查垃圾占比是否达到此参数，只有达到了，下次才会发生Mixed GC。
@@ -700,11 +700,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2MTYwOTA5MCwyMDczMjYxMDk0LC02Mz
-gxNTE2LC0xMDUzNzgzOTIwLDEyNzA0MDUwNTMsMTYxOTA4OTU5
-MCwtNTg0MjkxMzgxLDE2MTkwODk1OTAsLTM0MjYyMDU3MiwxMD
-Q5NTkwNDAzLDkxMzU4MDgyLDM2NTM2ODcwMCw2NTI0ODg2Nzks
-NTk5MDUxNDQwLDE4NTUxNzk1NzQsMTE2MjYyMjk1LC0xNzMwNT
-U2MDQxLDE1ODQxNTk4NSw5NDE4MzgwMDcsLTEwNDg1OTc1MTNd
-fQ==
+eyJoaXN0b3J5IjpbNTk5NjYxODM3LDE1NjE2MDkwOTAsMjA3Mz
+I2MTA5NCwtNjM4MTUxNiwtMTA1Mzc4MzkyMCwxMjcwNDA1MDUz
+LDE2MTkwODk1OTAsLTU4NDI5MTM4MSwxNjE5MDg5NTkwLC0zND
+I2MjA1NzIsMTA0OTU5MDQwMyw5MTM1ODA4MiwzNjUzNjg3MDAs
+NjUyNDg4Njc5LDU5OTA1MTQ0MCwxODU1MTc5NTc0LDExNjI2Mj
+I5NSwtMTczMDU1NjA0MSwxNTg0MTU5ODUsOTQxODM4MDA3XX0=
+
 -->
