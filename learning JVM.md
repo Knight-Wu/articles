@@ -324,7 +324,7 @@ gc 的频率和时间都降低
 直接原因: eden 区满了, 
 直接方法: 增大eden区的大小, 间接方法: 增大young 区, 增大heap, 
 * 降低 young gc 的时间
-增大eden区的大小, 假设young gc 的间隔越久, 则存活的对象越少, 当然取决于新生代对象的存活时间的分布. 举例如下: 
+增大eden区的大小, 假设young gc 的间隔越久, 则存活的对象越少, 但是如果过大, 也会增加young gc 的时间, 因为需要复制的对象大小也变大了,  当然取决于新生代对象的存活时间的分布. 举例如下: 
 扩容前：新生代容量为R ，假设对象A的存活时间为750ms，Minor GC间隔500ms，那么本次Minor GC时间= T1（扫描新生代R）+T2（复制对象A到S）。
     
 扩容后：新生代容量为2R ，对象A的生命周期为750ms，那么Minor GC间隔增加为1000ms，此时Minor GC对象A已不再存活，不需要把它复制到Survivor区，那么本次GC时间 = 2 × T1（扫描新生代R），没有T2复制时间
@@ -721,11 +721,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM3MDAzNDc2NywtMTc5MDgzOTEyMSwxNz
-EwODgxMjA0LC0xOTI2OTg3OTk3LC0xMzg1MzA2Nzk1LC04MTA5
-MzA1ODcsMTU2MTYwOTA5MCwyMDczMjYxMDk0LC02MzgxNTE2LC
-0xMDUzNzgzOTIwLDEyNzA0MDUwNTMsMTYxOTA4OTU5MCwtNTg0
-MjkxMzgxLDE2MTkwODk1OTAsLTM0MjYyMDU3MiwxMDQ5NTkwND
-AzLDkxMzU4MDgyLDM2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUx
-NDQwXX0=
+eyJoaXN0b3J5IjpbMTQzOTE1Njk5MSwtMzcwMDM0NzY3LC0xNz
+kwODM5MTIxLDE3MTA4ODEyMDQsLTE5MjY5ODc5OTcsLTEzODUz
+MDY3OTUsLTgxMDkzMDU4NywxNTYxNjA5MDkwLDIwNzMyNjEwOT
+QsLTYzODE1MTYsLTEwNTM3ODM5MjAsMTI3MDQwNTA1MywxNjE5
+MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4OTU5MCwtMzQyNjIwNT
+cyLDEwNDk1OTA0MDMsOTEzNTgwODIsMzY1MzY4NzAwLDY1MjQ4
+ODY3OV19
 -->
