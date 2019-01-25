@@ -271,7 +271,7 @@ public void setClass(A a){
 
 #### String 注意事项
 
-
+![enter image description here](https://drive.google.com/uc?id=1Vj5wcAnfdZUdF-p9lH-BScBprXBJM0_7)
 https://juejin.im/entry/5a4ed02a51882573541c29d5
 
 >  String 为什么是Immutable 不可变的
@@ -282,7 +282,7 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzkwNzAwNjMzLC0xMjA5NzQ5ODE3LDE0ND
+eyJoaXN0b3J5IjpbOTY1MDQ1MjYxLC0xMjA5NzQ5ODE3LDE0ND
 YyMzM5NDcsLTE3NTAyNDc0ODIsMTM0NTAzNzI0NCwtODc1ODkw
 NjEyLC0xMTg5OTU5NTQyLC0xODY1Njk3MTcsMTUyMDE5Nzc3MS
 wyODU1OTAwNDcsMTE1Njc5NTcsMTMyOTI4NzMzOSwxNzg5NDIw
