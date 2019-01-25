@@ -323,7 +323,7 @@ Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal三者只能取其二,
 * jvm heap 大小初始化如何设置
 简而言之, 一开始可以根据默认值或者一个大概的估计值去配置, 并设置最大堆和最小堆的范围, 然后触发了 full gc 之后将老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
 https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
-
+![enter image description here](https://drive.google.com/uc?id=1ma3MPNgckROY3F3KSl971__nSeHVpqf6)
 
 > By default, the virtual machine grows or shrinks the heap at each collection to try to keep the proportion of free space to live objects at each collection within a specific range. This target range is set as a percentage by the parameters `-XX:MinHeapFreeRatio=``<minimum>` and `-XX:MaxHeapFreeRatio=``<maximum>`, and the total size is bounded below by `-Xms``<min>` and above by `-Xmx``<max>`.
 
@@ -702,7 +702,7 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxMTI5MTc3OSwtMTM4NTMwNjc5NSwtOD
+eyJoaXN0b3J5IjpbMTU0MDIxMTE4NSwtMTM4NTMwNjc5NSwtOD
 EwOTMwNTg3LDE1NjE2MDkwOTAsMjA3MzI2MTA5NCwtNjM4MTUx
 NiwtMTA1Mzc4MzkyMCwxMjcwNDA1MDUzLDE2MTkwODk1OTAsLT
 U4NDI5MTM4MSwxNjE5MDg5NTkwLC0zNDI2MjA1NzIsMTA0OTU5
