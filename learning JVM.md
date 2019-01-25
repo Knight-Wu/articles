@@ -309,6 +309,7 @@ Full GC时，就不在分 “young gen使用young gen自己的收集器(一般�
 
 
 #### GC调优
+**线上GC 调优经验, 看 dap hbase 的gc 日志**
 * 定理
 Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal三者只能取其二, 特别是1和2是互相矛盾的, heap size 越大, 频率会降低, 但是当gc 的时候, 存活的对象很多的话, gc 的时间就很长
 
@@ -722,11 +723,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTM5NTI0MTcsMTQzOTE1Njk5MSwtMz
-cwMDM0NzY3LC0xNzkwODM5MTIxLDE3MTA4ODEyMDQsLTE5MjY5
-ODc5OTcsLTEzODUzMDY3OTUsLTgxMDkzMDU4NywxNTYxNjA5MD
-kwLDIwNzMyNjEwOTQsLTYzODE1MTYsLTEwNTM3ODM5MjAsMTI3
-MDQwNTA1MywxNjE5MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4OT
-U5MCwtMzQyNjIwNTcyLDEwNDk1OTA0MDMsOTEzNTgwODIsMzY1
-MzY4NzAwXX0=
+eyJoaXN0b3J5IjpbMTM4MzYwMzg5NSwtMTc1Mzk1MjQxNywxND
+M5MTU2OTkxLC0zNzAwMzQ3NjcsLTE3OTA4MzkxMjEsMTcxMDg4
+MTIwNCwtMTkyNjk4Nzk5NywtMTM4NTMwNjc5NSwtODEwOTMwNT
+g3LDE1NjE2MDkwOTAsMjA3MzI2MTA5NCwtNjM4MTUxNiwtMTA1
+Mzc4MzkyMCwxMjcwNDA1MDUzLDE2MTkwODk1OTAsLTU4NDI5MT
+M4MSwxNjE5MDg5NTkwLC0zNDI2MjA1NzIsMTA0OTU5MDQwMyw5
+MTM1ODA4Ml19
 -->
