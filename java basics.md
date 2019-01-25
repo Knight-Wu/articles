@@ -270,6 +270,8 @@ public void setClass(A a){
 [lz4 stream example](https://stackoverflow.com/questions/36012183/java-lz4-compression-using-input-output-streams)
 
 #### String 注意事项
+
+
 https://juejin.im/entry/5a4ed02a51882573541c29d5
 
 >  String 为什么是Immutable 不可变的
@@ -280,9 +282,9 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3MzQwMzEzMywtMTIwOTc0OTgxNywxND
-Q2MjMzOTQ3LC0xNzUwMjQ3NDgyLDEzNDUwMzcyNDQsLTg3NTg5
-MDYxMiwtMTE4OTk1OTU0MiwtMTg2NTY5NzE3LDE1MjAxOTc3Nz
-EsMjg1NTkwMDQ3LDExNTY3OTU3LDEzMjkyODczMzksMTc4OTQy
-MDM1NF19
+eyJoaXN0b3J5IjpbMzkwNzAwNjMzLC0xMjA5NzQ5ODE3LDE0ND
+YyMzM5NDcsLTE3NTAyNDc0ODIsMTM0NTAzNzI0NCwtODc1ODkw
+NjEyLC0xMTg5OTU5NTQyLC0xODY1Njk3MTcsMTUyMDE5Nzc3MS
+wyODU1OTAwNDcsMTE1Njc5NTcsMTMyOTI4NzMzOSwxNzg5NDIw
+MzU0XX0=
 -->
