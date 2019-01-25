@@ -269,12 +269,12 @@ public void setClass(A a){
 * lz4
 [lz4 stream example](https://stackoverflow.com/questions/36012183/java-lz4-compression-using-input-output-streams)
 
-### 代理
-分为静态代理和动态, 静态指代理类在运行前就生成的, 动态则指运行时才生成, 由中介类生成, 中介类需要实现 InvacationHandler 接口, 等于说中介类生成代理类, 代理类去真正代理, 所以说动态代理类的类名也都是由程序生成的. 
+#### String 注意事项
+https://juejin.im/entry/5a4ed02a51882573541c29d5
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ0NjIzMzk0NywtMTc1MDI0NzQ4MiwxMz
-Q1MDM3MjQ0LC04NzU4OTA2MTIsLTExODk5NTk1NDIsLTE4NjU2
-OTcxNywxNTIwMTk3NzcxLDI4NTU5MDA0NywxMTU2Nzk1NywxMz
-I5Mjg3MzM5LDE3ODk0MjAzNTRdfQ==
+eyJoaXN0b3J5IjpbLTEyMDk3NDk4MTcsMTQ0NjIzMzk0NywtMT
+c1MDI0NzQ4MiwxMzQ1MDM3MjQ0LC04NzU4OTA2MTIsLTExODk5
+NTk1NDIsLTE4NjU2OTcxNywxNTIwMTk3NzcxLDI4NTU5MDA0Ny
+wxMTU2Nzk1NywxMzI5Mjg3MzM5LDE3ODk0MjAzNTRdfQ==
 -->
