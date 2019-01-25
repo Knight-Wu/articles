@@ -273,12 +273,14 @@ public void setClass(A a){
 https://juejin.im/entry/5a4ed02a51882573541c29d5
 
 >  String 为什么是Immutable 不可变的
+1. 为了安全性, String 作为网络连接和数据库连接的参数, 防止被修改
+2. 用作hasheSet 等的key, 保证了key 的唯一性
 
 * 什么是Immutable  类
-一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 
+简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4NDcwMzk0MywtMTIwOTc0OTgxNywxND
+eyJoaXN0b3J5IjpbMTQ3MzQwMzEzMywtMTIwOTc0OTgxNywxND
 Q2MjMzOTQ3LC0xNzUwMjQ3NDgyLDEzNDUwMzcyNDQsLTg3NTg5
 MDYxMiwtMTE4OTk1OTU0MiwtMTg2NTY5NzE3LDE1MjAxOTc3Nz
 EsMjg1NTkwMDQ3LDExNTY3OTU3LDEzMjkyODczMzksMTc4OTQy
