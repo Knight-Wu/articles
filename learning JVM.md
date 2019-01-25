@@ -330,9 +330,9 @@ gc 的频率和时间都降低
 
 * 降低gc 频率
 直接原因: eden 区满了, 
-直接方法: 增大eden区的比例, 间接方法: 增大young 区, 增大heap, 
+直接方法: 增大eden区的大小, 间接方法: 增大young 区, 增大heap, 
 * 降低gc 的时间
-增大
+增大eden区的大小, 假设young gc 的间隔越久, 则存活的对象越少, 
 
 
 * jvm heap 大小初始化如何设置
@@ -372,11 +372,7 @@ https://docs.oracle.com/cd/E13209_01/wlcp/wlss30/configwlss/jvmgc.html
 * ParNew gc collector 调优, 和CMS 配套使用, 负责新生代
  gc collector threads 是多线程的, 仍然会STW
 
-* 如何降低新生代的gc 暂停时间
-可以提高新生代的整体大小, 或者eden 区的大小, 也正好可以降低young gc 的频率, **满足吞吐量和暂停时间都变小的目标**, 下次gc 时存活的对象越少, 暂停的时间越少, 当然取决于新生代对象的存活时间的分布. 举例如下: 
-扩容前：新生代容量为R ，假设对象A的存活时间为750ms，Minor GC间隔500ms，那么本次Minor GC时间= T1（扫描新生代R）+T2（复制对象A到S）。
-    
-扩容后：新生代容量为2R ，对象A的生命周期为750ms，那么Minor GC间隔增加为1000ms，此时Minor GC对象A已不再存活，不需要把它复制到Survivor区，那么本次GC时间 = 2 × T1（扫描新生代R），没有T2复制时间
+
  
 * CMS 调优
 常用参数解释: 
@@ -716,7 +712,7 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjUzNzA3MTIxLDE3MTA4ODEyMDQsLTE5Mj
+eyJoaXN0b3J5IjpbNjU3MTUxNjkwLDE3MTA4ODEyMDQsLTE5Mj
 Y5ODc5OTcsLTEzODUzMDY3OTUsLTgxMDkzMDU4NywxNTYxNjA5
 MDkwLDIwNzMyNjEwOTQsLTYzODE1MTYsLTEwNTM3ODM5MjAsMT
 I3MDQwNTA1MywxNjE5MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4
