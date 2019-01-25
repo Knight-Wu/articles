@@ -3,14 +3,16 @@
 
 #### 心态篇
 1. 程序和你的预期相违背时, 程序不会错乱, 错的是你的预期. 
-2. 越急躁越难找出bug, 打字要快, 思维要缜密
+2. 越急躁越难找出bug, 打字要快, 思维要缜密. 
+3. 思路最重要, 当朝一个假设寻觅了半小时无结果时, 停下来整理思路五分钟, 一个小时的时候, 出去阳台走五分钟
 
-
+#### 操作篇
+1. 
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2NTA3OTU0NiwxNTg3NDAwNTQxLDE3OT
-c2MTU0MjldfQ==
+eyJoaXN0b3J5IjpbLTE2NjIwODg1NzksMTU4NzQwMDU0MSwxNz
+k3NjE1NDI5XX0=
 -->
