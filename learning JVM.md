@@ -324,6 +324,7 @@ Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal三者只能取其二,
 简而言之, 一开始可以根据默认值或者一个大概的估计值去配置, 并设置最大堆和最小堆的范围, 然后触发了 full gc 之后将老年代的大小作为基准值, 其他带都可以根据公式按照这个值去配置. 
 https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 
+
 > By default, the virtual machine grows or shrinks the heap at each collection to try to keep the proportion of free space to live objects at each collection within a specific range. This target range is set as a percentage by the parameters `-XX:MinHeapFreeRatio=``<minimum>` and `-XX:MaxHeapFreeRatio=``<maximum>`, and the total size is bounded below by `-Xms``<min>` and above by `-Xmx``<max>`.
 
 >    Unless you have problems with pauses, try granting as much memory as possible to the virtual machine. The default size is often too small.( 越大的heap size , 会增加gc pause 时间)
@@ -701,11 +702,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzODUzMDY3OTUsLTgxMDkzMDU4NywxNT
-YxNjA5MDkwLDIwNzMyNjEwOTQsLTYzODE1MTYsLTEwNTM3ODM5
-MjAsMTI3MDQwNTA1MywxNjE5MDg5NTkwLC01ODQyOTEzODEsMT
-YxOTA4OTU5MCwtMzQyNjIwNTcyLDEwNDk1OTA0MDMsOTEzNTgw
-ODIsMzY1MzY4NzAwLDY1MjQ4ODY3OSw1OTkwNTE0NDAsMTg1NT
-E3OTU3NCwxMTYyNjIyOTUsLTE3MzA1NTYwNDEsMTU4NDE1OTg1
-XX0=
+eyJoaXN0b3J5IjpbMTMxMTI5MTc3OSwtMTM4NTMwNjc5NSwtOD
+EwOTMwNTg3LDE1NjE2MDkwOTAsMjA3MzI2MTA5NCwtNjM4MTUx
+NiwtMTA1Mzc4MzkyMCwxMjcwNDA1MDUzLDE2MTkwODk1OTAsLT
+U4NDI5MTM4MSwxNjE5MDg5NTkwLC0zNDI2MjA1NzIsMTA0OTU5
+MDQwMyw5MTM1ODA4MiwzNjUzNjg3MDAsNjUyNDg4Njc5LDU5OT
+A1MTQ0MCwxODU1MTc5NTc0LDExNjI2MjI5NSwtMTczMDU1NjA0
+MV19
 -->
