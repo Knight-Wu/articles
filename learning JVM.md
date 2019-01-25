@@ -343,6 +343,7 @@ gc 的频率和时间都降低
 直接方法: 
 1. 提供老年代的大小
 2. 提高晋升老年代的门槛
+* 
 
 
 * jvm heap 大小初始化如何设置
@@ -365,6 +366,7 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
 
 2. 增大surivor 区域, SurvivorRatio 默认为8
 SurvivorRatio 为2,   eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 防止surivor 区域太小而导致新生带对象过早进入老年代.
+
 
 
 
@@ -722,7 +724,7 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQ5NTg2MjQ3LDE3MTA4ODEyMDQsLTE5Mj
+eyJoaXN0b3J5IjpbNjcyNzQyMjI1LDE3MTA4ODEyMDQsLTE5Mj
 Y5ODc5OTcsLTEzODUzMDY3OTUsLTgxMDkzMDU4NywxNTYxNjA5
 MDkwLDIwNzMyNjEwOTQsLTYzODE1MTYsLTEwNTM3ODM5MjAsMT
 I3MDQwNTA1MywxNjE5MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4
