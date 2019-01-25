@@ -129,7 +129,7 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
 
 将内存分配为一块eden和两块survivor, 比例是8:1, 每次使用新生代内存的90%, gc时将存活对象复制到空闲的survivor, 剩余对象一次性清理
 * 缺点
-  * 不适用对象存活率较高的情况,复制的对象太多, 例如老年代
+ 不适用对象存活率较高的情况,复制的对象太多, 例如老年代
 * 标记整理算法
 将不可用对象进行一次标记, 并清除, 然后将可用的对象向一端移动,然后清理掉边界以外的内存,有效避免了内存碎片(针对标记清除算法)和需要有一部分空间来作为留存空间(针对标记-复制算法).
 
@@ -701,11 +701,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTM3ODM5MjAsMTI3MDQwNTA1MywxNj
-E5MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4OTU5MCwtMzQyNjIw
-NTcyLDEwNDk1OTA0MDMsOTEzNTgwODIsMzY1MzY4NzAwLDY1Mj
-Q4ODY3OSw1OTkwNTE0NDAsMTg1NTE3OTU3NCwxMTYyNjIyOTUs
-LTE3MzA1NTYwNDEsMTU4NDE1OTg1LDk0MTgzODAwNywtMTA0OD
-U5NzUxMywtMTEwOTcxNjgyOCwtMTc1Mjg0NTY3NiwxNjgwMTg1
-MTc2XX0=
+eyJoaXN0b3J5IjpbLTExODAzOTI1MDgsLTEwNTM3ODM5MjAsMT
+I3MDQwNTA1MywxNjE5MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4
+OTU5MCwtMzQyNjIwNTcyLDEwNDk1OTA0MDMsOTEzNTgwODIsMz
+Y1MzY4NzAwLDY1MjQ4ODY3OSw1OTkwNTE0NDAsMTg1NTE3OTU3
+NCwxMTYyNjIyOTUsLTE3MzA1NTYwNDEsMTU4NDE1OTg1LDk0MT
+gzODAwNywtMTA0ODU5NzUxMywtMTEwOTcxNjgyOCwtMTc1Mjg0
+NTY3Nl19
 -->
