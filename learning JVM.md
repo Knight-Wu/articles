@@ -332,7 +332,10 @@ gc 的频率和时间都降低
 直接原因: eden 区满了, 
 直接方法: 增大eden区的大小, 间接方法: 增大young 区, 增大heap, 
 * 降低gc 的时间
-增大eden区的大小, 假设young gc 的间隔越久, 则存活的对象越少, 
+增大eden区的大小, 假设young gc 的间隔越久, 则存活的对象越少, 当然取决于新生代对象的存活时间的分布. 举例如下: 
+扩容前：新生代容量为R ，假设对象A的存活时间为750ms，Minor GC间隔500ms，那么本次Minor GC时间= T1（扫描新生代R）+T2（复制对象A到S）。
+    
+扩容后：新生代容量为2R ，对象A的生命周期为750ms，那么Minor GC间隔增加为1000ms，此时Minor GC对象A已不再存活，不需要把它复制到Survivor区，那么本次GC时间 = 2 × T1（扫描新生代R），没有T2复制时间
 
 
 * jvm heap 大小初始化如何设置
@@ -712,11 +715,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjU3MTUxNjkwLDE3MTA4ODEyMDQsLTE5Mj
-Y5ODc5OTcsLTEzODUzMDY3OTUsLTgxMDkzMDU4NywxNTYxNjA5
-MDkwLDIwNzMyNjEwOTQsLTYzODE1MTYsLTEwNTM3ODM5MjAsMT
-I3MDQwNTA1MywxNjE5MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4
-OTU5MCwtMzQyNjIwNTcyLDEwNDk1OTA0MDMsOTEzNTgwODIsMz
-Y1MzY4NzAwLDY1MjQ4ODY3OSw1OTkwNTE0NDAsMTg1NTE3OTU3
-NF19
+eyJoaXN0b3J5IjpbMTUzODMwMDk2NiwxNzEwODgxMjA0LC0xOT
+I2OTg3OTk3LC0xMzg1MzA2Nzk1LC04MTA5MzA1ODcsMTU2MTYw
+OTA5MCwyMDczMjYxMDk0LC02MzgxNTE2LC0xMDUzNzgzOTIwLD
+EyNzA0MDUwNTMsMTYxOTA4OTU5MCwtNTg0MjkxMzgxLDE2MTkw
+ODk1OTAsLTM0MjYyMDU3MiwxMDQ5NTkwNDAzLDkxMzU4MDgyLD
+M2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUxNDQwLDE4NTUxNzk1
+NzRdfQ==
 -->
