@@ -279,10 +279,6 @@ A concurrent marking phase is started when the occupancy of the entire Java heap
   * 某些对象大小超过指定的阈值, 则这种大对象直接分配到老年代
 
 
-
-
-
-
 * major gc 
 指的老年代进行的gc, 老年代对象比例超过某个阈值, 通常有参数设置, 不可能是老年代百分百了才触发, 例如 CMS gc 设置这个值 :  -XX:CMSInitiatingOccupancyFraction=75%,  意味着老年代超过75 才触发major gc. 
 
@@ -343,7 +339,7 @@ gc 的频率和时间都降低
 直接方法: 
 1. 提供老年代的大小
 2. 提高晋升老年代的门槛
->  可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 可能可以降低full GC 的频率. 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 进而带来major gc 的频率升高, 反之如果新生代大小调小, 可以适当提高晋升的年龄大小, 来弥补会晋升老年代的门槛, 具体的调优值取决于对象的生命周期的组成, 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 参数:`-XX:NewRatio=3`  means that the ratio between the young and old generation is 1:3
+>  可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 可能可以降低full GC 的频率. 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 进而带来major gc 的频率升高, 反之如果新生代大小调小, 可以适当提高晋升的年龄大小, 来提高门槛, 具体的调优值取决于对象的生命周期的组成, 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 参数:`-XX:NewRatio=3`  means that the ratio between the young and old generation is 1:3
 
 > 增大surivor 区域, SurvivorRatio 默认为8
 SurvivorRatio 为2,   eden: surivor1: surivor2的比例为 2:1:1, 增大了surivor, 减小了eden, 防止surivor 区域太小而导致新生带对象过早进入老年代.
@@ -717,11 +713,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTQ0OTcxMzYsMTcxMDg4MTIwNCwtMT
-kyNjk4Nzk5NywtMTM4NTMwNjc5NSwtODEwOTMwNTg3LDE1NjE2
-MDkwOTAsMjA3MzI2MTA5NCwtNjM4MTUxNiwtMTA1Mzc4MzkyMC
-wxMjcwNDA1MDUzLDE2MTkwODk1OTAsLTU4NDI5MTM4MSwxNjE5
-MDg5NTkwLC0zNDI2MjA1NzIsMTA0OTU5MDQwMyw5MTM1ODA4Mi
-wzNjUzNjg3MDAsNjUyNDg4Njc5LDU5OTA1MTQ0MCwxODU1MTc5
-NTc0XX0=
+eyJoaXN0b3J5IjpbLTk5NDM1MDQ5MCwxNzEwODgxMjA0LC0xOT
+I2OTg3OTk3LC0xMzg1MzA2Nzk1LC04MTA5MzA1ODcsMTU2MTYw
+OTA5MCwyMDczMjYxMDk0LC02MzgxNTE2LC0xMDUzNzgzOTIwLD
+EyNzA0MDUwNTMsMTYxOTA4OTU5MCwtNTg0MjkxMzgxLDE2MTkw
+ODk1OTAsLTM0MjYyMDU3MiwxMDQ5NTkwNDAzLDkxMzU4MDgyLD
+M2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUxNDQwLDE4NTUxNzk1
+NzRdfQ==
 -->
