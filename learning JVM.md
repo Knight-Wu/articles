@@ -134,6 +134,16 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
 
 * 分代收集算法
 对新生代和老年代采用不同的垃圾收集算法, 例如HotSpot新生代采用标记-复制, 老年代采用标记整理
+
+### java heap 分代(基于jdk1.8)
+* 新生代(PSYoungGen)
+ eden space , survivor(from space , to space) ,可设置比例,采用标记复制算法
+* 老年代(ParOldGen)
+采用标记清除算法或标记整理算法
+* Metaspace(方法区)
+存储类的信息
+
+
 ### 垃圾收集器
 * 重要概念
 
@@ -339,18 +349,13 @@ SurvivorRatio 为2,   eden: surivor1: surivor2的比例为 2:1:1, 增大了suriv
 
 原因: 
 1. 方法区空间不足
-解决方法:
-* 通过把-XX:PermSize参数和-XX:MaxPermSize设置成一样，强制虚拟机在启动的时候就把方法区的容量固定下来，避免运行时自动扩容。
- * CMS默认情况下不会回收Perm区，通过参数CMSPermGenSweepingEnabled、CMSClassUnloadingEnabled ，可以让CMS在Perm区容量不足时对其回收。
-
-> 如何避免这个原因
-
- 
-
 2.  CMS GC时出现promotion failed和concurrent mode failure；(日志中会有明细标志)
 3.  统计得到的Young GC晋升到老年代的平均大小大于老年代的剩余空间；(可以查看老年代发送full gc时的剩余空间)
 4.  主动触发Full GC（执行jmap -histo:live [pid]）来避免碎片问题, 可以通过参数禁止
 
+解决方法:
+* 通过把-XX:PermSize参数和-XX:MaxPermSize设置成一样，强制虚拟机在启动的时候就把方法区的容量固定下来，避免运行时自动扩容。
+ * CMS默认情况下不会回收Perm区，通过参数CMSPermGenSweepingEnabled、CMSClassUnloadingEnabled ，可以让CMS在Perm区容量不足时对其回收
 
  **所以, 简而言之, 降低full gc的频率, 一个方向是增大老年代的大小, 二是减小新生代晋升的对象的大小, 提高晋升门槛**, 如果是一次fullgc后，剩余对象不多, 证明很多都不是真正的老对象。那么说明你eden区设置太小，导致短生命周期的对象进入了old区。如果一次fullgc后，old区回收率不大，那么说明old区太小。
  
@@ -401,13 +406,7 @@ https://tech.meituan.com/jvm_optimize.html
 
 
 
-### java heap 分代(基于jdk1.8)
-* 新生代(PSYoungGen)
- eden space , survivor(from space , to space) ,可设置比例,采用标记复制算法
-* 老年代(ParOldGen)
-采用标记清除算法或标记整理算法
-* Metaspace(方法区)
-存储类的信息
+
 
 #### GC 常用命令
 * -verbose:class , -verbose:gc ,-verbose:jni 
@@ -721,11 +720,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3NTg1NjgxNCwxNzEwODgxMjA0LC0xOT
-I2OTg3OTk3LC0xMzg1MzA2Nzk1LC04MTA5MzA1ODcsMTU2MTYw
-OTA5MCwyMDczMjYxMDk0LC02MzgxNTE2LC0xMDUzNzgzOTIwLD
-EyNzA0MDUwNTMsMTYxOTA4OTU5MCwtNTg0MjkxMzgxLDE2MTkw
-ODk1OTAsLTM0MjYyMDU3MiwxMDQ5NTkwNDAzLDkxMzU4MDgyLD
-M2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUxNDQwLDE4NTUxNzk1
-NzRdfQ==
+eyJoaXN0b3J5IjpbLTE3OTA4MzkxMjEsMTcxMDg4MTIwNCwtMT
+kyNjk4Nzk5NywtMTM4NTMwNjc5NSwtODEwOTMwNTg3LDE1NjE2
+MDkwOTAsMjA3MzI2MTA5NCwtNjM4MTUxNiwtMTA1Mzc4MzkyMC
+wxMjcwNDA1MDUzLDE2MTkwODk1OTAsLTU4NDI5MTM4MSwxNjE5
+MDg5NTkwLC0zNDI2MjA1NzIsMTA0OTU5MDQwMyw5MTM1ODA4Mi
+wzNjUzNjg3MDAsNjUyNDg4Njc5LDU5OTA1MTQ0MCwxODU1MTc5
+NTc0XX0=
 -->
