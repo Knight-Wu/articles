@@ -94,7 +94,7 @@ jmap -dump:format=b,file-fileName pid
 >若不存在从对象到GC root的引用链, 则在下次gc时, 该对象会被回收, 下次gc可能是minor gc(日志中称作 gc, 发生在新生代 ), major gc(日志中称作 full gc, 发生在老年代)
 
 
-* 回收方法区(永久代)
+* 回收方法区
 主要针对类的回收,满足以下三个条件: 
 1. 类的所有实例已被回收
 2. 加载该类的classloader已被回收
@@ -112,7 +112,7 @@ jmap -dump:format=b,file-fileName pid
 SoftReference来实现, 除非内存准备溢出了, 不然不会被回收.
 
 * 弱引用
-WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引用时, 如果GC运行, 那么该对象就会被回收.例子 ThreadLocal中的Entry 持有对ThreadLocal对象的弱引用, 若所有使用该ThreadLocal的线程均退出, 
+WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引用时, 如果GC运行, 那么该对象就会被回收.例子 ThreadLocal中的Entry 持有对ThreadLocal对象的弱引用
 
 * 虚引用
 > DirectByteBuffer
@@ -701,11 +701,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI3MDQwNTA1MywxNjE5MDg5NTkwLC01OD
-QyOTEzODEsMTYxOTA4OTU5MCwtMzQyNjIwNTcyLDEwNDk1OTA0
-MDMsOTEzNTgwODIsMzY1MzY4NzAwLDY1MjQ4ODY3OSw1OTkwNT
-E0NDAsMTg1NTE3OTU3NCwxMTYyNjIyOTUsLTE3MzA1NTYwNDEs
-MTU4NDE1OTg1LDk0MTgzODAwNywtMTA0ODU5NzUxMywtMTEwOT
-cxNjgyOCwtMTc1Mjg0NTY3NiwxNjgwMTg1MTc2LC0xNTcwOTEz
-ODAxXX0=
+eyJoaXN0b3J5IjpbLTEwNTM3ODM5MjAsMTI3MDQwNTA1MywxNj
+E5MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4OTU5MCwtMzQyNjIw
+NTcyLDEwNDk1OTA0MDMsOTEzNTgwODIsMzY1MzY4NzAwLDY1Mj
+Q4ODY3OSw1OTkwNTE0NDAsMTg1NTE3OTU3NCwxMTYyNjIyOTUs
+LTE3MzA1NTYwNDEsMTU4NDE1OTg1LDk0MTgzODAwNywtMTA0OD
+U5NzUxMywtMTEwOTcxNjgyOCwtMTc1Mjg0NTY3NiwxNjgwMTg1
+MTc2XX0=
 -->
