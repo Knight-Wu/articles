@@ -219,10 +219,11 @@ https://tech.meituan.com/g1.html
 > When you evaluatize orf tune any garbage collection, there is always a latency versus throughput trade-off. The G1 GC is an incremental garbage collector with uniform pauses, but also more overhead on the application threads. The throughput goal for the G1 GC is 90 percent application time and 10 percent garbage collection time. Compare this to the Java HotSpot VM parallel collector. The throughput goal of the parallel collector is 99 percent application time and 1 percent garbage collection time. Therefore, when you evaluate the G1 GC for throughput, relax your pause time target. Setting too aggressive a goal indicates that you are willing to bear an increase in garbage collection overhead, which has a direct effect on throughput. When you evaluate the G1 GC for latency, you set your desired (soft) real-time goal, and the G1 GC will try to meet it. As a side effect, throughput may suffer. See the section [Pause Time Goal](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc.html#pause_time_goal) in [Garbage-First Garbage Collector](https://docs.oracle.com/javase/8/docs/technotes/guides/vm/gctuning/g1_gc.html#garbage_first_garbage_collection) for additional informationhe young generat
 
 > Applications running today with either the CMS or the with parallel compaction would benefit from switching to G1 if the application has one or more of the following traits: 
- More than 50% of the Java heap is occupied with live data.
- The rate of object allocation rate or promotion varies significantly.
- The application is experiencing undesired long garbage collection or compaction pauses (longer than 0.5 to 1 second).
-gc 的类型: young gc和mixed gc, full gc
+a. More than 50% of the Java heap is occupied with live data.
+ b. The rate of object allocation rate or promotion varies significantly.
+ c. The application is experiencing undesired long garbage collection or compaction pauses (longer than 0.5 to 1 second).
+ 
+> gc 的类型: young gc和mixed gc, full gc
 
 Young GC：选定年轻代里的一些 Region。通过控制年轻代的region**总数**，即年轻代内存大小，来控制young GC的时间开销。
 大致过程: 
@@ -699,11 +700,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYzODE1MTYsLTEwNTM3ODM5MjAsMTI3MD
-QwNTA1MywxNjE5MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4OTU5
-MCwtMzQyNjIwNTcyLDEwNDk1OTA0MDMsOTEzNTgwODIsMzY1Mz
-Y4NzAwLDY1MjQ4ODY3OSw1OTkwNTE0NDAsMTg1NTE3OTU3NCwx
-MTYyNjIyOTUsLTE3MzA1NTYwNDEsMTU4NDE1OTg1LDk0MTgzOD
-AwNywtMTA0ODU5NzUxMywtMTEwOTcxNjgyOCwtMTc1Mjg0NTY3
-Nl19
+eyJoaXN0b3J5IjpbMjA3MzI2MTA5NCwtNjM4MTUxNiwtMTA1Mz
+c4MzkyMCwxMjcwNDA1MDUzLDE2MTkwODk1OTAsLTU4NDI5MTM4
+MSwxNjE5MDg5NTkwLC0zNDI2MjA1NzIsMTA0OTU5MDQwMyw5MT
+M1ODA4MiwzNjUzNjg3MDAsNjUyNDg4Njc5LDU5OTA1MTQ0MCwx
+ODU1MTc5NTc0LDExNjI2MjI5NSwtMTczMDU1NjA0MSwxNTg0MT
+U5ODUsOTQxODM4MDA3LC0xMDQ4NTk3NTEzLC0xMTA5NzE2ODI4
+XX0=
 -->
