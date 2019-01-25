@@ -14,7 +14,7 @@
 
 
 ### java 堆(heap)
-存放对象的实例和数组, 所有线程所共有; 如果堆中没有内存完成实例的分配, 并且堆也无法再扩展时,抛出 OutOfMemoryError
+存放对象的实例和数组, 所有线程所共有; 如果堆中没有内存完成实例的分配, 并且堆也无法再扩展时,抛出 OutOfMemoryError, 
 
 ### 方法区(Method Area)
 线程间共享, 存储每个类的结构,包括运行时常量 ,也就是下面指的字面量 *(包括string pool)* ,静态变量,即时编译器编译后的代码等数据.
@@ -707,11 +707,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxOTA4OTU5MCwtNTg0MjkxMzgxLDE2MT
-kwODk1OTAsLTM0MjYyMDU3MiwxMDQ5NTkwNDAzLDkxMzU4MDgy
-LDM2NTM2ODcwMCw2NTI0ODg2NzksNTk5MDUxNDQwLDE4NTUxNz
-k1NzQsMTE2MjYyMjk1LC0xNzMwNTU2MDQxLDE1ODQxNTk4NSw5
-NDE4MzgwMDcsLTEwNDg1OTc1MTMsLTExMDk3MTY4MjgsLTE3NT
-I4NDU2NzYsMTY4MDE4NTE3NiwtMTU3MDkxMzgwMSwxMzA5MDcz
-NTM4XX0=
+eyJoaXN0b3J5IjpbLTEyMTc3NDY1NCwxNjE5MDg5NTkwLC01OD
+QyOTEzODEsMTYxOTA4OTU5MCwtMzQyNjIwNTcyLDEwNDk1OTA0
+MDMsOTEzNTgwODIsMzY1MzY4NzAwLDY1MjQ4ODY3OSw1OTkwNT
+E0NDAsMTg1NTE3OTU3NCwxMTYyNjIyOTUsLTE3MzA1NTYwNDEs
+MTU4NDE1OTg1LDk0MTgzODAwNywtMTA0ODU5NzUxMywtMTEwOT
+cxNjgyOCwtMTc1Mjg0NTY3NiwxNjgwMTg1MTc2LC0xNTcwOTEz
+ODAxXX0=
 -->
