@@ -223,7 +223,7 @@ a. More than 50% of the Java heap is occupied with live data.
  b. The rate of object allocation rate or promotion varies significantly.
  c. The application is experiencing undesired long garbage collection or compaction pauses (longer than 0.5 to 1 second).
  
-> gc 的类型: young gc和mixed gc, full gc
+> gc 的类型: young gc和mixed gc
 
 Young GC：选定年轻代里的一些 Region。通过控制年轻代的region**总数**，即年轻代内存大小，来控制young GC的时间开销。
 大致过程: 
@@ -238,8 +238,8 @@ Mixed GC 的触发条件:
 -   G1OldCSetRegionThresholdPercent：一次Mixed GC中能被选入CSet的最多old generation region数量。
 
 Full GC:
-和CMS一样，G1的一些收集过程是和应用程序并发执行的，所以可能还没有回收完成，是由于申请内存的速度比回收速度快，新的对象就占满了所有空间，在CMS中叫做Concurrent Mode Failure, 在G1中称为Allocation Failure，也会降
-级为一个STW的fullgc。
+和CMS一样，G1的一些收集过程是和应用程序并发执行的，所以可能还没有回收完成，是由于申请内存的速度比回收速度快，新的对象就占满了所有空间，在CMS中叫做Concurrent Mode Failure, 在G1中称为Allocation Failure，也会降 
+级为使用serial GC 才收集,
 
 
 > 什么情况触发 concurrent marking 
@@ -700,11 +700,11 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3MzI2MTA5NCwtNjM4MTUxNiwtMTA1Mz
-c4MzkyMCwxMjcwNDA1MDUzLDE2MTkwODk1OTAsLTU4NDI5MTM4
-MSwxNjE5MDg5NTkwLC0zNDI2MjA1NzIsMTA0OTU5MDQwMyw5MT
-M1ODA4MiwzNjUzNjg3MDAsNjUyNDg4Njc5LDU5OTA1MTQ0MCwx
-ODU1MTc5NTc0LDExNjI2MjI5NSwtMTczMDU1NjA0MSwxNTg0MT
-U5ODUsOTQxODM4MDA3LC0xMDQ4NTk3NTEzLC0xMTA5NzE2ODI4
-XX0=
+eyJoaXN0b3J5IjpbMTU2MTYwOTA5MCwyMDczMjYxMDk0LC02Mz
+gxNTE2LC0xMDUzNzgzOTIwLDEyNzA0MDUwNTMsMTYxOTA4OTU5
+MCwtNTg0MjkxMzgxLDE2MTkwODk1OTAsLTM0MjYyMDU3MiwxMD
+Q5NTkwNDAzLDkxMzU4MDgyLDM2NTM2ODcwMCw2NTI0ODg2Nzks
+NTk5MDUxNDQwLDE4NTUxNzk1NzQsMTE2MjYyMjk1LC0xNzMwNT
+U2MDQxLDE1ODQxNTk4NSw5NDE4MzgwMDcsLTEwNDg1OTc1MTNd
+fQ==
 -->
