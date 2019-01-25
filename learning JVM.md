@@ -323,10 +323,16 @@ Maximum Pause Time Goal,  Throughput Goal,  Footprint Goal三者只能取其二,
 
 gc 的频率和时间都降低
 
+* gc pause 时间取决于什么
+取决于存活的对象的数量, 而不是heap size, 所以只有进行gc 标记时大多数的对象都死了, 那么gc 暂停时间会比较短.
+
 > 新生代
 
 * 降低gc 频率
-直接原因: eden 区满了, 直接方法: 增大eden区, 间接方法: 增大young 区, 增大heap, 具体操作: 增大eden 的比例, 
+直接原因: eden 区满了, 
+直接方法: 增大eden区的比例, 间接方法: 增大young 区, 增大heap, 
+* 降低gc 的时间
+增大
 
 
 * jvm heap 大小初始化如何设置
@@ -342,8 +348,7 @@ https://www.dutycode.com/jvm_xmx_xmn_xms_shezhi.html
     
 > In general, increase the memory as you increase the number of processors, since allocation can be parallelized.
 
-* gc pause 时间取决于什么
-取决于存活的对象的数量, 而不是heap size, 所以只有进行gc 标记时大多数的对象都死了, 那么gc 暂停时间会比较短.
+
 
 * 如何提高晋升老年代的门槛
 1. 一是可以增大新生代的大小, minor gc 频率越低, 晋升老年代的门槛会越高, 可能可以降低full GC 的频率. 虽然老年带就会越小(永久代 + 年轻代等于 heap size), 进而带来major gc 的频率升高, 反之如果新生代大小调小, 可以适当提高晋升的年龄大小, 来弥补会晋升老年代的门槛, 具体的调优值取决于对象的生命周期的组成, 可以在同一个应用的几台服务器设置不同的newRadio 观察gc 的日志, 参数:`-XX:NewRatio=3`  means that the ratio between the young and old generation is 1:3
@@ -711,7 +716,7 @@ https://www.zhihu.com/question/27339390
 * java内部类
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjY5MTEyMTE5LDE3MTA4ODEyMDQsLTE5Mj
+eyJoaXN0b3J5IjpbMjUzNzA3MTIxLDE3MTA4ODEyMDQsLTE5Mj
 Y5ODc5OTcsLTEzODUzMDY3OTUsLTgxMDkzMDU4NywxNTYxNjA5
 MDkwLDIwNzMyNjEwOTQsLTYzODE1MTYsLTEwNTM3ODM5MjAsMT
 I3MDQwNTA1MywxNjE5MDg5NTkwLC01ODQyOTEzODEsMTYxOTA4
