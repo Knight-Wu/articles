@@ -703,7 +703,7 @@ public class A{
 如果内存空间不是连续的, 就只能用一个列表维护哪些内存是规整的
 
 4.  虚拟机将分配到的内存空间都初始化为零值（不包括对象头）。所以有时候某些字段不赋初始值就能直接使用
-5.  设置对象头，对象头中存储了该对象的类的实例等信息
+5.  设置对象头
 6.  执行 init 方法（否则所有字段还为零值），把对象按照程序员的意愿进行初始化
 
 * 对象的格式
@@ -723,11 +723,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzY2OTAwMDgzLDE5NDE2ODM1NjksMTc1NT
-M0OTg2NywyMTAyMjQwMzkzLDEzODM2MDM4OTUsLTE3NTM5NTI0
-MTcsMTQzOTE1Njk5MSwtMzcwMDM0NzY3LC0xNzkwODM5MTIxLD
-E3MTA4ODEyMDQsLTE5MjY5ODc5OTcsLTEzODUzMDY3OTUsLTgx
-MDkzMDU4NywxNTYxNjA5MDkwLDIwNzMyNjEwOTQsLTYzODE1MT
-YsLTEwNTM3ODM5MjAsMTI3MDQwNTA1MywxNjE5MDg5NTkwLC01
-ODQyOTEzODFdfQ==
+eyJoaXN0b3J5IjpbMTQ2MTg5OTY0MCw3NjY5MDAwODMsMTk0MT
+Y4MzU2OSwxNzU1MzQ5ODY3LDIxMDIyNDAzOTMsMTM4MzYwMzg5
+NSwtMTc1Mzk1MjQxNywxNDM5MTU2OTkxLC0zNzAwMzQ3NjcsLT
+E3OTA4MzkxMjEsMTcxMDg4MTIwNCwtMTkyNjk4Nzk5NywtMTM4
+NTMwNjc5NSwtODEwOTMwNTg3LDE1NjE2MDkwOTAsMjA3MzI2MT
+A5NCwtNjM4MTUxNiwtMTA1Mzc4MzkyMCwxMjcwNDA1MDUzLDE2
+MTkwODk1OTBdfQ==
 -->
