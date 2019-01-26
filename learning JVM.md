@@ -708,7 +708,7 @@ public class A{
 
 * 对象的格式
 
-分为对象头, 实例数据和对齐部分, 对象头包括: 哈希码、GC代年龄、锁状态、线程持有锁、偏向线程ID、时间戳等，另外还包含类型指针; 
+分为对象头, 实例数据和对齐部分. 对象头包括: 哈希码、GC代年龄、锁状态、线程持有锁、偏向线程ID、时间戳等，另外还包含类型指针; 
 因为Hotspot JVM 要求对象的总大小必须为8 字节的整数倍, 所以最后可能需要对齐部分来填充.
 
 * 访问对象
@@ -723,11 +723,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0MTY4MzU2OSwxNzU1MzQ5ODY3LDIxMD
-IyNDAzOTMsMTM4MzYwMzg5NSwtMTc1Mzk1MjQxNywxNDM5MTU2
-OTkxLC0zNzAwMzQ3NjcsLTE3OTA4MzkxMjEsMTcxMDg4MTIwNC
-wtMTkyNjk4Nzk5NywtMTM4NTMwNjc5NSwtODEwOTMwNTg3LDE1
-NjE2MDkwOTAsMjA3MzI2MTA5NCwtNjM4MTUxNiwtMTA1Mzc4Mz
-kyMCwxMjcwNDA1MDUzLDE2MTkwODk1OTAsLTU4NDI5MTM4MSwx
-NjE5MDg5NTkwXX0=
+eyJoaXN0b3J5IjpbNzY2OTAwMDgzLDE5NDE2ODM1NjksMTc1NT
+M0OTg2NywyMTAyMjQwMzkzLDEzODM2MDM4OTUsLTE3NTM5NTI0
+MTcsMTQzOTE1Njk5MSwtMzcwMDM0NzY3LC0xNzkwODM5MTIxLD
+E3MTA4ODEyMDQsLTE5MjY5ODc5OTcsLTEzODUzMDY3OTUsLTgx
+MDkzMDU4NywxNTYxNjA5MDkwLDIwNzMyNjEwOTQsLTYzODE1MT
+YsLTEwNTM3ODM5MjAsMTI3MDQwNTA1MywxNjE5MDg5NTkwLC01
+ODQyOTEzODFdfQ==
 -->
