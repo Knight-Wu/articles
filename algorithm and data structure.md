@@ -57,7 +57,9 @@ https://www.coursera.org/learn/algorithms-part1/
 
 ### 查找
 #### 布隆过滤器
-用途在于数据量非常庞大的时候, 减少数据集的空间占用, 用一个bit 数组来保存, 假设
+用途在于数据量非常庞大的时候, 减少数据集的空间占用, 用一个bit 数组来保存, 假设有n个hash 函数, 新来的一个元素a, 
+插入: 将a 通过n 个hash 函数算出的结果分别对应bit 数组上的n 个bit 位, 分别置一; 
+查询: 元素通过hash
 
 
 
@@ -84,7 +86,7 @@ https://www.coursera.org/learn/algorithms-part1/
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4MjEzNzY2OCwxODE1MzU4NDQ5LDE3NT
+eyJoaXN0b3J5IjpbLTUxNjY3MjA1OSwxODE1MzU4NDQ5LDE3NT
 AwMzg4MzAsLTY4NTY3NTQ2NCwtMTQzNDAzMzgwMyw0MTgxMDMw
 NTksNzgxNzUxNDI1LDQxODEwMzA1OSwtMTc2MDM0Mjk2LC0xOT
 UwNzc0MDksMTAyMjk5NTg1MSwxOTE0OTI4ODc2LDgwMTgxMjM3
