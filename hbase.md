@@ -84,12 +84,7 @@ RS下有多个region, 根据rowkey的分布均匀分布在多个region; 一个ta
 #### hive数据批量写入hbase 
 * 目前采用的是ftp文件到hbase客户端批量put的方式, 稳定性差, 容易引起split和compaction, 产生大量对象, GC频繁, 影响在线系统的查询, 可以采用hbase自带的bulkload, 通过将hive 的底层存储文件格式转化为hfile 导入hbase, 
 
-*问题*
->Sync HLog：HLog真正sync到HDFS，在释放行锁之后执行sync操作是为了尽量减少持锁时间，提升写性能。如果Sync失败，执行回滚操作将memstore中已经写入的数据移除
-* WAL 的作用, 
-* sync到文件系统和到磁盘有何区别
-* 写为什么会对读产生影响
-> 可能产生region split, 可能产生compaction, 其他的性能影响, IO等
+
 
 #### Memstore Flush
 > 参考自  [link](http://hbasefly.com/2016/07/13/hbase-compaction-1/)
@@ -203,5 +198,5 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNjkyNTYxOV19
+eyJoaXN0b3J5IjpbOTYxNTg1ODczLC0yMTY5MjU2MTldfQ==
 -->
