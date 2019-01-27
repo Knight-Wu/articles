@@ -16,7 +16,7 @@
 sparkDeploySchedulerBackend  接受到taskSet 之后, 通过自带的 driverActor 将序列化之后的task 发送到worker 节点executor 的CoarseGrainedExecutorBackend Actor 上
  
  5. executor 执行task
-executor 将task 包装成tTaskRunner, 并从线程池抽出里抽取一个线程运来执行task. 一个 CoarseGrainedExecutorBackend 进程有且仅有一个 executor 对象。
+executor 将task 包装成 TaskRunner, 并从线程池抽出里抽取一个线程运来执行task. 一个 CoarseGrainedExecutorBackend 进程有且仅有一个 executor 对象。
 
 下图是任务提交流程:
 ![enter image description here](https://drive.google.com/uc?id=1iKFppKl4pyWyEEeBoFsOvxGa0tCow64w)
@@ -780,11 +780,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzU2Mjk0NjAsMTgwODYyMDc3OSwxNT
-k2Njk4NjI2LC0xNjE5NzE3NzgyLDE0NTY5Mzk0NiwtMTkxOTY0
-ODgyMywxNDEwMTUxODc5LC00MTA2ODc0MjYsMTEzOTA5NzIzNC
-wtMTM1NDY5ODc5NCw4NDI2NTEzMTgsLTEzMzc1MjY5NTIsMTc2
-NzQ1OTYzNiwtMTkxMDAyOTIyMSwtNDg0NjM1OTM4LC0xNDk5OD
-k3NDI0LDEyMzA4NzU4NjIsLTIyNjM3MjAxOSwtMTQ4MTM5NDIw
-MiwtMTEwODA0Mzc5NV19
+eyJoaXN0b3J5IjpbLTgzOTQwNDQ4MCwxODA4NjIwNzc5LDE1OT
+Y2OTg2MjYsLTE2MTk3MTc3ODIsMTQ1NjkzOTQ2LC0xOTE5NjQ4
+ODIzLDE0MTAxNTE4NzksLTQxMDY4NzQyNiwxMTM5MDk3MjM0LC
+0xMzU0Njk4Nzk0LDg0MjY1MTMxOCwtMTMzNzUyNjk1MiwxNzY3
+NDU5NjM2LC0xOTEwMDI5MjIxLC00ODQ2MzU5MzgsLTE0OTk4OT
+c0MjQsMTIzMDg3NTg2MiwtMjI2MzcyMDE5LC0xNDgxMzk0MjAy
+LC0xMTA4MDQzNzk1XX0=
 -->
