@@ -10,7 +10,7 @@
 2. 建立job 逻辑执行图 
  driver 中的transformation(), 建立血统, rdd的执行图, rdd.compute() 定义数据来了之后怎么计算, rdd.getDependencies() 定义rdd的依赖
 3. 建立job 物理执行图
- 只要触发了一次action 算子会就生成一个job, 在DAGdagScheduler.runJob() 进行stage 划分, 在submitStage() 生成stage 最后产生的是的task, shuffleMapTask 还是或ResultTask, 然后将task 打包成taskSet 给交给 taskScheduler 去执行, 如果, 当taskSet 可以运行就将task 的时候就交给 sparkDeploySchedulerBackend 去分配
+ 只要触发了一次action 算子会就生成一个job, 在DAGdagScheduler.runJob() 进行stage 划分, 在submitStage() 生成该stage 包含的是shuffleMapTask 或ResultTask, 然后将task 打包成taskSet 给交给 taskScheduler 去执行, 如果, 当taskSet 可以运行就将task 的时候就交给 sparkDeploySchedulerBackend 去分配
 
 执行. 
  4. 分配task 分配
@@ -782,11 +782,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzNjA2MDIsMTU5NjY5ODYyNiwtMTYxOT
-cxNzc4MiwxNDU2OTM5NDYsLTE5MTk2NDg4MjMsMTQxMDE1MTg3
-OSwtNDEwNjg3NDI2LDExMzkwOTcyMzQsLTEzNTQ2OTg3OTQsOD
-QyNjUxMzE4LC0xMzM3NTI2OTUyLDE3Njc0NTk2MzYsLTE5MTAw
-MjkyMjEsLTQ4NDYzNTkzOCwtMTQ5OTg5NzQyNCwxMjMwODc1OD
-YyLC0yMjYzNzIwMTksLTE0ODEzOTQyMDIsLTExMDgwNDM3OTUs
-LTE1MTEzNTg1MjZdfQ==
+eyJoaXN0b3J5IjpbMTgwODYyMDc3OSwxNTk2Njk4NjI2LC0xNj
+E5NzE3NzgyLDE0NTY5Mzk0NiwtMTkxOTY0ODgyMywxNDEwMTUx
+ODc5LC00MTA2ODc0MjYsMTEzOTA5NzIzNCwtMTM1NDY5ODc5NC
+w4NDI2NTEzMTgsLTEzMzc1MjY5NTIsMTc2NzQ1OTYzNiwtMTkx
+MDAyOTIyMSwtNDg0NjM1OTM4LC0xNDk5ODk3NDI0LDEyMzA4Nz
+U4NjIsLTIyNjM3MjAxOSwtMTQ4MTM5NDIwMiwtMTEwODA0Mzc5
+NSwtMTUxMTM1ODUyNl19
 -->
