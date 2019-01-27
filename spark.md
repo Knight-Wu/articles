@@ -7,7 +7,6 @@
 
 
 1. 首先生成sparkContext, 初始化 driver 端通信, job 执行等一些对象, 确立driver 端的地位
-2. 生成端的 ?
 2. 建立job 逻辑执行图 
  driver 中的transformation(), 建立血统, rdd的执行图, rdd.compute() 定义数据来了之后怎么计算, rdd.getDependencies() 定义rdd的依赖
 3. 生成物理执行图
@@ -785,11 +784,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxNjE5ODUzLC0xNjE5NzE3NzgyLDE0NT
-Y5Mzk0NiwtMTkxOTY0ODgyMywxNDEwMTUxODc5LC00MTA2ODc0
-MjYsMTEzOTA5NzIzNCwtMTM1NDY5ODc5NCw4NDI2NTEzMTgsLT
-EzMzc1MjY5NTIsMTc2NzQ1OTYzNiwtMTkxMDAyOTIyMSwtNDg0
-NjM1OTM4LC0xNDk5ODk3NDI0LDEyMzA4NzU4NjIsLTIyNjM3Mj
-AxOSwtMTQ4MTM5NDIwMiwtMTEwODA0Mzc5NSwtMTUxMTM1ODUy
-NiwxMjQwNTYyNTU3XX0=
+eyJoaXN0b3J5IjpbMTU5NjY5ODYyNiwtMTYxOTcxNzc4MiwxND
+U2OTM5NDYsLTE5MTk2NDg4MjMsMTQxMDE1MTg3OSwtNDEwNjg3
+NDI2LDExMzkwOTcyMzQsLTEzNTQ2OTg3OTQsODQyNjUxMzE4LC
+0xMzM3NTI2OTUyLDE3Njc0NTk2MzYsLTE5MTAwMjkyMjEsLTQ4
+NDYzNTkzOCwtMTQ5OTg5NzQyNCwxMjMwODc1ODYyLC0yMjYzNz
+IwMTksLTE0ODEzOTQyMDIsLTExMDgwNDM3OTUsLTE1MTEzNTg1
+MjYsMTI0MDU2MjU1N119
 -->
