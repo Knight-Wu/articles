@@ -1,5 +1,5 @@
 #### spark执行的大致流程
-参考自 https://github.com/JerryLead/SparkInternals/blob/master/markdown/5-Architecture.md
+
 ![enter image description here](https://drive.google.com/uc?id=1bHUSmMyvvt0AExkVkPJx9wplKzlnCWxr)
 
 ![image](https://user-images.githubusercontent.com/20329409/42255995-3835ea58-7f81-11e8-9003-78b446c332cf.png)
@@ -785,11 +785,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTk3MTc3ODIsMTQ1NjkzOTQ2LC0xOT
-E5NjQ4ODIzLDE0MTAxNTE4NzksLTQxMDY4NzQyNiwxMTM5MDk3
-MjM0LC0xMzU0Njk4Nzk0LDg0MjY1MTMxOCwtMTMzNzUyNjk1Mi
-wxNzY3NDU5NjM2LC0xOTEwMDI5MjIxLC00ODQ2MzU5MzgsLTE0
-OTk4OTc0MjQsMTIzMDg3NTg2MiwtMjI2MzcyMDE5LC0xNDgxMz
-k0MjAyLC0xMTA4MDQzNzk1LC0xNTExMzU4NTI2LDEyNDA1NjI1
-NTcsLTgwNDAyMDk4XX0=
+eyJoaXN0b3J5IjpbLTEzNjYyNTExOTMsLTE2MTk3MTc3ODIsMT
+Q1NjkzOTQ2LC0xOTE5NjQ4ODIzLDE0MTAxNTE4NzksLTQxMDY4
+NzQyNiwxMTM5MDk3MjM0LC0xMzU0Njk4Nzk0LDg0MjY1MTMxOC
+wtMTMzNzUyNjk1MiwxNzY3NDU5NjM2LC0xOTEwMDI5MjIxLC00
+ODQ2MzU5MzgsLTE0OTk4OTc0MjQsMTIzMDg3NTg2MiwtMjI2Mz
+cyMDE5LC0xNDgxMzk0MjAyLC0xMTA4MDQzNzk1LC0xNTExMzU4
+NTI2LDEyNDA1NjI1NTddfQ==
 -->
