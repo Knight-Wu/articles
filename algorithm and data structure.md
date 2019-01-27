@@ -55,6 +55,21 @@ https://algs4.cs.princeton.edu/33balanced/
 https://www.coursera.org/learn/algorithms-part1/
 
 
+### 查找
+#### 布隆过滤器
+用途在于数据量非常庞大的时候, 减少数据集的空间占用, 用一个bit 数组来保存, 假设
+
+
+
+
+
+
+
+
+
+
+
+
 #### 题目
 > 排序
 
@@ -69,10 +84,11 @@ https://www.coursera.org/learn/algorithms-part1/
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxNTM1ODQ0OSwxNzUwMDM4ODMwLC02OD
-U2NzU0NjQsLTE0MzQwMzM4MDMsNDE4MTAzMDU5LDc4MTc1MTQy
-NSw0MTgxMDMwNTksLTE3NjAzNDI5NiwtMTk1MDc3NDA5LDEwMj
-I5OTU4NTEsMTkxNDkyODg3Niw4MDE4MTIzNzUsLTExMzA4NjA2
-MzMsMTYwMzM1NDQyMiwtMTMxNDIzMTAzMiwxNzA2NTA2MjA4LD
-E3NzEwOTI1MzAsODcwMDc5NTE2LDE1NDcyMTc3MTNdfQ==
+eyJoaXN0b3J5IjpbLTk4MjEzNzY2OCwxODE1MzU4NDQ5LDE3NT
+AwMzg4MzAsLTY4NTY3NTQ2NCwtMTQzNDAzMzgwMyw0MTgxMDMw
+NTksNzgxNzUxNDI1LDQxODEwMzA1OSwtMTc2MDM0Mjk2LC0xOT
+UwNzc0MDksMTAyMjk5NTg1MSwxOTE0OTI4ODc2LDgwMTgxMjM3
+NSwtMTEzMDg2MDYzMywxNjAzMzU0NDIyLC0xMzE0MjMxMDMyLD
+E3MDY1MDYyMDgsMTc3MTA5MjUzMCw4NzAwNzk1MTYsMTU0NzIx
+NzcxM119
 -->
