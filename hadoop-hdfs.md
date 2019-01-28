@@ -34,9 +34,9 @@ hdfs 在做文件系统变更的时候, 先把修改信息保存在EditLog中, �
 
 The fsimage is a file that represents a point-in-time snapshot of the filesystem’s metadata. However, while the fsimage file format is very efficient to read, it’s unsuitable for making small incremental updates like renaming a single file. Thus, rather than writing a new fsimage every time the namespace is modified, the NameNode instead records the modifying operation in the edit log for durability.( 每次小的变更都写fsimage, 效率太低, 因为fsimage 是可读的格式, 文件大起来, 修改很困难)
 
-A typical edit ranges from 10s to 100s of bytes, but over time enough edits can accumulate to become unwieldy. A couple of problems can arise from these large edit logs. In extreme cases, it can fill up all the available disk capacity on a node, but more subtly, a large edit log can substantially delay NameNode startup as the NameNode reapplies all the edits. This is where checkpointing comes in.(但是edit log 的大小大概有100 字节, nn 的吞吐量很大, edit log太多会占用大量的空间, 而且如果需要重启的话, 需要合并edit log和fsimage, 重启时间大大增加, 所以每隔一段时间和一定数量的事务会合并edit log和 fsimage 到最新的fsimage )
+A typical edit ranges from 10s to 100s of bytes, but over time enough edits can accumulate to become unwieldy. A couple of problems can arise from these large edit logs. In extreme cases, it can fill up all the available disk capacity on a node, but more subtly, a large edit log can substantially delay NameNode startup as the NameNode reapplies all the edits. This is where checkpointing comes in.(edit log 的大小大概有100 字节, nn 的吞吐量很大, edit log太多会占用大量的空间, 而且如果需要重启的话, 需要合并edit log和fsimage, 重启时间大大增加, 所以每隔一段时间和一定数量的事务会合并edit log和 fsimage 到最新的fsimage )
 
-However, creating a new fsimage is an I/O- and CPU-intensive operation, sometimes taking minutes to perform. During a checkpoint, the namesystem also needs to restrict concurrent access from other users. So, rather than pausing the active NameNode to perform a checkpoint, HDFS defers it to either the SecondaryNameNode or Standby NameNode(但是checkpoint 是一个很费资源, 且降低并发的操作, 如果采用了高可用, 则在standby nn 进行checkpoint)
+However, creating a new fsimage is an I/O- and CPU-intensive operation, sometimes taking minutes to perform. During a checkpoint, the namesystem also needs to restrict concurrent access from other users. So, rather than pausing the active NameNode to perform a checkpoint, HDFS defers it to either the SecondaryNameNode or Standby NameNode( checkpoint 是一个很费资源, 且降低并发的操作, 如果采用了高可用, 则在standby nn 进行checkpoint)
 
 > checkpoint 触发的条件
 
@@ -501,7 +501,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzMjc3NzA4NSwxNjk5NzQwOTc4LC01OT
+eyJoaXN0b3J5IjpbLTkwNjU4OTA1NSwxNjk5NzQwOTc4LC01OT
 gzMjAyMTIsMTkwOTA0NjA2LDMwMTk1Mjk5MiwtMTA1NzE4NTc3
 NywtNTM3MjM1NjYsNDc4NTQyMzA1LC0xODk5OTE4NDE1LC0xOT
 UzMjczNzA0LC0zMzY1NTYwNDIsLTExMDcyMTQzNyw4NzQ0MDg0
