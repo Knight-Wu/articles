@@ -69,7 +69,7 @@ HttpBroadcast 最大的问题就是 **driver 所在的节点可能会出现网�
 driver 先把data 序列化成 byteArray, 然后切割成BLOCK_SIZE（由 `spark.broadcast.blockSize = 4MB` 设置）大小的 data block, 每个block 由TorrentBlock 对象持有, 切割完dataArray 会将其回收, 将分块信息存放到driver blockManager, 同时会通知**blockManagerMaster** , 可以被driver 和executor 访问到.
 
 #### spark 具体使用一些算子, 才会体会, with individual tasks launching to compute segments
-of the RDD. Once the final stage is finished in a joboace eecor task asRnne, tas pareueroe
+
 
 
 #### task、partition关系
@@ -779,11 +779,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY2NDgxNjUxOCwtNzczODA4NjI4LC0xMD
-gzNDg1MjcyLC04Mzk0MDQ0ODAsMTgwODYyMDc3OSwxNTk2Njk4
-NjI2LC0xNjE5NzE3NzgyLDE0NTY5Mzk0NiwtMTkxOTY0ODgyMy
-wxNDEwMTUxODc5LC00MTA2ODc0MjYsMTEzOTA5NzIzNCwtMTM1
-NDY5ODc5NCw4NDI2NTEzMTgsLTEzMzc1MjY5NTIsMTc2NzQ1OT
-YzNiwtMTkxMDAyOTIyMSwtNDg0NjM1OTM4LC0xNDk5ODk3NDI0
-LDEyMzA4NzU4NjJdfQ==
+eyJoaXN0b3J5IjpbLTEyNTUyNzkxMjcsLTc3MzgwODYyOCwtMT
+A4MzQ4NTI3MiwtODM5NDA0NDgwLDE4MDg2MjA3NzksMTU5NjY5
+ODYyNiwtMTYxOTcxNzc4MiwxNDU2OTM5NDYsLTE5MTk2NDg4Mj
+MsMTQxMDE1MTg3OSwtNDEwNjg3NDI2LDExMzkwOTcyMzQsLTEz
+NTQ2OTg3OTQsODQyNjUxMzE4LC0xMzM3NTI2OTUyLDE3Njc0NT
+k2MzYsLTE5MTAwMjkyMjEsLTQ4NDYzNTkzOCwtMTQ5OTg5NzQy
+NCwxMjMwODc1ODYyXX0=
 -->
