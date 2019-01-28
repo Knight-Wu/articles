@@ -308,7 +308,7 @@ The lease recovery process is triggered on the NameNode to recover leases for a 
 > 如何并发的append, 和write有何不同, 多个副本的顺序不同?
 
 > packet写第一个dn成功后就马上开始下一个packet的写, 还是等待所以dn ack之后才会开始?
-答案: data queue 中的packet发送之后会转移到ackQueue, 然后等待一整个block里面的数据都完全ack之后, 才会发送下一个block. **那`		如果写的时候, 一个dn 突然挂掉怎么办**
+答案: data queue 中的packet发送之后会转移到ackQueue, 然后等待一整个block里面的数据都完全ack之后, 才会发送下一个block. 
 
 > pipeline中有一个dn写失败, 是会等待使用新的dn去替换还是用继续写剩余的pipeline中的dn, 然后并发的去找一个dn去补足pipeline中的dn数量(补到副本数)
 答案: pipeline recover发生的时候会在满足replace-datanode-policy的时候会重建整个pipeline, 并且会阻塞发送, 新的pipeline可能和之前的pipeline有很大不同除非已经接受到数据的dn, 因为可能要考虑节点远近等原因.
@@ -501,11 +501,11 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTMxMDU5NTUsLTExOTkxNzk4NiwtOT
-A2NTg5MDU1LDE2OTk3NDA5NzgsLTU5ODMyMDIxMiwxOTA5MDQ2
-MDYsMzAxOTUyOTkyLC0xMDU3MTg1Nzc3LC01MzcyMzU2Niw0Nz
-g1NDIzMDUsLTE4OTk5MTg0MTUsLTE5NTMyNzM3MDQsLTMzNjU1
-NjA0MiwtMTEwNzIxNDM3LDg3NDQwODQ5NSwtMjc4MzQyOTAyLC
-0xNjY1OTYxNDY2LC0xNjY0OTk0NzA2LC0xMDIyMTczMDY3LC0x
-MTM3OTk4NTU1XX0=
+eyJoaXN0b3J5IjpbOTI2MTY1OTg2LC0xMTk5MTc5ODYsLTkwNj
+U4OTA1NSwxNjk5NzQwOTc4LC01OTgzMjAyMTIsMTkwOTA0NjA2
+LDMwMTk1Mjk5MiwtMTA1NzE4NTc3NywtNTM3MjM1NjYsNDc4NT
+QyMzA1LC0xODk5OTE4NDE1LC0xOTUzMjczNzA0LC0zMzY1NTYw
+NDIsLTExMDcyMTQzNyw4NzQ0MDg0OTUsLTI3ODM0MjkwMiwtMT
+Y2NTk2MTQ2NiwtMTY2NDk5NDcwNiwtMTAyMjE3MzA2NywtMTEz
+Nzk5ODU1NV19
 -->
