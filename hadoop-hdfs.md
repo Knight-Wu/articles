@@ -247,7 +247,7 @@ Save namespace successful for ip-172-31-1-163.ap-southeast-1.compute.internal/17
 详细流程: [notebook-link](http://note.youdao.com/noteshare?id=1db8cf2911deed6b89523bd3feab696e&sub=A63DC7C4A24A4C759435BB12479B6BDB)
 原贴地址: [http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html](http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html)
 
-小集群测试: 集群中只有三个dn, 一个dn 挂掉, 还是能完成客户端写入的, 会重建整个pipeline, d
+小集群测试: 集群中只有三个dn, 一个dn 挂掉, 还是能完成客户端写入的, 会重建整个pipeline, 但是因为只有三个dn, 找不到用于替换的dn, 导致块副本数不足. 
 
 #### Understanding HDFS Recovery Processes
 [https://blog.cloudera.com/blog/2015/02/understanding-hdfs-recovery-processes-part-1/](https://blog.cloudera.com/blog/2015/02/understanding-hdfs-recovery-processes-part-1/)
@@ -501,7 +501,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTcyNzkyMTYsLTExOTkxNzk4NiwtOT
+eyJoaXN0b3J5IjpbLTE5OTMxMDU5NTUsLTExOTkxNzk4NiwtOT
 A2NTg5MDU1LDE2OTk3NDA5NzgsLTU5ODMyMDIxMiwxOTA5MDQ2
 MDYsMzAxOTUyOTkyLC0xMDU3MTg1Nzc3LC01MzcyMzU2Niw0Nz
 g1NDIzMDUsLTE4OTk5MTg0MTUsLTE5NTMyNzM3MDQsLTMzNjU1
