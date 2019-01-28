@@ -80,17 +80,33 @@ https://www.coursera.org/learn/algorithms-part1/
 按照手术完成时间, 构建一个最小堆, 并用map 将医生id和手术完成时间关联起来; 碰到这种返回一个值的, 可以想最后返回的是哪个值, 比如这次是手术完成时间的最小值, 就可以往排序方面想. 
 
 
+
+ * 给定一个数组, 每次调用的时候都随机输出所有的元素. 
+ 
+public void solution( int [] arr){
+  ran = new Random(seed);
+  int a = ran.nextInt();
+   int len = arr.length;
+  for(int i=0;i<arr.length;i++){
+     System.out.println(arr[a%len]);
+    len--;
+  }
+}
+
+
+
+
 #### 问题
 * paxos 的应用
 * 回文字符串
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMjAwODU2NjgsMTgxNTM1ODQ0OSwxNz
-UwMDM4ODMwLC02ODU2NzU0NjQsLTE0MzQwMzM4MDMsNDE4MTAz
-MDU5LDc4MTc1MTQyNSw0MTgxMDMwNTksLTE3NjAzNDI5NiwtMT
-k1MDc3NDA5LDEwMjI5OTU4NTEsMTkxNDkyODg3Niw4MDE4MTIz
-NzUsLTExMzA4NjA2MzMsMTYwMzM1NDQyMiwtMTMxNDIzMTAzMi
-wxNzA2NTA2MjA4LDE3NzEwOTI1MzAsODcwMDc5NTE2LDE1NDcy
-MTc3MTNdfQ==
+eyJoaXN0b3J5IjpbMzQzNTcyNDc0LC0xMDIwMDg1NjY4LDE4MT
+UzNTg0NDksMTc1MDAzODgzMCwtNjg1Njc1NDY0LC0xNDM0MDMz
+ODAzLDQxODEwMzA1OSw3ODE3NTE0MjUsNDE4MTAzMDU5LC0xNz
+YwMzQyOTYsLTE5NTA3NzQwOSwxMDIyOTk1ODUxLDE5MTQ5Mjg4
+NzYsODAxODEyMzc1LC0xMTMwODYwNjMzLDE2MDMzNTQ0MjIsLT
+EzMTQyMzEwMzIsMTcwNjUwNjIwOCwxNzcxMDkyNTMwLDg3MDA3
+OTUxNl19
 -->
