@@ -355,7 +355,6 @@ join, yield, sleep
 * sleep
     不释放正在占用的对象的monitor lock，线程处于TIME_WAITED 的状态
 * join
-
     在主线程中调用threadA.join(), 主线程需要等待threadA 死亡才会继续执行
 * yield
     把当前cpu的使用交给调度器进行分配, 调度器可以忽略该信息. 细节见
@@ -854,7 +853,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjc5NTQ0ODAsOTA0NzY3OTAzLC03MT
+eyJoaXN0b3J5IjpbLTE4MDAzOTU2NzgsOTA0NzY3OTAzLC03MT
 UxODUyMzYsMTM1Nzg4MTc3Niw0OTgzMDEwMTUsMTQ0MzI1NzYw
 NywxMzExMjM5MzU2LDgwMTQwNzMxNCwtNDY2NTM3NjE4LC02Nz
 c3MzgwNiw3NDIxNzI1OTAsMTk2MjE3NzY5NSw4MTM4NjY1MCwt
