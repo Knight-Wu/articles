@@ -6,7 +6,8 @@
 
 
 
-1. 首先生成sparkContext, 初始化 driver 端通信, job 执行等一些对象, 确立driver 端的地位
+1. 初始化driver  
+首先会在用户进程下新建一个serverSocket, 默认端口0, yo首先生成sparkContext, 初始化 driver 端通信, job 执行等一些对象, 确立driver 端的地位
 2. 建立job 逻辑执行图 
  driver 中的transformation(), 建立血统, rdd的执行图, rdd.compute() 定义数据来了之后怎么计算, rdd.getDependencies() 定义rdd的依赖
 3. 建立job 物理执行图
@@ -780,11 +781,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzOTQwNDQ4MCwxODA4NjIwNzc5LDE1OT
-Y2OTg2MjYsLTE2MTk3MTc3ODIsMTQ1NjkzOTQ2LC0xOTE5NjQ4
-ODIzLDE0MTAxNTE4NzksLTQxMDY4NzQyNiwxMTM5MDk3MjM0LC
-0xMzU0Njk4Nzk0LDg0MjY1MTMxOCwtMTMzNzUyNjk1MiwxNzY3
-NDU5NjM2LC0xOTEwMDI5MjIxLC00ODQ2MzU5MzgsLTE0OTk4OT
-c0MjQsMTIzMDg3NTg2MiwtMjI2MzcyMDE5LC0xNDgxMzk0MjAy
-LC0xMTA4MDQzNzk1XX0=
+eyJoaXN0b3J5IjpbLTExMDI5MzUyNjgsLTgzOTQwNDQ4MCwxOD
+A4NjIwNzc5LDE1OTY2OTg2MjYsLTE2MTk3MTc3ODIsMTQ1Njkz
+OTQ2LC0xOTE5NjQ4ODIzLDE0MTAxNTE4NzksLTQxMDY4NzQyNi
+wxMTM5MDk3MjM0LC0xMzU0Njk4Nzk0LDg0MjY1MTMxOCwtMTMz
+NzUyNjk1MiwxNzY3NDU5NjM2LC0xOTEwMDI5MjIxLC00ODQ2Mz
+U5MzgsLTE0OTk4OTc0MjQsMTIzMDg3NTg2MiwtMjI2MzcyMDE5
+LC0xNDgxMzk0MjAyXX0=
 -->
