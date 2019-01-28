@@ -110,7 +110,7 @@ Save namespace successful for ip-172-31-1-163.ap-southeast-1.compute.internal/17
 * HA 实现细节
 
 ![https://drive.google.com/uc?view=export&id=1oDzb5mpfoNKLULIdY5JUZGF5GMGTlC0T](https://drive.google.com/uc?view=export&id=1oDzb5mpfoNKLULIdY5JUZGF5GMGTlC0T)
-> NameNode 主备切换主要由 ZKFailoverController、HealthMonitor 和 ActiveStandbyElector 这 3 个组件来协同实现：
+> NameNode 主备切换主要由 ZKFailoverController、HealthMonitor 和 ActiveStandbyElector 这 3 个类来协同实现：
 
 >ZKFailoverController 作为 NameNode 机器上一个独立的进程启动 (在 hdfs 启动脚本之中的进程名为 zkfc)，启动的时候会创建 HealthMonitor 和 ActiveStandbyElector 这两个主要的内部组件.
 
@@ -501,11 +501,11 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwNjU4OTA1NSwxNjk5NzQwOTc4LC01OT
-gzMjAyMTIsMTkwOTA0NjA2LDMwMTk1Mjk5MiwtMTA1NzE4NTc3
-NywtNTM3MjM1NjYsNDc4NTQyMzA1LC0xODk5OTE4NDE1LC0xOT
-UzMjczNzA0LC0zMzY1NTYwNDIsLTExMDcyMTQzNyw4NzQ0MDg0
-OTUsLTI3ODM0MjkwMiwtMTY2NTk2MTQ2NiwtMTY2NDk5NDcwNi
-wtMTAyMjE3MzA2NywtMTEzNzk5ODU1NSwtMjMxOTExMDE3LDYz
-NjcwNjEzMl19
+eyJoaXN0b3J5IjpbLTExOTkxNzk4NiwtOTA2NTg5MDU1LDE2OT
+k3NDA5NzgsLTU5ODMyMDIxMiwxOTA5MDQ2MDYsMzAxOTUyOTky
+LC0xMDU3MTg1Nzc3LC01MzcyMzU2Niw0Nzg1NDIzMDUsLTE4OT
+k5MTg0MTUsLTE5NTMyNzM3MDQsLTMzNjU1NjA0MiwtMTEwNzIx
+NDM3LDg3NDQwODQ5NSwtMjc4MzQyOTAyLC0xNjY1OTYxNDY2LC
+0xNjY0OTk0NzA2LC0xMDIyMTczMDY3LC0xMTM3OTk4NTU1LC0y
+MzE5MTEwMTddfQ==
 -->
