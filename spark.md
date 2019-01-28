@@ -520,6 +520,8 @@ spark.eventLog.enabled 			true
 spark.eventLog.dir 				path/log
 ```
 
+* 可以使用github 上面的uber 开源的 jvm-profiler 来监控每个executor 所使用的内存和cpu 的情况, 最高值等
+
 
 
 #### spark-shell 执行sparkSql
@@ -550,7 +552,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 3. external shuffle service
 > 作用
 
-* Spark系统在运行含shuffle过程的应用时，Executor进程除了运行task，还要负责写shuffle 数据，给其他Executor提供shuffle数据. 当Executor进程任务过重，导致GC而不能为其他Executor提供shuffle数据时，会影响任务运行. 这里实际上是利用External Shuffle Service 来提升性能，External shuffle Service是长期存在于NodeManager进程中的一个辅助服务。 通过该服务来抓取shuffle数据，减少了Executor的压力，在Executor GC的时候也不会影响其他 Executor的任务运行。
+* Spark系统在运行含shuffle过程的应用时，Executor进程除了运行task，给其他Executor提供shuffle数据. 当Executor进程任务过重，导致GC而不能为其他Executor提供shuffle数据时，会影响任务运行. 这里实际上是利用External Shuffle Service 来提升性能，External shuffle Service是长期存在于NodeManager进程中的一个辅助服务。 通过该服务来抓取shuffle数据，减少了Executor的压力，在Executor GC的时候也不会影响其他 Executor的任务运行。
 * 当executor因为失败而退出, 或者在资源动态收集的情况下, 因为空闲而退出, 一些计算结果可能会因为无法获取而重新计算, 特别是shuffle的时候, map端executor计算的结果可能因为executor 退出而无法获取, 所以此时需要一个常驻的service 运行在nodemanager(使用yarn的情况)
 
 配置参见: 
@@ -768,11 +770,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjc4MzgzNjQ2LDY1NDUyNDI3LC0xMjU1Mj
-c5MTI3LC03NzM4MDg2MjgsLTEwODM0ODUyNzIsLTgzOTQwNDQ4
-MCwxODA4NjIwNzc5LDE1OTY2OTg2MjYsLTE2MTk3MTc3ODIsMT
-Q1NjkzOTQ2LC0xOTE5NjQ4ODIzLDE0MTAxNTE4NzksLTQxMDY4
-NzQyNiwxMTM5MDk3MjM0LC0xMzU0Njk4Nzk0LDg0MjY1MTMxOC
-wtMTMzNzUyNjk1MiwxNzY3NDU5NjM2LC0xOTEwMDI5MjIxLC00
-ODQ2MzU5MzhdfQ==
+eyJoaXN0b3J5IjpbMjAxNDgyNzQwMiwyNzgzODM2NDYsNjU0NT
+I0MjcsLTEyNTUyNzkxMjcsLTc3MzgwODYyOCwtMTA4MzQ4NTI3
+MiwtODM5NDA0NDgwLDE4MDg2MjA3NzksMTU5NjY5ODYyNiwtMT
+YxOTcxNzc4MiwxNDU2OTM5NDYsLTE5MTk2NDg4MjMsMTQxMDE1
+MTg3OSwtNDEwNjg3NDI2LDExMzkwOTcyMzQsLTEzNTQ2OTg3OT
+QsODQyNjUxMzE4LC0xMzM3NTI2OTUyLDE3Njc0NTk2MzYsLTE5
+MTAwMjkyMjFdfQ==
 -->
