@@ -23,8 +23,6 @@ synchronized, wait notify,  reentrantLock, 阻塞队列
 ![image](https://user-images.githubusercontent.com/20329409/41815699-469bcc18-77a5-11e8-9336-53dea76da868.png)
 若不存在对threadLocal 的强引用, 则entry会被回收, 变成null, 但是entry中的value未被回收, 若当前线程不结束, 则保持有一条这样的引用链: thread ref -> thread -> threadLocalMap -> entry -> val, 
 
-1. 为什么弱引用回收后, entry变null, 到底什么是弱引用; entry变为null之后, val为何不会被回收,就是为什么还存在 : entry -> val 
-
 
 * 使用方法
 1. 使用者需要手动调用remove函数，删除不再使用的ThreadLocal.若后续线程没有结束, 但是却没有使用get, set或remove , 则已经为null的entry对应的value没有释放, 会造成内存泄漏
@@ -856,11 +854,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTA0NzY3OTAzLC03MTUxODUyMzYsMTM1Nz
-g4MTc3Niw0OTgzMDEwMTUsMTQ0MzI1NzYwNywxMzExMjM5MzU2
-LDgwMTQwNzMxNCwtNDY2NTM3NjE4LC02Nzc3MzgwNiw3NDIxNz
-I1OTAsMTk2MjE3NzY5NSw4MTM4NjY1MCwtODY3MzYzMDM0LC0x
-OTk3MTAzNzc3LC0xODc1MTA2ODc5LC0xNDI0OTQ3MzE0LC0xMz
-I2MTU0MjM5LDkyMTY2MzEyNiw0MDI5NzM2NDksLTIzMjUxMjIy
-NF19
+eyJoaXN0b3J5IjpbLTEyNjc5NTQ0ODAsOTA0NzY3OTAzLC03MT
+UxODUyMzYsMTM1Nzg4MTc3Niw0OTgzMDEwMTUsMTQ0MzI1NzYw
+NywxMzExMjM5MzU2LDgwMTQwNzMxNCwtNDY2NTM3NjE4LC02Nz
+c3MzgwNiw3NDIxNzI1OTAsMTk2MjE3NzY5NSw4MTM4NjY1MCwt
+ODY3MzYzMDM0LC0xOTk3MTAzNzc3LC0xODc1MTA2ODc5LC0xND
+I0OTQ3MzE0LC0xMzI2MTU0MjM5LDkyMTY2MzEyNiw0MDI5NzM2
+NDldfQ==
 -->
