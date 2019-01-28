@@ -97,15 +97,16 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 * mysql 的B+ 树索引如何跟磁盘页对齐, 如何配置
 * 全文索引
 
-
+* mysql 为什么用B+ 树索引, 相比于B 树的好处
+* mysql 把所有字段都建上index 有什么不好的地方
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjgwMDgxNTE2LDIwNjgwNTM2NzUsMTE0Mj
-QxMTgzOSwtOTA3ODY1NzkwLDE5MTgwODc0NDAsNDMwNjcxOTgz
-LC0xODQ0NTYwNDQsLTYxOTc4MjY2Nyw2MjU3NDY3NDAsNTg0MD
-cwNDM3LC03Njg4MzQ0MjQsLTk2MjMwODcsMTIzNTAxODAxNSwx
-NTgyODc3ODA0LDMyNTY4NjAzMyw1NDg3OTYyNTQsMjA4NzA2Nz
-cyNiwtMjEwNDQ0NjYxMSwxOTEzMjM2NjcxLDE5ODE1MTgzMDld
+eyJoaXN0b3J5IjpbMTAxMzYzNDM4NSwyODAwODE1MTYsMjA2OD
+A1MzY3NSwxMTQyNDExODM5LC05MDc4NjU3OTAsMTkxODA4NzQ0
+MCw0MzA2NzE5ODMsLTE4NDQ1NjA0NCwtNjE5NzgyNjY3LDYyNT
+c0Njc0MCw1ODQwNzA0MzcsLTc2ODgzNDQyNCwtOTYyMzA4Nywx
+MjM1MDE4MDE1LDE1ODI4Nzc4MDQsMzI1Njg2MDMzLDU0ODc5Nj
+I1NCwyMDg3MDY3NzI2LC0yMTA0NDQ2NjExLDE5MTMyMzY2NzFd
 fQ==
 -->
