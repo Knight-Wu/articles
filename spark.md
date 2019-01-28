@@ -1,5 +1,5 @@
 #### spark执行的大致流程
-
+参考自:https://github.com/JerryLead/SparkInternals
 ![enter image description here](https://drive.google.com/uc?id=1bHUSmMyvvt0AExkVkPJx9wplKzlnCWxr)
 
 ![image](https://user-images.githubusercontent.com/20329409/42255995-3835ea58-7f81-11e8-9003-78b446c332cf.png)
@@ -7,17 +7,17 @@
 
 
 1. 初始化driver  
-首先会在用户进程下新建一个serverSocket, 默认端口0, 用户进程监听消息, 然后构建命令行参数, 用java 命令启动driver 进程, 进入main class, 初始化SparkContext , 初始化 driver 端通信, job 执行等一些对象, 确立driver 端的地位
-2. 建立job 逻辑执行图 
- driver 中的transformation(), 建立血统, rdd的执行图, rdd.compute() 定义数据来了之后怎么计算, rdd.getDependencies() 定义rdd的依赖
-3. 建立job 物理执行图
- 只要触发了一次action 算子会就生成一个job, 在DAGdagScheduler.runJob() 进行stage 划分, 在submitStage() 生成 shuffleMapTask 或ResultTask, 然后将task 打包成taskSet 给交给 taskScheduler 去执行, 当taskSet 可以运行就将task 的时候就交给 sparkDeploySchedulerBackend 去执行.
+首先会初始化配置, 在用户进程下新建一个serverSocket, 默认端口0, 监听消息 application 运行的状态变化等消息 , 然后构建命令行参数, 用java 命令启动driver 进程, 进入main class, 初始化SparkContext , 初始化 driver 端通信, job 执行等一些对象, 确立driver 端的地位
+2. 建立application 逻辑执行图 
+ 生成rdd的执行图, rdd.compute() 定义数据来了之后怎么计算, rdd.getDependencies() 定义rdd的依赖
+3. 建立application 物理执行图
+ 只要触发了一次action 就生成一个job, 在DAGdagScheduler.runJob() 进行stage 划分, 在submitStage() 生成 shuffleMapTask 或ResultTask, 然后将task 打包成taskSet 给交给 taskScheduler 去执行, 当taskSet 可以运行就将task 的时候就交给 sparkDeploySchedulerBackend 去执行.
 
- 4. 分配task 分配
-sparkDeploySchedulerBackend  接受到taskSet 之后, 通过自带的 driverActor 将序列化之后的task 发送到worker 节点executor 的CoarseGrainedExecutorBackend Actor 上
+ 4. 分配task 
+sparkDeploySchedulerBackend  接受到taskSet 之后, 通过 driverActor 将序列化之后的task 发送到worker 节点executor 的CoarseGrainedExecutorBackend Actor 上
  
  5. executor 执行task
-executor 将task 包装成 TaskRunner, 并从线程池抽出里抽取一个线程运来执行task. 一个 CoarseGrainedExecutorBackend 进程有且仅有一个 executor 对象。
+executor 将task 包装成 TaskRunner, 并放到线程池里面运行, 运行task 时先序列化task, 包括数据和rdd , 然后按序调用rdd 的compute 函数, 最后返回结果. 
 
 下图是任务提交流程:
 ![enter image description here](https://drive.google.com/uc?id=1iKFppKl4pyWyEEeBoFsOvxGa0tCow64w)
@@ -781,11 +781,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODM0ODUyNzIsLTgzOTQwNDQ4MCwxOD
-A4NjIwNzc5LDE1OTY2OTg2MjYsLTE2MTk3MTc3ODIsMTQ1Njkz
-OTQ2LC0xOTE5NjQ4ODIzLDE0MTAxNTE4NzksLTQxMDY4NzQyNi
-wxMTM5MDk3MjM0LC0xMzU0Njk4Nzk0LDg0MjY1MTMxOCwtMTMz
-NzUyNjk1MiwxNzY3NDU5NjM2LC0xOTEwMDI5MjIxLC00ODQ2Mz
-U5MzgsLTE0OTk4OTc0MjQsMTIzMDg3NTg2MiwtMjI2MzcyMDE5
-LC0xNDgxMzk0MjAyXX0=
+eyJoaXN0b3J5IjpbLTc3MzgwODYyOCwtMTA4MzQ4NTI3MiwtOD
+M5NDA0NDgwLDE4MDg2MjA3NzksMTU5NjY5ODYyNiwtMTYxOTcx
+Nzc4MiwxNDU2OTM5NDYsLTE5MTk2NDg4MjMsMTQxMDE1MTg3OS
+wtNDEwNjg3NDI2LDExMzkwOTcyMzQsLTEzNTQ2OTg3OTQsODQy
+NjUxMzE4LC0xMzM3NTI2OTUyLDE3Njc0NTk2MzYsLTE5MTAwMj
+kyMjEsLTQ4NDYzNTkzOCwtMTQ5OTg5NzQyNCwxMjMwODc1ODYy
+LC0yMjYzNzIwMTldfQ==
 -->
