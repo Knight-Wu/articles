@@ -209,7 +209,7 @@ Save namespace successful for ip-172-31-1-163.ap-southeast-1.compute.internal/17
 #### HDFS and permission
 
 
-#### hdfs block 的作用, 为何设置的如此之大
+#### HDFS  block 的作用, 为何设置的如此之大
   * 使寻址时间远小于传输时间
   * 对大文件抽象处理
 > In the Apache Hadoop the default block size is 64 MB and in the Cloudera Hadoop the default is 128 MB. If block size was set to less than 64, there would be a huge number of blocks throughout the cluster, which causes NameNode to manage an enormous amount of metadata.
@@ -247,7 +247,7 @@ Save namespace successful for ip-172-31-1-163.ap-southeast-1.compute.internal/17
 详细流程: [notebook-link](http://note.youdao.com/noteshare?id=1db8cf2911deed6b89523bd3feab696e&sub=A63DC7C4A24A4C759435BB12479B6BDB)
 原贴地址: [http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html](http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html)
 
-小集群测试: 集群中只有三个dn, 一个dn 挂掉, 还是能完成客户端写入的, 会重建整个pipeline.
+小集群测试: 集群中只有三个dn, 一个dn 挂掉, 还是能完成客户端写入的, 会重建整个pipeline, d
 
 #### Understanding HDFS Recovery Processes
 [https://blog.cloudera.com/blog/2015/02/understanding-hdfs-recovery-processes-part-1/](https://blog.cloudera.com/blog/2015/02/understanding-hdfs-recovery-processes-part-1/)
@@ -501,11 +501,11 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExOTkxNzk4NiwtOTA2NTg5MDU1LDE2OT
-k3NDA5NzgsLTU5ODMyMDIxMiwxOTA5MDQ2MDYsMzAxOTUyOTky
-LC0xMDU3MTg1Nzc3LC01MzcyMzU2Niw0Nzg1NDIzMDUsLTE4OT
-k5MTg0MTUsLTE5NTMyNzM3MDQsLTMzNjU1NjA0MiwtMTEwNzIx
-NDM3LDg3NDQwODQ5NSwtMjc4MzQyOTAyLC0xNjY1OTYxNDY2LC
-0xNjY0OTk0NzA2LC0xMDIyMTczMDY3LC0xMTM3OTk4NTU1LC0y
-MzE5MTEwMTddfQ==
+eyJoaXN0b3J5IjpbLTE4MTcyNzkyMTYsLTExOTkxNzk4NiwtOT
+A2NTg5MDU1LDE2OTk3NDA5NzgsLTU5ODMyMDIxMiwxOTA5MDQ2
+MDYsMzAxOTUyOTkyLC0xMDU3MTg1Nzc3LC01MzcyMzU2Niw0Nz
+g1NDIzMDUsLTE4OTk5MTg0MTUsLTE5NTMyNzM3MDQsLTMzNjU1
+NjA0MiwtMTEwNzIxNDM3LDg3NDQwODQ5NSwtMjc4MzQyOTAyLC
+0xNjY1OTYxNDY2LC0xNjY0OTk0NzA2LC0xMDIyMTczMDY3LC0x
+MTM3OTk4NTU1XX0=
 -->
