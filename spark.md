@@ -148,9 +148,6 @@ TaskSetFailed event会中止stage和job, 如果同一个stage失败次数没超�
 >设置replication, 参考 [RDD Persistence](https://spark.apache.org/docs/latest/rdd-programming-guide.html) , 使用这个配置: MEMORY_ONLY_2, MEMORY_AND_DISK_2, etc.
 
 
-
-
-
 * lineage与DAG的区别
 > lineage 描述的是RDD的依赖关系, 依赖链, 是一个逻辑执行计划 , 如图1; 而DAG 是有向无环图, 节点是rdd, 边是rdd的转化关系, 并能区分stage,是一个物理执行计划. 如图2
 
@@ -195,14 +192,11 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 1. 在内存中计算, 内存中放不下遵循LRU(最近最少使用算法)将其余置换到disk
 2. 懒计算, 直到执行action 操作, 才会去计算RDD
 3. 容错性
-
-
-
 4. 不可变性(Immutability)
 > 一旦创建了rdd, 就是不能修改的, 除非生成新的 rdd, 避免了并发计算的问题, 而且每次 rdd transformation是确定的
 
 
-> rdd.toDebugString() 可以打印出rdd 的生成链
+> rdd.toDebugString() 可以打印出rdd 的yilailian
 
 
 * rdd, dataframe, dataset的区别
@@ -774,7 +768,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTY1OTk4NDAzLC0xMjU1Mjc5MTI3LC03Nz
+eyJoaXN0b3J5IjpbMTc4NTA2NzU0LC0xMjU1Mjc5MTI3LC03Nz
 M4MDg2MjgsLTEwODM0ODUyNzIsLTgzOTQwNDQ4MCwxODA4NjIw
 Nzc5LDE1OTY2OTg2MjYsLTE2MTk3MTc3ODIsMTQ1NjkzOTQ2LC
 0xOTE5NjQ4ODIzLDE0MTAxNTE4NzksLTQxMDY4NzQyNiwxMTM5
