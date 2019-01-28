@@ -196,7 +196,7 @@ val r20 = Seq(r11, r12, r13).foldLeft(r10)(_ union _)
 > 一旦创建了rdd, 就是不能修改的, 除非生成新的 rdd, 避免了并发计算的问题, 而且每次 rdd transformation是确定的
 
 
-> rdd.toDebugString() 可以打印出rdd 的yilailian
+> rdd.toDebugString() 可以打印出rdd 的依赖链
 
 
 * rdd, dataframe, dataset的区别
@@ -768,11 +768,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4NTA2NzU0LC0xMjU1Mjc5MTI3LC03Nz
-M4MDg2MjgsLTEwODM0ODUyNzIsLTgzOTQwNDQ4MCwxODA4NjIw
-Nzc5LDE1OTY2OTg2MjYsLTE2MTk3MTc3ODIsMTQ1NjkzOTQ2LC
-0xOTE5NjQ4ODIzLDE0MTAxNTE4NzksLTQxMDY4NzQyNiwxMTM5
-MDk3MjM0LC0xMzU0Njk4Nzk0LDg0MjY1MTMxOCwtMTMzNzUyNj
-k1MiwxNzY3NDU5NjM2LC0xOTEwMDI5MjIxLC00ODQ2MzU5Mzgs
-LTE0OTk4OTc0MjRdfQ==
+eyJoaXN0b3J5IjpbNjU0NTI0MjcsLTEyNTUyNzkxMjcsLTc3Mz
+gwODYyOCwtMTA4MzQ4NTI3MiwtODM5NDA0NDgwLDE4MDg2MjA3
+NzksMTU5NjY5ODYyNiwtMTYxOTcxNzc4MiwxNDU2OTM5NDYsLT
+E5MTk2NDg4MjMsMTQxMDE1MTg3OSwtNDEwNjg3NDI2LDExMzkw
+OTcyMzQsLTEzNTQ2OTg3OTQsODQyNjUxMzE4LC0xMzM3NTI2OT
+UyLDE3Njc0NTk2MzYsLTE5MTAwMjkyMjEsLTQ4NDYzNTkzOCwt
+MTQ5OTg5NzQyNF19
 -->
