@@ -677,7 +677,7 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
 
 * ConcurrenceHashMap
 
-如果在创建HashMap实例时没有给定capacity、loadFactor则默认值分别是16和0.75。 当好多Node 被映射到同一个桶时，如果这个桶中 node 的数量小于TREEIFY_THRESHOLD(8 )当然不会转化成树形结构存储；如果这个桶中Node 的数量大于了 TREEIFY_THRESHOLD(8 ) ，但是capacity小于MIN_TREEIFY_CAPACITY(64 ) 则依然使用链表结构进行存储，此时会对HashMap进行扩, 链表分半到不同的bucket 上, 如果capacity大于MIN_TREEIFY_CAPACITY(64 ) ，则会进行树化
+如果在创建HashMap实例时没有给定capacity、loadFactor则默认值分别是16和0.75。 当好多Node 被映射到同一个桶时，如果这个桶中 node 的数量小于TREEIFY_THRESHOLD(8 )当然不会转化成树形结构存储；如果这个桶中Node 的数量大于了 TREEIFY_THRESHOLD(8 ) ，但是capacity小于MIN_TREEIFY_CAPACITY(64 ) 则依然使用链表结构进行存储，此时会对HashMap进行扩绒, 链表分半到不同的bucket 上, 如果capacity大于MIN_TREEIFY_CAPACITY(64 ) ，则会进行树化
 
 
 由于get操作不是阻塞的, 所以只能看到更新(包括put和remove )完成的值, 也就是:  update operation happend-before  retrievals .  引用下面一段jdk-1.8的注释来表达这个意思;  
@@ -853,11 +853,11 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDAzOTU2NzgsOTA0NzY3OTAzLC03MT
-UxODUyMzYsMTM1Nzg4MTc3Niw0OTgzMDEwMTUsMTQ0MzI1NzYw
-NywxMzExMjM5MzU2LDgwMTQwNzMxNCwtNDY2NTM3NjE4LC02Nz
-c3MzgwNiw3NDIxNzI1OTAsMTk2MjE3NzY5NSw4MTM4NjY1MCwt
-ODY3MzYzMDM0LC0xOTk3MTAzNzc3LC0xODc1MTA2ODc5LC0xND
-I0OTQ3MzE0LC0xMzI2MTU0MjM5LDkyMTY2MzEyNiw0MDI5NzM2
-NDldfQ==
+eyJoaXN0b3J5IjpbLTQ4OTY2NTIwNiw5MDQ3Njc5MDMsLTcxNT
+E4NTIzNiwxMzU3ODgxNzc2LDQ5ODMwMTAxNSwxNDQzMjU3NjA3
+LDEzMTEyMzkzNTYsODAxNDA3MzE0LC00NjY1Mzc2MTgsLTY3Nz
+czODA2LDc0MjE3MjU5MCwxOTYyMTc3Njk1LDgxMzg2NjUwLC04
+NjczNjMwMzQsLTE5OTcxMDM3NzcsLTE4NzUxMDY4NzksLTE0Mj
+Q5NDczMTQsLTEzMjYxNTQyMzksOTIxNjYzMTI2LDQwMjk3MzY0
+OV19
 -->
