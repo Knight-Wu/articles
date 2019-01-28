@@ -28,9 +28,9 @@
 ![enter image description here](https://drive.google.com/uc?id=15wVin8_CImgR1NzsEXNKxp0U9XTvnAwU)
 
 
-hdfs 在做文件系统变更的时候, 先把修改信息保存在EditLog中, 再更新内存中的fs. 并且会定期进行checkPoint, 将内存的fs持久化到磁盘上形成FSImage, FSImage的文件名例如: fsimage_${end_txid}, nn启动的时候会进行数据恢复, 加载内存fs, 先把FSImage加载, 再把end_txid后的editLog回放到内存的fs上.
+hdfs 在做文件系统变更的时候, 先把修改信息保存在EditLog中, 再更新内存中的namespace. 并且会定期进行checkPoint, 将内存的fs持久化到磁盘上形成FSImage, FSImage的文件名例如: fsimage_${end_txid}, nn启动的时候会进行数据恢复, 加载内存fs, 先把FSImage加载, 再把end_txid后的editLog回放到内存的fs上.
 
-> 为什么要有checkpoint 
+> 为什么要定期将内存中的namespace checkpoint 到fsimage
 
 The fsimage is a file that represents a point-in-time snapshot of the filesystem’s metadata. However, while the fsimage file format is very efficient to read, it’s unsuitable for making small incremental updates like renaming a single file. Thus, rather than writing a new fsimage every time the namespace is modified, the NameNode instead records the modifying operation in the edit log for durability.( 每次小的变更都写fsimage, 效率太低, 因为fsimage 是可读的格式, 文件大起来, 修改很困难)
 
@@ -501,11 +501,11 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5OTc0MDk3OCwtNTk4MzIwMjEyLDE5MD
-kwNDYwNiwzMDE5NTI5OTIsLTEwNTcxODU3NzcsLTUzNzIzNTY2
-LDQ3ODU0MjMwNSwtMTg5OTkxODQxNSwtMTk1MzI3MzcwNCwtMz
-M2NTU2MDQyLC0xMTA3MjE0MzcsODc0NDA4NDk1LC0yNzgzNDI5
-MDIsLTE2NjU5NjE0NjYsLTE2NjQ5OTQ3MDYsLTEwMjIxNzMwNj
-csLTExMzc5OTg1NTUsLTIzMTkxMTAxNyw2MzY3MDYxMzIsOTQ3
-MjYxMDNdfQ==
+eyJoaXN0b3J5IjpbMTYzMjc3NzA4NSwxNjk5NzQwOTc4LC01OT
+gzMjAyMTIsMTkwOTA0NjA2LDMwMTk1Mjk5MiwtMTA1NzE4NTc3
+NywtNTM3MjM1NjYsNDc4NTQyMzA1LC0xODk5OTE4NDE1LC0xOT
+UzMjczNzA0LC0zMzY1NTYwNDIsLTExMDcyMTQzNyw4NzQ0MDg0
+OTUsLTI3ODM0MjkwMiwtMTY2NTk2MTQ2NiwtMTY2NDk5NDcwNi
+wtMTAyMjE3MzA2NywtMTEzNzk5ODU1NSwtMjMxOTExMDE3LDYz
+NjcwNjEzMl19
 -->
