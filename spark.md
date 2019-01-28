@@ -86,11 +86,6 @@ driver 先把data 序列化成 byteArray, 然后切割成BLOCK_SIZE（由 `spark
 
 
 
-
-
-
-
-
 #### lineage(血统)
  each RDD has a set of partitions, which
 are atomic pieces of the dataset; a set of dependencies on
@@ -779,11 +774,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTUyNzkxMjcsLTc3MzgwODYyOCwtMT
-A4MzQ4NTI3MiwtODM5NDA0NDgwLDE4MDg2MjA3NzksMTU5NjY5
-ODYyNiwtMTYxOTcxNzc4MiwxNDU2OTM5NDYsLTE5MTk2NDg4Mj
-MsMTQxMDE1MTg3OSwtNDEwNjg3NDI2LDExMzkwOTcyMzQsLTEz
-NTQ2OTg3OTQsODQyNjUxMzE4LC0xMzM3NTI2OTUyLDE3Njc0NT
-k2MzYsLTE5MTAwMjkyMjEsLTQ4NDYzNTkzOCwtMTQ5OTg5NzQy
-NCwxMjMwODc1ODYyXX0=
+eyJoaXN0b3J5IjpbOTY1OTk4NDAzLC0xMjU1Mjc5MTI3LC03Nz
+M4MDg2MjgsLTEwODM0ODUyNzIsLTgzOTQwNDQ4MCwxODA4NjIw
+Nzc5LDE1OTY2OTg2MjYsLTE2MTk3MTc3ODIsMTQ1NjkzOTQ2LC
+0xOTE5NjQ4ODIzLDE0MTAxNTE4NzksLTQxMDY4NzQyNiwxMTM5
+MDk3MjM0LC0xMzU0Njk4Nzk0LDg0MjY1MTMxOCwtMTMzNzUyNj
+k1MiwxNzY3NDU5NjM2LC0xOTEwMDI5MjIxLC00ODQ2MzU5Mzgs
+LTE0OTk4OTc0MjRdfQ==
 -->
