@@ -444,7 +444,7 @@ total = yarn.scheduler.minimum-allocation-mb+ yarn.scheduler.increment-allocatio
 
 思想是减少java object所使用的比例, 尽量使用基本数据类型, 并且使用 MEMORY_ONLY_SER去存储对象, 此时对于每一个RDD的partition 只有一个object(a byte array)
 1. 如果经常full GC, 则说明内存太小了.需要调大
-2. 如果minor gc比较多, 则可以按照调大eden为原来估计的三分之四.
+2. 如果minor gc比较多, 则可以调大eden为原来的三分之四.
 3. Try the G1GC garbage collector with `-XX:+UseG1GC`. It can improve performance in some situations where garbage collection is a bottleneck. Note that with large executor heap sizes, it may be important to increase the [G1 region size](http://www.oracle.com/technetwork/articles/java/g1gc-1984535.html) with `-XX:G1HeapRegionSize`
 
 4. As an example, if your task is reading data from HDFS, the amount of memory used by the task can be estimated using the size of the data block read from HDFS. Note that the size of a decompressed block is often 2 or 3 times the size of the block. So if we wish to have 3 or 4 tasks’ worth of working space, and the HDFS block size is 128 MB, we can estimate size of Eden to be `4*3*128MB`.
@@ -768,11 +768,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjU0NTI0MjcsLTEyNTUyNzkxMjcsLTc3Mz
-gwODYyOCwtMTA4MzQ4NTI3MiwtODM5NDA0NDgwLDE4MDg2MjA3
-NzksMTU5NjY5ODYyNiwtMTYxOTcxNzc4MiwxNDU2OTM5NDYsLT
-E5MTk2NDg4MjMsMTQxMDE1MTg3OSwtNDEwNjg3NDI2LDExMzkw
-OTcyMzQsLTEzNTQ2OTg3OTQsODQyNjUxMzE4LC0xMzM3NTI2OT
-UyLDE3Njc0NTk2MzYsLTE5MTAwMjkyMjEsLTQ4NDYzNTkzOCwt
-MTQ5OTg5NzQyNF19
+eyJoaXN0b3J5IjpbMjc4MzgzNjQ2LDY1NDUyNDI3LC0xMjU1Mj
+c5MTI3LC03NzM4MDg2MjgsLTEwODM0ODUyNzIsLTgzOTQwNDQ4
+MCwxODA4NjIwNzc5LDE1OTY2OTg2MjYsLTE2MTk3MTc3ODIsMT
+Q1NjkzOTQ2LC0xOTE5NjQ4ODIzLDE0MTAxNTE4NzksLTQxMDY4
+NzQyNiwxMTM5MDk3MjM0LC0xMzU0Njk4Nzk0LDg0MjY1MTMxOC
+wtMTMzNzUyNjk1MiwxNzY3NDU5NjM2LC0xOTEwMDI5MjIxLC00
+ODQ2MzU5MzhdfQ==
 -->
