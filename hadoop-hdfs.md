@@ -493,19 +493,16 @@ A container is supervised by the node manager, scheduled by the resource manager
 > hadoop fs -chown root:root /hive 把hive目录授权给root
 
 **问题**
-* MR和spark shuffle的过程, 以及调优
-  * spark shuffle见 spark笔记
-  * MR shuffle
 * hive 分区分桶
 * hive ACID的支持
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTI2MTY1OTg2LC0xMTk5MTc5ODYsLTkwNj
-U4OTA1NSwxNjk5NzQwOTc4LC01OTgzMjAyMTIsMTkwOTA0NjA2
-LDMwMTk1Mjk5MiwtMTA1NzE4NTc3NywtNTM3MjM1NjYsNDc4NT
-QyMzA1LC0xODk5OTE4NDE1LC0xOTUzMjczNzA0LC0zMzY1NTYw
-NDIsLTExMDcyMTQzNyw4NzQ0MDg0OTUsLTI3ODM0MjkwMiwtMT
-Y2NTk2MTQ2NiwtMTY2NDk5NDcwNiwtMTAyMjE3MzA2NywtMTEz
-Nzk5ODU1NV19
+eyJoaXN0b3J5IjpbLTM2NzMzNjc2MSwtMTE5OTE3OTg2LC05MD
+Y1ODkwNTUsMTY5OTc0MDk3OCwtNTk4MzIwMjEyLDE5MDkwNDYw
+NiwzMDE5NTI5OTIsLTEwNTcxODU3NzcsLTUzNzIzNTY2LDQ3OD
+U0MjMwNSwtMTg5OTkxODQxNSwtMTk1MzI3MzcwNCwtMzM2NTU2
+MDQyLC0xMTA3MjE0MzcsODc0NDA4NDk1LC0yNzgzNDI5MDIsLT
+E2NjU5NjE0NjYsLTE2NjQ5OTQ3MDYsLTEwMjIxNzMwNjcsLTEx
+Mzc5OTg1NTVdfQ==
 -->
