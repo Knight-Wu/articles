@@ -15,7 +15,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 * node size=disk page size=16KB , 可以在初始化mysql instance 的时候进行配置
 * 所有数据都由叶子节点保管
-* Because B-Trees store the indexed columns in order, they’re useful for searching for ranges of data.
+* Because B+Trees store the indexed columns in order, they’re useful for searching for ranges of data.
 
 一个实际的数据例子阐述innodb 索引: 
 ![enter image description here](https://drive.google.com/uc?id=1CCbvzgDAKugLkRhRx-7d7kg1bLVsLWL2)
@@ -99,14 +99,14 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 * mysql 为什么用B+ 树索引, 相比于B 树的好处
 * mysql 把所有字段都建上index 有什么不好的地方
-
+* 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxMzYzNDM4NSwyODAwODE1MTYsMjA2OD
-A1MzY3NSwxMTQyNDExODM5LC05MDc4NjU3OTAsMTkxODA4NzQ0
-MCw0MzA2NzE5ODMsLTE4NDQ1NjA0NCwtNjE5NzgyNjY3LDYyNT
-c0Njc0MCw1ODQwNzA0MzcsLTc2ODgzNDQyNCwtOTYyMzA4Nywx
-MjM1MDE4MDE1LDE1ODI4Nzc4MDQsMzI1Njg2MDMzLDU0ODc5Nj
-I1NCwyMDg3MDY3NzI2LC0yMTA0NDQ2NjExLDE5MTMyMzY2NzFd
+eyJoaXN0b3J5IjpbMTk4NzAyNjgzMywxMDEzNjM0Mzg1LDI4MD
+A4MTUxNiwyMDY4MDUzNjc1LDExNDI0MTE4MzksLTkwNzg2NTc5
+MCwxOTE4MDg3NDQwLDQzMDY3MTk4MywtMTg0NDU2MDQ0LC02MT
+k3ODI2NjcsNjI1NzQ2NzQwLDU4NDA3MDQzNywtNzY4ODM0NDI0
+LC05NjIzMDg3LDEyMzUwMTgwMTUsMTU4Mjg3NzgwNCwzMjU2OD
+YwMzMsNTQ4Nzk2MjU0LDIwODcwNjc3MjYsLTIxMDQ0NDY2MTFd
 fQ==
 -->
