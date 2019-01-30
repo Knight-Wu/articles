@@ -86,6 +86,10 @@ public static void mergeSortRecu(int[] arr, int[] result, int start, int end) {
 }
 
 ```
+
+* 快速排序
+```
+```
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/33balanced/
@@ -140,11 +144,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjE2OTY3ODAyLDM0MzU3MjQ3NCwtMTAyMD
-A4NTY2OCwxODE1MzU4NDQ5LDE3NTAwMzg4MzAsLTY4NTY3NTQ2
-NCwtMTQzNDAzMzgwMyw0MTgxMDMwNTksNzgxNzUxNDI1LDQxOD
-EwMzA1OSwtMTc2MDM0Mjk2LC0xOTUwNzc0MDksMTAyMjk5NTg1
-MSwxOTE0OTI4ODc2LDgwMTgxMjM3NSwtMTEzMDg2MDYzMywxNj
-AzMzU0NDIyLC0xMzE0MjMxMDMyLDE3MDY1MDYyMDgsMTc3MTA5
-MjUzMF19
+eyJoaXN0b3J5IjpbMTYxODIzMTY2Myw2MTY5Njc4MDIsMzQzNT
+cyNDc0LC0xMDIwMDg1NjY4LDE4MTUzNTg0NDksMTc1MDAzODgz
+MCwtNjg1Njc1NDY0LC0xNDM0MDMzODAzLDQxODEwMzA1OSw3OD
+E3NTE0MjUsNDE4MTAzMDU5LC0xNzYwMzQyOTYsLTE5NTA3NzQw
+OSwxMDIyOTk1ODUxLDE5MTQ5Mjg4NzYsODAxODEyMzc1LC0xMT
+MwODYwNjMzLDE2MDMzNTQ0MjIsLTEzMTQyMzEwMzIsMTcwNjUw
+NjIwOF19
 -->
