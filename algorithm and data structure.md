@@ -137,7 +137,8 @@ static void popS(int [] arr){
  }
 ```
 
-* 
+* 插入排序
+将新元素插入一个已经有序的子序列, 跟这个子序列的最后一个元素开始进行比较, 若小于则将子序列元素后移, 直到最后插入. 最坏情况只需要O(n) 次交换.
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/33balanced/
@@ -192,11 +193,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyOTk2NzExLC01MTY1NDQ1OTEsMTkyMT
-cwNjYxNiwxMjExNTkyNjI2LDE2MTgyMzE2NjMsNjE2OTY3ODAy
-LDM0MzU3MjQ3NCwtMTAyMDA4NTY2OCwxODE1MzU4NDQ5LDE3NT
-AwMzg4MzAsLTY4NTY3NTQ2NCwtMTQzNDAzMzgwMyw0MTgxMDMw
-NTksNzgxNzUxNDI1LDQxODEwMzA1OSwtMTc2MDM0Mjk2LC0xOT
-UwNzc0MDksMTAyMjk5NTg1MSwxOTE0OTI4ODc2LDgwMTgxMjM3
-NV19
+eyJoaXN0b3J5IjpbNzQ5MTkwODEsLTUxNjU0NDU5MSwxOTIxNz
+A2NjE2LDEyMTE1OTI2MjYsMTYxODIzMTY2Myw2MTY5Njc4MDIs
+MzQzNTcyNDc0LC0xMDIwMDg1NjY4LDE4MTUzNTg0NDksMTc1MD
+AzODgzMCwtNjg1Njc1NDY0LC0xNDM0MDMzODAzLDQxODEwMzA1
+OSw3ODE3NTE0MjUsNDE4MTAzMDU5LC0xNzYwMzQyOTYsLTE5NT
+A3NzQwOSwxMDIyOTk1ODUxLDE5MTQ5Mjg4NzYsODAxODEyMzc1
+XX0=
 -->
