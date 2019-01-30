@@ -121,7 +121,7 @@ static void QSRecu(int[] arr, int start, int end) {
 ```
 
 * 冒泡排序
-每完全冒泡一次, 就把一个最大或最小的元素放到了数组的一端, 
+每完全冒泡一次, 就把一个最大或最小的元素放到了数组的一端, 最坏情况需要O(n*n) 交换, 而插入排序最坏情况只需要O(n) 交换, 因为新插入的元素是可以跟有序子序列的每个元素进行比较, 而冒泡排序只能跟相邻元素进行比较
 ```
 static void popS(int [] arr){  
      int len = arr.length;  
@@ -136,6 +136,8 @@ static void popS(int [] arr){
      }  
  }
 ```
+
+* 
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/33balanced/
@@ -190,11 +192,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUxNjU0NDU5MSwxOTIxNzA2NjE2LDEyMT
-E1OTI2MjYsMTYxODIzMTY2Myw2MTY5Njc4MDIsMzQzNTcyNDc0
-LC0xMDIwMDg1NjY4LDE4MTUzNTg0NDksMTc1MDAzODgzMCwtNj
-g1Njc1NDY0LC0xNDM0MDMzODAzLDQxODEwMzA1OSw3ODE3NTE0
-MjUsNDE4MTAzMDU5LC0xNzYwMzQyOTYsLTE5NTA3NzQwOSwxMD
-IyOTk1ODUxLDE5MTQ5Mjg4NzYsODAxODEyMzc1LC0xMTMwODYw
-NjMzXX0=
+eyJoaXN0b3J5IjpbMTAyOTk2NzExLC01MTY1NDQ1OTEsMTkyMT
+cwNjYxNiwxMjExNTkyNjI2LDE2MTgyMzE2NjMsNjE2OTY3ODAy
+LDM0MzU3MjQ3NCwtMTAyMDA4NTY2OCwxODE1MzU4NDQ5LDE3NT
+AwMzg4MzAsLTY4NTY3NTQ2NCwtMTQzNDAzMzgwMyw0MTgxMDMw
+NTksNzgxNzUxNDI1LDQxODEwMzA1OSwtMTc2MDM0Mjk2LC0xOT
+UwNzc0MDksMTAyMjk5NTg1MSwxOTE0OTI4ODc2LDgwMTgxMjM3
+NV19
 -->
