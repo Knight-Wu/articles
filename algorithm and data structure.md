@@ -138,7 +138,25 @@ static void popS(int [] arr){
 ```
 
 * 插入排序
-将新元素插入一个已经有序的子序列, 跟这个子序列的最后一个元素开始进行比较, 若小于则将子序列元素后移, 直到最后插入. 最坏情况只需要O(n) 次交换.
+将新元素插入一个已经有序的子序列, 跟这个子序列的最后一个元素开始进行比较, 若小于则将子序列元素后移, 直到最后找到位置插入. 最坏情况只需要O(n) 次交换.
+
+```
+static void insertS(int[] arr) {  
+    int len = arr.length - 1;  
+    int i = 0;  
+    int j = 0;  
+    while (j + 1 <= len) {  
+        i = j;  // j表示有序序列的末尾, i 表示需要插入的位置
+        int temp = arr[j + 1];  
+        while (i >= 0 && temp < arr[i]) {  
+            arr[i + 1] = arr[i];  
+            i--;  
+        }  
+        arr[i + 1] = temp;  // 注意需要前移一个位置插入
+        j++;  // 注意子序列长度已经加一
+    }  
+}
+```
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/33balanced/
@@ -193,11 +211,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQ5MTkwODEsLTUxNjU0NDU5MSwxOTIxNz
-A2NjE2LDEyMTE1OTI2MjYsMTYxODIzMTY2Myw2MTY5Njc4MDIs
-MzQzNTcyNDc0LC0xMDIwMDg1NjY4LDE4MTUzNTg0NDksMTc1MD
-AzODgzMCwtNjg1Njc1NDY0LC0xNDM0MDMzODAzLDQxODEwMzA1
-OSw3ODE3NTE0MjUsNDE4MTAzMDU5LC0xNzYwMzQyOTYsLTE5NT
-A3NzQwOSwxMDIyOTk1ODUxLDE5MTQ5Mjg4NzYsODAxODEyMzc1
-XX0=
+eyJoaXN0b3J5IjpbLTcyNTk2ODIzMywtNTE2NTQ0NTkxLDE5Mj
+E3MDY2MTYsMTIxMTU5MjYyNiwxNjE4MjMxNjYzLDYxNjk2Nzgw
+MiwzNDM1NzI0NzQsLTEwMjAwODU2NjgsMTgxNTM1ODQ0OSwxNz
+UwMDM4ODMwLC02ODU2NzU0NjQsLTE0MzQwMzM4MDMsNDE4MTAz
+MDU5LDc4MTc1MTQyNSw0MTgxMDMwNTksLTE3NjAzNDI5NiwtMT
+k1MDc3NDA5LDEwMjI5OTU4NTEsMTkxNDkyODg3Niw4MDE4MTIz
+NzVdfQ==
 -->
