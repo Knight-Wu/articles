@@ -88,7 +88,7 @@ public static void mergeSortRecu(int[] arr, int[] result, int start, int end) {
 ```
 
 * 快速排序
-选一个基准数, 小于基准数的放到右边, 大于的放到左边, 并一直递归到
+选一个基准数, 小于基准数的放到右边, 大于的放到左边, 并一直递归到数组只有一个元素, 再返回
 ```
 static void QSRecu(int[] arr, int start, int end) {  
     if (start >= end)// 一定要注意这个返回, 不然就算start > end, 还是会一直进while 循环.  
@@ -173,11 +173,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxMTU5MjYyNiwxNjE4MjMxNjYzLDYxNj
-k2NzgwMiwzNDM1NzI0NzQsLTEwMjAwODU2NjgsMTgxNTM1ODQ0
-OSwxNzUwMDM4ODMwLC02ODU2NzU0NjQsLTE0MzQwMzM4MDMsND
-E4MTAzMDU5LDc4MTc1MTQyNSw0MTgxMDMwNTksLTE3NjAzNDI5
-NiwtMTk1MDc3NDA5LDEwMjI5OTU4NTEsMTkxNDkyODg3Niw4MD
-E4MTIzNzUsLTExMzA4NjA2MzMsMTYwMzM1NDQyMiwtMTMxNDIz
-MTAzMl19
+eyJoaXN0b3J5IjpbMTUzNjI5ODUsMTIxMTU5MjYyNiwxNjE4Mj
+MxNjYzLDYxNjk2NzgwMiwzNDM1NzI0NzQsLTEwMjAwODU2Njgs
+MTgxNTM1ODQ0OSwxNzUwMDM4ODMwLC02ODU2NzU0NjQsLTE0Mz
+QwMzM4MDMsNDE4MTAzMDU5LDc4MTc1MTQyNSw0MTgxMDMwNTks
+LTE3NjAzNDI5NiwtMTk1MDc3NDA5LDEwMjI5OTU4NTEsMTkxND
+kyODg3Niw4MDE4MTIzNzUsLTExMzA4NjA2MzMsMTYwMzM1NDQy
+Ml19
 -->
