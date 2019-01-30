@@ -119,6 +119,23 @@ static void QSRecu(int[] arr, int start, int end) {
 }
 
 ```
+
+* 冒泡排序
+每完全冒泡一次, 就把一个最大或最小的元素放到了数组的一端, 
+```
+static void popS(int [] arr){  
+     int len = arr.length;  
+     for(int i=len-1;i>=1;i--){  
+         for(int j=0;j+1<=i;j++){  
+             if(arr[j] >arr[j+1]){  
+                 int temp = arr[j];  
+                 arr[j]=arr[j+1];  
+                 arr[j+1]=temp;  
+             }  
+         }  
+     }  
+ }
+```
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/33balanced/
@@ -173,11 +190,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyMTcwNjYxNiwxMjExNTkyNjI2LDE2MT
-gyMzE2NjMsNjE2OTY3ODAyLDM0MzU3MjQ3NCwtMTAyMDA4NTY2
-OCwxODE1MzU4NDQ5LDE3NTAwMzg4MzAsLTY4NTY3NTQ2NCwtMT
-QzNDAzMzgwMyw0MTgxMDMwNTksNzgxNzUxNDI1LDQxODEwMzA1
-OSwtMTc2MDM0Mjk2LC0xOTUwNzc0MDksMTAyMjk5NTg1MSwxOT
-E0OTI4ODc2LDgwMTgxMjM3NSwtMTEzMDg2MDYzMywxNjAzMzU0
-NDIyXX0=
+eyJoaXN0b3J5IjpbLTUxNjU0NDU5MSwxOTIxNzA2NjE2LDEyMT
+E1OTI2MjYsMTYxODIzMTY2Myw2MTY5Njc4MDIsMzQzNTcyNDc0
+LC0xMDIwMDg1NjY4LDE4MTUzNTg0NDksMTc1MDAzODgzMCwtNj
+g1Njc1NDY0LC0xNDM0MDMzODAzLDQxODEwMzA1OSw3ODE3NTE0
+MjUsNDE4MTAzMDU5LC0xNzYwMzQyOTYsLTE5NTA3NzQwOSwxMD
+IyOTk1ODUxLDE5MTQ5Mjg4NzYsODAxODEyMzc1LC0xMTMwODYw
+NjMzXX0=
 -->
