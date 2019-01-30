@@ -50,8 +50,41 @@ B树相对于平衡二叉树的不同是，每个节点包含的关键字增多�
 
 * 归并排序
 分治的思想, 划分到两个子数组均只有一个元素, 再比较, 再merge 两个有序的子序列, 假设归并n 元素的时间复杂度是T(n) , 则T(n) = 2T(n/2)+O(n)(为合并两个元素个数为n/2 的有序子序列的时间复杂度)
-, 经过
+, 经过推导得: T(n) =O(nlgn)
+
 ```
+public static int[] mergeSort(int[] arr) {  
+    int[] result = new int[arr.length];  
+    int len = arr.length;  
+    mergeSortRecu(arr, result, 0, len - 1);  
+    return result;  
+}  
+  
+public static void mergeSortRecu(int[] arr, int[] result, int start, int end) {  
+    if (start < end)  
+        return;// 递归返回, 此时start==end, 数组只有一个元素  
+  int start1 = start;  
+    int mid = (start + end) >> 1;  
+    int end1 = mid;  
+    int start2 = mid + 1;  
+    int end2 = end;  
+    mergeSortRecu(arr, result, start1, end1);  
+    mergeSortRecu(arr, result, start2, end2);  
+    int k = start;  
+    while (start1 <= end1 && start2 <= end2) {  
+        result[k++] = arr[start1] < arr[start2] ? arr[start1++] : arr[start2++];  
+    }  
+    while (start1 <= end1) {  
+        result[k++] = arr[start1++];  
+    }  
+    while (start2 <= end2) {  
+        result[k++] = arr[start2++];  
+    }  
+    for (int j = start; j <= end; j++) {// j<=end, 需要等于, 因为end 也是下标  
+  arr[j] = result[j];// 拷贝到原数组, 之后原数组arr 就部分有序, 然后归并: 就是将两个有序子序列合并  
+  }  
+}
+
 ```
 #### 资源
 * 算法第四版
@@ -107,11 +140,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwODMxMTMzOSwzNDM1NzI0NzQsLTEwMj
-AwODU2NjgsMTgxNTM1ODQ0OSwxNzUwMDM4ODMwLC02ODU2NzU0
-NjQsLTE0MzQwMzM4MDMsNDE4MTAzMDU5LDc4MTc1MTQyNSw0MT
-gxMDMwNTksLTE3NjAzNDI5NiwtMTk1MDc3NDA5LDEwMjI5OTU4
-NTEsMTkxNDkyODg3Niw4MDE4MTIzNzUsLTExMzA4NjA2MzMsMT
-YwMzM1NDQyMiwtMTMxNDIzMTAzMiwxNzA2NTA2MjA4LDE3NzEw
-OTI1MzBdfQ==
+eyJoaXN0b3J5IjpbNjE2OTY3ODAyLDM0MzU3MjQ3NCwtMTAyMD
+A4NTY2OCwxODE1MzU4NDQ5LDE3NTAwMzg4MzAsLTY4NTY3NTQ2
+NCwtMTQzNDAzMzgwMyw0MTgxMDMwNTksNzgxNzUxNDI1LDQxOD
+EwMzA1OSwtMTc2MDM0Mjk2LC0xOTUwNzc0MDksMTAyMjk5NTg1
+MSwxOTE0OTI4ODc2LDgwMTgxMjM3NSwtMTEzMDg2MDYzMywxNj
+AzMzU0NDIyLC0xMzE0MjMxMDMyLDE3MDY1MDYyMDgsMTc3MTA5
+MjUzMF19
 -->
