@@ -48,6 +48,10 @@ B树相对于平衡二叉树的不同是，每个节点包含的关键字增多�
 #### 排序
 * 手写堆排序, 建立堆的时间复杂度O(nlgn)
 
+* 归并排序
+分治的思想, 划分到两个子数组均只有一个元素, 再比较, 再merge 两个有序的子序列, 假设归并n 元素的时间复杂度是T(n) = 
+```
+```
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/33balanced/
@@ -102,11 +106,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzQzNTcyNDc0LC0xMDIwMDg1NjY4LDE4MT
-UzNTg0NDksMTc1MDAzODgzMCwtNjg1Njc1NDY0LC0xNDM0MDMz
-ODAzLDQxODEwMzA1OSw3ODE3NTE0MjUsNDE4MTAzMDU5LC0xNz
-YwMzQyOTYsLTE5NTA3NzQwOSwxMDIyOTk1ODUxLDE5MTQ5Mjg4
-NzYsODAxODEyMzc1LC0xMTMwODYwNjMzLDE2MDMzNTQ0MjIsLT
-EzMTQyMzEwMzIsMTcwNjUwNjIwOCwxNzcxMDkyNTMwLDg3MDA3
-OTUxNl19
+eyJoaXN0b3J5IjpbMjQzMDg1ODI2LDM0MzU3MjQ3NCwtMTAyMD
+A4NTY2OCwxODE1MzU4NDQ5LDE3NTAwMzg4MzAsLTY4NTY3NTQ2
+NCwtMTQzNDAzMzgwMyw0MTgxMDMwNTksNzgxNzUxNDI1LDQxOD
+EwMzA1OSwtMTc2MDM0Mjk2LC0xOTUwNzc0MDksMTAyMjk5NTg1
+MSwxOTE0OTI4ODc2LDgwMTgxMjM3NSwtMTEzMDg2MDYzMywxNj
+AzMzU0NDIyLC0xMzE0MjMxMDMyLDE3MDY1MDYyMDgsMTc3MTA5
+MjUzMF19
 -->
