@@ -157,6 +157,8 @@ static void insertS(int[] arr) {
     }  
 }
 ```
+
+
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/33balanced/
@@ -211,7 +213,7 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyNTk2ODIzMywtNTE2NTQ0NTkxLDE5Mj
+eyJoaXN0b3J5IjpbLTUwNTc0NTgwNSwtNTE2NTQ0NTkxLDE5Mj
 E3MDY2MTYsMTIxMTU5MjYyNiwxNjE4MjMxNjYzLDYxNjk2Nzgw
 MiwzNDM1NzI0NzQsLTEwMjAwODU2NjgsMTgxNTM1ODQ0OSwxNz
 UwMDM4ODMwLC02ODU2NzU0NjQsLTE0MzQwMzM4MDMsNDE4MTAz
