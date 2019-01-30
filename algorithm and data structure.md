@@ -88,7 +88,35 @@ public static void mergeSortRecu(int[] arr, int[] result, int start, int end) {
 ```
 
 * 快速排序
+选一个基准数, 小于基准数的放到右边, 大于的放到左边, 并一直递归到
 ```
+static void QSRecu(int[] arr, int start, int end) {  
+    if (start >= end)// 一定要注意这个返回, 不然就算start > end, 还是会一直进while 循环.  
+  return;  
+    int l = start;  
+    int r = end;  
+    int pivot = arr[(start + end) >> 1];  
+    while (l <= r) {  
+        while (arr[l] < pivot) {  
+            l++;  
+        }  
+        while (arr[r] > pivot) {  
+            r--;  
+        }  
+  
+        if (l < r) {  
+            int temp = arr[l];  
+            arr[l] = arr[r];  
+            arr[r] = temp;  
+            l++;  
+            r--;  
+        } else if (l == r) {// 注意最后l和r 相等或相差一的两种情况.   
+ l++;  
+        }  
+    }  
+    QSRecu(arr, start, r);// l++之后, l是大于r 的  
+  QSRecu(arr, l, end);  
+}
 
 ```
 #### 资源
@@ -145,11 +173,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzI3NzkzMTUzLDE2MTgyMzE2NjMsNjE2OT
-Y3ODAyLDM0MzU3MjQ3NCwtMTAyMDA4NTY2OCwxODE1MzU4NDQ5
-LDE3NTAwMzg4MzAsLTY4NTY3NTQ2NCwtMTQzNDAzMzgwMyw0MT
-gxMDMwNTksNzgxNzUxNDI1LDQxODEwMzA1OSwtMTc2MDM0Mjk2
-LC0xOTUwNzc0MDksMTAyMjk5NTg1MSwxOTE0OTI4ODc2LDgwMT
-gxMjM3NSwtMTEzMDg2MDYzMywxNjAzMzU0NDIyLC0xMzE0MjMx
-MDMyXX0=
+eyJoaXN0b3J5IjpbMTIxMTU5MjYyNiwxNjE4MjMxNjYzLDYxNj
+k2NzgwMiwzNDM1NzI0NzQsLTEwMjAwODU2NjgsMTgxNTM1ODQ0
+OSwxNzUwMDM4ODMwLC02ODU2NzU0NjQsLTE0MzQwMzM4MDMsND
+E4MTAzMDU5LDc4MTc1MTQyNSw0MTgxMDMwNTksLTE3NjAzNDI5
+NiwtMTk1MDc3NDA5LDEwMjI5OTU4NTEsMTkxNDkyODg3Niw4MD
+E4MTIzNzUsLTExMzA4NjA2MzMsMTYwMzM1NDQyMiwtMTMxNDIz
+MTAzMl19
 -->
