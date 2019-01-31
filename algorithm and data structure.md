@@ -157,7 +157,30 @@ static void insertS(int[] arr) {
     }  
 }
 ```
+* 选择排序
+```
+static void selectS(int[] arr) {  
+    int lastI = arr.length - 1;  
+    int j = 0;  
+    int i;  
+    while (j <= lastI) {// 外层排序表示要找最大值的次数, 为len-1 次  
+  i = 0;  
+        int maxI = i;  
+  
+        while (i <= lastI - j) {// 内层每次循环找到一个最大值, 并且放到最后,   
+  if (arr[i] > arr[maxI]) {  
+                maxI = i;  
+            }  
+            i++;  
+        }  
+        int temp = arr[maxI];  
+        arr[maxI] = arr[lastI - j];  
+        arr[lastI - j] = temp;  
+        j++;// 表示找到了一个最大值, 并放到了最后  
+  }  
+}
 
+```
 
 #### 资源
 * 算法第四版
@@ -213,11 +236,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwNTc0NTgwNSwtNTE2NTQ0NTkxLDE5Mj
-E3MDY2MTYsMTIxMTU5MjYyNiwxNjE4MjMxNjYzLDYxNjk2Nzgw
-MiwzNDM1NzI0NzQsLTEwMjAwODU2NjgsMTgxNTM1ODQ0OSwxNz
-UwMDM4ODMwLC02ODU2NzU0NjQsLTE0MzQwMzM4MDMsNDE4MTAz
-MDU5LDc4MTc1MTQyNSw0MTgxMDMwNTksLTE3NjAzNDI5NiwtMT
-k1MDc3NDA5LDEwMjI5OTU4NTEsMTkxNDkyODg3Niw4MDE4MTIz
-NzVdfQ==
+eyJoaXN0b3J5IjpbNTAzOTQ4MTE3LC01MDU3NDU4MDUsLTUxNj
+U0NDU5MSwxOTIxNzA2NjE2LDEyMTE1OTI2MjYsMTYxODIzMTY2
+Myw2MTY5Njc4MDIsMzQzNTcyNDc0LC0xMDIwMDg1NjY4LDE4MT
+UzNTg0NDksMTc1MDAzODgzMCwtNjg1Njc1NDY0LC0xNDM0MDMz
+ODAzLDQxODEwMzA1OSw3ODE3NTE0MjUsNDE4MTAzMDU5LC0xNz
+YwMzQyOTYsLTE5NTA3NzQwOSwxMDIyOTk1ODUxLDE5MTQ5Mjg4
+NzZdfQ==
 -->
