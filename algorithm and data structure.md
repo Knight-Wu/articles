@@ -181,6 +181,45 @@ static void selectS(int[] arr) {
 }
 
 ```
+* 堆排序
+假设最后排序是升序, 首先将数组建立成一个最大堆, 则最大的元素在arr[0]
+```
+
+static void heapS(int[] arr) {  
+    int len = arr.length - 1;  
+    for (int i = (len - 1) / 2; i >= 0; i--) {  
+        buildHeap(arr, i, len);  
+    }  
+  
+    for (int i = len; i > 0; i--) {  
+  
+        int temp = arr[0];  
+        arr[0] = arr[i];  
+        arr[i] = temp;  
+        buildHeap(arr, 0, i - 1);  
+    }  
+}  
+  
+static void buildHeap(int[] arr, int i, int len) {  
+    int l = i * 2 + 1;  
+    int r = i * 2 + 2;  
+    int moreI = l;  
+    if (l > len) {  
+        return;  
+    }  
+    if (r <= len && arr[r] > arr[moreI]) {  
+        moreI = r;  
+    }  
+    if (arr[moreI] > arr[i]) {  
+        int temp = arr[moreI];  
+        arr[moreI] = arr[i];  
+        arr[i] = temp;  
+        buildHeap(arr, moreI, len);  
+    }  
+}
+
+```
+
 
 #### 资源
 * 算法第四版
@@ -236,11 +275,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTAzOTQ4MTE3LC01MDU3NDU4MDUsLTUxNj
-U0NDU5MSwxOTIxNzA2NjE2LDEyMTE1OTI2MjYsMTYxODIzMTY2
-Myw2MTY5Njc4MDIsMzQzNTcyNDc0LC0xMDIwMDg1NjY4LDE4MT
-UzNTg0NDksMTc1MDAzODgzMCwtNjg1Njc1NDY0LC0xNDM0MDMz
-ODAzLDQxODEwMzA1OSw3ODE3NTE0MjUsNDE4MTAzMDU5LC0xNz
-YwMzQyOTYsLTE5NTA3NzQwOSwxMDIyOTk1ODUxLDE5MTQ5Mjg4
-NzZdfQ==
+eyJoaXN0b3J5IjpbLTIwMzQxNjI3MzIsNTAzOTQ4MTE3LC01MD
+U3NDU4MDUsLTUxNjU0NDU5MSwxOTIxNzA2NjE2LDEyMTE1OTI2
+MjYsMTYxODIzMTY2Myw2MTY5Njc4MDIsMzQzNTcyNDc0LC0xMD
+IwMDg1NjY4LDE4MTUzNTg0NDksMTc1MDAzODgzMCwtNjg1Njc1
+NDY0LC0xNDM0MDMzODAzLDQxODEwMzA1OSw3ODE3NTE0MjUsND
+E4MTAzMDU5LC0xNzYwMzQyOTYsLTE5NTA3NzQwOSwxMDIyOTk1
+ODUxXX0=
 -->
