@@ -15,7 +15,7 @@
 * datanode 磁盘中某个volume 的容量快满时会有何影响
 * yarn container如何用起来. 写一个使用的小demo
 * linux 文件权限和用户权限的彻底理解
-
+* java-net-socketexception-connection-reset
 * spark, hadoop release notes
 
 * https://issues.apache.org/jira/browse/HDFS-9572 这个需要等待comment 回复
@@ -79,11 +79,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyMTM1ODg0NCwtNDEyOTU0ODU1LDE3Mz
-IyNDA3OTMsODg3MzAxNywtOTg3NDQxMDg0LDE2NjIxNDcxOTEs
-LTEzNDY1MzA1MzcsLTg0ODU3NDQ0NiwyMTY3ODk3NzgsLTExMz
-ExMjI2ODUsMTQ2MDgxMTk1OSwxNDc3NTY5NzY4LC0xOTgwMjc2
-NjI5LDExNjcxOTA3MTksLTY5ODY3MzMzNCwxNjU3MjM1MDcwLC
-04OTc2NTQwOTQsLTEzODQxNTM2MzAsLTEzMDkwNzcxNTYsLTEx
-Njg2MDI3MzZdfQ==
+eyJoaXN0b3J5IjpbLTE4MzMzODM1MjAsLTkyMTM1ODg0NCwtND
+EyOTU0ODU1LDE3MzIyNDA3OTMsODg3MzAxNywtOTg3NDQxMDg0
+LDE2NjIxNDcxOTEsLTEzNDY1MzA1MzcsLTg0ODU3NDQ0NiwyMT
+Y3ODk3NzgsLTExMzExMjI2ODUsMTQ2MDgxMTk1OSwxNDc3NTY5
+NzY4LC0xOTgwMjc2NjI5LDExNjcxOTA3MTksLTY5ODY3MzMzNC
+wxNjU3MjM1MDcwLC04OTc2NTQwOTQsLTEzODQxNTM2MzAsLTEz
+MDkwNzcxNTZdfQ==
 -->
