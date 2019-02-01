@@ -242,7 +242,8 @@ static void hillS(int[] arr) {
   
 }
 ```
-* tong
+* 桶排序
+将元素放到几个子数组里面, 按照跟min 元素的差值来划分, 并在每个子数组中进行插入排序. 
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/33balanced/
@@ -297,11 +298,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODc3MDg1MzE4LDE1MzI2NjQ1NzQsNzQ3Mz
-c1NzUwLDE2NzUxMjA5MTksNTAzOTQ4MTE3LC01MDU3NDU4MDUs
-LTUxNjU0NDU5MSwxOTIxNzA2NjE2LDEyMTE1OTI2MjYsMTYxOD
-IzMTY2Myw2MTY5Njc4MDIsMzQzNTcyNDc0LC0xMDIwMDg1NjY4
-LDE4MTUzNTg0NDksMTc1MDAzODgzMCwtNjg1Njc1NDY0LC0xND
-M0MDMzODAzLDQxODEwMzA1OSw3ODE3NTE0MjUsNDE4MTAzMDU5
-XX0=
+eyJoaXN0b3J5IjpbLTQ3OTU5NDMzOCwxNTMyNjY0NTc0LDc0Nz
+M3NTc1MCwxNjc1MTIwOTE5LDUwMzk0ODExNywtNTA1NzQ1ODA1
+LC01MTY1NDQ1OTEsMTkyMTcwNjYxNiwxMjExNTkyNjI2LDE2MT
+gyMzE2NjMsNjE2OTY3ODAyLDM0MzU3MjQ3NCwtMTAyMDA4NTY2
+OCwxODE1MzU4NDQ5LDE3NTAwMzg4MzAsLTY4NTY3NTQ2NCwtMT
+QzNDAzMzgwMyw0MTgxMDMwNTksNzgxNzUxNDI1LDQxODEwMzA1
+OV19
 -->
