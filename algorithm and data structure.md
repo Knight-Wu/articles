@@ -46,7 +46,6 @@ B树相对于平衡二叉树的不同是，每个节点包含的关键字增多�
  In a **b-tree** you can store both keys and data in the internal and leaf nodes_ but in a **b+ tree** you have to store the data in the _leaf nodes only(由于中间节点不含数据)  所以一个磁盘块中可以含有更多的中间节点, IO 次数相对更低. 
 
 #### 排序
-* 手写堆排序, 建立堆的时间复杂度O(nlgn)
 
 * 归并排序
 分治的思想, 划分到两个子数组均只有一个元素, 再比较, 再merge 两个有序的子序列, 假设归并n 元素的时间复杂度是T(n) , 则T(n) = 2T(n/2)+O(n)(为合并两个元素个数为n/2 的有序子序列的时间复杂度)
@@ -243,7 +242,7 @@ static void hillS(int[] arr) {
   
 }
 ```
-
+* tong
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/33balanced/
@@ -298,11 +297,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzMjY2NDU3NCw3NDczNzU3NTAsMTY3NT
-EyMDkxOSw1MDM5NDgxMTcsLTUwNTc0NTgwNSwtNTE2NTQ0NTkx
-LDE5MjE3MDY2MTYsMTIxMTU5MjYyNiwxNjE4MjMxNjYzLDYxNj
-k2NzgwMiwzNDM1NzI0NzQsLTEwMjAwODU2NjgsMTgxNTM1ODQ0
-OSwxNzUwMDM4ODMwLC02ODU2NzU0NjQsLTE0MzQwMzM4MDMsND
-E4MTAzMDU5LDc4MTc1MTQyNSw0MTgxMDMwNTksLTE3NjAzNDI5
-Nl19
+eyJoaXN0b3J5IjpbODc3MDg1MzE4LDE1MzI2NjQ1NzQsNzQ3Mz
+c1NzUwLDE2NzUxMjA5MTksNTAzOTQ4MTE3LC01MDU3NDU4MDUs
+LTUxNjU0NDU5MSwxOTIxNzA2NjE2LDEyMTE1OTI2MjYsMTYxOD
+IzMTY2Myw2MTY5Njc4MDIsMzQzNTcyNDc0LC0xMDIwMDg1NjY4
+LDE4MTUzNTg0NDksMTc1MDAzODgzMCwtNjg1Njc1NDY0LC0xND
+M0MDMzODAzLDQxODEwMzA1OSw3ODE3NTE0MjUsNDE4MTAzMDU5
+XX0=
 -->
