@@ -182,7 +182,7 @@ static void selectS(int[] arr) {
 
 ```
 * 堆排序
-假设最后排序是升序, 首先将数组建立成一个最大堆, 则最大的元素在arr[0]
+假设最后排序是升序, 首先将数组建立成一个最大堆, 则最大的元素在arr[0], 次大的元素在其子节点, 然后将arr[0] 和arr[len-1]交换, 交换之后再以现在的根节点建堆, jianarr[0]
 ```
 
 static void heapS(int[] arr) {  
@@ -275,11 +275,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzQxNjI3MzIsNTAzOTQ4MTE3LC01MD
-U3NDU4MDUsLTUxNjU0NDU5MSwxOTIxNzA2NjE2LDEyMTE1OTI2
-MjYsMTYxODIzMTY2Myw2MTY5Njc4MDIsMzQzNTcyNDc0LC0xMD
-IwMDg1NjY4LDE4MTUzNTg0NDksMTc1MDAzODgzMCwtNjg1Njc1
-NDY0LC0xNDM0MDMzODAzLDQxODEwMzA1OSw3ODE3NTE0MjUsND
-E4MTAzMDU5LC0xNzYwMzQyOTYsLTE5NTA3NzQwOSwxMDIyOTk1
-ODUxXX0=
+eyJoaXN0b3J5IjpbMTAwNzgwNjkwNyw1MDM5NDgxMTcsLTUwNT
+c0NTgwNSwtNTE2NTQ0NTkxLDE5MjE3MDY2MTYsMTIxMTU5MjYy
+NiwxNjE4MjMxNjYzLDYxNjk2NzgwMiwzNDM1NzI0NzQsLTEwMj
+AwODU2NjgsMTgxNTM1ODQ0OSwxNzUwMDM4ODMwLC02ODU2NzU0
+NjQsLTE0MzQwMzM4MDMsNDE4MTAzMDU5LDc4MTc1MTQyNSw0MT
+gxMDMwNTksLTE3NjAzNDI5NiwtMTk1MDc3NDA5LDEwMjI5OTU4
+NTFdfQ==
 -->
