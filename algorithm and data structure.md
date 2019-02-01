@@ -221,6 +221,28 @@ static void buildHeap(int[] arr, int i, int len) {
 
 ```
 
+* 希尔排序
+插入排序的变种, gap 由 len/2, len/4 递减, 直至变为gap=1的插入排序, 此时大部分元素已经排序好了.  
+原始的算法实现在最坏的情况下需要进行O(n2)的比较和交换。V. Pratt的书[1]对算法进行了少量修改，可以使得性能提升至O(n log2 n)。这比最好的比较算法的O(n log n)要差一些。  
+
+```
+static void hillS(int[] arr) {  
+    int len = arr.length - 1;  
+    for (int gap = len >> 1; gap >= 1; gap = gap >> 1) {  
+        for (int i = gap; i <= len; i++) {  
+            int temp = arr[i];  
+            int j = i - gap;  
+            while (j >= 0 && temp < arr[j]) {  
+                arr[j + gap] = arr[j];  
+                j = j - gap;  
+            }  
+            arr[j + gap] = temp;  
+        }  
+  
+    }  
+  
+}
+```
 
 #### 资源
 * 算法第四版
@@ -276,11 +298,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQ3Mzc1NzUwLDE2NzUxMjA5MTksNTAzOT
-Q4MTE3LC01MDU3NDU4MDUsLTUxNjU0NDU5MSwxOTIxNzA2NjE2
-LDEyMTE1OTI2MjYsMTYxODIzMTY2Myw2MTY5Njc4MDIsMzQzNT
-cyNDc0LC0xMDIwMDg1NjY4LDE4MTUzNTg0NDksMTc1MDAzODgz
-MCwtNjg1Njc1NDY0LC0xNDM0MDMzODAzLDQxODEwMzA1OSw3OD
-E3NTE0MjUsNDE4MTAzMDU5LC0xNzYwMzQyOTYsLTE5NTA3NzQw
-OV19
+eyJoaXN0b3J5IjpbMTUzMjY2NDU3NCw3NDczNzU3NTAsMTY3NT
+EyMDkxOSw1MDM5NDgxMTcsLTUwNTc0NTgwNSwtNTE2NTQ0NTkx
+LDE5MjE3MDY2MTYsMTIxMTU5MjYyNiwxNjE4MjMxNjYzLDYxNj
+k2NzgwMiwzNDM1NzI0NzQsLTEwMjAwODU2NjgsMTgxNTM1ODQ0
+OSwxNzUwMDM4ODMwLC02ODU2NzU0NjQsLTE0MzQwMzM4MDMsND
+E4MTAzMDU5LDc4MTc1MTQyNSw0MTgxMDMwNTksLTE3NjAzNDI5
+Nl19
 -->
