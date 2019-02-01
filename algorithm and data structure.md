@@ -183,6 +183,7 @@ static void selectS(int[] arr) {
 ```
 * 堆排序
 假设最后排序是升序, 首先将数组建立成一个最大堆, 时间复杂度为则最大的元素在arr[0], 次大的元素在其子节点, 然后将arr[0] 和arr[len-1]交换, 交换之后再以现在的根节点建堆, 将 arr[0]放在合适的位置. 
+初始化建堆的时间复杂度O(n), 整个算法的时间复杂度O(nlgn)
 ```
 
 static void heapS(int[] arr) {  
@@ -275,11 +276,11 @@ public void solution( int [] arr){
 https://leetcode.com/problems/rotate-string/solution/
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3NTEyMDkxOSw1MDM5NDgxMTcsLTUwNT
-c0NTgwNSwtNTE2NTQ0NTkxLDE5MjE3MDY2MTYsMTIxMTU5MjYy
-NiwxNjE4MjMxNjYzLDYxNjk2NzgwMiwzNDM1NzI0NzQsLTEwMj
-AwODU2NjgsMTgxNTM1ODQ0OSwxNzUwMDM4ODMwLC02ODU2NzU0
-NjQsLTE0MzQwMzM4MDMsNDE4MTAzMDU5LDc4MTc1MTQyNSw0MT
-gxMDMwNTksLTE3NjAzNDI5NiwtMTk1MDc3NDA5LDEwMjI5OTU4
-NTFdfQ==
+eyJoaXN0b3J5IjpbNzQ3Mzc1NzUwLDE2NzUxMjA5MTksNTAzOT
+Q4MTE3LC01MDU3NDU4MDUsLTUxNjU0NDU5MSwxOTIxNzA2NjE2
+LDEyMTE1OTI2MjYsMTYxODIzMTY2Myw2MTY5Njc4MDIsMzQzNT
+cyNDc0LC0xMDIwMDg1NjY4LDE4MTUzNTg0NDksMTc1MDAzODgz
+MCwtNjg1Njc1NDY0LC0xNDM0MDMzODAzLDQxODEwMzA1OSw3OD
+E3NTE0MjUsNDE4MTAzMDU5LC0xNzYwMzQyOTYsLTE5NTA3NzQw
+OV19
 -->
