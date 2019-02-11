@@ -289,20 +289,23 @@ public void solution( int [] arr){
   }
 }
 
+> 字符串
+
+1. 如果字符串已经限定了是ASCII, 则
 
 
-
-#### 问题
+#### 待解决问题
 * paxos 的应用
 * 回文字符串
 https://leetcode.com/problems/rotate-string/solution/
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQwODI2OTc5LC00Nzk1OTQzMzgsMTUzMj
-Y2NDU3NCw3NDczNzU3NTAsMTY3NTEyMDkxOSw1MDM5NDgxMTcs
-LTUwNTc0NTgwNSwtNTE2NTQ0NTkxLDE5MjE3MDY2MTYsMTIxMT
-U5MjYyNiwxNjE4MjMxNjYzLDYxNjk2NzgwMiwzNDM1NzI0NzQs
-LTEwMjAwODU2NjgsMTgxNTM1ODQ0OSwxNzUwMDM4ODMwLC02OD
-U2NzU0NjQsLTE0MzQwMzM4MDMsNDE4MTAzMDU5LDc4MTc1MTQy
-NV19
+eyJoaXN0b3J5IjpbMTI0MTA3ODQ2NSw5NDA4MjY5NzksLTQ3OT
+U5NDMzOCwxNTMyNjY0NTc0LDc0NzM3NTc1MCwxNjc1MTIwOTE5
+LDUwMzk0ODExNywtNTA1NzQ1ODA1LC01MTY1NDQ1OTEsMTkyMT
+cwNjYxNiwxMjExNTkyNjI2LDE2MTgyMzE2NjMsNjE2OTY3ODAy
+LDM0MzU3MjQ3NCwtMTAyMDA4NTY2OCwxODE1MzU4NDQ5LDE3NT
+AwMzg4MzAsLTY4NTY3NTQ2NCwtMTQzNDAzMzgwMyw0MTgxMDMw
+NTldfQ==
 -->
