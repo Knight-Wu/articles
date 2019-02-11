@@ -296,9 +296,9 @@ public void solution( int [] arr){
 
 > 查找
 
-万变不离其中, 最快的查找就是二分查找, 时间复杂度O(lgn), 其次是线性时间复杂度
+1. 万变不离其中, 最快的查找就是二分查找, 时间复杂度O(lgn), 其次是线性时间复杂度.
+2. 
 
-> 
 #### 待解决问题
 * paxos 的应用
 * 回文字符串
@@ -306,7 +306,7 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2NDQ5NjY1OCwtMTAzNjkwNzY3MiwtMT
+eyJoaXN0b3J5IjpbMTkyNzg3MjUxMSwtMTAzNjkwNzY3MiwtMT
 Q4MjIzMzU2MSwxMjQxMDc4NDY1LDk0MDgyNjk3OSwtNDc5NTk0
 MzM4LDE1MzI2NjQ1NzQsNzQ3Mzc1NzUwLDE2NzUxMjA5MTksNT
 AzOTQ4MTE3LC01MDU3NDU4MDUsLTUxNjU0NDU5MSwxOTIxNzA2
