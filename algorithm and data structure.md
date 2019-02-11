@@ -297,6 +297,8 @@ public void solution( int [] arr){
 > 查找
 
 万变不离其中, 最快的查找就是二分查找, 时间复杂度O(lgn), 其次是线性时间复杂度
+
+> 
 #### 待解决问题
 * paxos 的应用
 * 回文字符串
@@ -304,11 +306,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMzY5MDc2NzIsLTE0ODIyMzM1NjEsMT
-I0MTA3ODQ2NSw5NDA4MjY5NzksLTQ3OTU5NDMzOCwxNTMyNjY0
-NTc0LDc0NzM3NTc1MCwxNjc1MTIwOTE5LDUwMzk0ODExNywtNT
-A1NzQ1ODA1LC01MTY1NDQ1OTEsMTkyMTcwNjYxNiwxMjExNTky
-NjI2LDE2MTgyMzE2NjMsNjE2OTY3ODAyLDM0MzU3MjQ3NCwtMT
-AyMDA4NTY2OCwxODE1MzU4NDQ5LDE3NTAwMzg4MzAsLTY4NTY3
-NTQ2NF19
+eyJoaXN0b3J5IjpbLTc2NDQ5NjY1OCwtMTAzNjkwNzY3MiwtMT
+Q4MjIzMzU2MSwxMjQxMDc4NDY1LDk0MDgyNjk3OSwtNDc5NTk0
+MzM4LDE1MzI2NjQ1NzQsNzQ3Mzc1NzUwLDE2NzUxMjA5MTksNT
+AzOTQ4MTE3LC01MDU3NDU4MDUsLTUxNjU0NDU5MSwxOTIxNzA2
+NjE2LDEyMTE1OTI2MjYsMTYxODIzMTY2Myw2MTY5Njc4MDIsMz
+QzNTcyNDc0LC0xMDIwMDg1NjY4LDE4MTUzNTg0NDksMTc1MDAz
+ODgzMF19
 -->
