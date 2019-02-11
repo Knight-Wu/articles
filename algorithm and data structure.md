@@ -294,6 +294,9 @@ public void solution( int [] arr){
 1. 如果字符串已经限定了是ASCII, 则可以用一个256 长度的int 数组来同等表示, 而且可以根据int 值的大小来排序, 排序的时间复杂度是O(n) .
 
 
+> 查找
+
+万变不离其中, 最快的查找就是二分查找, 时间复杂度O(lgn), 其次是线性时间复杂度
 #### 待解决问题
 * paxos 的应用
 * 回文字符串
@@ -301,11 +304,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0ODIyMzM1NjEsMTI0MTA3ODQ2NSw5ND
-A4MjY5NzksLTQ3OTU5NDMzOCwxNTMyNjY0NTc0LDc0NzM3NTc1
-MCwxNjc1MTIwOTE5LDUwMzk0ODExNywtNTA1NzQ1ODA1LC01MT
-Y1NDQ1OTEsMTkyMTcwNjYxNiwxMjExNTkyNjI2LDE2MTgyMzE2
-NjMsNjE2OTY3ODAyLDM0MzU3MjQ3NCwtMTAyMDA4NTY2OCwxOD
-E1MzU4NDQ5LDE3NTAwMzg4MzAsLTY4NTY3NTQ2NCwtMTQzNDAz
-MzgwM119
+eyJoaXN0b3J5IjpbLTEwMzY5MDc2NzIsLTE0ODIyMzM1NjEsMT
+I0MTA3ODQ2NSw5NDA4MjY5NzksLTQ3OTU5NDMzOCwxNTMyNjY0
+NTc0LDc0NzM3NTc1MCwxNjc1MTIwOTE5LDUwMzk0ODExNywtNT
+A1NzQ1ODA1LC01MTY1NDQ1OTEsMTkyMTcwNjYxNiwxMjExNTky
+NjI2LDE2MTgyMzE2NjMsNjE2OTY3ODAyLDM0MzU3MjQ3NCwtMT
+AyMDA4NTY2OCwxODE1MzU4NDQ5LDE3NTAwMzg4MzAsLTY4NTY3
+NTQ2NF19
 -->
