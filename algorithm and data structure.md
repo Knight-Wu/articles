@@ -19,7 +19,7 @@
 
 * 树的分类
 满二叉树, 完全二叉树, 平衡二叉树
-
+![enter image description here](https://drive.google.com/uc?id=1WvdQnszfoBQkf94qiUDM2W_a4BWwArD8)
 深度为k, 拥有2的k+1次方减一的节点的为满二叉树, 每一层的节点数都是最大节点数; 而若最后一层不是满的, 其余层都是满的, 则为完全二叉树, 具有n个节点的完全二叉树的深度为log2n +1(以2为底数)。深度为k的完全二叉树, 最少有2的k次方个节点, 最多有2的k+1 次方减一个节点. 
 
 平衡二叉搜索树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是一 棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。
@@ -331,11 +331,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1NjQ5NTcyMCwtNjQyMzkwMDU5LDgwMz
-gxNDc4MSwtMjAwNjI2ODU3MSwtNjUzMjg4MjY2LDE3MzkxNzMw
-NDAsNzQ1NjEwOTIyLDE5Mjc4NzI1MTEsLTEwMzY5MDc2NzIsLT
-E0ODIyMzM1NjEsMTI0MTA3ODQ2NSw5NDA4MjY5NzksLTQ3OTU5
-NDMzOCwxNTMyNjY0NTc0LDc0NzM3NTc1MCwxNjc1MTIwOTE5LD
-UwMzk0ODExNywtNTA1NzQ1ODA1LC01MTY1NDQ1OTEsMTkyMTcw
-NjYxNl19
+eyJoaXN0b3J5IjpbMTUxMjg0NjU2MCwxMjU2NDk1NzIwLC02ND
+IzOTAwNTksODAzODE0NzgxLC0yMDA2MjY4NTcxLC02NTMyODgy
+NjYsMTczOTE3MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUxMSwtMT
+AzNjkwNzY3MiwtMTQ4MjIzMzU2MSwxMjQxMDc4NDY1LDk0MDgy
+Njk3OSwtNDc5NTk0MzM4LDE1MzI2NjQ1NzQsNzQ3Mzc1NzUwLD
+E2NzUxMjA5MTksNTAzOTQ4MTE3LC01MDU3NDU4MDUsLTUxNjU0
+NDU5MV19
 -->
