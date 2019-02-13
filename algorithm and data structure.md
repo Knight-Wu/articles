@@ -321,7 +321,9 @@ public void solution( int [] arr){
 负数还原为正数: 第一位为符号位, 若为负数, 则先减一, 再取反. 
 
 * 应用
-异或, a^b, 不同的数异或结果为1 , 得出的二进制位哪位为1, 则哪位不同. 用于找只出现一次或两个只出现一次的数字 
+ 1. 异或, a^b, 不同的数异或结果为1 , 得出的二进制位哪位为1, 则哪位不同. 用于找只出现一次或两个只出现一次的数字 
+ 2. 高低位交换, 先左移, 再右移, 最后再或 
+
 #### 待解决问题
 * paxos 的应用
 * 回文字符串
@@ -329,11 +331,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0MjM5MDA1OSw4MDM4MTQ3ODEsLTIwMD
-YyNjg1NzEsLTY1MzI4ODI2NiwxNzM5MTczMDQwLDc0NTYxMDky
-MiwxOTI3ODcyNTExLC0xMDM2OTA3NjcyLC0xNDgyMjMzNTYxLD
-EyNDEwNzg0NjUsOTQwODI2OTc5LC00Nzk1OTQzMzgsMTUzMjY2
-NDU3NCw3NDczNzU3NTAsMTY3NTEyMDkxOSw1MDM5NDgxMTcsLT
-UwNTc0NTgwNSwtNTE2NTQ0NTkxLDE5MjE3MDY2MTYsMTIxMTU5
-MjYyNl19
+eyJoaXN0b3J5IjpbMTI1NjQ5NTcyMCwtNjQyMzkwMDU5LDgwMz
+gxNDc4MSwtMjAwNjI2ODU3MSwtNjUzMjg4MjY2LDE3MzkxNzMw
+NDAsNzQ1NjEwOTIyLDE5Mjc4NzI1MTEsLTEwMzY5MDc2NzIsLT
+E0ODIyMzM1NjEsMTI0MTA3ODQ2NSw5NDA4MjY5NzksLTQ3OTU5
+NDMzOCwxNTMyNjY0NTc0LDc0NzM3NTc1MCwxNjc1MTIwOTE5LD
+UwMzk0ODExNywtNTA1NzQ1ODA1LC01MTY1NDQ1OTEsMTkyMTcw
+NjYxNl19
 -->
