@@ -19,7 +19,7 @@
 
 * 树的分类
 满二叉树, 完全二叉树, 平衡二叉树
-深度为k, 拥有2的k+1次方减一的节点的为满二叉树, 每一层的节点数都是最大节点数; 而若最后一层不是满的, 其余层都是满的, 则为完全二叉树, 
+深度为k, 拥有2的k+1次方减一的节点的为满二叉树, 每一层的节点数都是最大节点数; 而若最后一层不是满的, 其余层都是满的, 则为完全二叉树, 具有n个节点的完全二叉树的深度为log2n +1(以2为底数)。深度为k的完全二叉树, 最少有2
 * 中序遍历
 因为左小右大, 可以根据中序遍历一颗二叉树来排序一个无序数组. 
 
@@ -313,7 +313,7 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5MjQ0MTY4MSw3NDU2MTA5MjIsMTkyNz
+eyJoaXN0b3J5IjpbLTY0MDcwODQ5NCw3NDU2MTA5MjIsMTkyNz
 g3MjUxMSwtMTAzNjkwNzY3MiwtMTQ4MjIzMzU2MSwxMjQxMDc4
 NDY1LDk0MDgyNjk3OSwtNDc5NTk0MzM4LDE1MzI2NjQ1NzQsNz
 Q3Mzc1NzUwLDE2NzUxMjA5MTksNTAzOTQ4MTE3LC01MDU3NDU4
