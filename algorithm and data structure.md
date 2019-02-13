@@ -187,7 +187,7 @@ static void selectS(int[] arr) {
 
 ```
 * 堆排序
-假设最后排序是升序, 首先将数组建立成一个最大堆, 时间复杂度为则最大的元素在arr[0], 次大的元素在其子节点, 然后将arr[0] 和arr[len-1]交换, 交换之后再以现在的根节点建堆, 将 arr[0]放在合适的位置. 
+假设最后排序是升序, 首先将数组建立成一个最大堆, 最大的元素在arr[0], 次大的元素在其子节点, 然后将arr[0] 和arr[len-1]交换, 交换之后再以现在的根节点建堆, 将 arr[0]放在合适的位置. 
 初始化建堆的时间复杂度O(n), 整个算法的时间复杂度O(nlgn)
 ```
 
@@ -316,11 +316,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTczOTE3MzA0MCw3NDU2MTA5MjIsMTkyNz
-g3MjUxMSwtMTAzNjkwNzY3MiwtMTQ4MjIzMzU2MSwxMjQxMDc4
-NDY1LDk0MDgyNjk3OSwtNDc5NTk0MzM4LDE1MzI2NjQ1NzQsNz
-Q3Mzc1NzUwLDE2NzUxMjA5MTksNTAzOTQ4MTE3LC01MDU3NDU4
-MDUsLTUxNjU0NDU5MSwxOTIxNzA2NjE2LDEyMTE1OTI2MjYsMT
-YxODIzMTY2Myw2MTY5Njc4MDIsMzQzNTcyNDc0LC0xMDIwMDg1
-NjY4XX0=
+eyJoaXN0b3J5IjpbLTY1MzI4ODI2NiwxNzM5MTczMDQwLDc0NT
+YxMDkyMiwxOTI3ODcyNTExLC0xMDM2OTA3NjcyLC0xNDgyMjMz
+NTYxLDEyNDEwNzg0NjUsOTQwODI2OTc5LC00Nzk1OTQzMzgsMT
+UzMjY2NDU3NCw3NDczNzU3NTAsMTY3NTEyMDkxOSw1MDM5NDgx
+MTcsLTUwNTc0NTgwNSwtNTE2NTQ0NTkxLDE5MjE3MDY2MTYsMT
+IxMTU5MjYyNiwxNjE4MjMxNjYzLDYxNjk2NzgwMiwzNDM1NzI0
+NzRdfQ==
 -->
