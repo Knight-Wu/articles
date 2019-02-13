@@ -17,6 +17,9 @@
 * 树的遍历
 最简单的划分：是深度优先（先访问子节点，再访问父节点，最后是第二个子节点）？还是广度优先（先访问第一个子节点，再访问第二个子节点，最后访问父节点）？ 深度优先可进一步按照根节点相对于左右子节点的访问先后来划分。如果把左节点和右节点的位置固定不动，那么根节点放在左节点的左边，称为前序（pre-order）、根节点放在左节点和右节点的中间，称为中序（in-order）、根节点放在右节点的右边，称为后序（post-order）。对广度优先而言，遍历没有前序中序后序之分：给定一组已排序的子节点，其“广度优先”的遍历只有一种唯一的结果。
 
+* 树的分类
+满二叉树, 完全二叉树, 平衡二叉树
+深度为k, 拥有2的k+1次方减一的节点的为满二叉树, 每一层的节点数都是最大节点数; 而若最后一层不是满的, 其余层都是满的, 则为完全二叉树, 
 * 中序遍历
 因为左小右大, 可以根据中序遍历一颗二叉树来排序一个无序数组. 
 
@@ -310,11 +313,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQ1NjEwOTIyLDE5Mjc4NzI1MTEsLTEwMz
-Y5MDc2NzIsLTE0ODIyMzM1NjEsMTI0MTA3ODQ2NSw5NDA4MjY5
-NzksLTQ3OTU5NDMzOCwxNTMyNjY0NTc0LDc0NzM3NTc1MCwxNj
-c1MTIwOTE5LDUwMzk0ODExNywtNTA1NzQ1ODA1LC01MTY1NDQ1
-OTEsMTkyMTcwNjYxNiwxMjExNTkyNjI2LDE2MTgyMzE2NjMsNj
-E2OTY3ODAyLDM0MzU3MjQ3NCwtMTAyMDA4NTY2OCwxODE1MzU4
-NDQ5XX0=
+eyJoaXN0b3J5IjpbMTM5MjQ0MTY4MSw3NDU2MTA5MjIsMTkyNz
+g3MjUxMSwtMTAzNjkwNzY3MiwtMTQ4MjIzMzU2MSwxMjQxMDc4
+NDY1LDk0MDgyNjk3OSwtNDc5NTk0MzM4LDE1MzI2NjQ1NzQsNz
+Q3Mzc1NzUwLDE2NzUxMjA5MTksNTAzOTQ4MTE3LC01MDU3NDU4
+MDUsLTUxNjU0NDU5MSwxOTIxNzA2NjE2LDEyMTE1OTI2MjYsMT
+YxODIzMTY2Myw2MTY5Njc4MDIsMzQzNTcyNDc0LC0xMDIwMDg1
+NjY4XX0=
 -->
