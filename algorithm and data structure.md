@@ -327,7 +327,7 @@ public void solution( int [] arr){
 
 > 递归思想
 
-
+递归可以想象成函数调用不断压栈, 直到满足结束条件, 最后一个调用首先返回. 
 #### 待解决问题
 * paxos 的应用
 * 回文字符串
@@ -335,11 +335,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzOTM4MTI0OCwxNTEyODQ2NTYwLDEyNT
-Y0OTU3MjAsLTY0MjM5MDA1OSw4MDM4MTQ3ODEsLTIwMDYyNjg1
-NzEsLTY1MzI4ODI2NiwxNzM5MTczMDQwLDc0NTYxMDkyMiwxOT
-I3ODcyNTExLC0xMDM2OTA3NjcyLC0xNDgyMjMzNTYxLDEyNDEw
-Nzg0NjUsOTQwODI2OTc5LC00Nzk1OTQzMzgsMTUzMjY2NDU3NC
-w3NDczNzU3NTAsMTY3NTEyMDkxOSw1MDM5NDgxMTcsLTUwNTc0
-NTgwNV19
+eyJoaXN0b3J5IjpbNjE4OTg2MDMzLDEzMzkzODEyNDgsMTUxMj
+g0NjU2MCwxMjU2NDk1NzIwLC02NDIzOTAwNTksODAzODE0Nzgx
+LC0yMDA2MjY4NTcxLC02NTMyODgyNjYsMTczOTE3MzA0MCw3ND
+U2MTA5MjIsMTkyNzg3MjUxMSwtMTAzNjkwNzY3MiwtMTQ4MjIz
+MzU2MSwxMjQxMDc4NDY1LDk0MDgyNjk3OSwtNDc5NTk0MzM4LD
+E1MzI2NjQ1NzQsNzQ3Mzc1NzUwLDE2NzUxMjA5MTksNTAzOTQ4
+MTE3XX0=
 -->
