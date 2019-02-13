@@ -324,6 +324,10 @@ public void solution( int [] arr){
  1. 异或, a^b, 不同的数异或结果为1 , 得出的二进制位哪位为1, 则哪位不同. 用于找只出现一次或两个只出现一次的数字 
  2. 高低位交换, 先左移, 再右移, 最后再或 
 
+
+> 递归思想
+
+
 #### 待解决问题
 * paxos 的应用
 * 回文字符串
@@ -331,11 +335,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxMjg0NjU2MCwxMjU2NDk1NzIwLC02ND
-IzOTAwNTksODAzODE0NzgxLC0yMDA2MjY4NTcxLC02NTMyODgy
-NjYsMTczOTE3MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUxMSwtMT
-AzNjkwNzY3MiwtMTQ4MjIzMzU2MSwxMjQxMDc4NDY1LDk0MDgy
-Njk3OSwtNDc5NTk0MzM4LDE1MzI2NjQ1NzQsNzQ3Mzc1NzUwLD
-E2NzUxMjA5MTksNTAzOTQ4MTE3LC01MDU3NDU4MDUsLTUxNjU0
-NDU5MV19
+eyJoaXN0b3J5IjpbMTMzOTM4MTI0OCwxNTEyODQ2NTYwLDEyNT
+Y0OTU3MjAsLTY0MjM5MDA1OSw4MDM4MTQ3ODEsLTIwMDYyNjg1
+NzEsLTY1MzI4ODI2NiwxNzM5MTczMDQwLDc0NTYxMDkyMiwxOT
+I3ODcyNTExLC0xMDM2OTA3NjcyLC0xNDgyMjMzNTYxLDEyNDEw
+Nzg0NjUsOTQwODI2OTc5LC00Nzk1OTQzMzgsMTUzMjY2NDU3NC
+w3NDczNzU3NTAsMTY3NTEyMDkxOSw1MDM5NDgxMTcsLTUwNTc0
+NTgwNV19
 -->
