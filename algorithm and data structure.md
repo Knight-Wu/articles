@@ -309,6 +309,9 @@ public void solution( int [] arr){
 
 前序, 中序, 后序都是二叉树的深度优先搜索, 记住是深度, 二叉树是递归的结构, 最适合使用递归来解决.
 
+> 数字题
+
+因为所有的数字都是二进制, 可以用二进制中独有的运算, 例如异或, 不同为1, 相同为0, 
 #### 待解决问题
 * paxos 的应用
 * 回文字符串
@@ -316,11 +319,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1MzI4ODI2NiwxNzM5MTczMDQwLDc0NT
-YxMDkyMiwxOTI3ODcyNTExLC0xMDM2OTA3NjcyLC0xNDgyMjMz
-NTYxLDEyNDEwNzg0NjUsOTQwODI2OTc5LC00Nzk1OTQzMzgsMT
-UzMjY2NDU3NCw3NDczNzU3NTAsMTY3NTEyMDkxOSw1MDM5NDgx
-MTcsLTUwNTc0NTgwNSwtNTE2NTQ0NTkxLDE5MjE3MDY2MTYsMT
-IxMTU5MjYyNiwxNjE4MjMxNjYzLDYxNjk2NzgwMiwzNDM1NzI0
-NzRdfQ==
+eyJoaXN0b3J5IjpbLTQ1NjA3MzQ5LC02NTMyODgyNjYsMTczOT
+E3MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUxMSwtMTAzNjkwNzY3
+MiwtMTQ4MjIzMzU2MSwxMjQxMDc4NDY1LDk0MDgyNjk3OSwtND
+c5NTk0MzM4LDE1MzI2NjQ1NzQsNzQ3Mzc1NzUwLDE2NzUxMjA5
+MTksNTAzOTQ4MTE3LC01MDU3NDU4MDUsLTUxNjU0NDU5MSwxOT
+IxNzA2NjE2LDEyMTE1OTI2MjYsMTYxODIzMTY2Myw2MTY5Njc4
+MDJdfQ==
 -->
