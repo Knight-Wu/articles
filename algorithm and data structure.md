@@ -313,11 +313,15 @@ public void solution( int [] arr){
 
 因为所有的数字都是二进制, 可以用二进制中独有的运算, 位运算来达到四两拨千斤的效果, 
 
+1. 位运算
+
 * 负数如何用二进制表示
 
 将绝对值用二进制表示, 然后取反, 然后加1, 最左边第一位为符号位, 若是负数则为1, 正数则为0; 
 负数还原为正数: 第一位为符号位, 若为负数, 则先减一, 再取反. 
 
+* 应用
+异或, a^b, 不同的数异或结果为1 , 得出的二进制wei 
 #### 待解决问题
 * paxos 的应用
 * 回文字符串
@@ -325,11 +329,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODAzODE0NzgxLC0yMDA2MjY4NTcxLC02NT
-MyODgyNjYsMTczOTE3MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUx
-MSwtMTAzNjkwNzY3MiwtMTQ4MjIzMzU2MSwxMjQxMDc4NDY1LD
-k0MDgyNjk3OSwtNDc5NTk0MzM4LDE1MzI2NjQ1NzQsNzQ3Mzc1
-NzUwLDE2NzUxMjA5MTksNTAzOTQ4MTE3LC01MDU3NDU4MDUsLT
-UxNjU0NDU5MSwxOTIxNzA2NjE2LDEyMTE1OTI2MjYsMTYxODIz
-MTY2M119
+eyJoaXN0b3J5IjpbNjY2NjAyMjQ1LDgwMzgxNDc4MSwtMjAwNj
+I2ODU3MSwtNjUzMjg4MjY2LDE3MzkxNzMwNDAsNzQ1NjEwOTIy
+LDE5Mjc4NzI1MTEsLTEwMzY5MDc2NzIsLTE0ODIyMzM1NjEsMT
+I0MTA3ODQ2NSw5NDA4MjY5NzksLTQ3OTU5NDMzOCwxNTMyNjY0
+NTc0LDc0NzM3NTc1MCwxNjc1MTIwOTE5LDUwMzk0ODExNywtNT
+A1NzQ1ODA1LC01MTY1NDQ1OTEsMTkyMTcwNjYxNiwxMjExNTky
+NjI2XX0=
 -->
