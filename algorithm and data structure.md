@@ -328,6 +328,8 @@ public void solution( int [] arr){
 > 递归思想
 
 递归可以想象成函数调用不断压栈, 直到满足结束条件, 最后一个调用首先返回. 
+在递归调用之前的语句会正序执行, 再递归调用之后的语句会逆序执行
+
 #### 待解决问题
 * paxos 的应用
 * 回文字符串
@@ -335,11 +337,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjE4OTg2MDMzLDEzMzkzODEyNDgsMTUxMj
-g0NjU2MCwxMjU2NDk1NzIwLC02NDIzOTAwNTksODAzODE0Nzgx
-LC0yMDA2MjY4NTcxLC02NTMyODgyNjYsMTczOTE3MzA0MCw3ND
-U2MTA5MjIsMTkyNzg3MjUxMSwtMTAzNjkwNzY3MiwtMTQ4MjIz
-MzU2MSwxMjQxMDc4NDY1LDk0MDgyNjk3OSwtNDc5NTk0MzM4LD
-E1MzI2NjQ1NzQsNzQ3Mzc1NzUwLDE2NzUxMjA5MTksNTAzOTQ4
-MTE3XX0=
+eyJoaXN0b3J5IjpbMjE0NDc1MTk0MCwxMzM5MzgxMjQ4LDE1MT
+I4NDY1NjAsMTI1NjQ5NTcyMCwtNjQyMzkwMDU5LDgwMzgxNDc4
+MSwtMjAwNjI2ODU3MSwtNjUzMjg4MjY2LDE3MzkxNzMwNDAsNz
+Q1NjEwOTIyLDE5Mjc4NzI1MTEsLTEwMzY5MDc2NzIsLTE0ODIy
+MzM1NjEsMTI0MTA3ODQ2NSw5NDA4MjY5NzksLTQ3OTU5NDMzOC
+wxNTMyNjY0NTc0LDc0NzM3NTc1MCwxNjc1MTIwOTE5LDUwMzk0
+ODExN119
 -->
