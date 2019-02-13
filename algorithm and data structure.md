@@ -316,7 +316,7 @@ public void solution( int [] arr){
 * 负数如何用二进制表示
 
 将绝对值用二进制表示, 然后取反, 然后加1, 最左边第一位为符号位, 若是负数则为1, 正数则为0; 
-负数还原为正数: 第一位为符号位, 若为负数, 则xian
+负数还原为正数: 第一位为符号位, 若为负数, 则先减一, 再取反. 
 
 #### 待解决问题
 * paxos 的应用
@@ -325,11 +325,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2OTkzOTA1NCwtMjAwNjI2ODU3MSwtNj
-UzMjg4MjY2LDE3MzkxNzMwNDAsNzQ1NjEwOTIyLDE5Mjc4NzI1
-MTEsLTEwMzY5MDc2NzIsLTE0ODIyMzM1NjEsMTI0MTA3ODQ2NS
-w5NDA4MjY5NzksLTQ3OTU5NDMzOCwxNTMyNjY0NTc0LDc0NzM3
-NTc1MCwxNjc1MTIwOTE5LDUwMzk0ODExNywtNTA1NzQ1ODA1LC
-01MTY1NDQ1OTEsMTkyMTcwNjYxNiwxMjExNTkyNjI2LDE2MTgy
-MzE2NjNdfQ==
+eyJoaXN0b3J5IjpbODAzODE0NzgxLC0yMDA2MjY4NTcxLC02NT
+MyODgyNjYsMTczOTE3MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUx
+MSwtMTAzNjkwNzY3MiwtMTQ4MjIzMzU2MSwxMjQxMDc4NDY1LD
+k0MDgyNjk3OSwtNDc5NTk0MzM4LDE1MzI2NjQ1NzQsNzQ3Mzc1
+NzUwLDE2NzUxMjA5MTksNTAzOTQ4MTE3LC01MDU3NDU4MDUsLT
+UxNjU0NDU5MSwxOTIxNzA2NjE2LDEyMTE1OTI2MjYsMTYxODIz
+MTY2M119
 -->
