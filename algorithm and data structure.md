@@ -311,7 +311,8 @@ public void solution( int [] arr){
 
 > 数字题
 
-因为所有的数字都是二进制, 可以用二进制中独有的运算, 例如异或, 不同为1, 相同为0, 
+因为所有的数字都是二进制, 可以用二进制中独有的运算, 位运算来达到四两拨千斤的效果, 
+
 #### 待解决问题
 * paxos 的应用
 * 回文字符串
@@ -319,11 +320,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1NjA3MzQ5LC02NTMyODgyNjYsMTczOT
-E3MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUxMSwtMTAzNjkwNzY3
-MiwtMTQ4MjIzMzU2MSwxMjQxMDc4NDY1LDk0MDgyNjk3OSwtND
-c5NTk0MzM4LDE1MzI2NjQ1NzQsNzQ3Mzc1NzUwLDE2NzUxMjA5
-MTksNTAzOTQ4MTE3LC01MDU3NDU4MDUsLTUxNjU0NDU5MSwxOT
-IxNzA2NjE2LDEyMTE1OTI2MjYsMTYxODIzMTY2Myw2MTY5Njc4
-MDJdfQ==
+eyJoaXN0b3J5IjpbLTIwMDYyNjg1NzEsLTY1MzI4ODI2NiwxNz
+M5MTczMDQwLDc0NTYxMDkyMiwxOTI3ODcyNTExLC0xMDM2OTA3
+NjcyLC0xNDgyMjMzNTYxLDEyNDEwNzg0NjUsOTQwODI2OTc5LC
+00Nzk1OTQzMzgsMTUzMjY2NDU3NCw3NDczNzU3NTAsMTY3NTEy
+MDkxOSw1MDM5NDgxMTcsLTUwNTc0NTgwNSwtNTE2NTQ0NTkxLD
+E5MjE3MDY2MTYsMTIxMTU5MjYyNiwxNjE4MjMxNjYzLDYxNjk2
+NzgwMl19
 -->
