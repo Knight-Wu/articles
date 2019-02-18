@@ -92,21 +92,19 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
 #### 问题
 * innodb 的文件结构
-* mysql 几种索引
 * mysql 语句执行的大致流程
 * mysql 的B+ 树索引如何跟磁盘页对齐, 如何配置
 * 全文索引
-
 * mysql 为什么用B+ 树索引, 相比于B 树的好处
 * mysql 把所有字段都建上index 有什么不好的地方
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4NzAyNjgzMywxMDEzNjM0Mzg1LDI4MD
-A4MTUxNiwyMDY4MDUzNjc1LDExNDI0MTE4MzksLTkwNzg2NTc5
-MCwxOTE4MDg3NDQwLDQzMDY3MTk4MywtMTg0NDU2MDQ0LC02MT
-k3ODI2NjcsNjI1NzQ2NzQwLDU4NDA3MDQzNywtNzY4ODM0NDI0
-LC05NjIzMDg3LDEyMzUwMTgwMTUsMTU4Mjg3NzgwNCwzMjU2OD
-YwMzMsNTQ4Nzk2MjU0LDIwODcwNjc3MjYsLTIxMDQ0NDY2MTFd
-fQ==
+eyJoaXN0b3J5IjpbMTQyNzU3MjEwNSwxOTg3MDI2ODMzLDEwMT
+M2MzQzODUsMjgwMDgxNTE2LDIwNjgwNTM2NzUsMTE0MjQxMTgz
+OSwtOTA3ODY1NzkwLDE5MTgwODc0NDAsNDMwNjcxOTgzLC0xOD
+Q0NTYwNDQsLTYxOTc4MjY2Nyw2MjU3NDY3NDAsNTg0MDcwNDM3
+LC03Njg4MzQ0MjQsLTk2MjMwODcsMTIzNTAxODAxNSwxNTgyOD
+c3ODA0LDMyNTY4NjAzMyw1NDg3OTYyNTQsMjA4NzA2NzcyNl19
+
 -->
