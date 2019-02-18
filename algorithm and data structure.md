@@ -309,6 +309,75 @@ public void solution( int [] arr){
 
 前序, 中序, 后序都是二叉树的深度优先搜索, 记住是深度, 二叉树是递归的结构, 最适合使用递归来解决.
 
+```
+public class TreeNode {  
+    private TreeNode left;  
+    private TreeNode right;  
+    private int val;  
+  
+}  
+  
+// 二叉树层次遍历, 深度优先搜索  
+public List<List<Integer>> levelDFS(TreeNode root) {  
+    List<List<Integer>> list = new ArrayList<>();  
+    dfsHelp(list, root, 0);  
+    return list;  
+}  
+  
+public void dfsHelp(List<List<Integer>> list, TreeNode root, int height) {  
+    if (root == null) return;  
+    if (height > list.size() - 1) {  
+        list.add(new ArrayList<>());  
+    }  
+    List<Integer> list1 = list.get(height);  
+    list1.add(root.val);  
+    dfsHelp(list, root.left, height + 1);  
+    dfsHelp(list, root.right, height + 1);  
+}  
+  
+// 二叉树层次遍历, 广度优先搜索  
+public List<List<Integer>> levelBFS(TreeNode root) {  
+    List<List<Integer>> list = new ArrayList<>();  
+    if (root == null) return list;  
+    Queue<TreeNode> queue = new LinkedList<>();  
+    queue.add(root);  
+    while (!queue.isEmpty()) {  
+        int levelNum = queue.size();  
+        List<Integer> everyLevelList = new ArrayList<>(levelNum);  
+        for (int i = 0; i < levelNum; i++) {  
+            TreeNode node = queue.poll();  
+            everyLevelList.add(node.val);  
+            if (node.left != null) queue.add(node.left);  
+            if (node.right != null) queue.add(node.right);  
+        }  
+        list.add(everyLevelList);  
+  
+    }  
+    return list;  
+}  
+  
+// 按照层次遍历入队列, 如果null 节点都出现在末尾则为完全二叉树  
+public boolean ifCompleteTree(TreeNode root) {  
+    if (root == null) return true;  
+    Queue<TreeNode> queue = new LinkedList<>();  
+    nodeToQueue(root, queue);  
+    int a = Integer.MIN_VALUE;  
+    int b = 0;  
+    for (int i = 0; i < queue.size(); i++) {  
+        if (queue.poll() == null) a = Math.min(a, i);  
+        if (queue.poll() != null) b = i;  
+    }  
+    return a > b;  
+  
+}  
+  
+public void nodeToQueue(TreeNode root, Queue<TreeNode> queue) {  
+    if (root != null) queue.add(root);  
+    queue.add(root.left);  
+    queue.add(root.right);  
+}
+```
+
 > 数字题
 
 因为所有的数字都是二进制, 可以用二进制中独有的运算, 位运算来达到四两拨千斤的效果, 
@@ -337,11 +406,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE0NDc1MTk0MCwxMzM5MzgxMjQ4LDE1MT
-I4NDY1NjAsMTI1NjQ5NTcyMCwtNjQyMzkwMDU5LDgwMzgxNDc4
-MSwtMjAwNjI2ODU3MSwtNjUzMjg4MjY2LDE3MzkxNzMwNDAsNz
-Q1NjEwOTIyLDE5Mjc4NzI1MTEsLTEwMzY5MDc2NzIsLTE0ODIy
-MzM1NjEsMTI0MTA3ODQ2NSw5NDA4MjY5NzksLTQ3OTU5NDMzOC
-wxNTMyNjY0NTc0LDc0NzM3NTc1MCwxNjc1MTIwOTE5LDUwMzk0
-ODExN119
+eyJoaXN0b3J5IjpbMTQyNTkzOTgwNiwyMTQ0NzUxOTQwLDEzMz
+kzODEyNDgsMTUxMjg0NjU2MCwxMjU2NDk1NzIwLC02NDIzOTAw
+NTksODAzODE0NzgxLC0yMDA2MjY4NTcxLC02NTMyODgyNjYsMT
+czOTE3MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUxMSwtMTAzNjkw
+NzY3MiwtMTQ4MjIzMzU2MSwxMjQxMDc4NDY1LDk0MDgyNjk3OS
+wtNDc5NTk0MzM4LDE1MzI2NjQ1NzQsNzQ3Mzc1NzUwLDE2NzUx
+MjA5MTldfQ==
 -->
