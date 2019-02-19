@@ -435,7 +435,7 @@ java -Dio.netty.leakDetectionLevel=ADVANCED
 * ping和telnet
 
 ping 基于ICMP 协议, 属于IP 层, telnet 基于telnet 协议, 属于TCP 层, 互相独立, 一个可通并不代表另一个可以通. 
-若是需要java co
+若是需要java socket 可连, 则需要开通Aip  到Bip 的Bport, 只是单向的, 若是双向的, 则需要注明, 否则默认单向
 
 ### 疑问
 * netty timeout and idle connection
@@ -450,7 +450,7 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4NDIzOTIyNCwtMzI3NjQ3NjQxLDg3NT
+eyJoaXN0b3J5IjpbMTU3MDY5MDM1OSwtMzI3NjQ3NjQxLDg3NT
 g2ODI3MiwtMTc0NzE1NDI3NSwxOTIwNDY1NTIxLC0xMDc5NzM3
 MzE2LDEzNDYyMTA0NjksNTcwNjAwNDk2LDQwNTI2MTU1MywtMj
 A5Nzg5MTE0MCwtMjAzMTYzNzM5MCw3MzczNTg2MzAsLTI3NjQ1
