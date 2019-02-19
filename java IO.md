@@ -431,6 +431,10 @@ java -Dio.netty.leakDetectionLevel=ADVANCED
 // 可以用netty 抽样检查bytebuffer 是否有泄漏
 ```
 
+### 网络协议
+* ping和telnet
+* 
+
 ### 疑问
 * netty timeout and idle connection
 * Listen socket and connected socket 
@@ -444,11 +448,11 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyNzY0NzY0MSw4NzU4NjgyNzIsLTE3ND
-cxNTQyNzUsMTkyMDQ2NTUyMSwtMTA3OTczNzMxNiwxMzQ2MjEw
-NDY5LDU3MDYwMDQ5Niw0MDUyNjE1NTMsLTIwOTc4OTExNDAsLT
-IwMzE2MzczOTAsNzM3MzU4NjMwLC0yNzY0NTM4NDksMTE1NjIy
-OTg2NiwxNjk1Mzk5ODY1LDgzNDkxNDM2MSwtMTk4NjQwNjk4NS
-wxMDY1MzQ5NzAwLC05ODI3MDM4MTUsLTkzMjA3ODU4LDM2MDA4
-NzY4M119
+eyJoaXN0b3J5IjpbLTIwMjA2MzcxMTAsLTMyNzY0NzY0MSw4Nz
+U4NjgyNzIsLTE3NDcxNTQyNzUsMTkyMDQ2NTUyMSwtMTA3OTcz
+NzMxNiwxMzQ2MjEwNDY5LDU3MDYwMDQ5Niw0MDUyNjE1NTMsLT
+IwOTc4OTExNDAsLTIwMzE2MzczOTAsNzM3MzU4NjMwLC0yNzY0
+NTM4NDksMTE1NjIyOTg2NiwxNjk1Mzk5ODY1LDgzNDkxNDM2MS
+wtMTk4NjQwNjk4NSwxMDY1MzQ5NzAwLC05ODI3MDM4MTUsLTkz
+MjA3ODU4XX0=
 -->
