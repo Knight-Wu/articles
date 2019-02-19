@@ -433,7 +433,9 @@ java -Dio.netty.leakDetectionLevel=ADVANCED
 
 ### 网络协议
 * ping和telnet
-* 
+
+ping 基于ICMP 协议, 属于IP 层, telnet 基于telnet 协议, 属于TCP 层, 互相独立, 一个可通并不代表另一个可以通. 
+若是需要java co
 
 ### 疑问
 * netty timeout and idle connection
@@ -448,11 +450,11 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMjA2MzcxMTAsLTMyNzY0NzY0MSw4Nz
-U4NjgyNzIsLTE3NDcxNTQyNzUsMTkyMDQ2NTUyMSwtMTA3OTcz
-NzMxNiwxMzQ2MjEwNDY5LDU3MDYwMDQ5Niw0MDUyNjE1NTMsLT
-IwOTc4OTExNDAsLTIwMzE2MzczOTAsNzM3MzU4NjMwLC0yNzY0
-NTM4NDksMTE1NjIyOTg2NiwxNjk1Mzk5ODY1LDgzNDkxNDM2MS
-wtMTk4NjQwNjk4NSwxMDY1MzQ5NzAwLC05ODI3MDM4MTUsLTkz
-MjA3ODU4XX0=
+eyJoaXN0b3J5IjpbMTI4NDIzOTIyNCwtMzI3NjQ3NjQxLDg3NT
+g2ODI3MiwtMTc0NzE1NDI3NSwxOTIwNDY1NTIxLC0xMDc5NzM3
+MzE2LDEzNDYyMTA0NjksNTcwNjAwNDk2LDQwNTI2MTU1MywtMj
+A5Nzg5MTE0MCwtMjAzMTYzNzM5MCw3MzczNTg2MzAsLTI3NjQ1
+Mzg0OSwxMTU2MjI5ODY2LDE2OTUzOTk4NjUsODM0OTE0MzYxLC
+0xOTg2NDA2OTg1LDEwNjUzNDk3MDAsLTk4MjcwMzgxNSwtOTMy
+MDc4NThdfQ==
 -->
