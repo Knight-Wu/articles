@@ -94,6 +94,8 @@ public static void mergeSortRecu(int[] arr, int[] result, int start, int end) {
 
 * 快速排序
 选一个基准数, 小于基准数的放到右边, 大于的放到左边, 并一直递归到数组只有一个元素, 再返回, 时间复杂度: O(nlgn), 推导公式跟归并排序一致
+
+> 版本一
 ```
 static void QSRecu(int[] arr, int start, int end) {  
     if (start >= end)// 一定要注意这个返回, 不然就算start > end, 还是会一直进while 循环.  
@@ -123,6 +125,29 @@ static void QSRecu(int[] arr, int start, int end) {
   QSRecu(arr, l, end);  
 }
 
+```
+
+> 版本二
+
+```
+static void QSRecu1(int[] arr, int start, int end) {  
+    if (start >= end)  
+        return;  
+    int l = start;  
+    int pivot = arr[end];  
+    for (int i = start; i < end; i++) {  
+        if (arr[i] <= pivot) {  
+            if (i != l) {  
+                swap(arr, i, l);  
+            }  
+            l++;  
+        }  
+    }  
+    swap(arr, l, end);  
+  
+    QSRecu1(arr, start, l - 1);  
+    QSRecu1(arr, l + 1, end);  
+}
 ```
 
 * 冒泡排序
@@ -406,11 +431,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQyNTkzOTgwNiwyMTQ0NzUxOTQwLDEzMz
-kzODEyNDgsMTUxMjg0NjU2MCwxMjU2NDk1NzIwLC02NDIzOTAw
-NTksODAzODE0NzgxLC0yMDA2MjY4NTcxLC02NTMyODgyNjYsMT
-czOTE3MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUxMSwtMTAzNjkw
-NzY3MiwtMTQ4MjIzMzU2MSwxMjQxMDc4NDY1LDk0MDgyNjk3OS
-wtNDc5NTk0MzM4LDE1MzI2NjQ1NzQsNzQ3Mzc1NzUwLDE2NzUx
-MjA5MTldfQ==
+eyJoaXN0b3J5IjpbOTE0MzI1NjM5LDE0MjU5Mzk4MDYsMjE0ND
+c1MTk0MCwxMzM5MzgxMjQ4LDE1MTI4NDY1NjAsMTI1NjQ5NTcy
+MCwtNjQyMzkwMDU5LDgwMzgxNDc4MSwtMjAwNjI2ODU3MSwtNj
+UzMjg4MjY2LDE3MzkxNzMwNDAsNzQ1NjEwOTIyLDE5Mjc4NzI1
+MTEsLTEwMzY5MDc2NzIsLTE0ODIyMzM1NjEsMTI0MTA3ODQ2NS
+w5NDA4MjY5NzksLTQ3OTU5NDMzOCwxNTMyNjY0NTc0LDc0NzM3
+NTc1MF19
 -->
