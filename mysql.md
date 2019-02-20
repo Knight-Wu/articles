@@ -28,7 +28,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 > 使用B+ tree 索引的原则
 
-1. 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d 作为查询条件的顺序可以任意调整。 2.=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式。
+1. 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d 作为查询条件的顺序可以任意调整。 2. where 里面的col 可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，可以用col in (val) 来使后面的索引列rengr
 
 2. 当不需要排序和分组的时候, 将选择性高的列放到多列索引的前边
 
@@ -101,11 +101,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1MzY1NDE4MCwxMjY5ODU3NzM2LC01NT
-YwMzU5NzcsNjU1MDIyODgzLDE0Mjc1NzIxMDUsMTk4NzAyNjgz
-MywxMDEzNjM0Mzg1LDI4MDA4MTUxNiwyMDY4MDUzNjc1LDExND
-I0MTE4MzksLTkwNzg2NTc5MCwxOTE4MDg3NDQwLDQzMDY3MTk4
-MywtMTg0NDU2MDQ0LC02MTk3ODI2NjcsNjI1NzQ2NzQwLDU4ND
-A3MDQzNywtNzY4ODM0NDI0LC05NjIzMDg3LDEyMzUwMTgwMTVd
-fQ==
+eyJoaXN0b3J5IjpbLTEwNjY3NjM2MjgsMTk1MzY1NDE4MCwxMj
+Y5ODU3NzM2LC01NTYwMzU5NzcsNjU1MDIyODgzLDE0Mjc1NzIx
+MDUsMTk4NzAyNjgzMywxMDEzNjM0Mzg1LDI4MDA4MTUxNiwyMD
+Y4MDUzNjc1LDExNDI0MTE4MzksLTkwNzg2NTc5MCwxOTE4MDg3
+NDQwLDQzMDY3MTk4MywtMTg0NDU2MDQ0LC02MTk3ODI2NjcsNj
+I1NzQ2NzQwLDU4NDA3MDQzNywtNzY4ODM0NDI0LC05NjIzMDg3
+XX0=
 -->
