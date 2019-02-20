@@ -97,14 +97,15 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 * 全文索引
 * mysql 为什么用B+ 树索引, 相比于B 树的好处
 * mysql 把所有字段都建上index 有什么不好的地方
+维护索引的代价很大, 占用空间, 影响插入和更新和删除?
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI2OTg1NzczNiwtNTU2MDM1OTc3LDY1NT
-AyMjg4MywxNDI3NTcyMTA1LDE5ODcwMjY4MzMsMTAxMzYzNDM4
-NSwyODAwODE1MTYsMjA2ODA1MzY3NSwxMTQyNDExODM5LC05MD
-c4NjU3OTAsMTkxODA4NzQ0MCw0MzA2NzE5ODMsLTE4NDQ1NjA0
-NCwtNjE5NzgyNjY3LDYyNTc0Njc0MCw1ODQwNzA0MzcsLTc2OD
-gzNDQyNCwtOTYyMzA4NywxMjM1MDE4MDE1LDE1ODI4Nzc4MDRd
+eyJoaXN0b3J5IjpbMTk1MzY1NDE4MCwxMjY5ODU3NzM2LC01NT
+YwMzU5NzcsNjU1MDIyODgzLDE0Mjc1NzIxMDUsMTk4NzAyNjgz
+MywxMDEzNjM0Mzg1LDI4MDA4MTUxNiwyMDY4MDUzNjc1LDExND
+I0MTE4MzksLTkwNzg2NTc5MCwxOTE4MDg3NDQwLDQzMDY3MTk4
+MywtMTg0NDU2MDQ0LC02MTk3ODI2NjcsNjI1NzQ2NzQwLDU4ND
+A3MDQzNywtNzY4ODM0NDI0LC05NjIzMDg3LDEyMzUwMTgwMTVd
 fQ==
 -->
