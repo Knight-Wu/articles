@@ -47,6 +47,7 @@ B树相对于平衡二叉树的不同是，每个节点包含的关键字增多�
 1.  节点的子树数和关键字数相同（B 树是关键字数比子树数少一）
 2.  节点的关键字表示的是子树中的最大数，在子树中同样含有这个数据(根节点的最大关键字其实就表示整个 B+ 树的最大元素。)
 3.  叶子节点包含了全部数据，同时符合左小右大的顺序
+4. 叶子节点存有指向下个叶子节点的指针, 适合范围查询. 
 
 * 为什么更适合做数据库和文件系统的数据类型呢
  In a **b-tree** you can store both keys and data in the internal and leaf nodes_ but in a **b+ tree** you have to store the data in the _leaf nodes only(由于中间节点不含数据)  所以一个磁盘块中可以含有更多的中间节点, IO 次数相对更低. 
@@ -431,11 +432,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTE0MzI1NjM5LDE0MjU5Mzk4MDYsMjE0ND
-c1MTk0MCwxMzM5MzgxMjQ4LDE1MTI4NDY1NjAsMTI1NjQ5NTcy
-MCwtNjQyMzkwMDU5LDgwMzgxNDc4MSwtMjAwNjI2ODU3MSwtNj
-UzMjg4MjY2LDE3MzkxNzMwNDAsNzQ1NjEwOTIyLDE5Mjc4NzI1
-MTEsLTEwMzY5MDc2NzIsLTE0ODIyMzM1NjEsMTI0MTA3ODQ2NS
-w5NDA4MjY5NzksLTQ3OTU5NDMzOCwxNTMyNjY0NTc0LDc0NzM3
-NTc1MF19
+eyJoaXN0b3J5IjpbLTIxMzA1MDU0ODAsOTE0MzI1NjM5LDE0Mj
+U5Mzk4MDYsMjE0NDc1MTk0MCwxMzM5MzgxMjQ4LDE1MTI4NDY1
+NjAsMTI1NjQ5NTcyMCwtNjQyMzkwMDU5LDgwMzgxNDc4MSwtMj
+AwNjI2ODU3MSwtNjUzMjg4MjY2LDE3MzkxNzMwNDAsNzQ1NjEw
+OTIyLDE5Mjc4NzI1MTEsLTEwMzY5MDc2NzIsLTE0ODIyMzM1Nj
+EsMTI0MTA3ODQ2NSw5NDA4MjY5NzksLTQ3OTU5NDMzOCwxNTMy
+NjY0NTc0XX0=
 -->
