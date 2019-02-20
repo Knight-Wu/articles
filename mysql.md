@@ -42,7 +42,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 >  When you define a  `PRIMARY KEY`  on your table,  `InnoDB`  uses it as the clustered index. Define a primary key for each table that you create. If there is no logical unique and non-null column or set of columns, add a new  [auto-increment](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_auto_increment "auto-increment")  column, whose values are filled in automatically.(如果有主键的话, 就把主键作为 clustered index )
     
->  If you do not define a  `PRIMARY KEY`  for your table, MySQL locates the first  `UNIQUE`  index where all the key columns are  `NOT NULL`  and  `InnoDB`  uses it as the clustered index. (如果没有主键, 选择一个unique 的index 作为聚簇索引,  所有索引的col 都要求非 null)
+>  If you do not define a  `PRIMARY KEY`  for your table, MySQL locates the first  `UNIQUE`  index where all the key columns are  `NOT NULL`  and  `InnoDB`  uses it as the clustered index. (如果没有主键, 选择一个unique 的index 作为聚簇索引,  要求该索引的所有key col 都要求非 null)
 
 * Secondary Indexes
 > All indexes other than the clustered index are known as [secondary indexes](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_secondary_index "secondary index").(非聚簇索引都是二级索引)
@@ -100,11 +100,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1NDQyMDU3NCwxNDI3NTcyMTA1LDE5OD
-cwMjY4MzMsMTAxMzYzNDM4NSwyODAwODE1MTYsMjA2ODA1MzY3
-NSwxMTQyNDExODM5LC05MDc4NjU3OTAsMTkxODA4NzQ0MCw0Mz
-A2NzE5ODMsLTE4NDQ1NjA0NCwtNjE5NzgyNjY3LDYyNTc0Njc0
-MCw1ODQwNzA0MzcsLTc2ODgzNDQyNCwtOTYyMzA4NywxMjM1MD
-E4MDE1LDE1ODI4Nzc4MDQsMzI1Njg2MDMzLDU0ODc5NjI1NF19
+eyJoaXN0b3J5IjpbNjU1MDIyODgzLDE0Mjc1NzIxMDUsMTk4Nz
+AyNjgzMywxMDEzNjM0Mzg1LDI4MDA4MTUxNiwyMDY4MDUzNjc1
+LDExNDI0MTE4MzksLTkwNzg2NTc5MCwxOTE4MDg3NDQwLDQzMD
+Y3MTk4MywtMTg0NDU2MDQ0LC02MTk3ODI2NjcsNjI1NzQ2NzQw
+LDU4NDA3MDQzNywtNzY4ODM0NDI0LC05NjIzMDg3LDEyMzUwMT
+gwMTUsMTU4Mjg3NzgwNCwzMjU2ODYwMzMsNTQ4Nzk2MjU0XX0=
 
 -->
