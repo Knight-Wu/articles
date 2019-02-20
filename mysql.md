@@ -28,14 +28,15 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 > 使用B+ tree 索引的原则
 
-1. 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d 作为查询条件的顺序可以任意调整。 2. where 里面的col 可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，可以用col in (val) 来使后面的索引列rengr
+1. 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d 作为查询条件的顺序可以任意调整。 2. where 里面的col 可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，可以用col in (val) 来使后面的索引列仍然有效, 例如
+where a="A" and b in ('b','B') and c = 'C' , (a,b,c) 的索引仍然有效. 
 
-2. 当不需要排序和分组的时候, 将选择性高的列放到多列索引的前边
+3. 当不需要排序和分组的时候, 将选择性高的列放到多列索引的前边
 
-3. 索引列的值不能作为函数入参进行计算, 比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’)
-4. 前缀索引
+4. 索引列的值不能作为函数入参进行计算, 比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’)
+5. 前缀索引
  只采取索引列的前缀作为索引, 减少空间, 但是这个前缀要能一定程度上的获取你想要的结果. 可以具体参考"高性能mysql 5.3.2"
-5. 多列索引, 可能会引起索引的合并, 
+6. 多列索引, 可能会引起索引的合并, 
 
 * clustered index
 聚簇索引并不是一个索引类型, 而是一种数据存储方式, 而InnoDB 的聚簇索引实际上就是B+ tree 的叶子节点将key 和data row 存放在一起. 
@@ -101,11 +102,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNjY3NjM2MjgsMTk1MzY1NDE4MCwxMj
-Y5ODU3NzM2LC01NTYwMzU5NzcsNjU1MDIyODgzLDE0Mjc1NzIx
-MDUsMTk4NzAyNjgzMywxMDEzNjM0Mzg1LDI4MDA4MTUxNiwyMD
-Y4MDUzNjc1LDExNDI0MTE4MzksLTkwNzg2NTc5MCwxOTE4MDg3
-NDQwLDQzMDY3MTk4MywtMTg0NDU2MDQ0LC02MTk3ODI2NjcsNj
-I1NzQ2NzQwLDU4NDA3MDQzNywtNzY4ODM0NDI0LC05NjIzMDg3
-XX0=
+eyJoaXN0b3J5IjpbMTE3ODUzMTE3NCwxOTUzNjU0MTgwLDEyNj
+k4NTc3MzYsLTU1NjAzNTk3Nyw2NTUwMjI4ODMsMTQyNzU3MjEw
+NSwxOTg3MDI2ODMzLDEwMTM2MzQzODUsMjgwMDgxNTE2LDIwNj
+gwNTM2NzUsMTE0MjQxMTgzOSwtOTA3ODY1NzkwLDE5MTgwODc0
+NDAsNDMwNjcxOTgzLC0xODQ0NTYwNDQsLTYxOTc4MjY2Nyw2Mj
+U3NDY3NDAsNTg0MDcwNDM3LC03Njg4MzQ0MjQsLTk2MjMwODdd
+fQ==
 -->
