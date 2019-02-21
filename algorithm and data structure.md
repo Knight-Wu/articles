@@ -276,6 +276,7 @@ static void hillS(int[] arr) {
 ```
 * 桶排序
 将元素放到几个子数组里面, 按照跟min 元素的差值来划分, 并在每个子数组中进行插入排序. 最坏时间复杂度O(n*n), 平均时间复杂度O(n), 见英文维基百科
+
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/33balanced/
@@ -432,11 +433,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzA1MDU0ODAsOTE0MzI1NjM5LDE0Mj
-U5Mzk4MDYsMjE0NDc1MTk0MCwxMzM5MzgxMjQ4LDE1MTI4NDY1
-NjAsMTI1NjQ5NTcyMCwtNjQyMzkwMDU5LDgwMzgxNDc4MSwtMj
-AwNjI2ODU3MSwtNjUzMjg4MjY2LDE3MzkxNzMwNDAsNzQ1NjEw
-OTIyLDE5Mjc4NzI1MTEsLTEwMzY5MDc2NzIsLTE0ODIyMzM1Nj
-EsMTI0MTA3ODQ2NSw5NDA4MjY5NzksLTQ3OTU5NDMzOCwxNTMy
-NjY0NTc0XX0=
+eyJoaXN0b3J5IjpbLTk0NjQzMjczMCwtMjEzMDUwNTQ4MCw5MT
+QzMjU2MzksMTQyNTkzOTgwNiwyMTQ0NzUxOTQwLDEzMzkzODEy
+NDgsMTUxMjg0NjU2MCwxMjU2NDk1NzIwLC02NDIzOTAwNTksOD
+AzODE0NzgxLC0yMDA2MjY4NTcxLC02NTMyODgyNjYsMTczOTE3
+MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUxMSwtMTAzNjkwNzY3Mi
+wtMTQ4MjIzMzU2MSwxMjQxMDc4NDY1LDk0MDgyNjk3OSwtNDc5
+NTk0MzM4XX0=
 -->
