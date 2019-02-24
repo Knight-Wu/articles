@@ -208,7 +208,7 @@ null
 根据这个问题的第三个答案 https://stackoverflow.com/questions/10901752/what-is-the-significance-of-load-factor-in-hashmap, 公式的原理应该是:  size 为s , 已经有了n 个entry, 当下一个entry 进来的时候, 如何能最小化碰撞的概率, 并且此时空间利用率最大, 然后那个公式给出是n/s 小于 log2 的时候, 碰撞的概率都很小, 然后近似取了个比较容易算的值: 0.75
 
 * 为什么当链表长度大于等于8 的时候, 链表转化为红黑树
-这种情况用于hashcode 分布性很差的时候, 出现了很多个hash 冲突, 
+这种情况用于hashcode 分布性很差的时候, 出现了很多个hash 冲突, 而且当fuzaiyinzi
 
 HashMap 的底层数组长度总是2的n次方的原因有两个，即当 length=2^n 时：
 不同的hash值发生碰撞的概率比较小，这样就会使得数据在table数组中分布较均匀，空间利用率较高，查询速度也较快；
@@ -298,10 +298,10 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyNzE5ODA3MywxNDQ0NzY3MTg5LDE3NT
-gzODIwNSwtMTA2MTgxNDk1NCw5NjUwNDUyNjEsLTEyMDk3NDk4
-MTcsMTQ0NjIzMzk0NywtMTc1MDI0NzQ4MiwxMzQ1MDM3MjQ0LC
-04NzU4OTA2MTIsLTExODk5NTk1NDIsLTE4NjU2OTcxNywxNTIw
-MTk3NzcxLDI4NTU5MDA0NywxMTU2Nzk1NywxMzI5Mjg3MzM5LD
-E3ODk0MjAzNTRdfQ==
+eyJoaXN0b3J5IjpbLTEyNjQwNDcwOTYsMTEyNzE5ODA3MywxND
+Q0NzY3MTg5LDE3NTgzODIwNSwtMTA2MTgxNDk1NCw5NjUwNDUy
+NjEsLTEyMDk3NDk4MTcsMTQ0NjIzMzk0NywtMTc1MDI0NzQ4Mi
+wxMzQ1MDM3MjQ0LC04NzU4OTA2MTIsLTExODk5NTk1NDIsLTE4
+NjU2OTcxNywxNTIwMTk3NzcxLDI4NTU5MDA0NywxMTU2Nzk1Ny
+wxMzI5Mjg3MzM5LDE3ODk0MjAzNTRdfQ==
 -->
