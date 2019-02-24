@@ -197,7 +197,16 @@ null
 > The best way to avoid this type of exception is to always check for null when you did not create the object yourself." If the caller passes null, but null is not a valid argument for the method, then it's correct to throw the exception back at the caller because it's the caller's fault
 
 #### hashmap
+
+![enter image description here](https://drive.google.com/uc?id=1CliBbv1YMdfPtT7NwlZwoxL6MUf_MRmj)
+* 一些基础概念
+有一个table 数组, 数组的每个槽作为一个bucket, 然后数组的元素可能是一个链表的node ,也可能是一个 红黑树的node. 取决于jdk 的版本和一个bucket 里面entry的数量; 每个key 和val 组成一个entry. 
+
 初始容量 和 负载因子，这两个参数是影响HashMap性能的重要参数。其中，容量表示哈希表中桶的数量 (table 数组的大小)，初始容量是创建哈希表时桶的数量；负载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，它衡量的是一个散列表的空间的使用程度，负载因子越大表示散列表的装填程度越高，整个hashmap 空间需要的更少, 但是查找时间会增加, 反之愈小。默认的, 当初始容量 capacity(默认16 ) * load factor (0.75 )>  enrty的数量的时候, 会认为需要进行table 数组的扩容了. 当初始容量不是2的n 次方的时候, 会选择比它大的, 但是最小的2的n 次方作为数组的初始容量. 所以当entry 的最大数量小于容量 * 负责因子的时候, 就永远不会进行rehash 
+
+* 负载因子是怎么算出0.75 的
+根据这个问题的第三个答案 https://stackoverflow.com/questions/10901752/what-is-the-significance-of-load-factor-in-hashmap, 公式的原理应该是:  size 为s , 已经有了n 个entry, 当下一个entry 进来的时候, 如何能最小化碰撞的概率, 并且此时空间利用率最大, 然后那个公式给出是n/s 小于 log2 的时候, 碰撞的概率都很小, 然后近似取了个比较容易算的值: 0.75
+
 
 HashMap 的底层数组长度总是2的n次方的原因有两个，即当 length=2^n 时：
 不同的hash值发生碰撞的概率比较小，这样就会使得数据在table数组中分布较均匀，空间利用率较高，查询速度也较快；
@@ -287,9 +296,10 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1ODM4MjA1LC0xMDYxODE0OTU0LDk2NT
-A0NTI2MSwtMTIwOTc0OTgxNywxNDQ2MjMzOTQ3LC0xNzUwMjQ3
-NDgyLDEzNDUwMzcyNDQsLTg3NTg5MDYxMiwtMTE4OTk1OTU0Mi
-wtMTg2NTY5NzE3LDE1MjAxOTc3NzEsMjg1NTkwMDQ3LDExNTY3
-OTU3LDEzMjkyODczMzksMTc4OTQyMDM1NF19
+eyJoaXN0b3J5IjpbMTQ0NDc2NzE4OSwxNzU4MzgyMDUsLTEwNj
+E4MTQ5NTQsOTY1MDQ1MjYxLC0xMjA5NzQ5ODE3LDE0NDYyMzM5
+NDcsLTE3NTAyNDc0ODIsMTM0NTAzNzI0NCwtODc1ODkwNjEyLC
+0xMTg5OTU5NTQyLC0xODY1Njk3MTcsMTUyMDE5Nzc3MSwyODU1
+OTAwNDcsMTE1Njc5NTcsMTMyOTI4NzMzOSwxNzg5NDIwMzU0XX
+0=
 -->
