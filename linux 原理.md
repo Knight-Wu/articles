@@ -13,7 +13,7 @@ cat /proc/sys/vm/swappiness
 ```
 上面这个60代表物理内存在使用60%的时候才会使用swap
 
-swappiness=0的时候表示最大限度使用物理内存，然后才是 swap空间，
+**swappiness=0的时候表示最大限度使用物理内存，然后才是 swap空间，**
 
 swappiness＝100的时候表示积极的使用swap分区，并且把内存上的数据及时的搬运到swap空间里面。
 
@@ -65,6 +65,6 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTcxNjI3ODMsLTIwMTIzNzE3ODEsMT
-Q3NTQzOTkxNywxOTIwNzQwMTUwXX0=
+eyJoaXN0b3J5IjpbLTg2ODMxODYyMywtMjExNzE2Mjc4MywtMj
+AxMjM3MTc4MSwxNDc1NDM5OTE3LDE5MjA3NDAxNTBdfQ==
 -->
