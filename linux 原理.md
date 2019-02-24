@@ -63,8 +63,12 @@ find /* -name  *.conf
 
 看看buffers的值是否变化，然后重复执行find命令，看看两次显示速度有何不同。
 
+### 疑问
+* swap 为什么会增大
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2ODMxODYyMywtMjExNzE2Mjc4MywtMj
-AxMjM3MTc4MSwxNDc1NDM5OTE3LDE5MjA3NDAxNTBdfQ==
+eyJoaXN0b3J5IjpbLTE0Mzk2Mjg5OTMsLTg2ODMxODYyMywtMj
+ExNzE2Mjc4MywtMjAxMjM3MTc4MSwxNDc1NDM5OTE3LDE5MjA3
+NDAxNTBdfQ==
 -->
