@@ -54,6 +54,9 @@ cat /proc/sys/vm/swappiness
 * 如何释放内存和swap 
 https://cloud.tencent.com/developer/article/1200032
 
+* swap 由process 的使用情况
+> To find out the amount of swap space used by every process, run `top` (not `htop`), press 'f' to select columns (f for fields) to display, press 'p' to add swap to display, press 'o' to sort the table (o for order by) and press 'p' again to order by swap usage.
+
 * buffer and cache
 buffers是用来缓冲块设备做的，它只记录文件系统的元数据（metadata）以及 tracking in-flight pages，而cached是用来给文件做缓冲。更通俗一点说：buffers主要用来存放目录里面有什么内容，文件的属性以及权限等等。而cached直接用来记忆我们打开过的文件和程序。
 
@@ -68,7 +71,7 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0Mzk2Mjg5OTMsLTg2ODMxODYyMywtMj
-ExNzE2Mjc4MywtMjAxMjM3MTc4MSwxNDc1NDM5OTE3LDE5MjA3
-NDAxNTBdfQ==
+eyJoaXN0b3J5IjpbLTk1MDA5ODc5OSwtMTQzOTYyODk5MywtOD
+Y4MzE4NjIzLC0yMTE3MTYyNzgzLC0yMDEyMzcxNzgxLDE0NzU0
+Mzk5MTcsMTkyMDc0MDE1MF19
 -->
