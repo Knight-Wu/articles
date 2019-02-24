@@ -197,7 +197,7 @@ null
 > The best way to avoid this type of exception is to always check for null when you did not create the object yourself." If the caller passes null, but null is not a valid argument for the method, then it's correct to throw the exception back at the caller because it's the caller's fault
 
 #### hashmap
-初始容量 和 负载因子，这两个参数是影响HashMap性能的重要参数。其中，容量表示哈希表中桶的数量 (table 数组的大小)，初始容量是创建哈希表时桶的数量；负载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，它衡量的是一个散列表的空间的使用程度，负载因子越大表示散列表的装填程度越高，整个hashmap 空间需要的更少, 但是查找时间会增加, 反之愈小。默认的, 当初始容量 capacity(默认16 ) * load factor (0.75 )>  enrty的数量的时候, 会认为需要进行table 数组的扩容了. 当初始容量不是2的n 次方的时候, 会选择比它大的, 但是最小的元素作为数组的初始容量. 所以当entry 的最大数量小于容量 * 负责因子的时候, 就永远不会进行rehash , 影响性能. 
+初始容量 和 负载因子，这两个参数是影响HashMap性能的重要参数。其中，容量表示哈希表中桶的数量 (table 数组的大小)，初始容量是创建哈希表时桶的数量；负载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，它衡量的是一个散列表的空间的使用程度，负载因子越大表示散列表的装填程度越高，整个hashmap 空间需要的更少, 但是查找时间会增加, 反之愈小。默认的, 当初始容量 capacity(默认16 ) * load factor (0.75 )>  enrty的数量的时候, 会认为需要进行table 数组的扩容了. 当初始容量不是2的n 次方的时候, 会选择比它大的, 但是最小的2的n 次方作为数组的初始容量. 所以当entry 的最大数量小于容量 * 负责因子的时候, 就永远不会进行rehash 
 
 HashMap 的底层数组长度总是2的n次方的原因有两个，即当 length=2^n 时：
 不同的hash值发生碰撞的概率比较小，这样就会使得数据在table数组中分布较均匀，空间利用率较高，查询速度也较快；
@@ -282,9 +282,9 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTY1MDQ1MjYxLC0xMjA5NzQ5ODE3LDE0ND
-YyMzM5NDcsLTE3NTAyNDc0ODIsMTM0NTAzNzI0NCwtODc1ODkw
-NjEyLC0xMTg5OTU5NTQyLC0xODY1Njk3MTcsMTUyMDE5Nzc3MS
-wyODU1OTAwNDcsMTE1Njc5NTcsMTMyOTI4NzMzOSwxNzg5NDIw
-MzU0XX0=
+eyJoaXN0b3J5IjpbLTEwNjE4MTQ5NTQsOTY1MDQ1MjYxLC0xMj
+A5NzQ5ODE3LDE0NDYyMzM5NDcsLTE3NTAyNDc0ODIsMTM0NTAz
+NzI0NCwtODc1ODkwNjEyLC0xMTg5OTU5NTQyLC0xODY1Njk3MT
+csMTUyMDE5Nzc3MSwyODU1OTAwNDcsMTE1Njc5NTcsMTMyOTI4
+NzMzOSwxNzg5NDIwMzU0XX0=
 -->
