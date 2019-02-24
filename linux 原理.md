@@ -51,6 +51,8 @@ cat /proc/sys/vm/swappiness
 
 35
 ```
+* 如何释放内存和swap 
+https://cloud.tencent.com/developer/article/1200032
 
 * buffer and cache
 buffers是用来缓冲块设备做的，它只记录文件系统的元数据（metadata）以及 tracking in-flight pages，而cached是用来给文件做缓冲。更通俗一点说：buffers主要用来存放目录里面有什么内容，文件的属性以及权限等等。而cached直接用来记忆我们打开过的文件和程序。
@@ -63,6 +65,6 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTIzNzE3ODEsMTQ3NTQzOTkxNywxOT
-IwNzQwMTUwXX0=
+eyJoaXN0b3J5IjpbLTIxMTcxNjI3ODMsLTIwMTIzNzE3ODEsMT
+Q3NTQzOTkxNywxOTIwNzQwMTUwXX0=
 -->
