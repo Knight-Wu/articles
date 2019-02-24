@@ -243,6 +243,10 @@ int indexFor(int hash,int length)
 * 为什么String, Interger这样的wrapper类适合作为键
 > 保证key是不可变的, 具体说来就是hashCode不能变, 作为键的对象, 需要重写hashCode和equal方法, 保证能正常获取到之前的对象. 
 
+* HashMap, ConcurrentHashMap,HashTable 的结构，在JDK 1.7 和1.8 中有什么不同
+
+* put时，是加到链表头还是链表尾
+* get的时间复杂度（对链表，对红黑树）
 
 ## 泛型
 1.使用原生态类型
@@ -282,9 +286,9 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNjE4MTQ5NTQsOTY1MDQ1MjYxLC0xMj
-A5NzQ5ODE3LDE0NDYyMzM5NDcsLTE3NTAyNDc0ODIsMTM0NTAz
-NzI0NCwtODc1ODkwNjEyLC0xMTg5OTU5NTQyLC0xODY1Njk3MT
-csMTUyMDE5Nzc3MSwyODU1OTAwNDcsMTE1Njc5NTcsMTMyOTI4
-NzMzOSwxNzg5NDIwMzU0XX0=
+eyJoaXN0b3J5IjpbLTE3OTQ0NTE0NzQsLTEwNjE4MTQ5NTQsOT
+Y1MDQ1MjYxLC0xMjA5NzQ5ODE3LDE0NDYyMzM5NDcsLTE3NTAy
+NDc0ODIsMTM0NTAzNzI0NCwtODc1ODkwNjEyLC0xMTg5OTU5NT
+QyLC0xODY1Njk3MTcsMTUyMDE5Nzc3MSwyODU1OTAwNDcsMTE1
+Njc5NTcsMTMyOTI4NzMzOSwxNzg5NDIwMzU0XX0=
 -->
