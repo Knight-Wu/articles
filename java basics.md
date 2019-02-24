@@ -246,6 +246,7 @@ int indexFor(int hash,int length)
 * HashMap, ConcurrentHashMap,HashTable 的结构，在JDK 1.7 和1.8 中有什么不同
 
 * put时，是加到链表头还是链表尾
+在jdk1.8之前是插入头部的，在jdk1.8中是插入尾部的
 * get的时间复杂度（对链表，对红黑树）
 
 ## 泛型
@@ -286,9 +287,9 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTQ0NTE0NzQsLTEwNjE4MTQ5NTQsOT
-Y1MDQ1MjYxLC0xMjA5NzQ5ODE3LDE0NDYyMzM5NDcsLTE3NTAy
-NDc0ODIsMTM0NTAzNzI0NCwtODc1ODkwNjEyLC0xMTg5OTU5NT
-QyLC0xODY1Njk3MTcsMTUyMDE5Nzc3MSwyODU1OTAwNDcsMTE1
-Njc5NTcsMTMyOTI4NzMzOSwxNzg5NDIwMzU0XX0=
+eyJoaXN0b3J5IjpbMTc1ODM4MjA1LC0xMDYxODE0OTU0LDk2NT
+A0NTI2MSwtMTIwOTc0OTgxNywxNDQ2MjMzOTQ3LC0xNzUwMjQ3
+NDgyLDEzNDUwMzcyNDQsLTg3NTg5MDYxMiwtMTE4OTk1OTU0Mi
+wtMTg2NTY5NzE3LDE1MjAxOTc3NzEsMjg1NTkwMDQ3LDExNTY3
+OTU3LDEzMjkyODczMzksMTc4OTQyMDM1NF19
 -->
