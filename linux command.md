@@ -288,7 +288,9 @@ $ getconf PAGE_SIZE
 
 
 
-
+#### shell google 编程指南
+https://fangpeishi.com/google_shell_style_guide.html
+[https://google.github.io/styleguide/shell.xml](https://google.github.io/styleguide/shell.xml)
 
 #### shell 单引号双引号
 [http://wiki.jikexueyuan.com/project/13-questions-of-shell/double-single.html](http://wiki.jikexueyuan.com/project/13-questions-of-shell/double-single.html)
@@ -326,5 +328,5 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxOTQ2NDE4Ml19
+eyJoaXN0b3J5IjpbLTEyOTA1NzgzNTgsLTIxOTQ2NDE4Ml19
 -->
