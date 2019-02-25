@@ -424,7 +424,7 @@ public void nodeToQueue(TreeNode root, Queue<TreeNode> queue) {
 > 递归思想
 
 递归可以想象成函数调用不断压栈, 直到满足结束条件, 最后一个调用首先返回. 
-在递归调用之前的语句会正序执行, 再递归调用之后的语句会逆序执行
+在递归调用之前的语句会正序执行(自顶向下), 再递归调用之后的语句会逆序执行(自下而上)
 
 #### 待解决问题
 * paxos 的应用
@@ -433,11 +433,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0NjQzMjczMCwtMjEzMDUwNTQ4MCw5MT
-QzMjU2MzksMTQyNTkzOTgwNiwyMTQ0NzUxOTQwLDEzMzkzODEy
-NDgsMTUxMjg0NjU2MCwxMjU2NDk1NzIwLC02NDIzOTAwNTksOD
-AzODE0NzgxLC0yMDA2MjY4NTcxLC02NTMyODgyNjYsMTczOTE3
-MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUxMSwtMTAzNjkwNzY3Mi
-wtMTQ4MjIzMzU2MSwxMjQxMDc4NDY1LDk0MDgyNjk3OSwtNDc5
-NTk0MzM4XX0=
+eyJoaXN0b3J5IjpbLTEzNDA4MzI5NzksLTk0NjQzMjczMCwtMj
+EzMDUwNTQ4MCw5MTQzMjU2MzksMTQyNTkzOTgwNiwyMTQ0NzUx
+OTQwLDEzMzkzODEyNDgsMTUxMjg0NjU2MCwxMjU2NDk1NzIwLC
+02NDIzOTAwNTksODAzODE0NzgxLC0yMDA2MjY4NTcxLC02NTMy
+ODgyNjYsMTczOTE3MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUxMS
+wtMTAzNjkwNzY3MiwtMTQ4MjIzMzU2MSwxMjQxMDc4NDY1LDk0
+MDgyNjk3OV19
 -->
