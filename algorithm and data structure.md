@@ -286,7 +286,7 @@ https://www.coursera.org/learn/algorithms-part1/
 
 ### 查找
 #### 布隆过滤器
-用途在于数据量非常庞大的时候, 减少数据集的空间占用, 用一个bit 数组来保存, 假设有n个hash 函数, 新来的一个元素a, 
+用途在于数据量非常庞大的时候, 判断数据是否在集合中, 减少数据集的空间占用, 用一个bit 数组来保存, 假设有n个hash 函数, 新来的一个元素a, 
 插入: 将a 通过n 个hash 函数算出的结果分别对应bit 数组上的n 个bit 位, 分别置一; 
 查询: 元素通过hash 函数算出的结果, 对应的bit 位上都是一, 则有可能在集合中, 因为n 个hash 都有可能冲突; 如果有一个bit 位为零, 则一定不存在集合中. 
 
@@ -433,11 +433,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDA4MzI5NzksLTk0NjQzMjczMCwtMj
-EzMDUwNTQ4MCw5MTQzMjU2MzksMTQyNTkzOTgwNiwyMTQ0NzUx
-OTQwLDEzMzkzODEyNDgsMTUxMjg0NjU2MCwxMjU2NDk1NzIwLC
-02NDIzOTAwNTksODAzODE0NzgxLC0yMDA2MjY4NTcxLC02NTMy
-ODgyNjYsMTczOTE3MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUxMS
-wtMTAzNjkwNzY3MiwtMTQ4MjIzMzU2MSwxMjQxMDc4NDY1LDk0
-MDgyNjk3OV19
+eyJoaXN0b3J5IjpbMjA1MTQ4OTAxNiwtMTM0MDgzMjk3OSwtOT
+Q2NDMyNzMwLC0yMTMwNTA1NDgwLDkxNDMyNTYzOSwxNDI1OTM5
+ODA2LDIxNDQ3NTE5NDAsMTMzOTM4MTI0OCwxNTEyODQ2NTYwLD
+EyNTY0OTU3MjAsLTY0MjM5MDA1OSw4MDM4MTQ3ODEsLTIwMDYy
+Njg1NzEsLTY1MzI4ODI2NiwxNzM5MTczMDQwLDc0NTYxMDkyMi
+wxOTI3ODcyNTExLC0xMDM2OTA3NjcyLC0xNDgyMjMzNTYxLDEy
+NDEwNzg0NjVdfQ==
 -->
