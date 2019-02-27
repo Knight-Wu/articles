@@ -427,7 +427,7 @@ public void nodeToQueue(TreeNode root, Queue<TreeNode> queue) {
 在递归调用之前的语句会正序执行(自顶向下), 再递归调用之后的语句会逆序执行(自下而上)
 
 * 注意事项
-1. 注意递归中, 全局变量, 局部变量的值的改变, 基本类型例如int, char 等, 在函数栈的嵌套zhong
+1. 注意递归中, 全局变量, 局部变量的值的改变, 基本类型例如int, char 等, 在函数栈的嵌套中拷贝一个新的值到下一个函数调用, 
 
 #### 待解决问题
 * paxos 的应用
@@ -436,7 +436,7 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIzOTMxMTcwNCwyMDUxNDg5MDE2LC0xMz
+eyJoaXN0b3J5IjpbLTU2MzI3Nzk4NCwyMDUxNDg5MDE2LC0xMz
 QwODMyOTc5LC05NDY0MzI3MzAsLTIxMzA1MDU0ODAsOTE0MzI1
 NjM5LDE0MjU5Mzk4MDYsMjE0NDc1MTk0MCwxMzM5MzgxMjQ4LD
 E1MTI4NDY1NjAsMTI1NjQ5NTcyMCwtNjQyMzkwMDU5LDgwMzgx
