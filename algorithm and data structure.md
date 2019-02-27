@@ -423,12 +423,12 @@ public void nodeToQueue(TreeNode root, Queue<TreeNode> queue) {
 
 > 递归思想
 
-递归可以想象成函数调用不断压栈, 直到满足结束条件, 最后一个调用首先返回. 
+递归可以想象成函数调用不断压栈, 直到满足**结束条件**, 最后一个调用首先返回. 
 在递归调用之前的语句会正序执行(自顶向下), 再递归调用之后的语句会逆序执行(自下而上)
 
 * 注意事项
-1. 注意递归中, 全局变量, 局部变量的值的改变, 基本类型例如int, char 等, 在函数栈的嵌套中拷贝一个新的值到下一个函数调用, 每个函数栈的变量的改变不影响其他函数栈; 但是如果是对象类型, 则传递的是对象的引用, 多个函数栈中会改变对象的值; 但是如果传递的是新的字符串, 则不会改变
-
+1. 注意递归中, 传递的参数的类型, 基本类型例如int, char 等, 在函数栈的嵌套中拷贝一个新的值到下一个函数调用, 每个函数栈的变量的改变不影响其他函数栈; 但是如果是对象类型, 则传递的是对象的引用, 多个函数栈中会改变对象的值; 但是如果传递的是新的字符串, 则不会改变
+2. 灵活使用递归中的全局变量和参数, 能让递归更易理解. 
 
 
 #### 待解决问题
@@ -438,11 +438,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODY4MjExOTMyLDIwNTE0ODkwMTYsLTEzND
-A4MzI5NzksLTk0NjQzMjczMCwtMjEzMDUwNTQ4MCw5MTQzMjU2
-MzksMTQyNTkzOTgwNiwyMTQ0NzUxOTQwLDEzMzkzODEyNDgsMT
-UxMjg0NjU2MCwxMjU2NDk1NzIwLC02NDIzOTAwNTksODAzODE0
-NzgxLC0yMDA2MjY4NTcxLC02NTMyODgyNjYsMTczOTE3MzA0MC
-w3NDU2MTA5MjIsMTkyNzg3MjUxMSwtMTAzNjkwNzY3MiwtMTQ4
-MjIzMzU2MV19
+eyJoaXN0b3J5IjpbLTE5MTQxMzY3OCwyMDUxNDg5MDE2LC0xMz
+QwODMyOTc5LC05NDY0MzI3MzAsLTIxMzA1MDU0ODAsOTE0MzI1
+NjM5LDE0MjU5Mzk4MDYsMjE0NDc1MTk0MCwxMzM5MzgxMjQ4LD
+E1MTI4NDY1NjAsMTI1NjQ5NTcyMCwtNjQyMzkwMDU5LDgwMzgx
+NDc4MSwtMjAwNjI2ODU3MSwtNjUzMjg4MjY2LDE3MzkxNzMwND
+AsNzQ1NjEwOTIyLDE5Mjc4NzI1MTEsLTEwMzY5MDc2NzIsLTE0
+ODIyMzM1NjFdfQ==
 -->
