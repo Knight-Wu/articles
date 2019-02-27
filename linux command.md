@@ -167,6 +167,7 @@ sz // 下载文件,
 
 > tar -xf archive.tar -C /target/directory // 解包到任意目录
 
+> tar zxvf FileName.tar.gz  // 解压 tar.gz 文件
 * 查看linux系统版本
 
 
@@ -328,5 +329,6 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTA1NzgzNTgsLTIxOTQ2NDE4Ml19
+eyJoaXN0b3J5IjpbLTI5MjA4NzA2OSwtMTI5MDU3ODM1OCwtMj
+E5NDY0MTgyXX0=
 -->
