@@ -325,7 +325,7 @@ public void solution( int [] arr){
 > 字符串
 
 1. 如果字符串已经限定了是ASCII, 则可以用一个256 长度的int 数组来同等表示, 而且可以根据int 值的大小来排序, 排序的时间复杂度是O(n) .
-
+2. 滑动窗口的思想
 
 > 查找
 
@@ -438,11 +438,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTQxMzY3OCwyMDUxNDg5MDE2LC0xMz
-QwODMyOTc5LC05NDY0MzI3MzAsLTIxMzA1MDU0ODAsOTE0MzI1
-NjM5LDE0MjU5Mzk4MDYsMjE0NDc1MTk0MCwxMzM5MzgxMjQ4LD
-E1MTI4NDY1NjAsMTI1NjQ5NTcyMCwtNjQyMzkwMDU5LDgwMzgx
-NDc4MSwtMjAwNjI2ODU3MSwtNjUzMjg4MjY2LDE3MzkxNzMwND
-AsNzQ1NjEwOTIyLDE5Mjc4NzI1MTEsLTEwMzY5MDc2NzIsLTE0
-ODIyMzM1NjFdfQ==
+eyJoaXN0b3J5IjpbMTYzNjQ2NTUwOSwtMTkxNDEzNjc4LDIwNT
+E0ODkwMTYsLTEzNDA4MzI5NzksLTk0NjQzMjczMCwtMjEzMDUw
+NTQ4MCw5MTQzMjU2MzksMTQyNTkzOTgwNiwyMTQ0NzUxOTQwLD
+EzMzkzODEyNDgsMTUxMjg0NjU2MCwxMjU2NDk1NzIwLC02NDIz
+OTAwNTksODAzODE0NzgxLC0yMDA2MjY4NTcxLC02NTMyODgyNj
+YsMTczOTE3MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUxMSwtMTAz
+NjkwNzY3Ml19
 -->
