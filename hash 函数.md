@@ -21,8 +21,16 @@ System.out.format("%x\n", Float.floatToIntBits(-1));
 System.out.format("%x\n", Float.floatToIntBits(3));
 System.out.format("%x\n", Float.floatToIntBits(-3));
 
+
+```
+3f800000
+bf800000
+40400000
+c0400000
+```
  ```
+所以问题基本明了, 如何处理这种低位均是0 的hash 值, hashcode() 方法是无符号右移, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3Nzk4NTk3N119
+eyJoaXN0b3J5IjpbLTE5MDg3MzA2NDZdfQ==
 -->
