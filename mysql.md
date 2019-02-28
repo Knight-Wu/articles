@@ -96,17 +96,16 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 * mysql 语句执行的大致流程
 * mysql 的B+ 树索引如何跟磁盘页对齐, 如何配置
 * 全文索引
-* mysql 为什么用B+ 树索引, 相比于B 树的好处
 * mysql 把所有字段都建上index 有什么不好的地方
 维护索引的代价很大, 占用空间, 影响插入和更新和删除?
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3ODUzMTE3NCwxOTUzNjU0MTgwLDEyNj
-k4NTc3MzYsLTU1NjAzNTk3Nyw2NTUwMjI4ODMsMTQyNzU3MjEw
-NSwxOTg3MDI2ODMzLDEwMTM2MzQzODUsMjgwMDgxNTE2LDIwNj
-gwNTM2NzUsMTE0MjQxMTgzOSwtOTA3ODY1NzkwLDE5MTgwODc0
-NDAsNDMwNjcxOTgzLC0xODQ0NTYwNDQsLTYxOTc4MjY2Nyw2Mj
-U3NDY3NDAsNTg0MDcwNDM3LC03Njg4MzQ0MjQsLTk2MjMwODdd
-fQ==
+eyJoaXN0b3J5IjpbMTE0MTE2ODg5NSwxMTc4NTMxMTc0LDE5NT
+M2NTQxODAsMTI2OTg1NzczNiwtNTU2MDM1OTc3LDY1NTAyMjg4
+MywxNDI3NTcyMTA1LDE5ODcwMjY4MzMsMTAxMzYzNDM4NSwyOD
+AwODE1MTYsMjA2ODA1MzY3NSwxMTQyNDExODM5LC05MDc4NjU3
+OTAsMTkxODA4NzQ0MCw0MzA2NzE5ODMsLTE4NDQ1NjA0NCwtNj
+E5NzgyNjY3LDYyNTc0Njc0MCw1ODQwNzA0MzcsLTc2ODgzNDQy
+NF19
 -->
