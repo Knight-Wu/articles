@@ -351,7 +351,9 @@ SELECT age FROM users WHERE id = 1;
 ```
 
 * 不可重复读(unrepeatable read)
-    因为select可能不需要锁, 或者发生在两次select锁获取之前, 就会读到不可重复读取的数据, 根据不同的隔离级别, 会有不同的数据. 
+    发生在一个事务的进行两次读取时, 可能会读取到不同的数据, 
+   
+   根据不同的隔离级别, 会有不同结果
 > At the SERIALIZABLE and REPEATABLE READ isolation levels, the DBMS must return the old value for the second SELECT. At READ COMMITTED and READ UNCOMMITTED, the DBMS may return the updated value; this is a non-repeatable read.
     
 * 有两种策略来处理此种情况
@@ -446,5 +448,6 @@ This will rollback transaction after throwing any exception
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDYxNDM2NDcsMTk5NzMxOTE2MV19
+eyJoaXN0b3J5IjpbLTE0NTMxMTU4MzMsLTExMDYxNDM2NDcsMT
+k5NzMxOTE2MV19
 -->
