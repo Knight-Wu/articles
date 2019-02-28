@@ -407,6 +407,7 @@ COMMIT;
     
 * 以上均参见[wiki isolation](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Dirty_reads)
 
+![enter image description here](https://drive.google.com/uc?id=1NdpnXgkU7Q3TW0G73P0WPR_ejiUgf-Qp)
 
 
 #### 事务传播级别
@@ -439,6 +440,6 @@ This will rollback transaction after throwing any exception
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0NzcxNDkxNCwtMTEwNjE0MzY0NywxOT
-k3MzE5MTYxXX0=
+eyJoaXN0b3J5IjpbLTE1MDk3MTI0MDksLTExMDYxNDM2NDcsMT
+k5NzMxOTE2MV19
 -->
