@@ -331,7 +331,8 @@ public , non static , non final ,called by class outside(非必须)
 
 ### spring事务
 
-####  数据并发问题
+####  事务隔离级别（定义了一个事务可能受其他并发事务影响的程度）
+> 数据并发问题
 
 * 脏读(dirty read), A事务读到了B事务尚未提交的数据, 可理解为读到了脏数据, 若此时B事务回滚, 则会产生数据不一致的情况.
 
@@ -413,7 +414,7 @@ mysql 默认隔离级别是重复读
 ![enter image description here](https://drive.google.com/uc?id=1NdpnXgkU7Q3TW0G73P0WPR_ejiUgf-Qp)
 
 
-#### 事务传播级别
+#### 事务传播行为（为了解决业务层方法之间互相调用的事务问题）
 * require
 > 如果当前没有事务, 则开启新事务, 否则会使用当前事务
 
@@ -443,6 +444,6 @@ This will rollback transaction after throwing any exception
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzgyODg2OTMwLC02ODk5ODk2MTMsLTExMD
-YxNDM2NDcsMTk5NzMxOTE2MV19
+eyJoaXN0b3J5IjpbLTE2OTg0OTA0MjYsLTY4OTk4OTYxMywtMT
+EwNjE0MzY0NywxOTk3MzE5MTYxXX0=
 -->
