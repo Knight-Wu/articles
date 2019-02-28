@@ -330,8 +330,7 @@ public , non static , non final ,called by class outside(非必须)
 ```
 
 ### spring事务
-可以参考 [link](https://www.ibm.com/developerworks/java/library/j-ts1/index.html)
----
+
 #### 事务隔离级别
 * 数据并发问题
 * 脏读(dirty read), A事务读到了B事务尚未提交的数据, 可理解为读到了脏数据, 若此时B事务回滚, 则会产生数据不一致的情况.
@@ -447,5 +446,5 @@ This will rollback transaction after throwing any exception
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5NzMxOTE2MV19
+eyJoaXN0b3J5IjpbLTExMDYxNDM2NDcsMTk5NzMxOTE2MV19
 -->
