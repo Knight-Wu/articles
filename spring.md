@@ -352,7 +352,24 @@ SELECT age FROM users WHERE id = 1;
 
 * 不可重复读(unrepeatable read)
     发生在一个事务的进行两次读取时, 可能会读取到不同的数据, 此时select 是不需要锁的, 或者锁还没来得及加上, 就发生了读取
-   
+    
+ ```
+
+Transaction 1	                                    Transaction 2
+/* Query 1 */
+SELECT * FROM users WHERE id = 1;
+                                                    /* Query 2 */
+                                                    UPDATE users SET age = 21 WHERE id = 1;
+                                                    COMMIT; 
+                                                    /* in multiversion concurrency
+                                                    control, or lock-based READ COMMITTED */
+/* Query 1 */
+SELECT * FROM users WHERE id = 1;
+COMMIT; 
+/* lock-based REPEATABLE READ */
+
+```
+
    根据不同的隔离级别, 会有不同结果
 > At the SERIALIZABLE and REPEATABLE READ isolation levels, the DBMS must return the old value for the second SELECT. At READ COMMITTED and READ UNCOMMITTED, the DBMS may return the updated value; this is a non-repeatable read.
     
@@ -389,22 +406,6 @@ COMMIT;
 > In the SERIALIZABLE isolation mode, Query 1 would result in all records with age in the range 10 to 30 being locked, thus Query 2 would block until the first transaction was committed. In REPEATABLE READ mode, the range would not be locked, allowing the record to be inserted and the second execution of Query 1 to include the new row in its results.
     
 * 以上均参见[wiki isolation](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Dirty_reads)
-```
-
-Transaction 1	                                    Transaction 2
-/* Query 1 */
-SELECT * FROM users WHERE id = 1;
-                                                    /* Query 2 */
-                                                    UPDATE users SET age = 21 WHERE id = 1;
-                                                    COMMIT; 
-                                                    /* in multiversion concurrency
-                                                    control, or lock-based READ COMMITTED */
-/* Query 1 */
-SELECT * FROM users WHERE id = 1;
-COMMIT; 
-/* lock-based REPEATABLE READ */
-
-```
 
 ```
 Isolation level		Dirty reads	    Non-repeatable reads	            Phantoms
@@ -448,6 +449,6 @@ This will rollback transaction after throwing any exception
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjUzOTA5MTEwLC0xMTA2MTQzNjQ3LDE5OT
-czMTkxNjFdfQ==
+eyJoaXN0b3J5IjpbLTk4MzA0OTU5MiwtMTEwNjE0MzY0NywxOT
+k3MzE5MTYxXX0=
 -->
