@@ -26,8 +26,8 @@ Vector是线程安全的, 进而效率比较低, 在方法上加了对象锁
 * Stack
 继承了Vector, 添加了Pop和Push等几个方法, 是线程安全的
 
-* LinkedHashSet 可以说是 LinkedHashMap按照插入顺序排序的特例, 通过维护一个双端链表, 保证插入顺序和遍历shunxu
-* TreeSet 是 TreeMap value都相同的特例.
+* LinkedHashSet 可以说是 LinkedHashMap按照插入顺序排序的特例, 通过维护一个双端链表, 保证插入顺序和遍历顺序一致. 
+* TreeSet 是 TreeMap value都相同的特例. 内部是一个二叉搜索树, 是排序的
 * HashMap
 只能有一个null的key, 可以有多个null的value; hashMap的不是有序的, 
 
@@ -298,11 +298,11 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwMjY2NjE3OSwyMDE4MjQzNTg3LC0zMz
-kwNDIwODYsMjAxODc1Mzg4NiwtMTcyMTM4MTkxOCwxMTI3MTk4
-MDczLDE0NDQ3NjcxODksMTc1ODM4MjA1LC0xMDYxODE0OTU0LD
-k2NTA0NTI2MSwtMTIwOTc0OTgxNywxNDQ2MjMzOTQ3LC0xNzUw
-MjQ3NDgyLDEzNDUwMzcyNDQsLTg3NTg5MDYxMiwtMTE4OTk1OT
-U0MiwtMTg2NTY5NzE3LDE1MjAxOTc3NzEsMjg1NTkwMDQ3LDEx
-NTY3OTU3XX0=
+eyJoaXN0b3J5IjpbLTIwMTM5Mjc0MzksMjAxODI0MzU4NywtMz
+M5MDQyMDg2LDIwMTg3NTM4ODYsLTE3MjEzODE5MTgsMTEyNzE5
+ODA3MywxNDQ0NzY3MTg5LDE3NTgzODIwNSwtMTA2MTgxNDk1NC
+w5NjUwNDUyNjEsLTEyMDk3NDk4MTcsMTQ0NjIzMzk0NywtMTc1
+MDI0NzQ4MiwxMzQ1MDM3MjQ0LC04NzU4OTA2MTIsLTExODk5NT
+k1NDIsLTE4NjU2OTcxNywxNTIwMTk3NzcxLDI4NTU5MDA0Nywx
+MTU2Nzk1N119
 -->
