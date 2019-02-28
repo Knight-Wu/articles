@@ -65,10 +65,10 @@ https://aigo.iteye.com/blog/2292341
     
 -   It should  _uniformly distribute the keys_.
 
-#### hash 冲突
-
+####  解决hash 冲突
+https://zhuanlan.zhihu.com/p/29520044
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4ODAyMTk2OCw1MjAwMjU5OSwzMjUwNT
-I2MDUsMTY5Mjg5MTgzLDUxOTg2NzA2OV19
+eyJoaXN0b3J5IjpbMTQzNzMxOTg5LDUyMDAyNTk5LDMyNTA1Mj
+YwNSwxNjkyODkxODMsNTE5ODY3MDY5XX0=
 -->
