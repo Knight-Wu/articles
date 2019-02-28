@@ -331,8 +331,8 @@ public , non static , non final ,called by class outside(非必须)
 
 ### spring事务
 
-#### 事务隔离级别
-* 数据并发问题
+####  数据并发问题
+
 * 脏读(dirty read), A事务读到了B事务尚未提交的数据, 可理解为读到了脏数据, 若此时B事务回滚, 则会产生数据不一致的情况.
 
 ```
@@ -404,6 +404,9 @@ COMMIT;
 > Note that Transaction 1 executed the same query twice. If the highest level of isolation were maintained, the same set of rows should be returned both times, and indeed that is what is mandated to occur in a database operating at the SQL SERIALIZABLE isolation level. However, at the lesser isolation levels, a different set of rows may be returned the second time.
 
 > In the SERIALIZABLE isolation mode, Query 1 would result in all records with age in the range 10 to 30 being locked, thus Query 2 would block until the first transaction was committed. In REPEATABLE READ mode, the range would not be locked, allowing the record to be inserted and the second execution of Query 1 to include the new row in its results.
+ 
+* 丢失更新(lost update)
+指在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。
     
 * 以上均参见[wiki isolation](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Dirty_reads)
 
@@ -440,6 +443,6 @@ This will rollback transaction after throwing any exception
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDk3MTI0MDksLTExMDYxNDM2NDcsMT
-k5NzMxOTE2MV19
+eyJoaXN0b3J5IjpbLTY4OTk4OTYxMywtMTEwNjE0MzY0NywxOT
+k3MzE5MTYxXX0=
 -->
