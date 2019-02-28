@@ -53,8 +53,19 @@ X % 2^n = X & (2^n - 1)
 
 & 比 % 快很多, 前者需要5个 cpu 周期, 后者需要至少 26 个. 
 https://aigo.iteye.com/blog/2292341
+
+
+#### hash 算法
+如何衡量一个好的hash 函数
+> We have three primary requirements in implementing a good hash function for a given data type:
+
+-   It should be  _deterministic_—equal keys must produce the same hash value.
+    
+-   It should be  _efficient to compute_.
+    
+-   It should  _uniformly distribute the keys_.
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzI1MDUyNjA1LDE2OTI4OTE4Myw1MTk4Nj
-cwNjldfQ==
+eyJoaXN0b3J5IjpbNTIwMDI1OTksMzI1MDUyNjA1LDE2OTI4OT
+E4Myw1MTk4NjcwNjldfQ==
 -->
