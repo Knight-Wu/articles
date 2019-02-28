@@ -407,17 +407,7 @@ COMMIT;
     
 * 以上均参见[wiki isolation](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Dirty_reads)
 
-```
-Isolation level		Dirty reads	    Non-repeatable reads	            Phantoms
-Read Uncommitted	may occur	    may occur(1)	                    may occur(2)
-Read Committed		don't occur	    may occur(1)	                    may occur(2)
-Repeatable Read		don't occur	    don't occur	                        may occur(2)
-Serializable		don't occur	    don't occur	                        don't occur
 
-(1): 返回修改后的值
-(2): 会返回新插入的值
-Serializable : 均会阻塞事务2的更新, 直到事务1提交
-```
 
 #### 事务传播级别
 * require
@@ -449,6 +439,6 @@ This will rollback transaction after throwing any exception
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4MzA0OTU5MiwtMTEwNjE0MzY0NywxOT
+eyJoaXN0b3J5IjpbLTc0NzcxNDkxNCwtMTEwNjE0MzY0NywxOT
 k3MzE5MTYxXX0=
 -->
