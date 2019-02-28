@@ -29,7 +29,10 @@ bf800000
 c0400000
 ```
  ```
-所以问题基本明了, 因为hashmap 的数组table 的size 均为2的次方, 取模的方法是: hashcode() & (size-1), 
+所以问题基本明了, 因为hashmap 的数组table 的size 均为2的次方, 取模的方法是: hashcode() & (size-1), jias
+```
+
+```
 如何处理这种低位均是0 的hash 值: 
 
 
@@ -38,5 +41,5 @@ hashcode() 方法是无符号右移( 为了将高位移下来), 然后和原数�
 >JDK 源码中 HashMap 的 hash 方法原理是什么？ - 胖君的回答 - 知乎 https://www.zhihu.com/question/20733617/answer/111577937
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTE5ODY3MDY5XX0=
+eyJoaXN0b3J5IjpbLTg4NjI2MjE4MCw1MTk4NjcwNjldfQ==
 -->
