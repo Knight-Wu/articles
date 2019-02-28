@@ -36,8 +36,7 @@ Vector是线程安全的, 进而效率比较低, 在方法上加了对象锁
 
 
 
-* HashTable与HashMap区别
-hashTable是线程安全的, hashTable不允许null的key
+
 
 
 
@@ -232,7 +231,8 @@ hashmap key和value都可以为null, 因为key 为null, 则hash值为0, hash& ta
 3. 如果两个对象使用equal 方法比较是不相等的, 则调用hashcode 方法必须返回不同的结果. 开发者需要意识到对unequal 的对象产生不同的hashcode 有利于提高hashtable 的性能. 
 
 * java 7 和java 8的hashmap 的主要区别在于
-定位到数组的位置之后, 在链表往后进行一个个查找的时候, 当链表长度大于8 时, java 8会转化为红黑树, 将查找的时间复杂度O(n), 降低为O(logn)
+1. 定位到数组的位置之后, 在链表往后进行一个个查找的时候, 当链表长度大于8 时, java 8会转化为红黑树, 将查找的时间复杂度O(n), 降低为O(logn)
+2. hashcode 函数不同, java 7 中进行了多次与和异或运算, 8 均降低为1次, 边际递减. 
 
 
 * put 大致过程
@@ -298,11 +298,11 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzOTA0MjA4NiwyMDE4NzUzODg2LC0xNz
-IxMzgxOTE4LDExMjcxOTgwNzMsMTQ0NDc2NzE4OSwxNzU4Mzgy
-MDUsLTEwNjE4MTQ5NTQsOTY1MDQ1MjYxLC0xMjA5NzQ5ODE3LD
-E0NDYyMzM5NDcsLTE3NTAyNDc0ODIsMTM0NTAzNzI0NCwtODc1
-ODkwNjEyLC0xMTg5OTU5NTQyLC0xODY1Njk3MTcsMTUyMDE5Nz
-c3MSwyODU1OTAwNDcsMTE1Njc5NTcsMTMyOTI4NzMzOSwxNzg5
-NDIwMzU0XX0=
+eyJoaXN0b3J5IjpbMjAxODI0MzU4NywtMzM5MDQyMDg2LDIwMT
+g3NTM4ODYsLTE3MjEzODE5MTgsMTEyNzE5ODA3MywxNDQ0NzY3
+MTg5LDE3NTgzODIwNSwtMTA2MTgxNDk1NCw5NjUwNDUyNjEsLT
+EyMDk3NDk4MTcsMTQ0NjIzMzk0NywtMTc1MDI0NzQ4MiwxMzQ1
+MDM3MjQ0LC04NzU4OTA2MTIsLTExODk5NTk1NDIsLTE4NjU2OT
+cxNywxNTIwMTk3NzcxLDI4NTU5MDA0NywxMTU2Nzk1NywxMzI5
+Mjg3MzM5XX0=
 -->
