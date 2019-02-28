@@ -414,7 +414,7 @@ mysql 默认隔离级别是重复读
 ![enter image description here](https://drive.google.com/uc?id=1NdpnXgkU7Q3TW0G73P0WPR_ejiUgf-Qp)
 
 
-#### 事务传播行为（为了解决业务层方法之间互相调用的事务问题）
+#### 事务传播行为（为了解决业务层方法之间事务互相调用的问题）
 * require
 > 如果当前没有事务, 则开启新事务, 否则会使用当前事务
 
@@ -444,6 +444,6 @@ This will rollback transaction after throwing any exception
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTg0OTA0MjYsLTY4OTk4OTYxMywtMT
+eyJoaXN0b3J5IjpbLTEyODY3ODkxNTgsLTY4OTk4OTYxMywtMT
 EwNjE0MzY0NywxOTk3MzE5MTYxXX0=
 -->
