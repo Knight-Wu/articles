@@ -12,8 +12,8 @@
  always collide. (Among known examples are sets of Float keys  
  holding consecutive whole numbers in small tables.)
  
- 首先这段话的意思是: 
+ 找到这个帖子发现了问题: https://stackoverflow.com/questions/36848151/hash-codes-for-floats-in-java, 上面hashcode 的注释说的一句: 众所周知的一个例子是float 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzNTQzMjU4NV19
+eyJoaXN0b3J5IjpbLTE3OTYxMDQyNDNdfQ==
 -->
