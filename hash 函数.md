@@ -29,8 +29,8 @@ bf800000
 c0400000
 ```
  ```
-所以问题基本明了, 如何处理这种低位均是0 的hash 值, hashcode() 方法是无符号右移, 
+所以问题基本明了, 如何处理这种低位均是0 的hash 值, hashcode() 方法是无符号右移( 为了将高位移下来), 然后和原数异或(使低位和高位huixiao)
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDg3MzA2NDZdfQ==
+eyJoaXN0b3J5IjpbLTg0NjY5MDI4OV19
 -->
