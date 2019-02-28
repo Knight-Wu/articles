@@ -12,8 +12,17 @@
  always collide. (Among known examples are sets of Float keys  
  holding consecutive whole numbers in small tables.)
  
- 找到这个帖子发现了问题: https://stackoverflow.com/questions/36848151/hash-codes-for-floats-in-java, 上面hashcode 的注释说的一句: 众所周知的一个例子是float 
+ 找到这个帖子发现了问题: https://stackoverflow.com/questions/36848151/hash-codes-for-floats-in-java, 上面hashcode 的注释说的一句: 众所周知的一个例子是float 作为key 时, 连续的float 出现在小表中, 末尾会出现大量的零, 
+ 例如
+ ```
+
+System.out.format("%x\n", Float.floatToIntBits(1));
+System.out.format("%x\n", Float.floatToIntBits(-1));
+System.out.format("%x\n", Float.floatToIntBits(3));
+System.out.format("%x\n", Float.floatToIntBits(-3));
+
+ ```
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTYxMDQyNDNdfQ==
+eyJoaXN0b3J5IjpbLTY3Nzk4NTk3N119
 -->
