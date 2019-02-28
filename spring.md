@@ -409,7 +409,7 @@ COMMIT;
 指在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。
     
 * 以上均参见[wiki isolation](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Dirty_reads)
-
+mysql 默认隔离级别是
 ![enter image description here](https://drive.google.com/uc?id=1NdpnXgkU7Q3TW0G73P0WPR_ejiUgf-Qp)
 
 
@@ -443,6 +443,6 @@ This will rollback transaction after throwing any exception
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4OTk4OTYxMywtMTEwNjE0MzY0NywxOT
-k3MzE5MTYxXX0=
+eyJoaXN0b3J5IjpbMjQ5NDM0MTgxLC02ODk5ODk2MTMsLTExMD
+YxNDM2NDcsMTk5NzMxOTE2MV19
 -->
