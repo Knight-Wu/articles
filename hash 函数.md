@@ -1,4 +1,5 @@
 
+#### hashmap 8 hashcode()
 一开始在这个链接: https://algs4.cs.princeton.edu/34hash/
 看到
 > _Floating-point numbers._ If the keys are real numbers between 0 and 1, we might just multiply by M and round off to the nearest integer to get an index between 0 and M-1. Although it is intuitive, this approach is defective because it gives more weight to the most significant bits of the keys; the least significant bits play no role. One way to address this situation is to use modular hashing on the binary representation of the key (this is what Java does).
@@ -34,7 +35,13 @@ c0400000
 hashcode() 方法是无符号右移( 为了将高位移下来), 然后和原数异或(使低位和高位混淆, 保留了高位的信息,  如果是或的话, 还是低位不变), 
 这个答案说的很好:
 >JDK 源码中 HashMap 的 hash 方法原理是什么？ - 胖君的回答 - 知乎 https://www.zhihu.com/question/20733617/answer/111577937
+
+#### & 替代 %
+
+```
+`
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5Mjg5MTgzLDUxOTg2NzA2OV19
+eyJoaXN0b3J5IjpbMTEzNjg1MzA5MiwxNjkyODkxODMsNTE5OD
+Y3MDY5XX0=
 -->
