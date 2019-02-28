@@ -6,9 +6,14 @@
 对这句话不太理解:  
 >because it gives more weight to the most significant bits of the keys; the least significant bits play no role.
 
-想到之前看hashmap, hashcode() 函数注释的时候也有: 
-> 
+想到之前看hashmap, hashcode() 函数注释的时候也看不懂: 
+> Because the table uses power-of-two masking, sets of  
+ hashes that vary only in bits above the current mask will  
+ always collide. (Among known examples are sets of Float keys  
+ holding consecutive whole numbers in small tables.)
+ 
+ 首先这段话的意思是: 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTMyMzk1MzddfQ==
+eyJoaXN0b3J5IjpbMTMzNTQzMjU4NV19
 -->
