@@ -29,17 +29,12 @@ bf800000
 c0400000
 ```
  ```
-所以问题基本明了, 因为hashmap 的数组table 的size 均为2的次方, 取模的方法是: hashcode() & (size-1), 假设size为16, size -1 低四位为1111 高位j, 与hashcode() &, 则只
-```
-
-```
-如何处理这种低位均是0 的hash 值: 
-
-
-hashcode() 方法是无符号右移( 为了将高位移下来), 然后和原数异或(使低位和高位混淆, 如果是或的话, 还是低位不变), 
+所以问题基本明了, 因为hashmap 的数组table 的size 均为2的次方, 取模的方法是: hashcode() & (size-1), 假设size为16, size -1 低四位为1111 高位均为0 , 与hashcode() &, 则只取决于hashcode 的低位bit. 
+所以特殊情况, 如何处理这种低位均是0 的hash 值: 
+hashcode() 方法是无符号右移( 为了将高位移下来), 然后和原数异或(使低位和高位混淆, 保留了高位的信息,  如果是或的话, 还是低位不变), 
 这个答案说的很好:
 >JDK 源码中 HashMap 的 hash 方法原理是什么？ - 胖君的回答 - 知乎 https://www.zhihu.com/question/20733617/answer/111577937
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTExMzk0NDY5LDUxOTg2NzA2OV19
+eyJoaXN0b3J5IjpbMTY5Mjg5MTgzLDUxOTg2NzA2OV19
 -->
