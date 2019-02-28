@@ -258,7 +258,7 @@ int indexFor(int hash,int length)
 
 * put时，是加到链表头还是链表尾
 在jdk1.8之前是插入头部的，在jdk1.8中是插入尾部的
-* get的时间复杂度（对链表，对红黑树）
+
 
 ## 泛型
 1.使用原生态类型
@@ -298,10 +298,11 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAxODc1Mzg4NiwtMTcyMTM4MTkxOCwxMT
-I3MTk4MDczLDE0NDQ3NjcxODksMTc1ODM4MjA1LC0xMDYxODE0
-OTU0LDk2NTA0NTI2MSwtMTIwOTc0OTgxNywxNDQ2MjMzOTQ3LC
-0xNzUwMjQ3NDgyLDEzNDUwMzcyNDQsLTg3NTg5MDYxMiwtMTE4
-OTk1OTU0MiwtMTg2NTY5NzE3LDE1MjAxOTc3NzEsMjg1NTkwMD
-Q3LDExNTY3OTU3LDEzMjkyODczMzksMTc4OTQyMDM1NF19
+eyJoaXN0b3J5IjpbLTMzOTA0MjA4NiwyMDE4NzUzODg2LC0xNz
+IxMzgxOTE4LDExMjcxOTgwNzMsMTQ0NDc2NzE4OSwxNzU4Mzgy
+MDUsLTEwNjE4MTQ5NTQsOTY1MDQ1MjYxLC0xMjA5NzQ5ODE3LD
+E0NDYyMzM5NDcsLTE3NTAyNDc0ODIsMTM0NTAzNzI0NCwtODc1
+ODkwNjEyLC0xMTg5OTU5NTQyLC0xODY1Njk3MTcsMTUyMDE5Nz
+c3MSwyODU1OTAwNDcsMTE1Njc5NTcsMTMyOTI4NzMzOSwxNzg5
+NDIwMzU0XX0=
 -->
