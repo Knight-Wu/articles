@@ -8,7 +8,10 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 
 ### 索引
+
 #### INNODB 索引
+
+
 * B+ tree index structure in INNODB 
 
 ![enter image description here](https://drive.google.com/uc?id=1jOIFUv2qT3d__lWSkkqsfuff2_N7LDoK)
@@ -90,7 +93,8 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 2. 把where 条件应用到表中, 从返回记录数最小的表开始查起
 3. order by limit 形式的sql语句让排序的表优先查
 
-
+#### 资料
+https://blog.jcole.us/innodb/
 #### 问题
 * innodb 的文件结构
 * mysql 语句执行的大致流程
@@ -101,11 +105,11 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0MTE2ODg5NSwxMTc4NTMxMTc0LDE5NT
-M2NTQxODAsMTI2OTg1NzczNiwtNTU2MDM1OTc3LDY1NTAyMjg4
-MywxNDI3NTcyMTA1LDE5ODcwMjY4MzMsMTAxMzYzNDM4NSwyOD
-AwODE1MTYsMjA2ODA1MzY3NSwxMTQyNDExODM5LC05MDc4NjU3
-OTAsMTkxODA4NzQ0MCw0MzA2NzE5ODMsLTE4NDQ1NjA0NCwtNj
-E5NzgyNjY3LDYyNTc0Njc0MCw1ODQwNzA0MzcsLTc2ODgzNDQy
-NF19
+eyJoaXN0b3J5IjpbLTEyMjkwMzI5MCwxMTQxMTY4ODk1LDExNz
+g1MzExNzQsMTk1MzY1NDE4MCwxMjY5ODU3NzM2LC01NTYwMzU5
+NzcsNjU1MDIyODgzLDE0Mjc1NzIxMDUsMTk4NzAyNjgzMywxMD
+EzNjM0Mzg1LDI4MDA4MTUxNiwyMDY4MDUzNjc1LDExNDI0MTE4
+MzksLTkwNzg2NTc5MCwxOTE4MDg3NDQwLDQzMDY3MTk4MywtMT
+g0NDU2MDQ0LC02MTk3ODI2NjcsNjI1NzQ2NzQwLDU4NDA3MDQz
+N119
 -->
