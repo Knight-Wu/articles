@@ -27,7 +27,10 @@
 
 平衡二叉树就是二叉树的构建过程中，每当插入一个结点，看是不是因为树的插入破坏了树的平衡性，若是，则找出最小不平衡树。在保持二叉树特性的前提下，调整最小不平衡子树中各个结点之间的链接关系，进行相应的旋转，使之成为新的平衡子树
 
-* 红黑树作为自平衡树在jdk1.8 hashmap中 的作用
+* 红黑树
+
+* AVL VS 红黑树
+avl 更加平衡, 查找效率更高, 但是插入和删除所需要的旋转代价也更高, 红黑树评价c
 
 
 * B树
@@ -444,11 +447,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzU0MDk5ODQsLTE2MzUxNjY5NDYsMT
-A2ODkwODU3LC0xNzI0MDUyMjM2LDE2MzY0NjU1MDksLTE5MTQx
-MzY3OCwyMDUxNDg5MDE2LC0xMzQwODMyOTc5LC05NDY0MzI3Mz
-AsLTIxMzA1MDU0ODAsOTE0MzI1NjM5LDE0MjU5Mzk4MDYsMjE0
-NDc1MTk0MCwxMzM5MzgxMjQ4LDE1MTI4NDY1NjAsMTI1NjQ5NT
-cyMCwtNjQyMzkwMDU5LDgwMzgxNDc4MSwtMjAwNjI2ODU3MSwt
-NjUzMjg4MjY2XX0=
+eyJoaXN0b3J5IjpbLTMzNjc4MTI0OCwtMjAzNTQwOTk4NCwtMT
+YzNTE2Njk0NiwxMDY4OTA4NTcsLTE3MjQwNTIyMzYsMTYzNjQ2
+NTUwOSwtMTkxNDEzNjc4LDIwNTE0ODkwMTYsLTEzNDA4MzI5Nz
+ksLTk0NjQzMjczMCwtMjEzMDUwNTQ4MCw5MTQzMjU2MzksMTQy
+NTkzOTgwNiwyMTQ0NzUxOTQwLDEzMzkzODEyNDgsMTUxMjg0Nj
+U2MCwxMjU2NDk1NzIwLC02NDIzOTAwNTksODAzODE0NzgxLC0y
+MDA2MjY4NTcxXX0=
 -->
