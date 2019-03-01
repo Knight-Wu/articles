@@ -27,14 +27,14 @@
 
 平衡二叉树就是二叉树的构建过程中，每当插入一个结点，看是不是因为树的插入破坏了树的平衡性，若是，则找出最小不平衡树。在保持二叉树特性的前提下，调整最小不平衡子树中各个结点之间的链接关系，进行相应的旋转，使之成为新的平衡子树
 
+
+**AVL**  **效率总结 :** 查找的时间复杂度维持在O(logN)，不会出现最差情况
 AVL树在执行每个插入操作时最多需要1次旋转，其时间复杂度在O(logN)左右。
-
 AVL树在执行删除时代价稍大，执行每个删除操作的时间复杂度需要O(2logN)。
-
 * 红黑树
 
 * AVL VS 红黑树
-avl 更加平衡, 查找效率更高,查找的时间复杂度维持在O(logN)，不会出现最差情况  ,但是插入和删除所需要的旋转代价也更高, 红黑树平均查找时间复杂度O(lgn), 最坏是
+avl 更加平衡, 查找效率更高,但是插入和删除所需要的旋转代价也更高, 红黑树平均查找时间复杂度O(lgn), 最坏是
 
 
 * B树
@@ -451,11 +451,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzODQ4OTk4MywtMjAzNTQwOTk4NCwtMT
-YzNTE2Njk0NiwxMDY4OTA4NTcsLTE3MjQwNTIyMzYsMTYzNjQ2
-NTUwOSwtMTkxNDEzNjc4LDIwNTE0ODkwMTYsLTEzNDA4MzI5Nz
-ksLTk0NjQzMjczMCwtMjEzMDUwNTQ4MCw5MTQzMjU2MzksMTQy
-NTkzOTgwNiwyMTQ0NzUxOTQwLDEzMzkzODEyNDgsMTUxMjg0Nj
-U2MCwxMjU2NDk1NzIwLC02NDIzOTAwNTksODAzODE0NzgxLC0y
-MDA2MjY4NTcxXX0=
+eyJoaXN0b3J5IjpbNTE3Njc2NDMzLC0yMDM1NDA5OTg0LC0xNj
+M1MTY2OTQ2LDEwNjg5MDg1NywtMTcyNDA1MjIzNiwxNjM2NDY1
+NTA5LC0xOTE0MTM2NzgsMjA1MTQ4OTAxNiwtMTM0MDgzMjk3OS
+wtOTQ2NDMyNzMwLC0yMTMwNTA1NDgwLDkxNDMyNTYzOSwxNDI1
+OTM5ODA2LDIxNDQ3NTE5NDAsMTMzOTM4MTI0OCwxNTEyODQ2NT
+YwLDEyNTY0OTU3MjAsLTY0MjM5MDA1OSw4MDM4MTQ3ODEsLTIw
+MDYyNjg1NzFdfQ==
 -->
