@@ -61,7 +61,9 @@ B树相对于平衡二叉树的不同是，每个节点包含的关键字增多�
 
 * 为什么B+ 更适合做数据库和文件系统的数据类型呢
 https://stackoverflow.com/questions/870218/differences-between-b-trees-and-b-trees
-B+ 树的非叶子节点没有数据, 相同情况下比B 树在一个磁盘块中存储
+B+ 树的非叶子节点没有数据, 相同情况下比B 树在一个磁盘块中存储更多的节点, 需要的IO 次数就更低, 而且叶子节点有指向下个节点的指针, 不需要再从顶向下扫描周边叶子节点, 适合范围查询.
+
+
 #### 排序
 
 * 归并排序
@@ -452,11 +454,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODAzNTgwODA2LC0xNjYzNDIwMDMzLC0yMD
-M1NDA5OTg0LC0xNjM1MTY2OTQ2LDEwNjg5MDg1NywtMTcyNDA1
-MjIzNiwxNjM2NDY1NTA5LC0xOTE0MTM2NzgsMjA1MTQ4OTAxNi
-wtMTM0MDgzMjk3OSwtOTQ2NDMyNzMwLC0yMTMwNTA1NDgwLDkx
-NDMyNTYzOSwxNDI1OTM5ODA2LDIxNDQ3NTE5NDAsMTMzOTM4MT
-I0OCwxNTEyODQ2NTYwLDEyNTY0OTU3MjAsLTY0MjM5MDA1OSw4
-MDM4MTQ3ODFdfQ==
+eyJoaXN0b3J5IjpbLTE3NjYzOTczMTYsODAzNTgwODA2LC0xNj
+YzNDIwMDMzLC0yMDM1NDA5OTg0LC0xNjM1MTY2OTQ2LDEwNjg5
+MDg1NywtMTcyNDA1MjIzNiwxNjM2NDY1NTA5LC0xOTE0MTM2Nz
+gsMjA1MTQ4OTAxNiwtMTM0MDgzMjk3OSwtOTQ2NDMyNzMwLC0y
+MTMwNTA1NDgwLDkxNDMyNTYzOSwxNDI1OTM5ODA2LDIxNDQ3NT
+E5NDAsMTMzOTM4MTI0OCwxNTEyODQ2NTYwLDEyNTY0OTU3MjAs
+LTY0MjM5MDA1OV19
 -->
