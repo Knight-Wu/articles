@@ -32,7 +32,7 @@
 AVL树在执行每个插入操作时最多需要1次旋转，其时间复杂度在O(logN)左右。
 AVL树在执行删除时代价稍大，执行每个删除操作的时间复杂度需要O(2logN)。
 * 红黑树
-
+红黑树相对于AVL树来说，牺牲了部分平衡性以换取插入/删除操作时少量的旋转操作，整体来说性能要优于AVL树。
 
 * AVL VS 红黑树
 avl 更加平衡, 查找效率更高,但是插入和删除所需要的旋转代价也更高, 红黑树平均查找时间复杂度O(lgn), 最坏是
@@ -454,11 +454,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NjYzOTczMTYsODAzNTgwODA2LC0xNj
-YzNDIwMDMzLC0yMDM1NDA5OTg0LC0xNjM1MTY2OTQ2LDEwNjg5
-MDg1NywtMTcyNDA1MjIzNiwxNjM2NDY1NTA5LC0xOTE0MTM2Nz
-gsMjA1MTQ4OTAxNiwtMTM0MDgzMjk3OSwtOTQ2NDMyNzMwLC0y
-MTMwNTA1NDgwLDkxNDMyNTYzOSwxNDI1OTM5ODA2LDIxNDQ3NT
-E5NDAsMTMzOTM4MTI0OCwxNTEyODQ2NTYwLDEyNTY0OTU3MjAs
-LTY0MjM5MDA1OV19
+eyJoaXN0b3J5IjpbMzM2NTY5MDQ2LDgwMzU4MDgwNiwtMTY2Mz
+QyMDAzMywtMjAzNTQwOTk4NCwtMTYzNTE2Njk0NiwxMDY4OTA4
+NTcsLTE3MjQwNTIyMzYsMTYzNjQ2NTUwOSwtMTkxNDEzNjc4LD
+IwNTE0ODkwMTYsLTEzNDA4MzI5NzksLTk0NjQzMjczMCwtMjEz
+MDUwNTQ4MCw5MTQzMjU2MzksMTQyNTkzOTgwNiwyMTQ0NzUxOT
+QwLDEzMzkzODEyNDgsMTUxMjg0NjU2MCwxMjU2NDk1NzIwLC02
+NDIzOTAwNTldfQ==
 -->
