@@ -278,6 +278,8 @@ static void hillS(int[] arr) {
 * 桶排序
 将元素放到几个子数组里面, 按照跟min 元素的差值来划分, 并在每个子数组中进行插入排序. 最坏时间复杂度O(n*n), 平均时间复杂度O(n), 见英文维基百科
 
+* 二叉搜索树
+插入是从顶向下, 递归的形式, 比节点小, 则比左儿子, 比节点大, 则比右儿子,  新总是落在叶子
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/33balanced/
@@ -439,11 +441,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjQwNTIyMzYsMTYzNjQ2NTUwOSwtMT
-kxNDEzNjc4LDIwNTE0ODkwMTYsLTEzNDA4MzI5NzksLTk0NjQz
-MjczMCwtMjEzMDUwNTQ4MCw5MTQzMjU2MzksMTQyNTkzOTgwNi
-wyMTQ0NzUxOTQwLDEzMzkzODEyNDgsMTUxMjg0NjU2MCwxMjU2
-NDk1NzIwLC02NDIzOTAwNTksODAzODE0NzgxLC0yMDA2MjY4NT
-cxLC02NTMyODgyNjYsMTczOTE3MzA0MCw3NDU2MTA5MjIsMTky
-Nzg3MjUxMV19
+eyJoaXN0b3J5IjpbMjE0NTI2MzMxLC0xNzI0MDUyMjM2LDE2Mz
+Y0NjU1MDksLTE5MTQxMzY3OCwyMDUxNDg5MDE2LC0xMzQwODMy
+OTc5LC05NDY0MzI3MzAsLTIxMzA1MDU0ODAsOTE0MzI1NjM5LD
+E0MjU5Mzk4MDYsMjE0NDc1MTk0MCwxMzM5MzgxMjQ4LDE1MTI4
+NDY1NjAsMTI1NjQ5NTcyMCwtNjQyMzkwMDU5LDgwMzgxNDc4MS
+wtMjAwNjI2ODU3MSwtNjUzMjg4MjY2LDE3MzkxNzMwNDAsNzQ1
+NjEwOTIyXX0=
 -->
