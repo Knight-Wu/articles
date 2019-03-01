@@ -60,8 +60,8 @@ B树相对于平衡二叉树的不同是，每个节点包含的关键字增多�
 4. 叶子节点存有指向下个叶子节点的指针, 适合范围查询. 
 
 * 为什么B+ 更适合做数据库和文件系统的数据类型呢
- In a **b-tree** you can store both keys and data in the internal and leaf nodes_ but in a **b+ tree** you have to store the data in the _leaf nodes only(由于中间节点不含数据)  所以一个磁盘块中可以含有更多的中间节点, 所以IO 次数相对更低. 
-
+https://stackoverflow.com/questions/870218/differences-between-b-trees-and-b-trees
+B+ 树的非叶子节点没有数据, 相同情况下比B 树在一个磁盘块中存储
 #### 排序
 
 * 归并排序
@@ -452,11 +452,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjM0MjAwMzMsLTIwMzU0MDk5ODQsLT
-E2MzUxNjY5NDYsMTA2ODkwODU3LC0xNzI0MDUyMjM2LDE2MzY0
-NjU1MDksLTE5MTQxMzY3OCwyMDUxNDg5MDE2LC0xMzQwODMyOT
-c5LC05NDY0MzI3MzAsLTIxMzA1MDU0ODAsOTE0MzI1NjM5LDE0
-MjU5Mzk4MDYsMjE0NDc1MTk0MCwxMzM5MzgxMjQ4LDE1MTI4ND
-Y1NjAsMTI1NjQ5NTcyMCwtNjQyMzkwMDU5LDgwMzgxNDc4MSwt
-MjAwNjI2ODU3MV19
+eyJoaXN0b3J5IjpbODAzNTgwODA2LC0xNjYzNDIwMDMzLC0yMD
+M1NDA5OTg0LC0xNjM1MTY2OTQ2LDEwNjg5MDg1NywtMTcyNDA1
+MjIzNiwxNjM2NDY1NTA5LC0xOTE0MTM2NzgsMjA1MTQ4OTAxNi
+wtMTM0MDgzMjk3OSwtOTQ2NDMyNzMwLC0yMTMwNTA1NDgwLDkx
+NDMyNTYzOSwxNDI1OTM5ODA2LDIxNDQ3NTE5NDAsMTMzOTM4MT
+I0OCwxNTEyODQ2NTYwLDEyNTY0OTU3MjAsLTY0MjM5MDA1OSw4
+MDM4MTQ3ODFdfQ==
 -->
