@@ -213,6 +213,7 @@ static void selectS(int[] arr) {
 
 ```
 * 堆排序
+是最好的增量排序方式, 比二叉搜索树更加对cpu cache 友好, 
 假设最后排序是升序, 首先将数组建立成一个最大堆, 最大的元素在arr[0], 次大的元素在其子节点, 然后将arr[0] 和arr[len-1]交换, 交换之后再以现在的根节点建堆, 将 arr[0]放在合适的位置. 
 初始化建堆的时间复杂度O(n), 整个算法的时间复杂度O(nlgn)
 ```
@@ -438,11 +439,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzNjQ2NTUwOSwtMTkxNDEzNjc4LDIwNT
-E0ODkwMTYsLTEzNDA4MzI5NzksLTk0NjQzMjczMCwtMjEzMDUw
-NTQ4MCw5MTQzMjU2MzksMTQyNTkzOTgwNiwyMTQ0NzUxOTQwLD
-EzMzkzODEyNDgsMTUxMjg0NjU2MCwxMjU2NDk1NzIwLC02NDIz
-OTAwNTksODAzODE0NzgxLC0yMDA2MjY4NTcxLC02NTMyODgyNj
-YsMTczOTE3MzA0MCw3NDU2MTA5MjIsMTkyNzg3MjUxMSwtMTAz
-NjkwNzY3Ml19
+eyJoaXN0b3J5IjpbLTE3MjQwNTIyMzYsMTYzNjQ2NTUwOSwtMT
+kxNDEzNjc4LDIwNTE0ODkwMTYsLTEzNDA4MzI5NzksLTk0NjQz
+MjczMCwtMjEzMDUwNTQ4MCw5MTQzMjU2MzksMTQyNTkzOTgwNi
+wyMTQ0NzUxOTQwLDEzMzkzODEyNDgsMTUxMjg0NjU2MCwxMjU2
+NDk1NzIwLC02NDIzOTAwNTksODAzODE0NzgxLC0yMDA2MjY4NT
+cxLC02NTMyODgyNjYsMTczOTE3MzA0MCw3NDU2MTA5MjIsMTky
+Nzg3MjUxMV19
 -->
