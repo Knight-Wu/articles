@@ -6,7 +6,7 @@
 预处理器检查sql 的表和列是否存在等.
 优化器将sql 转化为最佳的查询计划, 
 4. 根据执行计划调用存储引擎的api 来完成查询
-5. 将结果一次性推送给客户端, 并缓存在客户端本地. 
+5. 查询完毕后, 就将结果逐条推送并批量的推送给客户端, 并缓存在客户端本地. 
 
 * 服务器与客户端的通信协议
 半双工的, 某一时刻只有一方能发送数据, 另一方在等待
@@ -128,11 +128,11 @@ https://blog.jcole.us/innodb/
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODYxOTAxMTM1LC03NzEyNTg1NzgsLTQyMj
-c4NDAxNCwtMTA5Mzg4MTYyMSwtODY1MDU1MjU2LC0yMTI4NjMw
-MTY2LC0xMjI5MDMyOTAsMTE0MTE2ODg5NSwxMTc4NTMxMTc0LD
-E5NTM2NTQxODAsMTI2OTg1NzczNiwtNTU2MDM1OTc3LDY1NTAy
-Mjg4MywxNDI3NTcyMTA1LDE5ODcwMjY4MzMsMTAxMzYzNDM4NS
-wyODAwODE1MTYsMjA2ODA1MzY3NSwxMTQyNDExODM5LC05MDc4
-NjU3OTBdfQ==
+eyJoaXN0b3J5IjpbNjcxMTMwMjAwLDg2MTkwMTEzNSwtNzcxMj
+U4NTc4LC00MjI3ODQwMTQsLTEwOTM4ODE2MjEsLTg2NTA1NTI1
+NiwtMjEyODYzMDE2NiwtMTIyOTAzMjkwLDExNDExNjg4OTUsMT
+E3ODUzMTE3NCwxOTUzNjU0MTgwLDEyNjk4NTc3MzYsLTU1NjAz
+NTk3Nyw2NTUwMjI4ODMsMTQyNzU3MjEwNSwxOTg3MDI2ODMzLD
+EwMTM2MzQzODUsMjgwMDgxNTE2LDIwNjgwNTM2NzUsMTE0MjQx
+MTgzOV19
 -->
