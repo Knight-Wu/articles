@@ -1,3 +1,8 @@
+#### mysql 查询过程
+1. 客户端发送查询语句到服务器
+2. 服务器查询缓存, huan
+
+
 ####  存储引擎
 * InnoDB 
 是mysql 默认的事务型引擎, 支持事务, 支持行锁, 支持崩溃后自动恢复, 基于聚簇索引, 
@@ -105,11 +110,11 @@ https://blog.jcole.us/innodb/
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjkwMzI5MCwxMTQxMTY4ODk1LDExNz
-g1MzExNzQsMTk1MzY1NDE4MCwxMjY5ODU3NzM2LC01NTYwMzU5
-NzcsNjU1MDIyODgzLDE0Mjc1NzIxMDUsMTk4NzAyNjgzMywxMD
-EzNjM0Mzg1LDI4MDA4MTUxNiwyMDY4MDUzNjc1LDExNDI0MTE4
-MzksLTkwNzg2NTc5MCwxOTE4MDg3NDQwLDQzMDY3MTk4MywtMT
-g0NDU2MDQ0LC02MTk3ODI2NjcsNjI1NzQ2NzQwLDU4NDA3MDQz
-N119
+eyJoaXN0b3J5IjpbMjEwOTkzNzM0NywtMTIyOTAzMjkwLDExND
+ExNjg4OTUsMTE3ODUzMTE3NCwxOTUzNjU0MTgwLDEyNjk4NTc3
+MzYsLTU1NjAzNTk3Nyw2NTUwMjI4ODMsMTQyNzU3MjEwNSwxOT
+g3MDI2ODMzLDEwMTM2MzQzODUsMjgwMDgxNTE2LDIwNjgwNTM2
+NzUsMTE0MjQxMTgzOSwtOTA3ODY1NzkwLDE5MTgwODc0NDAsND
+MwNjcxOTgzLC0xODQ0NTYwNDQsLTYxOTc4MjY2Nyw2MjU3NDY3
+NDBdfQ==
 -->
