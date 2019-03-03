@@ -12,6 +12,9 @@
 半双工的, 某一时刻只有一方能发送数据, 另一方在等待
 
 * 优化器的策略
+> 优化count, min, max
+
+例如在B+ tree
 
 ####  存储引擎
 * InnoDB 
@@ -120,11 +123,11 @@ https://blog.jcole.us/innodb/
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTM4ODE2MjEsLTg2NTA1NTI1NiwtMj
-EyODYzMDE2NiwtMTIyOTAzMjkwLDExNDExNjg4OTUsMTE3ODUz
-MTE3NCwxOTUzNjU0MTgwLDEyNjk4NTc3MzYsLTU1NjAzNTk3Ny
-w2NTUwMjI4ODMsMTQyNzU3MjEwNSwxOTg3MDI2ODMzLDEwMTM2
-MzQzODUsMjgwMDgxNTE2LDIwNjgwNTM2NzUsMTE0MjQxMTgzOS
-wtOTA3ODY1NzkwLDE5MTgwODc0NDAsNDMwNjcxOTgzLC0xODQ0
-NTYwNDRdfQ==
+eyJoaXN0b3J5IjpbLTU2ODAxNTk2LC0xMDkzODgxNjIxLC04Nj
+UwNTUyNTYsLTIxMjg2MzAxNjYsLTEyMjkwMzI5MCwxMTQxMTY4
+ODk1LDExNzg1MzExNzQsMTk1MzY1NDE4MCwxMjY5ODU3NzM2LC
+01NTYwMzU5NzcsNjU1MDIyODgzLDE0Mjc1NzIxMDUsMTk4NzAy
+NjgzMywxMDEzNjM0Mzg1LDI4MDA4MTUxNiwyMDY4MDUzNjc1LD
+ExNDI0MTE4MzksLTkwNzg2NTc5MCwxOTE4MDg3NDQwLDQzMDY3
+MTk4M119
 -->
