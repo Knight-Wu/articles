@@ -18,7 +18,8 @@
 
 > 预估并转化为常数
 
-> 使用 straight_join 关键字来比较原执行计划和优化后的执行计划
+> 使用 straight_join 关键字来比较原执行计划和优化后的执行计划\
+
 * mysql 如何执行关联查询
 
 ####  存储引擎
@@ -128,11 +129,11 @@ https://blog.jcole.us/innodb/
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjcxMTMwMjAwLDg2MTkwMTEzNSwtNzcxMj
-U4NTc4LC00MjI3ODQwMTQsLTEwOTM4ODE2MjEsLTg2NTA1NTI1
-NiwtMjEyODYzMDE2NiwtMTIyOTAzMjkwLDExNDExNjg4OTUsMT
-E3ODUzMTE3NCwxOTUzNjU0MTgwLDEyNjk4NTc3MzYsLTU1NjAz
-NTk3Nyw2NTUwMjI4ODMsMTQyNzU3MjEwNSwxOTg3MDI2ODMzLD
-EwMTM2MzQzODUsMjgwMDgxNTE2LDIwNjgwNTM2NzUsMTE0MjQx
-MTgzOV19
+eyJoaXN0b3J5IjpbLTExOTE3MTY1MDIsNjcxMTMwMjAwLDg2MT
+kwMTEzNSwtNzcxMjU4NTc4LC00MjI3ODQwMTQsLTEwOTM4ODE2
+MjEsLTg2NTA1NTI1NiwtMjEyODYzMDE2NiwtMTIyOTAzMjkwLD
+ExNDExNjg4OTUsMTE3ODUzMTE3NCwxOTUzNjU0MTgwLDEyNjk4
+NTc3MzYsLTU1NjAzNTk3Nyw2NTUwMjI4ODMsMTQyNzU3MjEwNS
+wxOTg3MDI2ODMzLDEwMTM2MzQzODUsMjgwMDgxNTE2LDIwNjgw
+NTM2NzVdfQ==
 -->
