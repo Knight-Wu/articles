@@ -5,6 +5,8 @@
 4. 根据执行啊计划调用存储引擎的api 来完成查询
 5. 将结果一次性推送给客户端, 并缓存在客户端本地. 
 
+* 服务器与客户端的通信协议
+半双工的, 某一时刻只有一方能发送数据, 另一方在等待
 
 ####  存储引擎
 * InnoDB 
@@ -113,11 +115,11 @@ https://blog.jcole.us/innodb/
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxMzA5MDc5NiwtMTIyOTAzMjkwLDExND
-ExNjg4OTUsMTE3ODUzMTE3NCwxOTUzNjU0MTgwLDEyNjk4NTc3
-MzYsLTU1NjAzNTk3Nyw2NTUwMjI4ODMsMTQyNzU3MjEwNSwxOT
-g3MDI2ODMzLDEwMTM2MzQzODUsMjgwMDgxNTE2LDIwNjgwNTM2
-NzUsMTE0MjQxMTgzOSwtOTA3ODY1NzkwLDE5MTgwODc0NDAsND
-MwNjcxOTgzLC0xODQ0NTYwNDQsLTYxOTc4MjY2Nyw2MjU3NDY3
-NDBdfQ==
+eyJoaXN0b3J5IjpbLTIxMjg2MzAxNjYsLTEyMjkwMzI5MCwxMT
+QxMTY4ODk1LDExNzg1MzExNzQsMTk1MzY1NDE4MCwxMjY5ODU3
+NzM2LC01NTYwMzU5NzcsNjU1MDIyODgzLDE0Mjc1NzIxMDUsMT
+k4NzAyNjgzMywxMDEzNjM0Mzg1LDI4MDA4MTUxNiwyMDY4MDUz
+Njc1LDExNDI0MTE4MzksLTkwNzg2NTc5MCwxOTE4MDg3NDQwLD
+QzMDY3MTk4MywtMTg0NDU2MDQ0LC02MTk3ODI2NjcsNjI1NzQ2
+NzQwXX0=
 -->
