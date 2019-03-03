@@ -1,6 +1,9 @@
 #### mysql 查询过程
 1. 客户端发送查询语句到服务器
-2. 服务器查询缓存, huan
+2. 服务器查询缓存, 缓存命中直接返回, 否则进入3
+3. 服务器进行sql 解析和预处理, 再由优化器生成对应的执行计划
+4. 根据执行啊计划调用存储引擎的api 来完成查询
+5. 将结果一次性推送给客户端, 并缓存在客户端本地. 
 
 
 ####  存储引擎
@@ -110,7 +113,7 @@ https://blog.jcole.us/innodb/
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwOTkzNzM0NywtMTIyOTAzMjkwLDExND
+eyJoaXN0b3J5IjpbMTMxMzA5MDc5NiwtMTIyOTAzMjkwLDExND
 ExNjg4OTUsMTE3ODUzMTE3NCwxOTUzNjU0MTgwLDEyNjk4NTc3
 MzYsLTU1NjAzNTk3Nyw2NTUwMjI4ODMsMTQyNzU3MjEwNSwxOT
 g3MDI2ODMzLDEwMTM2MzQzODUsMjgwMDgxNTE2LDIwNjgwNTM2
