@@ -14,7 +14,10 @@
 * 优化器的策略
 > 优化count, min, max
 
-例如在B+ tree
+例如在B+ tree 索引中, min 对应索引的第一条记录
+
+> 预估并转化为常数
+
 
 ####  存储引擎
 * InnoDB 
@@ -123,11 +126,11 @@ https://blog.jcole.us/innodb/
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2ODAxNTk2LC0xMDkzODgxNjIxLC04Nj
-UwNTUyNTYsLTIxMjg2MzAxNjYsLTEyMjkwMzI5MCwxMTQxMTY4
-ODk1LDExNzg1MzExNzQsMTk1MzY1NDE4MCwxMjY5ODU3NzM2LC
-01NTYwMzU5NzcsNjU1MDIyODgzLDE0Mjc1NzIxMDUsMTk4NzAy
-NjgzMywxMDEzNjM0Mzg1LDI4MDA4MTUxNiwyMDY4MDUzNjc1LD
-ExNDI0MTE4MzksLTkwNzg2NTc5MCwxOTE4MDg3NDQwLDQzMDY3
-MTk4M119
+eyJoaXN0b3J5IjpbLTQyMjc4NDAxNCwtMTA5Mzg4MTYyMSwtOD
+Y1MDU1MjU2LC0yMTI4NjMwMTY2LC0xMjI5MDMyOTAsMTE0MTE2
+ODg5NSwxMTc4NTMxMTc0LDE5NTM2NTQxODAsMTI2OTg1NzczNi
+wtNTU2MDM1OTc3LDY1NTAyMjg4MywxNDI3NTcyMTA1LDE5ODcw
+MjY4MzMsMTAxMzYzNDM4NSwyODAwODE1MTYsMjA2ODA1MzY3NS
+wxMTQyNDExODM5LC05MDc4NjU3OTAsMTkxODA4NzQ0MCw0MzA2
+NzE5ODNdfQ==
 -->
