@@ -2,7 +2,9 @@
 1. 客户端发送查询语句到服务器
 2. 服务器查询缓存, 缓存命中直接返回, 否则进入3
 3. 服务器进行sql 解析和预处理, 再由优化器生成对应的执行计划
-4. 根据执行啊计划调用存储引擎的api 来完成查询
+解析器将sql 解析成一颗语法树, 并检查语法错误
+预处理器检查sql 的表和列是否存在等.
+4. 根据执行计划调用存储引擎的api 来完成查询
 5. 将结果一次性推送给客户端, 并缓存在客户端本地. 
 
 * 服务器与客户端的通信协议
@@ -115,11 +117,11 @@ https://blog.jcole.us/innodb/
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjg2MzAxNjYsLTEyMjkwMzI5MCwxMT
-QxMTY4ODk1LDExNzg1MzExNzQsMTk1MzY1NDE4MCwxMjY5ODU3
-NzM2LC01NTYwMzU5NzcsNjU1MDIyODgzLDE0Mjc1NzIxMDUsMT
-k4NzAyNjgzMywxMDEzNjM0Mzg1LDI4MDA4MTUxNiwyMDY4MDUz
-Njc1LDExNDI0MTE4MzksLTkwNzg2NTc5MCwxOTE4MDg3NDQwLD
-QzMDY3MTk4MywtMTg0NDU2MDQ0LC02MTk3ODI2NjcsNjI1NzQ2
-NzQwXX0=
+eyJoaXN0b3J5IjpbLTUxNjUyMzkzMSwtMjEyODYzMDE2NiwtMT
+IyOTAzMjkwLDExNDExNjg4OTUsMTE3ODUzMTE3NCwxOTUzNjU0
+MTgwLDEyNjk4NTc3MzYsLTU1NjAzNTk3Nyw2NTUwMjI4ODMsMT
+QyNzU3MjEwNSwxOTg3MDI2ODMzLDEwMTM2MzQzODUsMjgwMDgx
+NTE2LDIwNjgwNTM2NzUsMTE0MjQxMTgzOSwtOTA3ODY1NzkwLD
+E5MTgwODc0NDAsNDMwNjcxOTgzLC0xODQ0NTYwNDQsLTYxOTc4
+MjY2N119
 -->
