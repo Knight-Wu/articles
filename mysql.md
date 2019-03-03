@@ -4,6 +4,7 @@
 3. 服务器进行sql 解析和预处理, 再由优化器生成对应的执行计划
 解析器将sql 解析成一颗语法树, 并检查语法错误
 预处理器检查sql 的表和列是否存在等.
+优化器将sql 转化为最佳的查询计划, 
 4. 根据执行计划调用存储引擎的api 来完成查询
 5. 将结果一次性推送给客户端, 并缓存在客户端本地. 
 
@@ -117,7 +118,7 @@ https://blog.jcole.us/innodb/
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUxNjUyMzkzMSwtMjEyODYzMDE2NiwtMT
+eyJoaXN0b3J5IjpbLTg2NTA1NTI1NiwtMjEyODYzMDE2NiwtMT
 IyOTAzMjkwLDExNDExNjg4OTUsMTE3ODUzMTE3NCwxOTUzNjU0
 MTgwLDEyNjk4NTc3MzYsLTU1NjAzNTk3Nyw2NTUwMjI4ODMsMT
 QyNzU3MjEwNSwxOTg3MDI2ODMzLDEwMTM2MzQzODUsMjgwMDgx
