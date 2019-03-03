@@ -11,6 +11,8 @@
 * 服务器与客户端的通信协议
 半双工的, 某一时刻只有一方能发送数据, 另一方在等待
 
+* 优化器的策略
+
 ####  存储引擎
 * InnoDB 
 是mysql 默认的事务型引擎, 支持事务, 支持行锁, 支持崩溃后自动恢复, 基于聚簇索引, 
@@ -118,11 +120,11 @@ https://blog.jcole.us/innodb/
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2NTA1NTI1NiwtMjEyODYzMDE2NiwtMT
-IyOTAzMjkwLDExNDExNjg4OTUsMTE3ODUzMTE3NCwxOTUzNjU0
-MTgwLDEyNjk4NTc3MzYsLTU1NjAzNTk3Nyw2NTUwMjI4ODMsMT
-QyNzU3MjEwNSwxOTg3MDI2ODMzLDEwMTM2MzQzODUsMjgwMDgx
-NTE2LDIwNjgwNTM2NzUsMTE0MjQxMTgzOSwtOTA3ODY1NzkwLD
-E5MTgwODc0NDAsNDMwNjcxOTgzLC0xODQ0NTYwNDQsLTYxOTc4
-MjY2N119
+eyJoaXN0b3J5IjpbLTEwOTM4ODE2MjEsLTg2NTA1NTI1NiwtMj
+EyODYzMDE2NiwtMTIyOTAzMjkwLDExNDExNjg4OTUsMTE3ODUz
+MTE3NCwxOTUzNjU0MTgwLDEyNjk4NTc3MzYsLTU1NjAzNTk3Ny
+w2NTUwMjI4ODMsMTQyNzU3MjEwNSwxOTg3MDI2ODMzLDEwMTM2
+MzQzODUsMjgwMDgxNTE2LDIwNjgwNTM2NzUsMTE0MjQxMTgzOS
+wtOTA3ODY1NzkwLDE5MTgwODc0NDAsNDMwNjcxOTgzLC0xODQ0
+NTYwNDRdfQ==
 -->
