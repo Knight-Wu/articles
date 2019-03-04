@@ -176,6 +176,26 @@ static void QSRecu1(int[] arr, int start, int end) {
 }
 ```
 
+> 版本三, 三分法, 针对有元素相等的情况下, 
+
+```
+// 三分法, 用两个指针, 左边指针-1为小于pivot的index, 右边指针+1 位大于pivot 的index  
+void qsRecu2(int[] arr, int start, int end) {  
+    if (start >= end) return;  
+    int pivot = arr[end];  
+    int i = start + 1;  
+    int s = start;  
+    int e = end;  
+    while (i <= e) {  
+        if (arr[i] < pivot) swap(arr, s++, i++);  
+        else if (arr[i] > pivot) swap(arr, i, e--);  
+        else i++;  
+    }  
+    qsRecu2(arr, start, s - 1);  
+    qsRecu2(arr, e + 1, end);  
+}
+```
+
 * 冒泡排序
 每完全冒泡一次, 就把一个最大或最小的元素放到了数组的一端, 最坏情况需要O(n*n) 交换, 而插入排序最坏情况只需要O(n) 交换, 因为新插入的元素是可以跟有序子序列的每个元素进行比较, 而冒泡排序只能跟相邻元素进行比较
 ```
@@ -467,11 +487,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDk2MDY5NTYsLTExMTA0MDkzOTQsMj
-EzNDgyNDg4MCwyOTU3NTAxMzcsMTAxMTQ1NDg4LC0xODQ5MjQx
-MDE3LDMzNjU2OTA0Niw4MDM1ODA4MDYsLTE2NjM0MjAwMzMsLT
-IwMzU0MDk5ODQsLTE2MzUxNjY5NDYsMTA2ODkwODU3LC0xNzI0
-MDUyMjM2LDE2MzY0NjU1MDksLTE5MTQxMzY3OCwyMDUxNDg5MD
-E2LC0xMzQwODMyOTc5LC05NDY0MzI3MzAsLTIxMzA1MDU0ODAs
-OTE0MzI1NjM5XX0=
+eyJoaXN0b3J5IjpbLTI4NzMwMzkyNywtMTkwOTYwNjk1NiwtMT
+ExMDQwOTM5NCwyMTM0ODI0ODgwLDI5NTc1MDEzNywxMDExNDU0
+ODgsLTE4NDkyNDEwMTcsMzM2NTY5MDQ2LDgwMzU4MDgwNiwtMT
+Y2MzQyMDAzMywtMjAzNTQwOTk4NCwtMTYzNTE2Njk0NiwxMDY4
+OTA4NTcsLTE3MjQwNTIyMzYsMTYzNjQ2NTUwOSwtMTkxNDEzNj
+c4LDIwNTE0ODkwMTYsLTEzNDA4MzI5NzksLTk0NjQzMjczMCwt
+MjEzMDUwNTQ4MF19
 -->
