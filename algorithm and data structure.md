@@ -114,8 +114,11 @@ public static void mergeSortRecu(int[] arr, int[] result, int start, int end) {
 
 > 最坏时间复杂度
 
-数组元素为降序, 当需要排成升序的时候. 或者元素都相等的时候(没有使用三分法). 
+数组元素为降序, 当需要排成升序的时候. 或者元素都相等的时候(没有使用三分法). 为O(n的平方)
 详见 https://en.wikipedia.org/wiki/Quicksort  " Worst-case analysis"
+
+> 平均时间复杂度待研究
+
 
 > 版本一
 ```
@@ -464,7 +467,7 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExODQzMjI2MTAsLTExMTA0MDkzOTQsMj
+eyJoaXN0b3J5IjpbLTE5MDk2MDY5NTYsLTExMTA0MDkzOTQsMj
 EzNDgyNDg4MCwyOTU3NTAxMzcsMTAxMTQ1NDg4LC0xODQ5MjQx
 MDE3LDMzNjU2OTA0Niw4MDM1ODA4MDYsLTE2NjM0MjAwMzMsLT
 IwMzU0MDk5ODQsLTE2MzUxNjY5NDYsMTA2ODkwODU3LC0xNzI0
