@@ -115,7 +115,7 @@ static void QSRecu(int[] arr, int start, int end) {
   return;  
     int l = start;  
     int r = end;  
-    int pivot = arr[(start + end) >> 1];  
+    int pivot = arr[(start+(end-start)/2) >> 1];  // 防止start+end overflow
     while (l <= r) {  
         while (arr[l] < pivot) {  
             l++;  
@@ -455,11 +455,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjk1NzUwMTM3LDEwMTE0NTQ4OCwtMTg0OT
-I0MTAxNywzMzY1NjkwNDYsODAzNTgwODA2LC0xNjYzNDIwMDMz
-LC0yMDM1NDA5OTg0LC0xNjM1MTY2OTQ2LDEwNjg5MDg1NywtMT
-cyNDA1MjIzNiwxNjM2NDY1NTA5LC0xOTE0MTM2NzgsMjA1MTQ4
-OTAxNiwtMTM0MDgzMjk3OSwtOTQ2NDMyNzMwLC0yMTMwNTA1ND
-gwLDkxNDMyNTYzOSwxNDI1OTM5ODA2LDIxNDQ3NTE5NDAsMTMz
-OTM4MTI0OF19
+eyJoaXN0b3J5IjpbMjEzNDgyNDg4MCwyOTU3NTAxMzcsMTAxMT
+Q1NDg4LC0xODQ5MjQxMDE3LDMzNjU2OTA0Niw4MDM1ODA4MDYs
+LTE2NjM0MjAwMzMsLTIwMzU0MDk5ODQsLTE2MzUxNjY5NDYsMT
+A2ODkwODU3LC0xNzI0MDUyMjM2LDE2MzY0NjU1MDksLTE5MTQx
+MzY3OCwyMDUxNDg5MDE2LC0xMzQwODMyOTc5LC05NDY0MzI3Mz
+AsLTIxMzA1MDU0ODAsOTE0MzI1NjM5LDE0MjU5Mzk4MDYsMjE0
+NDc1MTk0MF19
 -->
