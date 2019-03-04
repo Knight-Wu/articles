@@ -143,6 +143,7 @@ static void QSRecu(int[] arr, int start, int end) {
 > 版本二
 
 ```
+// 思想: 把小于pivot 的数移到前面, 大于pivot 的数移到后面, 然后用一个指针指向第一个大于pivot 的数, 最后交换这个指针和末尾指针.
 static void QSRecu1(int[] arr, int start, int end) {  
     if (start >= end)  
         return;  
@@ -454,11 +455,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxMTQ1NDg4LC0xODQ5MjQxMDE3LDMzNj
-U2OTA0Niw4MDM1ODA4MDYsLTE2NjM0MjAwMzMsLTIwMzU0MDk5
-ODQsLTE2MzUxNjY5NDYsMTA2ODkwODU3LC0xNzI0MDUyMjM2LD
-E2MzY0NjU1MDksLTE5MTQxMzY3OCwyMDUxNDg5MDE2LC0xMzQw
-ODMyOTc5LC05NDY0MzI3MzAsLTIxMzA1MDU0ODAsOTE0MzI1Nj
-M5LDE0MjU5Mzk4MDYsMjE0NDc1MTk0MCwxMzM5MzgxMjQ4LDE1
-MTI4NDY1NjBdfQ==
+eyJoaXN0b3J5IjpbMjk1NzUwMTM3LDEwMTE0NTQ4OCwtMTg0OT
+I0MTAxNywzMzY1NjkwNDYsODAzNTgwODA2LC0xNjYzNDIwMDMz
+LC0yMDM1NDA5OTg0LC0xNjM1MTY2OTQ2LDEwNjg5MDg1NywtMT
+cyNDA1MjIzNiwxNjM2NDY1NTA5LC0xOTE0MTM2NzgsMjA1MTQ4
+OTAxNiwtMTM0MDgzMjk3OSwtOTQ2NDMyNzMwLC0yMTMwNTA1ND
+gwLDkxNDMyNTYzOSwxNDI1OTM5ODA2LDIxNDQ3NTE5NDAsMTMz
+OTM4MTI0OF19
 -->
