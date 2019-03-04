@@ -79,7 +79,7 @@ public static int[] mergeSort(int[] arr) {
 }  
   
 public static void mergeSortRecu(int[] arr, int[] result, int start, int end) {  
-    if (start < end)  
+    if (start >= end)  
         return;// 递归返回, 此时start==end, 数组只有一个元素  
   int start1 = start;  
     int mid = (start + end) >> 1;  
@@ -454,11 +454,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzM2NTY5MDQ2LDgwMzU4MDgwNiwtMTY2Mz
-QyMDAzMywtMjAzNTQwOTk4NCwtMTYzNTE2Njk0NiwxMDY4OTA4
-NTcsLTE3MjQwNTIyMzYsMTYzNjQ2NTUwOSwtMTkxNDEzNjc4LD
-IwNTE0ODkwMTYsLTEzNDA4MzI5NzksLTk0NjQzMjczMCwtMjEz
-MDUwNTQ4MCw5MTQzMjU2MzksMTQyNTkzOTgwNiwyMTQ0NzUxOT
-QwLDEzMzkzODEyNDgsMTUxMjg0NjU2MCwxMjU2NDk1NzIwLC02
-NDIzOTAwNTldfQ==
+eyJoaXN0b3J5IjpbLTE4NDkyNDEwMTcsMzM2NTY5MDQ2LDgwMz
+U4MDgwNiwtMTY2MzQyMDAzMywtMjAzNTQwOTk4NCwtMTYzNTE2
+Njk0NiwxMDY4OTA4NTcsLTE3MjQwNTIyMzYsMTYzNjQ2NTUwOS
+wtMTkxNDEzNjc4LDIwNTE0ODkwMTYsLTEzNDA4MzI5NzksLTk0
+NjQzMjczMCwtMjEzMDUwNTQ4MCw5MTQzMjU2MzksMTQyNTkzOT
+gwNiwyMTQ0NzUxOTQwLDEzMzkzODEyNDgsMTUxMjg0NjU2MCwx
+MjU2NDk1NzIwXX0=
 -->
