@@ -149,7 +149,7 @@ static void QSRecu1(int[] arr, int start, int end) {
     int l = start;  
     int pivot = arr[end];  
     for (int i = start; i < end; i++) {  
-        if (arr[i] <= pivot) {  
+        if (arr[i] < pivot) {  
             if (i != l) {  
                 swap(arr, i, l);  
             }  
@@ -454,11 +454,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDkyNDEwMTcsMzM2NTY5MDQ2LDgwMz
-U4MDgwNiwtMTY2MzQyMDAzMywtMjAzNTQwOTk4NCwtMTYzNTE2
-Njk0NiwxMDY4OTA4NTcsLTE3MjQwNTIyMzYsMTYzNjQ2NTUwOS
-wtMTkxNDEzNjc4LDIwNTE0ODkwMTYsLTEzNDA4MzI5NzksLTk0
-NjQzMjczMCwtMjEzMDUwNTQ4MCw5MTQzMjU2MzksMTQyNTkzOT
-gwNiwyMTQ0NzUxOTQwLDEzMzkzODEyNDgsMTUxMjg0NjU2MCwx
-MjU2NDk1NzIwXX0=
+eyJoaXN0b3J5IjpbMTAxMTQ1NDg4LC0xODQ5MjQxMDE3LDMzNj
+U2OTA0Niw4MDM1ODA4MDYsLTE2NjM0MjAwMzMsLTIwMzU0MDk5
+ODQsLTE2MzUxNjY5NDYsMTA2ODkwODU3LC0xNzI0MDUyMjM2LD
+E2MzY0NjU1MDksLTE5MTQxMzY3OCwyMDUxNDg5MDE2LC0xMzQw
+ODMyOTc5LC05NDY0MzI3MzAsLTIxMzA1MDU0ODAsOTE0MzI1Nj
+M5LDE0MjU5Mzk4MDYsMjE0NDc1MTk0MCwxMzM5MzgxMjQ4LDE1
+MTI4NDY1NjBdfQ==
 -->
