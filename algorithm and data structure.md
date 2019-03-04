@@ -110,7 +110,7 @@ public static void mergeSortRecu(int[] arr, int[] result, int start, int end) {
 
 > 最好时间复杂度
 
-数组已经按升序排好序, 则第一次遍历需要n 次比较, 然后均分成n/21
+数组已经按升序排好序, 则第一次遍历需要n 次比较, 然后均分成n/2 和 n/2 的两组进行递归, 满足O(n) = 2O(n/2)+ O(n)
 
 > 版本一
 ```
@@ -459,7 +459,7 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzU1OTg2ODgsMjEzNDgyNDg4MCwyOT
+eyJoaXN0b3J5IjpbLTE2MjI4NjY4MDAsMjEzNDgyNDg4MCwyOT
 U3NTAxMzcsMTAxMTQ1NDg4LC0xODQ5MjQxMDE3LDMzNjU2OTA0
 Niw4MDM1ODA4MDYsLTE2NjM0MjAwMzMsLTIwMzU0MDk5ODQsLT
 E2MzUxNjY5NDYsMTA2ODkwODU3LC0xNzI0MDUyMjM2LDE2MzY0
