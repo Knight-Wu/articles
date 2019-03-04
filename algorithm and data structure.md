@@ -112,7 +112,9 @@ public static void mergeSortRecu(int[] arr, int[] result, int start, int end) {
 
 数组已经按升序排好序, pivot 为中间元素, 则第一次遍历需要n 次比较, 然后均分成n/2 和 n/2 的两组进行递归, 满足O(n) = 2O(n/2)+ O(n), 则最好时间复杂度为O(nlgn)
 
-> 最坏时间复杂度, 
+> 最坏时间复杂度
+
+数组元素为降序, 当需要排成升序的时候. 或者元素都相等的时候(没有shi)
 
 > 版本一
 ```
@@ -461,11 +463,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTA0MDkzOTQsMjEzNDgyNDg4MCwyOT
-U3NTAxMzcsMTAxMTQ1NDg4LC0xODQ5MjQxMDE3LDMzNjU2OTA0
-Niw4MDM1ODA4MDYsLTE2NjM0MjAwMzMsLTIwMzU0MDk5ODQsLT
-E2MzUxNjY5NDYsMTA2ODkwODU3LC0xNzI0MDUyMjM2LDE2MzY0
-NjU1MDksLTE5MTQxMzY3OCwyMDUxNDg5MDE2LC0xMzQwODMyOT
-c5LC05NDY0MzI3MzAsLTIxMzA1MDU0ODAsOTE0MzI1NjM5LDE0
-MjU5Mzk4MDZdfQ==
+eyJoaXN0b3J5IjpbMTc1NjE4ODQsLTExMTA0MDkzOTQsMjEzND
+gyNDg4MCwyOTU3NTAxMzcsMTAxMTQ1NDg4LC0xODQ5MjQxMDE3
+LDMzNjU2OTA0Niw4MDM1ODA4MDYsLTE2NjM0MjAwMzMsLTIwMz
+U0MDk5ODQsLTE2MzUxNjY5NDYsMTA2ODkwODU3LC0xNzI0MDUy
+MjM2LDE2MzY0NjU1MDksLTE5MTQxMzY3OCwyMDUxNDg5MDE2LC
+0xMzQwODMyOTc5LC05NDY0MzI3MzAsLTIxMzA1MDU0ODAsOTE0
+MzI1NjM5XX0=
 -->
