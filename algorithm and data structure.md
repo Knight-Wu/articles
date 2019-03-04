@@ -106,7 +106,11 @@ public static void mergeSortRecu(int[] arr, int[] result, int start, int end) {
 ```
 
 * 快速排序
-选一个基准数, 小于基准数的放到右边, 大于的放到左边, 并一直递归到数组只有一个元素, 再返回, 时间复杂度: O(nlgn), 推导公式跟归并排序一致
+选一个基准数, 小于基准数的放到右边, 大于的放到左边, 并一直递归到数组只有一个元素, 再返回, 平均时间复杂度: O(nlgn), 
+
+> 最好时间复杂度
+
+数组已经按升序排好序, 则第一次遍历需要n 次比较, 然后均分成n/21
 
 > 版本一
 ```
@@ -455,11 +459,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzNDgyNDg4MCwyOTU3NTAxMzcsMTAxMT
-Q1NDg4LC0xODQ5MjQxMDE3LDMzNjU2OTA0Niw4MDM1ODA4MDYs
-LTE2NjM0MjAwMzMsLTIwMzU0MDk5ODQsLTE2MzUxNjY5NDYsMT
-A2ODkwODU3LC0xNzI0MDUyMjM2LDE2MzY0NjU1MDksLTE5MTQx
-MzY3OCwyMDUxNDg5MDE2LC0xMzQwODMyOTc5LC05NDY0MzI3Mz
-AsLTIxMzA1MDU0ODAsOTE0MzI1NjM5LDE0MjU5Mzk4MDYsMjE0
-NDc1MTk0MF19
+eyJoaXN0b3J5IjpbLTE0NzU1OTg2ODgsMjEzNDgyNDg4MCwyOT
+U3NTAxMzcsMTAxMTQ1NDg4LC0xODQ5MjQxMDE3LDMzNjU2OTA0
+Niw4MDM1ODA4MDYsLTE2NjM0MjAwMzMsLTIwMzU0MDk5ODQsLT
+E2MzUxNjY5NDYsMTA2ODkwODU3LC0xNzI0MDUyMjM2LDE2MzY0
+NjU1MDksLTE5MTQxMzY3OCwyMDUxNDg5MDE2LC0xMzQwODMyOT
+c5LC05NDY0MzI3MzAsLTIxMzA1MDU0ODAsOTE0MzI1NjM5LDE0
+MjU5Mzk4MDZdfQ==
 -->
