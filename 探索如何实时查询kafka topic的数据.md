@@ -11,11 +11,11 @@ ksq 目前是可以支持sql 的查询, 但是必须要使用[Confluent Platform
 可以简单理解为hadoop 的企业版, 例如cdh , 简要介绍Confluent Platform的几个功能
   * [ksql](https://docs.confluent.io/current/ksql/docs/quickstart.html)
 可以使用sql 实时查询 kafka 多个topic 的消息, 并支持持久化. 
-  * control center 
- 可以理解为kafka manager的地位, 但是有更多的功能, 比如可以在web 页面上直接发送, 接受kafka 消息; 直接新建kafka stream, 并做sql 分析; 
+  * [control center](https://docs.confluent.io/3.2.4/control-center/docs/index.html#control-center)
+ 可以理解为kafka manager的地位, 但是有更多的功能, 比如可以在web 页面上直接发送, 接受kafka 消息; 直接新建kafka stream, 并做sql 分析; 监控系统的情况. 能极大方便kafka cluster 的运维和开发. 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5NjQxNzAzNywtNTYwNzE0ODIyXX0=
+eyJoaXN0b3J5IjpbLTE0NzUwMjkzODIsLTU2MDcxNDgyMl19
 -->
