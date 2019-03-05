@@ -70,6 +70,9 @@ B+ 树的非叶子节点没有数据, 相同情况下比B 树在一个磁盘块�
 分治的思想, 划分到两个子数组均只有一个元素, 再比较, 再merge 两个有序的子序列, 假设归并n 元素的时间复杂度是T(n) , 则T(n) = 2T(n/2)+O(n)(为合并两个元素个数为n/2 的有序子序列的时间复杂度)
 , 经过推导得: T(n) =O(nlgn)
 
+> 时间复杂度分析: 
+> In the _worst_ case, merge sort does about 39% fewer comparisons than [quicksort](https://en.wikipedia.org/wiki/Quicksort "Quicksort") does in the _average_ case. In terms of moves, merge sort's worst case complexity is [O](https://en.wikipedia.org/wiki/Big_O_notation "Big O notation")(_n_ log _n_)—the same complexity as quicksort's best case, and merge sort's best case takes about half as many iterations as the worst case
+> 
 ```
 public static int[] mergeSort(int[] arr) {  
     int[] result = new int[arr.length];  
@@ -488,11 +491,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3OTk2NzUwNiwtMjg3MzAzOTI3LC0xOT
-A5NjA2OTU2LC0xMTEwNDA5Mzk0LDIxMzQ4MjQ4ODAsMjk1NzUw
-MTM3LDEwMTE0NTQ4OCwtMTg0OTI0MTAxNywzMzY1NjkwNDYsOD
-AzNTgwODA2LC0xNjYzNDIwMDMzLC0yMDM1NDA5OTg0LC0xNjM1
-MTY2OTQ2LDEwNjg5MDg1NywtMTcyNDA1MjIzNiwxNjM2NDY1NT
-A5LC0xOTE0MTM2NzgsMjA1MTQ4OTAxNiwtMTM0MDgzMjk3OSwt
-OTQ2NDMyNzMwXX0=
+eyJoaXN0b3J5IjpbMzY0MDQwMzQyLDEzNzk5Njc1MDYsLTI4Nz
+MwMzkyNywtMTkwOTYwNjk1NiwtMTExMDQwOTM5NCwyMTM0ODI0
+ODgwLDI5NTc1MDEzNywxMDExNDU0ODgsLTE4NDkyNDEwMTcsMz
+M2NTY5MDQ2LDgwMzU4MDgwNiwtMTY2MzQyMDAzMywtMjAzNTQw
+OTk4NCwtMTYzNTE2Njk0NiwxMDY4OTA4NTcsLTE3MjQwNTIyMz
+YsMTYzNjQ2NTUwOSwtMTkxNDEzNjc4LDIwNTE0ODkwMTYsLTEz
+NDA4MzI5NzldfQ==
 -->
