@@ -10,12 +10,12 @@
 * Confluent Platform
 可以简单理解为hadoop 的企业版, 例如cdh , 简要介绍Confluent Platform的几个功能
   * ksql
- 流shi
+可以使用sql 实时查询 kafka 多个topic 的消息, 并支持持久化. 
   * control center 
  可以理解为kafka manager的地位, 但是有更多的功能, 比如可以在web 页面上直接发送, 接受kafka 消息, 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3MDg3OTM3NSwtNTYwNzE0ODIyXX0=
+eyJoaXN0b3J5IjpbLTUyMTMyNTk0OCwtNTYwNzE0ODIyXX0=
 -->
