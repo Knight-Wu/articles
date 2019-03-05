@@ -1,5 +1,9 @@
-## linux kernel development 3rd n
-### linux 内存
+## linux kernel development 3rd notes
+
+### 12. memory management
+
+
+####  swap
 
 
 
@@ -73,5 +77,5 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzc4NTk2OTZdfQ==
+eyJoaXN0b3J5IjpbMjAxNzMzNzkwOF19
 -->
