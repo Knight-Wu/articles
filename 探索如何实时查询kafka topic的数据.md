@@ -10,10 +10,10 @@
 * Confluent Platform
 可以简单理解为hadoop 的企业版, 例如cdh , 
   * control center 
- 可以理解为kafka manager的地位, 但是yo
+ 可以理解为kafka manager的地位, 但是有更多的功能, 比如可以在web 页面上直接
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0MDQ2MjAyNV19
+eyJoaXN0b3J5IjpbLTU2MDcxNDgyMl19
 -->
