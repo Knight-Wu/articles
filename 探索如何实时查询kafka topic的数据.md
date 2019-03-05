@@ -5,10 +5,13 @@
 寻找一个技术, 能交互式查询生产kafka topic数据, 最好能支持sql, 轻量化, 查询多个topic, 实时查询
 
 #### 结果
-[ksql](https://docs.confluent.io/current/ksql/docs/tutorials/basics-local.html) 目前是可以支持sql 的查询, 但是必须要使用[Confluent Platform(兼容wom)](https://docs.confluent.io/3.2.4/platform.html)
+[ksql](https://docs.confluent.io/current/ksql/docs/tutorials/basics-local.html) 目前是可以支持sql 的查询, 但是必须要使用[Confluent Platform(兼容目前公司的kafka 的版本)](https://docs.confluent.io/3.2.4/platform.html) 来部署kafa和zookeeper, 
+
+* Confluent Platform
+可以简单理解为hadoop 的企业版, 例如c
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODc2NDU0ODk2XX0=
+eyJoaXN0b3J5IjpbMTExMDEwMDI3NV19
 -->
