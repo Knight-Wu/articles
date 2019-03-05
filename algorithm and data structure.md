@@ -326,11 +326,7 @@ static void hillS(int[] arr) {
 * 二叉搜索树
 插入是从顶向下, 递归的形式, 比节点小, 则比左儿子, 比节点大, 则比右儿子,  新插入的值总是落在叶子节点.
 
-#### 资源
-* 算法第四版
-https://algs4.cs.princeton.edu/33balanced/
-* coursera
-https://www.coursera.org/learn/algorithms-part1/
+
 
 
 ### 查找
@@ -479,6 +475,11 @@ public void nodeToQueue(TreeNode root, Queue<TreeNode> queue) {
 1. 注意递归中, 传递的参数的类型, 基本类型例如int, char 等, 在函数栈的嵌套中拷贝一个新的值到下一个函数调用, 每个函数栈的变量的改变不影响其他函数栈; 但是如果是对象类型, 则传递的是对象的引用, 多个函数栈中会改变对象的值; 但是如果传递的是新的字符串, 则不会改变
 2. 灵活使用递归中的全局变量和参数, 能让递归更易理解. 
 
+#### 资源
+* 算法第四版
+https://algs4.cs.princeton.edu/
+* coursera
+https://www.coursera.org/learn/algorithms-part1/
 
 #### 待解决问题
 * paxos 的应用
@@ -487,11 +488,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI4NzMwMzkyNywtMTkwOTYwNjk1NiwtMT
-ExMDQwOTM5NCwyMTM0ODI0ODgwLDI5NTc1MDEzNywxMDExNDU0
-ODgsLTE4NDkyNDEwMTcsMzM2NTY5MDQ2LDgwMzU4MDgwNiwtMT
-Y2MzQyMDAzMywtMjAzNTQwOTk4NCwtMTYzNTE2Njk0NiwxMDY4
-OTA4NTcsLTE3MjQwNTIyMzYsMTYzNjQ2NTUwOSwtMTkxNDEzNj
-c4LDIwNTE0ODkwMTYsLTEzNDA4MzI5NzksLTk0NjQzMjczMCwt
-MjEzMDUwNTQ4MF19
+eyJoaXN0b3J5IjpbMTM3OTk2NzUwNiwtMjg3MzAzOTI3LC0xOT
+A5NjA2OTU2LC0xMTEwNDA5Mzk0LDIxMzQ4MjQ4ODAsMjk1NzUw
+MTM3LDEwMTE0NTQ4OCwtMTg0OTI0MTAxNywzMzY1NjkwNDYsOD
+AzNTgwODA2LC0xNjYzNDIwMDMzLC0yMDM1NDA5OTg0LC0xNjM1
+MTY2OTQ2LDEwNjg5MDg1NywtMTcyNDA1MjIzNiwxNjM2NDY1NT
+A5LC0xOTE0MTM2NzgsMjA1MTQ4OTAxNiwtMTM0MDgzMjk3OSwt
+OTQ2NDMyNzMwXX0=
 -->
