@@ -12,10 +12,10 @@ ksq 目前是可以支持sql 的查询, 但是必须要使用[Confluent Platform
   * [ksql](https://docs.confluent.io/current/ksql/docs/quickstart.html)
 可以使用sql 实时查询 kafka 多个topic 的消息, 并支持持久化. 
   * control center 
- 可以理解为kafka manager的地位, 但是有更多的功能, 比如可以在web 页面上直接发送, 接受kafka 消息, 
+ 可以理解为kafka manager的地位, 但是有更多的功能, 比如可以在web 页面上直接发送, 接受kafka 消息; 直接新建kafka stream, 并做sql 分析; 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMwMDU4OTY0LC01NjA3MTQ4MjJdfQ==
+eyJoaXN0b3J5IjpbMTk5NjQxNzAzNywtNTYwNzE0ODIyXX0=
 -->
