@@ -7,7 +7,7 @@ The kernel represents every physical page on the system with a  struct page stru
 The important point to understand is that the page structure is associated with physical pages, not virtual page.
 
 #### zones
-由于硬件的限制, 所有的page 不能被一视同仁. 需要分为几个zones 
+由于硬件的限制, 所有的page 不能被一视同仁. 需要分为几个zones . 
 
 
 
@@ -88,5 +88,6 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzE0MjA1MjIsMTY5NTI2OTA5XX0=
+eyJoaXN0b3J5IjpbNzcwODEyMjMyLC0xNTMxNDIwNTIyLDE2OT
+UyNjkwOV19
 -->
