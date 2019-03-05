@@ -2,14 +2,8 @@
 
 ### 12. memory management
 #### page
-Most 32-bit architectures have
-
-4KB pages, whereas most 64-bit architectures have 8KB pages.This implies that on a
-
-machine with 4KB pages and 1GB of memory, physical memory is divided into 262,144
-
-distinct pages
-
+Most 32-bit architectures have 4KB pages, whereas most 64-bit architectures have 8KB pages.This implies that on a machine with 4KB pages and 1GB of memory, physical memory is divided into 262,144 distinct pages.
+The kernel represents every physical page on the system with a  struct page structure.
 ####  swap
 
 
@@ -84,5 +78,5 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyMzI0OTIwNl19
+eyJoaXN0b3J5IjpbNDc0NTMxNzk5XX0=
 -->
