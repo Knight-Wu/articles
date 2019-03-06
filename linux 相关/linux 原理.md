@@ -1,4 +1,5 @@
-## linux kernel development 3rd notes
+
+### linux 内存## linux kernel development 3rd notes
 ### 3. process management
 所有进程均是init 进程(pid=1)的子进程
 * 线程
@@ -36,10 +37,7 @@ The kernel represents a process’s address space with a data structure called t
 
 ####  swap
 
-
-
-* swap 
-先简单根据博客资料: https://cloud.tencent.com/developer/article/1200032, 是一块为了满足虚拟内存的需求, 开辟的磁盘区域, 用来保存内存中不经常使用的数据, 根据LRU 算法.
+先简单根据博客资料: https://cloud.tencent.com/developer/article/1200032, 是一块为了满足虚拟内存的需求, 开辟的磁盘区域, 用来保存内存中不经常使用的数据, 根据LRU 算法; 也为了能让内存容下超出物理内存大小的数据. 
 
 * 什么时候开始使用swap
 
@@ -108,8 +106,8 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyODY4MjU1OSwtODQ2NTI3MzYxLDE0Mz
-U2MTI3OTQsMTYzMTk4NDQ2NCwtMTM0NzM0OTM0MiwxOTIwMTYy
-NDYsLTc5OTk5NDA5MywtMTUzMTQyMDUyMiwxNjk1MjY5MDldfQ
-==
+eyJoaXN0b3J5IjpbLTk5OTIzMTIwMCwxMzI4NjgyNTU5LC04ND
+Y1MjczNjEsMTQzNTYxMjc5NCwxNjMxOTg0NDY0LC0xMzQ3MzQ5
+MzQyLDE5MjAxNjI0NiwtNzk5OTk0MDkzLC0xNTMxNDIwNTIyLD
+E2OTUyNjkwOV19
 -->
