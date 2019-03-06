@@ -1,5 +1,6 @@
 ## linux kernel development 3rd notes
-
+### 3. process management
+linux 中线程是特殊的进程, 所有进程均是init 进程(pid=1)的子进程
 ### 12. memory management
 #### pages
 Most 32-bit architectures have 4KB pages, whereas most 64-bit architectures have 8KB pages.This implies that on a machine with 4KB pages and 1GB of memory, physical memory is divided into 262,144 distinct pages.
@@ -94,7 +95,7 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzMTk4NDQ2NCwtMTM0NzM0OTM0MiwxOT
-IwMTYyNDYsLTc5OTk5NDA5MywtMTUzMTQyMDUyMiwxNjk1MjY5
-MDldfQ==
+eyJoaXN0b3J5IjpbMTQzNTYxMjc5NCwxNjMxOTg0NDY0LC0xMz
+Q3MzQ5MzQyLDE5MjAxNjI0NiwtNzk5OTk0MDkzLC0xNTMxNDIw
+NTIyLDE2OTUyNjkwOV19
 -->
