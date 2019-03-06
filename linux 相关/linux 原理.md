@@ -9,7 +9,8 @@ The important point to understand is that the page structure is associated with 
 #### zones
 由于硬件的限制, 所有的page 不能被一视同仁. 需要分为几个zones . 实际的分区跟计算机的体系结构相关, 在此不需要深入, 可以当做几乎所有内存都是可以被使用的.
 
-
+#### slab layer
+可以简要理解: free list 作为
 
 
 
@@ -88,6 +89,6 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5OTk5NDA5MywtMTUzMTQyMDUyMiwxNj
-k1MjY5MDldfQ==
+eyJoaXN0b3J5IjpbMjUyNDc5OTY0LC03OTk5OTQwOTMsLTE1Mz
+E0MjA1MjIsMTY5NTI2OTA5XX0=
 -->
