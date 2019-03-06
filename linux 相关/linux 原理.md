@@ -1,6 +1,17 @@
 ## linux kernel development 3rd notes
 ### 3. process management
 linux 中线程是特殊的进程, 所有进程均是init 进程(pid=1)的子进程
+#### process creation
+分为两个步骤, fork() 和exec()
+fork() creates a child process that is a copy of the current task. It differs from the parent only in its PID (which is unique), its PPID (parent’s PID, which is set to the original process),
+
+The second function,
+
+exec()
+
+, loads a new
+
+executable into the address space and begins executing i
 ### 12. memory management
 #### pages
 Most 32-bit architectures have 4KB pages, whereas most 64-bit architectures have 8KB pages.This implies that on a machine with 4KB pages and 1GB of memory, physical memory is divided into 262,144 distinct pages.
@@ -95,7 +106,7 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzNTYxMjc5NCwxNjMxOTg0NDY0LC0xMz
-Q3MzQ5MzQyLDE5MjAxNjI0NiwtNzk5OTk0MDkzLC0xNTMxNDIw
-NTIyLDE2OTUyNjkwOV19
+eyJoaXN0b3J5IjpbMTY4NDI2ODgwOSwxNDM1NjEyNzk0LDE2Mz
+E5ODQ0NjQsLTEzNDczNDkzNDIsMTkyMDE2MjQ2LC03OTk5OTQw
+OTMsLTE1MzE0MjA1MjIsMTY5NTI2OTA5XX0=
 -->
