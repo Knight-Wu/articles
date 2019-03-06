@@ -1,6 +1,10 @@
 ## linux kernel development 3rd notes
 ### 3. process management
-linux 中线程是特殊的进程, 所有进程均是init 进程(pid=1)的子进程
+所有进程均是init 进程(pid=1)的子进程
+* 线程
+Linux has a unique implementation of threads.To the Linux kernel, there is no concept of a thread. Linux implements all threads as standard processes.The Linux kernel does not provide any special scheduling semantics or data structures to represent threads. Instead, a thread is merely a process that shares certain resources with other processes.(线程只是抽象的概念, 在)
+Each thread has a unique task_struct and appears to the kernel as a normal process.
+threads just happen to share resources, such as an address space, with other processes.
 #### process creation
 分为两个步骤, fork() 和exec()
 * fork()
@@ -104,7 +108,7 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0NjUyNzM2MSwxNDM1NjEyNzk0LDE2Mz
-E5ODQ0NjQsLTEzNDczNDkzNDIsMTkyMDE2MjQ2LC03OTk5OTQw
-OTMsLTE1MzE0MjA1MjIsMTY5NTI2OTA5XX0=
+eyJoaXN0b3J5IjpbMzQyNDQ2NTM1LC04NDY1MjczNjEsMTQzNT
+YxMjc5NCwxNjMxOTg0NDY0LC0xMzQ3MzQ5MzQyLDE5MjAxNjI0
+NiwtNzk5OTk0MDkzLC0xNTMxNDIwNTIyLDE2OTUyNjkwOV19
 -->
