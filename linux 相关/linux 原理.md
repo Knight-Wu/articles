@@ -16,7 +16,9 @@ The important point to understand is that the page structure is associated with 
 #### process address space
 * memory descriptor
 The kernel represents a process’s address space with a data structure called the memory descriptor.This structure contains all the information related to the process address space.
-* pa
+* page table
+将虚拟地址转换为物理的设备, 页表分为多级, 每个进程都有一个页表.
+
 
 ####  swap
 
@@ -92,7 +94,7 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyNDc3NTQzMywtMTM0NzM0OTM0MiwxOT
+eyJoaXN0b3J5IjpbMTYzMTk4NDQ2NCwtMTM0NzM0OTM0MiwxOT
 IwMTYyNDYsLTc5OTk5NDA5MywtMTUzMTQyMDUyMiwxNjk1MjY5
 MDldfQ==
 -->
