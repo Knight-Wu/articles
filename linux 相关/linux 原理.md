@@ -2,7 +2,7 @@
 ### 3. process management
 所有进程均是init 进程(pid=1)的子进程
 * 线程
-Linux has a unique implementation of threads.To the Linux kernel, there is no concept of a thread. Linux implements all threads as standard processes.The Linux kernel does not provide any special scheduling semantics or data structures to represent threads. Instead, a thread is merely a process that shares certain resources with other processes.(线程只是抽象的概念, 在)
+Linux has a unique implementation of threads.To the Linux kernel, there is no concept of a thread. Linux implements all threads as standard processes.The Linux kernel does not provide any special scheduling semantics or data structures to represent threads. Instead, a thread is merely a process that shares certain resources with other processes.(线程只是抽象的概念, 在内核的角度来看只是与其他进程共享资源的一种特殊的进程. )
 Each thread has a unique task_struct and appears to the kernel as a normal process.
 threads just happen to share resources, such as an address space, with other processes.
 #### process creation
@@ -108,7 +108,8 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzQyNDQ2NTM1LC04NDY1MjczNjEsMTQzNT
-YxMjc5NCwxNjMxOTg0NDY0LC0xMzQ3MzQ5MzQyLDE5MjAxNjI0
-NiwtNzk5OTk0MDkzLC0xNTMxNDIwNTIyLDE2OTUyNjkwOV19
+eyJoaXN0b3J5IjpbMTMyODY4MjU1OSwtODQ2NTI3MzYxLDE0Mz
+U2MTI3OTQsMTYzMTk4NDQ2NCwtMTM0NzM0OTM0MiwxOTIwMTYy
+NDYsLTc5OTk5NDA5MywtMTUzMTQyMDUyMiwxNjk1MjY5MDldfQ
+==
 -->
