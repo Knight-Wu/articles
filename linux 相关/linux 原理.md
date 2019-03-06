@@ -16,7 +16,7 @@ The important point to understand is that the page structure is associated with 
 #### process address space
 * memory descriptor
 The kernel represents a process’s address space with a data structure called the memory descriptor.This structure contains all the information related to the process address space.
-
+* pa
 
 ####  swap
 
@@ -92,6 +92,7 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDczNDkzNDIsMTkyMDE2MjQ2LC03OT
-k5OTQwOTMsLTE1MzE0MjA1MjIsMTY5NTI2OTA5XX0=
+eyJoaXN0b3J5IjpbMTgyNDc3NTQzMywtMTM0NzM0OTM0MiwxOT
+IwMTYyNDYsLTc5OTk5NDA5MywtMTUzMTQyMDUyMiwxNjk1MjY5
+MDldfQ==
 -->
