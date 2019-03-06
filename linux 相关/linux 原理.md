@@ -12,6 +12,8 @@ The important point to understand is that the page structure is associated with 
 #### slab layer
 可以简要理解: free list 作为一个缓存经常使用的数据结构的一个空闲列表, 而slab layer 是内核用来维护这个free list, slab 把不同的数据结构分为不同的组, 例如一组用来存放进程描述符.
 
+### 15. process address space
+#### process address space
 
 
 
@@ -89,6 +91,6 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyMDE2MjQ2LC03OTk5OTQwOTMsLTE1Mz
-E0MjA1MjIsMTY5NTI2OTA5XX0=
+eyJoaXN0b3J5IjpbLTE5MDY3NTk4NTUsMTkyMDE2MjQ2LC03OT
+k5OTQwOTMsLTE1MzE0MjA1MjIsMTY5NTI2OTA5XX0=
 -->
