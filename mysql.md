@@ -21,6 +21,7 @@
 > 使用 straight_join 关键字来比较原执行计划和优化后的执行计划\
 
 * mysql 如何执行关联查询
+![enter image description here](https://drive.google.com/uc?id=1ENqjSNgGGsiCMbk1Q2FQ6A6SadjXwQvM)
 
 ####  存储引擎
 * InnoDB 
@@ -129,11 +130,11 @@ https://blog.jcole.us/innodb/
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExOTE3MTY1MDIsNjcxMTMwMjAwLDg2MT
-kwMTEzNSwtNzcxMjU4NTc4LC00MjI3ODQwMTQsLTEwOTM4ODE2
-MjEsLTg2NTA1NTI1NiwtMjEyODYzMDE2NiwtMTIyOTAzMjkwLD
-ExNDExNjg4OTUsMTE3ODUzMTE3NCwxOTUzNjU0MTgwLDEyNjk4
-NTc3MzYsLTU1NjAzNTk3Nyw2NTUwMjI4ODMsMTQyNzU3MjEwNS
-wxOTg3MDI2ODMzLDEwMTM2MzQzODUsMjgwMDgxNTE2LDIwNjgw
-NTM2NzVdfQ==
+eyJoaXN0b3J5IjpbLTE2MDIyNzk5NzMsLTExOTE3MTY1MDIsNj
+cxMTMwMjAwLDg2MTkwMTEzNSwtNzcxMjU4NTc4LC00MjI3ODQw
+MTQsLTEwOTM4ODE2MjEsLTg2NTA1NTI1NiwtMjEyODYzMDE2Ni
+wtMTIyOTAzMjkwLDExNDExNjg4OTUsMTE3ODUzMTE3NCwxOTUz
+NjU0MTgwLDEyNjk4NTc3MzYsLTU1NjAzNTk3Nyw2NTUwMjI4OD
+MsMTQyNzU3MjEwNSwxOTg3MDI2ODMzLDEwMTM2MzQzODUsMjgw
+MDgxNTE2XX0=
 -->
