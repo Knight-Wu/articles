@@ -5,7 +5,7 @@ linux 中线程是特殊的进程, 所有进程均是init 进程(pid=1)的子进
 分为两个步骤, fork() 和exec()
 * fork()
  creates a child process that is a copy of the current task. It differs from the parent only in its PID (which is unique), its PPID (parent’s PID, which is set to the original process),
- linux 的fork 不同于传统的fork, 是基于copy on write, 
+ linux 的fork 不同于传统的fork, 是基于copy on write, 将copy 延迟到真正写入开始的时候, 如果fork() 之后马上exec(), 就压根不需要copy. 
 * exec()
  loads a newexecutable into the address space and begins executing it.
 ### 12. memory management
@@ -102,7 +102,7 @@ find /* -name  *.conf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI4OTIwMjg0LDE0MzU2MTI3OTQsMTYzMT
+eyJoaXN0b3J5IjpbMTYxODkwMjM2LDE0MzU2MTI3OTQsMTYzMT
 k4NDQ2NCwtMTM0NzM0OTM0MiwxOTIwMTYyNDYsLTc5OTk5NDA5
 MywtMTUzMTQyMDUyMiwxNjk1MjY5MDldfQ==
 -->
