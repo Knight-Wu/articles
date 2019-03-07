@@ -1,5 +1,9 @@
 ## high performance mysql 3rd notes
 ### 6. query performance optimization
+In MySQL, the simplest query cost metrics are:
+ Response time, Number of rows examined, Number of rows returned
+* response time 
+包括服务时间和排队时间
 
 #### mysql 查询过程
 1. 客户端发送查询语句到服务器
@@ -134,7 +138,7 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5Njg3MzIyMSwxMTk5MzQxOTAxLC0xNj
+eyJoaXN0b3J5IjpbLTg1MDgwMzIwNiwxMTk5MzQxOTAxLC0xNj
 AyMjc5OTczLC0xMTkxNzE2NTAyLDY3MTEzMDIwMCw4NjE5MDEx
 MzUsLTc3MTI1ODU3OCwtNDIyNzg0MDE0LC0xMDkzODgxNjIxLC
 04NjUwNTUyNTYsLTIxMjg2MzAxNjYsLTEyMjkwMzI5MCwxMTQx
