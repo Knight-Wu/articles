@@ -9,12 +9,12 @@ threads just happen to share resources, such as an address space, with other pro
 #### process creation
 分为两个步骤, fork() 和exec()
 * fork()
- creates a child process that is a copy of the current task. It differs from the parent only in its PID (which is unique), its PPID (parent’s PID, which is set to the original process),
+ creates a child process that is a copy of the current process. It differs from the parent only in its PID (which is unique), its PPID (parent’s PID, which is set to the original process),
  linux 的fork 不同于传统的fork, 是基于copy on write, 将copy 延迟到真正写入开始的时候, 如果fork() 之后马上exec(), 就压根不需要copy. 
 *  fork的开销
 is the duplication of the parent’s page tables and the creation of a unique process descriptor for the child
 * exec()
- loads a newexecutable into the address space and begins executing it.
+ loads a new executable into the address space and begins executing it.
 ### 12. memory management
 #### pages
 Most 32-bit architectures have 4KB pages, whereas most 64-bit architectures have 8KB pages.This implies that on a machine with 4KB pages and 1GB of memory, physical memory is divided into 262,144 distinct pages.
@@ -111,9 +111,10 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyMTcxNTk5LDg2NDY0MzQzNiwxNTMzND
-AzMzg3LC0yMDk0MDgzNTQ5LDE1MTY4MTcwOTcsLTk5OTIzMTIw
-MCwxMzI4NjgyNTU5LC04NDY1MjczNjEsMTQzNTYxMjc5NCwxNj
-MxOTg0NDY0LC0xMzQ3MzQ5MzQyLDE5MjAxNjI0NiwtNzk5OTk0
-MDkzLC0xNTMxNDIwNTIyLDE2OTUyNjkwOV19
+eyJoaXN0b3J5IjpbLTEyMjc1OTU0NTcsLTIyMTcxNTk5LDg2ND
+Y0MzQzNiwxNTMzNDAzMzg3LC0yMDk0MDgzNTQ5LDE1MTY4MTcw
+OTcsLTk5OTIzMTIwMCwxMzI4NjgyNTU5LC04NDY1MjczNjEsMT
+QzNTYxMjc5NCwxNjMxOTg0NDY0LC0xMzQ3MzQ5MzQyLDE5MjAx
+NjI0NiwtNzk5OTk0MDkzLC0xNTMxNDIwNTIyLDE2OTUyNjkwOV
+19
 -->
