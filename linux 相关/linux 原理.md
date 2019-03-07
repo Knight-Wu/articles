@@ -104,16 +104,16 @@ cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(�
 
 #### Architecture of the UNIX Operating System
 ####  An Overview of the File Subsystem
-The kernel contains two other data structures, the _file table_ and the _user file descriptor table_. The file table is a **global kernel structure, but the user file descriptor table is allocated per process**.When a process _opens or creates a file, the kernel allocates an entry from each table, corresponding to the file's inode. Entries in the three structures  user file descriptor table, file table, and inode table -- maintain the state of the file and the user's access to it. The file table keeps track of the byte offset in the file where the user's next *read8 or _write_ will start, and the access rights allowed to the _open_ing process. The user file descriptor table identifier all open files for a process.
+The kernel contains two other data structures, the file tableand the user file descriptor table. The file table is a **global kernel structure, but the user file descriptor table is allocated per process**.When a process _opens or creates a file, the kernel allocates an entry from each table, corresponding to the file's inode. Entries in the three structures  user file descriptor table, file table, and inode table (maintain the state of the file and the user's access to it.) The file table keeps track of the byte offset in the file where the user's next read or write will start, and the access rights allowed to the opening process. The user file descriptor table identifier all open files for a process.
 
 ### 疑问
 * swap 为什么会增大
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1OTc3NTg2MCw4NjQ2NDM0MzYsMTUzMz
-QwMzM4NywtMjA5NDA4MzU0OSwxNTE2ODE3MDk3LC05OTkyMzEy
-MDAsMTMyODY4MjU1OSwtODQ2NTI3MzYxLDE0MzU2MTI3OTQsMT
-YzMTk4NDQ2NCwtMTM0NzM0OTM0MiwxOTIwMTYyNDYsLTc5OTk5
-NDA5MywtMTUzMTQyMDUyMiwxNjk1MjY5MDldfQ==
+eyJoaXN0b3J5IjpbLTIyMTcxNTk5LDg2NDY0MzQzNiwxNTMzND
+AzMzg3LC0yMDk0MDgzNTQ5LDE1MTY4MTcwOTcsLTk5OTIzMTIw
+MCwxMzI4NjgyNTU5LC04NDY1MjczNjEsMTQzNTYxMjc5NCwxNj
+MxOTg0NDY0LC0xMzQ3MzQ5MzQyLDE5MjAxNjI0NiwtNzk5OTk0
+MDkzLC0xNTMxNDIwNTIyLDE2OTUyNjkwOV19
 -->
