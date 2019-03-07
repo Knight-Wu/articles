@@ -100,6 +100,10 @@ buffer (缓冲区)起到流量整形的作用, 将多次的小io 累积成少次
 cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(例如cpu 和memory), 通过让存储系统分级来减小这种差异带来的影响.  缓存的速度比主存快很多, 数据先从缓存取, 实际情况中cpu 都能从缓存中找到大部分数据.
 
 ## The Design of the UNIX Operating System notes
+### Introduction to the Kernel
+
+#### Architecture of the UNIX Operating System
+####  An Overview of the File Subsystem
 
 
 ### 疑问
@@ -107,7 +111,7 @@ cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxMDM5NjY5OSw4NjQ2NDM0MzYsMTUzMz
+eyJoaXN0b3J5IjpbMTU3NzEwMDg1OSw4NjQ2NDM0MzYsMTUzMz
 QwMzM4NywtMjA5NDA4MzU0OSwxNTE2ODE3MDk3LC05OTkyMzEy
 MDAsMTMyODY4MjU1OSwtODQ2NTI3MzYxLDE0MzU2MTI3OTQsMT
 YzMTk4NDQ2NCwtMTM0NzM0OTM0MiwxOTIwMTYyNDYsLTc5OTk5
