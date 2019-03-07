@@ -93,14 +93,14 @@ https://cloud.tencent.com/developer/article/1200032
 > To find out the amount of swap space used by every process, run `top` (not `htop`), press 'f' to select columns (f for fields) to display, press 'p' to add swap to display, press 'o' to sort the table (o for order by) and press 'p' again to order by swap usage.
 
 * buffer and cache
-buffer 起到流量整形的作用, 将多次的小io 累积成少次的大io, 减少响应的开销
-cache 
+buffer (缓冲区)起到流量整形的作用, 将多次的小io 累积成少次的大io, 减少响应的开销, 并且让io 的速率稳定. 
+cache (缓存)是为了处理高速和低速设备之间的速度的不匹配, 
 ### 疑问
 * swap 为什么会增大
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwMjk0NTMxOCwxNTE2ODE3MDk3LC05OT
+eyJoaXN0b3J5IjpbLTg3MjA2NjE4NywxNTE2ODE3MDk3LC05OT
 kyMzEyMDAsMTMyODY4MjU1OSwtODQ2NTI3MzYxLDE0MzU2MTI3
 OTQsMTYzMTk4NDQ2NCwtMTM0NzM0OTM0MiwxOTIwMTYyNDYsLT
 c5OTk5NDA5MywtMTUzMTQyMDUyMiwxNjk1MjY5MDldfQ==
