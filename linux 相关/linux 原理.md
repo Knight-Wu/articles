@@ -94,14 +94,14 @@ https://cloud.tencent.com/developer/article/1200032
 
 * buffer and cache
 buffer (缓冲区)起到流量整形的作用, 将多次的小io 累积成少次的大io, 减少响应的开销, 并且让io 的速率稳定. 
-cache (缓存)是为了处理高速和低速设备之间的速度的不匹配, 
+cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(例如cpu 和memory), 通过让存储系统分级来减小这种差异带来的影响.  
 ### 疑问
 * swap 为什么会增大
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3MjA2NjE4NywxNTE2ODE3MDk3LC05OT
-kyMzEyMDAsMTMyODY4MjU1OSwtODQ2NTI3MzYxLDE0MzU2MTI3
-OTQsMTYzMTk4NDQ2NCwtMTM0NzM0OTM0MiwxOTIwMTYyNDYsLT
-c5OTk5NDA5MywtMTUzMTQyMDUyMiwxNjk1MjY5MDldfQ==
+eyJoaXN0b3J5IjpbLTIwOTQwODM1NDksMTUxNjgxNzA5NywtOT
+k5MjMxMjAwLDEzMjg2ODI1NTksLTg0NjUyNzM2MSwxNDM1NjEy
+Nzk0LDE2MzE5ODQ0NjQsLTEzNDczNDkzNDIsMTkyMDE2MjQ2LC
+03OTk5OTQwOTMsLTE1MzE0MjA1MjIsMTY5NTI2OTA5XX0=
 -->
