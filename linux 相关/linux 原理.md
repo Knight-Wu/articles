@@ -14,7 +14,7 @@ threads just happen to share resources, such as an address space, with other pro
 *  fork的开销
 is the duplication of the parent’s page tables and the creation of a unique process descriptor for the child
 * exec()
- loads a new executable into the address space and begins executing it.
+The kernel loads an executable file into memory during an _exec_ system call, and the loaded process consists of at least three parts, called _regions_: text, data, and stack
 ### 12. memory management
 #### pages
 Most 32-bit architectures have 4KB pages, whereas most 64-bit architectures have 8KB pages.This implies that on a machine with 4KB pages and 1GB of memory, physical memory is divided into 262,144 distinct pages.
@@ -111,10 +111,10 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjc1OTU0NTcsLTIyMTcxNTk5LDg2ND
-Y0MzQzNiwxNTMzNDAzMzg3LC0yMDk0MDgzNTQ5LDE1MTY4MTcw
-OTcsLTk5OTIzMTIwMCwxMzI4NjgyNTU5LC04NDY1MjczNjEsMT
-QzNTYxMjc5NCwxNjMxOTg0NDY0LC0xMzQ3MzQ5MzQyLDE5MjAx
-NjI0NiwtNzk5OTk0MDkzLC0xNTMxNDIwNTIyLDE2OTUyNjkwOV
-19
+eyJoaXN0b3J5IjpbMTYzNTU2OTEzMiwtMTIyNzU5NTQ1NywtMj
+IxNzE1OTksODY0NjQzNDM2LDE1MzM0MDMzODcsLTIwOTQwODM1
+NDksMTUxNjgxNzA5NywtOTk5MjMxMjAwLDEzMjg2ODI1NTksLT
+g0NjUyNzM2MSwxNDM1NjEyNzk0LDE2MzE5ODQ0NjQsLTEzNDcz
+NDkzNDIsMTkyMDE2MjQ2LC03OTk5OTQwOTMsLTE1MzE0MjA1Mj
+IsMTY5NTI2OTA5XX0=
 -->
