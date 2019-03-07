@@ -6,6 +6,7 @@
 Linux has a unique implementation of threads.To the Linux kernel, there is no concept of a thread. Linux implements all threads as standard processes.The Linux kernel does not provide any special scheduling semantics or data structures to represent threads. Instead, a thread is merely a process that shares certain resources with other processes.(线程只是抽象的概念, 在内核的角度来看只是与其他进程共享资源的一种特殊的进程. )
 Each thread has a unique task_struct and appears to the kernel as a normal process.
 threads just happen to share resources, such as an address space, with other processes.
+#### user and   kernel space
 #### process creation
 分为两个步骤, fork() 和exec()
 * fork()
@@ -111,10 +112,10 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzNTU2OTEzMiwtMTIyNzU5NTQ1NywtMj
-IxNzE1OTksODY0NjQzNDM2LDE1MzM0MDMzODcsLTIwOTQwODM1
-NDksMTUxNjgxNzA5NywtOTk5MjMxMjAwLDEzMjg2ODI1NTksLT
-g0NjUyNzM2MSwxNDM1NjEyNzk0LDE2MzE5ODQ0NjQsLTEzNDcz
-NDkzNDIsMTkyMDE2MjQ2LC03OTk5OTQwOTMsLTE1MzE0MjA1Mj
-IsMTY5NTI2OTA5XX0=
+eyJoaXN0b3J5IjpbLTExMDg4NjE3OTMsMTYzNTU2OTEzMiwtMT
+IyNzU5NTQ1NywtMjIxNzE1OTksODY0NjQzNDM2LDE1MzM0MDMz
+ODcsLTIwOTQwODM1NDksMTUxNjgxNzA5NywtOTk5MjMxMjAwLD
+EzMjg2ODI1NTksLTg0NjUyNzM2MSwxNDM1NjEyNzk0LDE2MzE5
+ODQ0NjQsLTEzNDczNDkzNDIsMTkyMDE2MjQ2LC03OTk5OTQwOT
+MsLTE1MzE0MjA1MjIsMTY5NTI2OTA5XX0=
 -->
