@@ -1,5 +1,5 @@
 
-### linux 内存## linux kernel development 3rd notes
+## linux kernel development 3rd notes
 ### 3. process management
 所有进程均是init 进程(pid=1)的子进程
 * 线程
@@ -37,12 +37,6 @@ The kernel represents a process’s address space with a data structure called t
 分为数据区,代码区, 栈区, 堆区和未使用区.
 代码区中存放应用程序的机 器代码，运行过程中代码不能被修改，具有只读和固定大小的特点。数据区中存放了应用程序中的全局数据，静态数据和一些常量字符串等，其大小也是固定的。堆 是运行时程序动态申请的空间，属于程序运行时直接申请、释放的内存资源。栈区用来存放函数的传入参数、临时变量，以及返回地址等数据。未使用区是分配新内 存空间的预备区域
 
-  
-  
-作者：杜弥  
-链接：https://www.jianshu.com/p/f9a6bee845b0  
-来源：简书  
-简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
 
 ####  swap
 
@@ -104,14 +98,18 @@ https://cloud.tencent.com/developer/article/1200032
 * buffer and cache
 buffer (缓冲区)起到流量整形的作用, 将多次的小io 累积成少次的大io, 减少响应的开销, 并且让io 的速率稳定. 
 cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(例如cpu 和memory), 通过让存储系统分级来减小这种差异带来的影响.  缓存的速度比主存快很多, 数据先从缓存取, 实际情况中cpu 都能从缓存中找到大部分数据.
+
+## The Design of the UNIX Operating System notes
+
+
 ### 疑问
 * swap 为什么会增大
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODY0NjQzNDM2LDE1MzM0MDMzODcsLTIwOT
-QwODM1NDksMTUxNjgxNzA5NywtOTk5MjMxMjAwLDEzMjg2ODI1
-NTksLTg0NjUyNzM2MSwxNDM1NjEyNzk0LDE2MzE5ODQ0NjQsLT
-EzNDczNDkzNDIsMTkyMDE2MjQ2LC03OTk5OTQwOTMsLTE1MzE0
-MjA1MjIsMTY5NTI2OTA5XX0=
+eyJoaXN0b3J5IjpbLTQxMDM5NjY5OSw4NjQ2NDM0MzYsMTUzMz
+QwMzM4NywtMjA5NDA4MzU0OSwxNTE2ODE3MDk3LC05OTkyMzEy
+MDAsMTMyODY4MjU1OSwtODQ2NTI3MzYxLDE0MzU2MTI3OTQsMT
+YzMTk4NDQ2NCwtMTM0NzM0OTM0MiwxOTIwMTYyNDYsLTc5OTk5
+NDA5MywtMTUzMTQyMDUyMiwxNjk1MjY5MDldfQ==
 -->
