@@ -93,21 +93,15 @@ https://cloud.tencent.com/developer/article/1200032
 > To find out the amount of swap space used by every process, run `top` (not `htop`), press 'f' to select columns (f for fields) to display, press 'p' to add swap to display, press 'o' to sort the table (o for order by) and press 'p' again to order by swap usage.
 
 * buffer and cache
-buffers是用来缓冲块设备做的，它只记录文件系统的元数据（metadata）以及 tracking in-flight pages，而cached是用来给文件内容做缓冲。更通俗一点说：buffers主要用来存放目录信息，文件的属性以及权限等等。而cached直接用来记忆我们打开过的文件的内容。
-
-为了验证我们的结论是否正确，可以通过vi打开一个非常大的文件，看看cached的变化，然后再次vi这个文件，感觉一下两次打开的速度有何异同，是不是第二次打开的速度明显快于第一次呢？ 接着执行下面的命令：
-
-find /* -name  *.conf
-
-看看buffers的值是否变化，然后重复执行find命令，看看两次显示速度有何不同。
-
+buffer 起到流量整形的作用, 将多次的小io 累积成少次的大io, 减少响应的开销
+cache 
 ### 疑问
 * swap 为什么会增大
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxNjgxNzA5NywtOTk5MjMxMjAwLDEzMj
-g2ODI1NTksLTg0NjUyNzM2MSwxNDM1NjEyNzk0LDE2MzE5ODQ0
-NjQsLTEzNDczNDkzNDIsMTkyMDE2MjQ2LC03OTk5OTQwOTMsLT
-E1MzE0MjA1MjIsMTY5NTI2OTA5XX0=
+eyJoaXN0b3J5IjpbLTYwMjk0NTMxOCwxNTE2ODE3MDk3LC05OT
+kyMzEyMDAsMTMyODY4MjU1OSwtODQ2NTI3MzYxLDE0MzU2MTI3
+OTQsMTYzMTk4NDQ2NCwtMTM0NzM0OTM0MiwxOTIwMTYyNDYsLT
+c5OTk5NDA5MywtMTUzMTQyMDUyMiwxNjk1MjY5MDldfQ==
 -->
