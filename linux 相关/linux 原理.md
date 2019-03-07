@@ -33,7 +33,8 @@ The important point to understand is that the page structure is associated with 
 The kernel represents a process’s address space with a data structure called the memory descriptor.This structure contains all the information related to the process address space.
 * page table
 将虚拟地址转换为物理的设备, 页表分为多级, 每个进程都有一个页表.
-
+* 进程的虚拟内存空间
+分为数据区,代码区, 栈区, 堆区和未使用区
 
 ####  swap
 
@@ -100,9 +101,9 @@ cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzMzQwMzM4NywtMjA5NDA4MzU0OSwxNT
-E2ODE3MDk3LC05OTkyMzEyMDAsMTMyODY4MjU1OSwtODQ2NTI3
-MzYxLDE0MzU2MTI3OTQsMTYzMTk4NDQ2NCwtMTM0NzM0OTM0Mi
-wxOTIwMTYyNDYsLTc5OTk5NDA5MywtMTUzMTQyMDUyMiwxNjk1
-MjY5MDldfQ==
+eyJoaXN0b3J5IjpbLTE4ODIzNTI4OTAsMTUzMzQwMzM4NywtMj
+A5NDA4MzU0OSwxNTE2ODE3MDk3LC05OTkyMzEyMDAsMTMyODY4
+MjU1OSwtODQ2NTI3MzYxLDE0MzU2MTI3OTQsMTYzMTk4NDQ2NC
+wtMTM0NzM0OTM0MiwxOTIwMTYyNDYsLTc5OTk5NDA5MywtMTUz
+MTQyMDUyMiwxNjk1MjY5MDldfQ==
 -->
