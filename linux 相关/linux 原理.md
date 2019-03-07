@@ -7,6 +7,7 @@ Linux has a unique implementation of threads.To the Linux kernel, there is no co
 Each thread has a unique task_struct and appears to the kernel as a normal process.
 threads just happen to share resources, such as an address space, with other processes.
 #### user and   kernel space
+Because a process in the UNIX system can execute in two modes, kernel or user, it uses a separate stack for each mode. When a system call is made, a _trap_ instruction is executed which causes an _interrupt_ which makes the hardware switch to kernel mode. The kernel stack of a process is null when the process executes in user mode(硬件在用户态和内核态的切换)
 #### process creation
 分为两个步骤, fork() 和exec()
 * fork()
@@ -112,10 +113,10 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDg4NjE3OTMsMTYzNTU2OTEzMiwtMT
-IyNzU5NTQ1NywtMjIxNzE1OTksODY0NjQzNDM2LDE1MzM0MDMz
-ODcsLTIwOTQwODM1NDksMTUxNjgxNzA5NywtOTk5MjMxMjAwLD
-EzMjg2ODI1NTksLTg0NjUyNzM2MSwxNDM1NjEyNzk0LDE2MzE5
-ODQ0NjQsLTEzNDczNDkzNDIsMTkyMDE2MjQ2LC03OTk5OTQwOT
-MsLTE1MzE0MjA1MjIsMTY5NTI2OTA5XX0=
+eyJoaXN0b3J5IjpbLTM4MDQ5MTM2MSwxNjM1NTY5MTMyLC0xMj
+I3NTk1NDU3LC0yMjE3MTU5OSw4NjQ2NDM0MzYsMTUzMzQwMzM4
+NywtMjA5NDA4MzU0OSwxNTE2ODE3MDk3LC05OTkyMzEyMDAsMT
+MyODY4MjU1OSwtODQ2NTI3MzYxLDE0MzU2MTI3OTQsMTYzMTk4
+NDQ2NCwtMTM0NzM0OTM0MiwxOTIwMTYyNDYsLTc5OTk5NDA5My
+wtMTUzMTQyMDUyMiwxNjk1MjY5MDldfQ==
 -->
