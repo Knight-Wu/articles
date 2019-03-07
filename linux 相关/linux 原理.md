@@ -34,7 +34,15 @@ The kernel represents a process’s address space with a data structure called t
 * page table
 将虚拟地址转换为物理的设备, 页表分为多级, 每个进程都有一个页表.
 * 进程的虚拟内存空间
-分为数据区,代码区, 栈区, 堆区和未使用区
+分为数据区,代码区, 栈区, 堆区和未使用区.
+代码区中存放应用程序的机 器代码，运行过程中代码不能被修改，具有只读和固定大小的特点。数据区中存放了应用程序中的全局数据，静态数据和一些常量字符串等，其大小也是固定的。堆 是运行时程序动态申请的空间，属于程序运行时直接申请、释放的内存资源。栈区用来存放函数的传入参数、临时变量，以及返回地址等数据。未使用区是分配新内 存空间的预备区域
+
+  
+  
+作者：杜弥  
+链接：https://www.jianshu.com/p/f9a6bee845b0  
+来源：简书  
+简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。
 
 ####  swap
 
@@ -101,9 +109,9 @@ cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODIzNTI4OTAsMTUzMzQwMzM4NywtMj
-A5NDA4MzU0OSwxNTE2ODE3MDk3LC05OTkyMzEyMDAsMTMyODY4
-MjU1OSwtODQ2NTI3MzYxLDE0MzU2MTI3OTQsMTYzMTk4NDQ2NC
-wtMTM0NzM0OTM0MiwxOTIwMTYyNDYsLTc5OTk5NDA5MywtMTUz
-MTQyMDUyMiwxNjk1MjY5MDldfQ==
+eyJoaXN0b3J5IjpbODY0NjQzNDM2LDE1MzM0MDMzODcsLTIwOT
+QwODM1NDksMTUxNjgxNzA5NywtOTk5MjMxMjAwLDEzMjg2ODI1
+NTksLTg0NjUyNzM2MSwxNDM1NjEyNzk0LDE2MzE5ODQ0NjQsLT
+EzNDczNDkzNDIsMTkyMDE2MjQ2LC03OTk5OTQwOTMsLTE1MzE0
+MjA1MjIsMTY5NTI2OTA5XX0=
 -->
