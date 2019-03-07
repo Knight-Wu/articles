@@ -5,6 +5,12 @@ In MySQL, the simplest query cost metrics are:
 * response time 
 包括服务时间和排队时间
 
+In general, MySQL can apply a WHERE clause in three ways, from best to worst:
+• Apply the conditions to the index lookup operation to eliminate nonmatching rows. This happens at the storage engine layer.
+• Use a covering index (“Using index” in the Extra column) to avoid row accesses, and filter out nonmatching rows after retrieving each result from the index. This happens at the server layer, but it doesn’t require reading rows from the table.
+• Retrieve rows from the table, then filter nonmatching rows (“Using where” in the Extra column). This happens at the server layer
+
+
 #### mysql 查询过程
 1. 客户端发送查询语句到服务器
 2. 服务器查询缓存, 缓存命中直接返回, 否则进入3
@@ -138,7 +144,7 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1MDgwMzIwNiwxMTk5MzQxOTAxLC0xNj
+eyJoaXN0b3J5IjpbMTM0NzM2NjU3MSwxMTk5MzQxOTAxLC0xNj
 AyMjc5OTczLC0xMTkxNzE2NTAyLDY3MTEzMDIwMCw4NjE5MDEx
 MzUsLTc3MTI1ODU3OCwtNDIyNzg0MDE0LC0xMDkzODgxNjIxLC
 04NjUwNTUyNTYsLTIxMjg2MzAxNjYsLTEyMjkwMzI5MCwxMTQx
