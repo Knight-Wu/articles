@@ -1,3 +1,6 @@
+## high performance mysql 3rd notes
+### 6. query performance optimization
+
 #### mysql 查询过程
 1. 客户端发送查询语句到服务器
 2. 服务器查询缓存, 缓存命中直接返回, 否则进入3
@@ -131,11 +134,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5OTM0MTkwMSwtMTYwMjI3OTk3MywtMT
-E5MTcxNjUwMiw2NzExMzAyMDAsODYxOTAxMTM1LC03NzEyNTg1
-NzgsLTQyMjc4NDAxNCwtMTA5Mzg4MTYyMSwtODY1MDU1MjU2LC
-0yMTI4NjMwMTY2LC0xMjI5MDMyOTAsMTE0MTE2ODg5NSwxMTc4
-NTMxMTc0LDE5NTM2NTQxODAsMTI2OTg1NzczNiwtNTU2MDM1OT
-c3LDY1NTAyMjg4MywxNDI3NTcyMTA1LDE5ODcwMjY4MzMsMTAx
-MzYzNDM4NV19
+eyJoaXN0b3J5IjpbMTk5Njg3MzIyMSwxMTk5MzQxOTAxLC0xNj
+AyMjc5OTczLC0xMTkxNzE2NTAyLDY3MTEzMDIwMCw4NjE5MDEx
+MzUsLTc3MTI1ODU3OCwtNDIyNzg0MDE0LC0xMDkzODgxNjIxLC
+04NjUwNTUyNTYsLTIxMjg2MzAxNjYsLTEyMjkwMzI5MCwxMTQx
+MTY4ODk1LDExNzg1MzExNzQsMTk1MzY1NDE4MCwxMjY5ODU3Nz
+M2LC01NTYwMzU5NzcsNjU1MDIyODgzLDE0Mjc1NzIxMDUsMTk4
+NzAyNjgzM119
 -->
