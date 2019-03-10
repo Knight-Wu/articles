@@ -482,7 +482,9 @@ public void nodeToQueue(TreeNode root, Queue<TreeNode> queue) {
 2. 灵活使用递归中的全局变量和参数, 能让递归更易理解. 
 
 > 链表
-路程相减法或者叫指针追赶法
+
+1. 路程相减法或者叫指针追赶法
+2. 起始情况如果需要ListNode prev. 可以假设一个fakeHead 作为prev.
 
 #### 资源
 * 算法第四版
@@ -497,11 +499,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0NDYzNzk1MSwtMjA4MTI3MDYyMCwzNz
-I0MTgzNTgsMzY0MDQwMzQyLDEzNzk5Njc1MDYsLTI4NzMwMzky
-NywtMTkwOTYwNjk1NiwtMTExMDQwOTM5NCwyMTM0ODI0ODgwLD
-I5NTc1MDEzNywxMDExNDU0ODgsLTE4NDkyNDEwMTcsMzM2NTY5
-MDQ2LDgwMzU4MDgwNiwtMTY2MzQyMDAzMywtMjAzNTQwOTk4NC
-wtMTYzNTE2Njk0NiwxMDY4OTA4NTcsLTE3MjQwNTIyMzYsMTYz
-NjQ2NTUwOV19
+eyJoaXN0b3J5IjpbLTI1Mzg2NTcxLDE2NDQ2Mzc5NTEsLTIwOD
+EyNzA2MjAsMzcyNDE4MzU4LDM2NDA0MDM0MiwxMzc5OTY3NTA2
+LC0yODczMDM5MjcsLTE5MDk2MDY5NTYsLTExMTA0MDkzOTQsMj
+EzNDgyNDg4MCwyOTU3NTAxMzcsMTAxMTQ1NDg4LC0xODQ5MjQx
+MDE3LDMzNjU2OTA0Niw4MDM1ODA4MDYsLTE2NjM0MjAwMzMsLT
+IwMzU0MDk5ODQsLTE2MzUxNjY5NDYsMTA2ODkwODU3LC0xNzI0
+MDUyMjM2XX0=
 -->
