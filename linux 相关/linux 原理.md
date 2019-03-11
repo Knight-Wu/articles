@@ -42,7 +42,7 @@ The kernel represents a process’s address space with a data structure called t
 
 ####  swap
 
-先简单根据博客资料: https://cloud.tencent.com/developer/article/1200032, 是一块为了满足虚拟内存的需求, 开辟的磁盘区域, 用来保存内存中不经常使用的数据, 所以就算内存足够的情况下, swap 也会使用, 但此时根据LRU 算法是保存不经常使用的数据, 并不影响性能, ; 也为了能让内存容下超出物理内存大小的数据. 
+先简单根据博客资料: https://cloud.tencent.com/developer/article/1200032, 是一块为了满足虚拟内存的需求, 为了能让内存容下超出物理内存大小的数据,  也是用来保存内存中不经常使用的数据, 所以就算内存足够的情况下, swap 也会使用, 但此时根据LRU 算法是保存不经常使用的数据, 并不影响性能, 但如果内存不够用的话, 大量的swap in and out, 就会影响性能了,  
 
 * 什么时候开始使用swap
 
@@ -115,7 +115,7 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTI5NjI1NTY3LDE1OTEyNTg1NDksLTEzMz
+eyJoaXN0b3J5IjpbLTkzNDM1MDI0LDE1OTEyNTg1NDksLTEzMz
 Y3NTM0NDQsLTExNzc1OTE0MjksLTM4MDQ5MTM2MSwxNjM1NTY5
 MTMyLC0xMjI3NTk1NDU3LC0yMjE3MTU5OSw4NjQ2NDM0MzYsMT
 UzMzQwMzM4NywtMjA5NDA4MzU0OSwxNTE2ODE3MDk3LC05OTky
