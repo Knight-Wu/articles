@@ -101,6 +101,8 @@ https://cloud.tencent.com/developer/article/1200032
 buffer (缓冲区)起到流量整形的作用, 将多次的小io 累积成少次的大io, 减少响应的开销, 并且让io 的速率稳定. 
 cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(例如cpu 和memory), 通过让存储系统分级来减小这种差异带来的影响.  缓存的速度比主存快很多, 数据先从缓存取, 实际情况中cpu 都能从缓存中找到大部分数据.
 
+* buffer
+处于文件系统和磁盘间的缓冲, 写的时候变成批量写, 减少写的的频率, 将某些的确需要写的才写, 
 ## The Design of the UNIX Operating System notes
 ### Introduction to the Kernel
 
@@ -113,11 +115,11 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzc1OTE0MjksLTM4MDQ5MTM2MSwxNj
-M1NTY5MTMyLC0xMjI3NTk1NDU3LC0yMjE3MTU5OSw4NjQ2NDM0
-MzYsMTUzMzQwMzM4NywtMjA5NDA4MzU0OSwxNTE2ODE3MDk3LC
-05OTkyMzEyMDAsMTMyODY4MjU1OSwtODQ2NTI3MzYxLDE0MzU2
-MTI3OTQsMTYzMTk4NDQ2NCwtMTM0NzM0OTM0MiwxOTIwMTYyND
-YsLTc5OTk5NDA5MywtMTUzMTQyMDUyMiwxNjk1MjY5MDldfQ==
-
+eyJoaXN0b3J5IjpbLTE2OTk2OTUxOTcsLTExNzc1OTE0MjksLT
+M4MDQ5MTM2MSwxNjM1NTY5MTMyLC0xMjI3NTk1NDU3LC0yMjE3
+MTU5OSw4NjQ2NDM0MzYsMTUzMzQwMzM4NywtMjA5NDA4MzU0OS
+wxNTE2ODE3MDk3LC05OTkyMzEyMDAsMTMyODY4MjU1OSwtODQ2
+NTI3MzYxLDE0MzU2MTI3OTQsMTYzMTk4NDQ2NCwtMTM0NzM0OT
+M0MiwxOTIwMTYyNDYsLTc5OTk5NDA5MywtMTUzMTQyMDUyMiwx
+Njk1MjY5MDldfQ==
 -->
