@@ -51,7 +51,7 @@ cat /proc/sys/vm/swappiness
 
 60
 ```
-上面这个60代表物理内存在使用超过40%的时候才会使用swap
+上面这个60代表物理内存在使用超过40%的时候, 根据LRU 算法, 把不经常使用的内存swap out.
 
 **swappiness=0的时候表示最大限度使用物理内存，然后才是 swap空间，**
 
@@ -115,11 +115,11 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzNDM1MDI0LDE1OTEyNTg1NDksLTEzMz
-Y3NTM0NDQsLTExNzc1OTE0MjksLTM4MDQ5MTM2MSwxNjM1NTY5
-MTMyLC0xMjI3NTk1NDU3LC0yMjE3MTU5OSw4NjQ2NDM0MzYsMT
-UzMzQwMzM4NywtMjA5NDA4MzU0OSwxNTE2ODE3MDk3LC05OTky
-MzEyMDAsMTMyODY4MjU1OSwtODQ2NTI3MzYxLDE0MzU2MTI3OT
-QsMTYzMTk4NDQ2NCwtMTM0NzM0OTM0MiwxOTIwMTYyNDYsLTc5
-OTk5NDA5M119
+eyJoaXN0b3J5IjpbLTk4MzE5OTA3MCwtOTM0MzUwMjQsMTU5MT
+I1ODU0OSwtMTMzNjc1MzQ0NCwtMTE3NzU5MTQyOSwtMzgwNDkx
+MzYxLDE2MzU1NjkxMzIsLTEyMjc1OTU0NTcsLTIyMTcxNTk5LD
+g2NDY0MzQzNiwxNTMzNDAzMzg3LC0yMDk0MDgzNTQ5LDE1MTY4
+MTcwOTcsLTk5OTIzMTIwMCwxMzI4NjgyNTU5LC04NDY1MjczNj
+EsMTQzNTYxMjc5NCwxNjMxOTg0NDY0LC0xMzQ3MzQ5MzQyLDE5
+MjAxNjI0Nl19
 -->
