@@ -42,9 +42,9 @@ In general, MySQL can apply a WHERE clause in three ways, from best to worst:
 #### 优化关联查询
 确保关联的列上有索引, 当表A和表B 在列c上关联时, 只需要在第二个表, 表b 上的列c 建索引, 表A 就不需要了.
 #### 优化limit 
-在limit 性能底下的时候加上索引
+在limit 性能低下的时候加上索引
 #### 优化union 查询
-除非必要, 不要用union, 用union all
+除非必要, 不要用union, 用union all(不排除重复的)
 ####  存储引擎
 * InnoDB 
 是mysql 默认的事务型引擎, 支持事务, 支持行锁, 支持崩溃后自动恢复, 基于聚簇索引, 
@@ -153,11 +153,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4OTcyNDA0Nyw1NzQ0NDIxNjEsMTcyMz
-MyNjI0LC0xNzMyMzE2MzcyLDEzNDczNjY1NzEsMTE5OTM0MTkw
-MSwtMTYwMjI3OTk3MywtMTE5MTcxNjUwMiw2NzExMzAyMDAsOD
-YxOTAxMTM1LC03NzEyNTg1NzgsLTQyMjc4NDAxNCwtMTA5Mzg4
-MTYyMSwtODY1MDU1MjU2LC0yMTI4NjMwMTY2LC0xMjI5MDMyOT
-AsMTE0MTE2ODg5NSwxMTc4NTMxMTc0LDE5NTM2NTQxODAsMTI2
-OTg1NzczNl19
+eyJoaXN0b3J5IjpbLTgxNTM4NTY4MiwtNTg5NzI0MDQ3LDU3ND
+Q0MjE2MSwxNzIzMzI2MjQsLTE3MzIzMTYzNzIsMTM0NzM2NjU3
+MSwxMTk5MzQxOTAxLC0xNjAyMjc5OTczLC0xMTkxNzE2NTAyLD
+Y3MTEzMDIwMCw4NjE5MDExMzUsLTc3MTI1ODU3OCwtNDIyNzg0
+MDE0LC0xMDkzODgxNjIxLC04NjUwNTUyNTYsLTIxMjg2MzAxNj
+YsLTEyMjkwMzI5MCwxMTQxMTY4ODk1LDExNzg1MzExNzQsMTk1
+MzY1NDE4MF19
 -->
