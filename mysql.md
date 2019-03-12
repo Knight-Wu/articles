@@ -80,6 +80,7 @@ Each page within a space is assigned a 32-bit integer page number, often called 
 * leaf node size=page size=16KB , 可以在初始化mysql instance 的时候进行配置
 * 所有数据都由叶子节点保管
 * Because B+Trees store the indexed columns in order, they’re useful for searching for ranges of data.(叶子节点的记录持有一个指向下一条记录的指针, 保存着下条记录在这个page 的offset; 记录间物理上并不是顺序排列的)
+> how to search quickly between records in b+ tree node
 * primary key value 是存在非叶子节点的, 如果过长, 非叶子节点的记录数就会减少, 索引的结构会更大. 
 
 一个实际的数据例子阐述innodb 索引: 
@@ -168,11 +169,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQxMzY2NTc0LDE2MDM0MTMyODAsLTc1ND
-g1Mzg5NywxODQ3ODQ0NDg3LC0xNjg2MTIxNTU0LC0xMDA3Nzg5
-NDEyLDEzMDc5NjQyNjAsLTgxNTM4NTY4MiwtNTg5NzI0MDQ3LD
-U3NDQ0MjE2MSwxNzIzMzI2MjQsLTE3MzIzMTYzNzIsMTM0NzM2
-NjU3MSwxMTk5MzQxOTAxLC0xNjAyMjc5OTczLC0xMTkxNzE2NT
-AyLDY3MTEzMDIwMCw4NjE5MDExMzUsLTc3MTI1ODU3OCwtNDIy
-Nzg0MDE0XX0=
+eyJoaXN0b3J5IjpbLTM1MTMzNzY1NSwyNDEzNjY1NzQsMTYwMz
+QxMzI4MCwtNzU0ODUzODk3LDE4NDc4NDQ0ODcsLTE2ODYxMjE1
+NTQsLTEwMDc3ODk0MTIsMTMwNzk2NDI2MCwtODE1Mzg1NjgyLC
+01ODk3MjQwNDcsNTc0NDQyMTYxLDE3MjMzMjYyNCwtMTczMjMx
+NjM3MiwxMzQ3MzY2NTcxLDExOTkzNDE5MDEsLTE2MDIyNzk5Nz
+MsLTExOTE3MTY1MDIsNjcxMTMwMjAwLDg2MTkwMTEzNSwtNzcx
+MjU4NTc4XX0=
 -->
