@@ -117,7 +117,7 @@ dirty page 可以让多个dirty page 可以被一起写入同一个磁盘扇区,
 The smallest addressable unit on a block device is a sector. Sectors come in various powers of two, but 512 bytes is the most common size.the device cannot address or operate on a unit smaller than the sector.
 
 * memory page, fs block , disk sector
-Sectors, the smallest addressable unit to the device, are sometimes called “hard sectors” or “device blocks.” Meanwhile, blocks, the smallest addressable unit to the filesystem, are sometimes referred to as “filesystem blocks” or “I/O blocks.”The kernel also requires that a block be no larger than the page size
+Sectors, the smallest addressable unit to the device, are sometimes called “hard sectors” or “device blocks.” Meanwhile, blocks, the smallest addressable unit to the filesystem, are sometimes referred to as “filesystem blocks” or “I/O blocks.” block size 必须不能大于page size, 并且要是sector 的2的次方倍
 
 
 ## The Design of the UNIX Operating System notes
@@ -132,7 +132,7 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwODA2OTkyMCwtODA1MDg5ODQxLC0xNT
+eyJoaXN0b3J5IjpbLTg1NDExMTc1OSwtODA1MDg5ODQxLC0xNT
 Y2Mzg4MDkwLDE2NzA0OTEyMTUsLTkzNDM1MDI0LDE1OTEyNTg1
 NDksLTEzMzY3NTM0NDQsLTExNzc1OTE0MjksLTM4MDQ5MTM2MS
 wxNjM1NTY5MTMyLC0xMjI3NTk1NDU3LC0yMjE3MTU5OSw4NjQ2
