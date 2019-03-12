@@ -109,7 +109,9 @@ cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(�
 dirty page 可以让多个dirty page 可以被一起写入同一个磁盘扇区, 提供了延迟写, 因为写操作的挂起通常不会引起应用阻塞, 但是读操作会, 这样就能提供读多写少的服务.  但是dirty page 可能会引起数据的丢失. 
 
 * 什么时候被写到磁盘
+一定时间后, 或脏页太多, page cache 太大,或调用sync(),fsync(),fdatasync( )
 
+system call
 
 ## The Design of the UNIX Operating System notes
 ### Introduction to the Kernel
@@ -123,7 +125,7 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDE3NDkxODA2LDE2NzA0OTEyMTUsLTkzND
+eyJoaXN0b3J5IjpbLTU1NTUyODc4LDE2NzA0OTEyMTUsLTkzND
 M1MDI0LDE1OTEyNTg1NDksLTEzMzY3NTM0NDQsLTExNzc1OTE0
 MjksLTM4MDQ5MTM2MSwxNjM1NTY5MTMyLC0xMjI3NTk1NDU3LC
 0yMjE3MTU5OSw4NjQ2NDM0MzYsMTUzMzQwMzM4NywtMjA5NDA4
