@@ -81,9 +81,9 @@ Each page within a space is assigned a 32-bit integer page number, often called 
 * 所有数据都由叶子节点保管
 * Because B+Trees store the indexed columns in order, they’re useful for searching for ranges of data.(叶子节点的记录持有一个指向下一条记录的指针, 保存着下条记录在这个page 的offset; 记录间物理上并不是顺序排列的)
 > how to search quickly between records in b+ tree node
-
-因为record 是以链表的形式, 逻辑连接, 遍历列表是很慢的,  use page directory(可以理解是用一个数组来保存一个范围内key, 每个数组元素保留4个或8个
-optimizes this search by providing a fixed-width data structure with direct pointers to 1 of every 4-8 records, in order. Thus, it can be used for a traditional binary search of the records in each page, starting at the mid-point of the directory and progressively pruning the directory by half until only a single entry remains, and then linear-scanning from there.
+https://blog.jcole.us/2013/01/14/efficiently-traversing-innodb-btrees-with-the-page-directory/
+因为record 是以链表的形式, 逻辑连接, 遍历列表是很慢的,  use page directory(可以理解是用一个数组来保存一个范围内key, 二分查找这个数组, 找到满足要求的key 再去线性查找. 
+![enter image description here](https://drive.google.com/uc?id=1DRE4r96br10emG6XHAZ_5wkQ5xf2e3yR)
 
 * primary key value 是存在非叶子节点的, 如果过长, 非叶子节点的记录数就会减少, 索引的结构会更大. 
 
@@ -173,7 +173,7 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2MzUzMTU0Nyw1MTQzMDkzMTksMjQxMz
+eyJoaXN0b3J5IjpbMTY0Njg3NDkyMCw1MTQzMDkzMTksMjQxMz
 Y2NTc0LDE2MDM0MTMyODAsLTc1NDg1Mzg5NywxODQ3ODQ0NDg3
 LC0xNjg2MTIxNTU0LC0xMDA3Nzg5NDEyLDEzMDc5NjQyNjAsLT
 gxNTM4NTY4MiwtNTg5NzI0MDQ3LDU3NDQ0MjE2MSwxNzIzMzI2
