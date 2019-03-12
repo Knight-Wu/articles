@@ -50,7 +50,9 @@ In general, MySQL can apply a WHERE clause in three ways, from best to worst:
 是mysql 默认的事务型引擎, 支持事务, 支持行锁, 支持崩溃后自动恢复, 基于聚簇索引, 
 https://juejin.im/post/5b1685bef265da6e5c3c1c34
 #### innodb file structure
-an .ibd file for each MySQL table.代表了一个space, 由一个32 bit 的space id 确定. 
+* space
+an .ibd file for each MySQL table.代表了一个space, 由一个32 bit 的space id 确定. A space may consist of multiple actual files at the operating system level (e.g. ibdata1, ibdata2, etc.) but it is just a single logical file — multiple physical files are just treated as though they were physically concatenated together.
+* page
 
 #### MyISAM
 不支持行锁, 只支持表锁, 不支持事务, 不支持崩溃后快速回复, 不支持外键, 适合读的场景
@@ -156,7 +158,7 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzNDk0OTgzOSwtMTY4NjEyMTU1NCwtMT
+eyJoaXN0b3J5IjpbMTg0Nzg0NDQ4NywtMTY4NjEyMTU1NCwtMT
 AwNzc4OTQxMiwxMzA3OTY0MjYwLC04MTUzODU2ODIsLTU4OTcy
 NDA0Nyw1NzQ0NDIxNjEsMTcyMzMyNjI0LC0xNzMyMzE2MzcyLD
 EzNDczNjY1NzEsMTE5OTM0MTkwMSwtMTYwMjI3OTk3MywtMTE5
