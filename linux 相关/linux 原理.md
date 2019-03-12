@@ -104,7 +104,9 @@ cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(�
 * buffer
 处于文件系统和磁盘间的缓冲, 写的时候变成批量写, 减少写的的频率, 数据结构可以理解为一个双端列表, 当需要一个free bufer 的时候, 会从头取; 当kernel return buffer, usually attach buffer to the tail, 那么越靠近head 的buffer 就是越不经常使用的. 
 
-*
+* write dirty page
+当内存中的page cache 被修改之后, 这个page 就是dirty page. 
+dirty page 提供了延迟写, 多个
 ## The Design of the UNIX Operating System notes
 ### Introduction to the Kernel
 
@@ -117,7 +119,7 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4NjIwNTA3NSwxNjcwNDkxMjE1LC05Mz
+eyJoaXN0b3J5IjpbLTcxNDMyMDcwOSwxNjcwNDkxMjE1LC05Mz
 QzNTAyNCwxNTkxMjU4NTQ5LC0xMzM2NzUzNDQ0LC0xMTc3NTkx
 NDI5LC0zODA0OTEzNjEsMTYzNTU2OTEzMiwtMTIyNzU5NTQ1Ny
 wtMjIxNzE1OTksODY0NjQzNDM2LDE1MzM0MDMzODcsLTIwOTQw
