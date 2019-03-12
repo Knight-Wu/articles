@@ -40,6 +40,7 @@ The kernel represents a process’s address space with a data structure called t
 代码区中存放应用程序的机 器代码，运行过程中代码不能被修改，具有只读和固定大小的特点。数据区中存放了应用程序中的全局数据，静态数据和一些常量字符串等，其大小也是固定的。堆 是运行时程序动态申请的空间，属于程序运行时直接申请、释放的内存资源。栈区用来存放函数的传入参数、临时变量，以及返回地址等数据。未使用区是分配新内 存空间的预备区域
 
 
+
 ####  swap
 
 先简单根据博客资料: https://cloud.tencent.com/developer/article/1200032, 是一块为了满足虚拟内存的需求, 为了能让内存容下超出物理内存大小的数据,  当物理内存不够用的情况下, 根据LRU算法把最近最少使用的内存swap out.
@@ -111,6 +112,11 @@ dirty page 可以让多个dirty page 可以被一起写入同一个磁盘扇区,
 * 什么时候被写到磁盘
 一定时间后, 或脏页太多, page cache 太大,或调用sync(),fsync(),fdatasync( ) 强制写回.
 
+### the block I/O layer
+#### block device
+The smallest addressable unit on a block device is a sector. Sectors come in various powers of two, but 512 bytes is the most common size.the device cannot address or operate on a unit smaller than the sector
+
+
 ## The Design of the UNIX Operating System notes
 ### Introduction to the Kernel
 
@@ -123,11 +129,11 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjYzODgwOTAsMTY3MDQ5MTIxNSwtOT
-M0MzUwMjQsMTU5MTI1ODU0OSwtMTMzNjc1MzQ0NCwtMTE3NzU5
-MTQyOSwtMzgwNDkxMzYxLDE2MzU1NjkxMzIsLTEyMjc1OTU0NT
-csLTIyMTcxNTk5LDg2NDY0MzQzNiwxNTMzNDAzMzg3LC0yMDk0
-MDgzNTQ5LDE1MTY4MTcwOTcsLTk5OTIzMTIwMCwxMzI4NjgyNT
-U5LC04NDY1MjczNjEsMTQzNTYxMjc5NCwxNjMxOTg0NDY0LC0x
-MzQ3MzQ5MzQyXX0=
+eyJoaXN0b3J5IjpbLTgwNTA4OTg0MSwtMTU2NjM4ODA5MCwxNj
+cwNDkxMjE1LC05MzQzNTAyNCwxNTkxMjU4NTQ5LC0xMzM2NzUz
+NDQ0LC0xMTc3NTkxNDI5LC0zODA0OTEzNjEsMTYzNTU2OTEzMi
+wtMTIyNzU5NTQ1NywtMjIxNzE1OTksODY0NjQzNDM2LDE1MzM0
+MDMzODcsLTIwOTQwODM1NDksMTUxNjgxNzA5NywtOTk5MjMxMj
+AwLDEzMjg2ODI1NTksLTg0NjUyNzM2MSwxNDM1NjEyNzk0LDE2
+MzE5ODQ0NjRdfQ==
 -->
