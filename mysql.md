@@ -53,7 +53,9 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 * space
 an .ibd file for each MySQL table, 代表了一个space, 由一个32 bit 的space id 确定. 由多个pages 组成, 最多是2的32次方的page,  For more efficient management, pages are grouped into blocks of 1 MiB (64 contiguous pages with the default page size of 16 KiB), and  called an **“extent”**
 
-对于mei
+对于每256 个extents, space 需要有一个page 来store bookkeeping information. 
+> An FSP_HDR page only has enough space internally to store bookkeeping information for 256 extents (or 16,384 pages, 256 MiB), so additional space must be reserved every 16,384 pages for bookkeeping information in the form of an XDESpage.
+
 * page
 Each page within a space is assigned a 32-bit integer page number, often called “offset”, which is actually just the page’s offset from the beginning of the space (not necessarily the file, for multi-file spaces). So, page 0 is located at file offset 0, page 1 at file offset 16384=16*1024 bytes, and so on. (The astute may remember that InnoDB has a limit of 64TiB of data; this is actually a limit per space, and is due primarily to the page number being a 32-bit integer combined with the default page size: 232 x 16 KiB = 64 TiB.
 
@@ -162,7 +164,7 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDcyNTI1MSwtNzU0ODUzODk3LDE4ND
+eyJoaXN0b3J5IjpbMTYwMzQxMzI4MCwtNzU0ODUzODk3LDE4ND
 c4NDQ0ODcsLTE2ODYxMjE1NTQsLTEwMDc3ODk0MTIsMTMwNzk2
 NDI2MCwtODE1Mzg1NjgyLC01ODk3MjQwNDcsNTc0NDQyMTYxLD
 E3MjMzMjYyNCwtMTczMjMxNjM3MiwxMzQ3MzY2NTcxLDExOTkz
