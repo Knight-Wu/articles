@@ -50,7 +50,7 @@ In general, MySQL can apply a WHERE clause in three ways, from best to worst:
 是mysql 默认的事务型引擎, 支持事务, 支持行锁, 支持崩溃后自动恢复, 基于聚簇索引, 
 https://juejin.im/post/5b1685bef265da6e5c3c1c34
 #### innodb file structure
-
+an .ibd file for each MySQL table.代表了一个space, 由一个32 bit 的space id 确定. 
 
 #### MyISAM
 不支持行锁, 只支持表锁, 不支持事务, 不支持崩溃后快速回复, 不支持外键, 适合读的场景
@@ -156,11 +156,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTgzNTc4MTYwLC0xNjg2MTIxNTU0LC0xMD
-A3Nzg5NDEyLDEzMDc5NjQyNjAsLTgxNTM4NTY4MiwtNTg5NzI0
-MDQ3LDU3NDQ0MjE2MSwxNzIzMzI2MjQsLTE3MzIzMTYzNzIsMT
-M0NzM2NjU3MSwxMTk5MzQxOTAxLC0xNjAyMjc5OTczLC0xMTkx
-NzE2NTAyLDY3MTEzMDIwMCw4NjE5MDExMzUsLTc3MTI1ODU3OC
-wtNDIyNzg0MDE0LC0xMDkzODgxNjIxLC04NjUwNTUyNTYsLTIx
-Mjg2MzAxNjZdfQ==
+eyJoaXN0b3J5IjpbMTQzNDk0OTgzOSwtMTY4NjEyMTU1NCwtMT
+AwNzc4OTQxMiwxMzA3OTY0MjYwLC04MTUzODU2ODIsLTU4OTcy
+NDA0Nyw1NzQ0NDIxNjEsMTcyMzMyNjI0LC0xNzMyMzE2MzcyLD
+EzNDczNjY1NzEsMTE5OTM0MTkwMSwtMTYwMjI3OTk3MywtMTE5
+MTcxNjUwMiw2NzExMzAyMDAsODYxOTAxMTM1LC03NzEyNTg1Nz
+gsLTQyMjc4NDAxNCwtMTA5Mzg4MTYyMSwtODY1MDU1MjU2LC0y
+MTI4NjMwMTY2XX0=
 -->
