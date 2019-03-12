@@ -104,9 +104,13 @@ cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(�
 * buffer
 处于文件系统和磁盘间的缓冲, 写的时候变成批量写, 减少写的的频率, 数据结构可以理解为一个双端列表, 当需要一个free bufer 的时候, 会从头取; 当kernel return buffer, usually attach buffer to the tail, 那么越靠近head 的buffer 就是越不经常使用的. 
 
-* write dirty page
+#### write dirty page
 当内存中的page cache 被修改之后, 这个page 就是dirty page. 
-dirty page 可以让多个dirty page 可以被一起写入同一个磁盘扇区, 提供了延迟写, 因为写操作的挂起通常不会引起阻塞, 但是读
+dirty page 可以让多个dirty page 可以被一起写入同一个磁盘扇区, 提供了延迟写, 因为写操作的挂起通常不会引起应用阻塞, 但是读操作会, 这样就能提供读多写少的服务.  但是dirty page 可能会引起数据的丢失. 
+
+* 什么时候被写到磁盘
+
+
 ## The Design of the UNIX Operating System notes
 ### Introduction to the Kernel
 
@@ -119,11 +123,11 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODIyODM4MTYsMTY3MDQ5MTIxNSwtOT
-M0MzUwMjQsMTU5MTI1ODU0OSwtMTMzNjc1MzQ0NCwtMTE3NzU5
-MTQyOSwtMzgwNDkxMzYxLDE2MzU1NjkxMzIsLTEyMjc1OTU0NT
-csLTIyMTcxNTk5LDg2NDY0MzQzNiwxNTMzNDAzMzg3LC0yMDk0
-MDgzNTQ5LDE1MTY4MTcwOTcsLTk5OTIzMTIwMCwxMzI4NjgyNT
-U5LC04NDY1MjczNjEsMTQzNTYxMjc5NCwxNjMxOTg0NDY0LC0x
-MzQ3MzQ5MzQyXX0=
+eyJoaXN0b3J5IjpbNDE3NDkxODA2LDE2NzA0OTEyMTUsLTkzND
+M1MDI0LDE1OTEyNTg1NDksLTEzMzY3NTM0NDQsLTExNzc1OTE0
+MjksLTM4MDQ5MTM2MSwxNjM1NTY5MTMyLC0xMjI3NTk1NDU3LC
+0yMjE3MTU5OSw4NjQ2NDM0MzYsMTUzMzQwMzM4NywtMjA5NDA4
+MzU0OSwxNTE2ODE3MDk3LC05OTkyMzEyMDAsMTMyODY4MjU1OS
+wtODQ2NTI3MzYxLDE0MzU2MTI3OTQsMTYzMTk4NDQ2NCwtMTM0
+NzM0OTM0Ml19
 -->
