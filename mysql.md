@@ -66,7 +66,7 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 * leaf node size=page size=16KB , 可以在初始化mysql instance 的时候进行配置
 * 所有数据都由叶子节点保管
 * Because B+Trees store the indexed columns in order, they’re useful for searching for ranges of data.(叶子节点的记录持有一个指向下一条记录的指针, 保存着下条记录在这个page 的offset; 记录间物理上并不是顺序排列的)
-* primary key value 是存在非叶子节点的, 如果过长, 非叶子节点的记录数就会减少, 索引
+* primary key value 是存在非叶子节点的, 如果过长, 非叶子节点的记录数就会减少, 索引的结构会更大. 
 
 一个实际的数据例子阐述innodb 索引: 
 ![enter image description here](https://drive.google.com/uc?id=1CCbvzgDAKugLkRhRx-7d7kg1bLVsLWL2)
@@ -154,11 +154,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2Nzc3NjQzMCwxMzA3OTY0MjYwLC04MT
-UzODU2ODIsLTU4OTcyNDA0Nyw1NzQ0NDIxNjEsMTcyMzMyNjI0
-LC0xNzMyMzE2MzcyLDEzNDczNjY1NzEsMTE5OTM0MTkwMSwtMT
-YwMjI3OTk3MywtMTE5MTcxNjUwMiw2NzExMzAyMDAsODYxOTAx
-MTM1LC03NzEyNTg1NzgsLTQyMjc4NDAxNCwtMTA5Mzg4MTYyMS
-wtODY1MDU1MjU2LC0yMTI4NjMwMTY2LC0xMjI5MDMyOTAsMTE0
-MTE2ODg5NV19
+eyJoaXN0b3J5IjpbLTEwMDc3ODk0MTIsMTMwNzk2NDI2MCwtOD
+E1Mzg1NjgyLC01ODk3MjQwNDcsNTc0NDQyMTYxLDE3MjMzMjYy
+NCwtMTczMjMxNjM3MiwxMzQ3MzY2NTcxLDExOTkzNDE5MDEsLT
+E2MDIyNzk5NzMsLTExOTE3MTY1MDIsNjcxMTMwMjAwLDg2MTkw
+MTEzNSwtNzcxMjU4NTc4LC00MjI3ODQwMTQsLTEwOTM4ODE2Mj
+EsLTg2NTA1NTI1NiwtMjEyODYzMDE2NiwtMTIyOTAzMjkwLDEx
+NDExNjg4OTVdfQ==
 -->
