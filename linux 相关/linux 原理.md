@@ -57,7 +57,7 @@ cat /proc/sys/vm/swappiness
 **swappiness=0的时候表示最大限度使用物理内存，然后才是 swap空间，**
 
 swappiness＝100的时候表示积极的使用swap分区，并且把内存上的数据及时的搬运到swap空间里面。
-如下图
+
 通常情况下, swap分区设置建议是内存的两倍 （内存小于等于4G时），如果内存大于4G，swap只要比内存大就行。另外尽量的将swappiness调低，这样系统的性能会更好。
 
 * 修改swappiness参数
@@ -97,6 +97,9 @@ https://cloud.tencent.com/developer/article/1200032
 > To find out the amount of swap space used by every process, run `top` (not `htop`), press 'f' to select columns (f for fields) to display, press 'p' to add swap to display, press 'o' to sort the table (o for order by) and press 'p' again to order by swap usage.
 
 * buffer and cache
+通常情况下, linux 会尽可能的使用内存, 作为buffer 和cache, 加快程序的性能, 当
+![enter image description here](https://drive.google.com/uc?id=1VCrfIvChbqAWUUbhJXsFE-cygR4MJ19a)
+
 buffer (缓冲区)起到流量整形的作用, 将多次的小io 累积成少次的大io, 减少响应的开销, 并且让io 的速率稳定. 
 cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(例如cpu 和memory), 通过让存储系统分级来减小这种差异带来的影响.  缓存的速度比主存快很多, 数据先从缓存取, 实际情况中cpu 都能从缓存中找到大部分数据.
 
@@ -130,7 +133,7 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4ODc3MzU4MSwtODU0MTExNzU5LC04MD
+eyJoaXN0b3J5IjpbLTYyNzU5Njc3OSwtODU0MTExNzU5LC04MD
 UwODk4NDEsLTE1NjYzODgwOTAsMTY3MDQ5MTIxNSwtOTM0MzUw
 MjQsMTU5MTI1ODU0OSwtMTMzNjc1MzQ0NCwtMTE3NzU5MTQyOS
 wtMzgwNDkxMzYxLDE2MzU1NjkxMzIsLTEyMjc1OTU0NTcsLTIy
