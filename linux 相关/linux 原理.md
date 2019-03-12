@@ -97,7 +97,7 @@ https://cloud.tencent.com/developer/article/1200032
 > To find out the amount of swap space used by every process, run `top` (not `htop`), press 'f' to select columns (f for fields) to display, press 'p' to add swap to display, press 'o' to sort the table (o for order by) and press 'p' again to order by swap usage.
 
 * buffer and cache
-通常情况下, linux 会尽可能的使用内存, 作为buffer 和cache, 加快程序的性能, 当
+通常情况下, linux 会尽可能的使用内存作为buffer 和cache, 加快程序的性能, **当进程需要更多的内存时, 会回收cache 的一部分, 或者swap out 不使用的部分, 具体细节有待了解**
 ![enter image description here](https://drive.google.com/uc?id=1VCrfIvChbqAWUUbhJXsFE-cygR4MJ19a)
 
 buffer (缓冲区)起到流量整形的作用, 将多次的小io 累积成少次的大io, 减少响应的开销, 并且让io 的速率稳定. 
@@ -133,7 +133,7 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyNzU5Njc3OSwtODU0MTExNzU5LC04MD
+eyJoaXN0b3J5IjpbLTcxMzMzMDcwMCwtODU0MTExNzU5LC04MD
 UwODk4NDEsLTE1NjYzODgwOTAsMTY3MDQ5MTIxNSwtOTM0MzUw
 MjQsMTU5MTI1ODU0OSwtMTMzNjc1MzQ0NCwtMTE3NzU5MTQyOS
 wtMzgwNDkxMzYxLDE2MzU1NjkxMzIsLTEyMjc1OTU0NTcsLTIy
