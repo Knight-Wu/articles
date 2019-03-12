@@ -58,9 +58,7 @@ cat /proc/sys/vm/swappiness
 
 swappiness＝100的时候表示积极的使用swap分区，并且把内存上的数据及时的搬运到swap空间里面。
 如下图
-通常情况下：
-
-swap分区设置建议是内存的两倍 （内存小于等于4G时），如果内存大于4G，swap只要比内存大就行。另外尽量的将swappiness调低，这样系统的性能会更好。
+通常情况下, swap分区设置建议是内存的两倍 （内存小于等于4G时），如果内存大于4G，swap只要比内存大就行。另外尽量的将swappiness调低，这样系统的性能会更好。
 
 * 修改swappiness参数
 
@@ -132,11 +130,11 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1NDExMTc1OSwtODA1MDg5ODQxLC0xNT
-Y2Mzg4MDkwLDE2NzA0OTEyMTUsLTkzNDM1MDI0LDE1OTEyNTg1
-NDksLTEzMzY3NTM0NDQsLTExNzc1OTE0MjksLTM4MDQ5MTM2MS
-wxNjM1NTY5MTMyLC0xMjI3NTk1NDU3LC0yMjE3MTU5OSw4NjQ2
-NDM0MzYsMTUzMzQwMzM4NywtMjA5NDA4MzU0OSwxNTE2ODE3MD
-k3LC05OTkyMzEyMDAsMTMyODY4MjU1OSwtODQ2NTI3MzYxLDE0
-MzU2MTI3OTRdfQ==
+eyJoaXN0b3J5IjpbLTc4ODc3MzU4MSwtODU0MTExNzU5LC04MD
+UwODk4NDEsLTE1NjYzODgwOTAsMTY3MDQ5MTIxNSwtOTM0MzUw
+MjQsMTU5MTI1ODU0OSwtMTMzNjc1MzQ0NCwtMTE3NzU5MTQyOS
+wtMzgwNDkxMzYxLDE2MzU1NjkxMzIsLTEyMjc1OTU0NTcsLTIy
+MTcxNTk5LDg2NDY0MzQzNiwxNTMzNDAzMzg3LC0yMDk0MDgzNT
+Q5LDE1MTY4MTcwOTcsLTk5OTIzMTIwMCwxMzI4NjgyNTU5LC04
+NDY1MjczNjFdfQ==
 -->
