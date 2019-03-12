@@ -34,7 +34,7 @@ In general, MySQL can apply a WHERE clause in three ways, from best to worst:
 
 > 预估并转化为常数
 
-> 使用 straight_join 关键字来比较原执行计划和优化后的执行计划\
+> 使用 straight_join 关键字来比较原执行计划和优化后的执行计划
 
 * mysql 如何执行关联查询
 ![enter image description here](https://drive.google.com/uc?id=1ENqjSNgGGsiCMbk1Q2FQ6A6SadjXwQvM)
@@ -153,11 +153,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTc0NDQyMTYxLDE3MjMzMjYyNCwtMTczMj
-MxNjM3MiwxMzQ3MzY2NTcxLDExOTkzNDE5MDEsLTE2MDIyNzk5
-NzMsLTExOTE3MTY1MDIsNjcxMTMwMjAwLDg2MTkwMTEzNSwtNz
-cxMjU4NTc4LC00MjI3ODQwMTQsLTEwOTM4ODE2MjEsLTg2NTA1
-NTI1NiwtMjEyODYzMDE2NiwtMTIyOTAzMjkwLDExNDExNjg4OT
-UsMTE3ODUzMTE3NCwxOTUzNjU0MTgwLDEyNjk4NTc3MzYsLTU1
-NjAzNTk3N119
+eyJoaXN0b3J5IjpbLTU4OTcyNDA0Nyw1NzQ0NDIxNjEsMTcyMz
+MyNjI0LC0xNzMyMzE2MzcyLDEzNDczNjY1NzEsMTE5OTM0MTkw
+MSwtMTYwMjI3OTk3MywtMTE5MTcxNjUwMiw2NzExMzAyMDAsOD
+YxOTAxMTM1LC03NzEyNTg1NzgsLTQyMjc4NDAxNCwtMTA5Mzg4
+MTYyMSwtODY1MDU1MjU2LC0yMTI4NjMwMTY2LC0xMjI5MDMyOT
+AsMTE0MTE2ODg5NSwxMTc4NTMxMTc0LDE5NTM2NTQxODAsMTI2
+OTg1NzczNl19
 -->
