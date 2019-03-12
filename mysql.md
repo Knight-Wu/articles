@@ -85,12 +85,15 @@ https://blog.jcole.us/2013/01/14/efficiently-traversing-innodb-btrees-with-the-p
 因为record 是以链表的形式, 逻辑连接, 遍历列表是很慢的,  use page directory(可以理解是用一个数组来保存一个范围内key, 二分查找这个数组, 找到满足要求的key 再去线性查找. 
 ![enter image description here](https://drive.google.com/uc?id=1DRE4r96br10emG6XHAZ_5wkQ5xf2e3yR)
 
-* primary key value 是存在非叶子节点的, 如果过长, 非叶子节点的记录数就会减少, 索引的结构会更大. 
 
-> how to search a record in b+ tree index 
 1.  Start at the root page of the index.
 2.  Binary search using the page directory (repeatedly splitting the directory in half based on whether the current record is greater than or less than the search key) until a record is found via the page directory with the highest key that does not exceed the search key.
 3.  Linear search from that record until finding an individual record with the highest key that does not exceed the search key. If the current page is a leaf page, return the record. If the current page is a non-leaf page, load the child page this record points to, and return to step 2.
+
+* primary key value 是存在非叶子节点的, 如果过长, 非叶子节点的记录数就会减少, 索引的结构会更大. 
+
+
+
 
 
 
@@ -180,11 +183,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3Njc4NTk2NSwxNjQ2ODc0OTIwLDUxND
-MwOTMxOSwyNDEzNjY1NzQsMTYwMzQxMzI4MCwtNzU0ODUzODk3
-LDE4NDc4NDQ0ODcsLTE2ODYxMjE1NTQsLTEwMDc3ODk0MTIsMT
-MwNzk2NDI2MCwtODE1Mzg1NjgyLC01ODk3MjQwNDcsNTc0NDQy
-MTYxLDE3MjMzMjYyNCwtMTczMjMxNjM3MiwxMzQ3MzY2NTcxLD
-ExOTkzNDE5MDEsLTE2MDIyNzk5NzMsLTExOTE3MTY1MDIsNjcx
-MTMwMjAwXX0=
+eyJoaXN0b3J5IjpbLTQ0OTkzODA4NCwtMjc2Nzg1OTY1LDE2ND
+Y4NzQ5MjAsNTE0MzA5MzE5LDI0MTM2NjU3NCwxNjAzNDEzMjgw
+LC03NTQ4NTM4OTcsMTg0Nzg0NDQ4NywtMTY4NjEyMTU1NCwtMT
+AwNzc4OTQxMiwxMzA3OTY0MjYwLC04MTUzODU2ODIsLTU4OTcy
+NDA0Nyw1NzQ0NDIxNjEsMTcyMzMyNjI0LC0xNzMyMzE2MzcyLD
+EzNDczNjY1NzEsMTE5OTM0MTkwMSwtMTYwMjI3OTk3MywtMTE5
+MTcxNjUwMl19
 -->
