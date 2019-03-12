@@ -103,6 +103,8 @@ cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(�
 
 * buffer
 处于文件系统和磁盘间的缓冲, 写的时候变成批量写, 减少写的的频率, 数据结构可以理解为一个双端列表, 当需要一个free bufer 的时候, 会从头取; 当kernel return buffer, usually attach buffer to the tail, 那么越靠近head 的buffer 就是越不经常使用的. 
+
+*
 ## The Design of the UNIX Operating System notes
 ### Introduction to the Kernel
 
@@ -115,11 +117,11 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3MDQ5MTIxNSwtOTM0MzUwMjQsMTU5MT
-I1ODU0OSwtMTMzNjc1MzQ0NCwtMTE3NzU5MTQyOSwtMzgwNDkx
-MzYxLDE2MzU1NjkxMzIsLTEyMjc1OTU0NTcsLTIyMTcxNTk5LD
-g2NDY0MzQzNiwxNTMzNDAzMzg3LC0yMDk0MDgzNTQ5LDE1MTY4
-MTcwOTcsLTk5OTIzMTIwMCwxMzI4NjgyNTU5LC04NDY1MjczNj
-EsMTQzNTYxMjc5NCwxNjMxOTg0NDY0LC0xMzQ3MzQ5MzQyLDE5
-MjAxNjI0Nl19
+eyJoaXN0b3J5IjpbMTg4NjIwNTA3NSwxNjcwNDkxMjE1LC05Mz
+QzNTAyNCwxNTkxMjU4NTQ5LC0xMzM2NzUzNDQ0LC0xMTc3NTkx
+NDI5LC0zODA0OTEzNjEsMTYzNTU2OTEzMiwtMTIyNzU5NTQ1Ny
+wtMjIxNzE1OTksODY0NjQzNDM2LDE1MzM0MDMzODcsLTIwOTQw
+ODM1NDksMTUxNjgxNzA5NywtOTk5MjMxMjAwLDEzMjg2ODI1NT
+ksLTg0NjUyNzM2MSwxNDM1NjEyNzk0LDE2MzE5ODQ0NjQsLTEz
+NDczNDkzNDJdfQ==
 -->
