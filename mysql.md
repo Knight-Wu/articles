@@ -63,9 +63,9 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 
 ![enter image description here](https://drive.google.com/uc?id=1jOIFUv2qT3d__lWSkkqsfuff2_N7LDoK)
 
-* node size=disk page size=16KB , 可以在初始化mysql instance 的时候进行配置
+* node size=page size=16KB , 可以在初始化mysql instance 的时候进行配置
 * 所有数据都由叶子节点保管
-* Because B+Trees store the indexed columns in order, they’re useful for searching for ranges of data.
+* Because B+Trees store the indexed columns in order, they’re useful for searching for ranges of data.(叶子节点的记录持有一个指向下一条记录的指针, 保存着下条记录在这个page 的offset)
 
 一个实际的数据例子阐述innodb 索引: 
 ![enter image description here](https://drive.google.com/uc?id=1CCbvzgDAKugLkRhRx-7d7kg1bLVsLWL2)
@@ -153,11 +153,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNTM4NTY4MiwtNTg5NzI0MDQ3LDU3ND
-Q0MjE2MSwxNzIzMzI2MjQsLTE3MzIzMTYzNzIsMTM0NzM2NjU3
-MSwxMTk5MzQxOTAxLC0xNjAyMjc5OTczLC0xMTkxNzE2NTAyLD
-Y3MTEzMDIwMCw4NjE5MDExMzUsLTc3MTI1ODU3OCwtNDIyNzg0
-MDE0LC0xMDkzODgxNjIxLC04NjUwNTUyNTYsLTIxMjg2MzAxNj
-YsLTEyMjkwMzI5MCwxMTQxMTY4ODk1LDExNzg1MzExNzQsMTk1
-MzY1NDE4MF19
+eyJoaXN0b3J5IjpbLTE5NzYzMjcyNzEsLTgxNTM4NTY4MiwtNT
+g5NzI0MDQ3LDU3NDQ0MjE2MSwxNzIzMzI2MjQsLTE3MzIzMTYz
+NzIsMTM0NzM2NjU3MSwxMTk5MzQxOTAxLC0xNjAyMjc5OTczLC
+0xMTkxNzE2NTAyLDY3MTEzMDIwMCw4NjE5MDExMzUsLTc3MTI1
+ODU3OCwtNDIyNzg0MDE0LC0xMDkzODgxNjIxLC04NjUwNTUyNT
+YsLTIxMjg2MzAxNjYsLTEyMjkwMzI5MCwxMTQxMTY4ODk1LDEx
+Nzg1MzExNzRdfQ==
 -->
