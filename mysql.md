@@ -94,7 +94,7 @@ where a="A" and b in ('b','B') and c = 'C' , (a,b,c) 的索引仍然有效.
 
 >  When you define a  `PRIMARY KEY`  on your table,  `InnoDB`  uses it as the clustered index. Define a primary key for each table that you create. If there is no logical unique and non-null column or set of columns, add a new  [auto-increment](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_auto_increment "auto-increment")  column, whose values are filled in automatically.(如果有主键的话, 就把主键作为 clustered index )
     
->  If you do not define a  `PRIMARY KEY`  for your table, MySQL locates the first  `UNIQUE`  index where all the key columns are  `NOT NULL`  and  `InnoDB`  uses it as the clustered index. (如果没有主键, 选择一个unique 的index 作为聚簇索引,  要求该索引的所有key col 都要求非 null)
+>  If you do not define a  `PRIMARY KEY`  for your table, MySQL locates the first  `UNIQUE` and `NOT NULL`  col  as the clustered index. (如果没有主键, 选择一个unique 的index 作为聚簇索引,  要求该索引的所有key col 都要求非 null) and failing that, a 48-bit hidden “Row ID” field is automatically added to the table structure and used as the primary key. _Always_ add a primary key yourself. The hidden one is useless to you but still costs 6 bytes per row.
 
 * Secondary Indexes
 > All indexes other than the clustered index are known as [secondary indexes](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_secondary_index "secondary index").(非聚簇索引都是二级索引)
@@ -154,11 +154,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDc3ODk0MTIsMTMwNzk2NDI2MCwtOD
-E1Mzg1NjgyLC01ODk3MjQwNDcsNTc0NDQyMTYxLDE3MjMzMjYy
-NCwtMTczMjMxNjM3MiwxMzQ3MzY2NTcxLDExOTkzNDE5MDEsLT
-E2MDIyNzk5NzMsLTExOTE3MTY1MDIsNjcxMTMwMjAwLDg2MTkw
-MTEzNSwtNzcxMjU4NTc4LC00MjI3ODQwMTQsLTEwOTM4ODE2Mj
-EsLTg2NTA1NTI1NiwtMjEyODYzMDE2NiwtMTIyOTAzMjkwLDEx
-NDExNjg4OTVdfQ==
+eyJoaXN0b3J5IjpbLTE2ODYxMjE1NTQsLTEwMDc3ODk0MTIsMT
+MwNzk2NDI2MCwtODE1Mzg1NjgyLC01ODk3MjQwNDcsNTc0NDQy
+MTYxLDE3MjMzMjYyNCwtMTczMjMxNjM3MiwxMzQ3MzY2NTcxLD
+ExOTkzNDE5MDEsLTE2MDIyNzk5NzMsLTExOTE3MTY1MDIsNjcx
+MTMwMjAwLDg2MTkwMTEzNSwtNzcxMjU4NTc4LC00MjI3ODQwMT
+QsLTEwOTM4ODE2MjEsLTg2NTA1NTI1NiwtMjEyODYzMDE2Niwt
+MTIyOTAzMjkwXX0=
 -->
