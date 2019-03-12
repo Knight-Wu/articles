@@ -53,7 +53,8 @@ https://juejin.im/post/5b1685bef265da6e5c3c1c34
 * space
 an .ibd file for each MySQL table.代表了一个space, 由一个32 bit 的space id 确定. A space may consist of multiple actual files at the operating system level (e.g. ibdata1, ibdata2, etc.) but it is just a single logical file — multiple physical files are just treated as though they were physically concatenated together.
 * page
-Each page within a space is assigned a 32-bit integer page number, often called “offset”, which is actually just the page’s offset from the beginning of the space (not necessarily the file, for multi-file spaces). So, page 0 is located at file offset 0, page 1 at file offset 16384, and so on. (The astute may remember that InnoDB has a limit of 64TiB of data; this is actually a limit per space, and is due primarily to the page number being a 32-bit integer combined with the default page size: 232 x 16 KiB = 64 TiB.
+Each page within a space is assigned a 32-bit integer page number, often called “offset”, which is actually just the page’s offset from the beginning of the space (not necessarily the file, for multi-file spaces). So, page 0 is located at file offset 0, page 1 at file offset 16384=16*1024 bytes, and so on. (The astute may remember that InnoDB has a limit of 64TiB of data; this is actually a limit per space, and is due primarily to the page number being a 32-bit integer combined with the default page size: 232 x 16 KiB = 64 TiB.
+
 
 #### MyISAM
 不支持行锁, 只支持表锁, 不支持事务, 不支持崩溃后快速回复, 不支持外键, 适合读的场景
@@ -159,7 +160,7 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAzNDkxNzYxNywxODQ3ODQ0NDg3LC0xNj
+eyJoaXN0b3J5IjpbLTc1NDg1Mzg5NywxODQ3ODQ0NDg3LC0xNj
 g2MTIxNTU0LC0xMDA3Nzg5NDEyLDEzMDc5NjQyNjAsLTgxNTM4
 NTY4MiwtNTg5NzI0MDQ3LDU3NDQ0MjE2MSwxNzIzMzI2MjQsLT
 E3MzIzMTYzNzIsMTM0NzM2NjU3MSwxMTk5MzQxOTAxLC0xNjAy
