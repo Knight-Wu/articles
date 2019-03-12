@@ -106,7 +106,7 @@ cache (缓存)是为了处理高速和低速设备之间的速度的不匹配(�
 
 * write dirty page
 当内存中的page cache 被修改之后, 这个page 就是dirty page. 
-dirty page 提供了延迟写, 多个
+dirty page 可以让多个dirty page 可以被一起写入同一个磁盘扇区, 提供了延迟写, 因为写操作的挂起通常不会引起阻塞, 但是读
 ## The Design of the UNIX Operating System notes
 ### Introduction to the Kernel
 
@@ -119,11 +119,11 @@ The kernel contains two other data structures, the file tableand the user file d
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxNDMyMDcwOSwxNjcwNDkxMjE1LC05Mz
-QzNTAyNCwxNTkxMjU4NTQ5LC0xMzM2NzUzNDQ0LC0xMTc3NTkx
-NDI5LC0zODA0OTEzNjEsMTYzNTU2OTEzMiwtMTIyNzU5NTQ1Ny
-wtMjIxNzE1OTksODY0NjQzNDM2LDE1MzM0MDMzODcsLTIwOTQw
-ODM1NDksMTUxNjgxNzA5NywtOTk5MjMxMjAwLDEzMjg2ODI1NT
-ksLTg0NjUyNzM2MSwxNDM1NjEyNzk0LDE2MzE5ODQ0NjQsLTEz
-NDczNDkzNDJdfQ==
+eyJoaXN0b3J5IjpbLTE2ODIyODM4MTYsMTY3MDQ5MTIxNSwtOT
+M0MzUwMjQsMTU5MTI1ODU0OSwtMTMzNjc1MzQ0NCwtMTE3NzU5
+MTQyOSwtMzgwNDkxMzYxLDE2MzU1NjkxMzIsLTEyMjc1OTU0NT
+csLTIyMTcxNTk5LDg2NDY0MzQzNiwxNTMzNDAzMzg3LC0yMDk0
+MDgzNTQ5LDE1MTY4MTcwOTcsLTk5OTIzMTIwMCwxMzI4NjgyNT
+U5LC04NDY1MjczNjEsMTQzNTYxMjc5NCwxNjMxOTg0NDY0LC0x
+MzQ3MzQ5MzQyXX0=
 -->
