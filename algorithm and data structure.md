@@ -182,7 +182,7 @@ static void QSRecu1(int[] arr, int start, int end) {
 > 版本三, 三分法, 针对有元素相等的情况下, 
 
 ```
-// 三分法, 用两个指针, 左边指针-1为小于pivot的index, 右边指针+1 位大于pivot 的index  
+// 三分法, 用三个指针, 左边指针-1为小于pivot的index, 右边指针+1 位大于pivot 的index  , 第三个指针是比较指针.pivot 为sta
 void qsRecu2(int[] arr, int start, int end) {  
     if (start >= end) return;  
     int pivot = arr[end];  
@@ -499,11 +499,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTU1NDU4MjUxLC0xNTU4MjY0NTMsLTI1Mz
-g2NTcxLDE2NDQ2Mzc5NTEsLTIwODEyNzA2MjAsMzcyNDE4MzU4
-LDM2NDA0MDM0MiwxMzc5OTY3NTA2LC0yODczMDM5MjcsLTE5MD
-k2MDY5NTYsLTExMTA0MDkzOTQsMjEzNDgyNDg4MCwyOTU3NTAx
-MzcsMTAxMTQ1NDg4LC0xODQ5MjQxMDE3LDMzNjU2OTA0Niw4MD
-M1ODA4MDYsLTE2NjM0MjAwMzMsLTIwMzU0MDk5ODQsLTE2MzUx
-NjY5NDZdfQ==
+eyJoaXN0b3J5IjpbODAxMjczNTExLDk1NTQ1ODI1MSwtMTU1OD
+I2NDUzLC0yNTM4NjU3MSwxNjQ0NjM3OTUxLC0yMDgxMjcwNjIw
+LDM3MjQxODM1OCwzNjQwNDAzNDIsMTM3OTk2NzUwNiwtMjg3Mz
+AzOTI3LC0xOTA5NjA2OTU2LC0xMTEwNDA5Mzk0LDIxMzQ4MjQ4
+ODAsMjk1NzUwMTM3LDEwMTE0NTQ4OCwtMTg0OTI0MTAxNywzMz
+Y1NjkwNDYsODAzNTgwODA2LC0xNjYzNDIwMDMzLC0yMDM1NDA5
+OTg0XX0=
 -->
