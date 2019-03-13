@@ -179,20 +179,14 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 https://blog.jcole.us/innodb/
 relational database index design and the optimizers
 #### 问题
-* innodb 的文件结构
-* mysql 语句执行的大致流程
-* mysql 的B+ 树索引如何跟磁盘页对齐, 如何配置
-* 全文索引
-* mysql 把所有字段都建上index 有什么不好的地方
-维护索引的代价很大, 占用空间, 影响插入和更新和删除?
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwMjg1OTA0NSwxMjE4NDEzMjc1LC00ND
-k5MzgwODQsLTI3Njc4NTk2NSwxNjQ2ODc0OTIwLDUxNDMwOTMx
-OSwyNDEzNjY1NzQsMTYwMzQxMzI4MCwtNzU0ODUzODk3LDE4ND
-c4NDQ0ODcsLTE2ODYxMjE1NTQsLTEwMDc3ODk0MTIsMTMwNzk2
-NDI2MCwtODE1Mzg1NjgyLC01ODk3MjQwNDcsNTc0NDQyMTYxLD
-E3MjMzMjYyNCwtMTczMjMxNjM3MiwxMzQ3MzY2NTcxLDExOTkz
-NDE5MDFdfQ==
+eyJoaXN0b3J5IjpbLTExNDE5OTU3NDUsMTYwMjg1OTA0NSwxMj
+E4NDEzMjc1LC00NDk5MzgwODQsLTI3Njc4NTk2NSwxNjQ2ODc0
+OTIwLDUxNDMwOTMxOSwyNDEzNjY1NzQsMTYwMzQxMzI4MCwtNz
+U0ODUzODk3LDE4NDc4NDQ0ODcsLTE2ODYxMjE1NTQsLTEwMDc3
+ODk0MTIsMTMwNzk2NDI2MCwtODE1Mzg1NjgyLC01ODk3MjQwND
+csNTc0NDQyMTYxLDE3MjMzMjYyNCwtMTczMjMxNjM3MiwxMzQ3
+MzY2NTcxXX0=
 -->
