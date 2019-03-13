@@ -181,7 +181,9 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 #### mysql explain
 https://dev.mysql.com/doc/refman/8.0/en/explain-output.html
  EXPLAIN Join Types 对查询的友好程度由高到低
- const 可以理解为利用index
+ const 可以理解为利用primary key, 或unique index 查询单表一行数据
+ eq_ref 可以理解为多表一行
+ ref 可以理解为多表join 多行
 #### 资料
 https://blog.jcole.us/innodb/
 relational database index design and the optimizers
@@ -189,7 +191,7 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA3MTExNjM2MSwtODUxNTg2NTAxLC0zND
+eyJoaXN0b3J5IjpbLTg3NzI1NTI1MiwtODUxNTg2NTAxLC0zND
 AzNTE1NTcsLTExNDE5OTU3NDUsMTYwMjg1OTA0NSwxMjE4NDEz
 Mjc1LC00NDk5MzgwODQsLTI3Njc4NTk2NSwxNjQ2ODc0OTIwLD
 UxNDMwOTMxOSwyNDEzNjY1NzQsMTYwMzQxMzI4MCwtNzU0ODUz
