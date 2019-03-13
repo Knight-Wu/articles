@@ -179,6 +179,7 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 3. order by limit 形式的sql语句让排序的表优先查
 
 #### mysql explain
+zhuya
 https://dev.mysql.com/doc/refman/8.0/en/explain-output.html
  EXPLAIN Join Types 对查询的友好程度由高到低
  const 可以理解为利用primary key, 或unique index 查询单表一行数据
@@ -191,11 +192,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDUzODkzMjUsLTg1MTU4NjUwMSwtMz
-QwMzUxNTU3LC0xMTQxOTk1NzQ1LDE2MDI4NTkwNDUsMTIxODQx
-MzI3NSwtNDQ5OTM4MDg0LC0yNzY3ODU5NjUsMTY0Njg3NDkyMC
-w1MTQzMDkzMTksMjQxMzY2NTc0LDE2MDM0MTMyODAsLTc1NDg1
-Mzg5NywxODQ3ODQ0NDg3LC0xNjg2MTIxNTU0LC0xMDA3Nzg5ND
-EyLDEzMDc5NjQyNjAsLTgxNTM4NTY4MiwtNTg5NzI0MDQ3LDU3
-NDQ0MjE2MV19
+eyJoaXN0b3J5IjpbMTQzNzYyNzA2MiwtMTgwNTM4OTMyNSwtOD
+UxNTg2NTAxLC0zNDAzNTE1NTcsLTExNDE5OTU3NDUsMTYwMjg1
+OTA0NSwxMjE4NDEzMjc1LC00NDk5MzgwODQsLTI3Njc4NTk2NS
+wxNjQ2ODc0OTIwLDUxNDMwOTMxOSwyNDEzNjY1NzQsMTYwMzQx
+MzI4MCwtNzU0ODUzODk3LDE4NDc4NDQ0ODcsLTE2ODYxMjE1NT
+QsLTEwMDc3ODk0MTIsMTMwNzk2NDI2MCwtODE1Mzg1NjgyLC01
+ODk3MjQwNDddfQ==
 -->
