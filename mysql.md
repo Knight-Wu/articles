@@ -17,6 +17,7 @@ In general, MySQL can apply a WHERE clause in three ways, from best to worst:
 * information_schema
 https://dev.mysql.com/doc/refman/8.0/en/performance-schema-query-profiling.html
 
+* 开启慢查询日志
 
 #### mysql 查询过程
 1. 客户端发送查询语句到服务器
@@ -187,11 +188,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxODQxMzI3NSwtNDQ5OTM4MDg0LC0yNz
-Y3ODU5NjUsMTY0Njg3NDkyMCw1MTQzMDkzMTksMjQxMzY2NTc0
-LDE2MDM0MTMyODAsLTc1NDg1Mzg5NywxODQ3ODQ0NDg3LC0xNj
-g2MTIxNTU0LC0xMDA3Nzg5NDEyLDEzMDc5NjQyNjAsLTgxNTM4
-NTY4MiwtNTg5NzI0MDQ3LDU3NDQ0MjE2MSwxNzIzMzI2MjQsLT
-E3MzIzMTYzNzIsMTM0NzM2NjU3MSwxMTk5MzQxOTAxLC0xNjAy
-Mjc5OTczXX0=
+eyJoaXN0b3J5IjpbMTYwMjg1OTA0NSwxMjE4NDEzMjc1LC00ND
+k5MzgwODQsLTI3Njc4NTk2NSwxNjQ2ODc0OTIwLDUxNDMwOTMx
+OSwyNDEzNjY1NzQsMTYwMzQxMzI4MCwtNzU0ODUzODk3LDE4ND
+c4NDQ0ODcsLTE2ODYxMjE1NTQsLTEwMDc3ODk0MTIsMTMwNzk2
+NDI2MCwtODE1Mzg1NjgyLC01ODk3MjQwNDcsNTc0NDQyMTYxLD
+E3MjMzMjYyNCwtMTczMjMxNjM3MiwxMzQ3MzY2NTcxLDExOTkz
+NDE5MDFdfQ==
 -->
