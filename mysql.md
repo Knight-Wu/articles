@@ -189,6 +189,12 @@ https://dev.mysql.com/doc/refman/8.0/en/explain-output.html
  ref 可以理解为多表join 多行,uses only a leftmost prefix of the key or if the key is not a `PRIMARY KEY` or `UNIQUE` index
 * extra
 using_index 和using_where 区别: https://stackoverflow.com/questions/25672552/whats-the-difference-between-using-index-and-using-where-using-index-in-the
+
+
+#### mysql 悲观锁和乐观锁
+https://blog.csdn.net/puhaiyang/article/details/72284702
+悲观锁就是先加锁再查询, 分为共享锁和互斥锁
+乐观锁是用版本号, 写操作的时候要判断此时的版本号是否和之前最新的版本号一致.
 #### 资料
 https://blog.jcole.us/innodb/
 relational database index design and the optimizers
@@ -196,11 +202,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTc1Nzg2NiwtMTgwNTM4OTMyNSwtOD
-UxNTg2NTAxLC0zNDAzNTE1NTcsLTExNDE5OTU3NDUsMTYwMjg1
-OTA0NSwxMjE4NDEzMjc1LC00NDk5MzgwODQsLTI3Njc4NTk2NS
-wxNjQ2ODc0OTIwLDUxNDMwOTMxOSwyNDEzNjY1NzQsMTYwMzQx
-MzI4MCwtNzU0ODUzODk3LDE4NDc4NDQ0ODcsLTE2ODYxMjE1NT
-QsLTEwMDc3ODk0MTIsMTMwNzk2NDI2MCwtODE1Mzg1NjgyLC01
-ODk3MjQwNDddfQ==
+eyJoaXN0b3J5IjpbNDU5MjE1MTcwLC0xOTE3NTc4NjYsLTE4MD
+UzODkzMjUsLTg1MTU4NjUwMSwtMzQwMzUxNTU3LC0xMTQxOTk1
+NzQ1LDE2MDI4NTkwNDUsMTIxODQxMzI3NSwtNDQ5OTM4MDg0LC
+0yNzY3ODU5NjUsMTY0Njg3NDkyMCw1MTQzMDkzMTksMjQxMzY2
+NTc0LDE2MDM0MTMyODAsLTc1NDg1Mzg5NywxODQ3ODQ0NDg3LC
+0xNjg2MTIxNTU0LC0xMDA3Nzg5NDEyLDEzMDc5NjQyNjAsLTgx
+NTM4NTY4Ml19
 -->
