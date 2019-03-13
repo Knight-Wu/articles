@@ -208,7 +208,7 @@ static void popS(int [] arr){
      for(int i=len-1;i>=1;i--){  
          for(int j=0;j+1<=i;j++){  
              if(arr[j] >arr[j+1]){  
-                 int temp = arr[j];  
+                 int swap = arr[j];  
                  arr[j]=arr[j+1];  
                  arr[j+1]=temp;  
              }  
@@ -500,11 +500,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyNzYzOTkyMCw3MDY5NzA5NDIsLTEzMD
-gyMDU4MzQsOTU1NDU4MjUxLC0xNTU4MjY0NTMsLTI1Mzg2NTcx
-LDE2NDQ2Mzc5NTEsLTIwODEyNzA2MjAsMzcyNDE4MzU4LDM2ND
-A0MDM0MiwxMzc5OTY3NTA2LC0yODczMDM5MjcsLTE5MDk2MDY5
-NTYsLTExMTA0MDkzOTQsMjEzNDgyNDg4MCwyOTU3NTAxMzcsMT
-AxMTQ1NDg4LC0xODQ5MjQxMDE3LDMzNjU2OTA0Niw4MDM1ODA4
-MDZdfQ==
+eyJoaXN0b3J5IjpbLTE1MTY1NDYzODMsNzA2OTcwOTQyLC0xMz
+A4MjA1ODM0LDk1NTQ1ODI1MSwtMTU1ODI2NDUzLC0yNTM4NjU3
+MSwxNjQ0NjM3OTUxLC0yMDgxMjcwNjIwLDM3MjQxODM1OCwzNj
+QwNDAzNDIsMTM3OTk2NzUwNiwtMjg3MzAzOTI3LC0xOTA5NjA2
+OTU2LC0xMTEwNDA5Mzk0LDIxMzQ4MjQ4ODAsMjk1NzUwMTM3LD
+EwMTE0NTQ4OCwtMTg0OTI0MTAxNywzMzY1NjkwNDYsODAzNTgw
+ODA2XX0=
 -->
