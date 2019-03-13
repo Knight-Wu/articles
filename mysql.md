@@ -183,7 +183,7 @@ https://dev.mysql.com/doc/refman/8.0/en/explain-output.html
  EXPLAIN Join Types 对查询的友好程度由高到低
  const 可以理解为利用primary key, 或unique index 查询单表一行数据
  eq_ref 可以理解为多表一行
- ref 可以理解为多表join 多行
+ ref 可以理解为多表join 多行,uses only a leftmost prefix of the key or if the key is not a `PRIMARY KEY` or `UNIQUE` index
 #### 资料
 https://blog.jcole.us/innodb/
 relational database index design and the optimizers
@@ -191,11 +191,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3NzI1NTI1MiwtODUxNTg2NTAxLC0zND
-AzNTE1NTcsLTExNDE5OTU3NDUsMTYwMjg1OTA0NSwxMjE4NDEz
-Mjc1LC00NDk5MzgwODQsLTI3Njc4NTk2NSwxNjQ2ODc0OTIwLD
-UxNDMwOTMxOSwyNDEzNjY1NzQsMTYwMzQxMzI4MCwtNzU0ODUz
-ODk3LDE4NDc4NDQ0ODcsLTE2ODYxMjE1NTQsLTEwMDc3ODk0MT
-IsMTMwNzk2NDI2MCwtODE1Mzg1NjgyLC01ODk3MjQwNDcsNTc0
-NDQyMTYxXX0=
+eyJoaXN0b3J5IjpbLTE4MDUzODkzMjUsLTg1MTU4NjUwMSwtMz
+QwMzUxNTU3LC0xMTQxOTk1NzQ1LDE2MDI4NTkwNDUsMTIxODQx
+MzI3NSwtNDQ5OTM4MDg0LC0yNzY3ODU5NjUsMTY0Njg3NDkyMC
+w1MTQzMDkzMTksMjQxMzY2NTc0LDE2MDM0MTMyODAsLTc1NDg1
+Mzg5NywxODQ3ODQ0NDg3LC0xNjg2MTIxNTU0LC0xMDA3Nzg5ND
+EyLDEzMDc5NjQyNjAsLTgxNTM4NTY4MiwtNTg5NzI0MDQ3LDU3
+NDQ0MjE2MV19
 -->
