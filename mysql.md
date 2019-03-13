@@ -113,8 +113,8 @@ https://blog.jcole.us/2013/01/14/efficiently-traversing-innodb-btrees-with-the-p
 
 > 使用B+ tree 索引的原则
 
-1. 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d 作为查询条件, 列顺序可以交换。 
-2. where 里面的col 可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，可以用col in (val) 来使后面的索引列仍然有效, 例如
+1. 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d 作为查询条件, and 连接的列顺序可以交换。 
+2. (a,b,c) 的联合索引，可以用col in (val) 来使后面的索引列仍然有效, 例如
 where a="A" and b in ('b','B') and c = 'C' , (a,b,c) 的索引仍然有效. 
 
 3. 当不需要排序和分组的时候, 将选择性高的列放到多列索引的前边
@@ -183,11 +183,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MzUwNDczNzEsLTExNDE5OTU3NDUsMT
-YwMjg1OTA0NSwxMjE4NDEzMjc1LC00NDk5MzgwODQsLTI3Njc4
-NTk2NSwxNjQ2ODc0OTIwLDUxNDMwOTMxOSwyNDEzNjY1NzQsMT
-YwMzQxMzI4MCwtNzU0ODUzODk3LDE4NDc4NDQ0ODcsLTE2ODYx
-MjE1NTQsLTEwMDc3ODk0MTIsMTMwNzk2NDI2MCwtODE1Mzg1Nj
-gyLC01ODk3MjQwNDcsNTc0NDQyMTYxLDE3MjMzMjYyNCwtMTcz
-MjMxNjM3Ml19
+eyJoaXN0b3J5IjpbLTM0MDM1MTU1NywtMTE0MTk5NTc0NSwxNj
+AyODU5MDQ1LDEyMTg0MTMyNzUsLTQ0OTkzODA4NCwtMjc2Nzg1
+OTY1LDE2NDY4NzQ5MjAsNTE0MzA5MzE5LDI0MTM2NjU3NCwxNj
+AzNDEzMjgwLC03NTQ4NTM4OTcsMTg0Nzg0NDQ4NywtMTY4NjEy
+MTU1NCwtMTAwNzc4OTQxMiwxMzA3OTY0MjYwLC04MTUzODU2OD
+IsLTU4OTcyNDA0Nyw1NzQ0NDIxNjEsMTcyMzMyNjI0LC0xNzMy
+MzE2MzcyXX0=
 -->
