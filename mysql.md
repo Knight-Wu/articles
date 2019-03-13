@@ -179,12 +179,16 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 3. order by limit 形式的sql语句让排序的表优先查
 
 #### mysql explain
-zhuya
+主要是优化查询的行数
+
+* join type
 https://dev.mysql.com/doc/refman/8.0/en/explain-output.html
  EXPLAIN Join Types 对查询的友好程度由高到低
  const 可以理解为利用primary key, 或unique index 查询单表一行数据
  eq_ref 可以理解为多表一行
  ref 可以理解为多表join 多行,uses only a leftmost prefix of the key or if the key is not a `PRIMARY KEY` or `UNIQUE` index
+* extra
+using_index 和using_where 区别: https://stackoverflow.com/questions/25672552/whats-the-difference-between-using-index-and-using-where-using-index-in-the
 #### 资料
 https://blog.jcole.us/innodb/
 relational database index design and the optimizers
@@ -192,7 +196,7 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzNzYyNzA2MiwtMTgwNTM4OTMyNSwtOD
+eyJoaXN0b3J5IjpbLTE5MTc1Nzg2NiwtMTgwNTM4OTMyNSwtOD
 UxNTg2NTAxLC0zNDAzNTE1NTcsLTExNDE5OTU3NDUsMTYwMjg1
 OTA0NSwxMjE4NDEzMjc1LC00NDk5MzgwODQsLTI3Njc4NTk2NS
 wxNjQ2ODc0OTIwLDUxNDMwOTMxOSwyNDEzNjY1NzQsMTYwMzQx
