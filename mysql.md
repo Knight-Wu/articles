@@ -178,6 +178,10 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 2. 把where 条件应用到表中, 从返回记录数最小的表开始查起
 3. order by limit 形式的sql语句让排序的表优先查
 
+#### mysql explain
+https://dev.mysql.com/doc/refman/8.0/en/explain-output.html
+ EXPLAIN Join Types 对查询的友好程度由高到低
+ const 可以理解为利用index
 #### 资料
 https://blog.jcole.us/innodb/
 relational database index design and the optimizers
@@ -185,11 +189,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1MTU4NjUwMSwtMzQwMzUxNTU3LC0xMT
-QxOTk1NzQ1LDE2MDI4NTkwNDUsMTIxODQxMzI3NSwtNDQ5OTM4
-MDg0LC0yNzY3ODU5NjUsMTY0Njg3NDkyMCw1MTQzMDkzMTksMj
-QxMzY2NTc0LDE2MDM0MTMyODAsLTc1NDg1Mzg5NywxODQ3ODQ0
-NDg3LC0xNjg2MTIxNTU0LC0xMDA3Nzg5NDEyLDEzMDc5NjQyNj
-AsLTgxNTM4NTY4MiwtNTg5NzI0MDQ3LDU3NDQ0MjE2MSwxNzIz
-MzI2MjRdfQ==
+eyJoaXN0b3J5IjpbMTA3MTExNjM2MSwtODUxNTg2NTAxLC0zND
+AzNTE1NTcsLTExNDE5OTU3NDUsMTYwMjg1OTA0NSwxMjE4NDEz
+Mjc1LC00NDk5MzgwODQsLTI3Njc4NTk2NSwxNjQ2ODc0OTIwLD
+UxNDMwOTMxOSwyNDEzNjY1NzQsMTYwMzQxMzI4MCwtNzU0ODUz
+ODk3LDE4NDc4NDQ0ODcsLTE2ODYxMjE1NTQsLTEwMDc3ODk0MT
+IsMTMwNzk2NDI2MCwtODE1Mzg1NjgyLC01ODk3MjQwNDcsNTc0
+NDQyMTYxXX0=
 -->
