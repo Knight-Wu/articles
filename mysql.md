@@ -13,6 +13,10 @@ In general, MySQL can apply a WHERE clause in three ways, from best to worst:
 #### 分解关联查询
 在应用程序层面关联多个表的查询, 而不是在mysql 层面直接关联
 
+#### 如何衡量查询时间
+* information_schema
+https://dev.mysql.com/doc/refman/8.0/en/performance-schema-query-profiling.html
+
 
 #### mysql 查询过程
 1. 客户端发送查询语句到服务器
@@ -183,11 +187,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ0OTkzODA4NCwtMjc2Nzg1OTY1LDE2ND
-Y4NzQ5MjAsNTE0MzA5MzE5LDI0MTM2NjU3NCwxNjAzNDEzMjgw
-LC03NTQ4NTM4OTcsMTg0Nzg0NDQ4NywtMTY4NjEyMTU1NCwtMT
-AwNzc4OTQxMiwxMzA3OTY0MjYwLC04MTUzODU2ODIsLTU4OTcy
-NDA0Nyw1NzQ0NDIxNjEsMTcyMzMyNjI0LC0xNzMyMzE2MzcyLD
-EzNDczNjY1NzEsMTE5OTM0MTkwMSwtMTYwMjI3OTk3MywtMTE5
-MTcxNjUwMl19
+eyJoaXN0b3J5IjpbMTIxODQxMzI3NSwtNDQ5OTM4MDg0LC0yNz
+Y3ODU5NjUsMTY0Njg3NDkyMCw1MTQzMDkzMTksMjQxMzY2NTc0
+LDE2MDM0MTMyODAsLTc1NDg1Mzg5NywxODQ3ODQ0NDg3LC0xNj
+g2MTIxNTU0LC0xMDA3Nzg5NDEyLDEzMDc5NjQyNjAsLTgxNTM4
+NTY4MiwtNTg5NzI0MDQ3LDU3NDQ0MjE2MSwxNzIzMzI2MjQsLT
+E3MzIzMTYzNzIsMTM0NzM2NjU3MSwxMTk5MzQxOTAxLC0xNjAy
+Mjc5OTczXX0=
 -->
