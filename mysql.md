@@ -191,6 +191,90 @@ https://dev.mysql.com/doc/refman/8.0/en/explain-output.html
 using_index 和using_where 区别: https://stackoverflow.com/questions/25672552/whats-the-difference-between-using-index-and-using-where-using-index-in-the
 
 
+####  事务隔离级别（定义了一个事务可能受其他并发事务影响的程度）
+> 数据并发问题
+
+* 脏读(dirty read), A事务读到了B事务尚未提交的数据, 可理解为读到了脏数据, 若此时B事务回滚, 则会产生数据不一致的情况.
+
+```
+Transaction 1	                                          Transaction 2
+/* Query 1 */
+SELECT age FROM users WHERE id = 1;
+/* will read 20 */
+                                                        /* Query 2 */
+                                                        UPDATE users SET age = 21 WHERE id = 1;
+                                                        /* No commit here */
+/* Query 1 */
+SELECT age FROM users WHERE id = 1;
+/* will read 21 */
+                                                        ROLLBACK; /* lock-based DIRTY READ */
+
+```
+
+* 不可重复读(unrepeatable read)
+    发生在一个事务的进行两次读取时, 可能会读取到不同的数据, 此时select 是不需要锁的, 或者锁还没来得及加上, 就发生了读取
+    
+ ```
+
+Transaction 1	                                    Transaction 2
+/* Query 1 */
+SELECT * FROM users WHERE id = 1;
+                                                    /* Query 2 */
+                                                    UPDATE users SET age = 21 WHERE id = 1;
+                                                    COMMIT; 
+                                                    /* in multiversion concurrency
+                                                    control, or lock-based READ COMMITTED */
+/* Query 1 */
+SELECT * FROM users WHERE id = 1;
+COMMIT; 
+/* lock-based REPEATABLE READ */
+
+```
+
+   根据不同的隔离级别, 会有不同结果
+> At the SERIALIZABLE and REPEATABLE READ isolation levels, the DBMS must return the old value for the second SELECT. At READ COMMITTED and READ UNCOMMITTED, the DBMS may return the updated value; this is a non-repeatable read.
+    
+* 有两种策略来处理此种情况
+    1. 延迟事务2的执行直到事务1提交或者回滚, 等于说维护一个时序: serial schedule T1, T2. 
+    2. 为了获取更好的性能,让事务2被先提交, 事务1的执行必须满足时序 T1, T2, 若不满足事务1被回滚.
+
+在不同模型下, 结果会不一样
+> Using a lock-based concurrency control method, at the REPEATABLE READ isolation mode, the row with ID = 1 would be locked, thus blocking Query 2 until the first transaction was committed or rolled back. In READ COMMITTED mode, the second time Query 1 was executed, the age would have changed.
+
+> Under multiversion concurrency control, at the SERIALIZABLE isolation level, both SELECT queries see a snapshot of the database taken at the start of Transaction 1. Therefore, they return the same data. However, if Transaction 1 then attempted to UPDATE that row as well, a serialization failure would occur and Transaction 1 would be forced to roll back.
+
+> At the READ COMMITTED isolation level, each query sees a snapshot of the database taken at the start of each query. Therefore, they each see different data for the updated row. No serialization failure is possible in this mode (because no promise of serializability is made), and Transaction 1 will not have to be retried.(这段怎么跟之前说的 read commited 不一样 ? )
+
+* 幻象读(Phantom reads),是不可重复读的特例, 相当于是范围读.
+
+```
+    Transaction 1	                                        Transaction 2
+/* Query 1 */
+SELECT * FROM users
+WHERE age BETWEEN 10 AND 30;
+                                                /* Query 2 */
+                                                INSERT INTO users(id,name,age) VALUES ( 3, 'Bob', 27 );
+                                                COMMIT;
+/* Query 1 */
+SELECT * FROM users
+WHERE age BETWEEN 10 AND 30;
+COMMIT;
+
+
+```
+> Note that Transaction 1 executed the same query twice. If the highest level of isolation were maintained, the same set of rows should be returned both times, and indeed that is what is mandated to occur in a database operating at the SQL SERIALIZABLE isolation level. However, at the lesser isolation levels, a different set of rows may be returned the second time.
+
+> In the SERIALIZABLE isolation mode, Query 1 would result in all records with age in the range 10 to 30 being locked, thus Query 2 would block until the first transaction was committed. In REPEATABLE READ mode, the range would not be locked, allowing the record to be inserted and the second execution of Query 1 to include the new row in its results.
+ 
+* 丢失更新(lost update)
+指在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。
+    
+* 以上均参见[wiki isolation](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Dirty_reads)
+mysql 默认隔离级别是重复读
+![enter image description here](https://drive.google.com/uc?id=1NdpnXgkU7Q3TW0G73P0WPR_ejiUgf-Qp)
+
+
+
 #### mysql 悲观锁和乐观锁
 https://blog.csdn.net/puhaiyang/article/details/72284702
 悲观锁就是先加锁再查询, 分为共享锁和互斥锁
@@ -202,11 +286,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDU5MjE1MTcwLC0xOTE3NTc4NjYsLTE4MD
-UzODkzMjUsLTg1MTU4NjUwMSwtMzQwMzUxNTU3LC0xMTQxOTk1
-NzQ1LDE2MDI4NTkwNDUsMTIxODQxMzI3NSwtNDQ5OTM4MDg0LC
-0yNzY3ODU5NjUsMTY0Njg3NDkyMCw1MTQzMDkzMTksMjQxMzY2
-NTc0LDE2MDM0MTMyODAsLTc1NDg1Mzg5NywxODQ3ODQ0NDg3LC
-0xNjg2MTIxNTU0LC0xMDA3Nzg5NDEyLDEzMDc5NjQyNjAsLTgx
-NTM4NTY4Ml19
+eyJoaXN0b3J5IjpbLTEzMjkxMDMxNyw0NTkyMTUxNzAsLTE5MT
+c1Nzg2NiwtMTgwNTM4OTMyNSwtODUxNTg2NTAxLC0zNDAzNTE1
+NTcsLTExNDE5OTU3NDUsMTYwMjg1OTA0NSwxMjE4NDEzMjc1LC
+00NDk5MzgwODQsLTI3Njc4NTk2NSwxNjQ2ODc0OTIwLDUxNDMw
+OTMxOSwyNDEzNjY1NzQsMTYwMzQxMzI4MCwtNzU0ODUzODk3LD
+E4NDc4NDQ0ODcsLTE2ODYxMjE1NTQsLTEwMDc3ODk0MTIsMTMw
+Nzk2NDI2MF19
 -->
