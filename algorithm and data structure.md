@@ -101,6 +101,7 @@ public static void mergeSortRecu(int[] arr, int[] result, int start, int end) {
     while (start2 <= end2) {  
         result[k++] = arr[start2++];  
     }  
+    
     for (int j = start; j <= end; j++) {// j<=end, 需要等于, 因为end 也是下标  
   arr[j] = result[j];// 拷贝到原数组, 之后原数组arr 就部分有序, 然后归并: 就是将两个有序子序列合并  
   }  
@@ -499,11 +500,11 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzA2OTcwOTQyLC0xMzA4MjA1ODM0LDk1NT
-Q1ODI1MSwtMTU1ODI2NDUzLC0yNTM4NjU3MSwxNjQ0NjM3OTUx
-LC0yMDgxMjcwNjIwLDM3MjQxODM1OCwzNjQwNDAzNDIsMTM3OT
-k2NzUwNiwtMjg3MzAzOTI3LC0xOTA5NjA2OTU2LC0xMTEwNDA5
-Mzk0LDIxMzQ4MjQ4ODAsMjk1NzUwMTM3LDEwMTE0NTQ4OCwtMT
-g0OTI0MTAxNywzMzY1NjkwNDYsODAzNTgwODA2LC0xNjYzNDIw
-MDMzXX0=
+eyJoaXN0b3J5IjpbLTcyNzYzOTkyMCw3MDY5NzA5NDIsLTEzMD
+gyMDU4MzQsOTU1NDU4MjUxLC0xNTU4MjY0NTMsLTI1Mzg2NTcx
+LDE2NDQ2Mzc5NTEsLTIwODEyNzA2MjAsMzcyNDE4MzU4LDM2ND
+A0MDM0MiwxMzc5OTY3NTA2LC0yODczMDM5MjcsLTE5MDk2MDY5
+NTYsLTExMTA0MDkzOTQsMjEzNDgyNDg4MCwyOTU3NTAxMzcsMT
+AxMTQ1NDg4LC0xODQ5MjQxMDE3LDMzNjU2OTA0Niw4MDM1ODA4
+MDZdfQ==
 -->
