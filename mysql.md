@@ -47,10 +47,10 @@ https://dev.mysql.com/doc/refman/8.0/en/performance-schema-query-profiling.html
 #### 优化关联查询
 确保关联的列上有索引, 当表A和表B 在列c上关联时, 只需要在第二个表, 表b 上的列c 建索引, 表A 就不需要了.
 #### 优化limit 
-在limit 性能低下的时候加上索引
+在limit 性能低底下的时候加上索引
 #### 优化union 查询
 除非必要, 不要用union, 用union all(不排除重复的)
-###  存储引擎
+####  存储引擎
 #### InnoDB 
 是mysql 默认的事务型引擎, 支持事务, 支持行锁, 支持崩溃后自动恢复, 基于聚簇索引, 
 https://juejin.im/post/5b1685bef265da6e5c3c1c34
@@ -282,15 +282,24 @@ https://blog.csdn.net/puhaiyang/article/details/72284702
 #### 资料
 https://blog.jcole.us/innodb/
 relational database index design and the optimizers
+#### 问题资料
+https://blog.jcole.us/innodb/
+relational database index design and the optimizers
 #### 问题
+* innodb 的文件结构
+* mysql 语句执行的大致流程
+* mysql 的B+ 树索引如何跟磁盘页对齐, 如何配置
+* 全文索引
+* mysql 把所有字段都建上index 有什么不好的地方
+维护索引的代价很大, 占用空间, 影响插入和更新和删除?
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjkxMDMxNyw0NTkyMTUxNzAsLTE5MT
-c1Nzg2NiwtMTgwNTM4OTMyNSwtODUxNTg2NTAxLC0zNDAzNTE1
-NTcsLTExNDE5OTU3NDUsMTYwMjg1OTA0NSwxMjE4NDEzMjc1LC
-00NDk5MzgwODQsLTI3Njc4NTk2NSwxNjQ2ODc0OTIwLDUxNDMw
-OTMxOSwyNDEzNjY1NzQsMTYwMzQxMzI4MCwtNzU0ODUzODk3LD
-E4NDc4NDQ0ODcsLTE2ODYxMjE1NTQsLTEwMDc3ODk0MTIsMTMw
-Nzk2NDI2MF19
+eyJoaXN0b3J5IjpbMTM1MDI0MjUxNCwtMTMyOTEwMzE3LDQ1OT
+IxNTE3MCwtMTkxNzU3ODY2LC0xODA1Mzg5MzI1LC04NTE1ODY1
+MDEsLTM0MDM1MTU1NywtMTE0MTk5NTc0NSwxNjAyODU5MDQ1LD
+EyMTg0MTMyNzUsLTQ0OTkzODA4NCwtMjc2Nzg1OTY1LDE2NDY4
+NzQ5MjAsNTE0MzA5MzE5LDI0MTM2NjU3NCwxNjAzNDEzMjgwLC
+03NTQ4NTM4OTcsMTg0Nzg0NDQ4NywtMTY4NjEyMTU1NCwtMTAw
+Nzc4OTQxMl19
 -->
