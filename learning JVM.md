@@ -112,7 +112,7 @@ jmap -dump:format=b,file-fileName pid
 SoftReference来实现, 除非内存准备溢出了, 不然不会被回收.
 
 * 弱引用
-WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引用时, 如果GC运行, 那么该对象就会被回收.例子 ThreadLocal 设置成弱引用是为了防止, 线程结束后, 还有其他yin
+WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引用时, 如果GC运行, 那么该对象就会被回收.例子 ThreadLocal 设置成弱引用是为了防止, 线程结束后, 还有其他强引用阻止threadlocal 的val 被回收
 * 虚引用
 > DirectByteBuffer
 
@@ -722,11 +722,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzM4OTkwOTI3LC03NDkwMDI1MzgsLTEyOT
-cwNDg3NTIsMTQ2MTg5OTY0MCw3NjY5MDAwODMsMTk0MTY4MzU2
-OSwxNzU1MzQ5ODY3LDIxMDIyNDAzOTMsMTM4MzYwMzg5NSwtMT
-c1Mzk1MjQxNywxNDM5MTU2OTkxLC0zNzAwMzQ3NjcsLTE3OTA4
-MzkxMjEsMTcxMDg4MTIwNCwtMTkyNjk4Nzk5NywtMTM4NTMwNj
-c5NSwtODEwOTMwNTg3LDE1NjE2MDkwOTAsMjA3MzI2MTA5NCwt
-NjM4MTUxNl19
+eyJoaXN0b3J5IjpbLTExNzI5OTk1NTgsLTc0OTAwMjUzOCwtMT
+I5NzA0ODc1MiwxNDYxODk5NjQwLDc2NjkwMDA4MywxOTQxNjgz
+NTY5LDE3NTUzNDk4NjcsMjEwMjI0MDM5MywxMzgzNjAzODk1LC
+0xNzUzOTUyNDE3LDE0MzkxNTY5OTEsLTM3MDAzNDc2NywtMTc5
+MDgzOTEyMSwxNzEwODgxMjA0LC0xOTI2OTg3OTk3LC0xMzg1Mz
+A2Nzk1LC04MTA5MzA1ODcsMTU2MTYwOTA5MCwyMDczMjYxMDk0
+LC02MzgxNTE2XX0=
 -->
