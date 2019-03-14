@@ -351,7 +351,7 @@ SurvivorRatio 为2,   eden: surivor1: surivor2的比例为 2:1:1, 增大了suriv
 原因: 
 1. 方法区空间不足
 2.  CMS GC时出现promotion failed和concurrent mode failure；(日志中会有明细标志)
-3.  统计得到的Young GC晋升到老年代的平均大小大于老年代的剩余空间；(可以查看老年代发送full gc时的剩余空间)
+3.  统计得到的Young GC晋升到老年代的平均大小大于老年代的剩余空间；(可以查看老年代发生full gc时的剩余空间)
 4.  主动触发Full GC（执行jmap -histo:live [pid]）来避免碎片问题, 可以通过参数禁止
 
 解决方法:
@@ -722,11 +722,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjkwMTc2OTQ1LC0xMTcyOTk5NTU4LC03ND
-kwMDI1MzgsLTEyOTcwNDg3NTIsMTQ2MTg5OTY0MCw3NjY5MDAw
-ODMsMTk0MTY4MzU2OSwxNzU1MzQ5ODY3LDIxMDIyNDAzOTMsMT
-M4MzYwMzg5NSwtMTc1Mzk1MjQxNywxNDM5MTU2OTkxLC0zNzAw
-MzQ3NjcsLTE3OTA4MzkxMjEsMTcxMDg4MTIwNCwtMTkyNjk4Nz
-k5NywtMTM4NTMwNjc5NSwtODEwOTMwNTg3LDE1NjE2MDkwOTAs
-MjA3MzI2MTA5NF19
+eyJoaXN0b3J5IjpbMTg4NjY1ODg5OSwyOTAxNzY5NDUsLTExNz
+I5OTk1NTgsLTc0OTAwMjUzOCwtMTI5NzA0ODc1MiwxNDYxODk5
+NjQwLDc2NjkwMDA4MywxOTQxNjgzNTY5LDE3NTUzNDk4NjcsMj
+EwMjI0MDM5MywxMzgzNjAzODk1LC0xNzUzOTUyNDE3LDE0Mzkx
+NTY5OTEsLTM3MDAzNDc2NywtMTc5MDgzOTEyMSwxNzEwODgxMj
+A0LC0xOTI2OTg3OTk3LC0xMzg1MzA2Nzk1LC04MTA5MzA1ODcs
+MTU2MTYwOTA5MF19
 -->
