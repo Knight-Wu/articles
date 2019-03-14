@@ -442,7 +442,6 @@ ping 基于ICMP 协议, 属于IP 层, telnet 基于telnet 协议, 属于TCP 层,
 * Listen socket and connected socket 
 * What is file descripter
 * MappedByteBuffer and directByteBuffer
-* 在io和cpu的公式中, 如何确定两个的时间比例
 * zero copy
 * epoll 作为linux 默认的NIO api
 * hi, [@trustin](https://github.com/trustin) i am newer to netty. I have read the above comments , but i am still not clear about current thread model. I want to make sure that all events from one channel, including channelHandlers, read and write events is always done by one eventloop from worker eventloop, and not executed by other threads, is that right ? Then, if two channels bind to the same threads, one channelHandler may block other events, is that right ? So, if there are long time events, we should use new threadpool to handle , is that right, and are there any examples to show ?  
@@ -450,7 +449,7 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDcxMTU3MjcsMTU3MDY5MDM1OSwtMz
+eyJoaXN0b3J5IjpbLTExMDQ0MzE0MTUsMTU3MDY5MDM1OSwtMz
 I3NjQ3NjQxLDg3NTg2ODI3MiwtMTc0NzE1NDI3NSwxOTIwNDY1
 NTIxLC0xMDc5NzM3MzE2LDEzNDYyMTA0NjksNTcwNjAwNDk2LD
 QwNTI2MTU1MywtMjA5Nzg5MTE0MCwtMjAzMTYzNzM5MCw3Mzcz
