@@ -91,7 +91,7 @@ jmap -dump:format=b,file-fileName pid
 ## 三. 垃圾回收
 
 ### 可达性分析
->若不存在从对象到GC root的引用链, 则在下次gc时, 该对象会被回收, 下次gc可能是minor gc(日志中称作 gc, 发生在新生代 ), major gc(日志中称作 full gc, 发生在老年代)
+若不存在从对象到GC root的引用链, 则在下次gc时, 该对象会被回收, 下次gc可能是minor gc(日志中称作 gc, 发生在新生代 ), major gc(日志中称作 full gc, 发生在老年代)
 
 
 * 回收方法区
@@ -723,11 +723,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMTc0MjMyODQsLTc0OTAwMjUzOCwtMT
-I5NzA0ODc1MiwxNDYxODk5NjQwLDc2NjkwMDA4MywxOTQxNjgz
-NTY5LDE3NTUzNDk4NjcsMjEwMjI0MDM5MywxMzgzNjAzODk1LC
-0xNzUzOTUyNDE3LDE0MzkxNTY5OTEsLTM3MDAzNDc2NywtMTc5
-MDgzOTEyMSwxNzEwODgxMjA0LC0xOTI2OTg3OTk3LC0xMzg1Mz
-A2Nzk1LC04MTA5MzA1ODcsMTU2MTYwOTA5MCwyMDczMjYxMDk0
-LC02MzgxNTE2XX0=
+eyJoaXN0b3J5IjpbNTY2NjQ2NzE4LC03NDkwMDI1MzgsLTEyOT
+cwNDg3NTIsMTQ2MTg5OTY0MCw3NjY5MDAwODMsMTk0MTY4MzU2
+OSwxNzU1MzQ5ODY3LDIxMDIyNDAzOTMsMTM4MzYwMzg5NSwtMT
+c1Mzk1MjQxNywxNDM5MTU2OTkxLC0zNzAwMzQ3NjcsLTE3OTA4
+MzkxMjEsMTcxMDg4MTIwNCwtMTkyNjk4Nzk5NywtMTM4NTMwNj
+c5NSwtODEwOTMwNTg3LDE1NjE2MDkwOTAsMjA3MzI2MTA5NCwt
+NjM4MTUxNl19
 -->
