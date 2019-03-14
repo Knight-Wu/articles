@@ -447,7 +447,8 @@ class MyUtils {
 
 首先是触发: 调用到这个类的static 字段, 或者有static block 等触发条件, 然后根据调用者的classloader 去加载这个类, 如果这个类已经被该CL 加载过, 则直接从内存中拿, 否则会读取类的字节码去初始化这个类. 如果这个类(包名.类名 唯一确定一个类, 但是类的jar 包可能有多版本)是其他版本的, 且已经被加载过, 就会出现诸如方法找不到等类冲突异常, 
 
-解决的核心思想: 不同的业务使用不同的线程池，线程池内部共享同一个 contextClassLoader，线程池之间使用不同的 contextClassLoader，就可以很好的起到隔离保护的作用，避免类版本冲突。
+如何使用一个jar 包的多个版本: 
+不同的业务使用不同的线程池，线程池内部共享同一个 contextClassLoader，线程池之间使用不同的 contextClassLoader，就可以很好的起到隔离保护的作用，避免类版本冲突。
 
 https://github.com/alipay/sofa-ark 解决类冲突问题的开源方案.
 https://juejin.im/post/5c04892351882516e70dcc9b
@@ -464,7 +465,7 @@ https://docs.oracle.com/javase/specs/jls/se7/html/jls-12.html
 
  运行时加载: 在用到一个class文件的时候, 如果内存中没有则按类的全限定名来加载.
 
- 加载阶段: 
+1. 加载阶段: 
      1. 获取class文件的二进制流 , 例如从zip包中获取，这就是以后jar、ear、war格式的基础
 从网络中获取，典型应用就是Applet
 运行时计算生成，典型应用就是动态代理技术
@@ -722,11 +723,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDEzMzEzNjEwLDE4ODY2NTg4OTksMjkwMT
-c2OTQ1LC0xMTcyOTk5NTU4LC03NDkwMDI1MzgsLTEyOTcwNDg3
-NTIsMTQ2MTg5OTY0MCw3NjY5MDAwODMsMTk0MTY4MzU2OSwxNz
-U1MzQ5ODY3LDIxMDIyNDAzOTMsMTM4MzYwMzg5NSwtMTc1Mzk1
-MjQxNywxNDM5MTU2OTkxLC0zNzAwMzQ3NjcsLTE3OTA4MzkxMj
-EsMTcxMDg4MTIwNCwtMTkyNjk4Nzk5NywtMTM4NTMwNjc5NSwt
-ODEwOTMwNTg3XX0=
+eyJoaXN0b3J5IjpbMzk0MzU0ODEwLDQxMzMxMzYxMCwxODg2Nj
+U4ODk5LDI5MDE3Njk0NSwtMTE3Mjk5OTU1OCwtNzQ5MDAyNTM4
+LC0xMjk3MDQ4NzUyLDE0NjE4OTk2NDAsNzY2OTAwMDgzLDE5ND
+E2ODM1NjksMTc1NTM0OTg2NywyMTAyMjQwMzkzLDEzODM2MDM4
+OTUsLTE3NTM5NTI0MTcsMTQzOTE1Njk5MSwtMzcwMDM0NzY3LC
+0xNzkwODM5MTIxLDE3MTA4ODEyMDQsLTE5MjY5ODc5OTcsLTEz
+ODUzMDY3OTVdfQ==
 -->
