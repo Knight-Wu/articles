@@ -28,7 +28,7 @@ java 8之后, 没有了**PermGen space**, 用方法区代替, 且方法区不属
 2. JNI调用，也就是Native Stack;
 3. JIT（即使编译器）编译时使用Native Memory，并且JIT的输入（Java字节码）和输出（可执行代码）也都是保存在Native Memory；
 4. NIO direct buffer。对于IBM JVM和Hotspot，都可以通过-XX:MaxDirectMemorySize来设置nio直接缓冲区的最大值。默认是64M。超过这个时，会按照32M自动增大。
-    DirectBuffer访问更快，避免了数据从heap memory 拷贝到本地堆。DirectBuffer byte array 实际是保存在native heap中，但是操作该byte array的对象保存在java heap中。 
+    DirectBuffer访问更快，避免了数据需要从内核态拷贝到用户态, 直接使用内核态的数据。DirectBuffer byte array 实际是保存在native heap中，但是操作该byte array的对象保存在java heap中。 
 GC时不会直接回收native memory, 通过释放heap memory中的对象来释放native memory, 但是通常java heap没达到gc 的条件. 
 5. 对于IBM的JVM某些版本实现，类加载器和类信息都是保存在Native Memory中的。
 
@@ -36,7 +36,7 @@ GC时不会直接回收native memory, 通过释放heap memory中的对象来释�
     * 分配内存的时候优先给heap memory 分配, 再到native memory
 
 
-### 虚拟机对象
+### 创建一个对象
 * 创建
 每个线程分配一块独立的内存,本地线程分配缓冲(Thread local allocation buffer),来控制给每个对象分配内存时是线程安全的
 
@@ -723,11 +723,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0OTAwMjUzOCwtMTI5NzA0ODc1MiwxND
-YxODk5NjQwLDc2NjkwMDA4MywxOTQxNjgzNTY5LDE3NTUzNDk4
-NjcsMjEwMjI0MDM5MywxMzgzNjAzODk1LC0xNzUzOTUyNDE3LD
-E0MzkxNTY5OTEsLTM3MDAzNDc2NywtMTc5MDgzOTEyMSwxNzEw
-ODgxMjA0LC0xOTI2OTg3OTk3LC0xMzg1MzA2Nzk1LC04MTA5Mz
-A1ODcsMTU2MTYwOTA5MCwyMDczMjYxMDk0LC02MzgxNTE2LC0x
-MDUzNzgzOTIwXX0=
+eyJoaXN0b3J5IjpbLTEyMTc0MjMyODQsLTc0OTAwMjUzOCwtMT
+I5NzA0ODc1MiwxNDYxODk5NjQwLDc2NjkwMDA4MywxOTQxNjgz
+NTY5LDE3NTUzNDk4NjcsMjEwMjI0MDM5MywxMzgzNjAzODk1LC
+0xNzUzOTUyNDE3LDE0MzkxNTY5OTEsLTM3MDAzNDc2NywtMTc5
+MDgzOTEyMSwxNzEwODgxMjA0LC0xOTI2OTg3OTk3LC0xMzg1Mz
+A2Nzk1LC04MTA5MzA1ODcsMTU2MTYwOTA5MCwyMDczMjYxMDk0
+LC02MzgxNTE2XX0=
 -->
