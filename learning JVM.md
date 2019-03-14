@@ -466,13 +466,13 @@ https://docs.oracle.com/javase/specs/jls/se7/html/jls-12.html
  运行时加载: 在用到一个class文件的时候, 如果内存中没有则按类的全限定名来加载.
 
 1. 加载阶段: 
-     1. 获取class文件的二进制流 , 例如从zip包中获取，这就是以后jar、ear、war格式的基础
+     a. 获取class文件的二进制流 , 例如从zip包中获取，这就是以后jar、ear、war格式的基础
 从网络中获取，典型应用就是Applet
 运行时计算生成，典型应用就是动态代理技术
 由其他文件生成，典型应用就是JSP，即由JSP生成对应的.class文件
 从数据库中读取，这种场景比较少见
-     2. 将类信息, 静态变量, 字节码, 常量等内容放到方法区
-     3. 内存中生成java.lang.Class的对象, 作为访问入口
+     b. 将类信息, 静态变量, 字节码, 常量等内容放到方法区
+     c. 内存中生成java.lang.Class的对象, 作为访问入口
 
 
 2. 验证
@@ -723,11 +723,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzk0MzU0ODEwLDQxMzMxMzYxMCwxODg2Nj
-U4ODk5LDI5MDE3Njk0NSwtMTE3Mjk5OTU1OCwtNzQ5MDAyNTM4
-LC0xMjk3MDQ4NzUyLDE0NjE4OTk2NDAsNzY2OTAwMDgzLDE5ND
-E2ODM1NjksMTc1NTM0OTg2NywyMTAyMjQwMzkzLDEzODM2MDM4
-OTUsLTE3NTM5NTI0MTcsMTQzOTE1Njk5MSwtMzcwMDM0NzY3LC
-0xNzkwODM5MTIxLDE3MTA4ODEyMDQsLTE5MjY5ODc5OTcsLTEz
-ODUzMDY3OTVdfQ==
+eyJoaXN0b3J5IjpbLTQwNTU2ODQzOCw0MTMzMTM2MTAsMTg4Nj
+Y1ODg5OSwyOTAxNzY5NDUsLTExNzI5OTk1NTgsLTc0OTAwMjUz
+OCwtMTI5NzA0ODc1MiwxNDYxODk5NjQwLDc2NjkwMDA4MywxOT
+QxNjgzNTY5LDE3NTUzNDk4NjcsMjEwMjI0MDM5MywxMzgzNjAz
+ODk1LC0xNzUzOTUyNDE3LDE0MzkxNTY5OTEsLTM3MDAzNDc2Ny
+wtMTc5MDgzOTEyMSwxNzEwODgxMjA0LC0xOTI2OTg3OTk3LC0x
+Mzg1MzA2Nzk1XX0=
 -->
