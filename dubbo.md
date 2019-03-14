@@ -74,6 +74,7 @@ ProtocolFilterWrapper(Protocol protocol){
 
 ProtocolFilterWrapper 基于责任链模式(添加代码的时候, 不影响已有代码, 只是重新构造这个责任链 ), 构建了filter 和invoker 的调用链, 如下图所示, 从代理类的 InvocationHandler 开始, 选出此次调用的invoker(代表哪台机器), 经过多个filter 传递, 传递到dubboInvoker.doInvoke 发起远程调用.
 
+消费者端调用: 
 ![enter image description here](https://drive.google.com/uc?id=1q2spxJAwxa0cccftYg16qqI5_gLMBX4k)
 
 
@@ -443,11 +444,11 @@ https://dubbo.incubator.apache.org/zh-cn/docs/user/perf-test.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1NDIyMTg5OCw3NzU4MjE4NzgsMzE0MD
-cwMDM4LC04ODg1MjAzMjAsLTg4ODUyMDMyMCwxMjgxNzQwMDUw
-LDkyNDQzMzE5MiwtMTg3NTM4MzE3MywtNDMwMjY5NjQ5LDE3Mz
-M5MTU3NzQsMTI2NzczMTI2OSw2NDM3NzA2MiwtMTA4MDM5OTk1
-MCwtMTU5NDUzMDQ4MiwtMTc5ODE0MDg2MSwtMjAxNjYyOTI3NC
-wtMTA5NDA5MDYzMiw3NjUxNDA5NCwxNjU1MzA4MTU5LC0xNzU1
-MjAxMDAwXX0=
+eyJoaXN0b3J5IjpbNTc1MzM1NzAsMTM1NDIyMTg5OCw3NzU4Mj
+E4NzgsMzE0MDcwMDM4LC04ODg1MjAzMjAsLTg4ODUyMDMyMCwx
+MjgxNzQwMDUwLDkyNDQzMzE5MiwtMTg3NTM4MzE3MywtNDMwMj
+Y5NjQ5LDE3MzM5MTU3NzQsMTI2NzczMTI2OSw2NDM3NzA2Miwt
+MTA4MDM5OTk1MCwtMTU5NDUzMDQ4MiwtMTc5ODE0MDg2MSwtMj
+AxNjYyOTI3NCwtMTA5NDA5MDYzMiw3NjUxNDA5NCwxNjU1MzA4
+MTU5XX0=
 -->
