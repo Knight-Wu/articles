@@ -21,7 +21,7 @@ synchronized, wait notify,  reentrantLock, 阻塞队列
 
 每个thread里面持有一个私有的threadLocalMap, map里有个entry数组, entry持有一个ThreadLocal的弱引用,引用关系如下图所示, 虚线表示弱引用 
 ![image](https://user-images.githubusercontent.com/20329409/41815699-469bcc18-77a5-11e8-9336-53dea76da868.png)
-若不存在对threadLocal 的强引用, 则entry会被回收, 变成null, 但是entry中的value未被回收, 若当前线程不结束, 则保持有一条这样的引用链: thread ref -> thread -> threadLocalMap -> entry -> val, 
+若不存在对threadLocal 的强引用, 则entry会被回收, 变成null, 但是entry中的value未被回收, 若当前线程不结束, 则保持有一条这样的引用链: current thread ref ->current  thread -> threadLocalMap -> entry -> val, 
 
 
 * 使用方法
@@ -853,5 +853,5 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4OTY2NTIwNl19
+eyJoaXN0b3J5IjpbLTU0MzM0MjE2Nl19
 -->
