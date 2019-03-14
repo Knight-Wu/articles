@@ -170,7 +170,7 @@ https://blog.csdn.net/mhmyqn/article/details/48474815
  wrapper 的生成如图: 
  ![enter image description here](https://drive.google.com/uc?id=1msOglqWEjCpftwgeqqslA5KyWsC1v3MZ)
  
- wrapper 类是在提供者端调用的?
+
  
 #### 如何确定dubbo 线程池线程数大小
 根据java concurrence in practice 描述:
@@ -445,11 +445,11 @@ https://dubbo.incubator.apache.org/zh-cn/docs/user/perf-test.html
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTAwNjk2NDUsMTM1NDIyMTg5OCw3Nz
-U4MjE4NzgsMzE0MDcwMDM4LC04ODg1MjAzMjAsLTg4ODUyMDMy
-MCwxMjgxNzQwMDUwLDkyNDQzMzE5MiwtMTg3NTM4MzE3MywtND
-MwMjY5NjQ5LDE3MzM5MTU3NzQsMTI2NzczMTI2OSw2NDM3NzA2
-MiwtMTA4MDM5OTk1MCwtMTU5NDUzMDQ4MiwtMTc5ODE0MDg2MS
-wtMjAxNjYyOTI3NCwtMTA5NDA5MDYzMiw3NjUxNDA5NCwxNjU1
-MzA4MTU5XX0=
+eyJoaXN0b3J5IjpbMTU4MzE1MDU3NSwtMTE1MDA2OTY0NSwxMz
+U0MjIxODk4LDc3NTgyMTg3OCwzMTQwNzAwMzgsLTg4ODUyMDMy
+MCwtODg4NTIwMzIwLDEyODE3NDAwNTAsOTI0NDMzMTkyLC0xOD
+c1MzgzMTczLC00MzAyNjk2NDksMTczMzkxNTc3NCwxMjY3NzMx
+MjY5LDY0Mzc3MDYyLC0xMDgwMzk5OTUwLC0xNTk0NTMwNDgyLC
+0xNzk4MTQwODYxLC0yMDE2NjI5Mjc0LC0xMDk0MDkwNjMyLDc2
+NTE0MDk0XX0=
 -->
