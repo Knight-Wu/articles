@@ -36,8 +36,8 @@ shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster,
 
 
 
- To summarize,paon 化 逻辑执行图
-rie t o hedurrun se  sitag) stae shfeapas etas tas taet tasceders sparDeleducler 启动默认5个 fetch线程, fetch 来的数据需要在内存中做缓冲, 总的缓冲的内存空间不能超过spark.reducer.maxMbInFlight＝48MB, 
+reducer 如何取map 输出的数据: 
+ 启动默认5个 fetch线程, fetch 来的数据需要在内存中做缓冲, 总的缓冲的内存空间不能超过spark.reducer.maxMbInFlight＝48MB, 
 
 
 #### spark 逻辑执行图的生成
@@ -53,7 +53,7 @@ rie t o hedurrun se  sitag) stae shfeapas etas tas taet tasceders sparDeleducler
 整个computing chain 由后向前建立, 遇到shuffle 就新建一个stage, 每个stage 中, rdd 调用parentRdd.iterator 将数据一条条拿过来. 
 
 * task的数量
-在同一个stage 中的, 由上游的partition 数量决定task 的数量, 若上游的partition 来自数据源, 由数据源的split 数量决定; 然后这个task 依次调用一个stage 的多个rdd.compute 函数, 不需要保留中间结果, 除非有cache. 例如上图中的粗线条均有一个task 完成.下游的task 的数量 spark 一般提供了参数取决定.
+在同一个stage 中的, 由上游的partition 数量决定task 的数量, 若上游的partition 来自数据源, 由数据源的split 数量决定; 然后这个task 依次调用一个stage 的多个rdd.compute 函数, 不需要保留中间结果, 除非有cache. 例如上图中的粗线条均有一个task 完成.下游的task 的数量 spark 一般提供了参数决定.
 
 #### spark 广播
 https://github.com/JerryLead/SparkInternals/blob/master/markdown/7-Broadcast.md
@@ -770,11 +770,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYzODQwODI0NCwyMDE0ODI3NDAyLDI3OD
-M4MzY0Niw2NTQ1MjQyNywtMTI1NTI3OTEyNywtNzczODA4NjI4
-LC0xMDgzNDg1MjcyLC04Mzk0MDQ0ODAsMTgwODYyMDc3OSwxNT
-k2Njk4NjI2LC0xNjE5NzE3NzgyLDE0NTY5Mzk0NiwtMTkxOTY0
-ODgyMywxNDEwMTUxODc5LC00MTA2ODc0MjYsMTEzOTA5NzIzNC
-wtMTM1NDY5ODc5NCw4NDI2NTEzMTgsLTEzMzc1MjY5NTIsMTc2
-NzQ1OTYzNl19
+eyJoaXN0b3J5IjpbLTE2OTUxODU5ODIsMjAxNDgyNzQwMiwyNz
+gzODM2NDYsNjU0NTI0MjcsLTEyNTUyNzkxMjcsLTc3MzgwODYy
+OCwtMTA4MzQ4NTI3MiwtODM5NDA0NDgwLDE4MDg2MjA3NzksMT
+U5NjY5ODYyNiwtMTYxOTcxNzc4MiwxNDU2OTM5NDYsLTE5MTk2
+NDg4MjMsMTQxMDE1MTg3OSwtNDEwNjg3NDI2LDExMzkwOTcyMz
+QsLTEzNTQ2OTg3OTQsODQyNjUxMzE4LC0xMzM3NTI2OTUyLDE3
+Njc0NTk2MzZdfQ==
 -->
