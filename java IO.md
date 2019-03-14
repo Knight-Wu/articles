@@ -185,7 +185,7 @@ try {
 ## UNIX network programming
 
 ####  6.2 IO model
-![enter image description here](![https](https://drive.google.com/uc?id=1Ie2B8Iwl61DjxYJIE9gi2ccIdFa2FjMD)://drive.google.com/uc?id=1PPqk_KLN34g5aPNV6nCTHHU-SuaHCI8H)
+![enter image description here](![https](https://drive.google.com/uc?id=1Ie2B8Iwl61DjxYJIE9gi2ccIdFa2FjMD)
 
 分为五种, blocking io, non blocking io, sigal driven io, io 多路复用, aio 完全异步的io.
 对于一个输入操作, 主要分为两个阶段, 一是等待数据从网络到达, 二是将数据从内核态拷到用户态.
@@ -450,11 +450,11 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3MDY5MDM1OSwtMzI3NjQ3NjQxLDg3NT
-g2ODI3MiwtMTc0NzE1NDI3NSwxOTIwNDY1NTIxLC0xMDc5NzM3
-MzE2LDEzNDYyMTA0NjksNTcwNjAwNDk2LDQwNTI2MTU1MywtMj
-A5Nzg5MTE0MCwtMjAzMTYzNzM5MCw3MzczNTg2MzAsLTI3NjQ1
-Mzg0OSwxMTU2MjI5ODY2LDE2OTUzOTk4NjUsODM0OTE0MzYxLC
-0xOTg2NDA2OTg1LDEwNjUzNDk3MDAsLTk4MjcwMzgxNSwtOTMy
-MDc4NThdfQ==
+eyJoaXN0b3J5IjpbLTQ4OTUzODUwNSwxNTcwNjkwMzU5LC0zMj
+c2NDc2NDEsODc1ODY4MjcyLC0xNzQ3MTU0Mjc1LDE5MjA0NjU1
+MjEsLTEwNzk3MzczMTYsMTM0NjIxMDQ2OSw1NzA2MDA0OTYsND
+A1MjYxNTUzLC0yMDk3ODkxMTQwLC0yMDMxNjM3MzkwLDczNzM1
+ODYzMCwtMjc2NDUzODQ5LDExNTYyMjk4NjYsMTY5NTM5OTg2NS
+w4MzQ5MTQzNjEsLTE5ODY0MDY5ODUsMTA2NTM0OTcwMCwtOTgy
+NzAzODE1XX0=
 -->
