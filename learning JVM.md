@@ -250,7 +250,7 @@ Mixed GC 的触发条件:
 
 Full GC:
 和CMS一样，G1的一些收集过程是和应用程序并发执行的，所以可能还没有回收完成，是由于申请内存的速度比回收速度快，新的对象就占满了所有空间，在CMS中叫做Concurrent Mode Failure, 在G1中称为Evacuation Failure，
->  https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html **How to avoid Evacuation Failure**
+https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html 
 
 
 > 什么情况触发 concurrent marking 
@@ -722,11 +722,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzI5OTk1NTgsLTc0OTAwMjUzOCwtMT
-I5NzA0ODc1MiwxNDYxODk5NjQwLDc2NjkwMDA4MywxOTQxNjgz
-NTY5LDE3NTUzNDk4NjcsMjEwMjI0MDM5MywxMzgzNjAzODk1LC
-0xNzUzOTUyNDE3LDE0MzkxNTY5OTEsLTM3MDAzNDc2NywtMTc5
-MDgzOTEyMSwxNzEwODgxMjA0LC0xOTI2OTg3OTk3LC0xMzg1Mz
-A2Nzk1LC04MTA5MzA1ODcsMTU2MTYwOTA5MCwyMDczMjYxMDk0
-LC02MzgxNTE2XX0=
+eyJoaXN0b3J5IjpbMjkwMTc2OTQ1LC0xMTcyOTk5NTU4LC03ND
+kwMDI1MzgsLTEyOTcwNDg3NTIsMTQ2MTg5OTY0MCw3NjY5MDAw
+ODMsMTk0MTY4MzU2OSwxNzU1MzQ5ODY3LDIxMDIyNDAzOTMsMT
+M4MzYwMzg5NSwtMTc1Mzk1MjQxNywxNDM5MTU2OTkxLC0zNzAw
+MzQ3NjcsLTE3OTA4MzkxMjEsMTcxMDg4MTIwNCwtMTkyNjk4Nz
+k5NywtMTM4NTMwNjc5NSwtODEwOTMwNTg3LDE1NjE2MDkwOTAs
+MjA3MzI2MTA5NF19
 -->
