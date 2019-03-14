@@ -484,9 +484,6 @@ Spark prints the serialized size of each task on the master, so you can look at 
 可以看下 [spark-join-pull过程](https://github.com/apache/spark/pull/3173)
 > 将两个表先进行shuffle,因为目前spark的shuffle后的数据是排序好的, 再根据join key 进行merge. 适用两个大表的情况
 
-> 问题
-1. spark sql join策略在什么情况会选哪个?
-
 
 
 
@@ -768,11 +765,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDcwMzYwMjAwLDIwMTQ4Mjc0MDIsMjc4Mz
-gzNjQ2LDY1NDUyNDI3LC0xMjU1Mjc5MTI3LC03NzM4MDg2Mjgs
-LTEwODM0ODUyNzIsLTgzOTQwNDQ4MCwxODA4NjIwNzc5LDE1OT
-Y2OTg2MjYsLTE2MTk3MTc3ODIsMTQ1NjkzOTQ2LC0xOTE5NjQ4
-ODIzLDE0MTAxNTE4NzksLTQxMDY4NzQyNiwxMTM5MDk3MjM0LC
-0xMzU0Njk4Nzk0LDg0MjY1MTMxOCwtMTMzNzUyNjk1MiwxNzY3
-NDU5NjM2XX0=
+eyJoaXN0b3J5IjpbNjg5MTY3NTIzLDQ3MDM2MDIwMCwyMDE0OD
+I3NDAyLDI3ODM4MzY0Niw2NTQ1MjQyNywtMTI1NTI3OTEyNywt
+NzczODA4NjI4LC0xMDgzNDg1MjcyLC04Mzk0MDQ0ODAsMTgwOD
+YyMDc3OSwxNTk2Njk4NjI2LC0xNjE5NzE3NzgyLDE0NTY5Mzk0
+NiwtMTkxOTY0ODgyMywxNDEwMTUxODc5LC00MTA2ODc0MjYsMT
+EzOTA5NzIzNCwtMTM1NDY5ODc5NCw4NDI2NTEzMTgsLTEzMzc1
+MjY5NTJdfQ==
 -->
