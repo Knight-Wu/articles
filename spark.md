@@ -68,8 +68,6 @@ HttpBroadcast 最大的问题就是 **driver 所在的节点可能会出现网�
 基本思想是将数据分块, 当有一些executor fetch 到了一些data blocks, 那么这台executor 就可以被当做data server了. 
 driver 先把data 序列化成 byteArray, 然后切割成BLOCK_SIZE（由 `spark.broadcast.blockSize = 4MB` 设置）大小的 data block, 每个block 由TorrentBlock 对象持有, 切割完dataArray 会将其回收, 将分块信息存放到driver blockManager, 同时会通知**blockManagerMaster** , 可以被driver 和executor 访问到.
 
-#### spark 具体使用一些算子, 才会体会, with individual tasks launching to compute segments
-
 
 
 #### task、partition关系
@@ -240,7 +238,7 @@ job完成 checkpoint之后, 会将rdd的所有 dependency释放掉, 设置该rdd
 
 * cache和checkpoint的区别 
 
-cache之后, 整个lineage 还会保留, 但是cache的数据不能在多个driver program之间共享; 但是 checkpoint 之后,会把 lineage全部删除, 因为是持久化到 hdfs的, 可以供其他job使用; 
+cache之后, 整个lineage 还会保留, 但是cache的数据不能在多个application 之间共享; 但是 checkpoint 之后,会把 lineage全部删除, 因为是持久化到 hdfs的, 可以供其他job使用; 
 
 
 * 与mr的checkpoint的区别
@@ -770,11 +768,11 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTUxODU5ODIsMjAxNDgyNzQwMiwyNz
-gzODM2NDYsNjU0NTI0MjcsLTEyNTUyNzkxMjcsLTc3MzgwODYy
-OCwtMTA4MzQ4NTI3MiwtODM5NDA0NDgwLDE4MDg2MjA3NzksMT
-U5NjY5ODYyNiwtMTYxOTcxNzc4MiwxNDU2OTM5NDYsLTE5MTk2
-NDg4MjMsMTQxMDE1MTg3OSwtNDEwNjg3NDI2LDExMzkwOTcyMz
-QsLTEzNTQ2OTg3OTQsODQyNjUxMzE4LC0xMzM3NTI2OTUyLDE3
-Njc0NTk2MzZdfQ==
+eyJoaXN0b3J5IjpbNDcwMzYwMjAwLDIwMTQ4Mjc0MDIsMjc4Mz
+gzNjQ2LDY1NDUyNDI3LC0xMjU1Mjc5MTI3LC03NzM4MDg2Mjgs
+LTEwODM0ODUyNzIsLTgzOTQwNDQ4MCwxODA4NjIwNzc5LDE1OT
+Y2OTg2MjYsLTE2MTk3MTc3ODIsMTQ1NjkzOTQ2LC0xOTE5NjQ4
+ODIzLDE0MTAxNTE4NzksLTQxMDY4NzQyNiwxMTM5MDk3MjM0LC
+0xMzU0Njk4Nzk0LDg0MjY1MTMxOCwtMTMzNzUyNjk1MiwxNzY3
+NDU5NjM2XX0=
 -->
