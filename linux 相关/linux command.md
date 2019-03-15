@@ -202,6 +202,7 @@ set +x; command; set -x // 可以将每一行执行的详细命令都解析到�
 ```
 
 * 执行脚本
+可参考 https://www.cnblogs.com/pcat/p/5467188.html
 ```
 1. 在当前目录下执行
 ./shellscript  
@@ -329,5 +330,5 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5MjA4NzA2OV19
+eyJoaXN0b3J5IjpbLTE2MjUyNzQwNzUsLTI5MjA4NzA2OV19
 -->
