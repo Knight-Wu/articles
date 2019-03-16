@@ -638,7 +638,7 @@ Hello World
 当一个类加载器收到了类加载的请求, 首先把请求委派给父类加载器执行, 所以所以的加载请求都会首先传递到顶层的启动类加载器, 当父类无法加载时,子加载器才会尝试自己加载. 只要当两个类来自同一个class文件,被同一个虚拟机加载,类加载器相同, equals(), isAssignableFrom(), instanceof 才能返回两个类相等.
 
 * 为什么要定义三个类加载器, 双亲委派模型是为了解决什么问题
-目的是为了保证核心类库的安全性, 当你没有显式的指定private, protected, public的时候, 就是默认的package access, 但是这个access 只存在于相同的classloader 加载的两个lei
+目的是为了保证核心类库的安全性, 当你没有显式的指定private, protected, public的时候, 就是默认的package access, 但是这个access 只存在于相同的classloader 加载的两个类中, 例如定义了一个java.lang.YourName 的类, 因为类加载器不一样, 对java.lang 里面的类是没有 package access , 保证了一定意义上的安全性. 
 
   * 加载器的层次关系
    Bootstrap ClassLoader -> ExtClassLoader -> AppClassLoader -> User ClassLoader
@@ -727,11 +727,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk5MjkwMzQzLC00MDU1Njg0MzgsNDEzMz
-EzNjEwLDE4ODY2NTg4OTksMjkwMTc2OTQ1LC0xMTcyOTk5NTU4
-LC03NDkwMDI1MzgsLTEyOTcwNDg3NTIsMTQ2MTg5OTY0MCw3Nj
-Y5MDAwODMsMTk0MTY4MzU2OSwxNzU1MzQ5ODY3LDIxMDIyNDAz
-OTMsMTM4MzYwMzg5NSwtMTc1Mzk1MjQxNywxNDM5MTU2OTkxLC
-0zNzAwMzQ3NjcsLTE3OTA4MzkxMjEsMTcxMDg4MTIwNCwtMTky
-Njk4Nzk5N119
+eyJoaXN0b3J5IjpbMTQ3ODQ5NjI0MywtNDA1NTY4NDM4LDQxMz
+MxMzYxMCwxODg2NjU4ODk5LDI5MDE3Njk0NSwtMTE3Mjk5OTU1
+OCwtNzQ5MDAyNTM4LC0xMjk3MDQ4NzUyLDE0NjE4OTk2NDAsNz
+Y2OTAwMDgzLDE5NDE2ODM1NjksMTc1NTM0OTg2NywyMTAyMjQw
+MzkzLDEzODM2MDM4OTUsLTE3NTM5NTI0MTcsMTQzOTE1Njk5MS
+wtMzcwMDM0NzY3LC0xNzkwODM5MTIxLDE3MTA4ODEyMDQsLTE5
+MjY5ODc5OTddfQ==
 -->
