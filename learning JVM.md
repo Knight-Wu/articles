@@ -633,11 +633,15 @@ Hello World
 在编译阶段通过常量传播优化，常量HELLOWORLD的值”Hello World”实际上已经存储到了NotInitialization类的常量池中，以后NotInitialization对常量ConstClass.HELLOWORLD的引用实际上都被转化为NotInitialization类对自身常量池的引用了。也就是说，实际上的NotInitialization的Class文件中并没有ConstClass类的符号引用入口，这两个类在编译成Class之后就不存在任何联系了。
 
 * 类与类的加载器
-只要当两个类来自同一个class文件,被同一个虚拟机加载,类加载器相同, equals(), isAssignableFrom(), instanceof 才能返回两个类相等.
-* 双亲委派模型(parents delegation model)
-当一个类加载器收到了类加载的请求, 首先把请求委派给父类加载器执行, 所以所以的加载请求都会首先传递到顶层的启动类加载器, 当父类无法加载时,子加载器才会尝试自己加载
+
+#### 双亲委派模型(parents delegation model)
+当一个类加载器收到了类加载的请求, 首先把请求委派给父类加载器执行, 所以所以的加载请求都会首先传递到顶层的启动类加载器, 当父类无法加载时,子加载器才会尝试自己加载. 只要当两个类来自同一个class文件,被同一个虚拟机加载,类加载器相同, equals(), isAssignableFrom(), instanceof 才能返回两个类相等.
+
+* 为什么要定义三个类加载器, 双亲委派模型是为了解决什么问题
+目的是为了保证核心类库的安全性, 
+
   * 加载器的层次关系
-   Bootstrap ClassLoader -> Extension ClassLoader -> Application ClassLoader -> User ClassLoader
+   Bootstrap ClassLoader -> ExtClassLoader -> AppClassLoader -> User ClassLoader
 
 * classpath 
 可以参考[honghailiang888](https://blog.csdn.net/honghailiang888/article/details/51878866), 非常齐全
@@ -723,11 +727,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwNTU2ODQzOCw0MTMzMTM2MTAsMTg4Nj
-Y1ODg5OSwyOTAxNzY5NDUsLTExNzI5OTk1NTgsLTc0OTAwMjUz
-OCwtMTI5NzA0ODc1MiwxNDYxODk5NjQwLDc2NjkwMDA4MywxOT
-QxNjgzNTY5LDE3NTUzNDk4NjcsMjEwMjI0MDM5MywxMzgzNjAz
-ODk1LC0xNzUzOTUyNDE3LDE0MzkxNTY5OTEsLTM3MDAzNDc2Ny
-wtMTc5MDgzOTEyMSwxNzEwODgxMjA0LC0xOTI2OTg3OTk3LC0x
-Mzg1MzA2Nzk1XX0=
+eyJoaXN0b3J5IjpbMjk2NDMwODMsLTQwNTU2ODQzOCw0MTMzMT
+M2MTAsMTg4NjY1ODg5OSwyOTAxNzY5NDUsLTExNzI5OTk1NTgs
+LTc0OTAwMjUzOCwtMTI5NzA0ODc1MiwxNDYxODk5NjQwLDc2Nj
+kwMDA4MywxOTQxNjgzNTY5LDE3NTUzNDk4NjcsMjEwMjI0MDM5
+MywxMzgzNjAzODk1LC0xNzUzOTUyNDE3LDE0MzkxNTY5OTEsLT
+M3MDAzNDc2NywtMTc5MDgzOTEyMSwxNzEwODgxMjA0LC0xOTI2
+OTg3OTk3XX0=
 -->
