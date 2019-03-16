@@ -640,7 +640,10 @@ Hello World
 * 为什么要定义三个类加载器, 双亲委派模型是为了解决什么问题
 目的是为了保证核心类库的安全性, 当你没有显式的指定private, protected, public的时候, 就是默认的package access, 但是这个access 只存在于相同的classloader 加载的两个类中, 例如定义了一个java.lang.YourName 的类, 因为类加载器不一样, 对java.lang 里面的类是没有 package access , 默认情况下也保证了安全性.
 而三个类加载器相当于是三个namespace 去管理各自的类, 
-  * 加载器的层次关系
+
+* 能不能定义一个自己的类加载器去加载自定义的 java.lang.String 
+答案是不能, 首先如果定义一个java.lang
+* 加载器的层次关系
    Bootstrap ClassLoader -> ExtClassLoader -> AppClassLoader -> User ClassLoader
 
 * classpath 
@@ -727,11 +730,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyODAxODUwOSwtNDA1NTY4NDM4LDQxMz
-MxMzYxMCwxODg2NjU4ODk5LDI5MDE3Njk0NSwtMTE3Mjk5OTU1
-OCwtNzQ5MDAyNTM4LC0xMjk3MDQ4NzUyLDE0NjE4OTk2NDAsNz
-Y2OTAwMDgzLDE5NDE2ODM1NjksMTc1NTM0OTg2NywyMTAyMjQw
-MzkzLDEzODM2MDM4OTUsLTE3NTM5NTI0MTcsMTQzOTE1Njk5MS
-wtMzcwMDM0NzY3LC0xNzkwODM5MTIxLDE3MTA4ODEyMDQsLTE5
-MjY5ODc5OTddfQ==
+eyJoaXN0b3J5IjpbMTgxMDYyMjk4MiwtNTI4MDE4NTA5LC00MD
+U1Njg0MzgsNDEzMzEzNjEwLDE4ODY2NTg4OTksMjkwMTc2OTQ1
+LC0xMTcyOTk5NTU4LC03NDkwMDI1MzgsLTEyOTcwNDg3NTIsMT
+Q2MTg5OTY0MCw3NjY5MDAwODMsMTk0MTY4MzU2OSwxNzU1MzQ5
+ODY3LDIxMDIyNDAzOTMsMTM4MzYwMzg5NSwtMTc1Mzk1MjQxNy
+wxNDM5MTU2OTkxLC0zNzAwMzQ3NjcsLTE3OTA4MzkxMjEsMTcx
+MDg4MTIwNF19
 -->
