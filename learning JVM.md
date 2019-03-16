@@ -642,7 +642,9 @@ Hello World
 而三个类加载器相当于是三个namespace 去管理各自的类, 
 
 * 能不能定义一个自己的类加载器去加载自定义的 java.lang.String 或java.lang.MyString
-答案是不能, 首先如果采用继承原有类加载器的方式, 自定义一个自己的类加载器, 加载java.lang.String, 因为会首先由父类查找该类, 调用BootstrapClassloader 去加载, 该类为c++ 写的, 内置在jvm , 启动即加载, 所以BootstrapClassloader  会找到rt.jar 里面的java.lang.String 不会找到我们自定义的, 其次如果加载 java.lang.MyString 会碰到包名不能以java 开头的异常, 但是如果用增强字节码技术呢? (可能可以成功, 但是当其他程序调用java.lang.String 的时候, 依然会调用到系统的那个, 因为只能调用
+答案是不能, 首先如果采用继承原有类加载器的方式, 自定义一个自己的类加载器, 加载java.lang.String, 因为会首先由父类查找该类, 调用BootstrapClassloader 去加载, 该类为c++ 写的, 内置在jvm , 启动即加载, 所以BootstrapClassloader  会找到rt.jar 里面的java.lang.String 不会找到我们自定义的, 其次如果加载 java.lang.MyString 会碰到包名不能以java 开头的异常, 但是如果用增强字节码技术呢? (可能可以成功, 但是当其他程序例如threadA 调用java.lang.String 的时候, 依然会调用到系统的那个, 因为threadA 由bootstrapCLassloader 加载, 只能调用下层cl 加载的类. 
+
+
 * 加载器的层次关系
    Bootstrap ClassLoader -> ExtClassLoader -> AppClassLoader -> User ClassLoader
 
@@ -730,11 +732,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjMyNDMyNjY2LDk3MzQzMjM1NywtNTU1NT
-MwNTkxLDE4MTA2MjI5ODIsLTUyODAxODUwOSwtNDA1NTY4NDM4
-LDQxMzMxMzYxMCwxODg2NjU4ODk5LDI5MDE3Njk0NSwtMTE3Mj
-k5OTU1OCwtNzQ5MDAyNTM4LC0xMjk3MDQ4NzUyLDE0NjE4OTk2
-NDAsNzY2OTAwMDgzLDE5NDE2ODM1NjksMTc1NTM0OTg2NywyMT
-AyMjQwMzkzLDEzODM2MDM4OTUsLTE3NTM5NTI0MTcsMTQzOTE1
-Njk5MV19
+eyJoaXN0b3J5IjpbMjEzNzYwMzYyMiw5NzM0MzIzNTcsLTU1NT
+UzMDU5MSwxODEwNjIyOTgyLC01MjgwMTg1MDksLTQwNTU2ODQz
+OCw0MTMzMTM2MTAsMTg4NjY1ODg5OSwyOTAxNzY5NDUsLTExNz
+I5OTk1NTgsLTc0OTAwMjUzOCwtMTI5NzA0ODc1MiwxNDYxODk5
+NjQwLDc2NjkwMDA4MywxOTQxNjgzNTY5LDE3NTUzNDk4NjcsMj
+EwMjI0MDM5MywxMzgzNjAzODk1LC0xNzUzOTUyNDE3LDE0Mzkx
+NTY5OTFdfQ==
 -->
