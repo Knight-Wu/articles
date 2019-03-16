@@ -641,8 +641,8 @@ Hello World
 目的是为了保证核心类库的安全性, 当你没有显式的指定private, protected, public的时候, 就是默认的package access, 但是这个access 只存在于相同的classloader 加载的两个类中, 例如定义了一个java.lang.YourName 的类, 因为类加载器不一样, 对java.lang 里面的类是没有 package access , 默认情况下也保证了安全性.
 而三个类加载器相当于是三个namespace 去管理各自的类, 
 
-* 能不能定义一个自己的类加载器去加载自定义的 java.lang.String 
-答案是不能, 首先如果采用继承原有类加载器的方式, 自定义一个自己的类加载器, 包名不能由java 开头, 
+* 能不能定义一个自己的类加载器去加载自定义的 java.lang.String 或java.lang.MyString
+答案是不能, 首先如果采用继承原有类加载器的方式, 自定义一个自己的类加载器, 加载java.lang.String, 因为会首先由父类查找该类, 调用BootstrapClassloader 去加载, 该类为c++ 写的, 内置在jvm , 启动即加载, 所以BootstrapClassloader  
 * 加载器的层次关系
    Bootstrap ClassLoader -> ExtClassLoader -> AppClassLoader -> User ClassLoader
 
@@ -730,11 +730,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1NTUzMDU5MSwxODEwNjIyOTgyLC01Mj
-gwMTg1MDksLTQwNTU2ODQzOCw0MTMzMTM2MTAsMTg4NjY1ODg5
-OSwyOTAxNzY5NDUsLTExNzI5OTk1NTgsLTc0OTAwMjUzOCwtMT
-I5NzA0ODc1MiwxNDYxODk5NjQwLDc2NjkwMDA4MywxOTQxNjgz
-NTY5LDE3NTUzNDk4NjcsMjEwMjI0MDM5MywxMzgzNjAzODk1LC
-0xNzUzOTUyNDE3LDE0MzkxNTY5OTEsLTM3MDAzNDc2NywtMTc5
-MDgzOTEyMV19
+eyJoaXN0b3J5IjpbLTY3NDU1ODk5LC01NTU1MzA1OTEsMTgxMD
+YyMjk4MiwtNTI4MDE4NTA5LC00MDU1Njg0MzgsNDEzMzEzNjEw
+LDE4ODY2NTg4OTksMjkwMTc2OTQ1LC0xMTcyOTk5NTU4LC03ND
+kwMDI1MzgsLTEyOTcwNDg3NTIsMTQ2MTg5OTY0MCw3NjY5MDAw
+ODMsMTk0MTY4MzU2OSwxNzU1MzQ5ODY3LDIxMDIyNDAzOTMsMT
+M4MzYwMzg5NSwtMTc1Mzk1MjQxNywxNDM5MTU2OTkxLC0zNzAw
+MzQ3NjddfQ==
 -->
