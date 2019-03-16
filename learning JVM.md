@@ -642,7 +642,7 @@ Hello World
 而三个类加载器相当于是三个namespace 去管理各自的类, 
 
 * 能不能定义一个自己的类加载器去加载自定义的 java.lang.String 
-答案是不能, 首先如果定义一个java.lang
+答案是不能, 首先如果采用继承原有类加载器的方式, 自定义一个自己的类加载器, 包名不能由java 开头, 
 * 加载器的层次关系
    Bootstrap ClassLoader -> ExtClassLoader -> AppClassLoader -> User ClassLoader
 
@@ -730,11 +730,11 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxMDYyMjk4MiwtNTI4MDE4NTA5LC00MD
-U1Njg0MzgsNDEzMzEzNjEwLDE4ODY2NTg4OTksMjkwMTc2OTQ1
-LC0xMTcyOTk5NTU4LC03NDkwMDI1MzgsLTEyOTcwNDg3NTIsMT
-Q2MTg5OTY0MCw3NjY5MDAwODMsMTk0MTY4MzU2OSwxNzU1MzQ5
-ODY3LDIxMDIyNDAzOTMsMTM4MzYwMzg5NSwtMTc1Mzk1MjQxNy
-wxNDM5MTU2OTkxLC0zNzAwMzQ3NjcsLTE3OTA4MzkxMjEsMTcx
-MDg4MTIwNF19
+eyJoaXN0b3J5IjpbLTU1NTUzMDU5MSwxODEwNjIyOTgyLC01Mj
+gwMTg1MDksLTQwNTU2ODQzOCw0MTMzMTM2MTAsMTg4NjY1ODg5
+OSwyOTAxNzY5NDUsLTExNzI5OTk1NTgsLTc0OTAwMjUzOCwtMT
+I5NzA0ODc1MiwxNDYxODk5NjQwLDc2NjkwMDA4MywxOTQxNjgz
+NTY5LDE3NTUzNDk4NjcsMjEwMjI0MDM5MywxMzgzNjAzODk1LC
+0xNzUzOTUyNDE3LDE0MzkxNTY5OTEsLTM3MDAzNDc2NywtMTc5
+MDgzOTEyMV19
 -->
