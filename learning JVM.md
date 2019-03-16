@@ -642,7 +642,7 @@ Hello World
 而三个类加载器相当于是三个namespace 去管理各自的类, 
 
 * 能不能定义一个自己的类加载器去加载自定义的 java.lang.String 或java.lang.MyString
-答案是不能, 首先如果采用继承原有类加载器的方式, 自定义一个自己的类加载器, 加载java.lang.String, 因为会首先由父类查找该类, 调用BootstrapClassloader 去加载, 该类为c++ 写的, 内置在jvm , 启动即加载, 所以BootstrapClassloader  
+答案是不能, 首先如果采用继承原有类加载器的方式, 自定义一个自己的类加载器, 加载java.lang.String, 因为会首先由父类查找该类, 调用BootstrapClassloader 去加载, 该类为c++ 写的, 内置在jvm , 启动即加载, 所以BootstrapClassloader  会找到rt.jar 里面的java.lang.String 不会找到我们自定义的, 其次如果加载 java.lang.MyString 会碰到包名不能以java 开头的异常, 但是如果用增强字节码技术呢? 
 * 加载器的层次关系
    Bootstrap ClassLoader -> ExtClassLoader -> AppClassLoader -> User ClassLoader
 
@@ -730,7 +730,7 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3NDU1ODk5LC01NTU1MzA1OTEsMTgxMD
+eyJoaXN0b3J5IjpbOTczNDMyMzU3LC01NTU1MzA1OTEsMTgxMD
 YyMjk4MiwtNTI4MDE4NTA5LC00MDU1Njg0MzgsNDEzMzEzNjEw
 LDE4ODY2NTg4OTksMjkwMTc2OTQ1LC0xMTcyOTk5NTU4LC03ND
 kwMDI1MzgsLTEyOTcwNDg3NTIsMTQ2MTg5OTY0MCw3NjY5MDAw
