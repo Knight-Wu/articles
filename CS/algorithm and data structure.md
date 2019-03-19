@@ -492,7 +492,8 @@ public void nodeToQueue(TreeNode root, Queue<TreeNode> queue) {
 2. 灵活使用递归中的全局变量和参数, 能让递归更易理解. 
 
 * 回溯思想
-常作为暴力破解, 穷举的一种优化, 类似于zou递归形式, 
+https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
+常作为暴力破解, 穷举的一种优化, 类似于走迷宫,  走错了回头, 递归形式, 
 有以下几个规范: 达到递归的结束条件, 通常能得到一个穷举的答案; 
 
 #### 资源
@@ -508,5 +509,5 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxMDI4MjE4MCwtMTUxNjU0NjM4M119
+eyJoaXN0b3J5IjpbMTcxNzQ1NjI2MywtMTUxNjU0NjM4M119
 -->
