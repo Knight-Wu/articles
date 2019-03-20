@@ -11,9 +11,11 @@ https://stackoverflow.com/questions/11276291/why-cant-or-doesnt-the-compiler-opt
 
 * 算法局部性
 
-#### processor 
-
+#### processor [branch predictor](https://en.wikipedia.org/wiki/Branch_predictor)
+简而言之: cpu 不知道下个指令具体怎么执行, 除非知道上一个指令执行的结果, 所以有两种fang
+* 应用
+https://stackoverflow.com/questions/11227809/why-is-it-faster-to-process-a-sorted-array-than-an-unsorted-array/11227902#11227902
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyNjY2NzYxNF19
+eyJoaXN0b3J5IjpbLTE2NTE3MTMwODBdfQ==
 -->
