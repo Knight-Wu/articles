@@ -4,13 +4,17 @@
 * 时间局部性
 * 空间局部性
 未来需要使用的数据, 有可能在最近历史数据的附近. 
-应用: loop_exchange , compiler 将loop 改写成读取符合数据在 memory 存储的形式, 例如如果一行的数据在memory 顺序存放, 则, 将最近需要的数据都从memory  一次性拿到cpu cache 缓存, 提高数据的提取速率, 
-https://en.wikipedia.org/wiki/Loop_interchange 
+应用:
+https://stackoverflow.com/questions/11276291/why-cant-or-doesnt-the-compiler-optimize-a-predictable-addition-loop-into-a 
+[loop_exchange](https://en.wikipedia.org/wiki/Loop_interchange)
+
+ compiler 将loop 改写成读取符合数据在 memory 存储的形式, 例如如果一行的数据在memory 顺序存放, 则一次性读取几行的数据放到cpu cache 中,  提高缓存命中率, 
+
 * 算法局部性
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjk3MTQ0NTQ0XX0=
+eyJoaXN0b3J5IjpbLTE5MjkyMzM0OTRdfQ==
 -->
