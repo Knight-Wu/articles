@@ -12,10 +12,10 @@ https://stackoverflow.com/questions/11276291/why-cant-or-doesnt-the-compiler-opt
 * 算法局部性
 
 #### processor [branch predictor](https://en.wikipedia.org/wiki/Branch_predictor)
-简而言之: cpu 不知道下个指令具体怎么执行, 除非知道上一个指令执行的结果, 所以有两种fang
+简而言之: cpu 不知道下个指令具体怎么执行, 除非知道上一个指令执行的结果, 所以有两种方法: 等待上一个指令执行的结果, 或者根据历史预测, 通常情况下预测的命中性达到 90 %, 但是当历史结果是非常随机不可预测的情况下, branch predictor 就可能效率比较低, 预测错了zhih 
 * 应用
 https://stackoverflow.com/questions/11227809/why-is-it-faster-to-process-a-sorted-array-than-an-unsorted-array/11227902#11227902
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTE3MTMwODBdfQ==
+eyJoaXN0b3J5IjpbLTI1NTU5OTU2OF19
 -->
