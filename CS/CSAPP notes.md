@@ -7,14 +7,13 @@
 应用:
 https://stackoverflow.com/questions/11276291/why-cant-or-doesnt-the-compiler-optimize-a-predictable-addition-loop-into-a 
 [loop_exchange](https://en.wikipedia.org/wiki/Loop_interchange)
-
  compiler 将loop 改写成读取符合数据在 memory 存储的形式, 例如如果一行的数据在memory 顺序存放, 则一次性读取几行的数据放到cpu cache 中,  提高缓存命中率, 
 
 * 算法局部性
 
-
+#### processor 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjkyMzM0OTRdfQ==
+eyJoaXN0b3J5IjpbLTYyNjY2NzYxNF19
 -->
