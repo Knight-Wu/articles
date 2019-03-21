@@ -33,7 +33,13 @@
 * yarn 用mr 作业收集container使用情况的原理和作用
 * 为啥nio 要用byte buffer, 懂了io 模型之后还要知道设计api 的时候, 各种api 的好处以及作用
 * Java对象头信息，各种轻量级重量级锁如何转化
-* 
+* mysql 和kafka 的高可用
+* zk 的一致性如何保证
+* mysql 的事务如何实现
+* 信号量锁的细节
+* B+树的深度
+* ConcurrentLinkedQueue , cas 如何实现的. 
+
 ### DOING
 
 
@@ -80,7 +86,7 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTc4MTAzOTksLTE4MzMzODM1MjAsLT
+eyJoaXN0b3J5IjpbLTExMDAxMjg4NDQsLTE4MzMzODM1MjAsLT
 kyMTM1ODg0NCwtNDEyOTU0ODU1LDE3MzIyNDA3OTMsODg3MzAx
 NywtOTg3NDQxMDg0LDE2NjIxNDcxOTEsLTEzNDY1MzA1MzcsLT
 g0ODU3NDQ0NiwyMTY3ODk3NzgsLTExMzExMjI2ODUsMTQ2MDgx
