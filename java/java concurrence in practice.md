@@ -247,7 +247,7 @@ MESI定律：在所有的脏缓存段（M状态）被回写后，任意缓存级
 #### 同步代码块
 
 * synchronized
-    * 可以将需要线程安全的变量保存在一个object，通过object 的 intrinsic lock 去保证，而且线程安全的所有变量都需要用一个lock，而不是多个
+   
     * 三种用法, 推荐使用第三种, 因为前两种等于直接暴露了锁对象, 锁对象是实例, 任何其他可以获得该实例的外部代码, 都有可能恶意获取该锁, 并锁住; 锁方法和锁实例等于是直接锁住了该对象, 其他线程想要获取其他不需要同步的方法也会阻塞.
     ```
     // 第一种：直接锁方法
@@ -853,5 +853,5 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0MzM0MjE2Nl19
+eyJoaXN0b3J5IjpbNDM5NzEzNjQyLC01NDMzNDIxNjZdfQ==
 -->
