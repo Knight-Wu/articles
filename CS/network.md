@@ -86,6 +86,8 @@ TCP与UDP应用：
 每接收一个发送帧, 接收窗口前移, 并发送ack, 在接收窗口之外的包一律丢弃
 
 #### 实现无差错传输的解决方案
+1.  自动重传请求协议ARQ（针对 出错重传）, 针对发送窗口和接收窗口的不同分为三种: 
+
 
 #### TCP_WAIT 过多是否异常
 [2014-tcp-time-wait-state-linux](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
@@ -132,7 +134,7 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NDIzNDAxNDgsLTE3MzM5NzQwNzUsMT
-Y3MTA3Mzg2OCwtODg4MTYxMDI1LC0xMDQ1MTI3NDQzLC0zOTEy
-MDc4NTldfQ==
+eyJoaXN0b3J5IjpbMTc1NjU2NDU5MywtMTczMzk3NDA3NSwxNj
+cxMDczODY4LC04ODgxNjEwMjUsLTEwNDUxMjc0NDMsLTM5MTIw
+Nzg1OV19
 -->
