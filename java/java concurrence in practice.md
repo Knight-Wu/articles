@@ -566,7 +566,7 @@ public void demoMethod(){
 
 * 偏向锁(Biased Locking)
 
-    是指之前已经获取到锁的线程再次请求锁时, 不需再次申请锁, 可以直接进入同步块, 适用于无竞争的情况, 
+    是指之前已经获取到锁的线程再次请求锁时, 不需再次申请锁, 可以直接进入同步块, 适用于无竞争的情况, 对象头的 Mark Word里存储锁偏向的线程ID, 当有其他线程竞争偏向锁h会升级为轻量级锁
 ```
 
 -XX:+UseBiasedLocking -XX:BiasedLockingStartupDelay=0
@@ -901,7 +901,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODIxOTY4NTUsMTY5NjUwODc1MSwtMz
+eyJoaXN0b3J5IjpbLTE2MTE4OTgzMjIsMTY5NjUwODc1MSwtMz
 g2ODg5NDUwLC0yODE3MDgzNTAsNTI0NDgzMzk4LDIwNzQ0MDU1
 MDEsLTU0MzM0MjE2Nl19
 -->
