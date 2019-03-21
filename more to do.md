@@ -33,7 +33,7 @@
 * yarn 用mr 作业收集container使用情况的原理和作用
 * 为啥nio 要用byte buffer, 懂了io 模型之后还要知道设计api 的时候, 各种api 的好处以及作用
 
-* Java对象头信息，各种轻量级重量级锁如何转化
+* 各种轻量级重量级锁如何转化
 * mysql 和kafka 的高可用
 * zk 的一致性如何保证
 * mysql 的事务如何实现
@@ -89,11 +89,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1NTQ0MjExNCwtMTgzMzM4MzUyMCwtOT
-IxMzU4ODQ0LC00MTI5NTQ4NTUsMTczMjI0MDc5Myw4ODczMDE3
-LC05ODc0NDEwODQsMTY2MjE0NzE5MSwtMTM0NjUzMDUzNywtOD
-Q4NTc0NDQ2LDIxNjc4OTc3OCwtMTEzMTEyMjY4NSwxNDYwODEx
-OTU5LDE0Nzc1Njk3NjgsLTE5ODAyNzY2MjksMTE2NzE5MDcxOS
-wtNjk4NjczMzM0LDE2NTcyMzUwNzAsLTg5NzY1NDA5NCwtMTM4
-NDE1MzYzMF19
+eyJoaXN0b3J5IjpbLTEyNzc3OTEyNDIsMTM1NTQ0MjExNCwtMT
+gzMzM4MzUyMCwtOTIxMzU4ODQ0LC00MTI5NTQ4NTUsMTczMjI0
+MDc5Myw4ODczMDE3LC05ODc0NDEwODQsMTY2MjE0NzE5MSwtMT
+M0NjUzMDUzNywtODQ4NTc0NDQ2LDIxNjc4OTc3OCwtMTEzMTEy
+MjY4NSwxNDYwODExOTU5LDE0Nzc1Njk3NjgsLTE5ODAyNzY2Mj
+ksMTE2NzE5MDcxOSwtNjk4NjczMzM0LDE2NTcyMzUwNzAsLTg5
+NzY1NDA5NF19
 -->
