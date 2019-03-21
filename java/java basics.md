@@ -20,7 +20,7 @@
 ### java集合
 #### List
 * 为什么例如 ArrayList, 单线程在for 循环remove 的时候会报ConcurrentModifcationEx
-因为 remove 的时候会把remove 节点之后的元素都全部arrayCopy 前移一位, 
+因为 remove 的时候会把remove 节点之后的元素都全部arrayCopy 前移一位, 导致下次for 循环会少遍历一个节点, 传统的remove(index) 和remove(obj) 只用于remove 单个节点的情况, 所以需要iterator 去remove, itr 有两个指针, 一个指向上一次返回的节点index, 一个zhician
 * ArrayList与LinkedList区别
 前者更适合随机下标遍历, O(1)的时间复杂度; 后者更适合增删,因为前者需要数组的拷贝,效率比较低,可以当作堆栈、队列和双向队列使用。
 * ArrayList与Vector的区别
@@ -300,6 +300,5 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTA1Mzk3MzEsLTIwMTM5Mjc0MzldfQ
-==
+eyJoaXN0b3J5IjpbLTQ3OTgyNzE0OCwtMjAxMzkyNzQzOV19
 -->
