@@ -566,15 +566,14 @@ public void demoMethod(){
 
 * 偏向锁(Biased Locking)
 
-    是指之前已经获取到锁的线程再次请求锁时, 不需再次申请锁, 可以直接进入同步块, 适用于无竞争的情况, 在竞争激烈情况下会加重系统负担, 因为每次都要判断该线程是否偏向; 当其他线程请求相同的锁时, 之前获取锁的线程的不具备偏向锁性质. 
-
+    是指之前已经获取到锁的线程再次请求锁时, 不需再次申请锁, 可以直接进入同步块, 适用于无竞争的情况, 
 ```
 
 -XX:+UseBiasedLocking -XX:BiasedLockingStartupDelay=0
 
 ```
 * 轻量级锁(Lightweight Locking)
-    目的是减少线程互斥的几率, 使用CAS操作来加锁, 若轻量级锁加锁失败, 使用重量级锁.
+    当其他线程竞争偏向锁d的时候
     
 * 自旋锁(Adaptive Spinning)
     让线程进入循环等待锁, 这段时间仍然占用cpu时间, 也是为降低切换上下文带来的开销, 可以用参数-XX:+UseSpinning
@@ -902,7 +901,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzc1OTIyNjg5LDE2OTY1MDg3NTEsLTM4Nj
-g4OTQ1MCwtMjgxNzA4MzUwLDUyNDQ4MzM5OCwyMDc0NDA1NTAx
-LC01NDMzNDIxNjZdfQ==
+eyJoaXN0b3J5IjpbLTE3ODIxOTY4NTUsMTY5NjUwODc1MSwtMz
+g2ODg5NDUwLC0yODE3MDgzNTAsNTI0NDgzMzk4LDIwNzQ0MDU1
+MDEsLTU0MzM0MjE2Nl19
 -->
