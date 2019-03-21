@@ -32,7 +32,8 @@
 * yarn 虚拟内存和虚拟cpu 用来干啥
 * yarn 用mr 作业收集container使用情况的原理和作用
 * 为啥nio 要用byte buffer, 懂了io 模型之后还要知道设计api 的时候, 各种api 的好处以及作用
-
+* Java对象头信息，各种轻量级重量级锁如何转化
+* 
 ### DOING
 
 
@@ -79,11 +80,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzMzODM1MjAsLTkyMTM1ODg0NCwtND
-EyOTU0ODU1LDE3MzIyNDA3OTMsODg3MzAxNywtOTg3NDQxMDg0
-LDE2NjIxNDcxOTEsLTEzNDY1MzA1MzcsLTg0ODU3NDQ0NiwyMT
-Y3ODk3NzgsLTExMzExMjI2ODUsMTQ2MDgxMTk1OSwxNDc3NTY5
-NzY4LC0xOTgwMjc2NjI5LDExNjcxOTA3MTksLTY5ODY3MzMzNC
-wxNjU3MjM1MDcwLC04OTc2NTQwOTQsLTEzODQxNTM2MzAsLTEz
-MDkwNzcxNTZdfQ==
+eyJoaXN0b3J5IjpbLTE3OTc4MTAzOTksLTE4MzMzODM1MjAsLT
+kyMTM1ODg0NCwtNDEyOTU0ODU1LDE3MzIyNDA3OTMsODg3MzAx
+NywtOTg3NDQxMDg0LDE2NjIxNDcxOTEsLTEzNDY1MzA1MzcsLT
+g0ODU3NDQ0NiwyMTY3ODk3NzgsLTExMzExMjI2ODUsMTQ2MDgx
+MTk1OSwxNDc3NTY5NzY4LC0xOTgwMjc2NjI5LDExNjcxOTA3MT
+ksLTY5ODY3MzMzNCwxNjU3MjM1MDcwLC04OTc2NTQwOTQsLTEz
+ODQxNTM2MzBdfQ==
 -->
