@@ -54,7 +54,7 @@ TCP与UDP应用：
 因为TCP 是全双工的协议, 双方都可以发送和接收, 必须要一方发送结束信号, 另一方ack 之后才表示结束, 否则经过前两次挥手之后只是单向断开, 服务器还是能向客户端发送数据, 
 
 * 为什么客户端关闭连接前要等待2MSL时间？为什么需要time-wait
-
+为了客户端最后一个ack 能确保到达
 
  A connection can be ["half-open"](https://en.wikipedia.org/wiki/TCP_half-open "TCP half-open"), in which case one side has terminated its end, but the other has not. The side that has terminated can no longer send any data into the connection, but the other side can. The terminating side should continue reading the data until the other side terminates as well.
 意思是从 FIN_WAIT_2 到 TIME_WAIT 状态是主动关闭方等待被动关闭方发送完所有消息
@@ -121,6 +121,6 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTM0MjM1NzgyLC0xMDQ1MTI3NDQzLC0zOT
-EyMDc4NTldfQ==
+eyJoaXN0b3J5IjpbMTQ3MTY1MDM3MSwtMTA0NTEyNzQ0MywtMz
+kxMjA3ODU5XX0=
 -->
