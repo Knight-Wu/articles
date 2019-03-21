@@ -282,7 +282,12 @@ MESI定律：在所有的脏缓存段（M状态）被回写后，任意缓存级
         * 后者更灵活, 可以跨方法解锁, 可以实现公平锁和非公平, 和中断获取锁
         * 原理不同, 前者基于java原生的互斥锁, 线程阻塞; 后者基于CAS
       
-* sy  
+* synchronized 底层多种实现锁的转化
+JDK 6之前synchronized 依赖于操作系统Mutex Lock所实现的锁我们称之为“重量级锁”，JDK 6中为了减少获得锁和释放锁带来的性能消耗，引入了“偏向锁”和“轻量级锁”。
+
+所以目前锁一共有4种状态，级别从低到高依次是：无锁、偏向锁、轻量级锁和重量级锁。锁状态只能升级不能降级。
+
+    
 * wait, notify, notifyAll
     * wait
     见代码注释" this method causees the current thread to place itself in the wait set for this object , thread become disabled for thread scheduling , and 直到被other threads notify, notifyAll this object or interrupt this thread.  ", 
@@ -892,7 +897,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2MzE5OTg2OSwxNjk2NTA4NzUxLC0zOD
-Y4ODk0NTAsLTI4MTcwODM1MCw1MjQ0ODMzOTgsMjA3NDQwNTUw
-MSwtNTQzMzQyMTY2XX0=
+eyJoaXN0b3J5IjpbLTE3NTc3NTgxMDUsMTY5NjUwODc1MSwtMz
+g2ODg5NDUwLC0yODE3MDgzNTAsNTI0NDgzMzk4LDIwNzQ0MDU1
+MDEsLTU0MzM0MjE2Nl19
 -->
