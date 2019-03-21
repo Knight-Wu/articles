@@ -344,36 +344,43 @@ class Consumer {
 ```
  * 基于wait, notify 的生产者和消费者
 ```
-class Test{
-	ArrayDeque<String> queue = new ArrayDeque<String>(16);
-private Objcet notFull = new Object();
-private Object notEmpty = new Object();
-
-class Producer{
-	public  void produce(String msg){
-	synchronized(queue){
-	while(queue.size()==16) notFull.wait(); // queue is full 
-	   // catch interruptedEx
-	queue.addlast(msg);
-	notEmpty.notifyAll();
-	}
-}
-
-class Consumer{
-	public String consume(){
-	synchronized(queue){
-	while(queue.isEmpty) {
-	try{
-		notEmpty.wait();  // queue is empty
-	}catch(Interrupted ex}{}
-		String msg = queue.getFirst;
-		assert msg!=null; 
-		notFull.notifyAll();
-		return msg;
-}
-}
-	}
-}
+ArrayDeque<String> queue = new ArrayDeque<String>(16);  
+private Object notFull = new Object();  
+private Object notEmpty = new Object();  
+  
+class Producer {  
+    public void produce(String msg) {  
+        synchronized (queue) {  
+            while (queue.size() == 16) {  
+                try {  
+                    notFull.wait(); // queue is full   
+					 } catch (InterruptedException e) {  
+                    e.printStackTrace();  
+                }  
+            }  
+            queue.add(msg);  
+            notEmpty.notifyAll();  
+        }  
+    }  
+  
+    class Consumer {  
+        public String consume() {  
+            String msg = null;  
+            synchronized (queue) {  
+                while (queue.isEmpty()) {  
+                    try {  
+                        notEmpty.wait();  // queue is empty  
+					 } catch (InterruptedException ex) {  
+                    }  
+                    msg = queue.poll();  
+                    assert msg != null;  
+                    notFull.notifyAll();  
+  
+                }  
+            }  
+            return msg;  
+        }  
+    }
 ```
 #### 其他线程方法
 join, yield, sleep
@@ -879,6 +886,6 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTAxMDI5MTY1LC0yODE3MDgzNTAsNTI0ND
-gzMzk4LDIwNzQ0MDU1MDEsLTU0MzM0MjE2Nl19
+eyJoaXN0b3J5IjpbLTM4Njg4OTQ1MCwtMjgxNzA4MzUwLDUyND
+Q4MzM5OCwyMDc0NDA1NTAxLC01NDMzNDIxNjZdfQ==
 -->
