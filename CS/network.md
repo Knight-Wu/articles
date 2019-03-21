@@ -78,6 +78,11 @@ TCP与UDP应用：
 
 意思是作为TCP 连接的server 端, 只需要消耗内存, 因为可以多个连接都连到一个端口, 但是client 端却需要新建一个随机端口, 并在连接时一直持有, 若应用没有合理的释放资源, 会导致端口不够用.
 
+### TCP 为什么是可靠的传输
+#### 滑动窗口
+* 发送窗口
+
+
 #### TCP_WAIT 过多是否异常
 [2014-tcp-time-wait-state-linux](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
 [https://blog.oldboyedu.com/tcp-wait/](https://blog.oldboyedu.com/tcp-wait/)
@@ -123,6 +128,7 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MzM5NzQwNzUsMTY3MTA3Mzg2OCwtOD
-g4MTYxMDI1LC0xMDQ1MTI3NDQzLC0zOTEyMDc4NTldfQ==
+eyJoaXN0b3J5IjpbMTgzMDY2MTUyMywtMTczMzk3NDA3NSwxNj
+cxMDczODY4LC04ODgxNjEwMjUsLTEwNDUxMjc0NDMsLTM5MTIw
+Nzg1OV19
 -->
