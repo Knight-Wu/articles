@@ -115,14 +115,14 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
 3. cpu消耗也很少
 
-* 其他解决time_wait的办法见上面链接的原文. 
-
 > 总之 TCP_WAIT 在几百几千是挺正常的, 几万才算多, 最大值取决于当前节点配置的客户端端口数量,  如果应用层面没出现异常, 可以忽略.
 
+* 如何解决time-wait 过多, 造成建立不起更多的连接
+https://cloud.tencent.com/developer/article/1004354
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3MTA3Mzg2OCwtODg4MTYxMDI1LC0xMD
-Q1MTI3NDQzLC0zOTEyMDc4NTldfQ==
+eyJoaXN0b3J5IjpbLTE3MzM5NzQwNzUsMTY3MTA3Mzg2OCwtOD
+g4MTYxMDI1LC0xMDQ1MTI3NDQzLC0zOTEyMDc4NTldfQ==
 -->
