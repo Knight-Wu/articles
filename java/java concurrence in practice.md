@@ -282,14 +282,6 @@ MESI定律：在所有的脏缓存段（M状态）被回写后，任意缓存级
         * 后者更灵活, 可以跨方法解锁, 可以实现公平锁和非公平, 和中断获取锁
         * 原理不同, 前者基于java原生的互斥锁, 线程阻塞; 后者基于CAS
       
-#### synchronized 底层多种实现锁的转化
-JDK 6之前synchronized 依赖于操作系统Mutex Lock所实现的锁我们称之为“重量级锁”，JDK 6中为了减少获得锁和释放锁带来的性能消耗，引入了“偏向锁”和“轻量级锁”。
-
-所以目前锁一共有4种状态，级别从低到高依次是：无锁、偏向锁、轻量级锁和重量级锁。锁状态只能升级不能降级。
-
-* 无锁
-即线程在一段循环中一直尝试修改直至成功, CAS 是无锁的实现
-* 偏向锁
 
 
     
@@ -516,6 +508,12 @@ implemented as 32-bit or 64-bit values.** but to ensure 一致性, declare varia
 * 参见
 [https://my.oschina.net/hosee/blog/615865](https://my.oschina.net/hosee/blog/615865)
 
+JDK 6之前synchronized 依赖于操作系统Mutex Lock所实现的锁我们称之为“重量级锁”，JDK 6中为了减少获得锁和释放锁带来的性能消耗，引入了“偏向锁”和“轻量级锁”。
+
+所以目前锁一共有4种状态，级别从低到高依次是：无锁、偏向锁、轻量级锁和重量级锁。锁状态只能升级不能降级。
+
+
+
 * 锁粗化
 
     在锁释放的开销大于等待锁的开销时, 减少释放和获取锁的次数, 减少同步块的个数.
@@ -563,6 +561,8 @@ public void demoMethod(){
     输出：
     craeteStringBuffer: 660 ms
     ```
+* 无锁
+即线程在一段循环中一直尝试修改直至成功, CAS 是无锁的实现
 
 * 偏向锁(Biased Locking)
 
@@ -902,7 +902,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIwNjQ3NTQzNywxNjk2NTA4NzUxLC0zOD
-Y4ODk0NTAsLTI4MTcwODM1MCw1MjQ0ODMzOTgsMjA3NDQwNTUw
-MSwtNTQzMzQyMTY2XX0=
+eyJoaXN0b3J5IjpbMzc1OTIyNjg5LDE2OTY1MDg3NTEsLTM4Nj
+g4OTQ1MCwtMjgxNzA4MzUwLDUyNDQ4MzM5OCwyMDc0NDA1NTAx
+LC01NDMzNDIxNjZdfQ==
 -->
