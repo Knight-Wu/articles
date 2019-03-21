@@ -83,7 +83,9 @@ TCP与UDP应用：
 * 发送窗口
 每接收到一个确认帧, 发送窗口才能前移一个, 若发送窗口所有帧都没有确认, 则需要等待确认才能前移
 * 接收窗口
+每接收一个发送帧, 接收窗口前移, 并发送ack, 在接收窗口之外的包一律丢弃
 
+#### 实现无差错传输的解决方案
 
 #### TCP_WAIT 过多是否异常
 [2014-tcp-time-wait-state-linux](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
@@ -130,7 +132,7 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2MDI5NTcxMSwtMTczMzk3NDA3NSwxNj
-cxMDczODY4LC04ODgxNjEwMjUsLTEwNDUxMjc0NDMsLTM5MTIw
-Nzg1OV19
+eyJoaXN0b3J5IjpbLTE2NDIzNDAxNDgsLTE3MzM5NzQwNzUsMT
+Y3MTA3Mzg2OCwtODg4MTYxMDI1LC0xMDQ1MTI3NDQzLC0zOTEy
+MDc4NTldfQ==
 -->
