@@ -43,7 +43,7 @@ TCP与UDP应用：
 ![enter image description here](https://drive.google.com/uc?id=1oroW4PjFfuKpe0BGhCTr1WlVMjvYbk3g) 
 
 * 为什么需要三次握手
-防止服务端接收到客户端之前传输的但是因为请求连接包
+防止服务端接收到网络上滞留的请求连接包, 若没有第三次 ack 的过程, 服务端接收了此类包会yizh
 
 #### 关闭连接
 
@@ -114,5 +114,5 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwODg5NzE0MF19
+eyJoaXN0b3J5IjpbLTE5OTIxMjQwMTBdfQ==
 -->
