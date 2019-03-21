@@ -573,13 +573,10 @@ public void demoMethod(){
 
 ```
 * 轻量级锁(Lightweight Locking)
-    竞争的线程会通过自旋的方式等待锁的释放, 若当前只有一个线程等待, 则为轻量级锁, z
-    
-* 自旋锁(Adaptive Spinning)
-    让线程进入循环等待锁, 这段时间仍然占用cpu时间, 也是为降低切换上下文带来的开销, 可以用参数-XX:+UseSpinning
-, -XX:PreBlockSpin
+    竞争的线程会通过自旋的方式等待锁的释放, 若当前只有一个线程等待, 则为轻量级锁, 自旋等待, 若自旋超过一定的时间或者来了第三个线程竞争, 则会升级为重量级锁. 
 
-* 重量级锁(操作系统层级)
+* 重量级锁
+竞争不到锁的线程会放弃cpu , 阻塞挂起, 
 ## JUC多线程支持体系
 
 #### Executor
@@ -901,7 +898,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExOTQ4MTk0NDMsMTY5NjUwODc1MSwtMz
-g2ODg5NDUwLC0yODE3MDgzNTAsNTI0NDgzMzk4LDIwNzQ0MDU1
-MDEsLTU0MzM0MjE2Nl19
+eyJoaXN0b3J5IjpbMTMxOTcwNjg0NiwxNjk2NTA4NzUxLC0zOD
+Y4ODk0NTAsLTI4MTcwODM1MCw1MjQ0ODMzOTgsMjA3NDQwNTUw
+MSwtNTQzMzQyMTY2XX0=
 -->
