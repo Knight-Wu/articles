@@ -32,6 +32,7 @@
 * yarn 虚拟内存和虚拟cpu 用来干啥
 * yarn 用mr 作业收集container使用情况的原理和作用
 * 为啥nio 要用byte buffer, 懂了io 模型之后还要知道设计api 的时候, 各种api 的好处以及作用
+
 * Java对象头信息，各种轻量级重量级锁如何转化
 * mysql 和kafka 的高可用
 * zk 的一致性如何保证
@@ -39,6 +40,8 @@
 * 信号量锁的细节
 * B+树的深度
 * ConcurrentLinkedQueue , cas 如何实现的. 
+* tcp 不就是可靠地吗, 消息没收到的话, tcp 层面就会重传啊, 为什么应用层面要重传
+* tcp 是如何保证可靠的
 
 ### DOING
 
@@ -86,11 +89,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDAxMjg4NDQsLTE4MzMzODM1MjAsLT
-kyMTM1ODg0NCwtNDEyOTU0ODU1LDE3MzIyNDA3OTMsODg3MzAx
-NywtOTg3NDQxMDg0LDE2NjIxNDcxOTEsLTEzNDY1MzA1MzcsLT
-g0ODU3NDQ0NiwyMTY3ODk3NzgsLTExMzExMjI2ODUsMTQ2MDgx
-MTk1OSwxNDc3NTY5NzY4LC0xOTgwMjc2NjI5LDExNjcxOTA3MT
-ksLTY5ODY3MzMzNCwxNjU3MjM1MDcwLC04OTc2NTQwOTQsLTEz
-ODQxNTM2MzBdfQ==
+eyJoaXN0b3J5IjpbMTM1NTQ0MjExNCwtMTgzMzM4MzUyMCwtOT
+IxMzU4ODQ0LC00MTI5NTQ4NTUsMTczMjI0MDc5Myw4ODczMDE3
+LC05ODc0NDEwODQsMTY2MjE0NzE5MSwtMTM0NjUzMDUzNywtOD
+Q4NTc0NDQ2LDIxNjc4OTc3OCwtMTEzMTEyMjY4NSwxNDYwODEx
+OTU5LDE0Nzc1Njk3NjgsLTE5ODAyNzY2MjksMTE2NzE5MDcxOS
+wtNjk4NjczMzM0LDE2NTcyMzUwNzAsLTg5NzY1NDA5NCwtMTM4
+NDE1MzYzMF19
 -->
