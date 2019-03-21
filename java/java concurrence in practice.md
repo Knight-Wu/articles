@@ -288,7 +288,9 @@ JDK 6之前synchronized 依赖于操作系统Mutex Lock所实现的锁我们称�
 所以目前锁一共有4种状态，级别从低到高依次是：无锁、偏向锁、轻量级锁和重量级锁。锁状态只能升级不能降级。
 
 * 无锁
-即线程在一段循环中一直cha
+即线程在一段循环中一直尝试修改直至成功, CAS 是无锁的实现
+* 偏向锁
+
 
     
 * wait, notify, notifyAll
@@ -900,7 +902,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExODgzNDg3NjQsMTY5NjUwODc1MSwtMz
-g2ODg5NDUwLC0yODE3MDgzNTAsNTI0NDgzMzk4LDIwNzQ0MDU1
-MDEsLTU0MzM0MjE2Nl19
+eyJoaXN0b3J5IjpbMTIwNjQ3NTQzNywxNjk2NTA4NzUxLC0zOD
+Y4ODk0NTAsLTI4MTcwODM1MCw1MjQ0ODMzOTgsMjA3NDQwNTUw
+MSwtNTQzMzQyMTY2XX0=
 -->
