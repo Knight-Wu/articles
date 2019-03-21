@@ -101,9 +101,10 @@ Save namespace successful for ip-172-31-1-163.ap-southeast-1.compute.internal/17
 #### HDFS High Availability 
 * Architecture
 ![ha image](https://drive.google.com/uc?export=view&id=1RkWgG-NnTobIGzHt_NE8PRjDRwxYynzH)
->Active NameNode 和 Standby NameNode：两台 NameNode 形成互备，一台处于 Active 状态，为主 NameNode，另外一台处于 Standby 状态，为备 NameNode，只有主 NameNode 才能对外提供读写服务。
 
->主备切换控制器 ZKFailoverController：ZKFailoverController 作为独立的进程运行，对 NameNode 的主备切换进行总体控制。ZKFailoverController 能及时检测到 NameNode 的健康状况，在主 NameNode 故障时借助 Zookeeper 实现自动的主备选举和切换，当然 NameNode 目前也支持不依赖于 Zookeeper 的手动主备切换。
+Active NameNode 和 Standby NameNode：两台 NameNode 形成互备，一台处于 Active 状态，为主 NameNode，另外一台处于 Standby 状态，为备 NameNode，只有主 NameNode 才能对外提供读写服务。
+
+主备切换控制器 ZKFailoverController：ZKFailoverController 作为独立的进程运行，对 NameNode 的主备切换进行总体控制。ZKFailoverController 能及时检测到 NameNode 的健康状况，在主 NameNode 故障时借助 Zookeeper 实现自动的主备选举和切换，当然 NameNode 目前也支持不依赖于 Zookeeper 的手动主备切换。
 
 >Zookeeper 集群：为主备切换控制器提供主备选举支持。
 
@@ -498,5 +499,5 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDI5Njc2MjY0XX0=
+eyJoaXN0b3J5IjpbMjk2MTMyMzA4LDQyOTY3NjI2NF19
 -->
