@@ -210,6 +210,8 @@ public class ALock {
 *问题*
 CLH队列锁, MCS锁, 遗留
 
+
+
 #### CAS(Compare and set)操作
 如果当前值和期望值相等, 则才赋值, 等于说是一种非阻塞的多线程赋值操作.但是会带来cache一致性流量问题, 导致多组cache在同步内存时,导致总线流量增加, cpu使用率增加, 线程竞争的问题.
 
@@ -279,7 +281,8 @@ MESI定律：在所有的脏缓存段（M状态）被回写后，任意缓存级
     * synchronized 与 reentrantlock 的区别
         * 后者更灵活, 可以跨方法解锁, 可以实现公平锁和非公平, 和中断获取锁
         * 原理不同, 前者基于java原生的互斥锁, 线程阻塞; 后者基于CAS
-        
+      
+* sy  
 * wait, notify, notifyAll
     * wait
     见代码注释" this method causees the current thread to place itself in the wait set for this object , thread become disabled for thread scheduling , and 直到被other threads notify, notifyAll this object or interrupt this thread.  ", 
@@ -889,7 +892,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1NTA1MjgwNywxNjk2NTA4NzUxLC0zOD
+eyJoaXN0b3J5IjpbMTk2MzE5OTg2OSwxNjk2NTA4NzUxLC0zOD
 Y4ODk0NTAsLTI4MTcwODM1MCw1MjQ0ODMzOTgsMjA3NDQwNTUw
 MSwtNTQzMzQyMTY2XX0=
 -->
