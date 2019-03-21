@@ -55,7 +55,7 @@ TCP与UDP应用：
 
 * 为什么客户端关闭连接前要等待2MSL时间？为什么需要time-wait
 1. 为了客户端最后一个ack 能确保到达服务器, 最后一个ack 有可能丢失, 则服务器会超时重传连接释放报文, 若客户端不等待, 则无法再次发送最后一个ack, 服务器无法关闭连接. 所以需要time-wait, 来重发最后一个ack. 
-2. 等待
+2. 等待延迟的网络报文完全失效, 若不等待time-wait, 客户端以同样的方式跟服务端建立连接之后, 服务端可能会接收到之前延时的报文. 
 
 
  A connection can be ["half-open"](https://en.wikipedia.org/wiki/TCP_half-open "TCP half-open"), in which case one side has terminated its end, but the other has not. The side that has terminated can no longer send any data into the connection, but the other side can. The terminating side should continue reading the data until the other side terminates as well.
@@ -123,6 +123,6 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTUwOTk1NTcsLTg4ODE2MTAyNSwtMT
-A0NTEyNzQ0MywtMzkxMjA3ODU5XX0=
+eyJoaXN0b3J5IjpbMTY3MTA3Mzg2OCwtODg4MTYxMDI1LC0xMD
+Q1MTI3NDQzLC0zOTEyMDc4NTldfQ==
 -->
