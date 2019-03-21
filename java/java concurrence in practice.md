@@ -84,7 +84,7 @@ synchronized, wait notify,  reentrantLock, 阻塞队列
 线程a占用锁的时候, 线程b此时不能获取, 线程b 不会阻塞 blocked, 会一直占用cpu, 跟互斥锁相反
 
 * 自适应自旋锁
-若上一次
+若历史自旋均成功获取锁, 则下一次可能自旋更长时间, 反之不然
 
 ```
 public class TASLock {
@@ -889,7 +889,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQxMDkwODUzLDE2OTY1MDg3NTEsLTM4Nj
-g4OTQ1MCwtMjgxNzA4MzUwLDUyNDQ4MzM5OCwyMDc0NDA1NTAx
-LC01NDMzNDIxNjZdfQ==
+eyJoaXN0b3J5IjpbMjA1NTA1MjgwNywxNjk2NTA4NzUxLC0zOD
+Y4ODk0NTAsLTI4MTcwODM1MCw1MjQ0ODMzOTgsMjA3NDQwNTUw
+MSwtNTQzMzQyMTY2XX0=
 -->
