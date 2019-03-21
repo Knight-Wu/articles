@@ -50,6 +50,8 @@ TCP与UDP应用：
 
 ![enter image description here](https://drive.google.com/uc?id=1Uqsp8zQ1CHq2bwsThdbCDFo38K_23koR)
 
+* 为什么需要四次挥手
+因为TCP 是全双工的协议, 双方都可以发送和接收, 
 
  A connection can be ["half-open"](https://en.wikipedia.org/wiki/TCP_half-open "TCP half-open"), in which case one side has terminated its end, but the other has not. The side that has terminated can no longer send any data into the connection, but the other side can. The terminating side should continue reading the data until the other side terminates as well.
 意思是从 FIN_WAIT_2 到 TIME_WAIT 状态是主动关闭方等待被动关闭方发送完所有消息
@@ -116,5 +118,5 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3Njk5MzgyNSwtMzkxMjA3ODU5XX0=
+eyJoaXN0b3J5IjpbLTEwNDUxMjc0NDMsLTM5MTIwNzg1OV19
 -->
