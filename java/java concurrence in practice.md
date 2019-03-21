@@ -573,7 +573,7 @@ public void demoMethod(){
 
 ```
 * 轻量级锁(Lightweight Locking)
-    当其他线程竞争偏向锁d的时候
+    竞争的线程会通过自旋的方式等待锁的释放, 若当前只有一个线程等待, 则为轻量级锁, z
     
 * 自旋锁(Adaptive Spinning)
     让线程进入循环等待锁, 这段时间仍然占用cpu时间, 也是为降低切换上下文带来的开销, 可以用参数-XX:+UseSpinning
@@ -901,7 +901,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTE4OTgzMjIsMTY5NjUwODc1MSwtMz
+eyJoaXN0b3J5IjpbLTExOTQ4MTk0NDMsMTY5NjUwODc1MSwtMz
 g2ODg5NDUwLC0yODE3MDgzNTAsNTI0NDgzMzk4LDIwNzQ0MDU1
 MDEsLTU0MzM0MjE2Nl19
 -->
