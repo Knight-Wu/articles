@@ -81,6 +81,8 @@ TCP与UDP应用：
 ### TCP 为什么是可靠的传输
 #### 滑动窗口
 * 发送窗口
+每接收到一个确认帧, 发送窗口才能前移一个, 若发送窗口所有帧都没有确认, 则需要等待确认才能前移
+* 接收窗口
 
 
 #### TCP_WAIT 过多是否异常
@@ -128,7 +130,7 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgzMDY2MTUyMywtMTczMzk3NDA3NSwxNj
+eyJoaXN0b3J5IjpbMTg2MDI5NTcxMSwtMTczMzk3NDA3NSwxNj
 cxMDczODY4LC04ODgxNjEwMjUsLTEwNDUxMjc0NDMsLTM5MTIw
 Nzg1OV19
 -->
