@@ -13,9 +13,25 @@ http://www.usenix.org/events/usenix10/tech/full_papers/Hunt.pdf
 
 #### 4.4 Client-Server Interactions
 读请求不一定能获取到最近更新的写请求的结果, 因为写的结果可能还没同步到其他server 的内存中, 若要保障读请求的实时性, zk 实现了sync, 
-使用FIFO l
+因为使用FIFO 来处理请求, 所以队列中排在 sync read 之前的write 结果均可见. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3ODc2NTE5MiwxNzI2NDkxMzUxLDExOD
-k1NDQxMDEsNzQ5NzMwMTkyLC0xODU3MjI4NjM3XX0=
+eyJoaXN0b3J5IjpbNzgyMDU5OCwxNzI2NDkxMzUxLDExODk1ND
+QxMDEsNzQ5NzMwMTkyLC0xODU3MjI4NjM3XX0=
 -->
