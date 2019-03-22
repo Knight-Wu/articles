@@ -5,11 +5,13 @@ http://www.usenix.org/events/usenix10/tech/full_papers/Hunt.pdf
 
 写是如何保证幂等的
 
+#### 4.2 Atomic Broadcast
 是强顺序一致性的, 广播数据的顺序和客户端写的顺序保持一致
 
-
+#### 4.3 Replicated Database
+跟hdfs 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzU3MzU3MzEzLDExODk1NDQxMDEsNzQ5Nz
-MwMTkyLC0xODU3MjI4NjM3XX0=
+eyJoaXN0b3J5IjpbLTQ4MTg1MTE1OCwxMTg5NTQ0MTAxLDc0OT
+czMDE5MiwtMTg1NzIyODYzN119
 -->
