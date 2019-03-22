@@ -33,11 +33,10 @@
 * yarn 用mr 作业收集container使用情况的原理和作用
 * 为啥nio 要用byte buffer, 懂了io 模型之后还要知道设计api 的时候, 各种api 的好处以及作用
 
-* 各种轻量级重量级锁如何转化
-* mysql 和kafka 的高可用
 * zk 的一致性如何保证
-* mysql 的事务如何实现
-* mysql 高性能的重要章节
+* mysql 和kafka 的高可用
+* 
+* mysql 高性能的重要章节mysql 的事务如何实现
 * 信号量锁的细节
 * B+树的深度
 * ConcurrentLinkedQueue , cas 如何实现的. 
@@ -90,11 +89,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyNTIxMTAwNCwtMTI3Nzc5MTI0MiwxMz
-U1NDQyMTE0LC0xODMzMzgzNTIwLC05MjEzNTg4NDQsLTQxMjk1
-NDg1NSwxNzMyMjQwNzkzLDg4NzMwMTcsLTk4NzQ0MTA4NCwxNj
-YyMTQ3MTkxLC0xMzQ2NTMwNTM3LC04NDg1NzQ0NDYsMjE2Nzg5
-Nzc4LC0xMTMxMTIyNjg1LDE0NjA4MTE5NTksMTQ3NzU2OTc2OC
-wtMTk4MDI3NjYyOSwxMTY3MTkwNzE5LC02OTg2NzMzMzQsMTY1
-NzIzNTA3MF19
+eyJoaXN0b3J5IjpbLTE4Njg4NzU4OTEsLTYyNTIxMTAwNCwtMT
+I3Nzc5MTI0MiwxMzU1NDQyMTE0LC0xODMzMzgzNTIwLC05MjEz
+NTg4NDQsLTQxMjk1NDg1NSwxNzMyMjQwNzkzLDg4NzMwMTcsLT
+k4NzQ0MTA4NCwxNjYyMTQ3MTkxLC0xMzQ2NTMwNTM3LC04NDg1
+NzQ0NDYsMjE2Nzg5Nzc4LC0xMTMxMTIyNjg1LDE0NjA4MTE5NT
+ksMTQ3NzU2OTc2OCwtMTk4MDI3NjYyOSwxMTY3MTkwNzE5LC02
+OTg2NzMzMzRdfQ==
 -->
