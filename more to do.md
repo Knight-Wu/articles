@@ -37,6 +37,7 @@
 * mysql 和kafka 的高可用
 * zk 的一致性如何保证
 * mysql 的事务如何实现
+* mysql 高性能的重要章节
 * 信号量锁的细节
 * B+树的深度
 * ConcurrentLinkedQueue , cas 如何实现的. 
@@ -89,11 +90,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNzc3OTEyNDIsMTM1NTQ0MjExNCwtMT
-gzMzM4MzUyMCwtOTIxMzU4ODQ0LC00MTI5NTQ4NTUsMTczMjI0
-MDc5Myw4ODczMDE3LC05ODc0NDEwODQsMTY2MjE0NzE5MSwtMT
-M0NjUzMDUzNywtODQ4NTc0NDQ2LDIxNjc4OTc3OCwtMTEzMTEy
-MjY4NSwxNDYwODExOTU5LDE0Nzc1Njk3NjgsLTE5ODAyNzY2Mj
-ksMTE2NzE5MDcxOSwtNjk4NjczMzM0LDE2NTcyMzUwNzAsLTg5
-NzY1NDA5NF19
+eyJoaXN0b3J5IjpbLTYyNTIxMTAwNCwtMTI3Nzc5MTI0MiwxMz
+U1NDQyMTE0LC0xODMzMzgzNTIwLC05MjEzNTg4NDQsLTQxMjk1
+NDg1NSwxNzMyMjQwNzkzLDg4NzMwMTcsLTk4NzQ0MTA4NCwxNj
+YyMTQ3MTkxLC0xMzQ2NTMwNTM3LC04NDg1NzQ0NDYsMjE2Nzg5
+Nzc4LC0xMTMxMTIyNjg1LDE0NjA4MTE5NTksMTQ3NzU2OTc2OC
+wtMTk4MDI3NjYyOSwxMTY3MTkwNzE5LC02OTg2NzMzMzQsMTY1
+NzIzNTA3MF19
 -->
