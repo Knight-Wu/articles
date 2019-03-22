@@ -697,8 +697,12 @@ spark.sql("xxxsql").explain()
 #### spark shell REPL
 * 检验是否开启了hive support
 https://stackoverflow.com/questions/45209771/how-to-enable-or-disable-hive-support-in-spark-shell-through-spark-property-spa
-spark-2.2
+
+
+> spark-2.2
 ```
+ctrl + l // 清空屏幕快捷键
+ctrl + u // 
 spark-shell --help 
 scala> sc.getConf.getAll.foreach(println) // 打印所有配置
 
@@ -788,6 +792,6 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5MDI3NTQ4NSwxOTM5NzU5NzExLDY4OT
+eyJoaXN0b3J5IjpbLTgxNTUyMTQzMywxOTM5NzU5NzExLDY4OT
 E2NzUyM119
 -->
