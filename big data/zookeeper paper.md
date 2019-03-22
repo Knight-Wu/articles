@@ -1,9 +1,10 @@
 http://www.usenix.org/events/usenix10/tech/full_papers/Hunt.pdf
-
+论文笔记, 注重的是思想
 ### 4. ZooKeeper Implementation
-
+写会触发一个数据广播的过程, 多台服务器的数据同步, 读的话
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTcyMjg2MzddfQ==
+eyJoaXN0b3J5IjpbLTIxNDE4MzQ0MzUsLTE4NTcyMjg2MzddfQ
+==
 -->
