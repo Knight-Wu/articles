@@ -702,7 +702,8 @@ https://stackoverflow.com/questions/45209771/how-to-enable-or-disable-hive-suppo
 > spark-2.2
 ```
 ctrl + l // 清空屏幕快捷键
-ctrl + u // 
+ctrl + u // 清空当前输入
+
 spark-shell --help 
 scala> sc.getConf.getAll.foreach(println) // 打印所有配置
 
@@ -792,6 +793,6 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNTUyMTQzMywxOTM5NzU5NzExLDY4OT
-E2NzUyM119
+eyJoaXN0b3J5IjpbMzcxNDE1MjUyLDE5Mzk3NTk3MTEsNjg5MT
+Y3NTIzXX0=
 -->
