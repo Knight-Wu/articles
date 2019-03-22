@@ -696,8 +696,11 @@ spark.sql("xxxsql").explain()
 6. 使用Spark WebUI进行查看
 
 #### spark sql 编写技巧
+* hive
+enableHiveSuppor
 * 小数操作
-string 类型加减乘除会自动转化为小数, 
+string 类型可以直接加减乘除, 结果自动转化为小数, 然后再用cast (col  to decimal(5,4)) 取精度, decimal(5,4) 代表总数位为5, 小数点后保留四位
+
 #### spark shell REPL
 * 检验是否开启了hive support
 https://stackoverflow.com/questions/45209771/how-to-enable-or-disable-hive-support-in-spark-shell-through-spark-property-spa
@@ -797,6 +800,6 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg3NTkyMzkxOCwzNzE0MTUyNTIsMTkzOT
-c1OTcxMSw2ODkxNjc1MjNdfQ==
+eyJoaXN0b3J5IjpbLTE1Mzc5NDI1MTIsMzcxNDE1MjUyLDE5Mz
+k3NTk3MTEsNjg5MTY3NTIzXX0=
 -->
