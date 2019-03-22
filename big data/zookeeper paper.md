@@ -16,7 +16,7 @@ http://www.usenix.org/events/usenix10/tech/full_papers/Hunt.pdf
 因为使用FIFO 来处理请求, 所以队列中排在 sync read 之前的write 结果均可见. 
 
 #### 5.1 Throughput
-选主时间小于200 ms, 挂掉少数台leader 不影响写入, 只会降低吞吐量. 
+若leader , 重新选主时间小于200 ms, 挂掉少数台leader 不影响写入, 只会降低吞吐量. 
 
 
 
@@ -33,7 +33,7 @@ http://www.usenix.org/events/usenix10/tech/full_papers/Hunt.pdf
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTEzMDg1Njk3LDc4MjA1OTgsMTcyNjQ5MT
-M1MSwxMTg5NTQ0MTAxLDc0OTczMDE5MiwtMTg1NzIyODYzN119
-
+eyJoaXN0b3J5IjpbLTg1NjMyMDIwMCw3ODIwNTk4LDE3MjY0OT
+EzNTEsMTE4OTU0NDEwMSw3NDk3MzAxOTIsLTE4NTcyMjg2Mzdd
+fQ==
 -->
