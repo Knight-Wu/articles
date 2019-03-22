@@ -695,10 +695,19 @@ spark.sql("xxxsql").explain()
 ```
 2. 使用Spark WebUI进行查看
 #### spark shell REPL
+spark-2.2
 ```
 spark-shell --help 
+scala> sc.getConf.getAll.foreach(println) // 打印所有配置
 
+scala> :type spark
+org.apache.spark.sql.SparkSession
+
+// Learn the current version of Spark in use
+scala> spark.version
+res0: String = 2.1.0-SNAPSHOT
 ```
+
 ---
 
 
@@ -772,6 +781,6 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjI1ODQ2MTYsMTkzOTc1OTcxMSw2ODkxNj
-c1MjNdfQ==
+eyJoaXN0b3J5IjpbLTM2MjUyNDI0OCwxOTM5NzU5NzExLDY4OT
+E2NzUyM119
 -->
