@@ -35,14 +35,14 @@
 
 * zk 的一致性如何保证
 * mysql 和kafka 的高可用
-* 
-* mysql 高性能的重要章节mysql 的事务如何实现
+* mysql 高性能的重要章节
+* mysql 的事务如何实现
 * 信号量锁的细节
 * B+树的深度
 * ConcurrentLinkedQueue , cas 如何实现的. 
 * tcp 不就是可靠地吗, 消息没收到的话, tcp 层面就会重传啊, 为什么应用层面要重传
 * tcp 是如何保证可靠的
-* 
+* 微服务框架
 ### DOING
 
 
@@ -89,7 +89,7 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzQyMTQwMTMsLTE4Njg4NzU4OTEsLT
+eyJoaXN0b3J5IjpbLTE1NTczOTk2MzMsLTE4Njg4NzU4OTEsLT
 YyNTIxMTAwNCwtMTI3Nzc5MTI0MiwxMzU1NDQyMTE0LC0xODMz
 MzgzNTIwLC05MjEzNTg4NDQsLTQxMjk1NDg1NSwxNzMyMjQwNz
 kzLDg4NzMwMTcsLTk4NzQ0MTA4NCwxNjYyMTQ3MTkxLC0xMzQ2
