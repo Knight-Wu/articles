@@ -695,6 +695,8 @@ spark.sql("xxxsql").explain()
 ```
 2. 使用Spark WebUI进行查看
 #### spark shell REPL
+* 检验是否开启了hive support
+https://stackoverflow.com/questions/45209771/how-to-enable-or-disable-hive-support-in-spark-shell-through-spark-property-spa
 spark-2.2
 ```
 spark-shell --help 
@@ -706,6 +708,11 @@ org.apache.spark.sql.SparkSession
 // Learn the current version of Spark in use
 scala> spark.version
 res0: String = 2.1.0-SNAPSHOT
+
+
+scala> :type sc
+org.apache.spark.SparkContext
+
 ```
 
 ---
@@ -781,6 +788,6 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2MjUyNDI0OCwxOTM5NzU5NzExLDY4OT
+eyJoaXN0b3J5IjpbMTM5MDI3NTQ4NSwxOTM5NzU5NzExLDY4OT
 E2NzUyM119
 -->
