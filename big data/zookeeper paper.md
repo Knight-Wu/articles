@@ -6,8 +6,10 @@ http://www.usenix.org/events/usenix10/tech/full_papers/Hunt.pdf
 写是如何保证幂等的
 
 是强顺序一致性的, 广播数据的顺序和客户端写的顺序保持一致
+
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4OTU0NDEwMSw3NDk3MzAxOTIsLTE4NT
-cyMjg2MzddfQ==
+eyJoaXN0b3J5IjpbMzU3MzU3MzEzLDExODk1NDQxMDEsNzQ5Nz
+MwMTkyLC0xODU3MjI4NjM3XX0=
 -->
