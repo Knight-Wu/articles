@@ -692,7 +692,7 @@ ${lib_path}"cms-sparkintegration.jar" "$@" \
 ```
 spark.sql("xxxsql").queryExecution()
 spark.sql("xxxsql").explain()
-```
+ec
 > 2. 使用Spark WebUI进行查看
 
 ---
@@ -765,5 +765,5 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjg5MTY3NTIzXX0=
+eyJoaXN0b3J5IjpbMTkzOTc1OTcxMSw2ODkxNjc1MjNdfQ==
 -->
