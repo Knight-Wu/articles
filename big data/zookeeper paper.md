@@ -9,9 +9,9 @@ http://www.usenix.org/events/usenix10/tech/full_papers/Hunt.pdf
 是强顺序一致性的, 广播数据的顺序和客户端写的顺序保持一致
 
 #### 4.3 Replicated Database
-跟hdfs 一样有一个周期性的checkpoint 功能, 将内存数据 dump 到磁盘上, 为了故障恢复, 但是这个snapshot 跟实际内存数据还是会有一些差别, 跟hdfs 一样, 恢复的时候会把这个snapshot 和最新的修改合并. 那么zux
+跟hdfs 一样有一个周期性的checkpoint 功能, 将内存数据 dump 到磁盘上, 为了故障恢复, 但是这个snapshot 跟实际内存数据还是会有一些差别, 跟hdfs 一样, 恢复的时候会把这个snapshot 和最新的修改合并. 那么最新的修改是怎么存储的, 单节点问题如何恢复. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTA0MjM2MzIsMTE4OTU0NDEwMSw3ND
-k3MzAxOTIsLTE4NTcyMjg2MzddfQ==
+eyJoaXN0b3J5IjpbMTcyNjQ5MTM1MSwxMTg5NTQ0MTAxLDc0OT
+czMDE5MiwtMTg1NzIyODYzN119
 -->
