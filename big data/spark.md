@@ -695,7 +695,10 @@ spark.sql("xxxsql").explain()
 ```
 2. 使用Spark WebUI进行查看
 #### spark shell REPL
+```
+spark-shell --help 
 
+```
 ---
 
 
@@ -769,6 +772,6 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTczMzAwMTQ3NSwxOTM5NzU5NzExLDY4OT
-E2NzUyM119
+eyJoaXN0b3J5IjpbMjI1ODQ2MTYsMTkzOTc1OTcxMSw2ODkxNj
+c1MjNdfQ==
 -->
