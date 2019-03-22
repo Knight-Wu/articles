@@ -688,12 +688,16 @@ ${lib_path}"cms-sparkintegration.jar" "$@" \
 
 
 * 查看spark sql执行计划
-1. 使用queryExecution方法查看逻辑执行计划，使用explain方法查看物理执行计划, 在spark-sql 命令行, 执行
+5. 使用queryExecution方法查看逻辑执行计划，使用explain方法查看物理执行计划, 在spark-sql 命令行, 执行
 ```
 spark.sql("xxxsql").queryExecution()
 spark.sql("xxxsql").explain()
 ```
-2. 使用Spark WebUI进行查看
+6. 使用Spark WebUI进行查看
+
+#### spark sql 编写技巧
+* 小数操作
+string 类型加减乘除会自动
 #### spark shell REPL
 * 检验是否开启了hive support
 https://stackoverflow.com/questions/45209771/how-to-enable-or-disable-hive-support-in-spark-shell-through-spark-property-spa
@@ -793,6 +797,6 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzcxNDE1MjUyLDE5Mzk3NTk3MTEsNjg5MT
-Y3NTIzXX0=
+eyJoaXN0b3J5IjpbMjA0OTA2MTI3OSwzNzE0MTUyNTIsMTkzOT
+c1OTcxMSw2ODkxNjc1MjNdfQ==
 -->
