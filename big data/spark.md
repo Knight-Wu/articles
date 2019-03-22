@@ -688,14 +688,17 @@ ${lib_path}"cms-sparkintegration.jar" "$@" \
 
 
 * 查看spark sql执行计划
-> 1. 使用queryExecution方法查看逻辑执行计划，使用explain方法查看物理执行计划, 在spark-sql 命令行, 执行
+1. 使用queryExecution方法查看逻辑执行计划，使用explain方法查看物理执行计划, 在spark-sql 命令行, 执行
 ```
 spark.sql("xxxsql").queryExecution()
 spark.sql("xxxsql").explain()
-ec
-> 2. 使用Spark WebUI进行查看
+```
+2. 使用Spark WebUI进行查看
+#### spark shell REPL
 
 ---
+
+
 
 #### spark 容错
 * spark.task.maxFailures 
@@ -719,6 +722,7 @@ Spark executor失败的最大上限，如果达到，整个Job失败
 https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org/docs/latest/running-on-yarn.html
 
 有关Spark容错机制的文章，有博客。 https://blog.cloudera.com/blog/2017/04/blacklisting-in-apache-spark/ 
+
 
 #### 疑问
 * 基准测试 benchmark
@@ -765,5 +769,6 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzOTc1OTcxMSw2ODkxNjc1MjNdfQ==
+eyJoaXN0b3J5IjpbLTczMzAwMTQ3NSwxOTM5NzU5NzExLDY4OT
+E2NzUyM119
 -->
