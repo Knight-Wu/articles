@@ -42,7 +42,7 @@
 * ConcurrentLinkedQueue , cas 如何实现的. 
 * tcp 不就是可靠地吗, 消息没收到的话, tcp 层面就会重传啊, 为什么应用层面要重传
 * tcp 是如何保证可靠的
-
+* 
 ### DOING
 
 
@@ -89,11 +89,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4Njg4NzU4OTEsLTYyNTIxMTAwNCwtMT
-I3Nzc5MTI0MiwxMzU1NDQyMTE0LC0xODMzMzgzNTIwLC05MjEz
-NTg4NDQsLTQxMjk1NDg1NSwxNzMyMjQwNzkzLDg4NzMwMTcsLT
-k4NzQ0MTA4NCwxNjYyMTQ3MTkxLC0xMzQ2NTMwNTM3LC04NDg1
-NzQ0NDYsMjE2Nzg5Nzc4LC0xMTMxMTIyNjg1LDE0NjA4MTE5NT
-ksMTQ3NzU2OTc2OCwtMTk4MDI3NjYyOSwxMTY3MTkwNzE5LC02
-OTg2NzMzMzRdfQ==
+eyJoaXN0b3J5IjpbLTE1MzQyMTQwMTMsLTE4Njg4NzU4OTEsLT
+YyNTIxMTAwNCwtMTI3Nzc5MTI0MiwxMzU1NDQyMTE0LC0xODMz
+MzgzNTIwLC05MjEzNTg4NDQsLTQxMjk1NDg1NSwxNzMyMjQwNz
+kzLDg4NzMwMTcsLTk4NzQ0MTA4NCwxNjYyMTQ3MTkxLC0xMzQ2
+NTMwNTM3LC04NDg1NzQ0NDYsMjE2Nzg5Nzc4LC0xMTMxMTIyNj
+g1LDE0NjA4MTE5NTksMTQ3NzU2OTc2OCwtMTk4MDI3NjYyOSwx
+MTY3MTkwNzE5XX0=
 -->
