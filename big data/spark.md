@@ -697,7 +697,7 @@ spark.sql("xxxsql").explain()
 
 #### spark sql 编写技巧
 * 小数操作
-string 类型加减乘除会自动
+string 类型加减乘除会自动转化为小数, 
 #### spark shell REPL
 * 检验是否开启了hive support
 https://stackoverflow.com/questions/45209771/how-to-enable-or-disable-hive-support-in-spark-shell-through-spark-property-spa
@@ -797,6 +797,6 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0OTA2MTI3OSwzNzE0MTUyNTIsMTkzOT
+eyJoaXN0b3J5IjpbMTg3NTkyMzkxOCwzNzE0MTUyNTIsMTkzOT
 c1OTcxMSw2ODkxNjc1MjNdfQ==
 -->
