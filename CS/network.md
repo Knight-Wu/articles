@@ -96,7 +96,6 @@ TCP与UDP应用：
 
 
 ### TCP 为什么是可靠的传输
-#### 滑动窗口
 
 #### 实现无差错传输的解决方案
 1. 停止-等待协议
@@ -163,8 +162,8 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ0MTIxNDI5NSwtMTc0NDQzMTI0LDY5OD
-M1NTkxOSwxMjQ5NDkzOTg1LDE3NTY1NjQ1OTMsLTE3MzM5NzQw
-NzUsMTY3MTA3Mzg2OCwtODg4MTYxMDI1LC0xMDQ1MTI3NDQzLC
-0zOTEyMDc4NTldfQ==
+eyJoaXN0b3J5IjpbMjIxODIxMjQsMTQ0MTIxNDI5NSwtMTc0ND
+QzMTI0LDY5ODM1NTkxOSwxMjQ5NDkzOTg1LDE3NTY1NjQ1OTMs
+LTE3MzM5NzQwNzUsMTY3MTA3Mzg2OCwtODg4MTYxMDI1LC0xMD
+Q1MTI3NDQzLC0zOTEyMDc4NTldfQ==
 -->
