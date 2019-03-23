@@ -111,7 +111,8 @@ TCP与UDP应用：
 
 #### 网络的拥塞控制
 * 慢开始算法
-拥塞窗口, 可能等于发送窗口, 但是也会受接收方建议的窗口大小的影响, 一开始先将拥塞窗口调的很小, 每收到一次完整的拥塞窗口确认之后, 则拥塞窗口翻倍. 呈指数增加,  当拥塞窗口到达一定阈值, 则采用拥塞避免算法, 线性增加. 当出现
+拥塞窗口, 可能等于发送窗口, 但是也会受接收方建议的窗口大小的影响, 一开始先将拥塞窗口调的很小, 每收到一次完整的拥塞窗口确认之后, 则拥塞窗口翻倍. 呈指数增加,  当拥塞窗口到达一定阈值 a, 则采用拥塞避免算法, 线性增加. 当出现超时重传等情况时, 就有可能出现了拥塞, 则马上将阈值a 调为一半, 拥塞窗口调为1
+思想为: 乘法减小, 加法增大, 
 
 #### TCP_WAIT 过多是否异常
 [2014-tcp-time-wait-state-linux](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
@@ -158,8 +159,7 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0ODg3OTk0Myw2OTgzNTU5MTksMTI0OT
-Q5Mzk4NSwxNzU2NTY0NTkzLC0xNzMzOTc0MDc1LDE2NzEwNzM4
-NjgsLTg4ODE2MTAyNSwtMTA0NTEyNzQ0MywtMzkxMjA3ODU5XX
-0=
+eyJoaXN0b3J5IjpbMzEyMDU2Nyw2OTgzNTU5MTksMTI0OTQ5Mz
+k4NSwxNzU2NTY0NTkzLC0xNzMzOTc0MDc1LDE2NzEwNzM4Njgs
+LTg4ODE2MTAyNSwtMTA0NTEyNzQ0MywtMzkxMjA3ODU5XX0=
 -->
