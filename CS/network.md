@@ -88,7 +88,8 @@ TCP与UDP应用：
 #### 实现无差错传输的解决方案
 1. 停止-等待协议
 每次发送一个分组就等待确认, 若确认收不到则超时重传, 但是信道利用率太低, 因为发送方的发送时间远小于两个分组的传输间隔(由发送时间, 往返时间, 发送确认时间组成)
-2.  自动重传请求协议ARQ（针对 出错重传）, 针对发送窗口和接收窗口的不同分为三种: 
+2.  连续ARQ 协议
+设定发送窗口和接收窗口, 
 
 
 #### TCP_WAIT 过多是否异常
@@ -136,7 +137,7 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0OTQ5Mzk4NSwxNzU2NTY0NTkzLC0xNz
-MzOTc0MDc1LDE2NzEwNzM4NjgsLTg4ODE2MTAyNSwtMTA0NTEy
-NzQ0MywtMzkxMjA3ODU5XX0=
+eyJoaXN0b3J5IjpbLTExNDY1Njc4OCwxMjQ5NDkzOTg1LDE3NT
+Y1NjQ1OTMsLTE3MzM5NzQwNzUsMTY3MTA3Mzg2OCwtODg4MTYx
+MDI1LC0xMDQ1MTI3NDQzLC0zOTEyMDc4NTldfQ==
 -->
