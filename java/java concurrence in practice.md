@@ -469,7 +469,7 @@ public boolean isInterrupted() {
 ``` 
 
 #### volatile 
-每个线程都有各自的高速缓存, 为了协调cpu 和主存的速度不一致而诞生的, 根据缓存一致性协议, 当用volatile 修饰的时候, 都会把值直接写回主存, 并使其他线程的对应缓存段失效, 
+每个线程都有各自的高速缓存, 为了协调cpu 和主存的速度不一致而诞生的, 根据缓存一致性协议, 当用volatile 修饰的时候, 都会把值直接写回主存, 并使其他线程的对应缓存段失效, 并读到最新的值.
 [https://www.cnblogs.com/xrq730/p/7048693.html](https://www.cnblogs.com/xrq730/p/7048693.html)
   * The value of this variable will never be cached thread-locally: all reads and writes will go straight to "main memory",and read and write is atomic,means that when write is begined,then read must wait write end,so **volatile i++** is not ensured 一致性.(volatile 的变量如果A 线程发生了写入, 则会保证写入主存, 并且让其他线程的缓存失效, 根据缓存一致性原理, 其他线程的缓存失效后会将主存里更新后的值写到缓存, 从而保证volatile的可见性)
   * Access to the variable acts as though it is enclosed in a synchronized block, synchronized on itself.
@@ -895,8 +895,7 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTA0NDU1MTEsMTYzMTAyNzUwNCwxMz
-E5NzA2ODQ2LDE2OTY1MDg3NTEsLTM4Njg4OTQ1MCwtMjgxNzA4
-MzUwLDUyNDQ4MzM5OCwyMDc0NDA1NTAxLC01NDMzNDIxNjZdfQ
-==
+eyJoaXN0b3J5IjpbMTA1MTMyNjkyLDE2MzEwMjc1MDQsMTMxOT
+cwNjg0NiwxNjk2NTA4NzUxLC0zODY4ODk0NTAsLTI4MTcwODM1
+MCw1MjQ0ODMzOTgsMjA3NDQwNTUwMSwtNTQzMzQyMTY2XX0=
 -->
