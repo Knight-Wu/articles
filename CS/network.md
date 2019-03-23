@@ -80,16 +80,17 @@ TCP与UDP应用：
 
 ### TCP 为什么是可靠的传输
 #### 滑动窗口
-* 发送窗口
-每接收到一个确认帧, 发送窗口才能前移一个, 若发送窗口所有帧都没有确认, 则需要等待确认才能前移
-* 接收窗口
-每接收一个发送帧, 接收窗口前移, 并发送ack, 在接收窗口之外的包一律丢弃
 
 #### 实现无差错传输的解决方案
 1. 停止-等待协议
 每次发送一个分组就等待确认, 若确认收不到则超时重传, 但是信道利用率太低, 因为发送方的发送时间远小于两个分组的传输间隔(由发送时间, 往返时间, 发送确认时间组成)
 2.  连续ARQ 协议
-设定发送窗口和接收窗口, 
+设定发送窗口和接收窗口, *
+发送窗口: 
+每接收到一个确认帧, 发送窗口才能前移一个, 若发送窗口所有帧都没有确认, 则需要等待确认才能前移
+ 接收窗口: 
+每接收一个发送帧, 接收窗口前移, 当接收到一整个发送窗口时才发送一个ack,  在接收窗口之外的包一律丢弃
+
 
 
 #### TCP_WAIT 过多是否异常
@@ -137,7 +138,7 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDY1Njc4OCwxMjQ5NDkzOTg1LDE3NT
-Y1NjQ1OTMsLTE3MzM5NzQwNzUsMTY3MTA3Mzg2OCwtODg4MTYx
-MDI1LC0xMDQ1MTI3NDQzLC0zOTEyMDc4NTldfQ==
+eyJoaXN0b3J5IjpbNjk4MzU1OTE5LDEyNDk0OTM5ODUsMTc1Nj
+U2NDU5MywtMTczMzk3NDA3NSwxNjcxMDczODY4LC04ODgxNjEw
+MjUsLTEwNDUxMjc0NDMsLTM5MTIwNzg1OV19
 -->
