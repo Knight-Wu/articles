@@ -104,10 +104,12 @@ TCP与UDP应用：
 2.  连续ARQ 协议
 设定发送窗口和接收窗口, *
 发送窗口: 
-每接收到一个确认帧, 发送窗口才能前移一个, 若发送窗口所有帧都没有确认, 则需要等待确认才能前移
+每接收到一个确认帧, 发送窗口才能前移一个, 若发送窗口所有帧都没有确认, 则需要等待确认才能前移,若超时没有确认, 则重发, 超时时间和报文的往返时间成正比, 
  接收窗口: 
 每接收一个发送帧, 接收窗口前移, 当接收到一整个发送窗口时才发送一个ack,  在接收窗口之外的包一律丢弃
 
+
+#### 网络的拥塞控制
 
 
 #### TCP_WAIT 过多是否异常
@@ -155,7 +157,7 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4MjcwNDYzOCw2OTgzNTU5MTksMTI0OT
+eyJoaXN0b3J5IjpbMTA2MzA3NzUzMCw2OTgzNTU5MTksMTI0OT
 Q5Mzk4NSwxNzU2NTY0NTkzLC0xNzMzOTc0MDc1LDE2NzEwNzM4
 NjgsLTg4ODE2MTAyNSwtMTA0NTEyNzQ0MywtMzkxMjA3ODU5XX
 0=
