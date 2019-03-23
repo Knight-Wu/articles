@@ -34,14 +34,12 @@
 * 为啥nio 要用byte buffer, 懂了io 模型之后还要知道设计api 的时候, 各种api 的好处以及作用
 
 * zk 的一致性如何保证
-* mysql 和kafka 的高可用
 * mysql 高性能的重要章节
 * mysql 的事务如何实现
 * B+树的深度
 * ConcurrentLinkedQueue ,blockingQueue 适用场景
 * AQS 细节
 * tcp 不就是可靠地吗, 消息没收到的话, tcp 层面就会重传啊, 为什么应用层面要重传
-* tcp 是如何保证可靠的
 * 微服务框架
 ### DOING
 
@@ -89,11 +87,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTUwNzQxOTcsMTQ0MDE4Njk1NCwyMD
-UzMjQ5NjA4LDEyMTU0OTI3NzYsLTE1NTczOTk2MzMsLTE4Njg4
-NzU4OTEsLTYyNTIxMTAwNCwtMTI3Nzc5MTI0MiwxMzU1NDQyMT
-E0LC0xODMzMzgzNTIwLC05MjEzNTg4NDQsLTQxMjk1NDg1NSwx
-NzMyMjQwNzkzLDg4NzMwMTcsLTk4NzQ0MTA4NCwxNjYyMTQ3MT
-kxLC0xMzQ2NTMwNTM3LC04NDg1NzQ0NDYsMjE2Nzg5Nzc4LC0x
-MTMxMTIyNjg1XX0=
+eyJoaXN0b3J5IjpbLTE3ODY2Njg2OTIsLTEyNTUwNzQxOTcsMT
+Q0MDE4Njk1NCwyMDUzMjQ5NjA4LDEyMTU0OTI3NzYsLTE1NTcz
+OTk2MzMsLTE4Njg4NzU4OTEsLTYyNTIxMTAwNCwtMTI3Nzc5MT
+I0MiwxMzU1NDQyMTE0LC0xODMzMzgzNTIwLC05MjEzNTg4NDQs
+LTQxMjk1NDg1NSwxNzMyMjQwNzkzLDg4NzMwMTcsLTk4NzQ0MT
+A4NCwxNjYyMTQ3MTkxLC0xMzQ2NTMwNTM3LC04NDg1NzQ0NDYs
+MjE2Nzg5Nzc4XX0=
 -->
