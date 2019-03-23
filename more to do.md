@@ -39,7 +39,7 @@
 * mysql 的事务如何实现
 * 信号量锁的细节
 * B+树的深度
-* ConcurrentLinkedQueue , cas 如何实现的. 和blockingQueue 适用场景
+* ConcurrentLinkedQueue ,blockingQueue 适用场景
 * tcp 不就是可靠地吗, 消息没收到的话, tcp 层面就会重传啊, 为什么应用层面要重传
 * tcp 是如何保证可靠的
 * 微服务框架
@@ -89,11 +89,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxNTQ5Mjc3NiwtMTU1NzM5OTYzMywtMT
-g2ODg3NTg5MSwtNjI1MjExMDA0LC0xMjc3NzkxMjQyLDEzNTU0
-NDIxMTQsLTE4MzMzODM1MjAsLTkyMTM1ODg0NCwtNDEyOTU0OD
-U1LDE3MzIyNDA3OTMsODg3MzAxNywtOTg3NDQxMDg0LDE2NjIx
-NDcxOTEsLTEzNDY1MzA1MzcsLTg0ODU3NDQ0NiwyMTY3ODk3Nz
-gsLTExMzExMjI2ODUsMTQ2MDgxMTk1OSwxNDc3NTY5NzY4LC0x
-OTgwMjc2NjI5XX0=
+eyJoaXN0b3J5IjpbMjA1MzI0OTYwOCwxMjE1NDkyNzc2LC0xNT
+U3Mzk5NjMzLC0xODY4ODc1ODkxLC02MjUyMTEwMDQsLTEyNzc3
+OTEyNDIsMTM1NTQ0MjExNCwtMTgzMzM4MzUyMCwtOTIxMzU4OD
+Q0LC00MTI5NTQ4NTUsMTczMjI0MDc5Myw4ODczMDE3LC05ODc0
+NDEwODQsMTY2MjE0NzE5MSwtMTM0NjUzMDUzNywtODQ4NTc0ND
+Q2LDIxNjc4OTc3OCwtMTEzMTEyMjY4NSwxNDYwODExOTU5LDE0
+Nzc1Njk3NjhdfQ==
 -->
