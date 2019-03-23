@@ -83,7 +83,10 @@ TCP与UDP应用：
 确认号: 期望收到的下一个字节的序号, 若为N , 则表示到N-1 的所有序号的数据都已收到
 
 > 控制位
-紧急URG: 
+
+紧急URG: 表示该报文需要马上接收到, 把紧急数据放到报文前部, 例如ctrl+c 的数据需要马上传输
+确认ACK: 当ACK=1, queren
+
 
 ### TCP 为什么是可靠的传输
 #### 滑动窗口
@@ -145,8 +148,8 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTMxNjc5MDcsNjk4MzU1OTE5LDEyND
-k0OTM5ODUsMTc1NjU2NDU5MywtMTczMzk3NDA3NSwxNjcxMDcz
-ODY4LC04ODgxNjEwMjUsLTEwNDUxMjc0NDMsLTM5MTIwNzg1OV
-19
+eyJoaXN0b3J5IjpbMzUwMTAxNDYyLDY5ODM1NTkxOSwxMjQ5ND
+kzOTg1LDE3NTY1NjQ1OTMsLTE3MzM5NzQwNzUsMTY3MTA3Mzg2
+OCwtODg4MTYxMDI1LC0xMDQ1MTI3NDQzLC0zOTEyMDc4NTldfQ
+==
 -->
