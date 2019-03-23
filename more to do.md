@@ -39,7 +39,6 @@
 * B+树的深度
 * ConcurrentLinkedQueue ,blockingQueue 适用场景
 * AQS 细节
-* tcp 不就是可靠地吗, 消息没收到的话, tcp 层面就会重传啊, 为什么应用层面要重传
 * 微服务框架
 ### DOING
 
@@ -87,11 +86,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODY2Njg2OTIsLTEyNTUwNzQxOTcsMT
-Q0MDE4Njk1NCwyMDUzMjQ5NjA4LDEyMTU0OTI3NzYsLTE1NTcz
-OTk2MzMsLTE4Njg4NzU4OTEsLTYyNTIxMTAwNCwtMTI3Nzc5MT
-I0MiwxMzU1NDQyMTE0LC0xODMzMzgzNTIwLC05MjEzNTg4NDQs
-LTQxMjk1NDg1NSwxNzMyMjQwNzkzLDg4NzMwMTcsLTk4NzQ0MT
-A4NCwxNjYyMTQ3MTkxLC0xMzQ2NTMwNTM3LC04NDg1NzQ0NDYs
-MjE2Nzg5Nzc4XX0=
+eyJoaXN0b3J5IjpbLTQ4OTAxMTkyLC0xNzg2NjY4NjkyLC0xMj
+U1MDc0MTk3LDE0NDAxODY5NTQsMjA1MzI0OTYwOCwxMjE1NDky
+Nzc2LC0xNTU3Mzk5NjMzLC0xODY4ODc1ODkxLC02MjUyMTEwMD
+QsLTEyNzc3OTEyNDIsMTM1NTQ0MjExNCwtMTgzMzM4MzUyMCwt
+OTIxMzU4ODQ0LC00MTI5NTQ4NTUsMTczMjI0MDc5Myw4ODczMD
+E3LC05ODc0NDEwODQsMTY2MjE0NzE5MSwtMTM0NjUzMDUzNywt
+ODQ4NTc0NDQ2XX0=
 -->
