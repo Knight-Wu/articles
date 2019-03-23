@@ -37,7 +37,6 @@
 * mysql 和kafka 的高可用
 * mysql 高性能的重要章节
 * mysql 的事务如何实现
-* 信号量锁的细节
 * B+树的深度
 * ConcurrentLinkedQueue ,blockingQueue 适用场景
 * tcp 不就是可靠地吗, 消息没收到的话, tcp 层面就会重传啊, 为什么应用层面要重传
@@ -89,11 +88,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1MzI0OTYwOCwxMjE1NDkyNzc2LC0xNT
-U3Mzk5NjMzLC0xODY4ODc1ODkxLC02MjUyMTEwMDQsLTEyNzc3
-OTEyNDIsMTM1NTQ0MjExNCwtMTgzMzM4MzUyMCwtOTIxMzU4OD
-Q0LC00MTI5NTQ4NTUsMTczMjI0MDc5Myw4ODczMDE3LC05ODc0
-NDEwODQsMTY2MjE0NzE5MSwtMTM0NjUzMDUzNywtODQ4NTc0ND
-Q2LDIxNjc4OTc3OCwtMTEzMTEyMjY4NSwxNDYwODExOTU5LDE0
-Nzc1Njk3NjhdfQ==
+eyJoaXN0b3J5IjpbMTQ0MDE4Njk1NCwyMDUzMjQ5NjA4LDEyMT
+U0OTI3NzYsLTE1NTczOTk2MzMsLTE4Njg4NzU4OTEsLTYyNTIx
+MTAwNCwtMTI3Nzc5MTI0MiwxMzU1NDQyMTE0LC0xODMzMzgzNT
+IwLC05MjEzNTg4NDQsLTQxMjk1NDg1NSwxNzMyMjQwNzkzLDg4
+NzMwMTcsLTk4NzQ0MTA4NCwxNjYyMTQ3MTkxLC0xMzQ2NTMwNT
+M3LC04NDg1NzQ0NDYsMjE2Nzg5Nzc4LC0xMTMxMTIyNjg1LDE0
+NjA4MTE5NTldfQ==
 -->
