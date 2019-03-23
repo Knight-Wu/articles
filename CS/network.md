@@ -78,6 +78,10 @@ TCP与UDP应用：
 
 意思是作为TCP 连接的server 端, 只需要消耗内存, 因为可以多个连接都连到一个端口, 但是client 端却需要新建一个随机端口, 并在连接时一直持有, 若应用没有合理的释放资源, 会导致端口不够用.
 
+#### TCP 报文首部
+序号: 发送的报文中第一个字节的序号
+确认号: 
+
 ### TCP 为什么是可靠的传输
 #### 滑动窗口
 
@@ -138,7 +142,8 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk4MzU1OTE5LDEyNDk0OTM5ODUsMTc1Nj
-U2NDU5MywtMTczMzk3NDA3NSwxNjcxMDczODY4LC04ODgxNjEw
-MjUsLTEwNDUxMjc0NDMsLTM5MTIwNzg1OV19
+eyJoaXN0b3J5IjpbLTE1NDI1NDQxNDksNjk4MzU1OTE5LDEyND
+k0OTM5ODUsMTc1NjU2NDU5MywtMTczMzk3NDA3NSwxNjcxMDcz
+ODY4LC04ODgxNjEwMjUsLTEwNDUxMjc0NDMsLTM5MTIwNzg1OV
+19
 -->
