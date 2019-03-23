@@ -80,7 +80,10 @@ TCP与UDP应用：
 
 #### TCP 报文首部
 序号: 发送的报文中第一个字节的序号
-确认号: 
+确认号: 期望收到的下一个字节的序号, 若为N , 则表示到N-1 的所有序号的数据都已收到
+
+> 控制位
+紧急URG: 
 
 ### TCP 为什么是可靠的传输
 #### 滑动窗口
@@ -142,7 +145,7 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NDI1NDQxNDksNjk4MzU1OTE5LDEyND
+eyJoaXN0b3J5IjpbLTIxMTMxNjc5MDcsNjk4MzU1OTE5LDEyND
 k0OTM5ODUsMTc1NjU2NDU5MywtMTczMzk3NDA3NSwxNjcxMDcz
 ODY4LC04ODgxNjEwMjUsLTEwNDUxMjc0NDMsLTM5MTIwNzg1OV
 19
