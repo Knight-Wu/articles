@@ -85,7 +85,9 @@ TCP与UDP应用：
 > 控制位
 
 紧急URG: 表示该报文需要马上接收到, 把紧急数据放到报文前部, 例如ctrl+c 的数据需要马上传输
-确认ACK: 当ACK=1, queren
+确认ACK: 当ACK=1, 确认号才有效
+推送PSH: 表示需要将数据立马上传到上层, 而不是等待缓存满了再发送
+复位RST(reset): 
 
 
 ### TCP 为什么是可靠的传输
@@ -148,8 +150,8 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzUwMTAxNDYyLDY5ODM1NTkxOSwxMjQ5ND
-kzOTg1LDE3NTY1NjQ1OTMsLTE3MzM5NzQwNzUsMTY3MTA3Mzg2
-OCwtODg4MTYxMDI1LC0xMDQ1MTI3NDQzLC0zOTEyMDc4NTldfQ
-==
+eyJoaXN0b3J5IjpbMTExMjQ3NDEwNyw2OTgzNTU5MTksMTI0OT
+Q5Mzk4NSwxNzU2NTY0NTkzLC0xNzMzOTc0MDc1LDE2NzEwNzM4
+NjgsLTg4ODE2MTAyNSwtMTA0NTEyNzQ0MywtMzkxMjA3ODU5XX
+0=
 -->
