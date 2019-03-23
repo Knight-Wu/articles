@@ -115,7 +115,7 @@ TCP与UDP应用：
 思想为: 乘法减小, 加法增大, 拥塞的时候立马降低, 再缓慢恢复. 
 
 * 快重传和快恢复
-如果是发送超时重传的话, 使用的是慢开始和拥塞避免算法; 但是如果是接收方没有接收到中间的几个分组, 就立马向发送方发送重复确认, 然后发送方立马ch
+如果是发送超时重传的话, 使用的是慢开始和拥塞避免算法; 但是如果是接收方没有接收到中间的几个分组, 但是接收到了后面的几个新分组, 就立马向发送方发送重复确认(不需要等待自己发送的时候再捎带), 然后发送方立马重传没有接收的分组, 这叫快重传, 
 
 #### TCP_WAIT 过多是否异常
 [2014-tcp-time-wait-state-linux](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
@@ -162,8 +162,8 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjE4MzU2NzEsLTE3NDQ0MzEyNCw2OT
-gzNTU5MTksMTI0OTQ5Mzk4NSwxNzU2NTY0NTkzLC0xNzMzOTc0
-MDc1LDE2NzEwNzM4NjgsLTg4ODE2MTAyNSwtMTA0NTEyNzQ0My
-wtMzkxMjA3ODU5XX0=
+eyJoaXN0b3J5IjpbLTIyODEyMzUxNiwtMTc0NDQzMTI0LDY5OD
+M1NTkxOSwxMjQ5NDkzOTg1LDE3NTY1NjQ1OTMsLTE3MzM5NzQw
+NzUsMTY3MTA3Mzg2OCwtODg4MTYxMDI1LC0xMDQ1MTI3NDQzLC
+0zOTEyMDc4NTldfQ==
 -->
