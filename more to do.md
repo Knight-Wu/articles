@@ -38,7 +38,6 @@
 * 为什么性别那种区分度低的列不适合建索引
 * ConcurrentLinkedQueue ,blockingQueue 适用场景
 * 负载均衡的原理和几种方式, 具体的算法, 如何是最优的
-* 分布式一致性hash 
 * 支持事务的消息框架
 * 微服务框架
 ### DOING
@@ -87,11 +86,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDY0NTM3OTUsMTAwNjgwOTI4MCwtND
-A0MjYxMDE3LDQyOTI2ODQxNiwtNDg5MDExOTIsLTE3ODY2Njg2
-OTIsLTEyNTUwNzQxOTcsMTQ0MDE4Njk1NCwyMDUzMjQ5NjA4LD
-EyMTU0OTI3NzYsLTE1NTczOTk2MzMsLTE4Njg4NzU4OTEsLTYy
-NTIxMTAwNCwtMTI3Nzc5MTI0MiwxMzU1NDQyMTE0LC0xODMzMz
-gzNTIwLC05MjEzNTg4NDQsLTQxMjk1NDg1NSwxNzMyMjQwNzkz
-LDg4NzMwMTddfQ==
+eyJoaXN0b3J5IjpbLTEwNjk5MDg3NTgsLTE3MDY0NTM3OTUsMT
+AwNjgwOTI4MCwtNDA0MjYxMDE3LDQyOTI2ODQxNiwtNDg5MDEx
+OTIsLTE3ODY2Njg2OTIsLTEyNTUwNzQxOTcsMTQ0MDE4Njk1NC
+wyMDUzMjQ5NjA4LDEyMTU0OTI3NzYsLTE1NTczOTk2MzMsLTE4
+Njg4NzU4OTEsLTYyNTIxMTAwNCwtMTI3Nzc5MTI0MiwxMzU1ND
+QyMTE0LC0xODMzMzgzNTIwLC05MjEzNTg4NDQsLTQxMjk1NDg1
+NSwxNzMyMjQwNzkzXX0=
 -->
