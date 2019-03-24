@@ -34,8 +34,8 @@
 * 为啥nio 要用byte buffer, 懂了io 模型之后还要知道设计api 的时候, 各种api 的好处以及作用
 
 * zk 的一致性如何保证
-* mysql 高性能的重要章节
 * mysql 的事务如何实现
+* 为什么性别那种区分度低的列不适合建索引
 * ConcurrentLinkedQueue ,blockingQueue 适用场景
 * 负载均衡的原理和几种方式, 具体的算法, 如何是最优的
 * 分布式一致性hash 
@@ -87,11 +87,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAwNjgwOTI4MCwtNDA0MjYxMDE3LDQyOT
-I2ODQxNiwtNDg5MDExOTIsLTE3ODY2Njg2OTIsLTEyNTUwNzQx
-OTcsMTQ0MDE4Njk1NCwyMDUzMjQ5NjA4LDEyMTU0OTI3NzYsLT
-E1NTczOTk2MzMsLTE4Njg4NzU4OTEsLTYyNTIxMTAwNCwtMTI3
-Nzc5MTI0MiwxMzU1NDQyMTE0LC0xODMzMzgzNTIwLC05MjEzNT
-g4NDQsLTQxMjk1NDg1NSwxNzMyMjQwNzkzLDg4NzMwMTcsLTk4
-NzQ0MTA4NF19
+eyJoaXN0b3J5IjpbLTE3MDY0NTM3OTUsMTAwNjgwOTI4MCwtND
+A0MjYxMDE3LDQyOTI2ODQxNiwtNDg5MDExOTIsLTE3ODY2Njg2
+OTIsLTEyNTUwNzQxOTcsMTQ0MDE4Njk1NCwyMDUzMjQ5NjA4LD
+EyMTU0OTI3NzYsLTE1NTczOTk2MzMsLTE4Njg4NzU4OTEsLTYy
+NTIxMTAwNCwtMTI3Nzc5MTI0MiwxMzU1NDQyMTE0LC0xODMzMz
+gzNTIwLC05MjEzNTg4NDQsLTQxMjk1NDg1NSwxNzMyMjQwNzkz
+LDg4NzMwMTddfQ==
 -->
