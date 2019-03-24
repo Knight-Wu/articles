@@ -36,7 +36,6 @@
 * zk 的一致性如何保证
 * mysql 高性能的重要章节
 * mysql 的事务如何实现
-* B+树的深度
 * ConcurrentLinkedQueue ,blockingQueue 适用场景
 * 负载均衡的原理和几种方式, 具体的算法, 如何是最优的
 * 支持事务的消息框架
@@ -87,11 +86,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDI5MjY4NDE2LC00ODkwMTE5MiwtMTc4Nj
-Y2ODY5MiwtMTI1NTA3NDE5NywxNDQwMTg2OTU0LDIwNTMyNDk2
-MDgsMTIxNTQ5Mjc3NiwtMTU1NzM5OTYzMywtMTg2ODg3NTg5MS
-wtNjI1MjExMDA0LC0xMjc3NzkxMjQyLDEzNTU0NDIxMTQsLTE4
-MzMzODM1MjAsLTkyMTM1ODg0NCwtNDEyOTU0ODU1LDE3MzIyND
-A3OTMsODg3MzAxNywtOTg3NDQxMDg0LDE2NjIxNDcxOTEsLTEz
-NDY1MzA1MzddfQ==
+eyJoaXN0b3J5IjpbLTQwNDI2MTAxNyw0MjkyNjg0MTYsLTQ4OT
+AxMTkyLC0xNzg2NjY4NjkyLC0xMjU1MDc0MTk3LDE0NDAxODY5
+NTQsMjA1MzI0OTYwOCwxMjE1NDkyNzc2LC0xNTU3Mzk5NjMzLC
+0xODY4ODc1ODkxLC02MjUyMTEwMDQsLTEyNzc3OTEyNDIsMTM1
+NTQ0MjExNCwtMTgzMzM4MzUyMCwtOTIxMzU4ODQ0LC00MTI5NT
+Q4NTUsMTczMjI0MDc5Myw4ODczMDE3LC05ODc0NDEwODQsMTY2
+MjE0NzE5MV19
 -->
