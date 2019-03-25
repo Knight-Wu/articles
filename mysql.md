@@ -152,7 +152,8 @@ where a="A" and b in ('b','B') and c = 'C' , (a,b,c) 的索引仍然有效.
 * 使用索引来排序
 最好设计索引的时候覆盖查询和排序两种任务, 只有当索引列的顺序和order by 的列顺序一致时, 且所有列的排序方向也跟索引是一致时(索引是正序, order by 也是正序), 具体参考"高性能 mysql 5.3.7"
 
-
+* 为什么选择性低的列不适合做索引
+因为除非是ju
 
 
 
@@ -288,11 +289,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwMTc5MzI3MywxMzUwMjQyNTE0LC0xMz
-I5MTAzMTcsNDU5MjE1MTcwLC0xOTE3NTc4NjYsLTE4MDUzODkz
-MjUsLTg1MTU4NjUwMSwtMzQwMzUxNTU3LC0xMTQxOTk1NzQ1LD
-E2MDI4NTkwNDUsMTIxODQxMzI3NSwtNDQ5OTM4MDg0LC0yNzY3
-ODU5NjUsMTY0Njg3NDkyMCw1MTQzMDkzMTksMjQxMzY2NTc0LD
-E2MDM0MTMyODAsLTc1NDg1Mzg5NywxODQ3ODQ0NDg3LC0xNjg2
-MTIxNTU0XX0=
+eyJoaXN0b3J5IjpbMjA0NDYxODc3OSwtNTAxNzkzMjczLDEzNT
+AyNDI1MTQsLTEzMjkxMDMxNyw0NTkyMTUxNzAsLTE5MTc1Nzg2
+NiwtMTgwNTM4OTMyNSwtODUxNTg2NTAxLC0zNDAzNTE1NTcsLT
+ExNDE5OTU3NDUsMTYwMjg1OTA0NSwxMjE4NDEzMjc1LC00NDk5
+MzgwODQsLTI3Njc4NTk2NSwxNjQ2ODc0OTIwLDUxNDMwOTMxOS
+wyNDEzNjY1NzQsMTYwMzQxMzI4MCwtNzU0ODUzODk3LDE4NDc4
+NDQ0ODddfQ==
 -->
