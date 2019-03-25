@@ -85,6 +85,8 @@ Each page within a space is assigned a 32-bit integer page number, often called 
 * leaf node size=page size=16KB , 可以在初始化mysql instance 的时候进行配置
 * 所有数据都由叶子节点保管
 * Because B+Trees store the indexed columns in order, they’re useful for searching for ranges of data.(叶子节点的记录持有一个指向下一条记录的指针, 保存着下条记录在这个page 的offset; 记录间物理上并不是顺序排列的)
+* primary key value 是存在非叶子节点的, 如果过长, 非叶子节点的记录数就会减少, 索引的结构会更大. 
+
 
 > how to search quickly between records in b+ tree node
 https://blog.jcole.us/2013/01/14/efficiently-traversing-innodb-btrees-with-the-page-directory/
@@ -96,12 +98,6 @@ https://blog.jcole.us/2013/01/14/efficiently-traversing-innodb-btrees-with-the-p
 1.  Start at the root page of the index.
 2.  Binary search using the page directory (repeatedly splitting the directory in half based on whether the current record is greater than or less than the search key) until a record is found via the page directory with the highest key that does not exceed the search key.
 3.  Linear search from that record until finding an individual record with the highest key that does not exceed the search key. If the current page is a leaf page, return the record. If the current page is a non-leaf page, load the child page this record points to, and return to step 2.
-
-* primary key value 是存在非叶子节点的, 如果过长, 非叶子节点的记录数就会减少, 索引的结构会更大. 
-
-
-
-
 
 
 一个实际的数据例子阐述innodb 索引: 
@@ -292,7 +288,7 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU5OTM2MjA4NywxMzUwMjQyNTE0LC0xMz
+eyJoaXN0b3J5IjpbLTUwMTc5MzI3MywxMzUwMjQyNTE0LC0xMz
 I5MTAzMTcsNDU5MjE1MTcwLC0xOTE3NTc4NjYsLTE4MDUzODkz
 MjUsLTg1MTU4NjUwMSwtMzQwMzUxNTU3LC0xMTQxOTk1NzQ1LD
 E2MDI4NTkwNDUsMTIxODQxMzI3NSwtNDQ5OTM4MDg0LC0yNzY3
