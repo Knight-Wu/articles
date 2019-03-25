@@ -35,7 +35,6 @@
 
 * zk 的一致性如何保证
 * mysql 的事务如何实现
-* 为什么区分度低的列不适合建索引
 * ConcurrentLinkedQueue ,blockingQueue 适用场景
 * 支持事务的消息框架
 * 微服务框架
@@ -85,11 +84,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM5NTE1ODA5MiwtMTA2OTkwODc1OCwtMT
-cwNjQ1Mzc5NSwxMDA2ODA5MjgwLC00MDQyNjEwMTcsNDI5MjY4
-NDE2LC00ODkwMTE5MiwtMTc4NjY2ODY5MiwtMTI1NTA3NDE5Ny
-wxNDQwMTg2OTU0LDIwNTMyNDk2MDgsMTIxNTQ5Mjc3NiwtMTU1
-NzM5OTYzMywtMTg2ODg3NTg5MSwtNjI1MjExMDA0LC0xMjc3Nz
-kxMjQyLDEzNTU0NDIxMTQsLTE4MzMzODM1MjAsLTkyMTM1ODg0
-NCwtNDEyOTU0ODU1XX0=
+eyJoaXN0b3J5IjpbLTE3ODA3NTU5MywtMzk1MTU4MDkyLC0xMD
+Y5OTA4NzU4LC0xNzA2NDUzNzk1LDEwMDY4MDkyODAsLTQwNDI2
+MTAxNyw0MjkyNjg0MTYsLTQ4OTAxMTkyLC0xNzg2NjY4NjkyLC
+0xMjU1MDc0MTk3LDE0NDAxODY5NTQsMjA1MzI0OTYwOCwxMjE1
+NDkyNzc2LC0xNTU3Mzk5NjMzLC0xODY4ODc1ODkxLC02MjUyMT
+EwMDQsLTEyNzc3OTEyNDIsMTM1NTQ0MjExNCwtMTgzMzM4MzUy
+MCwtOTIxMzU4ODQ0XX0=
 -->
