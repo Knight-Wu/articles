@@ -130,7 +130,7 @@ class Foo {
   return helper;
 }
 ```
- * 若不加volatile,各自线程有自己的缓存,可能导致数据不一致,没初始化完成就被使用的情况.
+ * 要加volatile, 因为第一个判断是否为空在synchronize的外面, 若不加volatile,各自线程有自己的缓存,可能导致数据不一致,没初始化完成就被使用的情况.
  * 第一个判断是否为空,是为了提升性能,如果不加,每次多线程调用的时候都会有可能产生线程间的等待,降低性能.
  * 第二个判断是否为空,是因为一开始instance为空,有多个线程会进入synchronize块,但是只有一个线程会完成instance的实例化,当这个线程完成实例化后,其他线程不能在对instance进行初始化,所以需要加第二个判断非空.
  * 较好的方法(lazy initialization)
@@ -301,6 +301,6 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2NTc3MTQyLC0xMTc5MzEyMDg0LC0yMD
-EzOTI3NDM5XX0=
+eyJoaXN0b3J5IjpbLTMxMjgwNjUwMywtMTE3OTMxMjA4NCwtMj
+AxMzkyNzQzOV19
 -->
