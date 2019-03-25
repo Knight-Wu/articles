@@ -35,7 +35,7 @@ Vector是线程安全的, 进而效率比较低, 在方法上加了对象锁
 只能有一个null的key, 可以有多个null的value; hashMap的不是有序的, 
 
 * LinkedHashMap是有序的,可以按照元素插入和访问的顺序排序, LinkedHashMap 的访问序可以方便地用来实现一个 LRU(least and recently used) Cache。在访问序模式下，尾部节点是最近一次被访问的节点 (least-recently)，而头部节点则是最远访问 (most-recently) 的节点。因而在决定失效缓存的时候，将头部节点移除即可。
-* TreeMap基于Compartor的排序.
+* TreeMap基于Compartor的排序. 红黑树
 
 
 
@@ -301,6 +301,6 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzkzMTIwODQsLTIwMTM5Mjc0MzldfQ
-==
+eyJoaXN0b3J5IjpbLTk2NTc3MTQyLC0xMTc5MzEyMDg0LC0yMD
+EzOTI3NDM5XX0=
 -->
