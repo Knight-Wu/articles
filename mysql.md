@@ -85,8 +85,10 @@ Each page within a space is assigned a 32-bit integer page number, often called 
 * leaf node size=page size=16KB , 可以在初始化mysql instance 的时候进行配置
 * 所有数据都由叶子节点保管
 * Because B+Trees store the indexed columns in order, they’re useful for searching for ranges of data.(叶子节点的记录持有一个指向下一条记录的指针, 保存着下条记录在这个page 的offset; 记录间物理上并不是顺序排列的)
+
 > how to search quickly between records in b+ tree node
 https://blog.jcole.us/2013/01/14/efficiently-traversing-innodb-btrees-with-the-page-directory/
+
 因为record 是以链表的形式, 逻辑连接, 遍历列表是很慢的,  use page directory(可以理解是用一个数组来保存一个范围内key, 二分查找这个数组, 找到满足要求的key 再去线性查找. 
 ![enter image description here](https://drive.google.com/uc?id=1DRE4r96br10emG6XHAZ_5wkQ5xf2e3yR)
 
@@ -282,24 +284,19 @@ https://blog.csdn.net/puhaiyang/article/details/72284702
 #### 资料
 https://blog.jcole.us/innodb/
 relational database index design and the optimizers
-#### 问题资料
-https://blog.jcole.us/innodb/
-relational database index design and the optimizers
+
 #### 问题
-* innodb 的文件结构
-* mysql 语句执行的大致流程
-* mysql 的B+ 树索引如何跟磁盘页对齐, 如何配置
 * 全文索引
 * mysql 把所有字段都建上index 有什么不好的地方
 维护索引的代价很大, 占用空间, 影响插入和更新和删除?
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1MDI0MjUxNCwtMTMyOTEwMzE3LDQ1OT
-IxNTE3MCwtMTkxNzU3ODY2LC0xODA1Mzg5MzI1LC04NTE1ODY1
-MDEsLTM0MDM1MTU1NywtMTE0MTk5NTc0NSwxNjAyODU5MDQ1LD
-EyMTg0MTMyNzUsLTQ0OTkzODA4NCwtMjc2Nzg1OTY1LDE2NDY4
-NzQ5MjAsNTE0MzA5MzE5LDI0MTM2NjU3NCwxNjAzNDEzMjgwLC
-03NTQ4NTM4OTcsMTg0Nzg0NDQ4NywtMTY4NjEyMTU1NCwtMTAw
-Nzc4OTQxMl19
+eyJoaXN0b3J5IjpbMTU5OTM2MjA4NywxMzUwMjQyNTE0LC0xMz
+I5MTAzMTcsNDU5MjE1MTcwLC0xOTE3NTc4NjYsLTE4MDUzODkz
+MjUsLTg1MTU4NjUwMSwtMzQwMzUxNTU3LC0xMTQxOTk1NzQ1LD
+E2MDI4NTkwNDUsMTIxODQxMzI3NSwtNDQ5OTM4MDg0LC0yNzY3
+ODU5NjUsMTY0Njg3NDkyMCw1MTQzMDkzMTksMjQxMzY2NTc0LD
+E2MDM0MTMyODAsLTc1NDg1Mzg5NywxODQ3ODQ0NDg3LC0xNjg2
+MTIxNTU0XX0=
 -->
