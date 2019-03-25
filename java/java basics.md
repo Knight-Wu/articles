@@ -213,14 +213,18 @@ hashmap key和value都可以为null, 因为key 为null, 则hash值为0, hash& ta
     因为threadLocal的应用场景决定了数据量并不大, 采用开放地址法, 并采用Fibonacci hashing, 使hash 分布均匀, 在小数据量的时候存取会很快.
   
 * hashcode 
+
 作为一个native 的方法, 有以下三点规范, 来自代码注释
 1. 当对一个java application 的一次调用中, 必须返回同一个整型, 提供的信息也用于对象的相等比较，且不会被修改,但是在两次调用中, 不必返回相同的值
 2. 如果两个对象使用equal 方法区判断是否相等, 则调用hashCode 必须返回相同的结果
 3. 如果两个对象使用equal 方法比较是不相等的, 则调用hashcode 方法必须返回不同的结果. 开发者需要意识到对unequal 的对象产生不同的hashcode 有利于提高hashtable 的性能. 
 
+
 * java 7 和java 8的hashmap 的主要区别在于
+
 1. 定位到数组的位置之后, 在链表往后进行一个个查找的时候, 当链表长度大于8 时, java 8会转化为红黑树, 将查找的时间复杂度O(n), 降低为O(logn)
 2. hashcode 函数不同, java 7 中进行了多次与和异或运算, 8 均降低为1次, 边际递减. 
+3. 在并发场景下, 8不会出现死循环. 
 
 
 * put 大致过程
@@ -286,6 +290,7 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1NTY4MTMxMSwtNTc1NDkxNjQ5LC05Nz
-U5NjQzOTksLTExNzkzMTIwODQsLTIwMTM5Mjc0MzldfQ==
+eyJoaXN0b3J5IjpbMTM5OTM3NTc4LDEyNTU2ODEzMTEsLTU3NT
+Q5MTY0OSwtOTc1OTY0Mzk5LC0xMTc5MzEyMDg0LC0yMDEzOTI3
+NDM5XX0=
 -->
