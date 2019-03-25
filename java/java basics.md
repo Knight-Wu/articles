@@ -189,7 +189,8 @@ null
 初始容量 和 负载因子，这两个参数是影响HashMap性能的重要参数。其中，容量表示哈希表中桶的数量 (table 数组的大小)，初始容量是创建哈希表时桶的数量；负载因子是哈希表在其容量自动增加之前可以达到多满的一种尺度，它衡量的是一个散列表的空间的使用程度，负载因子越大表示散列表的装填程度越高，整个hashmap 空间需要的更少, 但是查找时间会增加, 反之愈小。默认的, 当初始容量 capacity(默认16 ) * load factor (0.75 )>  enrty的数量的时候, 会认为需要进行table 数组的扩容了. 当初始容量不是2的n 次方的时候, 会选择比它大的, 但是最小的2的n 次方作为数组的初始容量. 所以当entry 的最大数量小于容量 * 负责因子的时候, 就永远不会进行rehash 
 
 * 负载因子是怎么算出0.75 的
-根据这个问题的第三个答案 https://stackoverflow.com/questions/10901752/what-is-the-significance-of-load-factor-in-hashmap, 公式的原理应该是:  size 为s , 已经有了n 个entry, 当下一个entry 进来的时候, 如何能最小化碰撞的概率, 并且此时空间利用率最大, 然后那个公式给出是n/s 小于 log2 的时候, 碰撞的概率都很小, 然后近似取了个比较容易算的值: 0.75
+根据这个问题的第三个答案 https://stackoverflow.com/questions/10901752/what-is-the-significance-of-load-factor-in-hashmap, 
+公式的原理应该是:  size 为s , 已经有了n 个entry, 当下一个entry 进来的时候, 如何能最小化碰撞的概率, 并且此时空间利用率最大, 然后那个公式给出是n/s 小于 log2 的时候, 碰撞的概率都很小, 然后近似取了个比较容易算的值: 0.75
 
 * 为什么当链表长度大于等于8 的时候, 链表转化为红黑树
 这种情况用于hashcode 分布性很差的时候, 出现了很多个hash 冲突的极端情况, 因为当负载因子等于0.75 的时候, list 中元素的个数符合泊松分布, 参见代码注释, 所以出现list size 为8 的情况是极为少见的, 就算出现这个情况, 将链表转化为红黑树, 查找的平均时间复杂度由O(n) 变为O(logn) , 但是需要近似两倍的空间. 
@@ -283,6 +284,6 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3NTk2NDM5OSwtMTE3OTMxMjA4NCwtMj
-AxMzkyNzQzOV19
+eyJoaXN0b3J5IjpbLTU3NTQ5MTY0OSwtOTc1OTY0Mzk5LC0xMT
+c5MzEyMDg0LC0yMDEzOTI3NDM5XX0=
 -->
