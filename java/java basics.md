@@ -197,11 +197,17 @@ null
 https://www.zhihu.com/question/26441147
 参见代码注释, 所以出现list size 为8 的情况是极为少见的, 就算出现这个情况, 将链表转化为红黑树, 查找的平均时间复杂度由O(n) 变为O(logn) , 但是需要近似两倍的空间. 
 
-HashMap 的底层数组长度总是2的n次方的原因有两个，即当 length=2^n 时：h&(length - 1)  在随机hash 的情况下, 能均匀分布到各个index , 
-https://blog.csdn.net/claram/article/details/77750899
+HashMap 的底层数组长度总是2的n次方的原因有两个，一是当 length=2^n 时：h&(length - 1)  在随机hash 的情况下, 能均匀分布到各个index , 
+>https://blog.csdn.net/claram/article/details/77750899
+假定 length = 50 （非 2 的整数次幂），二进制值为 0011 0010，这里我们使用 8 位二进制数来进行计算。length - 1 = 49，二进制值为 0011 0001。我们计算任何整数与 49 进行与运算的可能的结果如下：
+```
 
-而且相当于对length取模，而且在速度、效率上比直接取模要快得多
+```
 
+二是相当于对length取模，而且在速度、效率上比直接取模要快得多
+
+
+* null 的key 放在数组的第一位
 hashmap key和value都可以为null, 因为key 为null, 则hash值为0, hash& table.length -1 均为0, 所以key 为null的object 放在table[0], val覆盖.
 
 
@@ -291,7 +297,7 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTQwMzY0NTcsMTM5OTM3NTc4LDEyNT
+eyJoaXN0b3J5IjpbLTE4NjU5MTE3ODMsMTM5OTM3NTc4LDEyNT
 U2ODEzMTEsLTU3NTQ5MTY0OSwtOTc1OTY0Mzk5LC0xMTc5MzEy
 MDg0LC0yMDEzOTI3NDM5XX0=
 -->
