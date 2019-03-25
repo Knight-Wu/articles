@@ -278,7 +278,7 @@ MESI定律：在所有的脏缓存段（M状态）被回写后，任意缓存级
     
     
     ```
-    * synchronized 与 reentrantlock 的区别
+ * synchronized 与 reentrantlock 的区别
         * 后者更灵活, 可以跨方法解锁, 可以实现公平锁和非公平, 和中断获取锁
         * 原理不同, 前者基于java原生的互斥锁, 线程阻塞; 后者基于AQS
       
@@ -895,7 +895,8 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA1MTMyNjkyLDE2MzEwMjc1MDQsMTMxOT
-cwNjg0NiwxNjk2NTA4NzUxLC0zODY4ODk0NTAsLTI4MTcwODM1
-MCw1MjQ0ODMzOTgsMjA3NDQwNTUwMSwtNTQzMzQyMTY2XX0=
+eyJoaXN0b3J5IjpbLTEyMzkwNDc0MCwxMDUxMzI2OTIsMTYzMT
+AyNzUwNCwxMzE5NzA2ODQ2LDE2OTY1MDg3NTEsLTM4Njg4OTQ1
+MCwtMjgxNzA4MzUwLDUyNDQ4MzM5OCwyMDc0NDA1NTAxLC01ND
+MzNDIxNjZdfQ==
 -->
