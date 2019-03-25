@@ -858,6 +858,8 @@ final 修饰的field(例如final 数组, final map), 可以保证在多线程环
 
 但问题是jvm是会对指令进行重排序的，重排之后可能是第4步先于第3步执行，那这时候另外一个线程读到的就是没有还执行构造方法的对象，导致未知问题。jvm重排只保证重排前和重排后在**单线程**中的结果一致性。
 
+注意java中引用的赋值操作一定是原子的，比如说a和b均是对象的情况下不管是32位还是64位jvm，`a=b`操作均是原子的。但如果a和b是long或者double原子型数据，那在32位jvm上`a=b`不一定是原子的（看jvm具体实现），有可能是分成了两个32位操作。 但是对于voliate的long,double 变量来说，其赋值是原子的。具体可以看这里[https://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.7](https://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.7)
+
 #### publilsh safely in concurrence
 [https://en.wikipedia.org/wiki/Double-checked_locking#Usage_in_Java](https://en.wikipedia.org/wiki/Double-checked_locking#Usage_in_Java)
 * 
@@ -907,8 +909,8 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0NDAyNDAzLC0xMjM5MDQ3NDAsMTA1MT
-MyNjkyLDE2MzEwMjc1MDQsMTMxOTcwNjg0NiwxNjk2NTA4NzUx
-LC0zODY4ODk0NTAsLTI4MTcwODM1MCw1MjQ0ODMzOTgsMjA3ND
-QwNTUwMSwtNTQzMzQyMTY2XX0=
+eyJoaXN0b3J5IjpbLTc3MDAzNDc1MCwtMTIzOTA0NzQwLDEwNT
+EzMjY5MiwxNjMxMDI3NTA0LDEzMTk3MDY4NDYsMTY5NjUwODc1
+MSwtMzg2ODg5NDUwLC0yODE3MDgzNTAsNTI0NDgzMzk4LDIwNz
+Q0MDU1MDEsLTU0MzM0MjE2Nl19
 -->
