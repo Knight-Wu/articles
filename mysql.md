@@ -122,7 +122,7 @@ where a="A" and b in ('b','B') and c = 'C' , (a,b,c) 的索引仍然有效.
 4. 索引列的值不能作为函数入参进行计算, 比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’)
 5. 前缀索引
  只采取索引列的前缀作为索引, 减少空间, 但是这个前缀要能一定程度上的获取你想要的结果. 可以具体参考"高性能mysql 5.3.2"
-6. 多列索引, 可能会引起索引的合并, 
+6. 多个单列索引, 可能会引起索引的合并, 
 
 * clustered index
 聚簇索引并不是一个索引类型, 而是一种数据存储方式, 而InnoDB 的聚簇索引实际上就是B+ tree 的叶子节点将key 和data row 存放在一起. 
@@ -292,7 +292,7 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1OTU3NTY0MiwtMTU3ODYwNjU1NSwtNT
+eyJoaXN0b3J5IjpbMTk3MzgxOTk4MywtMTU3ODYwNjU1NSwtNT
 AxNzkzMjczLDEzNTAyNDI1MTQsLTEzMjkxMDMxNyw0NTkyMTUx
 NzAsLTE5MTc1Nzg2NiwtMTgwNTM4OTMyNSwtODUxNTg2NTAxLC
 0zNDAzNTE1NTcsLTExNDE5OTU3NDUsMTYwMjg1OTA0NSwxMjE4
