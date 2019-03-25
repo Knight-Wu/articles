@@ -193,7 +193,9 @@ null
 公式的原理应该是:  size 为s , 已经有了n 个entry, 当下一个entry 进来的时候, 如何能最小化碰撞的概率, 并且此时空间利用率最大, 然后那个公式给出是n/s 小于 log2 的时候, 碰撞的概率都很小, 然后近似取了个比较容易算的值: 0.75
 
 * 为什么当链表长度大于等于8 的时候, 链表转化为红黑树
-这种情况用于hashcode 分布性很差的时候, 出现了很多个hash 冲突的极端情况, 因为当负载因子等于0.75 的时候, list 中元素的个数符合泊松分布, 参见代码注释, 所以出现list size 为8 的情况是极为少见的, 就算出现这个情况, 将链表转化为红黑树, 查找的平均时间复杂度由O(n) 变为O(logn) , 但是需要近似两倍的空间. 
+这种情况用于hashcode 分布性很差的时候, 出现了很多个hash 冲突的极端情况, 因为当负载因子等于0.75 的时候, list 中元素的个数符合泊松分布: 
+https://www.zhihu.com/question/26441147
+参见代码注释, 所以出现list size 为8 的情况是极为少见的, 就算出现这个情况, 将链表转化为红黑树, 查找的平均时间复杂度由O(n) 变为O(logn) , 但是需要近似两倍的空间. 
 
 HashMap 的底层数组长度总是2的n次方的原因有两个，即当 length=2^n 时：
 不同的hash值发生碰撞的概率比较小，这样就会使得数据在table数组中分布较均匀，空间利用率较高，查询速度也较快；
@@ -284,6 +286,6 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3NTQ5MTY0OSwtOTc1OTY0Mzk5LC0xMT
-c5MzEyMDg0LC0yMDEzOTI3NDM5XX0=
+eyJoaXN0b3J5IjpbMTI1NTY4MTMxMSwtNTc1NDkxNjQ5LC05Nz
+U5NjQzOTksLTExNzkzMTIwODQsLTIwMTM5Mjc0MzldfQ==
 -->
