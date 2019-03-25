@@ -846,6 +846,18 @@ The original Java memory model, developed in 1995, was widely perceived as broke
 * final 
 final 修饰的field(例如final 数组, final map), 可以保证在多线程环境下被正确初始化之后才被调用,防止指令的重排序,注意若用final 修饰的object , 只有final修饰的域才能保证初始化是线程安全的.
 
+* 指令重排序
+`Object obj = new Object();`这样的操作在多线程的情况下会拿到一个未初始化的对象这点可能有疑惑，这里也做个简单的说明。以上java语句分为4个步骤：
+
+1.  在栈中分配一片空间给obj引用
+2.  在jvm堆中创建一个Object对象，注意这里仅仅是分配空间，没有调用构造方法
+3.  初始化第2步创建的对象，也就是调用其构造方法
+4.  栈中的obj指向堆中的对象
+
+以上步骤看起来也是没有问题的，毕竟创建的对象要调用完构造方法后才会被引用。
+
+但问题是jvm是会对指令进行重排序的，重排之后可能是第4步先于第3步执行，那这时候另外一个线程读到的就是没有还执行构造方法的对象，导致未知问题。jvm重排只保证重排前和重排后在**单线程**中的结果一致性。
+
 #### publilsh safely in concurrence
 [https://en.wikipedia.org/wiki/Double-checked_locking#Usage_in_Java](https://en.wikipedia.org/wiki/Double-checked_locking#Usage_in_Java)
 * 
@@ -895,8 +907,8 @@ class Foo {
 * 并发下,全局变量的导致的线程不安全问题, 通过改为局部变量, 在每个线程的栈区, 则解决问题
 * 线程池使用优先级队列, 出现futureTask cant cast to comparable ex.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzkwNDc0MCwxMDUxMzI2OTIsMTYzMT
-AyNzUwNCwxMzE5NzA2ODQ2LDE2OTY1MDg3NTEsLTM4Njg4OTQ1
-MCwtMjgxNzA4MzUwLDUyNDQ4MzM5OCwyMDc0NDA1NTAxLC01ND
-MzNDIxNjZdfQ==
+eyJoaXN0b3J5IjpbMTk0NDAyNDAzLC0xMjM5MDQ3NDAsMTA1MT
+MyNjkyLDE2MzEwMjc1MDQsMTMxOTcwNjg0NiwxNjk2NTA4NzUx
+LC0zODY4ODk0NTAsLTI4MTcwODM1MCw1MjQ0ODMzOTgsMjA3ND
+QwNTUwMSwtNTQzMzQyMTY2XX0=
 -->
