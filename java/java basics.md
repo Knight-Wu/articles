@@ -169,25 +169,7 @@ null
 ```
     
   because it divide into two steps,first is initializaion,second is assignment.when the first initialzation is ended,the myClass is not null,but not until the  assignment to myClass2 is done,the myClass2 is  instantiated.
-* GC
-    * reference count
-    
-    被引用加一;程序走出引用作用域或者引用赋为null,减一;但是无法针对相互引用的情况,故JVM不采用该实现方法实现GC.
-    * 根搜索算法
-        * GC root
 
-    1. Local variables are kept alive by the stack of a thread. This is not a real object virtual reference and thus is not visible. For all intents and purposes, local variables are GC roots.
-    2. Active Java threads are always considered live objects and are therefore GC roots. This is especially important for thread local variables.
-    3. Static variables are referenced by their classes. This fact makes them de facto GC roots. Classes themselves can be garbage-collected, which would remove all referenced static variables. This is of special importance when we use application servers, OSGi containers or class loaders in general. We will discuss the related problems in the Problem Patterns section.
-    4. JNI References are Java objects that the native code has created as part of a JNI call. Objects thus created are treated specially because the JVM does not know if it is being referenced by the native code or not. Such objects represent a very special form of GC root, which we will examine in more detail in the Problem Patterns section below.
-        
-        * mark and swipe 
-        
-        1.The algorithm traverses all object references, starting with the GC roots, and marks every object found as alive.
-        
-        2.All of the heap memory that is not occupied by marked objects is reclaimed. It is simply marked as free, essentially swept free of unused objects.
-        
-        
 * this
     
     * Suppose you’re inside a method and you’d like to get the reference to the current object. Since that reference is passed secretly by the compiler, there’s no identifier for it. However, for this purpose there’s a keyword: this. The this keyword—which can be used only inside a non-static method—produces the reference to the object that the method has been called for
@@ -301,6 +283,6 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxMjgwNjUwMywtMTE3OTMxMjA4NCwtMj
+eyJoaXN0b3J5IjpbLTk3NTk2NDM5OSwtMTE3OTMxMjA4NCwtMj
 AxMzkyNzQzOV19
 -->
