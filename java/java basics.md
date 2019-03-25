@@ -235,11 +235,12 @@ hashmap key和value都可以为null, 因为key 为null, 则hash值为0, hash& ta
 3. 如果两个对象使用equal 方法比较是不相等的, 则调用hashcode 方法必须返回不同的结果. 开发者需要意识到对unequal 的对象产生不同的hashcode 有利于提高hashtable 的性能. 
 
 
-* java 7 和java 8的hashmap 的主要区别在于
+* java 7 和java 8的hashmap 的主要优化在于
+https://juejin.im/post/5aa5d8d26fb9a028d2079264#heading-20
 
 1. 定位到数组的位置之后, 在链表往后进行一个个查找的时候, 当链表长度大于8 时, java 8会转化为红黑树, 将查找的时间复杂度O(n), 降低为O(logn)
 2. hashcode 函数不同, java 7 中进行了多次与和异或运算, 8 均降低为1次, 边际递减. 
-3. resize 的时候, 8 不会重新计算hash 值, 根据hash & oldCapacity == 0 ? 放在元数组位置: fouze
+3. resize 的时候, 8 不会重新计算hash 值, 根据hash & oldCapacity == 0 ? 放在元数组位置: 否则放在oldIndex+oldCapacity 的位置. 
 
 
 * put 大致过程
@@ -305,8 +306,8 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTkzMzkyMDQsMjEzMjcyNTUsLTE4Nj
-U5MTE3ODMsMTM5OTM3NTc4LDEyNTU2ODEzMTEsLTU3NTQ5MTY0
-OSwtOTc1OTY0Mzk5LC0xMTc5MzEyMDg0LC0yMDEzOTI3NDM5XX
-0=
+eyJoaXN0b3J5IjpbMzQ3MDk3ODQ3LC0xNDU5MzM5MjA0LDIxMz
+I3MjU1LC0xODY1OTExNzgzLDEzOTkzNzU3OCwxMjU1NjgxMzEx
+LC01NzU0OTE2NDksLTk3NTk2NDM5OSwtMTE3OTMxMjA4NCwtMj
+AxMzkyNzQzOV19
 -->
