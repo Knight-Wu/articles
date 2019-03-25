@@ -15,7 +15,7 @@
  1.1 可以开启cpu核心数个线程进行并发处理, 但是如何处理后续海量连接等问题...
 
 #### nio处理, 主线程根据selector获取到不同的事件(包括连接, 写和读)
-最简单的Reactor模式：注册所有感兴趣的事件处理器，单线程轮询选择就绪事件，执行事件处理器。
+主线程轮询selector, 获取到accept 事件后, 表明，执行事件处理器。
 1. 事件分发器，利用selector 单线程选择就绪的事件。下面例子中的主线程
 2. I/O处理器，包括connect、read、write等，这种纯CPU操作，一般开启CPU核心个线程就可以。
 3. 后续处理的业务线程，在处理完I/O后，业务一般还会有自己的业务逻辑，有的还会有其他的阻塞I/O，如DB操作，RPC等。只要有阻塞，就需要单独的线程,否则会拖慢第二步的io处理.
@@ -303,7 +303,7 @@ Channel events.
 * netty IO thread model
 
 **boss EventLoopGroup** 负责accept connection, 并把channel registe to worker threads. EventLoopGroup 如果不指定构造函数, 使用的是默认的jdk ScheduledThreadPool, 线程数量是cpu 核心数*2. 
-**worker EventLoopGroup** 负责执行具体的io operation, 一个channel 的所有事件, 包括connect, read, write和注册的所有 channelHandlers 都会由一个 worker threads 执行, 避免了多线程的同步和线程切换问题, channel 和thread 的模型是: N:1, 所以一个事件的延迟会阻塞到这个channel 的其他事件和其他channel 事件, 所以长时间运行的event 需要新建线程池处理, 如下图
+**worker EventLoopGroup** 负责执行具体的io operation, 一个channel 的所有事件, 包括connect, read, write和注册的所有 channelHandlers 都会只由一个 worker threads 执行, 避免了多线程的同步和线程切换问题, channel 和thread 的模型是: N:1, 所以一个事件的延迟会阻塞到这个channel 的其他事件和该线程其他channel 事件, 所以长时间运行的event 需要新建线程池处理, 如下图
 ![enter image description here](https://drive.google.com/uc?id=1WQUx6bJJBY0baCRcIRK167g80UmE4eqj)
 
 #### Channel
@@ -449,5 +449,5 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDQ0MzE0MTVdfQ==
+eyJoaXN0b3J5IjpbLTkxNDU2NjY3OCwtMTEwNDQzMTQxNV19
 -->
