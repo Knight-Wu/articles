@@ -15,10 +15,7 @@
  1.1 可以开启cpu核心数个线程进行并发处理, 但是如何处理后续海量连接等问题...
 
 #### nio处理, 主线程根据selector获取到不同的事件(包括连接, 写和读)
-主线程轮询selector, 获取到accept 事件后, 表明，执行事件处理器。
-1. 事件分发器，利用selector 单线程选择就绪的事件。下面例子中的主线程
-2. I/O处理器，包括connect、read、write等，这种纯CPU操作，一般开启CPU核心个线程就可以。
-3. 后续处理的业务线程，在处理完I/O后，业务一般还会有自己的业务逻辑，有的还会有其他的阻塞I/O，如DB操作，RPC等。只要有阻塞，就需要单独的线程,否则会拖慢第二步的io处理.
+主线程轮询selector, 获取到accept 事件后, 表明有新连接进来, 并把这个新连接注册一个读事件到selector 上, 当这个连接可读的时候, IO 线程就会处理读事件, 完成连接的读.  在处理完IO后，业务一般还会有自己的业务逻辑，有的还会有其他的阻塞IO，如DB操作，RPC等。只要有阻塞，就需要新起一个线程, 否则当前线程. 
 但是仍然会面对 1.1的问题
 ```
 
@@ -449,5 +446,5 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkxNDU2NjY3OCwtMTEwNDQzMTQxNV19
+eyJoaXN0b3J5IjpbLTgwNTcwNzY3MywtMTEwNDQzMTQxNV19
 -->
