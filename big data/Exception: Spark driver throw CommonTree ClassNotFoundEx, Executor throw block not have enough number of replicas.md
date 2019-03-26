@@ -48,7 +48,7 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > dfs.client.block.write.replace-datanode-on-failure.policy
 
-这个配置的解释一开始没看懂n这个参数( let n be the number of existing datanodes), 看了代码, 应该是现有的pipeline 中dn 的数量, 如果之前有一个dn 错误, 则应该为2 个,所以如果是default则按照公式进行计算: 当r=3, n<=(r/3 =>,  如果是always, 每次都新加一个dn到pipeline中.
+这个配置的解释一开始没看懂n这个参数( let n be the number of existing datanodes), 看了代码, 应该是现有的pipeline 中dn 的数量, 如果之前有一个dn 错误, 则应该为2 个,所以如果是default则按照公式进行计算: 当r=3, n<=(r/3 约等于1), 也就是n<=1 的时候才会新加一个dn,   如果是always, 每次都新加一个dn到pipeline中.
 
 >  dfs.client.block.write.replace-datanode-on-failure.best-effort
 
@@ -87,6 +87,6 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg3NTEyNzYyLC0yMDM1OTE4OTI3LC0xMT
-IzMDY3OTQzXX0=
+eyJoaXN0b3J5IjpbLTIwOTg1NjQ1NzUsLTIwMzU5MTg5MjcsLT
+ExMjMwNjc5NDNdfQ==
 -->
