@@ -247,9 +247,10 @@ client 先把数据写入buffer , 当buffer 超过一定大小之后, 生成一�
 
 3. 当client把这个文件的最后一个block 提交到dn之后, 最后通过 DFSInputStream.close() 去关闭连接, 会将 actual generation stamp and the length of the block上报给nn, 并会轮训 nn 进行一系列的检查, 包括文件副本最小数必须大于1(所以只要pipeline 中dn 数量大于最小副本数, 就是可以写成功的, 之后再通过副本拷贝), 否则抛出异常给client.
 
-c. dn 写入
-1. dn 启动DataXceiver 不断接收客户端的packet, 并先放入一个ack 队列中, 再去写入磁盘, 启动一个PacketResponder , 用于接收下游的dn 的ack, 然后校验成功之后, 将自己的ack 和下游的ack 都发给客户端. 
+b. dn 写入
+1. dn 启动DataXceiver 不断接收客户端的packet, 并先放入一个ack 队列中, 再去线发送给下游, 再写入磁盘, 启动一个PacketResponder , 用于接收下游的dn 的ack, 然后校验成功之后, 将自己的ack 和下游的ack 都发给客户端. 
 2. 最后所有dn 的ack 都汇集到client 的ResponseProcessor 线程, 负责将ack 移除队列, 若收到错误的ack 则根据上文进行pipeline 的重建.  
+
 详细流程: 
 http://bigdatadecode.club/HDFS%20write%E8%A7%A3%E6%9E%90.html
 [http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html](http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html)
@@ -505,7 +506,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5NjQ1MjcwNyw4NDk1MTIsLTE2ODYzOT
-Y5NjgsLTE5NTczOTM1NzAsLTc5MTg5MzkxNiwtMTA2MzY4Mzcy
-MiwyOTYxMzIzMDgsNDI5Njc2MjY0XX0=
+eyJoaXN0b3J5IjpbLTk5MDM3MzI1MiwxMDk2NDUyNzA3LDg0OT
+UxMiwtMTY4NjM5Njk2OCwtMTk1NzM5MzU3MCwtNzkxODkzOTE2
+LC0xMDYzNjgzNzIyLDI5NjEzMjMwOCw0Mjk2NzYyNjRdfQ==
 -->
