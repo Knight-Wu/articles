@@ -52,7 +52,7 @@ spark.driver.extraJavaOptions=-verbose:class
 
 >  dfs.client.block.write.replace-datanode-on-failure.best-effort
 
-假设这个参数是false, 如果作为replacement的dn也写失败的话就会直接抛出异常, 终止重试; 如果设为true, 则假设replacement的dn也写失败, 仍然会找新的dn去重试.
+假设这个参数是false, 如果寻找一个新的dn 进行pipeline recovery (默认会尝试三次, 每次包括寻找新的dn 和transfer 的过程)失败的话就会直接抛出异常, 终止重试; 如果设为true, 则假设replacement的dn也写失败, 仍然会找新的dn去重试.
 
 
 > 所以我们想要的是反复重试新的dn, 直到客户端发起completeFile请求时, 轮询nn超时, 故把dfs.client.block.write.replace-datanode-on-failure.policy设置为always, dfs.client.block.write.replace-datanode-on-failure.best-effort设为true, namenode的block state change的日志级别调成debug(方便观察), 再观察后续出现写异常的时候是否有重试其他dn.
@@ -87,6 +87,6 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTg1NjQ1NzUsLTIwMzU5MTg5MjcsLT
+eyJoaXN0b3J5IjpbLTE5MDA2Njc0ODYsLTIwMzU5MTg5MjcsLT
 ExMjMwNjc5NDNdfQ==
 -->
