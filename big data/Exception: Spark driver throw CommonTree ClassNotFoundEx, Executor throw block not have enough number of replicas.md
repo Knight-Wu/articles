@@ -46,10 +46,9 @@ spark.driver.extraJavaOptions=-verbose:class
 ![image](https://user-images.githubusercontent.com/20329409/45943305-51dd3600-c018-11e8-85df-44ffa688c109.png)
 
 
-8.排查:无法写入dn 导致一个副本都没有
-查看源码, 找到以下配置: 
+8.排查: 无法写入dn 导致一个副本都没有
+根据这篇文章 [http://blog.cloudera.com/blog/2015/03/understanding-hdfs-recovery-processes-part-2/](http://blog.cloudera.com/blog/2015/03/understanding-hdfs-recovery-processes-part-2/) 和源码(DFSOutputStream.DataStreamer) 找到以下配置: 
 ![image](https://user-images.githubusercontent.com/20329409/45943455-ee073d00-c018-11e8-88a5-f251c1d42453.png)
-并结合[http://blog.cloudera.com/blog/2015/03/understanding-hdfs-recovery-processes-part-2/](http://blog.cloudera.com/blog/2015/03/understanding-hdfs-recovery-processes-part-2/)这篇文章和源码(DFSOutputStream.DataStreamer) 进行理解.
 
 > dfs.client.block.write.replace-datanode-on-failure.policy
 
@@ -90,6 +89,6 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzM2MzU3NTI4LDExMTI2ODY4NDksLTIwMz
+eyJoaXN0b3J5IjpbMTg1MTUxNDUxLDExMTI2ODY4NDksLTIwMz
 U5MTg5MjcsLTExMjMwNjc5NDNdfQ==
 -->
