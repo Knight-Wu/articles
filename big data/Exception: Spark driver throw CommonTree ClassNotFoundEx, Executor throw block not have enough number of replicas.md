@@ -42,7 +42,7 @@ spark.driver.extraJavaOptions=-verbose:class
 6. 根据图3的异常, 看了下源码, completeFile的时候会检查block的最小副本数是否达到, 客户端会轮询等待nn, 根据后续block 结束completeFile的时间(大概有二十几秒), 增加了retry次数之后, 后续的达不到最小副本数的异常有所减小, 
 ![image](https://user-images.githubusercontent.com/20329409/45943305-51dd3600-c018-11e8-85df-44ffa688c109.png)
 
-但是仍然出现异常, 想了下最根本的异常是dn写文件失败, 可以尝试一下dn 故障转移, 让pipeline的某个 dn写失败时,重试其他dn, 通过多方资料找到以下配置: 
+但是仍然出现异常, 想了下最根本的异常是dn写文件失败, 看下能否尝试 dn 故障转移, 让pipeline的某个 dn写失败时,重试其他dn, 然后找到以下配置: 
 ![image](https://user-images.githubusercontent.com/20329409/45943455-ee073d00-c018-11e8-88a5-f251c1d42453.png)
 并结合[http://blog.cloudera.com/blog/2015/03/understanding-hdfs-recovery-processes-part-2/](http://blog.cloudera.com/blog/2015/03/understanding-hdfs-recovery-processes-part-2/)这篇文章和源码(DFSOutputStream.DataStreamer) 进行理解.
 
@@ -52,13 +52,10 @@ spark.driver.extraJavaOptions=-verbose:class
 
 >  dfs.client.block.write.replace-datanode-on-failure.best-effort
 
-假设这个参数是false, 如果寻找一个新的dn 进行pipeline recovery (默认会尝试三次, 每次包括寻找新的dn 和transfer 的过程)失败的话就会直接抛出异常, 终止重试; 如果设为true, 则假设replacement的dn也写失败, 仍然会找新的dn去重试.
+假设这个参数是false, 如果寻找一个新的dn 进行pipeline recovery (默认会尝试三次, 每次包括寻找新的dn 和transfer 的过程)也失败的话就会直接抛出异常, 终止重试; 如果设为true, 则假设replacement的dn也写失败, 仍然会找新的dn去重试.
 
 
-> 所以我们想要的是反复重试新的dn, 直到客户端发起completeFile请求时, 轮询nn超时, 故把dfs.client.block.write.replace-datanode-on-failure.policy设置为always, dfs.client.block.write.replace-datanode-on-failure.best-effort设为true, namenode的block state change的日志级别调成debug(方便观察), 再观察后续出现写异常的时候是否有重试其他dn.
-
-**一直没有来反馈** ， 经过后续的观察，再也没有出现commonTree的报错了， 证明解决问题的思路是正确的！
-
+s
 * 底层原因
 
 应该是dn 写入失败, executor 报错而终止job, 至于为什么dn 会写入失败, 这个情况只在凌晨hive 跑批, 集群压力大的时候出现, 其他时间均为出现, 后来查询到可能是CentOS 的一个bug, 其他团队在升级了操作系统版本之后解决, 这个还有待考察. 
@@ -87,6 +84,6 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDA2Njc0ODYsLTIwMzU5MTg5MjcsLT
+eyJoaXN0b3J5IjpbLTE0NTQzNzIwMzksLTIwMzU5MTg5MjcsLT
 ExMjMwNjc5NDNdfQ==
 -->
