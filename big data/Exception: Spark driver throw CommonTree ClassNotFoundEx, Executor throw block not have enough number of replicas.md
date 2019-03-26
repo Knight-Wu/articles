@@ -74,7 +74,7 @@ spark.driver.extraJavaOptions=-verbose:class
 测试代码很牛, 学习下: 
 ![enter image description here](https://drive.google.com/uc?id=1Kq1N5-yNbLI1dCdcRCRDCoLJQfpt8S6X)
 
- 在issue 之前, 跑这个test, 应用是会挂住的, issue 之后, 应用可以正常结束
+修复之前, 跑这个test, 应用是会挂住的, issue 之后, 应用可以正常结束
 
 
 
@@ -87,5 +87,5 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjMwNjc5NDNdfQ==
+eyJoaXN0b3J5IjpbLTMzNjg1MjE4MywtMTEyMzA2Nzk0M119
 -->
