@@ -243,12 +243,13 @@ a. 客户端写入:
 1. 准备写:
  client通过 FileSystem.open()获取一个RPC 请求到nn, 然后创建一个文件,  并获取lease 保证只有一个writer, 多个reader, 并且nn 检查client的权限等. 启动一个dataStreamer 线程, 持有dataQueue 和ackQueue, 最后返回一个  FSDataOutputStream 给client写入数据,
 2. 真正开始写: 
-client 先把数据写入buffer , 当buffer 超过一定大小之后, 生成一个packet, 先把数据 packets(默认 64KB)  放到dataStreamer 的 data queue 去发送,  这个dataStreamer 向nn收集新的 block的信息. 而dn组成了 pipeline,  假设副本数是3, pipeline 里面就是三个dn , 当一个packet 发送之后, 会转移到一个ack队列, 当ack 从pipeline 的所有dn 返回之后, 才会将ack 移除, 当一个block 的所有 packet 都从ack queue 移除后才会发送下一个block. 如果有ack 返回错误, 就会把对应的dn 剔除, 重建整个pipeline, 通过addDataNode2Pipeline.transfer() 把之前已经发送的数据转移到新的dn, 
+client 先把数据写入buffer , 当buffer 超过一定大小之后, 生成一个packet, 先把数据 packets(默认 64KB)  放到dataStreamer 的 data queue 去发送,  这个dataStreamer 向nn收集新的 block的信息. 而dn组成了 pipeline,  假设副本数是3, pipeline 里面就是三个dn , 当一个packet 发送之后, 会转移到一个ack队列, 当ack 从pipeline 的所有dn 返回之后, 才会将ack 移除, 当一个block 的所有 packet 都从ack queue 移除后才会发送下一个block. 如果有ack 返回错误, 就会把对应的dn 剔除, 重建整个pipeline, 通过 addDatanode2ExistingPipeline.transfer() 把之前已经发送到健康的dn 的数据转移到新的dn, 
 
 3. 当client把这个文件的最后一个block 提交到dn之后, 最后通过 DFSInputStream.close() 去关闭连接, 会将 actual generation stamp and the length of the block上报给nn, 并会轮训 nn 进行一系列的检查, 包括文件副本最小数必须大于1(所以只要pipeline 中dn 数量大于最小副本数, 就是可以写成功的, 之后再通过副本拷贝), 否则抛出异常给client.
 
 c. dn 写入
-1. dn 启动DataXceiver 不断接收客户端的packet, 并先放入一个ack 队列中, 再去写入磁盘, 启动一个PacketResponder , 
+1. dn 启动DataXceiver 不断接收客户端的packet, 并先放入一个ack 队列中, 再去写入磁盘, 启动一个PacketResponder , 用于接收下游的dn 的ack, 然后校验成功之后, 将自己的ack 和下游的ack 都发给客户端. 
+2. 最后所有dn 的ack 都汇集到client 的ResponseProcessor 线程, 负责将ack 移除队列, 若收到错误的ack 则根据上文进行pipeline 的重建.  
 详细流程: 
 http://bigdatadecode.club/HDFS%20write%E8%A7%A3%E6%9E%90.html
 [http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html](http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html)
@@ -504,7 +505,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQ5NTEyLC0xNjg2Mzk2OTY4LC0xOTU3Mz
-kzNTcwLC03OTE4OTM5MTYsLTEwNjM2ODM3MjIsMjk2MTMyMzA4
-LDQyOTY3NjI2NF19
+eyJoaXN0b3J5IjpbMTA5NjQ1MjcwNyw4NDk1MTIsLTE2ODYzOT
+Y5NjgsLTE5NTczOTM1NzAsLTc5MTg5MzkxNiwtMTA2MzY4Mzcy
+MiwyOTYxMzIzMDgsNDI5Njc2MjY0XX0=
 -->
