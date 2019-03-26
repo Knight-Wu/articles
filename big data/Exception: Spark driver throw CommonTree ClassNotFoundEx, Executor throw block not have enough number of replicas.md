@@ -59,15 +59,10 @@ spark.driver.extraJavaOptions=-verbose:class
 假设这个参数是false, 如果寻找一个新的dn 进行pipeline recovery (默认会尝试三次, 每次包括寻找新的dn 和transfer 的过程)也失败的话就会直接抛出异常, 终止重试; 如果设为true, 则假设replacement的dn也写失败, 仍然会找新的dn去重试.
 
 
-**思考了一下**, 因为在default 配置下, 在r=3时, 当pipeline 的dn数量小于等于1 的时候, 会找新的dn 补充, 所以如果写过程是没有中断的异常的话, 证明写入dn 是没有问题的, 至少写入了两个副本. 所以更有可能还是dn 上报写入结果的时候延时很大, 特别当hive close file 很多的时候, 所以进一步加大client close file 的等待时间. 
+**思考了一下**, 因为在default 配置下, 在r=3时, 当pipeline 的dn数量小于等于1 的时候, 会找新的dn 补充, 所以如果写过程是没有中断的异常的话, 证明写入dn 是没有问题的, 至少写入了两个副本. 所以更有可能还是dn 上报写入结果的时候延时很大, 特别当hive close file 很多的时候, 所以进一步加大client close file 的等待时间, **异常出现频率大幅下降**. 
 
-* 底层原因
-
-应该是dn 写入失败, executor 报错而终止job, 至于为什么dn 会写入失败, 这个情况只在凌晨hive 跑批, 集群压力大的时候出现, 其他时间均为出现, 后来查询到可能是CentOS 的一个bug, 其他团队在升级了操作系统版本之后解决, 这个还有待考察. 
-
-
-* 问题
-  * 因为具体的blocken pipe的错误日志找不到了, 为什么没有触发spark 的集群容错有点困惑, 一个task 写异常至少是会根据 spark.task.maxFailures 这个配置重试的啊, 不知道这个异常抛到哪个层面了
+* 上层容错失效? 
+   因为具体的blocken pipe的错误日志找不到了, 为什么没有触发spark 的集群容错有点困惑, 一个task 写异常至少是会根据 spark.task.maxFailures 这个配置重试的啊, 不知道这个异常抛到哪个层面了
 
 * 根本原因
 终于找到了, 准备年终这段时间不忙, 自己抽空重新看了异常栈, 发现根本原因如此简单, TaskResultGetter 线程在反序列化failReason 的时候没有处理 NoClassDefFoundError 这种error 类的异常, 导致这个线程就挂掉了, task 被driver 误认为一直是ACTIVE 状态. 
@@ -89,6 +84,6 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1MTUxNDUxLDExMTI2ODY4NDksLTIwMz
-U5MTg5MjcsLTExMjMwNjc5NDNdfQ==
+eyJoaXN0b3J5IjpbMTM2NzcwMzczMSwxMTEyNjg2ODQ5LC0yMD
+M1OTE4OTI3LC0xMTIzMDY3OTQzXX0=
 -->
