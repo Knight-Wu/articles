@@ -281,7 +281,7 @@ The Echo client will
 
 #### netty 新连接的建立过程
 1. boss 线程检查到有新来的连接, 即accept 事件, 则将该channel 注册到worker EventLoopGroup
-2. 从 worker EventLoopGroup 选择一个EventLoop 线程来关注channel 的其余事件, 例如read, write, connect, channelHandler 事件.
+2. 从 worker EventLoopGroup 选择一个EventLoop 线程来关注channel 的其余事件, 例如read, write, channelHandler 事件.
 
 #### EventLoop
 ![enter image description here](https://drive.google.com/uc?id=1Ul-aPtMSynBht574s51DFaiOIHG4ddi2)
@@ -446,5 +446,6 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwNTcwNzY3MywtMTEwNDQzMTQxNV19
+eyJoaXN0b3J5IjpbLTExMjU1MTM3OSwtODA1NzA3NjczLC0xMT
+A0NDMxNDE1XX0=
 -->
