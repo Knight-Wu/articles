@@ -39,7 +39,7 @@
 * 支持事务的消息框架
 * 微服务框架
 * 泊松分布 https://www.zhihu.com/question/26441147
-* hdfs 写一致性, ack 什么时候返回. 
+* 虚拟内存的好处, java write file 底层
 ### DOING
 
 
@@ -86,11 +86,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzI5MDUyMjcsLTE3ODA3NTU5MywtMz
-k1MTU4MDkyLC0xMDY5OTA4NzU4LC0xNzA2NDUzNzk1LDEwMDY4
-MDkyODAsLTQwNDI2MTAxNyw0MjkyNjg0MTYsLTQ4OTAxMTkyLC
-0xNzg2NjY4NjkyLC0xMjU1MDc0MTk3LDE0NDAxODY5NTQsMjA1
-MzI0OTYwOCwxMjE1NDkyNzc2LC0xNTU3Mzk5NjMzLC0xODY4OD
-c1ODkxLC02MjUyMTEwMDQsLTEyNzc3OTEyNDIsMTM1NTQ0MjEx
-NCwtMTgzMzM4MzUyMF19
+eyJoaXN0b3J5IjpbNjQ3NzQ4ODExLC0yMTMyOTA1MjI3LC0xNz
+gwNzU1OTMsLTM5NTE1ODA5MiwtMTA2OTkwODc1OCwtMTcwNjQ1
+Mzc5NSwxMDA2ODA5MjgwLC00MDQyNjEwMTcsNDI5MjY4NDE2LC
+00ODkwMTE5MiwtMTc4NjY2ODY5MiwtMTI1NTA3NDE5NywxNDQw
+MTg2OTU0LDIwNTMyNDk2MDgsMTIxNTQ5Mjc3NiwtMTU1NzM5OT
+YzMywtMTg2ODg3NTg5MSwtNjI1MjExMDA0LC0xMjc3NzkxMjQy
+LDEzNTU0NDIxMTRdfQ==
 -->
