@@ -245,7 +245,7 @@ a. 客户端写入:
 2. 真正开始写: 
 client 先把数据写入buffer , 当buffer 超过一定大小之后, 生成一个packet, 先把数据 packets(默认 64KB)  放到dataStreamer 的 data queue 去发送,  这个dataStreamer 向nn收集新的 block的信息. 而dn组成了 pipeline,  假设副本数是3, pipeline 里面就是三个dn , 当一个packet 发送之后, 会转移到一个ack队列, 当ack 从pipeline 的所有dn 返回之后, 才会将ack 移除, 当一个block 的所有 packet 都从ack queue 移除后才会发送下一个block. 如果有ack 返回错误, 就会把对应的dn 剔除, 重建整个pipeline, 通过 addDatanode2ExistingPipeline.transfer() 把之前已经发送到健康的dn 的数据转移到新的dn, 
 
-3. 当client把这个文件的最后一个block 提交到dn之后, 最后通过 DFSInputStream.close() 去关闭连接, 会将 actual generation stamp and the length of the block上报给nn, 并会轮训 nn 进行一系列的检查, 包括文件副本最小数必须大于1(所以只要pipeline 中dn 数量大于最小副本数, 就是可以写成功的, 之后再通过副本拷贝), 否则抛出异常给client.
+3. 当client把这个文件的最后一个block 提交到dn之后, 最后通过 DFSInputStream.close() 去关闭连接, 会将 actual generation stamp and the length of the block上报给nn, 并会轮训 nn 进行一系列的检查(因为dn 写成功之后会把信息上传给nn), 包括文件副本最小数必须大于1(所以只要pipeline 中dn 数量大于最小副本数, 就是可以写成功的, 之后再通过副本拷贝), 否则抛出异常给client.
 
 b. dn 写入
 1. dn 启动DataXceiver 不断接收客户端的packet, 并先放入一个ack 队列中, 再去线发送给下游, 再写入磁盘, 启动一个PacketResponder , 用于接收下游的dn 的ack, 然后校验成功之后, 将自己的ack 和下游的ack 都发给客户端. 
@@ -506,7 +506,8 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5MDM3MzI1MiwxMDk2NDUyNzA3LDg0OT
-UxMiwtMTY4NjM5Njk2OCwtMTk1NzM5MzU3MCwtNzkxODkzOTE2
-LC0xMDYzNjgzNzIyLDI5NjEzMjMwOCw0Mjk2NzYyNjRdfQ==
+eyJoaXN0b3J5IjpbLTEzNjAwMTc3NjksLTk5MDM3MzI1MiwxMD
+k2NDUyNzA3LDg0OTUxMiwtMTY4NjM5Njk2OCwtMTk1NzM5MzU3
+MCwtNzkxODkzOTE2LC0xMDYzNjgzNzIyLDI5NjEzMjMwOCw0Mj
+k2NzYyNjRdfQ==
 -->
