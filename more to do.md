@@ -39,7 +39,6 @@
 * 支持事务的消息框架
 * 微服务框架
 * 泊松分布 https://www.zhihu.com/question/26441147
-* hdfs 写入的时候, 为什么会close file 的时候出现副本数不足的异常, 到底写入的时候是出现了什么情况. 
 * 虚拟内存的好处, java write file 底层
 ### DOING
 
@@ -87,11 +86,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyMjA3NDg1Miw2NDc3NDg4MTEsLTIxMz
-I5MDUyMjcsLTE3ODA3NTU5MywtMzk1MTU4MDkyLC0xMDY5OTA4
-NzU4LC0xNzA2NDUzNzk1LDEwMDY4MDkyODAsLTQwNDI2MTAxNy
-w0MjkyNjg0MTYsLTQ4OTAxMTkyLC0xNzg2NjY4NjkyLC0xMjU1
-MDc0MTk3LDE0NDAxODY5NTQsMjA1MzI0OTYwOCwxMjE1NDkyNz
-c2LC0xNTU3Mzk5NjMzLC0xODY4ODc1ODkxLC02MjUyMTEwMDQs
-LTEyNzc3OTEyNDJdfQ==
+eyJoaXN0b3J5IjpbNjQ3NzQ4ODExLDY0Nzc0ODgxMSwtMjEzMj
+kwNTIyNywtMTc4MDc1NTkzLC0zOTUxNTgwOTIsLTEwNjk5MDg3
+NTgsLTE3MDY0NTM3OTUsMTAwNjgwOTI4MCwtNDA0MjYxMDE3LD
+QyOTI2ODQxNiwtNDg5MDExOTIsLTE3ODY2Njg2OTIsLTEyNTUw
+NzQxOTcsMTQ0MDE4Njk1NCwyMDUzMjQ5NjA4LDEyMTU0OTI3Nz
+YsLTE1NTczOTk2MzMsLTE4Njg4NzU4OTEsLTYyNTIxMTAwNCwt
+MTI3Nzc5MTI0Ml19
 -->
