@@ -39,10 +39,15 @@ spark.driver.extraJavaOptions=-verbose:class
 * 禁止THP(Transparent-Huge-Page-THP-Compaction-Causes-Poor-Performance)
 * 小文件问题, 见我收藏的资料, http://note.youdao.com/noteshare?id=0f01349f4abfc0834d3f6cebc4fbf33f&sub=wcp1536734480094475
 
-6. 理了一下思路, 下功夫仔细研究了一下hdfs 的写入流程, 发现块副本数不足1, 可能有两个原因: 一是无法写入dn 导致一个副本都没有, 二是dn 上报写入情况给nn 的时候
+6. 理了一下思路, 下功夫仔细研究了一下hdfs 的写入流程, 发现块副本数不足1, 可能有两个原因: 一是无法写入dn 导致一个副本都没有, 二是dn 上报写入情况给nn 的时候延时较长. 下面两个方向都进行了排查. 
+
+7. 排查: dn 上报写入情况给nn 的时候延时较长
+ 根据图3的异常, 看了下源码, completeFile的时候会检查block的最小副本数是否达到, 客户端会轮询等待nn, 根据后续block 结束completeFile的时间(大概有二十几秒), 增加了retry次数之后, 后续的达不到最小副本数的异常有所减小, 
 ![image](https://user-images.githubusercontent.com/20329409/45943305-51dd3600-c018-11e8-85df-44ffa688c109.png)
 
-但是仍然出现异常, 想了下最根本的异常是dn写文件失败, 看下能否尝试 dn 故障转移, 让pipeline的某个 dn写失败时,重试其他dn, 然后找到以下配置: 
+
+8.排查:无法写入dn 导致一个副本都没有
+查看源码, 找到以下配置: 
 ![image](https://user-images.githubusercontent.com/20329409/45943455-ee073d00-c018-11e8-88a5-f251c1d42453.png)
 并结合[http://blog.cloudera.com/blog/2015/03/understanding-hdfs-recovery-processes-part-2/](http://blog.cloudera.com/blog/2015/03/understanding-hdfs-recovery-processes-part-2/)这篇文章和源码(DFSOutputStream.DataStreamer) 进行理解.
 
@@ -85,6 +90,6 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjU2NjE1ODIyLDExMTI2ODY4NDksLTIwMz
+eyJoaXN0b3J5IjpbNzM2MzU3NTI4LDExMTI2ODY4NDksLTIwMz
 U5MTg5MjcsLTExMjMwNjc5NDNdfQ==
 -->
