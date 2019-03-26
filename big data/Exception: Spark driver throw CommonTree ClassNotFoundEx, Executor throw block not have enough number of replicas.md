@@ -55,7 +55,8 @@ spark.driver.extraJavaOptions=-verbose:class
 假设这个参数是false, 如果寻找一个新的dn 进行pipeline recovery (默认会尝试三次, 每次包括寻找新的dn 和transfer 的过程)也失败的话就会直接抛出异常, 终止重试; 如果设为true, 则假设replacement的dn也写失败, 仍然会找新的dn去重试.
 
 
-**思考了一下**, 因为在default 配置下, 在r=3时, 当pipeline 的dn数量小于等于1 的时候, 会找新的dn 补充, 所以如果写过程是没有中断的异常的话, 证明写入dn 是没有问题的, 至少写入了两个副本. 所以更有可能还是dn 上报
+**思考了一下**, 因为在default 配置下, 在r=3时, 当pipeline 的dn数量小于等于1 的时候, 会找新的dn 补充, 所以如果写过程是没有中断的异常的话, 证明写入dn 是没有问题的, 至少写入了两个副本. 所以更有可能还是dn 上报写入结果的时候延时很大, 特别当hive close file 很多的时候, 所以进一步加大client close file 的等待时间. 
+
 * 底层原因
 
 应该是dn 写入失败, executor 报错而终止job, 至于为什么dn 会写入失败, 这个情况只在凌晨hive 跑批, 集群压力大的时候出现, 其他时间均为出现, 后来查询到可能是CentOS 的一个bug, 其他团队在升级了操作系统版本之后解决, 这个还有待考察. 
@@ -84,6 +85,6 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNDU3NzUxMDUsMTExMjY4Njg0OSwtMj
-AzNTkxODkyNywtMTEyMzA2Nzk0M119
+eyJoaXN0b3J5IjpbOTUxNDYwMjksMTExMjY4Njg0OSwtMjAzNT
+kxODkyNywtMTEyMzA2Nzk0M119
 -->
