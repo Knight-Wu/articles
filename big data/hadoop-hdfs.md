@@ -240,7 +240,7 @@ Active NameNode 和 Standby NameNode：两台 NameNode 形成互备，一台处�
 #### hdfs 读写流程
 ![](https://drive.google.com/uc?id=1LjDrWGX6zhQzEJOzNWG615eKFyK2XHDF)
 1. 准备写,  client通过 FileSystem.open()获取一个RPC 请求到nn, 然后创建一个文件,  并获取lease 保证只有一个writer, 多个reader, 并且nn 检查client的权限等. 启动一个dataStreamer 线程, 持有dataQueue 和ackQueue, 最后返回一个  FSDataOutputStream 给client写入数据,
-2. 真正开始写: client 先把数据写入buffer , 当buffer 超过一定大小之后, 生成一个packet, 先把数据 packets(默认 64KB)  放到dataStreamer 的 data queue 去发送,  这个dataStreamer 向nn收集新的 block的信息. 而dn组成了 pipeline,  假设副本数是3, pipeline 里面就是三个dn , 当一个packet 发送之后, 会转移到一个ack队列, 当ack 从pipeline 的所有dn 返回之后, 才会将ack 移除, 
+2. 真正开始写: client 先把数据写入buffer , 当buffer 超过一定大小之后, 生成一个packet, 先把数据 packets(默认 64KB)  放到dataStreamer 的 data queue 去发送,  这个dataStreamer 向nn收集新的 block的信息. 而dn组成了 pipeline,  假设副本数是3, pipeline 里面就是三个dn , 当一个packet 发送之后, 会转移到一个ack队列, 当ack 从pipeline 的所有dn 返回之后, 才会将ack 移除, 当一个block 的所有 packet 都从ack queue 移除后才会发送下一个block. 如果任何一个
 
 3. 当client把这个文件的最后一个block 提交到dn之后, 最后通过 DFSInputStream.close() 去关闭连接, 会将 actual generation stamp and the length of the block上报给nn, 并会轮训 nn 进行一系列的检查, 包括文件副本最小数必须大于1(默认配置), 否则抛出异常给client.
 
@@ -498,7 +498,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTAwNTI2MzQsLTE5NTczOTM1NzAsLT
+eyJoaXN0b3J5IjpbLTIxMTk5ODUyODIsLTE5NTczOTM1NzAsLT
 c5MTg5MzkxNiwtMTA2MzY4MzcyMiwyOTYxMzIzMDgsNDI5Njc2
 MjY0XX0=
 -->
