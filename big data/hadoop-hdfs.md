@@ -248,7 +248,7 @@ client 先把数据写入buffer , 当buffer 超过一定大小之后, 生成一�
 3. 当client把这个文件的最后一个block 提交到dn之后, 最后通过 DFSInputStream.close() 去关闭连接, 会将 actual generation stamp and the length of the block上报给nn, 并会轮训 nn 进行一系列的检查, 包括文件副本最小数必须大于1(所以只要pipeline 中dn 数量大于最小副本数, 就是可以写成功的, 之后再通过副本拷贝), 否则抛出异常给client.
 
 c. dn 写入
-
+1. dn 启动DataXceiver 不断接收客户端的packet, 并先放入一个ack 队列中, 再去写入磁盘, 启动一个PacketResponder , 
 详细流程: 
 http://bigdatadecode.club/HDFS%20write%E8%A7%A3%E6%9E%90.html
 [http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html](http://itm-vm.shidler.hawaii.edu/HDFS/ArchDocDecomposition.html)
@@ -504,7 +504,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxMTAyMjE1OCwtMTY4NjM5Njk2OCwtMT
-k1NzM5MzU3MCwtNzkxODkzOTE2LC0xMDYzNjgzNzIyLDI5NjEz
-MjMwOCw0Mjk2NzYyNjRdfQ==
+eyJoaXN0b3J5IjpbODQ5NTEyLC0xNjg2Mzk2OTY4LC0xOTU3Mz
+kzNTcwLC03OTE4OTM5MTYsLTEwNjM2ODM3MjIsMjk2MTMyMzA4
+LDQyOTY3NjI2NF19
 -->
