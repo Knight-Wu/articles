@@ -61,10 +61,10 @@ spark.driver.extraJavaOptions=-verbose:class
 
 **思考了一下**, 因为在default 配置下, 在r=3时, 当pipeline 的dn数量小于等于1 的时候, 会找新的dn 补充, 所以如果写过程是没有中断的异常的话, 证明写入dn 是没有问题的, 至少写入了两个副本. 所以更有可能还是dn 上报写入结果的时候延时很大, 特别当hive close file 很多的时候, 所以进一步加大client close file 的等待时间, **异常出现频率大幅下降**. 
 
-* 上层 spark 容错失效? 
+9. 上层 spark 容错失效? 
  因为具体的blocken pipe的错误日志找不到了, 为什么没有触发spark 的集群容错有点困惑, 一个task 写异常至少是会根据 spark.task.maxFailures 这个配置重试的啊,  但是一下看不出这个异常抛到哪个层面了
 
-* 根本原因
+10. 根本原因
 终于找到了, 准备年终这段时间不忙, 自己抽空重新看了异常栈, 发现根本原因如此简单, TaskResultGetter 线程在反序列化failReason 的时候没有处理 NoClassDefFoundError 这种error 类的异常, 导致这个线程就挂掉了, task 被driver 误认为一直是ACTIVE 状态. 
 后找到这个issue: https://github.com/apache/spark/pull/12775, 已经修复了, 但是2.2和1.6版本仍然是没合进去的. 
 
@@ -84,6 +84,6 @@ spark.driver.extraJavaOptions=-verbose:class
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NjI3OTE0NjUsMTExMjY4Njg0OSwtMj
-AzNTkxODkyNywtMTEyMzA2Nzk0M119
+eyJoaXN0b3J5IjpbLTk2NzgyNDE5NSwtMTc2Mjc5MTQ2NSwxMT
+EyNjg2ODQ5LC0yMDM1OTE4OTI3LC0xMTIzMDY3OTQzXX0=
 -->
