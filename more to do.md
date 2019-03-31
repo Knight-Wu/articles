@@ -1,31 +1,21 @@
 ### TODO
 * 完整的洗数流程, 数据集市的数据流向以及相关的技术组件的选取
-* paxos 原理再次理解
-* nio的buffer为何不能一次读取全部数据
+
 * JStorm使用的 lmax disruptor 原理
-* jstorm 为什么把rebalance 做成 thrift 的模式
-* kafka 的学习成果总结
 * 记忆力的研究
 * opentsdb 数据结构研究
 * holt winters 算法用R 跑出例子, 用于监控系统告警阈值, 智能化预测
 * flink的学习, flink 和JStorm的对比
 * flink 动态伸缩jira 跟踪
 * google drive add articles to read-later-list
-* centOS redhat内核关系, 以及在修改hostname的时候命令的不同
 * datanode 磁盘中某个volume 的容量快满时会有何影响
 * yarn container如何用起来. 写一个使用的小demo
-* linux 文件权限和用户权限的彻底理解
-* java-net-socketexception-connection-reset
 * spark, hadoop release notes
 
 * https://issues.apache.org/jira/browse/HDFS-9572 这个需要等待comment 回复
 * https://en.wikipedia.org/wiki/Chaos_engineering 软件工程的严谨思想
-* http://www.runoob.com/design-pattern 设计模式每天两例
-* https://mp.weixin.qq.com/s/5Yj6UckTabrQbgJ9TLV1gQ   java生产监控工具, 试用一下
-* 为什么java 需要三个CL, 只用一个行不行, 因为子类也是能获取到上层的CL 加载的类的 
 * 为何当没有用户权限的情况下, ps -ef能查其他用户进程, netstat -anp却查不到
 * 多个应用服务器的性能之和如何算, 
-* mysql 的常见问题, 
 * Build highly concurrent, distributed, and resilient message-driven applications on the JVM [http://akka.io](http://akka.io/)
 * spark executor task java.net.connectException 拒绝连接
 * spark.yarn.executor.memoryOverhead 结合内存理解, 如何调优
@@ -85,11 +75,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyMjEwMDE0MCw2NDc3NDg4MTEsNjQ3Nz
-Q4ODExLC0yMTMyOTA1MjI3LC0xNzgwNzU1OTMsLTM5NTE1ODA5
-MiwtMTA2OTkwODc1OCwtMTcwNjQ1Mzc5NSwxMDA2ODA5MjgwLC
-00MDQyNjEwMTcsNDI5MjY4NDE2LC00ODkwMTE5MiwtMTc4NjY2
-ODY5MiwtMTI1NTA3NDE5NywxNDQwMTg2OTU0LDIwNTMyNDk2MD
-gsMTIxNTQ5Mjc3NiwtMTU1NzM5OTYzMywtMTg2ODg3NTg5MSwt
-NjI1MjExMDA0XX0=
+eyJoaXN0b3J5IjpbMTg0OTE3NjQ1LDE4MjIxMDAxNDAsNjQ3Nz
+Q4ODExLDY0Nzc0ODgxMSwtMjEzMjkwNTIyNywtMTc4MDc1NTkz
+LC0zOTUxNTgwOTIsLTEwNjk5MDg3NTgsLTE3MDY0NTM3OTUsMT
+AwNjgwOTI4MCwtNDA0MjYxMDE3LDQyOTI2ODQxNiwtNDg5MDEx
+OTIsLTE3ODY2Njg2OTIsLTEyNTUwNzQxOTcsMTQ0MDE4Njk1NC
+wyMDUzMjQ5NjA4LDEyMTU0OTI3NzYsLTE1NTczOTk2MzMsLTE4
+Njg4NzU4OTFdfQ==
 -->
