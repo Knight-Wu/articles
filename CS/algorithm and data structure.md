@@ -85,7 +85,7 @@ public static void mergeSortRecu(int[] arr, int[] result, int start, int end) {
     if (start >= end)  
         return;// 递归返回, 此时start==end, 数组只有一个元素  
   int start1 = start;  
-    int mid = (start + end) >> 1;  
+    int mid = start + (end - start)/2 ;  
     int end1 = mid;  
     int start2 = mid + 1;  
     int end2 = end;  
@@ -509,6 +509,6 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzMDgxOTk4OSwxNzE3NDU2MjYzLC0xNT
-E2NTQ2MzgzXX0=
+eyJoaXN0b3J5IjpbNjkwMjY0OTcwLC04MzA4MTk5ODksMTcxNz
+Q1NjI2MywtMTUxNjU0NjM4M119
 -->
