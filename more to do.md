@@ -34,7 +34,6 @@
 * 为啥nio 要用byte buffer, 懂了io 模型之后还要知道设计api 的时候, 各种api 的好处以及作用
 
 * zk 的一致性如何保证
-* mysql 的事务如何实现
 * ConcurrentLinkedQueue ,blockingQueue 适用场景
 * 支持事务的消息框架
 * 微服务框架
@@ -86,11 +85,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQ3NzQ4ODExLDY0Nzc0ODgxMSwtMjEzMj
-kwNTIyNywtMTc4MDc1NTkzLC0zOTUxNTgwOTIsLTEwNjk5MDg3
-NTgsLTE3MDY0NTM3OTUsMTAwNjgwOTI4MCwtNDA0MjYxMDE3LD
-QyOTI2ODQxNiwtNDg5MDExOTIsLTE3ODY2Njg2OTIsLTEyNTUw
-NzQxOTcsMTQ0MDE4Njk1NCwyMDUzMjQ5NjA4LDEyMTU0OTI3Nz
-YsLTE1NTczOTk2MzMsLTE4Njg4NzU4OTEsLTYyNTIxMTAwNCwt
-MTI3Nzc5MTI0Ml19
+eyJoaXN0b3J5IjpbMTgyMjEwMDE0MCw2NDc3NDg4MTEsNjQ3Nz
+Q4ODExLC0yMTMyOTA1MjI3LC0xNzgwNzU1OTMsLTM5NTE1ODA5
+MiwtMTA2OTkwODc1OCwtMTcwNjQ1Mzc5NSwxMDA2ODA5MjgwLC
+00MDQyNjEwMTcsNDI5MjY4NDE2LC00ODkwMTE5MiwtMTc4NjY2
+ODY5MiwtMTI1NTA3NDE5NywxNDQwMTg2OTU0LDIwNTMyNDk2MD
+gsMTIxNTQ5Mjc3NiwtMTU1NzM5OTYzMywtMTg2ODg3NTg5MSwt
+NjI1MjExMDA0XX0=
 -->
