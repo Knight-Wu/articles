@@ -33,14 +33,12 @@
 ![enter image description here](https://drive.google.com/uc?id=1SJ73FAADDJ4KbOd7NdjyboXd85UDnLIe)
 logback也是推荐encoder 而不是layout, 所以配置里面不应该配置PatternLayout, 应该直接配置encoder, 具体原因没研究
 * I/O concept flush vs sync 
- 其中还发现了这个帖子, [I/O concept flush vs sync](https://stackoverflow.com/questions/4072878/i-o-concept-flush-vs-sync), 可以记录一下, 个人的理解是flush 只是基于file 这个类将buffer 清空到操作系统的缓存, 但是操作系统的缓存persist into disk 需要调用sync 
+ 其中还发现了这个帖子, [I/O concept flush vs sync](https://stackoverflow.com/questions/4072878/i-o-concept-flush-vs-sync), 可以记录一下, 个人的理解是flush 只是基于file 这个类将buffer 刷新到文件系统缓存, 但是文件系统的缓存persist into disk 需要调用sync 
  
  * 2018-12-28 update
 logback-1.0.13 没有实现shutdownhook, 自己加了一个, 跟1.3.0的hook 是一个逻辑, 只要能获取到 ContextAwareBase 的context 实例, 调用stop 方法就可以了.
 
 ### 疑问
-* 有可能刚刚达到了bufferSize进行了flush, 又进行period 的flush
-但是如果buffer 里面是空的, 对性能影响还是挺小的
 * 如果后续压测还是性能提升较小的话, 如何提升
 * logback 性能测试 https://github.com/ceki/logback-perf
 * logback v_1.3.0-alpha4 版本 AsyncAppenderBase 的worker thread 为什么只用一个thread, 用多个会不会有提升?
@@ -61,5 +59,5 @@ logback-1.0.13 没有实现shutdownhook, 自己加了一个, 跟1.3.0的hook 是
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjYxNzI3OTA5XX0=
+eyJoaXN0b3J5IjpbMTg0ODM5Mjg4Nyw2NjE3Mjc5MDldfQ==
 -->
