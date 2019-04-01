@@ -20,7 +20,8 @@ Linux filesystems keep metadata that record when each file was accessed. This me
 However, using the  sync  option will lead to poor performance for services that write data to disks, such as HDFS, YARN, Kafka and Kudu. In CDH most writes are already replicated. Therefore, having synchronous writes to disks is unnecessary, expensive, and not worth the added safety it provides.
 
 * mount option: async vs sync 
-async : 每次写入filesystem dous
+async : 每次写入filesystem 都是异步的, 先写到fs 的buffer, 应用程序不需要等待返回
+sync: 则相反, 每次写, 应用程序需要同步等待fs 把数据持久化到disk
 * 操作步骤
 
 > 手动更改参数
@@ -130,5 +131,5 @@ This measures the duration taken to write to the next DN over a regular TCP sock
  
  ### 调整配置的文件描述符的数量
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4NDQxNjEzOCw0NDAyNjMyNDZdfQ==
+eyJoaXN0b3J5IjpbMzc4NjM1NDE4LDQ0MDI2MzI0Nl19
 -->
