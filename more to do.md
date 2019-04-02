@@ -28,7 +28,8 @@
 * 支持事务的消息框架
 * 微服务框架
 * 泊松分布 https://www.zhihu.com/question/26441147
-* 虚拟内存的好处, java write file 底层
+* java threadpool 如何从空闲的worker 中选择一个来执行, 
+*  java write file 底层
 ### DOING
 
 
@@ -75,11 +76,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg0OTE3NjQ1LDE4MjIxMDAxNDAsNjQ3Nz
-Q4ODExLDY0Nzc0ODgxMSwtMjEzMjkwNTIyNywtMTc4MDc1NTkz
-LC0zOTUxNTgwOTIsLTEwNjk5MDg3NTgsLTE3MDY0NTM3OTUsMT
-AwNjgwOTI4MCwtNDA0MjYxMDE3LDQyOTI2ODQxNiwtNDg5MDEx
-OTIsLTE3ODY2Njg2OTIsLTEyNTUwNzQxOTcsMTQ0MDE4Njk1NC
-wyMDUzMjQ5NjA4LDEyMTU0OTI3NzYsLTE1NTczOTk2MzMsLTE4
-Njg4NzU4OTFdfQ==
+eyJoaXN0b3J5IjpbLTIxMzQ0MzI4MzgsMTg0OTE3NjQ1LDE4Mj
+IxMDAxNDAsNjQ3NzQ4ODExLDY0Nzc0ODgxMSwtMjEzMjkwNTIy
+NywtMTc4MDc1NTkzLC0zOTUxNTgwOTIsLTEwNjk5MDg3NTgsLT
+E3MDY0NTM3OTUsMTAwNjgwOTI4MCwtNDA0MjYxMDE3LDQyOTI2
+ODQxNiwtNDg5MDExOTIsLTE3ODY2Njg2OTIsLTEyNTUwNzQxOT
+csMTQ0MDE4Njk1NCwyMDUzMjQ5NjA4LDEyMTU0OTI3NzYsLTE1
+NTczOTk2MzNdfQ==
 -->
