@@ -71,6 +71,8 @@ ADD JAR file:///tmp/lxw1234/udf.jar;
 
 特别注意：这两种方式添加jar包时候，需要注意jar包的顺序，比如上面udf.jar中引用了IKAnalyzer2012_u6.jar中的类，而IKAnalyzer2012_u6.jar中引用了lucene-core-3.6.0.jar中的类，必须按照依赖顺序添加，否则还是会找不到类。
 
+#### hive beeline vs cli
+cli 是不通过hiveServer2 的, 直接在客户端生成执行jihua
 
 ### hive 优化
 #### Dynamic file compaction
@@ -108,5 +110,5 @@ SET hive.merge.smallfiles.avgsize = 134217728;
 
 >If the Hive query is a Map-Only query the parameters above will have no effect. In this case,modify the query adding a SORT BY 1 clause to force a reduce phase for the query.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4MzU1MTkwOF19
+eyJoaXN0b3J5IjpbLTI1MTc2NzE0MywxNTgzNTUxOTA4XX0=
 -->
