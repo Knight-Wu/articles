@@ -66,7 +66,7 @@ an .ibd file for each MySQL table, 代表了一个space, 由一个32 bit 的spac
 ![enter image description here](https://drive.google.com/uc?id=1LAmNPpwGYIrfjgg0X8RV9kVn_Q0jXcLA)
 
 ![enter image description here](https://drive.google.com/uc?id=1yIYifmSdffYSZn2Ojms8fZ2LvxeSkLv1)
-Each page within a space is assigned a 32-bit integer page number, often called “offset”, which is actually just the page’s offset from the beginning of the space (not necessarily the file, for multi-file spaces). So, page 0 is located at file offset 0, page 1 at file offset 16384=16*1024 bytes, and so on. (The astute may remember that InnoDB has a limit of 64TiB of data; this is actually a limit per space, and is due primarily to the page number being a 32-bit integer combined with the default page size: 232 x 16 KiB = 64 TiB.
+Each page within a space is assigned a 32-bit integer page number, often called “offset”, which is actually just the page’s offset from the beginning of the space (not necessarily the file, for multi-file spaces). So, page 0 is located at file offset 0, page 1 at file offset 16384=16*1024 bytes, and so on. (The astute may remember that InnoDB has a limit of 64TiB of data; this is actually a limit per space, and is due primarily to the page number being a 32-bit integer combined with the default page size: 2的32次方 x 16 KiB = 64 TiB.
 
 
 #### MyISAM
@@ -292,11 +292,11 @@ relational database index design and the optimizers
 * 多列组合索引和多列分开索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3MzgxOTk4MywtMTU3ODYwNjU1NSwtNT
-AxNzkzMjczLDEzNTAyNDI1MTQsLTEzMjkxMDMxNyw0NTkyMTUx
-NzAsLTE5MTc1Nzg2NiwtMTgwNTM4OTMyNSwtODUxNTg2NTAxLC
-0zNDAzNTE1NTcsLTExNDE5OTU3NDUsMTYwMjg1OTA0NSwxMjE4
-NDEzMjc1LC00NDk5MzgwODQsLTI3Njc4NTk2NSwxNjQ2ODc0OT
-IwLDUxNDMwOTMxOSwyNDEzNjY1NzQsMTYwMzQxMzI4MCwtNzU0
-ODUzODk3XX0=
+eyJoaXN0b3J5IjpbMTMyNzQ3MjI2NSwxOTczODE5OTgzLC0xNT
+c4NjA2NTU1LC01MDE3OTMyNzMsMTM1MDI0MjUxNCwtMTMyOTEw
+MzE3LDQ1OTIxNTE3MCwtMTkxNzU3ODY2LC0xODA1Mzg5MzI1LC
+04NTE1ODY1MDEsLTM0MDM1MTU1NywtMTE0MTk5NTc0NSwxNjAy
+ODU5MDQ1LDEyMTg0MTMyNzUsLTQ0OTkzODA4NCwtMjc2Nzg1OT
+Y1LDE2NDY4NzQ5MjAsNTE0MzA5MzE5LDI0MTM2NjU3NCwxNjAz
+NDEzMjgwXX0=
 -->
