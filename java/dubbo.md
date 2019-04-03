@@ -443,12 +443,14 @@ https://dubbo.incubator.apache.org/zh-cn/docs/user/perf-test.html
 ### 如何设计一个RPC 框架
 像调用本地服务一样调用远程(需要动态代理);
 需要明确什么是要懒加载, 什么要预先加载
-插件化, 可自定义, SPI
+插件化, 可自定义, SPI;
+需要完整的路由, 容错, 负载均衡, 心跳等机制保证服务的高可用; 
+配置需要能实时不重启更新, 提供者和消费者要动态感知;
 
 #### 序列化
 * 海量数据下的典型架构设计和性能优化之道, 精通常用架构原则
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyMzUzMjY5LDE1ODMxNTA1NzVdfQ==
+eyJoaXN0b3J5IjpbMTU0MzU2NTk5OSwxNTgzMTUwNTc1XX0=
 -->
