@@ -495,6 +495,8 @@ A container is supervised by the node manager, scheduled by the resource manager
 点进去可以看到这个application 的container 的运行的应用的log, stderr, stdout. 
 ![enter image description here](https://drive.google.com/uc?id=1Fj8qN6D4HqfM0YO2YiP2QB496xOiakS6)
 
+#### hdfs-site.xml 默认配置
+[https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml](https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml)
 
 #### hdfs 命令
 * 目录授权
@@ -506,8 +508,8 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNjAwMTc3NjksLTk5MDM3MzI1MiwxMD
-k2NDUyNzA3LDg0OTUxMiwtMTY4NjM5Njk2OCwtMTk1NzM5MzU3
-MCwtNzkxODkzOTE2LC0xMDYzNjgzNzIyLDI5NjEzMjMwOCw0Mj
-k2NzYyNjRdfQ==
+eyJoaXN0b3J5IjpbNzMyNzY4ODksLTEzNjAwMTc3NjksLTk5MD
+M3MzI1MiwxMDk2NDUyNzA3LDg0OTUxMiwtMTY4NjM5Njk2OCwt
+MTk1NzM5MzU3MCwtNzkxODkzOTE2LC0xMDYzNjgzNzIyLDI5Nj
+EzMjMwOCw0Mjk2NzYyNjRdfQ==
 -->
