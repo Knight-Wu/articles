@@ -440,10 +440,15 @@ Java代码  ![收藏代码](https://javatar.iteye.com/images/icon_star.png)
 #### dubbo 性能测试报告
 https://dubbo.incubator.apache.org/zh-cn/docs/user/perf-test.html
 
+### 如何设计一个RPC 框架
+像调用本地服务一样调用远程(需要动态代理);
+需要明确什么是要懒加载, 什么要预先加载
+插件化, 可自定义, SPI
+
 #### 序列化
 * 海量数据下的典型架构设计和性能优化之道, 精通常用架构原则
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4MzE1MDU3NV19
+eyJoaXN0b3J5IjpbLTUyMzUzMjY5LDE1ODMxNTA1NzVdfQ==
 -->
