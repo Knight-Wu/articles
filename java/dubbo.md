@@ -441,17 +441,20 @@ Java代码  ![收藏代码](https://javatar.iteye.com/images/icon_star.png)
 https://dubbo.incubator.apache.org/zh-cn/docs/user/perf-test.html
 
 ### 如何设计一个RPC 框架
+[http://dubbo.apache.org/zh-cn/docs/dev/principals/dummy.html](http://dubbo.apache.org/zh-cn/docs/dev/principals/dummy.html)
+
 像调用本地服务一样调用远程(需要动态代理);
 需要明确什么是要懒加载, 什么要预先加载
-插件化, 可自定义, SPI;
+微内核, 插件化, 可自定义, SPI;
 需要完整的路由, 容错, 负载均衡, 心跳等机制保证服务的高可用; 
 配置需要能实时不重启更新, 提供者和消费者要动态感知;
-分层隔离, 
+分领域设计, 领域驱动模型, 分层隔离, 
+便于排查问题, 校验jar 包, 配置等是否重复, 报错时加入必要日志和出错信息, 错误日志直接告诉解决方法和环境信息等.
 #### 序列化
 * 海量数据下的典型架构设计和性能优化之道, 精通常用架构原则
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDQyMjE0OTgsMTU0MzU2NTk5OSwxNT
-gzMTUwNTc1XX0=
+eyJoaXN0b3J5IjpbLTEzMDQ0NDcyMSwtMjAwNDIyMTQ5OCwxNT
+QzNTY1OTk5LDE1ODMxNTA1NzVdfQ==
 -->
