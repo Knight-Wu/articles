@@ -606,7 +606,7 @@ uuid time url result
 
 
 * 若要讨论spark和MR的区别
-  1. spark 容易编程, 不需要过多的抽象;MR需要较为复杂的抽象; spark支持多种算子, 而MR只支持map和reduce, 功能没有spark 丰富和易用.
+  1. spark 容易编程, 不需要过多的抽象;MR 则不够灵活, 相同的操作; spark支持多种算子, 而MR只支持map和reduce, 功能没有spark 丰富和易用.
   2. spark支持内存和硬盘以及混合存储三种方式, 而mr只支持hdfs一种, 这个是spark比较快的一个重要原因.
   3. spark的任务分配是更细粒度的, 例如划分了多个rdd, 中间有任务失败不需要从头开始计算; 而mr需要从头
   4. spark 默认是lazy compution, 触发了action 才会计算, 可以对中间过程进行很多优化
@@ -801,6 +801,6 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODg5Mzk4MjAwLC0xOTY0OTE1NDMyLDM3MT
-QxNTI1MiwxOTM5NzU5NzExLDY4OTE2NzUyM119
+eyJoaXN0b3J5IjpbMTYxNjQ1MTk1OSwtMTk2NDkxNTQzMiwzNz
+E0MTUyNTIsMTkzOTc1OTcxMSw2ODkxNjc1MjNdfQ==
 -->
