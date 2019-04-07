@@ -610,7 +610,7 @@ uuid time url result
   2. spark支持内存和硬盘以及混合存储三种方式, 而mr只支持hdfs一种, 这个是spark比较快的一个重要原因.
   3. spark的任务分配是更细粒度的, 例如划分了多个rdd, 中间有任务失败不需要从头开始计算; 而mr需要从头
   4. spark 默认是lazy compution, 触发了action 才会计算, 可以对中间过程进行很多优化
-  5. 相同stage 间task 是并行的, 
+
   
   * 性能对比， hive on spark , hive on mr, spark sql ,hive on tez
   [2014-benchmark](https://www.slideshare.net/hortonworks/hive-on-spark-is-blazing-fast-or-is-it-final), 
@@ -801,6 +801,6 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2NTQ4NzUzNywtMTk2NDkxNTQzMiwzNz
-E0MTUyNTIsMTkzOTc1OTcxMSw2ODkxNjc1MjNdfQ==
+eyJoaXN0b3J5IjpbODg5Mzk4MjAwLC0xOTY0OTE1NDMyLDM3MT
+QxNTI1MiwxOTM5NzU5NzExLDY4OTE2NzUyM119
 -->
