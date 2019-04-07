@@ -609,7 +609,8 @@ uuid time url result
   1. spark 容易编程, 不需要过多的抽象;MR需要较为复杂的抽象; spark支持多种算子, 而MR只支持map和reduce, 功能没有spark 丰富和易用.
   2. spark支持内存和硬盘以及混合存储三种方式, 而mr只支持hdfs一种, 这个是spark比较快的一个重要原因.
   3. spark的任务分配是更细粒度的, 例如划分了多个rdd, 中间有任务失败不需要从头开始计算; 而mr需要从头
-  4. spark默认是lazy compution, 可以对中间过程进行很多优化
+  4. spark 默认是lazy compution, 触发了action 才会计算, 可以对中间过程进行很多优化
+  5. 相同stage 间task 是并行的, 
   
   * 性能对比， hive on spark , hive on mr, spark sql ,hive on tez
   [2014-benchmark](https://www.slideshare.net/hortonworks/hive-on-spark-is-blazing-fast-or-is-it-final), 
@@ -800,6 +801,6 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NjQ5MTU0MzIsMzcxNDE1MjUyLDE5Mz
-k3NTk3MTEsNjg5MTY3NTIzXX0=
+eyJoaXN0b3J5IjpbLTc2NTQ4NzUzNywtMTk2NDkxNTQzMiwzNz
+E0MTUyNTIsMTkzOTc1OTcxMSw2ODkxNjc1MjNdfQ==
 -->
