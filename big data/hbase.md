@@ -1,8 +1,6 @@
->region架构 
-![region架构](https://note.youdao.com/yws/res/8213/WEBRESOURCEddb540cd4e8f5da5e6e65c0baff145b6)
+![enter image description here](https://drive.google.com/uc?id=18Q78zGYd8mHmY1xahDSvHf_Aq70cNx-R)
 
->hdfs文件映射
-![hdfs文件映射.jpg](https://note.youdao.com/yws/res/8217/WEBRESOURCE89320eb2430084453074a9592123d0dc)
+![](https://drive.google.com/uc?id=1FMdqU1d6Le7gTq_YyRjRvI0aMfEk8vim)
 
 #### hbase 特点
 * 底层存储基于hdfs, 可存储大量数据
@@ -198,5 +196,5 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTYxNTg1ODczXX0=
+eyJoaXN0b3J5IjpbMjkxOTgwODY0LDk2MTU4NTg3M119
 -->
