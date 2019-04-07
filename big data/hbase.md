@@ -106,9 +106,11 @@ RS下有多个region, 根据rowkey的分布均匀分布在多个region; 一个ta
 
 
 #### Compaction
+* 作用
+控制读延迟在一定的范围内, 
 
 * 流程
-> 目的选择文件进行合并, 思想是选择文件小且io负载重的文件, 有几个文件选择算法: RatioBasedCompactionPolicy、ExploringCompactionPolicy和StripeCompactionPolicy
+目的选择文件进行合并, 思想是选择文件小且io负载重的文件, 有几个文件选择算法: RatioBasedCompactionPolicy、ExploringCompactionPolicy和StripeCompactionPolicy
 
 * 触发时机
 1. memstore flush, flush之后, region下面的所有store会判断各自的storeFile的数量是否大于某个值,若大于, 则会compaction.
@@ -196,5 +198,6 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjkxOTgwODY0LDk2MTU4NTg3M119
+eyJoaXN0b3J5IjpbLTg0MDE3NzAwMywyOTE5ODA4NjQsOTYxNT
+g1ODczXX0=
 -->
