@@ -107,7 +107,7 @@ RS下有多个region, 根据rowkey的分布均匀分布在多个region; 一个ta
 
 #### Compaction
 * 作用
-通过将一些hfile 合并, 减少了IO, 控制读延迟在一定的范围内, 但是compaction 的时候会出现读毛刺, 和写阻塞.
+通过将一些hfile 合并, 减少了IO, 控制读延迟在一定的范围内, 但是compaction 的时候会出现读毛刺(因为IO 压力和带宽压力), 和写阻塞.
 
 写阻塞: 可能写很多, 生成hfile 的速度高于compaction 的速度, 导致hfile 很多, 读延迟增大, 所以当hfile 数量达到一定则会限制写速度, 阻塞一定的时间.  
 
@@ -200,6 +200,6 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzczMjE3ODcsMjkxOTgwODY0LDk2MT
+eyJoaXN0b3J5IjpbLTExOTg1NzAwNzMsMjkxOTgwODY0LDk2MT
 U4NTg3M119
 -->
