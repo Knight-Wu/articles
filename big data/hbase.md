@@ -3,8 +3,8 @@
 ![](https://drive.google.com/uc?id=1FMdqU1d6Le7gTq_YyRjRvI0aMfEk8vim)
 
 #### hbase 特点
-* 底层存储基于hdfs, 可存储大量数据
-* 分布式存储,基于region可拆分,compaction等特性,良好的读写性能
+* 底层存储基于hdfs, 随数据规模易扩展
+* 分布式存储, 查询分散, 基于region可拆分,compaction等特性,良好的读写性能
 * 主要基于列存储, 非常易扩展,可存储非结构化数据
 
 #### rowKey 的设计
@@ -200,6 +200,6 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExOTg1NzAwNzMsMjkxOTgwODY0LDk2MT
-U4NTg3M119
+eyJoaXN0b3J5IjpbNTQ1MTkyNywtMTE5ODU3MDA3MywyOTE5OD
+A4NjQsOTYxNTg1ODczXX0=
 -->
