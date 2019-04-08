@@ -20,6 +20,9 @@
 线程间共享, 存储每个类的结构; 包括constant pool, 
 java 8之后, 没有了**PermGen space**, 用方法区代替, 且方法区不属于heap size的一部分, 属于进程的内存, 光监控java heap size 已经不够了, 需要用top 监控整个 jvm 进程的内存, 因为还包括方法区和native memory.
 
+* constant pool
+每个.class 文件都有一个constant pool, 包括一些变量的值(literals)
+
 ### 本地内存(native memory, C heap)
 1. 管理java heap的状态数据（用于GC）;
 2. JNI调用，也就是Native Stack;
@@ -729,5 +732,5 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0MzMyMjMzOSw2Njk1MDY0OTldfQ==
+eyJoaXN0b3J5IjpbMTczMTg4OTYyMyw2Njk1MDY0OTldfQ==
 -->
