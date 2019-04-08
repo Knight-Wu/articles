@@ -21,8 +21,8 @@
 java 8之后, 没有了**PermGen space**, 用方法区代替, 且方法区不属于heap size的一部分, 属于进程的内存, 光监控java heap size 已经不够了, 需要用top 监控整个 jvm 进程的内存, 因为还包括方法区和native memory.
 
 * constant pool
-用于存储每个类文件的数据, 有些数据比较大就存到constant pool, class 文件只是常量的符号引用, 
-每个.class 文件都有一个constant pool, 包括一些变量的值(literals)和符号引用(包括类名和方法名等)
+[http://blog.jamesdbloom.com/JVMInternals.html#constant_pool](http://blog.jamesdbloom.com/JVMInternals.html#constant_pool)
+用于存储每个类文件的数据, 有些数据比较大就存到constant pool, class 文件只存常量的符号引用, 每个.class 文件都有一个constant pool, 例如包括一些变量的值(literals)和符号引用(包括类名和方法名等)
 
 ### 本地内存(native memory, C heap)
 1. 管理java heap的状态数据（用于GC）;
@@ -733,5 +733,5 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0NTE5NTg4NCw2Njk1MDY0OTldfQ==
+eyJoaXN0b3J5IjpbMjA3OTc1MzgzNyw2Njk1MDY0OTldfQ==
 -->
