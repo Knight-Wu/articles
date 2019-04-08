@@ -4,7 +4,7 @@
 #### 机器
 > 已有: 
 1. 已有运维关于关键端口的监控, 不存在则会短信和电话告警
-2. cpu , 内存, 
+2. cloudera 关于主机的监控zhibiao
 
 
 
@@ -17,5 +17,5 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NDU1MzY4OSw5ODgyMTM5NjRdfQ==
+eyJoaXN0b3J5IjpbLTgzMTI2NTkyOSw5ODgyMTM5NjRdfQ==
 -->
