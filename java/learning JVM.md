@@ -14,13 +14,10 @@
 
 
 ### java 堆(heap)
-存放对象的实例和数组, 所有线程所共有; 如果堆中没有内存完成实例的分配, 并且堆也无法再扩展时,抛出 OutOfMemoryError, 从java 7开始, constant pool 从永久代移到了堆, 包括string pool ,
-
-String str = new String("hello");
-程序中的字面量（literal）如直接书写的100、"hello"和常量都是放在常量池中，常量池是方法区的一部分，
+存放对象的实例和数组, 所有线程所共有; 如果堆中没有内存完成实例的分配, 并且堆也无法再扩展时,抛出 OutOfMemoryError
 
 ### 方法区(Method Area)
-线程间共享, 存储每个类的结构; 
+线程间共享, 存储每个类的结构; 包括constant pool, 
 java 8之后, 没有了**PermGen space**, 用方法区代替, 且方法区不属于heap size的一部分, 属于进程的内存, 光监控java heap size 已经不够了, 需要用top 监控整个 jvm 进程的内存, 因为还包括方法区和native memory.
 
 ### 本地内存(native memory, C heap)
@@ -732,5 +729,5 @@ https://www.zhihu.com/question/27339390
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjY5NTA2NDk5XX0=
+eyJoaXN0b3J5IjpbMjA0MzMyMjMzOSw2Njk1MDY0OTldfQ==
 -->
