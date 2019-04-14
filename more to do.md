@@ -30,6 +30,8 @@
 * 泊松分布 https://www.zhihu.com/question/26441147
 * java threadpool 如何从空闲的worker 中选择一个来执行, 
 *  java write file 底层
+* hbase 的设计结构和业务字段的设计
+* kafka 的架构
 ### DOING
 
 
@@ -76,11 +78,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzQ0MzI4MzgsMTg0OTE3NjQ1LDE4Mj
-IxMDAxNDAsNjQ3NzQ4ODExLDY0Nzc0ODgxMSwtMjEzMjkwNTIy
-NywtMTc4MDc1NTkzLC0zOTUxNTgwOTIsLTEwNjk5MDg3NTgsLT
-E3MDY0NTM3OTUsMTAwNjgwOTI4MCwtNDA0MjYxMDE3LDQyOTI2
-ODQxNiwtNDg5MDExOTIsLTE3ODY2Njg2OTIsLTEyNTUwNzQxOT
-csMTQ0MDE4Njk1NCwyMDUzMjQ5NjA4LDEyMTU0OTI3NzYsLTE1
-NTczOTk2MzNdfQ==
+eyJoaXN0b3J5IjpbLTMzMTkxMDYxMywtMjEzNDQzMjgzOCwxOD
+Q5MTc2NDUsMTgyMjEwMDE0MCw2NDc3NDg4MTEsNjQ3NzQ4ODEx
+LC0yMTMyOTA1MjI3LC0xNzgwNzU1OTMsLTM5NTE1ODA5MiwtMT
+A2OTkwODc1OCwtMTcwNjQ1Mzc5NSwxMDA2ODA5MjgwLC00MDQy
+NjEwMTcsNDI5MjY4NDE2LC00ODkwMTE5MiwtMTc4NjY2ODY5Mi
+wtMTI1NTA3NDE5NywxNDQwMTg2OTU0LDIwNTMyNDk2MDgsMTIx
+NTQ5Mjc3Nl19
 -->
