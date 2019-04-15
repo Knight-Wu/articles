@@ -188,15 +188,14 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 所以Hmaster 的下线短时间内对集群读写没有影响, 对region split 也不参与, 但是会影响region 的合并. 
 
 
-#### dataType
-* versioning
-可以无限制的put 任何数量的版本，超过 MaxVersion的其他更旧的记录会在Major compaction触发的时候删掉
-
 
 #### hbase important configuration
 * zookeeper.session.timeout
 默认3分钟, 意思是超过这个时间, HMaster才会发现然后恢复, 设置得太小,容易导致GC也会被认为 RS down
 
+### hbase 表结构设计
+1. 将业务性强, 区分度高的字段作为
+[https://www.ibm.com/developerworks/cn/analytics/library/ba-1604-hbase-develop-practice/index.html](https://www.ibm.com/developerworks/cn/analytics/library/ba-1604-hbase-develop-practice/index.html)
 
 #### 问题
 * 阿里巴巴订单数据, 热数据存mysql, 冷数据存hbase, 然后合并, 三年后, 
@@ -205,7 +204,7 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjMzMDE2MywtMzk3MTcxNTI3LDE1MT
-YwNzAwODUsNTQ1MTkyNywtMTE5ODU3MDA3MywyOTE5ODA4NjQs
-OTYxNTg1ODczXX0=
+eyJoaXN0b3J5IjpbLTE1MDcxMDMzNDIsLTEyNjMzMDE2MywtMz
+k3MTcxNTI3LDE1MTYwNzAwODUsNTQ1MTkyNywtMTE5ODU3MDA3
+MywyOTE5ODA4NjQsOTYxNTg1ODczXX0=
 -->
