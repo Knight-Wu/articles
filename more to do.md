@@ -31,6 +31,7 @@
 * java threadpool 如何从空闲的worker 中选择一个来执行, 
 *  java write file 底层
 * hbase 的设计结构和业务字段的设计
+* hbase 和mysql 场景
 * kafka 的架构
 * 邮件发出每天目录的增长量
 * 保证小文件每天能跑, 设置另一个轮训是否完成的线程
@@ -82,11 +83,11 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1NDEzMTc5MywtMzMxOTEwNjEzLC0yMT
-M0NDMyODM4LDE4NDkxNzY0NSwxODIyMTAwMTQwLDY0Nzc0ODgx
-MSw2NDc3NDg4MTEsLTIxMzI5MDUyMjcsLTE3ODA3NTU5MywtMz
-k1MTU4MDkyLC0xMDY5OTA4NzU4LC0xNzA2NDUzNzk1LDEwMDY4
-MDkyODAsLTQwNDI2MTAxNyw0MjkyNjg0MTYsLTQ4OTAxMTkyLC
-0xNzg2NjY4NjkyLC0xMjU1MDc0MTk3LDE0NDAxODY5NTQsMjA1
-MzI0OTYwOF19
+eyJoaXN0b3J5IjpbLTI3NTExMTI1MywyMDU0MTMxNzkzLC0zMz
+E5MTA2MTMsLTIxMzQ0MzI4MzgsMTg0OTE3NjQ1LDE4MjIxMDAx
+NDAsNjQ3NzQ4ODExLDY0Nzc0ODgxMSwtMjEzMjkwNTIyNywtMT
+c4MDc1NTkzLC0zOTUxNTgwOTIsLTEwNjk5MDg3NTgsLTE3MDY0
+NTM3OTUsMTAwNjgwOTI4MCwtNDA0MjYxMDE3LDQyOTI2ODQxNi
+wtNDg5MDExOTIsLTE3ODY2Njg2OTIsLTEyNTUwNzQxOTcsMTQ0
+MDE4Njk1NF19
 -->
