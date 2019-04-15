@@ -5,7 +5,7 @@
 #### hbase VS  RDBMS
 * 底层存储基于hdfs, 易扩展.
 * 查询分散, 对大规模的数据可以用 split, 和compaction 进行优化
-* hbase 对写更友好, 适合存储大规模的数据; mysql 更适合
+* hbase 对写更友好, 适合存储大规模的数据; mysql 更适合低延时, 高并发的读
 * 适合存储非结构化数据
 
 #### rowKey 的设计
@@ -205,8 +205,8 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDk1OTk5ODgsLTIwMjQ3OTEyMzEsLT
-EwMzY2OTQzMjQsLTQxOTAyNzA3MCwtMTI2MzMwMTYzLC0zOTcx
-NzE1MjcsMTUxNjA3MDA4NSw1NDUxOTI3LC0xMTk4NTcwMDczLD
-I5MTk4MDg2NCw5NjE1ODU4NzNdfQ==
+eyJoaXN0b3J5IjpbLTk5MTY3MDMwMCwtMjAyNDc5MTIzMSwtMT
+AzNjY5NDMyNCwtNDE5MDI3MDcwLC0xMjYzMzAxNjMsLTM5NzE3
+MTUyNywxNTE2MDcwMDg1LDU0NTE5MjcsLTExOTg1NzAwNzMsMj
+kxOTgwODY0LDk2MTU4NTg3M119
 -->
