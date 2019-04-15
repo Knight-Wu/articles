@@ -3,10 +3,10 @@
 ![](https://drive.google.com/uc?id=1FMdqU1d6Le7gTq_YyRjRvI0aMfEk8vim)
 
 #### hbase VS  RDBMS
-* 底层存储基于hdfs, 随数据规模易扩展
-* 分布式存储, 查询分散, 对大规模的数据可以用 split, 和compaction 进行优化
-* 对写更友好, 
-* 适合存储非结构化数据, 主要基于列存储, 非常易扩展, 
+* 底层存储基于hdfs, 易扩展.
+* 查询分散, 对大规模的数据可以用 split, 和compaction 进行优化
+* hbase 对写更友好, 适合存储大规模的数据; mysql 更适合
+* 适合存储非结构化数据
 
 #### rowKey 的设计
 * tall-Narrow 模式
@@ -205,8 +205,8 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4NTYyODg2NCwtMjAyNDc5MTIzMSwtMT
-AzNjY5NDMyNCwtNDE5MDI3MDcwLC0xMjYzMzAxNjMsLTM5NzE3
-MTUyNywxNTE2MDcwMDg1LDU0NTE5MjcsLTExOTg1NzAwNzMsMj
-kxOTgwODY0LDk2MTU4NTg3M119
+eyJoaXN0b3J5IjpbLTE4MDk1OTk5ODgsLTIwMjQ3OTEyMzEsLT
+EwMzY2OTQzMjQsLTQxOTAyNzA3MCwtMTI2MzMwMTYzLC0zOTcx
+NzE1MjcsMTUxNjA3MDA4NSw1NDUxOTI3LC0xMTk4NTcwMDczLD
+I5MTk4MDg2NCw5NjE1ODU4NzNdfQ==
 -->
