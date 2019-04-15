@@ -185,7 +185,7 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 * 负责给RS 分配region, 负责RS 的负载均衡
 * 某个RS down 之后, 负责将他的region 分配到其他RS. 
 * 负责hbase schema 的更新, 例如表的增删查改等
-所以Hmaster 的下线对集群读写没有影响, 对region split 也不参与, 
+所以Hmaster 的下线短时间内对集群读写没有影响, 对region split 也不参与, 但是会影响region 的合并. 
 
 
 #### dataType
@@ -205,7 +205,7 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDczNDA4NjQsLTM5NzE3MTUyNywxNT
-E2MDcwMDg1LDU0NTE5MjcsLTExOTg1NzAwNzMsMjkxOTgwODY0
-LDk2MTU4NTg3M119
+eyJoaXN0b3J5IjpbLTEyNjMzMDE2MywtMzk3MTcxNTI3LDE1MT
+YwNzAwODUsNTQ1MTkyNywtMTE5ODU3MDA3MywyOTE5ODA4NjQs
+OTYxNTg1ODczXX0=
 -->
