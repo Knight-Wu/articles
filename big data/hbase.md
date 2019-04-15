@@ -57,7 +57,7 @@ RS下有多个region, 根据rowkey的分布均匀分布在多个region; 一个ta
 ### hbase 读流程
 1. 从zk上获取hbase:meta表的所在的RS,可以通过zookeeper命令(get /<hbase-rootdir>/meta-region-server)查看该节点信息
 2. 通过访问meta 表所在的RS, 获取row所在的region ,并且meta表的信息会被客户端加载到缓存 可以用 scan 'hbase:meta' 来获取该表的信息.meta表的结构, region信息被更新, 例如split等后, 会更新meta表
-3. 
+3. 再定位到store 的某个storeFile 进行查询, 如何定位(待了解)
 
 
 
@@ -204,7 +204,7 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA5NDEyODExOSwtNDE5MDI3MDcwLC0xMj
-YzMzAxNjMsLTM5NzE3MTUyNywxNTE2MDcwMDg1LDU0NTE5Mjcs
-LTExOTg1NzAwNzMsMjkxOTgwODY0LDk2MTU4NTg3M119
+eyJoaXN0b3J5IjpbLTEwMzY2OTQzMjQsLTQxOTAyNzA3MCwtMT
+I2MzMwMTYzLC0zOTcxNzE1MjcsMTUxNjA3MDA4NSw1NDUxOTI3
+LC0xMTk4NTcwMDczLDI5MTk4MDg2NCw5NjE1ODU4NzNdfQ==
 -->
