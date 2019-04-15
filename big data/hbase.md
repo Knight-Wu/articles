@@ -194,7 +194,7 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 默认3分钟, 意思是超过这个时间, HMaster才会发现然后恢复, 设置得太小,容易导致GC也会被认为 RS down
 
 ### hbase 表结构设计
-1. 将业务性强, 区分度高的字段作为
+1. 将业务性强, 区分度高的字段联合起来, 统一作为rowKey, 
 [https://www.ibm.com/developerworks/cn/analytics/library/ba-1604-hbase-develop-practice/index.html](https://www.ibm.com/developerworks/cn/analytics/library/ba-1604-hbase-develop-practice/index.html)
 
 #### 问题
@@ -204,7 +204,7 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDcxMDMzNDIsLTEyNjMzMDE2MywtMz
-k3MTcxNTI3LDE1MTYwNzAwODUsNTQ1MTkyNywtMTE5ODU3MDA3
-MywyOTE5ODA4NjQsOTYxNTg1ODczXX0=
+eyJoaXN0b3J5IjpbLTQxOTAyNzA3MCwtMTI2MzMwMTYzLC0zOT
+cxNzE1MjcsMTUxNjA3MDA4NSw1NDUxOTI3LC0xMTk4NTcwMDcz
+LDI5MTk4MDg2NCw5NjE1ODU4NzNdfQ==
 -->
