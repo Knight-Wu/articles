@@ -34,7 +34,8 @@
 * kafka 的架构
 * 邮件发出每天目录的增长量
 * 保证小文件每天能跑, 设置另一个轮训是否完成的线程
-* 
+* 超时两小时 kill 的bug 解决
+* hive-staging 目录更改. 
 ### DOING
 
 
@@ -81,7 +82,7 @@ https://github.com/uber-common/jvm-profiler 这个可以试试
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwMDcwNjQ2NywtMzMxOTEwNjEzLC0yMT
+eyJoaXN0b3J5IjpbMjA1NDEzMTc5MywtMzMxOTEwNjEzLC0yMT
 M0NDMyODM4LDE4NDkxNzY0NSwxODIyMTAwMTQwLDY0Nzc0ODgx
 MSw2NDc3NDg4MTEsLTIxMzI5MDUyMjcsLTE3ODA3NTU5MywtMz
 k1MTU4MDkyLC0xMDY5OTA4NzU4LC0xNzA2NDUzNzk1LDEwMDY4
