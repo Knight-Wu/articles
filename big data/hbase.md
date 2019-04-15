@@ -182,7 +182,8 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 * 负责RS 和Hmaster 的协调, 某个RS down 能让Hmaster 感知到. 
 
 ### Hmaster 的作用
-* 负责给RS 
+* 负责给RS 分配region, 负责RS 的负载均衡
+* 某个RS down 之后, 负责将他的region 分配到其他RS. 
 
 
 
@@ -203,7 +204,7 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyNDIzMDIxNywxNTE2MDcwMDg1LDU0NT
+eyJoaXN0b3J5IjpbLTM5NzE3MTUyNywxNTE2MDcwMDg1LDU0NT
 E5MjcsLTExOTg1NzAwNzMsMjkxOTgwODY0LDk2MTU4NTg3M119
 
 -->
