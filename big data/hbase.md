@@ -155,7 +155,8 @@ After a major compaction runs there will be a single StoreFile per Store, and th
 
 * 可在 建表的时候指定 COMPACTION => false来关闭所有的compaction
 ```
-hbase shell>create 'cdp_table_test', {NAME =>'crm', VERSIONS => 2 , COMPRESSION => 'SNAPPY'}, {SPLITS => ['8888|']}, {METADATA => {'SPLIT_POLICY' => 'org.apache.hadoop.hbase.regionserver.ConstantSizeRegionSplitPolicy'}}, {MAX_FILESIZE => '107374182400'}
+hbase shell>
+create 'cdp_table_test', {NAME =>'crm', VERSIONS => 2 , COMPRESSION => 'SNAPPY'}, {SPLITS => ['8888|']}, {METADATA => {'SPLIT_POLICY' => 'org.apache.hadoop.hbase.regionserver.ConstantSizeRegionSplitPolicy'}}, {MAX_FILESIZE => '107374182400'}
 ```
 
 
@@ -200,6 +201,6 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTQ1MTkyNywtMTE5ODU3MDA3MywyOTE5OD
-A4NjQsOTYxNTg1ODczXX0=
+eyJoaXN0b3J5IjpbMTUxNjA3MDA4NSw1NDUxOTI3LC0xMTk4NT
+cwMDczLDI5MTk4MDg2NCw5NjE1ODU4NzNdfQ==
 -->
