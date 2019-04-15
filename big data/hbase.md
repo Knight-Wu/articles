@@ -195,7 +195,7 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 ### hbase 表结构设计
 1. 将业务性强, 区分度高的字段联合起来, 统一作为rowKey, 
-[https://www.ibm.com/developerworks/cn/analytics/library/ba-1604-hbase-develop-practice/index.html](https://www.ibm.com/developerworks/cn/analytics/library/ba-1604-hbase-develop-practice/index.html), 但是这样只能genju
+[https://www.ibm.com/developerworks/cn/analytics/library/ba-1604-hbase-develop-practice/index.html](https://www.ibm.com/developerworks/cn/analytics/library/ba-1604-hbase-develop-practice/index.html), 但是这样只能根据前缀进行查询, 在不知道前缀的情况下, 就会变为全部rowKey 的扫描, 此时就需要二级索引了(待了解)
 
 #### 问题
 * 阿里巴巴订单数据, 热数据存mysql, 冷数据存hbase, 然后合并, 三年后, 
@@ -204,7 +204,7 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzAxMDY1NjUsLTQxOTAyNzA3MCwtMT
+eyJoaXN0b3J5IjpbLTE5MTMzODkwMTgsLTQxOTAyNzA3MCwtMT
 I2MzMwMTYzLC0zOTcxNzE1MjcsMTUxNjA3MDA4NSw1NDUxOTI3
 LC0xMTk4NTcwMDczLDI5MTk4MDg2NCw5NjE1ODU4NzNdfQ==
 -->
