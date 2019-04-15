@@ -177,10 +177,12 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 ![hbase-majoralltable.sh](https://user-images.githubusercontent.com/20329409/41819270-3831dcc6-77f0-11e8-8c2a-12b3586ace83.png)
 
 
-### zookeeper在hbase中的作用
+### zookeeper 的作用
 * 存储hbase元数据(hbase:meta表所在的RS的信息)
-* 可以保证节点信息在分布式环境下的同步
+* 负责RS 和Hmaster 的协调, 某个RS down 能让Hmaster 感知到. 
 
+### Hmaster 的作用
+* 负责给RS 
 
 
 
@@ -201,6 +203,7 @@ smaller(设置的最大的region size(默认10 GB), current region number的立�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxNjA3MDA4NSw1NDUxOTI3LC0xMTk4NT
-cwMDczLDI5MTk4MDg2NCw5NjE1ODU4NzNdfQ==
+eyJoaXN0b3J5IjpbLTMyNDIzMDIxNywxNTE2MDcwMDg1LDU0NT
+E5MjcsLTExOTg1NzAwNzMsMjkxOTgwODY0LDk2MTU4NTg3M119
+
 -->
