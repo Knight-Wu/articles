@@ -120,18 +120,18 @@ Active NameNode 和 Standby NameNode：两台 NameNode 形成互备，一台处�
 
 * ActiveStandbyElector(完成自动的主备选举)
 1. 在zk上创建锁节点
-> 如果healMonitor检测到nn状态正常, 则该nn有资格参加下一个主备选举, 两台nn 的ActiveStandbyElector 会尝试在zk上创建一个临时节点: /hadoop-ha/${dfs.nameservices}/ActiveStandbyElectorLock, Zookeeper 的写一致性会保证最终只会有一个 ActiveStandbyElector 创建成功, 创建成功的 ActiveStandbyElector 对应的 NameNode 就会成为主 NameNode，ActiveStandbyElector 会回调 ZKFailoverController 的方法进一步将对应的 NameNode 切换为 Active 状态。而创建失败的 ActiveStandbyElector 对应的 NameNode 成为备 NameNode，ActiveStandbyElector 会回调 ZKFailoverController 的方法进一步将对应的 NameNode 切换为 Standby 状态. 
+如果healMonitor检测到nn状态正常, 则该nn有资格参加下一个主备选举, 两台nn 的ActiveStandbyElector 会尝试在zk上创建一个临时节点: /hadoop-ha/${dfs.nameservices}/ActiveStandbyElectorLock, Zookeeper 的写一致性会保证最终只会有一个 ActiveStandbyElector 创建成功, 创建成功的 ActiveStandbyElector 对应的 NameNode 就会成为主 NameNode，ActiveStandbyElector 会回调 ZKFailoverController 的方法进一步将对应的 NameNode 切换为 Active 状态。而创建失败的 ActiveStandbyElector 对应的 NameNode 成为备 NameNode，ActiveStandbyElector 会回调 ZKFailoverController 的方法进一步将对应的 NameNode 切换为 Standby 状态. 
 
 2. 注册watcher监听
-> 两个节点的 ActiveStandbyElector 都会向zk 注册一个watcher 来监听节点的状态变化.
+ 两个节点的 ActiveStandbyElector 都会向zk 注册一个watcher 来监听节点的状态变化.
 
 3. 自动触发主备选举
-> 如果active nn上面的 healthMonitor监测到nn状态发生变化, ZKFailoverController 会主动删除临时节点 /hadoop-ha/${dfs.nameservices}/ActiveStandbyElectorLock, 这样standby的zk watcher会收到nodeDel事件, 会再次进行一次主备选举, 如果是 active nn的整个节点down, 由于临时节点的特性, 也会让standBy 的zkWatcher 监测到, 从而接管
+ 如果active nn上面的 healthMonitor监测到nn状态发生变化, ZKFailoverController 会主动删除临时节点 /hadoop-ha/${dfs.nameservices}/ActiveStandbyElectorLock, 这样standby的zk watcher会收到nodeDel事件, 会再次进行一次主备选举, 如果是 active nn的整个节点down, 由于临时节点的特性, 也会让standBy 的zkWatcher 监测到, 从而接管
 
 4. 防止双主现象
-> 由于zk的敏感, 可能nn那台的full GC导致zk任务active nn挂掉了, 从而启动主备切换, 原先standby nn已经变成了active nn, 但是原先active那台full GC恢复后, 感知到与zk 的session已经断开, 但是在一定的时间窗口内还是active的
+ 由于zk的敏感, 可能nn那台的full GC导致zk任务active nn挂掉了, 从而启动主备切换, 原先standby nn已经变成了active nn, 但是原先active那台full GC恢复后, 感知到与zk 的session已经断开, 但是在一定的时间窗口内还是active的
 
-> 解决办法: fencing(隔离), 除了前面的临时节点外, 还创建另外一个路径为/hadoop-ha/${dfs.nameservices}/ActiveBreadCrumb 的持久节点，这个节点里面保存了这个 Active NameNode 的地址信息, 下一个active 的nn会监测到上一个active nn的信息, 在做接管时做隔离
+ 解决办法: fencing(隔离), 除了前面的临时节点外, 还创建另外一个路径为/hadoop-ha/${dfs.nameservices}/ActiveBreadCrumb 的持久节点，这个节点里面保存了这个 Active NameNode 的地址信息, 下一个active 的nn会监测到上一个active nn的信息, 在做接管时做隔离
 
 > 隔离方法: 
 > 1. 调用这个旧 Active NameNode 的 HAServiceProtocol RPC 接口的 transitionToStandby 方法，看能不能把它转换为 Standby 状态。
@@ -508,8 +508,8 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzMyNzY4ODksLTEzNjAwMTc3NjksLTk5MD
-M3MzI1MiwxMDk2NDUyNzA3LDg0OTUxMiwtMTY4NjM5Njk2OCwt
-MTk1NzM5MzU3MCwtNzkxODkzOTE2LC0xMDYzNjgzNzIyLDI5Nj
-EzMjMwOCw0Mjk2NzYyNjRdfQ==
+eyJoaXN0b3J5IjpbNDExNTcwNzE1LDczMjc2ODg5LC0xMzYwMD
+E3NzY5LC05OTAzNzMyNTIsMTA5NjQ1MjcwNyw4NDk1MTIsLTE2
+ODYzOTY5NjgsLTE5NTczOTM1NzAsLTc5MTg5MzkxNiwtMTA2Mz
+Y4MzcyMiwyOTYxMzIzMDgsNDI5Njc2MjY0XX0=
 -->
