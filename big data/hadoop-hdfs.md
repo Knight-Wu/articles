@@ -133,10 +133,10 @@ Active NameNode 和 Standby NameNode：两台 NameNode 形成互备，一台处�
 
  解决办法: fencing(隔离), 除了前面的临时节点外, 还创建另外一个路径为/hadoop-ha/${dfs.nameservices}/ActiveBreadCrumb 的持久节点，这个节点里面保存了这个 Active NameNode 的地址信息, 下一个active 的nn会监测到上一个active nn的信息, 在做接管时做隔离
 
-> 隔离方法: 
-> 1. 调用这个旧 Active NameNode 的 HAServiceProtocol RPC 接口的 transitionToStandby 方法，看能不能把它转换为 Standby 状态。
-> 2. 如果失败, 执行配置的隔离措施, 默认是sshfence(通过 SSH 登录到目标机器上，执行命令 fuser 将对应的进程杀死)
-> 3. 只有在成功地执行完成 fencing 之后，选主成功的 ActiveStandbyElector 才会回调 ZKFailoverController 的 becomeActive 方法将对应的 NameNode 转换为 Active 状态，开始对外提供服务。
+隔离方法: 
+1. 调用这个旧 Active NameNode 的 HAServiceProtocol RPC 接口的 transitionToStandby 方法，看能不能把它转换为 Standby 状态。
+ 2. 如果失败, 执行配置的隔离措施, 默认是sshfence(通过 SSH 登录到目标机器上，执行命令 fuser 将对应的进程杀死)
+ 3. 只有在成功地执行完成 fencing 之后，选主成功的 ActiveStandbyElector 才会回调 ZKFailoverController 的 becomeActive 方法将对应的 NameNode 转换为 Active 状态，开始对外提供服务。
 
 
 
@@ -508,7 +508,7 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDExNTcwNzE1LDczMjc2ODg5LC0xMzYwMD
+eyJoaXN0b3J5IjpbNTQyNTExODk5LDczMjc2ODg5LC0xMzYwMD
 E3NzY5LC05OTAzNzMyNTIsMTA5NjQ1MjcwNyw4NDk1MTIsLTE2
 ODYzOTY5NjgsLTE5NTczOTM1NzAsLTc5MTg5MzkxNiwtMTA2Mz
 Y4MzcyMiwyOTYxMzIzMDgsNDI5Njc2MjY0XX0=
