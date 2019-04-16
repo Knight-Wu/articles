@@ -32,7 +32,7 @@ task 执行的结果主要分为shuffleMapTask 和resultTask, shuffleMapTask 生
 结果如果是indirectResult, 则需要调用 blockManager.getRemoteBytes 去取, 取到的结果如果是resultTask, 则用resultHandler 去算, 如果shuffleMapTask的结果则需要将输出的结果存放到 mapOutputTrackerMaster 的mapStatus 结构, 以便shuffle read 去查询. 如果driver 收到的task 是stage 中最后一个task, 则告诉dagScheduler 则可以开始下一个stage, 如果是最后一个stage, 则可以开始下一个job. 
 
 * shuffle read 如何知道去哪里获取数据
-shuffle write 输出的数据信息已经保存在driver mapOutputTrackerMaster, HashMap<stageId, Array[MapStatus]>, 根据stageId 就可以获取到shuffleMapTask 输出的位置信息
+shuffle write 输出的数据信息已经保存在driver 的mapOutputTrackerMaster, HashMap<stageId, Array[MapStatus]>, 根据stageId 就可以获取到shuffleMapTask 输出的位置信息
 
 
 
@@ -801,6 +801,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxNjQ1MTk1OSwtMTk2NDkxNTQzMiwzNz
-E0MTUyNTIsMTkzOTc1OTcxMSw2ODkxNjc1MjNdfQ==
+eyJoaXN0b3J5IjpbMTY1ODEyMzE5MSwxNjE2NDUxOTU5LC0xOT
+Y0OTE1NDMyLDM3MTQxNTI1MiwxOTM5NzU5NzExLDY4OTE2NzUy
+M119
 -->
