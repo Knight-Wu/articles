@@ -491,6 +491,8 @@ public void nodeToQueue(TreeNode root, Queue<TreeNode> queue) {
 1. 注意递归中, 传递的参数的类型, 基本类型例如int, char 等, 在函数栈的嵌套中拷贝一个新的值到下一个函数调用, 每个函数栈的变量的改变不影响其他函数栈; 但是如果是对象类型, 则传递的是对象的引用, 多个函数栈中会改变对象的值; 但是如果传递的是新的字符串, 则不会改变
 2. 灵活使用递归中的全局变量和参数, 能让递归更易理解. 
 
+* **尾递归**
+
 * 回溯思想
 https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
 常作为暴力破解, 穷举的一种优化, 类似于走迷宫,  走错了回头, 递归形式, 
@@ -509,6 +511,7 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4MjM1ODQ4OCw2OTAyNjQ5NzAsLTgzMD
-gxOTk4OSwxNzE3NDU2MjYzLC0xNTE2NTQ2MzgzXX0=
+eyJoaXN0b3J5IjpbMTQwODQxMzQ4MCwxMzgyMzU4NDg4LDY5MD
+I2NDk3MCwtODMwODE5OTg5LDE3MTc0NTYyNjMsLTE1MTY1NDYz
+ODNdfQ==
 -->
