@@ -362,7 +362,7 @@ https://hadoop.apache.org/docs/r2.7.1/hadoop-project-dist/hadoop-hdfs/hdfs-defau
 > If there is a datanode/network failure in the write pipeline, DFSClient will try to remove the failed datanode from the pipeline and then continue writing with the remaining datanodes. As a result, the number of datanodes in the pipeline is decreased. The feature is to add new datanodes to the pipeline. 
 
 * dfs.client.block.write.replace-datanode-on-failure.policy(默认 DEFAULT)
->This property is used only if the value of dfs.client.block.write.replace-datanode-on-failure.enable is true. ALWAYS: always add a new datanode when an existing datanode is removed. NEVER: never add a new datanode. DEFAULT: Let r be the replication number. Let n be the number of existing datanodes. Add a new datanode only if r is greater than or equal to 3 and either (1) floor(r/2) is greater than or equal to n; or (2) r is greater than n and the block is hflushed/appended. **(这个existing dn指的是集群中的所有dn)**
+>This property is used only if the value of dfs.client.block.write.replace-datanode-on-failure.enable is true. ALWAYS: always add a new datanode when an existing datanode is removed. NEVER: never add a new datanode. DEFAULT: Let r be the replication number. Let n be the number of existing datanodes. Add a new datanode only if r is greater than or equal to 3 and either (1) floor(r/2) is greater than or equal to n; or (2) r is greater than n and the block is hflushed/appended. **(这个existing dn指的是pipeline 中的dn)**
 
 * dfs.client.block.write.replace-datanode-on-failure.best-effort(默认false)
 > This property is used only if the value of dfs.client.block.write.replace-datanode-on-failure.enable is true. Best effort means that the client will try to replace a failed datanode in write pipeline (provided that the policy is satisfied), however, it continues the write operation in case that the datanode replacement also fails. Suppose the datanode replacement fails. false: An exception should be thrown so that the write will fail. true : The write should be resumed with the remaining datandoes. Note that setting this property to true allows writing to a pipeline with a smaller number of datanodes. As a result, it increases the probability of data loss.
@@ -508,9 +508,9 @@ A container is supervised by the node manager, scheduled by the resource manager
 * hive和 mysql的区别
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzg2Nzk5MTUsNTQyNTExODk5LDczMj
-c2ODg5LC0xMzYwMDE3NzY5LC05OTAzNzMyNTIsMTA5NjQ1Mjcw
-Nyw4NDk1MTIsLTE2ODYzOTY5NjgsLTE5NTczOTM1NzAsLTc5MT
-g5MzkxNiwtMTA2MzY4MzcyMiwyOTYxMzIzMDgsNDI5Njc2MjY0
-XX0=
+eyJoaXN0b3J5IjpbLTEwOTQ0MTA1ODIsLTIwMzg2Nzk5MTUsNT
+QyNTExODk5LDczMjc2ODg5LC0xMzYwMDE3NzY5LC05OTAzNzMy
+NTIsMTA5NjQ1MjcwNyw4NDk1MTIsLTE2ODYzOTY5NjgsLTE5NT
+czOTM1NzAsLTc5MTg5MzkxNiwtMTA2MzY4MzcyMiwyOTYxMzIz
+MDgsNDI5Njc2MjY0XX0=
 -->
