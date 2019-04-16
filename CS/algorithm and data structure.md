@@ -183,7 +183,7 @@ static void QSRecu1(int[] arr, int start, int end) {
 > 版本三, 三分法, 针对有元素相等的情况下, 
 
 ```
-// 三分法, 用三个指针, 左边指针-1为小于pivot的index, 右边指针+1 位大于pivot 的index  , 第三个指针是比较指针.pivot 为最左边的start
+// 三分法, 用三个指针, 左边指针-1为小于pivot的index, 右边指针+1 位大于pivot 的index  , 第三个指针是比较指针 pivot 为最左边的start
 void qsRecu2(int[] arr, int start, int end) {  
     if (start >= end) return;  
     int pivot = arr[end];  
@@ -509,6 +509,6 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjkwMjY0OTcwLC04MzA4MTk5ODksMTcxNz
-Q1NjI2MywtMTUxNjU0NjM4M119
+eyJoaXN0b3J5IjpbMTM4MjM1ODQ4OCw2OTAyNjQ5NzAsLTgzMD
+gxOTk4OSwxNzE3NDU2MjYzLC0xNTE2NTQ2MzgzXX0=
 -->
