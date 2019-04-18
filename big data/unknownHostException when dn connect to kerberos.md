@@ -14,8 +14,11 @@ datanode 报告heartBeat 给nn的时候, 需要先认证 kerberos, 但是认证�
 
 #### 认证为什么出现unknownHostEx
 一步步跟随异常栈看代码, 关键点:
- 1. 先从缓存解析host, 为了防止dns 中间人攻击, 默认
+ 1. 先从缓存解析host, 为了防止dns 中间人攻击, 默认successCache 是forever 的, 有个疑问, 那修改了host 如何取到新的呢? 
+
+2. lookup table
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1NjA0MjE1Myw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbLTc2MjIzMTMyNiw3MzA5OTgxMTZdfQ==
 -->
