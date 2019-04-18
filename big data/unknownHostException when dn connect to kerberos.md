@@ -6,8 +6,11 @@ datanode 报告heartBeat 给nn的时候, 需要先认证 kerberos, 但是认证�
 
 #### 问题
 1. 为什么出现了认证
-2. 认证
+2. 认证为什么出现unknownHostEx
+3. 如何监控, 因为dn 进程和端口都在, 只能更细粒度的监控 .
+
+#### 为什么出现了认证
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDY5MDg2ODQsNzMwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbLTE1MzQwNTg5NjYsNzMwOTk4MTE2XX0=
 -->
