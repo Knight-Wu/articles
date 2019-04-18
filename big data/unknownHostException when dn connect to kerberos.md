@@ -19,7 +19,14 @@ datanode 报告heartBeat 给nn的时候, 需要先认证 kerberos, 但是认证�
 2. lookup table, 用于多线程环境下, 遇到比较耗时的可以共享结果的操作, 一个线程去查了, 其他线程就block 等他返回好了, 不要再去查. 
 
 3. 
+
+
+#### 资料
+* kerberos  超时时间配置
+[https://blog.csdn.net/yinansheng1/article/details/79397309](https://blog.csdn.net/yinansheng1/article/details/79397309)
+
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDM3NzIyMTAsNzMwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbLTg0MDg4NzgwNSw3MzA5OTgxMTZdfQ==
 -->
