@@ -6,7 +6,7 @@ datanode 报告heartBeat 给nn的时候, 需要先认证 kerberos, 但是认证�
 
 #### 问题
 1. 为什么出现了认证
-2. 认证为什么出现unknownHostEx
+2. 认证为什么出现 unknownHostException
 3. 如何监控, 因为dn 进程和端口都在, 只能更细粒度的监控 .
 
 #### 为什么出现了认证
@@ -16,9 +16,10 @@ datanode 报告heartBeat 给nn的时候, 需要先认证 kerberos, 但是认证�
 一步步跟随异常栈看代码, 关键点:
  1. 先从缓存解析host, 为了防止dns 中间人攻击, 默认successCache 是forever 的, 有个疑问, 那修改了host 如何取到新的呢? 
 
-2. lookup table
+2. lookup table, 用于多线程环境下, 遇到比较耗时的可以共享结果的操作, 一个线程去查了, 其他线程就block 等他返回好了, 不要再去查. 
 
+3. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2MjIzMTMyNiw3MzA5OTgxMTZdfQ==
+eyJoaXN0b3J5IjpbLTEyMDM3NzIyMTAsNzMwOTk4MTE2XX0=
 -->
