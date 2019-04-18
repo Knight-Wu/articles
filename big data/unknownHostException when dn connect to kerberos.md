@@ -10,7 +10,11 @@ datanode 报告heartBeat 给nn的时候, 需要先认证 kerberos, 但是认证�
 3. 如何监控, 因为dn 进程和端口都在, 只能更细粒度的监控 .
 
 #### 为什么出现了认证
+看异常栈是因为这个, 可能一瞬间流量比较大
+
+#### 认证为什么出现unknownHostEx
+一步步跟随异常栈看代码, 关键点 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzQwNTg5NjYsNzMwOTk4MTE2XX0=
+eyJoaXN0b3J5IjpbLTE5OTMyMzY4OCw3MzA5OTgxMTZdfQ==
 -->
