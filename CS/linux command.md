@@ -193,7 +193,7 @@ sz // 下载文件,
 ```
 nohup command & // 最简单的模式
 nohup command & // 命令执行完时打出信息到shell 屏幕上
-nohup command > myOutPut.out 2>&1 & // 把标准输入和输出重定向到自己的文件
+nohup command > myOutPut.out 2>&1 & // 把stdout 和stderr 重定向到自己的文件
 ```
 
 * set
@@ -330,5 +330,5 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjUyNzQwNzVdfQ==
+eyJoaXN0b3J5IjpbMTY2MTUzNjAsLTE2MjUyNzQwNzVdfQ==
 -->
