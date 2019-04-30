@@ -188,6 +188,7 @@ sz // 下载文件,
 * nohup
 让进程忽略hangup 信号, 而什么是hangup信号呢, 当用户注销（logout）或者网络断开时，终端会收到 HUP（hangup）信号从而关闭其所有子进程。
 其他长期运行进程的命令见 [https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html](https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html)
+程序执行完成之后, nohup 启动的进程会退出, 不需要显示的在程序末尾 : exit 0
 
 
 ```
@@ -330,5 +331,6 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY2MTUzNjAsLTE2MjUyNzQwNzVdfQ==
+eyJoaXN0b3J5IjpbLTUyMjQ0NTYxNiwxNjYxNTM2MCwtMTYyNT
+I3NDA3NV19
 -->
