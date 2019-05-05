@@ -636,7 +636,7 @@ ${SPARK_HOME}"/bin/spark-submit" \
 --master yarn \
 --deloy-mode client \
 --queue root \
---diver-class-path ${lib_path}"*" \
+--driver-class-path ${lib_path}"*" \
 --jars ${lib_path}"" \
 --conf spark.default.parallelism=200 \
 --conf spark.sql.shuffle.partitions=400 \
@@ -801,7 +801,7 @@ https://spark.apache.org/docs/latest/configuration.html https://spark.apache.org
 1. [https://jaceklaskowski.gitbooks.io/mastering-apache-spark/](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/)
 2. [lhttps://github.com/JerryLead/SparkInternals](https://github.com/JerryLead/SparkInternals) 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY1ODEyMzE5MSwxNjE2NDUxOTU5LC0xOT
-Y0OTE1NDMyLDM3MTQxNTI1MiwxOTM5NzU5NzExLDY4OTE2NzUy
-M119
+eyJoaXN0b3J5IjpbLTYyMDE2NjQ3OSwxNjU4MTIzMTkxLDE2MT
+Y0NTE5NTksLTE5NjQ5MTU0MzIsMzcxNDE1MjUyLDE5Mzk3NTk3
+MTEsNjg5MTY3NTIzXX0=
 -->
