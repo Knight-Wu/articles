@@ -13,10 +13,10 @@ The second is to avoid copying the value on each method call. This can be more e
 4. 为什么要用make
 5. interface 在 go里面怎么理解
 6.   evaluation of `f`, `x`, `y`, and `z` happens in the current goroutine and the execution of `f` happens in the new goroutine ？ two gorountine ？
-7
+7. 如何理解channel
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNzQ1ODcxMiwzNjAzNzI5MDksLTE4Nj
-AxOTUxNzIsMjYwMDgxMDA4LC0xNzU3Mzk4MjAsLTMxMzQyNTIx
-Nl19
+eyJoaXN0b3J5IjpbODMzOTMxODc1LDM2MDM3MjkwOSwtMTg2MD
+E5NTE3MiwyNjAwODEwMDgsLTE3NTczOTgyMCwtMzEzNDI1MjE2
+XX0=
 -->
