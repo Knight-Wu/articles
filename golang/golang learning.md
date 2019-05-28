@@ -14,10 +14,10 @@ The second is to avoid copying the value on each method call. This can be more e
 5. interface 在 go里面怎么理解
 6.   evaluation of `f`, `x`, `y`, and `z` happens in the current goroutine and the execution of `f` happens in the new goroutine ？ two gorountine ？
 7. 如何理解channel
-8. 
+8. sync.Mutex 是控制程序执行的顺序还是内存可见性
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyMzY3MjExMywzNjAzNzI5MDksLTE4Nj
+eyJoaXN0b3J5IjpbMTk5MTc4MDMzMiwzNjAzNzI5MDksLTE4Nj
 AxOTUxNzIsMjYwMDgxMDA4LC0xNzU3Mzk4MjAsLTMxMzQyNTIx
 Nl19
 -->
