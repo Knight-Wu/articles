@@ -11,10 +11,10 @@ The first is so that the method can modify the value that its receiver points to
 
 The second is to avoid copying the value on each method call. This can be more efficient if the receiver is a large struct, for example.
 4. 为什么要用make
-5. 
+5. interface 在 go里面怎么理解
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjYwMDgxMDA4LC0xNzU3Mzk4MjAsLTMxMz
-QyNTIxNl19
+eyJoaXN0b3J5IjpbLTE4NjAxOTUxNzIsMjYwMDgxMDA4LC0xNz
+U3Mzk4MjAsLTMxMzQyNTIxNl19
 -->
