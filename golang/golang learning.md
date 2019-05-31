@@ -15,9 +15,10 @@ The second is to avoid copying the value on each method call. This can be more e
 6.   evaluation of `f`, `x`, `y`, and `z` happens in the current goroutine and the execution of `f` happens in the new goroutine ？ two gorountine ？
 7. 如何理解channel
 8. sync.Mutex 是控制程序执行的顺序还是内存可见性
+9. go 编译和运行？ 如何引用其他文件的代码
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5MTc4MDMzMiwzNjAzNzI5MDksLTE4Nj
-AxOTUxNzIsMjYwMDgxMDA4LC0xNzU3Mzk4MjAsLTMxMzQyNTIx
-Nl19
+eyJoaXN0b3J5IjpbLTExODA4MDQ5MTQsMTk5MTc4MDMzMiwzNj
+AzNzI5MDksLTE4NjAxOTUxNzIsMjYwMDgxMDA4LC0xNzU3Mzk4
+MjAsLTMxMzQyNTIxNl19
 -->
