@@ -118,11 +118,11 @@ timestring: '%Y%m%d'
 unit: days
 
 unit_count: 2
-
+(删除今天的两天之前的 indexer)
 $ curator  --config curator-cfg.yml curator-action-delete.yml 
 
 ```
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEzNDI3NzY4OF19
+eyJoaXN0b3J5IjpbMTgzMjYzMDcwXX0=
 -->
