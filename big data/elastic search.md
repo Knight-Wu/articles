@@ -64,8 +64,65 @@ curl -XPUT -H 'Content-Type: application/json' ES-host/_template/template_order_
 ```
 
 ### curator 删除过期的 indexer
+```
+$ cat curator-cfg.yml
 
+client:
+
+hosts:
+
+- 10.65.229.119
+
+port: 9201
+
+$ cat curator-action-delete.yml
+
+actions:
+
+1:
+
+action: delete_indices
+
+description: >-
+
+Delete old indexes.
+
+options:
+
+ignore_empty_list: True
+
+timeout_override:
+
+continue_if_exception: False
+
+disable_action: False
+
+filters:
+
+- filtertype: pattern
+
+kind: prefix
+
+value: order_realtime_
+
+exclude:
+
+- filtertype: age
+
+source: name
+
+direction: older
+
+timestring: '%Y%m%d'
+
+unit: days
+
+unit_count: 2
+
+$ curator  --config curator-cfg.yml curator-action-delete.yml 
+
+```
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDY3MDA4MTJdfQ==
+eyJoaXN0b3J5IjpbLTM5MzgzOTY1Nl19
 -->
