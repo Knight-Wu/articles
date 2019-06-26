@@ -3,9 +3,9 @@
 
 
 ```
-# template 指定的是 indexer 的名字
-# 采用 index:false
-curl -XPUT -H 'Content-Type: application/json' **ES host**/_template/template_order_etl?pretty -d '{
+# template 指定的是 indexer 的名字, es-host 指定 ESserver:port
+# mapping 可以从chrome plugin: e's采用 index:false
+curl -XPUT -H 'Content-Type: application/json' ES-host/_template/template_order_etl?pretty -d '{
   "template": "order_realtime_*",
   "settings": {
     "number_of_shards": 10,
@@ -63,5 +63,5 @@ curl -XPUT -H 'Content-Type: application/json' **ES host**/_template/template_or
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1NTQ2MDg4Nl19
+eyJoaXN0b3J5IjpbNDQ5MDU4NTM5XX0=
 -->
