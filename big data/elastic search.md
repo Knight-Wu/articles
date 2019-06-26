@@ -4,7 +4,9 @@
 
 ```
 # template 指定的是 indexer 的名字, es-host 指定 ESserver:port
-# mapping 可以从chrome plugin: e's采用 index:false
+# mapping 可以从chrome plugin: elasticSearch 获取, properties 为存的字段, 
+# 关闭索引 index:false
+
 curl -XPUT -H 'Content-Type: application/json' ES-host/_template/template_order_etl?pretty -d '{
   "template": "order_realtime_*",
   "settings": {
@@ -61,7 +63,9 @@ curl -XPUT -H 'Content-Type: application/json' ES-host/_template/template_order_
 }'
 ```
 
+### curator 删除过期的 indexer
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDQ5MDU4NTM5XX0=
+eyJoaXN0b3J5IjpbLTExNDY3MDA4MTJdfQ==
 -->
