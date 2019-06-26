@@ -104,7 +104,7 @@ filters:
 kind: prefix
 
 value: order_realtime_ 
-(指定 index 的名字, 后面是)
+(指定 index 的名字, 后面是 %Y%m%d 格式的时间字符串)
 exclude:
 
 - filtertype: age
@@ -124,5 +124,5 @@ $ curator  --config curator-cfg.yml curator-action-delete.yml
 ```
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDQ5NTE5XX0=
+eyJoaXN0b3J5IjpbMTEzNDI3NzY4OF19
 -->
