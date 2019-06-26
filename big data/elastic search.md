@@ -1,9 +1,11 @@
 ### 某些字段不需要直接查询, 从而关闭 index, 减少空间使用
 
-```
+
 
 ```
-curl -XPUT -H 'Content-Type: application/json' ****/_template/template_order_etl?pretty -d '{
+# template 指定的是 indexer 的名字
+# 采用 index:false
+curl -XPUT -H 'Content-Type: application/json' **ES host**/_template/template_order_etl?pretty -d '{
   "template": "order_realtime_*",
   "settings": {
     "number_of_shards": 10,
@@ -57,9 +59,9 @@ curl -XPUT -H 'Content-Type: application/json' ****/_template/template_order_etl
 	}
 }
 }'
-
+```
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3Mjg5NjA4M119
+eyJoaXN0b3J5IjpbMTg1NTQ2MDg4Nl19
 -->
