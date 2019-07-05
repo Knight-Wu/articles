@@ -18,9 +18,11 @@ The second is to avoid copying the value on each method call. This can be more e
 9. go 编译和运行？ 如何引用其他文件的代码
 10. go get 如何在 ide get 的时候自动指定版本 
 11. go build 为什么需要 sudo , 然后再服务器执行就 exec format error 了, go install 是可以的
+12. ssh 端口转发
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjcyNTE5MzAxLDEwMjU1OTAzNTIsLTExOD
-A4MDQ5MTQsMTk5MTc4MDMzMiwzNjAzNzI5MDksLTE4NjAxOTUx
-NzIsMjYwMDgxMDA4LC0xNzU3Mzk4MjAsLTMxMzQyNTIxNl19
+eyJoaXN0b3J5IjpbLTIwMzg4MTcwMDksNjcyNTE5MzAxLDEwMj
+U1OTAzNTIsLTExODA4MDQ5MTQsMTk5MTc4MDMzMiwzNjAzNzI5
+MDksLTE4NjAxOTUxNzIsMjYwMDgxMDA4LC0xNzU3Mzk4MjAsLT
+MxMzQyNTIxNl19
 -->
