@@ -17,9 +17,10 @@ The second is to avoid copying the value on each method call. This can be more e
 8. sync.Mutex 是控制程序执行的顺序还是内存可见性
 9. go 编译和运行？ 如何引用其他文件的代码
 10. go get 如何在 ide get 的时候自动指定版本 
+11. go build 为什么需要 sudo , 然后再服务器执行就 exec format error 了, go install 是可以的
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyNTU5MDM1MiwtMTE4MDgwNDkxNCwxOT
-kxNzgwMzMyLDM2MDM3MjkwOSwtMTg2MDE5NTE3MiwyNjAwODEw
-MDgsLTE3NTczOTgyMCwtMzEzNDI1MjE2XX0=
+eyJoaXN0b3J5IjpbNjcyNTE5MzAxLDEwMjU1OTAzNTIsLTExOD
+A4MDQ5MTQsMTk5MTc4MDMzMiwzNjAzNzI5MDksLTE4NjAxOTUx
+NzIsMjYwMDgxMDA4LC0xNzU3Mzk4MjAsLTMxMzQyNTIxNl19
 -->
