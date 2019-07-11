@@ -124,20 +124,19 @@ $ curator  --config curator-cfg.yml curator-action-delete.yml
 ```
 
 #### 常用命令
-```
-
-curl -X DELETE "10.70.16.200:31200/indexName"
-
+* template
 curl -X DELETE "ip:port/_template/templateName"
-
 curl -X GET "ip:port/_template/templateName"
 
- es version: curl -XGET "ip:port"
+* es version
+ curl -XGET "ip:port"
 
-create index: curl -X PUT "ip:port/indexName"
 
-```
+
+* index 
+curl -X PUT "ip:port/indexName"
+curl -X DELETE "ip:port/indexName"
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5Nzc5NTMyNl19
+eyJoaXN0b3J5IjpbMTIyMzY3MzE3NV19
 -->
