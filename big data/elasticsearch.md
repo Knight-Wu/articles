@@ -123,8 +123,22 @@ $ curator  --config curator-cfg.yml curator-action-delete.yml
 
 ```
 
+#### 常用命令
+```
 
+curl -X DELETE "10.70.16.200:31200/order_realtime_25"
+
+curl -X DELETE "10.70.16.200:31200/_template/template_order_etl"
+
+curl -X GET "10.70.16.200:31200/_template/template_order_etl"
+
+curl -XGET "http://10.70.16.200:31200"
+
+list index: curl -XGET "http://10.65.229.119:9201"
+create index: curl -X PUT "ip:port/index_name"
+
+```
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTI5NjgxMzRdfQ==
+eyJoaXN0b3J5IjpbLTQ3MjU0NjIyMl19
 -->
