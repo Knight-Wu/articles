@@ -138,8 +138,8 @@ curl -X PUT "ip:port/indexName"
 curl -X DELETE "ip:port/indexName"
 
 ### documation 重点, 可以作为ppt 的内容
-1. request 和response的json的格式, 如何快速查询, 而不是m
+1. request 和response的json的格式, 如何快速查询, 而不是每次都google 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5MDYxMzM1MiwxMjIzNjczMTc1XX0=
+eyJoaXN0b3J5IjpbLTkwOTAyNTU1NywxMjIzNjczMTc1XX0=
 -->
