@@ -139,7 +139,9 @@ curl -X DELETE "ip:port/indexName"
 
 ### documation 重点, 可以作为ppt 的内容
 1. request 和response的json的格式, 如何快速查询, 而不是每次都google 
+应该不需要用query json来查, 毕竟写json 还是太麻烦了, 另外 :`_score` field in the search results , 这个字段是啥意思, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwOTAyNTU1NywxMjIzNjczMTc1XX0=
+eyJoaXN0b3J5IjpbMjAyNTEyNTY1MywtOTA5MDI1NTU3LDEyMj
+M2NzMxNzVdfQ==
 -->
