@@ -145,10 +145,10 @@ curl -X DELETE "ip:port/indexName"
 
 ### master elasticSearch
 1. lucene 和 es 的关系
-2. 
+2.   Apache Lucene architecture,
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyMjg5MzYwNywtMTkzODc3NTMxOCwtMT
-MxOTUyODY0NCwyMDI1MTI1NjUzLC05MDkwMjU1NTcsMTIyMzY3
-MzE3NV19
+eyJoaXN0b3J5IjpbMjgyNzQzOTEwLC0xOTM4Nzc1MzE4LC0xMz
+E5NTI4NjQ0LDIwMjUxMjU2NTMsLTkwOTAyNTU1NywxMjIzNjcz
+MTc1XX0=
 -->
