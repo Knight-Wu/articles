@@ -144,9 +144,11 @@ curl -X DELETE "ip:port/indexName"
 2. how to use sql in ES. 
 
 ### master elasticSearch
-
+1. lucene 和 es 的关系
+2. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Mzg3NzUzMTgsLTEzMTk1Mjg2NDQsMj
-AyNTEyNTY1MywtOTA5MDI1NTU3LDEyMjM2NzMxNzVdfQ==
+eyJoaXN0b3J5IjpbLTkyMjg5MzYwNywtMTkzODc3NTMxOCwtMT
+MxOTUyODY0NCwyMDI1MTI1NjUzLC05MDkwMjU1NTcsMTIyMzY3
+MzE3NV19
 -->
