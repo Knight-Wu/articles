@@ -142,8 +142,11 @@ curl -X DELETE "ip:port/indexName"
 应该不需要用query json来查, 毕竟写json 还是太麻烦了, 另外 :`_score` field in the search results , 这个字段是啥意思, 
 
 2. how to use sql in ES. 
+
+### master elasticSearch
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTk1Mjg2NDQsMjAyNTEyNTY1MywtOT
-A5MDI1NTU3LDEyMjM2NzMxNzVdfQ==
+eyJoaXN0b3J5IjpbLTE5Mzg3NzUzMTgsLTEzMTk1Mjg2NDQsMj
+AyNTEyNTY1MywtOTA5MDI1NTU3LDEyMjM2NzMxNzVdfQ==
 -->
