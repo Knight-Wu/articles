@@ -168,12 +168,13 @@ For example, let’s take the followingquery:title:"mastering Elasticsearch"It w
 
 We can also use boosting to increase our term importance by using the ^ character andproviding a float number. Boosts lower than one would result in decreasing the documentimportance. Boosts higher than one will result in increasing the importance. The defaultboost value is 1
 
+查询特殊字符:
 In case you want to search for one of the special characters (which are +, -, &&, ||, !, (, ),{ }, [ ], ^, ", ~, *, ?, :, \, /), you need to escape it with the use of the backslash (\)character
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI3NDk4ODA1NCwtMzU4MzM5MTc2LC04MT
-kxOTQ1MTksMTgzMDQzMTk5OSwtNDc3OTg4MjA2LC0xNzAxMzYy
-MjcyLC0xNDYyNTA1MDM1LDc3MzA4MzUzNiwtMTkzODc3NTMxOC
-wtMTMxOTUyODY0NCwyMDI1MTI1NjUzLC05MDkwMjU1NTcsMTIy
-MzY3MzE3NV19
+eyJoaXN0b3J5IjpbLTE3MDU3OTM3MDMsLTM1ODMzOTE3NiwtOD
+E5MTk0NTE5LDE4MzA0MzE5OTksLTQ3Nzk4ODIwNiwtMTcwMTM2
+MjI3MiwtMTQ2MjUwNTAzNSw3NzMwODM1MzYsLTE5Mzg3NzUzMT
+gsLTEzMTk1Mjg2NDQsMjAyNTEyNTY1MywtOTA5MDI1NTU3LDEy
+MjM2NzMxNzVdfQ==
 -->
