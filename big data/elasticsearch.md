@@ -151,12 +151,15 @@ NormsA norm is a factor associated with each indexed document and  stores normal
 
 Term vectors
 是一个document 维度的倒排索引, 由term 和他出现的频率决定, 并包括term 的position ,
+
+Posting formats
+控制着index file 如何被写入磁盘的
 3. 倒排索引, inverted index
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgzMDQzMTk5OSwtNDc3OTg4MjA2LC0xNz
-AxMzYyMjcyLC0xNDYyNTA1MDM1LDc3MzA4MzUzNiwtMTkzODc3
-NTMxOCwtMTMxOTUyODY0NCwyMDI1MTI1NjUzLC05MDkwMjU1NT
-csMTIyMzY3MzE3NV19
+eyJoaXN0b3J5IjpbMjA0MTQ3NjYwOSwxODMwNDMxOTk5LC00Nz
+c5ODgyMDYsLTE3MDEzNjIyNzIsLTE0NjI1MDUwMzUsNzczMDgz
+NTM2LC0xOTM4Nzc1MzE4LC0xMzE5NTI4NjQ0LDIwMjUxMjU2NT
+MsLTkwOTAyNTU1NywxMjIzNjczMTc1XX0=
 -->
