@@ -146,19 +146,24 @@ curl -X DELETE "ip:port/indexName"
 ### master elasticSearch
 1. lucene 和 es 的关系
 2.   Apache Lucene architecture, 四个重要概念
-并且
+
+* Getting deeper into Lucene index
+
 NormsA norm is a factor associated with each indexed document and  stores normalization factorsused to compute the **score** relative to the query.
 
 Term vectors
-是一个document 维度的倒排索引, 由term 和他出现的频率决定, 并包括term 的position ,
+是一个document 维度的倒排索引, 由term 和他出现的频率决定, 并包括term 的position 
 
 Posting formats
 控制着index file 如何被写入磁盘的
+
+doc values
+**Lucene index is the so-called inverted index. However, forcertain features, such as faceting or aggregations, such architecture is not the best one.** 为什么不是最好的, 
 3. 倒排索引, inverted index
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0MTQ3NjYwOSwxODMwNDMxOTk5LC00Nz
+eyJoaXN0b3J5IjpbLTgxOTE5NDUxOSwxODMwNDMxOTk5LC00Nz
 c5ODgyMDYsLTE3MDEzNjIyNzIsLTE0NjI1MDUwMzUsNzczMDgz
 NTM2LC0xOTM4Nzc1MzE4LC0xMzE5NTI4NjQ0LDIwMjUxMjU2NT
 MsLTkwOTAyNTU1NywxMjIzNjczMTc1XX0=
