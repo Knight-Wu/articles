@@ -161,18 +161,19 @@ doc values
 Lucene index is the so-called inverted index. However, forcertain features, such as faceting or aggregations, such architecture is not the best one. 因为faceting 和aggregation operate on the document level, 而不是term level, 所以需要doc value存储着  uninvert the field 用于上面的那些操作, 
 
 
-* Lucene query language
+* Lucene query language (可以简单讲下查询的语法)
 fuzzy search
 if we would run a query, such aswriter~2, both the terms writer and writers would be considered a match
 For example, let’s take the followingquery:title:"mastering Elasticsearch"It would match the document with the title field containing mastering Elasticsearch,but not mastering book Elasticsearch. However, if we would run a query, such astitle:"mastering Elasticsearch"~2, it would result in both example documentsmatched.
 
 We can also use boosting to increase our term importance by using the ^ character andproviding a float number. Boosts lower than one would result in decreasing the documentimportance. Boosts higher than one will result in increasing the importance. The defaultboost value is 1
 
+In case you want to search for one of the special characters (which are +, -, &&, ||, !, (, ),{ }, [ ], ^, ", ~, *, ?, :, \, /), you need to escape it with the use of the backslash (\)character
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjUxNjYwMjYxLC0zNTgzMzkxNzYsLTgxOT
-E5NDUxOSwxODMwNDMxOTk5LC00Nzc5ODgyMDYsLTE3MDEzNjIy
-NzIsLTE0NjI1MDUwMzUsNzczMDgzNTM2LC0xOTM4Nzc1MzE4LC
-0xMzE5NTI4NjQ0LDIwMjUxMjU2NTMsLTkwOTAyNTU1NywxMjIz
-NjczMTc1XX0=
+eyJoaXN0b3J5IjpbMTI3NDk4ODA1NCwtMzU4MzM5MTc2LC04MT
+kxOTQ1MTksMTgzMDQzMTk5OSwtNDc3OTg4MjA2LC0xNzAxMzYy
+MjcyLC0xNDYyNTA1MDM1LDc3MzA4MzUzNiwtMTkzODc3NTMxOC
+wtMTMxOTUyODY0NCwyMDI1MTI1NjUzLC05MDkwMjU1NTcsMTIy
+MzY3MzE3NV19
 -->
