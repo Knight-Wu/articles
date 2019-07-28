@@ -182,11 +182,14 @@ This allows us to store variousdocument types in one index and have different ma
 控制着text 如何被解析成token, 例如 field 的type, (field 由key 和val组成 df) 
 * node 
 分为data node, master, 和tribe node(用于多个cluster 的协调, 使得用起来好像在一个 cluster )
+* shard
+* 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1NTA3NjAxOCwtMTA5NjkwNjcwMSwtMT
-cwNTc5MzcwMywtMzU4MzM5MTc2LC04MTkxOTQ1MTksMTgzMDQz
-MTk5OSwtNDc3OTg4MjA2LC0xNzAxMzYyMjcyLC0xNDYyNTA1MD
-M1LDc3MzA4MzUzNiwtMTkzODc3NTMxOCwtMTMxOTUyODY0NCwy
-MDI1MTI1NjUzLC05MDkwMjU1NTcsMTIyMzY3MzE3NV19
+eyJoaXN0b3J5IjpbLTE2MDYzNzkyMDQsMTc1NTA3NjAxOCwtMT
+A5NjkwNjcwMSwtMTcwNTc5MzcwMywtMzU4MzM5MTc2LC04MTkx
+OTQ1MTksMTgzMDQzMTk5OSwtNDc3OTg4MjA2LC0xNzAxMzYyMj
+cyLC0xNDYyNTA1MDM1LDc3MzA4MzUzNiwtMTkzODc3NTMxOCwt
+MTMxOTUyODY0NCwyMDI1MTI1NjUzLC05MDkwMjU1NTcsMTIyMz
+Y3MzE3NV19
 -->
