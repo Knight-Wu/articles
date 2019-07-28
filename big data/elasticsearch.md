@@ -179,12 +179,12 @@ In case you want to search for one of the special characters (which are +, -, &&
 * type 
 This allows us to store variousdocument types in one index and have different mappings for different document types, 类 table
 * Mapping
-控制着text 如何被解析成token, 例如这些 
+控制着text 如何被解析成token, 例如 field 的type, (field 由key 和val组成 df) 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDk5MTkxMDM3LC0xNzA1NzkzNzAzLC0zNT
-gzMzkxNzYsLTgxOTE5NDUxOSwxODMwNDMxOTk5LC00Nzc5ODgy
-MDYsLTE3MDEzNjIyNzIsLTE0NjI1MDUwMzUsNzczMDgzNTM2LC
-0xOTM4Nzc1MzE4LC0xMzE5NTI4NjQ0LDIwMjUxMjU2NTMsLTkw
-OTAyNTU1NywxMjIzNjczMTc1XX0=
+eyJoaXN0b3J5IjpbLTEwOTY5MDY3MDEsLTE3MDU3OTM3MDMsLT
+M1ODMzOTE3NiwtODE5MTk0NTE5LDE4MzA0MzE5OTksLTQ3Nzk4
+ODIwNiwtMTcwMTM2MjI3MiwtMTQ2MjUwNTAzNSw3NzMwODM1Mz
+YsLTE5Mzg3NzUzMTgsLTEzMTk1Mjg2NDQsMjAyNTEyNTY1Mywt
+OTA5MDI1NTU3LDEyMjM2NzMxNzVdfQ==
 -->
