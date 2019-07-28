@@ -180,11 +180,13 @@ In case you want to search for one of the special characters (which are +, -, &&
 This allows us to store variousdocument types in one index and have different mappings for different document types, 类 table
 * Mapping
 控制着text 如何被解析成token, 例如 field 的type, (field 由key 和val组成 df) 
+* node 
+分为data node, master, 和tribe node(用于多个cluster 的协调, 使得用起来好像在一个 cluster )
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTY5MDY3MDEsLTE3MDU3OTM3MDMsLT
-M1ODMzOTE3NiwtODE5MTk0NTE5LDE4MzA0MzE5OTksLTQ3Nzk4
-ODIwNiwtMTcwMTM2MjI3MiwtMTQ2MjUwNTAzNSw3NzMwODM1Mz
-YsLTE5Mzg3NzUzMTgsLTEzMTk1Mjg2NDQsMjAyNTEyNTY1Mywt
-OTA5MDI1NTU3LDEyMjM2NzMxNzVdfQ==
+eyJoaXN0b3J5IjpbMTc1NTA3NjAxOCwtMTA5NjkwNjcwMSwtMT
+cwNTc5MzcwMywtMzU4MzM5MTc2LC04MTkxOTQ1MTksMTgzMDQz
+MTk5OSwtNDc3OTg4MjA2LC0xNzAxMzYyMjcyLC0xNDYyNTA1MD
+M1LDc3MzA4MzUzNiwtMTkzODc3NTMxOCwtMTMxOTUyODY0NCwy
+MDI1MTI1NjUzLC05MDkwMjU1NTcsMTIyMzY3MzE3NV19
 -->
