@@ -163,13 +163,13 @@ Lucene index is the so-called inverted index. However, forcertain features, such
 
 * Lucene query language
 fuzzy search
-
+if we would run a query, such aswriter~2, both the terms writer and writers would be considered a match
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwNzU0OTkwMywtMzU4MzM5MTc2LC04MT
-kxOTQ1MTksMTgzMDQzMTk5OSwtNDc3OTg4MjA2LC0xNzAxMzYy
-MjcyLC0xNDYyNTA1MDM1LDc3MzA4MzUzNiwtMTkzODc3NTMxOC
-wtMTMxOTUyODY0NCwyMDI1MTI1NjUzLC05MDkwMjU1NTcsMTIy
-MzY3MzE3NV19
+eyJoaXN0b3J5IjpbMjY2NDU1MDU0LC0zNTgzMzkxNzYsLTgxOT
+E5NDUxOSwxODMwNDMxOTk5LC00Nzc5ODgyMDYsLTE3MDEzNjIy
+NzIsLTE0NjI1MDUwMzUsNzczMDgzNTM2LC0xOTM4Nzc1MzE4LC
+0xMzE5NTI4NjQ0LDIwMjUxMjU2NTMsLTkwOTAyNTU1NywxMjIz
+NjczMTc1XX0=
 -->
