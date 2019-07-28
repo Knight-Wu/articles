@@ -170,11 +170,15 @@ We can also use boosting to increase our term importance by using the ^ characte
 
 查询特殊字符:
 In case you want to search for one of the special characters (which are +, -, &&, ||, !, (, ),{ }, [ ], ^, ", ~, *, ?, :, \, /), you need to escape it with the use of the backslash (\)character
+
+### es basic concepts
+* index 
+可以l
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDU3OTM3MDMsLTM1ODMzOTE3NiwtOD
-E5MTk0NTE5LDE4MzA0MzE5OTksLTQ3Nzk4ODIwNiwtMTcwMTM2
-MjI3MiwtMTQ2MjUwNTAzNSw3NzMwODM1MzYsLTE5Mzg3NzUzMT
-gsLTEzMTk1Mjg2NDQsMjAyNTEyNTY1MywtOTA5MDI1NTU3LDEy
-MjM2NzMxNzVdfQ==
+eyJoaXN0b3J5IjpbODYyMjQwNzI5LC0xNzA1NzkzNzAzLC0zNT
+gzMzkxNzYsLTgxOTE5NDUxOSwxODMwNDMxOTk5LC00Nzc5ODgy
+MDYsLTE3MDEzNjIyNzIsLTE0NjI1MDUwMzUsNzczMDgzNTM2LC
+0xOTM4Nzc1MzE4LC0xMzE5NTI4NjQ0LDIwMjUxMjU2NTMsLTkw
+OTAyNTU1NywxMjIzNjczMTc1XX0=
 -->
