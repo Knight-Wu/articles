@@ -161,13 +161,15 @@ doc values
 Lucene index is the so-called inverted index. However, forcertain features, such as faceting or aggregations, such architecture is not the best one. 因为faceting 和aggregation operate on the document level, 而不是term level, 所以需要doc value存储着  uninvert the field 用于上面的那些操作, 
 
 
-3. 倒排索引, inverted index
+* Lucene query language
+fuzzy search
+
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1ODMzOTE3NiwtODE5MTk0NTE5LDE4Mz
-A0MzE5OTksLTQ3Nzk4ODIwNiwtMTcwMTM2MjI3MiwtMTQ2MjUw
-NTAzNSw3NzMwODM1MzYsLTE5Mzg3NzUzMTgsLTEzMTk1Mjg2ND
-QsMjAyNTEyNTY1MywtOTA5MDI1NTU3LDEyMjM2NzMxNzVdfQ==
-
+eyJoaXN0b3J5IjpbLTgwNzU0OTkwMywtMzU4MzM5MTc2LC04MT
+kxOTQ1MTksMTgzMDQzMTk5OSwtNDc3OTg4MjA2LC0xNzAxMzYy
+MjcyLC0xNDYyNTA1MDM1LDc3MzA4MzUzNiwtMTkzODc3NTMxOC
+wtMTMxOTUyODY0NCwyMDI1MTI1NjUzLC05MDkwMjU1NTcsMTIy
+MzY3MzE3NV19
 -->
