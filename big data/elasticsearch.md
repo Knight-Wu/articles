@@ -173,12 +173,17 @@ In case you want to search for one of the special characters (which are +, -, &&
 
 ### es basic concepts
 * index 
-可以l
+可以理解为database
+与lucene 的关系,  Elasticsearch uses Apache Lucene library to write and read the data from the index. What you should remember is that a single Elasticsearch index may be built of more than a single Apache Lucene index—by using shards.
+
+* type 
+This allows us to store variousdocument types in one index and have different mappings for different document types, 类 table
+* Mapping
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODYyMjQwNzI5LC0xNzA1NzkzNzAzLC0zNT
-gzMzkxNzYsLTgxOTE5NDUxOSwxODMwNDMxOTk5LC00Nzc5ODgy
-MDYsLTE3MDEzNjIyNzIsLTE0NjI1MDUwMzUsNzczMDgzNTM2LC
-0xOTM4Nzc1MzE4LC0xMzE5NTI4NjQ0LDIwMjUxMjU2NTMsLTkw
-OTAyNTU1NywxMjIzNjczMTc1XX0=
+eyJoaXN0b3J5IjpbLTcyNjY5MTExNCwtMTcwNTc5MzcwMywtMz
+U4MzM5MTc2LC04MTkxOTQ1MTksMTgzMDQzMTk5OSwtNDc3OTg4
+MjA2LC0xNzAxMzYyMjcyLC0xNDYyNTA1MDM1LDc3MzA4MzUzNi
+wtMTkzODc3NTMxOCwtMTMxOTUyODY0NCwyMDI1MTI1NjUzLC05
+MDkwMjU1NTcsMTIyMzY3MzE3NV19
 -->
