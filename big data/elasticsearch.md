@@ -183,10 +183,10 @@ This allows us to store variousdocument types in one index and have different ma
 * node 
 分为data node, master, 和tribe node(用于多个cluster 的协调, 使得用起来好像在一个 cluster )
 * shard
-* 
+Elasticsearch divide index data to several physical Lucene indices, every lucene indice is called shard
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDYzNzkyMDQsMTc1NTA3NjAxOCwtMT
+eyJoaXN0b3J5IjpbLTE5MTA1Mzc0NjcsMTc1NTA3NjAxOCwtMT
 A5NjkwNjcwMSwtMTcwNTc5MzcwMywtMzU4MzM5MTc2LC04MTkx
 OTQ1MTksMTgzMDQzMTk5OSwtNDc3OTg4MjA2LC0xNzAxMzYyMj
 cyLC0xNDYyNTA1MDM1LDc3MzA4MzUzNiwtMTkzODc3NTMxOCwt
