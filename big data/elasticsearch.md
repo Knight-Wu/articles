@@ -148,11 +148,12 @@ curl -X DELETE "ip:port/indexName"
 2.   Apache Lucene architecture, 四个重要概念
 并且
 NormsA norm is a factor associated with each indexed document and  stores normalization factorsused to compute the **score** relative to the query.
-3. 
+3. 倒排索引, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDEzNjIyNzIsLTE0NjI1MDUwMzUsNz
-czMDgzNTM2LC0xOTM4Nzc1MzE4LC0xMzE5NTI4NjQ0LDIwMjUx
-MjU2NTMsLTkwOTAyNTU1NywxMjIzNjczMTc1XX0=
+eyJoaXN0b3J5IjpbNTMyMjM3NzIxLC0xNzAxMzYyMjcyLC0xND
+YyNTA1MDM1LDc3MzA4MzUzNiwtMTkzODc3NTMxOCwtMTMxOTUy
+ODY0NCwyMDI1MTI1NjUzLC05MDkwMjU1NTcsMTIyMzY3MzE3NV
+19
 -->
