@@ -158,13 +158,16 @@ Posting formats
 控制着index file 如何被写入磁盘的
 
 doc values
-**Lucene index is the so-called inverted index. However, forcertain features, such as faceting or aggregations, such architecture is not the best one.** 为什么不是最好的, 
+Lucene index is the so-called inverted index. However, forcertain features, such as faceting or aggregations, such architecture is not the best one. 因为
+
+
 3. 倒排索引, inverted index
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxOTE5NDUxOSwxODMwNDMxOTk5LC00Nz
-c5ODgyMDYsLTE3MDEzNjIyNzIsLTE0NjI1MDUwMzUsNzczMDgz
-NTM2LC0xOTM4Nzc1MzE4LC0xMzE5NTI4NjQ0LDIwMjUxMjU2NT
-MsLTkwOTAyNTU1NywxMjIzNjczMTc1XX0=
+eyJoaXN0b3J5IjpbMTE5NTk1NzEzNiwtODE5MTk0NTE5LDE4Mz
+A0MzE5OTksLTQ3Nzk4ODIwNiwtMTcwMTM2MjI3MiwtMTQ2MjUw
+NTAzNSw3NzMwODM1MzYsLTE5Mzg3NzUzMTgsLTEzMTk1Mjg2ND
+QsMjAyNTEyNTY1MywtOTA5MDI1NTU3LDEyMjM2NzMxNzVdfQ==
+
 -->
