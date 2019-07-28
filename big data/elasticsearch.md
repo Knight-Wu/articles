@@ -164,10 +164,13 @@ Lucene index is the so-called inverted index. However, forcertain features, such
 * Lucene query language
 fuzzy search
 if we would run a query, such aswriter~2, both the terms writer and writers would be considered a match
+For example, let’s take the followingquery:title:"mastering Elasticsearch"It would match the document with the title field containing mastering Elasticsearch,but not mastering book Elasticsearch. However, if we would run a query, such astitle:"mastering Elasticsearch"~2, it would result in both example documentsmatched.
+
+We can also use boosting to increase our term importance by using the ^ character andproviding a float number. Boosts lower than one would result in decreasing the documentimportance. Boosts higher than one will result in increasing the importance. The defaultboost value is 1
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjY2NDU1MDU0LC0zNTgzMzkxNzYsLTgxOT
+eyJoaXN0b3J5IjpbNjUxNjYwMjYxLC0zNTgzMzkxNzYsLTgxOT
 E5NDUxOSwxODMwNDMxOTk5LC00Nzc5ODgyMDYsLTE3MDEzNjIy
 NzIsLTE0NjI1MDUwMzUsNzczMDgzNTM2LC0xOTM4Nzc1MzE4LC
 0xMzE5NTI4NjQ0LDIwMjUxMjU2NTMsLTkwOTAyNTU1NywxMjIz
