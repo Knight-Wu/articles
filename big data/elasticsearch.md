@@ -194,13 +194,16 @@ scoring mechanism: the TF/IDF(term frequency/inverse document frequency) algorit
 1. term 越稀有, doc 的 score 越高
 2.  doc 的 fields 越少, score 越高
 3. 设置的权重, (索引和搜索时设置的), 越大, score 越高
+
+
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5MTE1NjQ1MSwtMTg2MDk4NTEyLDIwMj
-E2NTc2NCwxMjY3MjkzMDAxLC0xNjMwOTkzMTgxLDE3NTUwNzYw
-MTgsLTEwOTY5MDY3MDEsLTE3MDU3OTM3MDMsLTM1ODMzOTE3Ni
-wtODE5MTk0NTE5LDE4MzA0MzE5OTksLTQ3Nzk4ODIwNiwtMTQ2
-MjUwNTAzNSw3NzMwODM1MzYsLTE5Mzg3NzUzMTgsLTEzMTk1Mj
-g2NDQsMjAyNTEyNTY1MywtOTA5MDI1NTU3LDEyMjM2NzMxNzVd
-fQ==
+eyJoaXN0b3J5IjpbODM2NDg3NTI3LC05OTExNTY0NTEsLTE4Nj
+A5ODUxMiwyMDIxNjU3NjQsMTI2NzI5MzAwMSwtMTYzMDk5MzE4
+MSwxNzU1MDc2MDE4LC0xMDk2OTA2NzAxLC0xNzA1NzkzNzAzLC
+0zNTgzMzkxNzYsLTgxOTE5NDUxOSwxODMwNDMxOTk5LC00Nzc5
+ODgyMDYsLTE0NjI1MDUwMzUsNzczMDgzNTM2LC0xOTM4Nzc1Mz
+E4LC0xMzE5NTI4NjQ0LDIwMjUxMjU2NTMsLTkwOTAyNTU1Nywx
+MjIzNjczMTc1XX0=
 -->
