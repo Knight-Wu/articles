@@ -187,7 +187,7 @@ Elasticsearch divide index data to several physical Lucene indices, every lucene
 每一个 shard 都有多个副本3. 倒排索引, reversed index
 
 #### Apache Lucene scoring
-A score is a factor that describes how well the document matched the query.
+A score is a factor that describes how well the document matched the query. 等于说要提高query 的准确性, 准确匹配到我们想要的结果的话, 就需要了解score 的计算原理
 scoring mechanism: the TF/IDF(term frequency/inverse document frequency) algorithm
 * In order to calculate the score property for adocument, multiple factors are taken into account, which are as follows( ignore)
 * What you should be aware of is what matters when it comes to document score. Basically,there are a few rules
@@ -195,15 +195,15 @@ scoring mechanism: the TF/IDF(term frequency/inverse document frequency) algorit
 2.  doc 的 fields 越少, score 越高
 3. 设置的权重, (索引和搜索时设置的), 越大, score 越高
 
-可以讲下这个例子, 如果能够搞清score 的用处, An example . Till now we’ve seen how scoring works. Now we would like to show you a simpleexample of how the scoring works in real life. To do this, we will create a new indexcalled scoring.
+可以讲下这个例子, An example . Till now we’ve seen how scoring works. Now we would like to show you a simpleexample of how the scoring works in real life. To do this, we will create a new indexcalled scoring.
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwMjc0MjQ2MCw4MzY0ODc1MjcsLTk5MT
-E1NjQ1MSwtMTg2MDk4NTEyLDIwMjE2NTc2NCwxMjY3MjkzMDAx
-LC0xNjMwOTkzMTgxLDE3NTUwNzYwMTgsLTEwOTY5MDY3MDEsLT
-E3MDU3OTM3MDMsLTM1ODMzOTE3NiwtODE5MTk0NTE5LDE4MzA0
-MzE5OTksLTQ3Nzk4ODIwNiwtMTQ2MjUwNTAzNSw3NzMwODM1Mz
-YsLTE5Mzg3NzUzMTgsLTEzMTk1Mjg2NDQsMjAyNTEyNTY1Mywt
-OTA5MDI1NTU3XX0=
+eyJoaXN0b3J5IjpbLTkwODU0ODUwMSwtNDAyNzQyNDYwLDgzNj
+Q4NzUyNywtOTkxMTU2NDUxLC0xODYwOTg1MTIsMjAyMTY1NzY0
+LDEyNjcyOTMwMDEsLTE2MzA5OTMxODEsMTc1NTA3NjAxOCwtMT
+A5NjkwNjcwMSwtMTcwNTc5MzcwMywtMzU4MzM5MTc2LC04MTkx
+OTQ1MTksMTgzMDQzMTk5OSwtNDc3OTg4MjA2LC0xNDYyNTA1MD
+M1LDc3MzA4MzUzNiwtMTkzODc3NTMxOCwtMTMxOTUyODY0NCwy
+MDI1MTI1NjUzXX0=
 -->
