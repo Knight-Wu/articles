@@ -186,12 +186,15 @@ Elasticsearch divide index data to several physical Lucene indices, every lucene
 * Replica
 每一个 shard 都有多个副本3. 倒排索引, reversed index
 
+#### Apache Lucene scoring
+A score is a factor that describes how well the document matched the query.
+scoring mechanism: the TF/IDF(term frequency/inverse document frequency) algorithm
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI2NzI5MzAwMSwtMTYzMDk5MzE4MSwxNz
-U1MDc2MDE4LC0xMDk2OTA2NzAxLC0xNzA1NzkzNzAzLC0zNTgz
-MzkxNzYsLTgxOTE5NDUxOSwxODMwNDMxOTk5LC00Nzc5ODgyMD
-YsLTE0NjI1MDUwMzUsNzczMDgzNTM2LC0xOTM4Nzc1MzE4LC0x
-MzE5NTI4NjQ0LDIwMjUxMjU2NTMsLTkwOTAyNTU1NywxMjIzNj
-czMTc1XX0=
+eyJoaXN0b3J5IjpbMjAyMTY1NzY0LDEyNjcyOTMwMDEsLTE2Mz
+A5OTMxODEsMTc1NTA3NjAxOCwtMTA5NjkwNjcwMSwtMTcwNTc5
+MzcwMywtMzU4MzM5MTc2LC04MTkxOTQ1MTksMTgzMDQzMTk5OS
+wtNDc3OTg4MjA2LC0xNDYyNTA1MDM1LDc3MzA4MzUzNiwtMTkz
+ODc3NTMxOCwtMTMxOTUyODY0NCwyMDI1MTI1NjUzLC05MDkwMj
+U1NTcsMTIyMzY3MzE3NV19
 -->
