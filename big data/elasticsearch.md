@@ -189,14 +189,18 @@ Elasticsearch divide index data to several physical Lucene indices, every lucene
 #### Apache Lucene scoring
 A score is a factor that describes how well the document matched the query.
 scoring mechanism: the TF/IDF(term frequency/inverse document frequency) algorithm
-* In order to calculate the score property for adocument, multiple factors are taken into account, which are as follows
-* 
+* In order to calculate the score property for adocument, multiple factors are taken into account, which are as follows( ignore)
+* What you should be aware of is what matters when it comes to document score. Basically,there are a few rules
+1. term 越稀有, doc 的 score 越高
+2.  doc 的 fields 越少, score 越高
+3. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjA5ODUxMiwyMDIxNjU3NjQsMTI2Nz
-I5MzAwMSwtMTYzMDk5MzE4MSwxNzU1MDc2MDE4LC0xMDk2OTA2
-NzAxLC0xNzA1NzkzNzAzLC0zNTgzMzkxNzYsLTgxOTE5NDUxOS
-wxODMwNDMxOTk5LC00Nzc5ODgyMDYsLTE0NjI1MDUwMzUsNzcz
-MDgzNTM2LC0xOTM4Nzc1MzE4LC0xMzE5NTI4NjQ0LDIwMjUxMj
-U2NTMsLTkwOTAyNTU1NywxMjIzNjczMTc1XX0=
+eyJoaXN0b3J5IjpbNDI3NjgyNTYsLTE4NjA5ODUxMiwyMDIxNj
+U3NjQsMTI2NzI5MzAwMSwtMTYzMDk5MzE4MSwxNzU1MDc2MDE4
+LC0xMDk2OTA2NzAxLC0xNzA1NzkzNzAzLC0zNTgzMzkxNzYsLT
+gxOTE5NDUxOSwxODMwNDMxOTk5LC00Nzc5ODgyMDYsLTE0NjI1
+MDUwMzUsNzczMDgzNTM2LC0xOTM4Nzc1MzE4LC0xMzE5NTI4Nj
+Q0LDIwMjUxMjU2NTMsLTkwOTAyNTU1NywxMjIzNjczMTc1XX0=
+
 -->
