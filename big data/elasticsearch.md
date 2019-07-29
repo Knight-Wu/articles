@@ -195,15 +195,15 @@ scoring mechanism: the TF/IDF(term frequency/inverse document frequency) algorit
 2.  doc 的 fields 越少, score 越高
 3. 设置的权重, (索引和搜索时设置的), 越大, score 越高
 
-
+可以讲下这个例子, 如果能够搞清score 的用处, An example . Till now we’ve seen how scoring works. Now we would like to show you a simpleexample of how the scoring works in real life. To do this, we will create a new indexcalled scoring.
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODM2NDg3NTI3LC05OTExNTY0NTEsLTE4Nj
-A5ODUxMiwyMDIxNjU3NjQsMTI2NzI5MzAwMSwtMTYzMDk5MzE4
-MSwxNzU1MDc2MDE4LC0xMDk2OTA2NzAxLC0xNzA1NzkzNzAzLC
-0zNTgzMzkxNzYsLTgxOTE5NDUxOSwxODMwNDMxOTk5LC00Nzc5
-ODgyMDYsLTE0NjI1MDUwMzUsNzczMDgzNTM2LC0xOTM4Nzc1Mz
-E4LC0xMzE5NTI4NjQ0LDIwMjUxMjU2NTMsLTkwOTAyNTU1Nywx
-MjIzNjczMTc1XX0=
+eyJoaXN0b3J5IjpbLTQwMjc0MjQ2MCw4MzY0ODc1MjcsLTk5MT
+E1NjQ1MSwtMTg2MDk4NTEyLDIwMjE2NTc2NCwxMjY3MjkzMDAx
+LC0xNjMwOTkzMTgxLDE3NTUwNzYwMTgsLTEwOTY5MDY3MDEsLT
+E3MDU3OTM3MDMsLTM1ODMzOTE3NiwtODE5MTk0NTE5LDE4MzA0
+MzE5OTksLTQ3Nzk4ODIwNiwtMTQ2MjUwNTAzNSw3NzMwODM1Mz
+YsLTE5Mzg3NzUzMTgsLTEzMTk1Mjg2NDQsMjAyNTEyNTY1Mywt
+OTA5MDI1NTU3XX0=
 -->
