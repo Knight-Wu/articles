@@ -150,7 +150,6 @@ curl -X DELETE "ip:port/indexName"
 * Getting deeper into Lucene index
 
 NormsA norm is a factor associated with each indexed document and  stores normalization factorsused to compute the **score** relative to the query.
-
 Term vectors
 是一个document 维度的倒排索引, 由term 和他出现的频率决定, 并包括term 的position 
 
@@ -185,13 +184,14 @@ This allows us to store variousdocument types in one index and have different ma
 * shard
 Elasticsearch divide index data to several physical Lucene indices, every lucene indice is called shard
 * Replica
-每一个 shard 都有多个副本
+每一个 shard 都有多个副本3. 倒排索引, reversed index
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MzA5OTMxODEsMTc1NTA3NjAxOCwtMT
-A5NjkwNjcwMSwtMTcwNTc5MzcwMywtMzU4MzM5MTc2LC04MTkx
-OTQ1MTksMTgzMDQzMTk5OSwtNDc3OTg4MjA2LC0xNzAxMzYyMj
-cyLC0xNDYyNTA1MDM1LDc3MzA4MzUzNiwtMTkzODc3NTMxOCwt
-MTMxOTUyODY0NCwyMDI1MTI1NjUzLC05MDkwMjU1NTcsMTIyMz
-Y3MzE3NV19
+eyJoaXN0b3J5IjpbMTI2NzI5MzAwMSwtMTYzMDk5MzE4MSwxNz
+U1MDc2MDE4LC0xMDk2OTA2NzAxLC0xNzA1NzkzNzAzLC0zNTgz
+MzkxNzYsLTgxOTE5NDUxOSwxODMwNDMxOTk5LC00Nzc5ODgyMD
+YsLTE0NjI1MDUwMzUsNzczMDgzNTM2LC0xOTM4Nzc1MzE4LC0x
+MzE5NTI4NjQ0LDIwMjUxMjU2NTMsLTkwOTAyNTU1NywxMjIzNj
+czMTc1XX0=
 -->
