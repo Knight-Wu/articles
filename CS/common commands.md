@@ -13,7 +13,9 @@
 * consume msg from cli, and auto commit from background
 
 ./kafka-console-consumer.sh --bootstrap-server brokeraddr --topic topic  --consumer-property group.id=groupid --max-messages 1
-./kafka-console-consumer.sh --bootstrap-server brokeraddr --topic topic  --consumer-property group.id=groupid --max-messages 1
+
+./kafka-console-consumer.sh --bootstrap-server brokeraddr --topic topic  --consumer-property group.id=groupid
+
 
 
 
@@ -21,5 +23,5 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NjQzMTE5NDUsLTM1NDMzODExOF19
+eyJoaXN0b3J5IjpbLTE5NjY5Mzg5ODEsLTM1NDMzODExOF19
 -->
