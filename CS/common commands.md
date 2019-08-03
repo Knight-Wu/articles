@@ -23,12 +23,18 @@
 * manual consume from topic="", but message is huge. 
 >echo "exclude.internal.topics=false" > ./consumer.config; bin/kafka-console-consumer.sh --consumer.config ./consumer.config --bootstrap-server broker:9092 --topic __consumer_offsets  --consumer-property group.id=groupid  --formatter "kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter" 
 
+output msg: 
+[**groupId**,**topicName**,**partitionNumber**]::[OffsetMetadata[**OffsetNumber**,NO_METADATA],CommitTime 1520613132835,ExpirationTime 1520699532835]
+
+about msg format class between different version: 
+[https://medium.com/@felipedutratine/kafka-consumer-offsets-topic-3d5483cda4a6](https://medium.com/@felipedutratine/kafka-consumer-offsets-topic-3d5483cda4a6)
 
 
 ### redis
 * redis-cli 
 >redis-cli -h hostname -p port
 
+### elasticsearch
 
 ### ssh
 
@@ -36,6 +42,6 @@
 
 只要 remoteIp 通过 telnet targetAddr:targetPort , 并不需要只在targetAddr
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4Mjg3OTAwMjEsLTE5NjY5Mzg5ODEsLT
-M1NDMzODExOF19
+eyJoaXN0b3J5IjpbMjEyODA0NjQsLTE5NjY5Mzg5ODEsLTM1ND
+MzODExOF19
 -->
