@@ -17,11 +17,13 @@
 ./kafka-console-consumer.sh --bootstrap-server brokeraddr --topic topic  --consumer-property group.id=groupid
 
 
+* list all cousumergroup, not use --topic
+./kafka-consumer-groups.sh  --list --bootstrap-server brokeraddr
 
-
-
+* manual consume from topic="", but message is huge. not 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NjY5Mzg5ODEsLTM1NDMzODExOF19
+eyJoaXN0b3J5IjpbNDMzODU1MDMsLTE5NjY5Mzg5ODEsLTM1ND
+MzODExOF19
 -->
