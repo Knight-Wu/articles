@@ -10,12 +10,15 @@
 ```
 ./kafka-consumer-groups.sh --describe --zookeeper zk:2181/rootDir --group groupid
 ```
-
+* consume msg from cli
+```
+./kafka-console-consumer.sh --bootstrap-server brokeraddr --topic topic  --consumer-property group.id=sz-mydata-orderetl --max-messages 1
+```
 
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjkzNTg3MDMsLTM1NDMzODExOF19
+eyJoaXN0b3J5IjpbLTEzNzgyMzY4MzQsLTM1NDMzODExOF19
 -->
