@@ -30,8 +30,8 @@
 
 ### ssh
 
-> ssh -NfL local:10.70.21.32:9999 test119
+> ssh -NfL localport:targetAddr:targetPort remoteIp,  只要 remoteIp 通过 telnet targetAddr:targetPort , 并不需要只在targetAddr
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTg0MzI1NDksLTE5NjY5Mzg5ODEsLT
-M1NDMzODExOF19
+eyJoaXN0b3J5IjpbMTE5MzEwMjkxMSwtMTk2NjkzODk4MSwtMz
+U0MzM4MTE4XX0=
 -->
