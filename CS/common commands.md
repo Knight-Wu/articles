@@ -18,13 +18,20 @@
 
 
 * list all cousumergroup, not use --topic
-./kafka-consumer-groups.sh  --list --bootstrap-server brokeraddr
+>./kafka-consumer-groups.sh  --list --bootstrap-server brokeraddr
 
 * manual consume from topic="", but message is huge. 
 >echo "exclude.internal.topics=false" > ./consumer.config; bin/kafka-console-consumer.sh --consumer.config ./consumer.config --bootstrap-server broker:9092 --topic __consumer_offsets  --consumer-property group.id=groupid  --formatter "kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter" 
 
-> Written with [StackEdit](https://stackedit.io/).
+### redis
+* redis-cli 
+>redis-cli -h hostname -p port
+
+
+### ssh
+
+> ssh -NfL local:10.70.21.32:9999 test119
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDA3MDg4NjEsLTE5NjY5Mzg5ODEsLT
+eyJoaXN0b3J5IjpbLTIxMTg0MzI1NDksLTE5NjY5Mzg5ODEsLT
 M1NDMzODExOF19
 -->
