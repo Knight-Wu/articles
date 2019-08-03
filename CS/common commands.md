@@ -23,6 +23,8 @@
 * manual consume from topic="", but message is huge. 
 >echo "exclude.internal.topics=false" > ./consumer.config; bin/kafka-console-consumer.sh --consumer.config ./consumer.config --bootstrap-server broker:9092 --topic __consumer_offsets  --consumer-property group.id=groupid  --formatter "kafka.coordinator.group.GroupMetadataManager\$OffsetsMessageFormatter" 
 
+
+
 ### redis
 * redis-cli 
 >redis-cli -h hostname -p port
@@ -30,8 +32,10 @@
 
 ### ssh
 
-> ssh -NfL localport:targetAddr:targetPort remoteIp,  只要 remoteIp 通过 telnet targetAddr:targetPort , 并不需要只在targetAddr
+> ssh -NfL localport:targetAddr:targetPort remoteIp
+
+只要 remoteIp 通过 telnet targetAddr:targetPort , 并不需要只在targetAddr
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5MzEwMjkxMSwtMTk2NjkzODk4MSwtMz
-U0MzM4MTE4XX0=
+eyJoaXN0b3J5IjpbLTE4Mjg3OTAwMjEsLTE5NjY5Mzg5ODEsLT
+M1NDMzODExOF19
 -->
