@@ -33,7 +33,7 @@ about msg format class between different version:
 ### redis
 * redis-cli 
 >redis-cli -h hostname -p port
-
+* slotscan script 
 ### elasticsearch
 
 ### ssh
@@ -42,6 +42,6 @@ about msg format class between different version:
 
 只要 remoteIp 通过 telnet targetAddr:targetPort , 并不需要只在targetAddr
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyODA0NjQsLTE5NjY5Mzg5ODEsLTM1ND
-MzODExOF19
+eyJoaXN0b3J5IjpbMTE0MDc2NTk3NCwtMTk2NjkzODk4MSwtMz
+U0MzM4MTE4XX0=
 -->
