@@ -162,7 +162,7 @@ Lucene index is the so-called inverted index. However, forcertain features, such
 
 * Lucene query language (可以简单讲下查询的语法)
 fuzzy search
-if we would run a query, such aswriter~2, both the terms writer and writers would be considered a match
+if we would run a query, such as writer~2, both the terms writer and writers would be considered a match
 For example, let’s take the followingquery:title:"mastering Elasticsearch"It would match the document with the title field containing mastering Elasticsearch,but not mastering book Elasticsearch. However, if we would run a query, such astitle:"mastering Elasticsearch"~2, it would result in both example documentsmatched.
 
 We can also use boosting to increase our term importance by using the ^ character andproviding a float number. Boosts lower than one would result in decreasing the documentimportance. Boosts higher than one will result in increasing the importance. The defaultboost value is 1
@@ -199,11 +199,11 @@ scoring mechanism: the TF/IDF(term frequency/inverse document frequency) algorit
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwODU0ODUwMSwtNDAyNzQyNDYwLDgzNj
-Q4NzUyNywtOTkxMTU2NDUxLC0xODYwOTg1MTIsMjAyMTY1NzY0
-LDEyNjcyOTMwMDEsLTE2MzA5OTMxODEsMTc1NTA3NjAxOCwtMT
-A5NjkwNjcwMSwtMTcwNTc5MzcwMywtMzU4MzM5MTc2LC04MTkx
-OTQ1MTksMTgzMDQzMTk5OSwtNDc3OTg4MjA2LC0xNDYyNTA1MD
-M1LDc3MzA4MzUzNiwtMTkzODc3NTMxOCwtMTMxOTUyODY0NCwy
-MDI1MTI1NjUzXX0=
+eyJoaXN0b3J5IjpbMTk0NzA3MTgwMywtOTA4NTQ4NTAxLC00MD
+I3NDI0NjAsODM2NDg3NTI3LC05OTExNTY0NTEsLTE4NjA5ODUx
+MiwyMDIxNjU3NjQsMTI2NzI5MzAwMSwtMTYzMDk5MzE4MSwxNz
+U1MDc2MDE4LC0xMDk2OTA2NzAxLC0xNzA1NzkzNzAzLC0zNTgz
+MzkxNzYsLTgxOTE5NDUxOSwxODMwNDMxOTk5LC00Nzc5ODgyMD
+YsLTE0NjI1MDUwMzUsNzczMDgzNTM2LC0xOTM4Nzc1MzE4LC0x
+MzE5NTI4NjQ0XX0=
 -->
