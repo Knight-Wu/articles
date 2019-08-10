@@ -283,7 +283,9 @@ $ getconf PAGE_SIZE
 
 ### ssh
 * 多台机器免密登录
-1. 在某个用户下, 生成公钥和私钥. 
+1. 在用户目录下, 生成公钥和私钥. 
+ ssh-keygen -t rsa
+ 2. 将公钥 
 ---
 #### 搭建cdh测试环境总结
 1. 机器
@@ -334,6 +336,6 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjg2Mzg1MDQ1LC01MjI0NDU2MTYsMTY2MT
-UzNjAsLTE2MjUyNzQwNzVdfQ==
+eyJoaXN0b3J5IjpbLTg1OTIzOTE4NiwtNTIyNDQ1NjE2LDE2Nj
+E1MzYwLC0xNjI1Mjc0MDc1XX0=
 -->
