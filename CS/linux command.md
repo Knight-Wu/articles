@@ -271,7 +271,7 @@ You can use chown and chgrp commands to change the owner or the group of a parti
 # chown root tmpfile
 
 # ls -l tmpfile
--rw-r--r-- 1 root family 0 2012-05-22 20:03 tmpfile
+-rw-r--r-- 1 root family 0 ``2012-05-22 20:03 tmpfile
 ```
 
 * 查询系统默认config 值
@@ -286,7 +286,23 @@ $ getconf PAGE_SIZE
 1. 在用户目录下, 生成公钥和私钥. 
  ssh-keygen -t rsa
  2. 将公钥 .ssh/id_rsa.pub 粘贴到另一台机器的 .ssh/authorized_keys, 例如 A 要 ssh 登录 B, 则将 A 的公钥粘贴到 B 的authorized_keys, 也可以用 ssh-copy-id 命令
- 3. 
+ 
+ * ssh_all_host.sh 操作多台机器
+```
+#! /bin/bash
+
+command=$1
+
+filename=cluster_host
+
+while IFS= read -r line; do
+
+echo $line
+
+ssh -n $line $command 
+
+done < "$filename"
+```
 ---
 #### 搭建cdh测试环境总结
 1. 机器
@@ -337,6 +353,6 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDI3ODExMTQsLTUyMjQ0NTYxNiwxNjYxNT
-M2MCwtMTYyNTI3NDA3NV19
+eyJoaXN0b3J5IjpbLTIyODkyMjc0OCwtNTIyNDQ1NjE2LDE2Nj
+E1MzYwLC0xNjI1Mjc0MDc1XX0=
 -->
