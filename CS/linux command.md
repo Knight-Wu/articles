@@ -285,7 +285,8 @@ $ getconf PAGE_SIZE
 * 多台机器免密登录
 1. 在用户目录下, 生成公钥和私钥. 
  ssh-keygen -t rsa
- 2. 将公钥 
+ 2. 将公钥 .ssh/id_rsa.pub 粘贴到另一台机器的 .ssh/authorized_keys, 例如 A 要 ssh 登录 B, 则将 A 的公钥粘贴到 B 的authorized_keys, 也可以用 ssh-copy-id 命令
+ 3. 
 ---
 #### 搭建cdh测试环境总结
 1. 机器
@@ -336,6 +337,6 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1OTIzOTE4NiwtNTIyNDQ1NjE2LDE2Nj
-E1MzYwLC0xNjI1Mjc0MDc1XX0=
+eyJoaXN0b3J5IjpbNDI3ODExMTQsLTUyMjQ0NTYxNiwxNjYxNT
+M2MCwtMTYyNTI3NDA3NV19
 -->
