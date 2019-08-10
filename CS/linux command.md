@@ -281,6 +281,9 @@ $ getconf PAGE_SIZE
 4096
 ```
 
+### ssh
+* 多台机器免密登录
+1. 在某个用户下, 生成公钥和私钥. 
 ---
 #### 搭建cdh测试环境总结
 1. 机器
@@ -331,6 +334,6 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyMjQ0NTYxNiwxNjYxNTM2MCwtMTYyNT
-I3NDA3NV19
+eyJoaXN0b3J5IjpbNjg2Mzg1MDQ1LC01MjI0NDU2MTYsMTY2MT
+UzNjAsLTE2MjUyNzQwNzVdfQ==
 -->
