@@ -303,6 +303,12 @@ ssh -n $line $command
 
 done < "$filename"
 ```
+
+
+* iptables
+当 telnet 某个端口不通的时候, 检查一下目标机器的 iptables
+sudo iptables  -A INPUT -s 10.129.0.0/16 -p tcp -m tcp --dport 9300 -j ACCEPT;
+
 ---
 #### 搭建cdh测试环境总结
 1. 机器
@@ -353,6 +359,6 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyODkyMjc0OCwtNTIyNDQ1NjE2LDE2Nj
-E1MzYwLC0xNjI1Mjc0MDc1XX0=
+eyJoaXN0b3J5IjpbMzQ3NDA5MjgsLTUyMjQ0NTYxNiwxNjYxNT
+M2MCwtMTYyNTI3NDA3NV19
 -->
