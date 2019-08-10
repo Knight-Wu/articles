@@ -303,7 +303,8 @@ ssh -n $line $command
 
 done < "$filename"
 ```
-
+* ssh -n 
+Redirects stdin from /dev/null (actually, prevents reading from stdin), 意思就是 send an eof to any read call 
 
 * iptables
 当 telnet 某个端口不通的时候, 检查一下目标机器的 iptables
@@ -359,6 +360,6 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzQ3NDA5MjgsLTUyMjQ0NTYxNiwxNjYxNT
-M2MCwtMTYyNTI3NDA3NV19
+eyJoaXN0b3J5IjpbLTEwNDI1ODEyMzUsMzQ3NDA5MjgsLTUyMj
+Q0NTYxNiwxNjYxNTM2MCwtMTYyNTI3NDA3NV19
 -->
