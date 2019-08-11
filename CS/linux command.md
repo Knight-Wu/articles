@@ -316,7 +316,17 @@ while read host; do
   echo "ssh to $host"
   ssh $host "cat"
 done
+
+We’ll get the output like
+
+ssh to host1
+host2
+host3
 ```
+
+"host2\nhost3" was never sent to the while loop but eaten by ssh
+
+
 ```
 
 * iptables
@@ -373,7 +383,7 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTYzNjQzNjYsNTIxNTM5NzUyLDM0Nz
+eyJoaXN0b3J5IjpbLTE4OTU2NDY5ODcsNTIxNTM5NzUyLDM0Nz
 QwOTI4LC01MjI0NDU2MTYsMTY2MTUzNjAsLTE2MjUyNzQwNzVd
 fQ==
 -->
