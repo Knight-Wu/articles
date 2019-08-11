@@ -304,7 +304,20 @@ ssh -n $line $command
 done < "$filename"
 ```
 * ssh -n 
-Redirects stdin from /dev/null (actually, prevents reading from stdin), 意思就是 send an eof to any read call from that process, For example, when starting a background process remotely over ssh, you [must redirect stdin](https://serverfault.com/a/36436) to prevent the process waiting for local input.
+Redirects stdin from /dev/null (actually, prevents reading from stdin), 意思就是 send an eof to any read call from that process, For example, when starting a background process remotely over ssh, you [must redirect stdin](https://serverfault.com/a/36436) to prevent the ssh waiting for remote process input.
+
+here is an example proves ssh eat stdin. 
+```
+
+#!/bin/bash
+
+echo -e "host1\nhost2\nhost3" |
+while read host; do
+  echo "ssh to $host"
+  ssh $host "cat"
+done
+```
+```
 
 * iptables
 当 telnet 某个端口不通的时候, 检查一下目标机器的 iptables
@@ -360,6 +373,7 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTIxNTM5NzUyLDM0NzQwOTI4LC01MjI0ND
-U2MTYsMTY2MTUzNjAsLTE2MjUyNzQwNzVdfQ==
+eyJoaXN0b3J5IjpbLTE0MTYzNjQzNjYsNTIxNTM5NzUyLDM0Nz
+QwOTI4LC01MjI0NDU2MTYsMTY2MTUzNjAsLTE2MjUyNzQwNzVd
+fQ==
 -->
