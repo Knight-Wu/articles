@@ -285,7 +285,8 @@ $ getconf PAGE_SIZE
 * 多台机器免密登录
 1. 在用户目录下, 生成公钥和私钥. 
  ssh-keygen -t rsa
- 2. 将公钥 .ssh/id_rsa.pub 粘贴到另一台机器的 .ssh/authorized_keys, 例如 A 要 ssh 登录 B, 则将 A 的公钥粘贴到 B 的authorized_keys, 也可以用 ssh-copy-id 命令
+ 2. 将用户公钥 .ssh/id_rsa.pub 粘贴到另一台机器的 .ssh/authorized_keys, 例如 A 要 ssh 登录 B, 则将 A 的公钥粘贴到 B 的authorized_keys, 也可以用 ssh-copy-id 命令, 过程就是: 所谓"公钥登录"，原理很简单，就是用户将自己的公钥储存在远程主机上。登录的时候，远程主机会向用户发送一段随机字符串，用户用自己的私钥加密后，再发回来。远程主机用事先储存的公钥进行解密，如果成功，就证明用户是可信的，直接允许登录shell，不再要求密码。
+
  
  * ssh_all_host.sh 操作多台机器
 ```
@@ -383,7 +384,7 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTU2NDY5ODcsNTIxNTM5NzUyLDM0Nz
-QwOTI4LC01MjI0NDU2MTYsMTY2MTUzNjAsLTE2MjUyNzQwNzVd
-fQ==
+eyJoaXN0b3J5IjpbLTQwOTg4ODgxNSwtMTg5NTY0Njk4Nyw1Mj
+E1Mzk3NTIsMzQ3NDA5MjgsLTUyMjQ0NTYxNiwxNjYxNTM2MCwt
+MTYyNTI3NDA3NV19
 -->
