@@ -328,11 +328,20 @@ host3
 "host2\nhost3" was never sent to the while loop but eaten by ssh
 
 
-```
 
 * iptables
 当 telnet 某个端口不通的时候, 检查一下目标机器的 iptables
 sudo iptables  -A INPUT -s 10.129.0.0/16 -p tcp -m tcp --dport 9300 -j ACCEPT;
+
+* ssh
+
+> ssh -NfL localport:targetAddr:targetPort remoteIp
+
+只要 remoteIp 通过 telnet targetAddr:targetPort , 并不需要只在targetAddr
+
+* output hex code from keyboard input
+> xxd -psg
+
 
 ---
 #### 搭建cdh测试环境总结
@@ -384,7 +393,7 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwOTg4ODgxNSwtMTg5NTY0Njk4Nyw1Mj
-E1Mzk3NTIsMzQ3NDA5MjgsLTUyMjQ0NTYxNiwxNjYxNTM2MCwt
-MTYyNTI3NDA3NV19
+eyJoaXN0b3J5IjpbMjA1MzA4Mzk2OSwtNDA5ODg4ODE1LC0xOD
+k1NjQ2OTg3LDUyMTUzOTc1MiwzNDc0MDkyOCwtNTIyNDQ1NjE2
+LDE2NjE1MzYwLC0xNjI1Mjc0MDc1XX0=
 -->
