@@ -11,10 +11,10 @@ golang 的 之前的 kafka 库都不太好用, sarama-kafka 已经不维护了, 
 "apt-get install -y librdkafka-dev=1.1.0~1confluent5.3.0-1",
 ```
 
-2. 在一台 Ubuntu 上面编译好放到代码路径中, 但是有可能因为编译的系统环境和运行的系统环境不同而有风险, 公司的环境基本一致, 故觉得这个方法最好, bu'x
+2. 在一台 Ubuntu 上面编译好放到代码路径中, 但是有可能因为编译的系统环境和运行的系统环境不同而有风险, 公司的环境基本一致, 故觉得这个方法最好, 不需要依赖外部的网络, 速度又快. 但是编译好之后需要将 PKG_CONFIG
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTc1Mzc2NjE1LC0yMzkxODg5MzMsLTEzNz
-U1NDM2NzVdfQ==
+eyJoaXN0b3J5IjpbMTc0OTUyMTQ5NSwtMjM5MTg4OTMzLC0xMz
+c1NTQzNjc1XX0=
 -->
