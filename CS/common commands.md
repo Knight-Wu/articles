@@ -37,16 +37,11 @@ about msg format class between different version:
 https://drive.google.com/open?id=1DO3anQgMfAUSsb9JPyLZDhIfNhtMrvMP
 ### elasticsearch
 
-### ssh
-
-> ssh -NfL localport:targetAddr:targetPort remoteIp
-
-只要 remoteIp 通过 telnet targetAddr:targetPort , 并不需要只在targetAddr
 
 ### git
 * But if you want to remove the file only from the Git repository and not remove it from the filesystem, and rm directory
 git  rm -r --cached directory
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTI2NjI3NjksLTIwOTU1NTY1MDMsLT
-E5NjY5Mzg5ODEsLTM1NDMzODExOF19
+eyJoaXN0b3J5IjpbMjA1MTIwMzM5MywtMjA5NTU1NjUwMywtMT
+k2NjkzODk4MSwtMzU0MzM4MTE4XX0=
 -->
