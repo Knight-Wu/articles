@@ -11,10 +11,11 @@ golang 的 之前的 kafka 库都不太好用, sarama-kafka 已经不维护了, 
 "apt-get install -y librdkafka-dev=1.1.0~1confluent5.3.0-1",
 ```
 
-2. 在一台 Ubuntu 上面编译好放到代码路径中, 但是有可能因为编译的系统环境和运行的系统环境不同而有风险, 公司的环境基本一致, 故觉得这个方法最好, 不需要依赖外部的网络, 速度又快. 但是编译好之后需要将包含rdkafka.pc 的文件夹添加到这个环境变量 PKG_CONFIG, 但是始终无法让这个环境变量生效, 莫非是嵌套 shell 的问题?  
+2. 在一台 Ubuntu 上面编译好放到代码路径中, 但是有可能因为编译的系统环境和运行的系统环境不同而有风险, 公司的环境基本一致, 故觉得这个方法最好, 不需要依赖外部的网络, 速度又快. 但是编译好之后需要将包含rdkafka.pc 的文件夹添加到这个环境变量 PKG_CONFIG, 但是始终无法让这个环境变量生效, 莫非是嵌套 shell 的问题? 
+3.  最后在这个无法找到 PKG_CONFIG 的报错中, 发现
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDc2OTc2MTYsMTc0OTUyMTQ5NSwtMj
+eyJoaXN0b3J5IjpbLTE3MjI3MDAyOTYsMTc0OTUyMTQ5NSwtMj
 M5MTg4OTMzLC0xMzc1NTQzNjc1XX0=
 -->
