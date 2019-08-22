@@ -342,6 +342,7 @@ sudo iptables  -A INPUT -s 10.129.0.0/16 -p tcp -m tcp --dport 9300 -j ACCEPT;
 * output hex code from keyboard input
 > xxd -psg
 
+再按键, 回车结尾, 末尾的 : 0a 是ascii newline (LF)
 
 ---
 #### 搭建cdh测试环境总结
@@ -393,7 +394,7 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1MzA4Mzk2OSwtNDA5ODg4ODE1LC0xOD
+eyJoaXN0b3J5IjpbMTkzOTIxOTMyNywtNDA5ODg4ODE1LC0xOD
 k1NjQ2OTg3LDUyMTUzOTc1MiwzNDc0MDkyOCwtNTIyNDQ1NjE2
 LDE2NjE1MzYwLC0xNjI1Mjc0MDc1XX0=
 -->
