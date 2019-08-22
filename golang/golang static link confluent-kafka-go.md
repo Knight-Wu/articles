@@ -3,10 +3,10 @@ golang 的 之前的 kafka 库都不太好用, sarama-kafka 已经不维护了, 
 
 依赖的方法很多, 当机器上面有这个包了之后, 接下来分为dynamic link 和 static link. 
 依赖的方法: 
-1. 直接用各个系统的包管理器, 例如Ubuntu apt-get install, 但是有些源下载下来的版本过低, 
+1. 直接用各个系统的包管理器, 例如Ubuntu apt-get install, 但是有些源下载下来的版本过低, 所以采用 confluent 的 repository. 但是! apt-get update 又出现 some indices update failed, g
 ```
 "wget -qO - https://packages.confluent.io/deb/5.2/archive.key |apt-key add -",
-      "echo \"deb [arch=amd64] https://packages.confluent.io/deb/5.2 stable main\" >> /etc/apt/sources.list",
+"echo \"deb [arch=amd64] https://packages.confluent.io/deb/5.2 stable main\" >> /etc/apt/sources.list",
 "apt-get update",
 "apt-get install -y librdkafka-dev=1.1.0~1confluent5.3.0-1",
 ```
@@ -14,6 +14,6 @@ golang 的 之前的 kafka 库都不太好用, sarama-kafka 已经不维护了, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ4OTIyMTExLC0yMzkxODg5MzMsLTEzNz
-U1NDM2NzVdfQ==
+eyJoaXN0b3J5IjpbLTQwMDI5OTcyOCwtMjM5MTg4OTMzLC0xMz
+c1NTQzNjc1XX0=
 -->
