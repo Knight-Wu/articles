@@ -55,7 +55,7 @@ Top of page
 Interval   : Redisplays the selected information every Interval seconds. Press CTRL+C to stop the redisplay. If this parameter is omitted, netstat prints the selected information only once.
 * 常见用法
 
-  > netstat -anp|grep :$PORT
+  > netstat -ltnp|grep :$PORT
 
   查看监听某端口的进程
   
@@ -394,7 +394,7 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzOTIxOTMyNywtNDA5ODg4ODE1LC0xOD
-k1NjQ2OTg3LDUyMTUzOTc1MiwzNDc0MDkyOCwtNTIyNDQ1NjE2
-LDE2NjE1MzYwLC0xNjI1Mjc0MDc1XX0=
+eyJoaXN0b3J5IjpbLTE2MTc0MjgxODYsMTkzOTIxOTMyNywtND
+A5ODg4ODE1LC0xODk1NjQ2OTg3LDUyMTUzOTc1MiwzNDc0MDky
+OCwtNTIyNDQ1NjE2LDE2NjE1MzYwLC0xNjI1Mjc0MDc1XX0=
 -->
