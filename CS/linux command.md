@@ -79,8 +79,12 @@ ls -lh     以mb显示文件大小
 ### 查找关键字
 
    * grep keyword filepath|less 
-   * grep -rnw '.' -e 'retention'
-```
+   * grep -rnw 'path' -e 'keyword' 查找当前目录及子目录, 包含 keyword 的文件. 
+   `-r`  or  `-R`  is recursive,
+   `-n`  is line number, and
+  `-w`  stands for match the whole word.
+   `-l`  (lower-case L) can be added to just give the file name of matching files
+
 
 > zip文件查找关键字(不需解压)
 ```
@@ -398,7 +402,7 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyNTcwNzY1NCw4MDg2MjQxMTAsLTE0Nj
+eyJoaXN0b3J5IjpbMjEyMTQ4ODY2MCw4MDg2MjQxMTAsLTE0Nj
 M0MTEyMDUsMTkzOTIxOTMyNywtNDA5ODg4ODE1LC0xODk1NjQ2
 OTg3LDUyMTUzOTc1MiwzNDc0MDkyOCwtNTIyNDQ1NjE2LDE2Nj
 E1MzYwLC0xNjI1Mjc0MDc1XX0=
