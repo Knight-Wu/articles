@@ -57,7 +57,10 @@ Interval   : Redisplays the selected information every Interval seconds. Press C
 
   > netstat -ltnp|grep :$PORT
 
-  查看监听某端口的进程
+-   `l`  – tells netstat to only show listening sockets.
+-   `t`  – tells it to display tcp connections.
+-   `n`  – instructs it show numerical addresses.
+-   `p`  – enables showing of the process ID and the process name
   
   
 * ps(查看进程命令)
@@ -394,7 +397,7 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTc0MjgxODYsMTkzOTIxOTMyNywtND
+eyJoaXN0b3J5IjpbLTE0NjM0MTEyMDUsMTkzOTIxOTMyNywtND
 A5ODg4ODE1LC0xODk1NjQ2OTg3LDUyMTUzOTc1MiwzNDc0MDky
 OCwtNTIyNDQ1NjE2LDE2NjE1MzYwLC0xNjI1Mjc0MDc1XX0=
 -->
