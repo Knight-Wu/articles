@@ -23,7 +23,7 @@ tail -100 fileName |grep -C100 keyWord // 从fileName的后一百行找keyWord, 
     ```
     查找当前目录下,最近更新十分钟内的文件
     ```
-    find . -name 'my*' //查找当前目录下, 以my开头的文件
+    find . -name 'my*' //查找当前目录及子目录下, 以my开头的文件
     find `pwd` -name 'name' // 返回文件的绝对路径
     ```
     
@@ -397,7 +397,8 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjM0MTEyMDUsMTkzOTIxOTMyNywtND
-A5ODg4ODE1LC0xODk1NjQ2OTg3LDUyMTUzOTc1MiwzNDc0MDky
-OCwtNTIyNDQ1NjE2LDE2NjE1MzYwLC0xNjI1Mjc0MDc1XX0=
+eyJoaXN0b3J5IjpbODA4NjI0MTEwLC0xNDYzNDExMjA1LDE5Mz
+kyMTkzMjcsLTQwOTg4ODgxNSwtMTg5NTY0Njk4Nyw1MjE1Mzk3
+NTIsMzQ3NDA5MjgsLTUyMjQ0NTYxNiwxNjYxNTM2MCwtMTYyNT
+I3NDA3NV19
 -->
