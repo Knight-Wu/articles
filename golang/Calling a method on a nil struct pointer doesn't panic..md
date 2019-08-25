@@ -26,8 +26,9 @@ because [Michael Jones explained this well](https://groups.google.com/d/msg/gola
 > 
 > and in this view, the body of SometypeSomemethod() is certainly free to test it's (actual) first argument (p *Sometype) for a value of nil. Note though that the calling site invoking on a nil value must have a context of the expected type. An effort to invoke an unadorned nil.Somemethod would not work in Go because there is be no implicit "Sometype" for the typeless value nil to expand the Somemethod() call into "SometypeSomemethod()"
 
-大致意思就是如果 object 是 nil , 那是如何找到这个 function 的呢? 在 golang 中与其他语言不同, 通过 [Expression.Name](http://expression.name/)()
+大致意思就是如果 object 是 nil , 那是如何找到这个 function 的呢? 在 golang 中与其他语言不同,  [Expression.method](http://expression.name/)() 是由 expression 的 type 决定的, 而不是 expression 的 value 决定的.
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3NzU2ODUyMiwtMTYwMjM5OTMwNV19
+eyJoaXN0b3J5IjpbLTIxNDQ0MjI4NjIsLTE2MDIzOTkzMDVdfQ
+==
 -->
