@@ -12,7 +12,15 @@ go get -u github.com/go-delve/delve/cmd/dlv
 [https://github.com/go-delve/delve/blob/master/Documentation/installation/linux/install.md](https://github.com/go-delve/delve/blob/master/Documentation/installation/linux/install.md)
 
 3. 然后运行应用. 
+有两种方式: 
+a. let the debugger run the process for you: if you choose this option, you need to run `dlv --listen=:2345 --headless=true --api-version=2 exec ./application`
+b. attaching to the process: you need to run  `dlv --listen=:2345 --headless=true --api-version=2 attach <pid>` where  _<pid>_  is the process id of your application.
+都需要暴露服务器上的应用的端口给 local machine
+4. _Run | Edit Configurations… | + | Go Remote_ and configuring the host and port your remote debugger is listening on.
+
+完整
+[https://blog.jetbrains.com/go/2019/02/06/debugging-with-goland-getting-started/#debugging-a-running-application-on-a-remote-machine](https://blog.jetbrains.com/go/2019/02/06/debugging-with-goland-getting-started/#debugging-a-running-application-on-a-remote-machine)
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ3NzM0MDkzMl19
+eyJoaXN0b3J5IjpbOTY2MTQ2MzY0XX0=
 -->
