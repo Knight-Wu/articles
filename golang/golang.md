@@ -18,9 +18,9 @@ b. attaching to the process: you need to run  `dlv --listen=:2345 --headless=tru
 都需要暴露服务器上的应用的端口给 local machine
 4. _Run | Edit Configurations… | + | Go Remote_ and configuring the host and port your remote debugger is listening on.
 
-完整
-[https://blog.jetbrains.com/go/2019/02/06/debugging-with-goland-getting-started/#debugging-a-running-application-on-a-remote-machine](https://blog.jetbrains.com/go/2019/02/06/debugging-with-goland-getting-started/#debugging-a-running-application-on-a-remote-machine)
+
+[jetbrains 的完整文档](https://blog.jetbrains.com/go/2019/02/06/debugging-with-goland-getting-started/#debugging-a-running-application-on-a-remote-machine)
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTY2MTQ2MzY0XX0=
+eyJoaXN0b3J5IjpbLTE5MDk4NTM5MV19
 -->
