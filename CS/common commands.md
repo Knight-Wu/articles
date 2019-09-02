@@ -41,7 +41,12 @@ https://drive.google.com/open?id=1DO3anQgMfAUSsb9JPyLZDhIfNhtMrvMP
 ### git
 * But if you want to remove the file only from the Git repository and not remove it from the filesystem, and rm directory
 git  rm -r --cached directory
+
+
+### mysql
+* mysql connect
+mysql -h hostName -P port  -u username -p'password'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1MTIwMzM5MywtMjA5NTU1NjUwMywtMT
-k2NjkzODk4MSwtMzU0MzM4MTE4XX0=
+eyJoaXN0b3J5IjpbLTEyMjg2MjcxOTIsMjA1MTIwMzM5MywtMj
+A5NTU1NjUwMywtMTk2NjkzODk4MSwtMzU0MzM4MTE4XX0=
 -->
