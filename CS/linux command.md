@@ -204,7 +204,7 @@ nohup command & // 最简单的模式
 nohup command & // 命令执行完时打出信息到shell 屏幕上
 nohup command > myOutPut.out 2>&1 & // 把stdout 和stderr 重定向到自己的文件
 
-nohup command > /dev/null 2>&1 & // 不输出dao
+nohup command > /dev/null 2>&1 & // 不输出到 nohup.out
 ```
 
 * set
@@ -404,8 +404,8 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwNDc2NTE2OCwyMTIxNDg4NjYwLDgwOD
-YyNDExMCwtMTQ2MzQxMTIwNSwxOTM5MjE5MzI3LC00MDk4ODg4
-MTUsLTE4OTU2NDY5ODcsNTIxNTM5NzUyLDM0NzQwOTI4LC01Mj
-I0NDU2MTYsMTY2MTUzNjAsLTE2MjUyNzQwNzVdfQ==
+eyJoaXN0b3J5IjpbOTg3NTk3MTY4LDIxMjE0ODg2NjAsODA4Nj
+I0MTEwLC0xNDYzNDExMjA1LDE5MzkyMTkzMjcsLTQwOTg4ODgx
+NSwtMTg5NTY0Njk4Nyw1MjE1Mzk3NTIsMzQ3NDA5MjgsLTUyMj
+Q0NTYxNiwxNjYxNTM2MCwtMTYyNTI3NDA3NV19
 -->
