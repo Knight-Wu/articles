@@ -203,6 +203,8 @@ sz // 下载文件,
 nohup command & // 最简单的模式
 nohup command & // 命令执行完时打出信息到shell 屏幕上
 nohup command > myOutPut.out 2>&1 & // 把stdout 和stderr 重定向到自己的文件
+
+nohup command > /dev/null 2>&1 & // 不输出dao
 ```
 
 * set
@@ -402,8 +404,8 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyMTQ4ODY2MCw4MDg2MjQxMTAsLTE0Nj
-M0MTEyMDUsMTkzOTIxOTMyNywtNDA5ODg4ODE1LC0xODk1NjQ2
-OTg3LDUyMTUzOTc1MiwzNDc0MDkyOCwtNTIyNDQ1NjE2LDE2Nj
-E1MzYwLC0xNjI1Mjc0MDc1XX0=
+eyJoaXN0b3J5IjpbMTkwNDc2NTE2OCwyMTIxNDg4NjYwLDgwOD
+YyNDExMCwtMTQ2MzQxMTIwNSwxOTM5MjE5MzI3LC00MDk4ODg4
+MTUsLTE4OTU2NDY5ODcsNTIxNTM5NzUyLDM0NzQwOTI4LC01Mj
+I0NDU2MTYsMTY2MTUzNjAsLTE2MjUyNzQwNzVdfQ==
 -->
