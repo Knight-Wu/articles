@@ -207,6 +207,8 @@ nohup command > myOutPut.out 2>&1 & // 把stdout 和stderr 重定向到自己的
 nohup command > /dev/null 2>&1 & // 不输出到 nohup.out
 ```
 
+但是ssh 登录之后, 当 ssh session 被中断, 有可能之前启动的 background process 会被退出. 
+
 * set
 ```
 set +x; command; set -x // 可以将每一行执行的详细命令都解析到屏幕上输出
@@ -404,8 +406,9 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTg3NTk3MTY4LDIxMjE0ODg2NjAsODA4Nj
-I0MTEwLC0xNDYzNDExMjA1LDE5MzkyMTkzMjcsLTQwOTg4ODgx
-NSwtMTg5NTY0Njk4Nyw1MjE1Mzk3NTIsMzQ3NDA5MjgsLTUyMj
-Q0NTYxNiwxNjYxNTM2MCwtMTYyNTI3NDA3NV19
+eyJoaXN0b3J5IjpbNDY4MzU2NDI0LDk4NzU5NzE2OCwyMTIxND
+g4NjYwLDgwODYyNDExMCwtMTQ2MzQxMTIwNSwxOTM5MjE5MzI3
+LC00MDk4ODg4MTUsLTE4OTU2NDY5ODcsNTIxNTM5NzUyLDM0Nz
+QwOTI4LC01MjI0NDU2MTYsMTY2MTUzNjAsLTE2MjUyNzQwNzVd
+fQ==
 -->
