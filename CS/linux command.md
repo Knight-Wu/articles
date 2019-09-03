@@ -213,6 +213,8 @@ This problem can also be overcome by redirecting all three I/O streams:
 nohup myprogram > foo.out 2> foo.err < /dev/null &
 ```
 详细解释: 
+[http://www.snailbook.com/faq/background-jobs.auto.html](http://www.snailbook.com/faq/background-jobs.auto.html)
+如果链接失效可以看 当前目录: SSH FAQ
 [https://stackoverflow.com/questions/29142/getting-ssh-to-execute-a-command-in-the-background-on-target-machine](https://stackoverflow.com/questions/29142/getting-ssh-to-execute-a-command-in-the-background-on-target-machine)
 
 * set
@@ -412,9 +414,9 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjgxMDU1MzQwLDk4NzU5NzE2OCwyMTIxND
-g4NjYwLDgwODYyNDExMCwtMTQ2MzQxMTIwNSwxOTM5MjE5MzI3
-LC00MDk4ODg4MTUsLTE4OTU2NDY5ODcsNTIxNTM5NzUyLDM0Nz
-QwOTI4LC01MjI0NDU2MTYsMTY2MTUzNjAsLTE2MjUyNzQwNzVd
-fQ==
+eyJoaXN0b3J5IjpbMzMxMzk1MjczLDY4MTA1NTM0MCw5ODc1OT
+cxNjgsMjEyMTQ4ODY2MCw4MDg2MjQxMTAsLTE0NjM0MTEyMDUs
+MTkzOTIxOTMyNywtNDA5ODg4ODE1LC0xODk1NjQ2OTg3LDUyMT
+UzOTc1MiwzNDc0MDkyOCwtNTIyNDQ1NjE2LDE2NjE1MzYwLC0x
+NjI1Mjc0MDc1XX0=
 -->
