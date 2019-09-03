@@ -208,6 +208,12 @@ nohup command > /dev/null 2>&1 & // 不输出到 nohup.out
 ```
 
 但是ssh 登录之后, 当 ssh session 被中断, 有可能之前启动的 background process 会被退出. 
+This problem can also be overcome by redirecting all three I/O streams:
+```
+nohup myprogram > foo.out 2> foo.err < /dev/null &
+```
+详细解释: 
+[https://stackoverflow.com/questions/29142/getting-ssh-to-execute-a-command-in-the-background-on-target-machine](https://stackoverflow.com/questions/29142/getting-ssh-to-execute-a-command-in-the-background-on-target-machine)
 
 * set
 ```
@@ -406,7 +412,7 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDY4MzU2NDI0LDk4NzU5NzE2OCwyMTIxND
+eyJoaXN0b3J5IjpbNjgxMDU1MzQwLDk4NzU5NzE2OCwyMTIxND
 g4NjYwLDgwODYyNDExMCwtMTQ2MzQxMTIwNSwxOTM5MjE5MzI3
 LC00MDk4ODg4MTUsLTE4OTU2NDY5ODcsNTIxNTM5NzUyLDM0Nz
 QwOTI4LC01MjI0NDU2MTYsMTY2MTUzNjAsLTE2MjUyNzQwNzVd
