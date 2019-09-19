@@ -79,10 +79,10 @@ ls -lh     以mb显示文件大小
 ### 查找关键字
 
    * grep keyword filepath|less 
-   * grep -rnw 'path' -e 'keyword' 查找当前目录及子目录, 包含 keyword 的文件. 
+   * grep -rni  'keyword' 'path'  查找当前目录及子目录, 包含 keyword 的文件. 
    `-r`  or  `-R`  is recursive,
-   `-n`  is line number, and
-  `-w`  stands for match the whole word.
+   `-n`  is line number,
+-i case-unser
    `-l`  (lower-case L) can be added to just give the file name of matching files
 
 
@@ -414,9 +414,9 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzMxMzk1MjczLDY4MTA1NTM0MCw5ODc1OT
-cxNjgsMjEyMTQ4ODY2MCw4MDg2MjQxMTAsLTE0NjM0MTEyMDUs
-MTkzOTIxOTMyNywtNDA5ODg4ODE1LC0xODk1NjQ2OTg3LDUyMT
-UzOTc1MiwzNDc0MDkyOCwtNTIyNDQ1NjE2LDE2NjE1MzYwLC0x
-NjI1Mjc0MDc1XX0=
+eyJoaXN0b3J5IjpbLTc4ODEzMDQ3MSwzMzEzOTUyNzMsNjgxMD
+U1MzQwLDk4NzU5NzE2OCwyMTIxNDg4NjYwLDgwODYyNDExMCwt
+MTQ2MzQxMTIwNSwxOTM5MjE5MzI3LC00MDk4ODg4MTUsLTE4OT
+U2NDY5ODcsNTIxNTM5NzUyLDM0NzQwOTI4LC01MjI0NDU2MTYs
+MTY2MTUzNjAsLTE2MjUyNzQwNzVdfQ==
 -->
