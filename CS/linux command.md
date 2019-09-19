@@ -82,8 +82,8 @@ ls -lh     以mb显示文件大小
    * grep -rni  'keyword' 'path'  查找当前目录及子目录, 包含 keyword 的文件. 
    `-r`  or  `-R`  is recursive,
    `-n`  is line number,
--i case-unser
-   `-l`  (lower-case L) can be added to just give the file name of matching files
+-i case-unsensitive
+
 
 
 > zip文件查找关键字(不需解压)
@@ -414,9 +414,9 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4ODEzMDQ3MSwzMzEzOTUyNzMsNjgxMD
-U1MzQwLDk4NzU5NzE2OCwyMTIxNDg4NjYwLDgwODYyNDExMCwt
-MTQ2MzQxMTIwNSwxOTM5MjE5MzI3LC00MDk4ODg4MTUsLTE4OT
-U2NDY5ODcsNTIxNTM5NzUyLDM0NzQwOTI4LC01MjI0NDU2MTYs
-MTY2MTUzNjAsLTE2MjUyNzQwNzVdfQ==
+eyJoaXN0b3J5IjpbLTE2OTU5MDk3MzksMzMxMzk1MjczLDY4MT
+A1NTM0MCw5ODc1OTcxNjgsMjEyMTQ4ODY2MCw4MDg2MjQxMTAs
+LTE0NjM0MTEyMDUsMTkzOTIxOTMyNywtNDA5ODg4ODE1LC0xOD
+k1NjQ2OTg3LDUyMTUzOTc1MiwzNDc0MDkyOCwtNTIyNDQ1NjE2
+LDE2NjE1MzYwLC0xNjI1Mjc0MDc1XX0=
 -->
