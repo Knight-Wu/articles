@@ -29,6 +29,8 @@ output msg:
 about msg format class between different version: 
 [https://medium.com/@felipedutratine/kafka-consumer-offsets-topic-3d5483cda4a6](https://medium.com/@felipedutratine/kafka-consumer-offsets-topic-3d5483cda4a6)
 
+* start kafka server 
+./kafka-server-start ../conf/server.properties
 
 ### redis
 * redis-cli 
@@ -47,6 +49,7 @@ git  rm -r --cached directory
 * mysql connect
 mysql -h hostName -P port  -u username -p'password'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjg2MjcxOTIsMjA1MTIwMzM5MywtMj
-A5NTU1NjUwMywtMTk2NjkzODk4MSwtMzU0MzM4MTE4XX0=
+eyJoaXN0b3J5IjpbMTk3MDQ4MDU1NSwtMTIyODYyNzE5MiwyMD
+UxMjAzMzkzLC0yMDk1NTU2NTAzLC0xOTY2OTM4OTgxLC0zNTQz
+MzgxMThdfQ==
 -->
