@@ -31,12 +31,16 @@ pom 文件中
         </execution>  
     </executions>  
 </plugin>
-所有包含 okio 的 package 都加上了 shaded 的前缀, 
-![enter image description here](https://drive.google.com/uc?id=15cWOBVYj1wq0yFSozsqbPtaVp9_8LzB2)
-```
 
+
+```
+所有包含 okio 的 package 都加上了 shaded 的前缀, 
+
+![](https://drive.google.com/uc?id=15cWOBVYj1wq0yFSozsqbPtaVp9_8LzB2)
+
+那么这些single jar 里面的 class 则必不可能再被用到了, 那么就会通过相同的 package+className 使用到 executor 上面的 class
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDE2MjcwNzAsNDkyMDk1NDk1LDc3Mzk3Nj
-E3NV19
+eyJoaXN0b3J5IjpbMTc2NTcyODA3MSw0OTIwOTU0OTUsNzczOT
+c2MTc1XX0=
 -->
