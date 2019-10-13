@@ -1,4 +1,4 @@
-## spark 使用 maven-shade-plugin解决本地和executor jar 包冲突
+## spark 使用 maven-shade-plugin 改变包名来解决本地和executor jar 包冲突
 * 问题
 部署 spark single jar 服务器跑的时候, 发现 jar 包冲突, executor 的 jar 包版本比项目使用的 jar 包版本要低比较多, 然后出现了方法找不到的异常
 * 方法
@@ -39,7 +39,8 @@ pom 文件中
 ![](https://drive.google.com/uc?id=15cWOBVYj1wq0yFSozsqbPtaVp9_8LzB2)
 
 那么这些single jar 里面的 class 则必不可能再被用到了, 那么就会通过相同的 package+className 使用到 executor 上面的 class, 如果能用得上的话(应该是这样吧? 下次碰到再加以验证) 
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTc0NDI1MDNdfQ==
+eyJoaXN0b3J5IjpbMTg1MjA3MzcwMV19
 -->
