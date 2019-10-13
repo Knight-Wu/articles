@@ -32,11 +32,11 @@ pom 文件中
     </executions>  
 </plugin>
 所有包含 okio 的 package 都加上了 shaded 的前缀, 
-https://drive.google.com/open?id=15cWOBVYj1wq0yFSozsqbPtaVp9_8LzB2
+![enter image description here](https://drive.google.com/uc?id=15cWOBVYj1wq0yFSozsqbPtaVp9_8LzB2)
 ```
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjEyODM4ODMsNDkyMDk1NDk1LDc3Mz
-k3NjE3NV19
+eyJoaXN0b3J5IjpbNDE2MjcwNzAsNDkyMDk1NDk1LDc3Mzk3Nj
+E3NV19
 -->
