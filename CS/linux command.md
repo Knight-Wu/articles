@@ -53,7 +53,7 @@ Top of page
 
 -r   : Displays the contents of the IP routing table. This is equivalent to the route print command.
 Interval   : Redisplays the selected information every Interval seconds. Press CTRL+C to stop the redisplay. If this parameter is omitted, netstat prints the selected information only once.
-* 常见用法
+* 根据 port 查看 pid
 
   > netstat -ltnp|grep :$PORT
 
@@ -62,6 +62,11 @@ Interval   : Redisplays the selected information every Interval seconds. Press C
 -   `n`  – instructs it show numerical addresses.
 -   `p`  – enables showing of the process ID and the process name
   
+ * 根据 pid 查看占用的 port
+```
+lsof -Pan -p PID -i
+
+```
   
 * ps(查看进程命令)
   * ps -ef 
@@ -414,9 +419,9 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTU5MDk3MzksMzMxMzk1MjczLDY4MT
-A1NTM0MCw5ODc1OTcxNjgsMjEyMTQ4ODY2MCw4MDg2MjQxMTAs
-LTE0NjM0MTEyMDUsMTkzOTIxOTMyNywtNDA5ODg4ODE1LC0xOD
-k1NjQ2OTg3LDUyMTUzOTc1MiwzNDc0MDkyOCwtNTIyNDQ1NjE2
-LDE2NjE1MzYwLC0xNjI1Mjc0MDc1XX0=
+eyJoaXN0b3J5IjpbLTc5NjI2MjM1LC0xNjk1OTA5NzM5LDMzMT
+M5NTI3Myw2ODEwNTUzNDAsOTg3NTk3MTY4LDIxMjE0ODg2NjAs
+ODA4NjI0MTEwLC0xNDYzNDExMjA1LDE5MzkyMTkzMjcsLTQwOT
+g4ODgxNSwtMTg5NTY0Njk4Nyw1MjE1Mzk3NTIsMzQ3NDA5Mjgs
+LTUyMjQ0NTYxNiwxNjYxNTM2MCwtMTYyNTI3NDA3NV19
 -->
