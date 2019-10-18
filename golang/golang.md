@@ -26,13 +26,16 @@ b. attaching to the process: you need to run  `dlv --listen=:2345 --headless=tru
 例如
 > float a = 0.02, float b= 1-0.02= 0.9800001 , 
 
-若经过强制保留两位小数: 
+* 解决办法
+1. 计算结果强制保留两位小数: 
 >c, _ := strconv.ParseFloat(fmt.Sprintf("%.2f", 1-a), 32), 则c = 0.98
 
-浮点数计算框架: 
+2. 浮点数计算框架: 
 [https://github.com/shopspring/decimal](https://github.com/shopspring/decimal)
 
+3. 将浮点数转化为整数, 乘 10 的 n 次方
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDk4MDE5NjIsLTE5MDk4NTM5MV19
+eyJoaXN0b3J5IjpbMTIwMjgxMTczMSwtMTQwOTgwMTk2MiwtMT
+kwOTg1MzkxXX0=
 -->
