@@ -20,7 +20,12 @@ b. attaching to the process: you need to run  `dlv --listen=:2345 --headless=tru
 
 
 [jetbrains 的完整文档](https://blog.jetbrains.com/go/2019/02/06/debugging-with-goland-getting-started/#debugging-a-running-application-on-a-remote-machine)
+
+### float 运算
+若某个浮点数, 没有经过强制保留两位小数, 则有可能再经过运算后, 出现尾数, 
+例如 float a = 0.02
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDk4NTM5MV19
+eyJoaXN0b3J5IjpbNzM2MDcxMzcwLC0xOTA5ODUzOTFdfQ==
 -->
