@@ -23,9 +23,12 @@ b. attaching to the process: you need to run  `dlv --listen=:2345 --headless=tru
 
 ### float 运算
 若某个浮点数, 没有经过强制保留两位小数, 则有可能再经过运算后, 出现尾数, 
-例如 float a = 0.02
+例如 float a = 0.02, float b= 1-0.02= 0.9800001 , 
+若经过强制保留两位小数: 
+c, _ := strconv.ParseFloat(fmt.Sprintf("%.2f", 1-a), 32), 则c = 0.98
+浮点数
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzM2MDcxMzcwLC0xOTA5ODUzOTFdfQ==
+eyJoaXN0b3J5IjpbMTEyMDAyODg1NywtMTkwOTg1MzkxXX0=
 -->
