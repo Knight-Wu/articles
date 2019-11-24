@@ -3,10 +3,10 @@
 * discreate function 
 离散函数
 * derivative
-某个曲线的某一点de
+某个曲线的某一点的曲率或者斜率, 暂且这样指代, 具体的不细究.
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjE0ODUwMjVdfQ==
+eyJoaXN0b3J5IjpbMTM4NjQ3MzM5MF19
 -->
