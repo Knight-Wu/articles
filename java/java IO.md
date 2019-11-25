@@ -280,7 +280,7 @@ The Echo client will
 4 Close the connection
 
 #### netty 新连接的建立过程
-1. boss 线程检查到有新来的连接, 即accept 事件, 则将该channel 注册到worker EventLoopGroup
+1. boss 线程检查到有新来的连接, 即accept 事件, 则将该channel 注册到worker EventLoopGroup 线程池
 2. 从 worker EventLoopGroup 选择一个EventLoop 线程来关注channel 的其余事件, 例如read, write, channelHandler 事件.
 
 #### EventLoop
@@ -446,6 +446,6 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDA5NzkzMDAzLC0xMTI1NTEzNzksLTgwNT
-cwNzY3MywtMTEwNDQzMTQxNV19
+eyJoaXN0b3J5IjpbLTEyOTA1NDU0NDksLTExMjU1MTM3OSwtOD
+A1NzA3NjczLC0xMTA0NDMxNDE1XX0=
 -->
