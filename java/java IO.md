@@ -299,7 +299,7 @@ Channel events.
 
 * netty IO thread model
 
-**boss EventLoopGroup** 负责accept connection, 并把channel registe to worker threads. EventLoopGroup 如果不指定构造函数, 使用的是默认的jdk ScheduledThreadPool, 线程数量是cpu 核心数*2. 
+**boss EventLoopGroup** 负责accept connection, 并把channel retister to worker threads. EventLoopGroup 如果不指定构造函数, 使用的是默认的jdk ScheduledThreadPool, 线程数量是cpu 核心数*2. 
 **worker EventLoopGroup** 负责执行具体的io operation, 一个channel 的所有事件, 包括connect, read, write和注册的所有 channelHandlers 都会只由一个 worker threads 执行, 避免了多线程的同步和线程切换问题, channel 和thread 的模型是: N:1, 所以一个事件的延迟会阻塞到这个channel 的其他事件和该线程其他channel 事件, 所以长时间运行的event 需要新建线程池处理, 如下图
 ![enter image description here](https://drive.google.com/uc?id=1WQUx6bJJBY0baCRcIRK167g80UmE4eqj)
 
@@ -446,6 +446,6 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTA1NDU0NDksLTExMjU1MTM3OSwtOD
-A1NzA3NjczLC0xMTA0NDMxNDE1XX0=
+eyJoaXN0b3J5IjpbMzYwOTM0NTQyLC0xMTI1NTEzNzksLTgwNT
+cwNzY3MywtMTEwNDQzMTQxNV19
 -->
