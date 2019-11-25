@@ -98,7 +98,7 @@ clear, 保证还有remaning, 因为remaning = limit- position
 > stream不是缓存的, 不能移动数据, 除非进行cache, 而buffer 是一整块数据过来, 可以移动数据, 移动指针, 更加的灵活
 
 * non blocking vs blocking
-> bio 每接收到一个新的连接, 因为接收连接,再进行读写这个过程是阻塞的, 不知道什么时候数据会过来,  必须要创建一个新的线程去等待数据, 若数据没准备好, 则线程结束, 会频繁切换唤醒线程, 保存线程上下文, 造成大量的资源浪费; 而bio是主线程去接收成百上千数量的连接, 并在selector上面注册对应的事件, 当数据准备好之后, 事件驱动的方式给读写线程一个通知(操作系统提供的select/poll/epoll/kqueue 等函数功能), 让读写线程知道数据是ok的, 立马进行读写(一般是开启cpu 核心个线程数, 该过程是同步阻塞的, 占用cpu的工作, 属于memory copy, 速率在 GB/s 以上, 性能很高), nio相比于bio 适用于大量长连接的场景, 例如即时通讯软件 qq.  
+> bio 每接收到一个新的连接, 因为接收连接,再进行读写这个过程是阻塞的, 不知道什么时候数据会过来,  必须要创建一个新的线程去等待数据, 若数据没准备好, 则线程结束, 会频繁切换唤醒线程, 保存线程上下文, 造成大量的资源浪费; 而nio 是主线程去接收成百上千数量的连接, 并在selector上面注册对应的事件, 当数据准备好之后, 事件驱动的方式给读写线程一个通知(操作系统提供的select/poll/epoll/kqueue 等函数功能), 让读写线程知道数据是ok的, 立马进行读写(一般是开启cpu 核心个线程数, 该过程是同步阻塞的, 占用cpu的工作, 属于memory copy, 速率在 GB/s 以上, 性能很高), nio相比于bio 适用于大量长连接的场景, 例如即时通讯软件 qq.  
 
 #### AIO(异步非阻塞IO)
 
@@ -446,6 +446,6 @@ Thank you first ! https://github.com/netty/netty/issues/1912
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjU1MTM3OSwtODA1NzA3NjczLC0xMT
-A0NDMxNDE1XX0=
+eyJoaXN0b3J5IjpbNDA5NzkzMDAzLC0xMTI1NTEzNzksLTgwNT
+cwNzY3MywtMTEwNDQzMTQxNV19
 -->
