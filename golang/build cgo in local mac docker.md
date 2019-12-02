@@ -6,6 +6,7 @@
 2. 在container 里面指定GOPATH, 否则找不到依赖. 
 默认的依赖在 $GOPATH/src  目录下, 根据报错提示更改 $GOPATH 到指定的目录. 即可
 
+本地命令: export GOPATH=/go/code
 
 
 
@@ -13,5 +14,5 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTY0MjAxNTldfQ==
+eyJoaXN0b3J5IjpbMTM4NTc2MDUzLC0xMTE2NDIwMTU5XX0=
 -->
