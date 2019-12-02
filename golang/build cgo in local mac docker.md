@@ -2,6 +2,9 @@
 
 1. 启动docker container
  docker run --rm -it -v ~/.ssh/:/root/.ssh/ -v /usr/local/go/src/:/go/src -v /Users/xxx/go:/go/code  golang:1.12.5 /bin/bash
+ 
+本地命令: 
+docker run --rm -it -v ~/.ssh/:/root/.ssh/ -v /usr/local/go/src/:/go/src -v /Users/tongwu/go:/go/code  golang:1.12.5 /bin/bash
 
 2. 在container 里面指定GOPATH, 否则找不到依赖. 
 默认的依赖在 $GOPATH/src  目录下, 根据报错提示更改 $GOPATH 到指定的目录. 即可
@@ -14,5 +17,5 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4NTc2MDUzLC0xMTE2NDIwMTU5XX0=
+eyJoaXN0b3J5IjpbNTE2MjU0ODQ0LC0xMTE2NDIwMTU5XX0=
 -->
