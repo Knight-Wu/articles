@@ -730,8 +730,9 @@ public class A{
 https://www.jianshu.com/p/252f381a6bc4
 https://www.zhihu.com/question/27339390
 * java内部类的存储方式
-
-
+* java 内存分析的一些引用
+[https://zhanjindong.com/2016/03/02/jvm-memory-tunning-notes](https://zhanjindong.com/2016/03/02/jvm-memory-tunning-notes)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3OTc1MzgzNyw2Njk1MDY0OTldfQ==
+eyJoaXN0b3J5IjpbMjEyODk2MTk5LDIwNzk3NTM4MzcsNjY5NT
+A2NDk5XX0=
 -->
