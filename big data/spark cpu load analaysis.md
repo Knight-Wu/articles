@@ -16,11 +16,11 @@ Instructions intensive( 一直在计算).
 
 因为有可能IPC 低于1, means that cpu stalls because of waiting for data from memory. 
 
-9. **hyper-threading** 技术 能够让物理cpu 扩展成逻辑cpu, 以对应更多的线程, 但是在cpu-intensive d
+9. **hyper-threading** 技术 能够让物理cpu 扩展成逻辑cpu, 以对应更多的线程, 但是在cpu-intensive 的情况下, 总时间并没有缩短, 但cpu 工作时间是增加了, 但是若线程数大于逻辑cpu , 则cpu 工作时间也不能再增加. 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExNzg2NTkzMCwtNDc4OTE2MDU4LC0yMD
-YzNTMwNzc4LC0xNjg5MTYwNjEwLDI2MzUzNzE4MywxODgzODM3
-OTc4LDU3ODI3NTEzMiw4MDEwNjg0MV19
+eyJoaXN0b3J5IjpbNTM4OTIxNjcsLTQ3ODkxNjA1OCwtMjA2Mz
+UzMDc3OCwtMTY4OTE2MDYxMCwyNjM1MzcxODMsMTg4MzgzNzk3
+OCw1NzgyNzUxMzIsODAxMDY4NDFdfQ==
 -->
