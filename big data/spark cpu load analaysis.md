@@ -14,11 +14,11 @@ IPC (Instructions and cycles are two key metrics, often reported as a ratio inst
 8.
 >CPU utilization metrics can be misleading, drill down by measuring instruction per cycle (IPC) and memory throughput.
 
-因为有可能IPC 低于1, means that cpu is st
+因为有可能IPC 低于1, means that cpu stalls because of waiting for data from memory. 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4OTc4NzYyOCwtMTY4OTE2MDYxMCwyNj
-M1MzcxODMsMTg4MzgzNzk3OCw1NzgyNzUxMzIsODAxMDY4NDFd
-fQ==
+eyJoaXN0b3J5IjpbLTIwNjM1MzA3NzgsLTE2ODkxNjA2MTAsMj
+YzNTM3MTgzLDE4ODM4Mzc5NzgsNTc4Mjc1MTMyLDgwMTA2ODQx
+XX0=
 -->
