@@ -2,10 +2,11 @@
 [https://db-blog.web.cern.ch/blog/luca-canali/2017-09-performance-analysis-cpu-intensive-workload-apache-spark](https://db-blog.web.cern.ch/blog/luca-canali/2017-09-performance-analysis-cpu-intensive-workload-apache-spark)
 
 1. read a table frm parquet file is mostly cpu-intensive
-2. can use 
+2. can use [https://github.com/LucaCanali/sparkMeasure](https://github.com/LucaCanali/sparkMeasure), to measure more details metrics from executor internal, not from javaagent, which is used by uber jvm-profiler.
+3. 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTMzNzUxMjRdfQ==
+eyJoaXN0b3J5IjpbMTk0NjQwMTkxNV19
 -->
