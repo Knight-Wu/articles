@@ -9,13 +9,16 @@
 6. when using less heap memory, means cost more time in gc, and more cpu time in gc
 7. >Note: each core of the CPU model used in this test ([Intel Xeon CPU E5-2630 v4](https://ark.intel.com/products/92981/Intel-Xeon-Processor-E5-2630-v4-25M-Cache-2_20-GHz)) can [retire](https://software.intel.com/en-us/forums/intel-vtune-amplifier-xe/topic/311170) up to 4 instructions per cycle. You can expect to see IPC values greater than 1 (up to 4) for compute-intensive workloads, while IPC values are expected to drop to values lower than 1 for memory-bound processes that stall frequently trying to read from memory.
 
-IPC (Instructions and cycles are two key metrics, often reported as a ratio instructions over cycles,) , IPC less than 1, means than cpu stalls frequently to read from memory. otherwise, it proves that 一直在计算.
+IPC (Instructions and cycles are two key metrics, often reported as a ratio instructions over cycles,) , IPC less than 1, means than cpu stalls frequently to read from memory. otherwise, it proves that
+ 一直在计算.
+8.
+>CPU utilization metrics can be misleading, drill down by measuring instruction per cycle (IPC) and memory throughput.
 
-
+因为有可能IPC 低于1, means that cpu is st
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzA3OTI1NzcyLC0xNjg5MTYwNjEwLDI2Mz
-UzNzE4MywxODgzODM3OTc4LDU3ODI3NTEzMiw4MDEwNjg0MV19
-
+eyJoaXN0b3J5IjpbMTY4OTc4NzYyOCwtMTY4OTE2MDYxMCwyNj
+M1MzcxODMsMTg4MzgzNzk3OCw1NzgyNzUxMzIsODAxMDY4NDFd
+fQ==
 -->
