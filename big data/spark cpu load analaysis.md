@@ -3,10 +3,11 @@
 
 1. read a table frm parquet file is mostly cpu-intensive
 2. can use [https://github.com/LucaCanali/sparkMeasure](https://github.com/LucaCanali/sparkMeasure), to measure more details metrics from executor internal, not from javaagent, which is used by uber jvm-profiler.
-3. lab2 is faster than lab 1, because data is already in file system cache, 
+3. lab2 is faster than lab 1, because data is already in file system cache, as long as memory is enough.
+4. lab3 , in os level , the cpu time is more than metrics reported by sparkMeasure
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0MzI5NzExMF19
+eyJoaXN0b3J5IjpbMjA0MjY0NzM1Ml19
 -->
