@@ -6,9 +6,11 @@
 3. lab2 is faster than lab 1, because data is already in file system cache, as long as memory is enough.
 4. lab3 , in os level , the cpu time is more than metrics reported by sparkMeasure, because there are other threads working , not only spark task thread.
 5. parquet file using snappy compression is cost more cpu time to read and execute compared with non-compression parquet file, but cost less storage. 
+6. when u
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTc4Mjc1MTMyLDgwMTA2ODQxXX0=
+eyJoaXN0b3J5IjpbNDE0OTY1Njk5LDU3ODI3NTEzMiw4MDEwNj
+g0MV19
 -->
