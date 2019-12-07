@@ -7,11 +7,14 @@
 4. lab3 , in os level , the cpu time is more than metrics reported by sparkMeasure, because there are other threads working , not only spark task thread.
 5. parquet file using snappy compression is cost more cpu time to read and execute compared with non-compression parquet file, but cost less storage. 
 6. when using less heap memory, means cost more time in gc, and more cpu time in gc
-7. Note: each core of the CPU model used in this test ([Intel Xeon CPU E5-2630 v4](https://ark.intel.com/products/92981/Intel-Xeon-Processor-E5-2630-v4-25M-Cache-2_20-GHz)) can [retire](https://software.intel.com/en-us/forums/intel-vtune-amplifier-xe/topic/311170) up to 4 instructions per cycle. You can expect to see IPC values greater than 1 (up to 4) for compute-intensive workloads, while IPC values are expected to drop to values lower than 1 for memory-bound processes that stall frequently trying to read from memory.
+7. 
+>Note: each core of the CPU model used in this test ([Intel Xeon CPU E5-2630 v4](https://ark.intel.com/products/92981/Intel-Xeon-Processor-E5-2630-v4-25M-Cache-2_20-GHz)) can [retire](https://software.intel.com/en-us/forums/intel-vtune-amplifier-xe/topic/311170) up to 4 instructions per cycle. You can expect to see IPC values greater than 1 (up to 4) for compute-intensive workloads, while IPC values are expected to drop to values lower than 1 for memory-bound processes that stall frequently trying to read from memory.
+
+IPC 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNzYzMzYzMDgsMTg4MzgzNzk3OCw1Nz
-gyNzUxMzIsODAxMDY4NDFdfQ==
+eyJoaXN0b3J5IjpbMTE2NjY3MjIxNCwxODgzODM3OTc4LDU3OD
+I3NTEzMiw4MDEwNjg0MV19
 -->
