@@ -12,8 +12,10 @@
 IPC (Instructions and cycles are two key metrics, often reported as a ratio instructions over cycles,) , IPC less than 1, means than cpu stalls frequently to read from memory. otherwise, it proves that 一直在计算.
 
 
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODkxNjA2MTAsMjYzNTM3MTgzLDE4OD
-M4Mzc5NzgsNTc4Mjc1MTMyLDgwMTA2ODQxXX0=
+eyJoaXN0b3J5IjpbNzA3OTI1NzcyLC0xNjg5MTYwNjEwLDI2Mz
+UzNzE4MywxODgzODM3OTc4LDU3ODI3NTEzMiw4MDEwNjg0MV19
+
 -->
