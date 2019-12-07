@@ -16,9 +16,11 @@ Instructions intensive( 一直在计算).
 
 因为有可能IPC 低于1, means that cpu stalls because of waiting for data from memory. 
 
+9. 
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ3ODkxNjA1OCwtMjA2MzUzMDc3OCwtMT
-Y4OTE2MDYxMCwyNjM1MzcxODMsMTg4MzgzNzk3OCw1NzgyNzUx
-MzIsODAxMDY4NDFdfQ==
+eyJoaXN0b3J5IjpbLTg4ODQ0ODYxMywtNDc4OTE2MDU4LC0yMD
+YzNTMwNzc4LC0xNjg5MTYwNjEwLDI2MzUzNzE4MywxODgzODM3
+OTc4LDU3ODI3NTEzMiw4MDEwNjg0MV19
 -->
