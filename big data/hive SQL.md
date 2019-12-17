@@ -13,9 +13,9 @@ int 类型直接用 != 和string 比较的时候, 会返回null , 见例子3,
 >select 123 != '' ;
 >输出 null
 
-int 类型的col , 插入 ‘’ 空字符串, 会转成null 
+int 类型的col , 插入 ‘’ 空字符串, 会转成null , 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3MjA0ODQyOV19
+eyJoaXN0b3J5IjpbMTk1NzM0MTQ3MV19
 -->
