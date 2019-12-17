@@ -1,7 +1,7 @@
 # hiveSQL 
 
 ### int 和 string 直接比较的坑
-int 类型直接用 != 或 = 和string 比较的时候, 会返回null , 见例子3, 
+int 类型直接用 != 或 = 和string 比较的时候, 会返回null , 见例子3, 不能直接比较, 需要 cast 
 
 * 例子
 > select case when 123 != '' then '1' else '2' end; 
@@ -17,5 +17,5 @@ int 类型直接用 != 或 = 和string 比较的时候, 会返回null , 见例�
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1Nzg2MzI4Ml19
+eyJoaXN0b3J5IjpbMzY2ODE5Nzg0LC01NTc4NjMyODJdfQ==
 -->
