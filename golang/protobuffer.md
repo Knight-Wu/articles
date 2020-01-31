@@ -9,8 +9,8 @@
 
 如果用不到 1 个字节，那么最高有效位设为 0 ，如下面这个例子，1 用一个字节就可以表示，0000 0001. 
 
-
+	
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI5NzQwOTY5MF19
+eyJoaXN0b3J5IjpbMTMwNTMxNTg2LDEyOTc0MDk2OTBdfQ==
 -->
