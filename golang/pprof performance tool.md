@@ -4,11 +4,13 @@
 讲的很详细. 
 
 总结一下: 
-* web 浏览器
+* web 
 > ip:port/debug/pprof/ 进入到总览页面
-> 
+
+* cmd
+> go tool pprof http://ip:port/debug/pprof/goroutine?debug=1 需要加 debug=1, 不然有可能c
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDgzOTIxNDVdfQ==
+eyJoaXN0b3J5IjpbOTMyMTAxNDYxXX0=
 -->
