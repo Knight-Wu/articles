@@ -5,9 +5,10 @@
 
 总结一下: 
 * web 浏览器
-ip:port/debug/pprof/
+> ip:port/debug/pprof/ 进入到总览页面
+> 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzM1OTY0M119
+eyJoaXN0b3J5IjpbLTE5MDgzOTIxNDVdfQ==
 -->
