@@ -3,7 +3,7 @@
 * master-slave
 缺陷指的是: slave 同步binlog 落后, 如果master crash , 那么中间的binlog 就会全部丢失, 而且master 是存在单节点 down 风险
 
-* master-master
+* Master-Master replication manager for MySQL
 双主多备, 并且两台master 互为主备, 能通过virtual ip 提供对外服务, 降低一个master down 的风险, 并且降低主从同步对单个master 的压力, 但是缺点就是slave 需要等待masterB 同步完成之后才能同步, 慢了一点. 
 
 * master high available
@@ -14,7 +14,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5OTc4NTMwNCwtMjExOTY3MDQzMSw5Nj
-gxNzI2ODEsLTg1MTU5MTA4OCwxNjY5ODQxNDIwLC0xNjM1ODIx
-Nzc1XX0=
+eyJoaXN0b3J5IjpbMjMzMDAyNjg0LDE5OTk3ODUzMDQsLTIxMT
+k2NzA0MzEsOTY4MTcyNjgxLC04NTE1OTEwODgsMTY2OTg0MTQy
+MCwtMTYzNTgyMTc3NV19
 -->
