@@ -7,10 +7,10 @@
 双主多备, 并且两台master 互为主备, 能通过virtual ip 提供对外服务, 降低一个master down 的风险, 并且降低主从同步对单个master 的压力, 但是缺点就是slave 需要等待masterB 同步完成之后才能同步, 慢了一点. 
 
 * master high available
-需要用 MHA manager 自动fail
+需要用 MHA manager 自动failover, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxMDczNTQ3MSwtODUxNTkxMDg4LDE2Nj
-k4NDE0MjAsLTE2MzU4MjE3NzVdfQ==
+eyJoaXN0b3J5IjpbOTY4MTcyNjgxLC04NTE1OTEwODgsMTY2OT
+g0MTQyMCwtMTYzNTgyMTc3NV19
 -->
