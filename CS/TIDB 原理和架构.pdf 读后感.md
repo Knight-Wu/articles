@@ -7,10 +7,10 @@
 双主多备, 并且两台master 互为主备, 能通过virtual ip 提供对外服务, 降低一个master down 的风险, 并且降低主从同步对单个master 的压力, 但是缺点就是slave 需要等待masterB 同步完成之后才能同步, 慢了一点. 
 
 * master high available
-需要用 MHA manager(MHAM) 自动failover, MHAM 定期检测master 的状态, 若出现问题, 则找到具有最新进度的slave , 并讲ma t
+需要用 MHA manager(MHAM) 自动failover, MHAM 定期检测master 的状态, 若出现问题, 则找到具有最新进度的slave (如何找? ), 并讲master 和该slave 的差异数据补上, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjI0MTQzODksOTY4MTcyNjgxLC04NT
+eyJoaXN0b3J5IjpbLTIxMTk2NzA0MzEsOTY4MTcyNjgxLC04NT
 E1OTEwODgsMTY2OTg0MTQyMCwtMTYzNTgyMTc3NV19
 -->
