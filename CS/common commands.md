@@ -11,7 +11,7 @@
 >./kafka-consumer-groups.sh --describe --zookeeper zk:2181/rootDir --group groupid
 
 * consume msg from cli, and auto commit from background
-
+不指定group.id 会随机指定一个groupid 
 > ./kafka-console-consumer.sh --bootstrap-server broker:9092 --topic topic  --consumer-property group.id=groupid --max-messages 1
 
 > ./kafka-console-consumer.sh --bootstrap-server broker:9092 --topic topic  --consumer-property group.id=groupid
@@ -54,7 +54,8 @@ git  rm -r --cached directory
 * mysql connect
 mysql -h hostName -P port  -u username -p'password'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MTUwODk3MDMsLTIxMjM0MDQwMjcsMT
-k3MDQ4MDU1NSwtMTIyODYyNzE5MiwyMDUxMjAzMzkzLC0yMDk1
-NTU2NTAzLC0xOTY2OTM4OTgxLC0zNTQzMzgxMThdfQ==
+eyJoaXN0b3J5IjpbLTIwMzUxMjY4MDEsLTE1MTUwODk3MDMsLT
+IxMjM0MDQwMjcsMTk3MDQ4MDU1NSwtMTIyODYyNzE5MiwyMDUx
+MjAzMzkzLC0yMDk1NTU2NTAzLC0xOTY2OTM4OTgxLC0zNTQzMz
+gxMThdfQ==
 -->
