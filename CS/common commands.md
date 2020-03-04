@@ -34,6 +34,7 @@ about msg format class between different version:
 
 * create topic
 ./kafka-topics.sh --create --topic **topicName** --partitions **partitionNum**   --replication-factor **replicationNum** --zookeeper **zkaddr**
+* list topic
 
 ### redis
 * redis-cli 
@@ -52,7 +53,7 @@ git  rm -r --cached directory
 * mysql connect
 mysql -h hostName -P port  -u username -p'password'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjM0MDQwMjcsMTk3MDQ4MDU1NSwtMT
-IyODYyNzE5MiwyMDUxMjAzMzkzLC0yMDk1NTU2NTAzLC0xOTY2
-OTM4OTgxLC0zNTQzMzgxMThdfQ==
+eyJoaXN0b3J5IjpbLTM2MjczNDkyOCwtMjEyMzQwNDAyNywxOT
+cwNDgwNTU1LC0xMjI4NjI3MTkyLDIwNTEyMDMzOTMsLTIwOTU1
+NTY1MDMsLTE5NjY5Mzg5ODEsLTM1NDMzODExOF19
 -->
