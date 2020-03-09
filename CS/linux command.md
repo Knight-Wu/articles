@@ -216,7 +216,7 @@ nohup command > /dev/null 2>&1 & // 不输出到 nohup.out
 但是ssh 登录之后, 当 ssh session 被中断, 有可能之前启动的 background process 会被退出. 
 This problem can also be overcome by redirecting all three I/O streams:
 ```
-nohup myprogram > foo.out 2> foo.err < /dev/null &
+nohup myprogram > stdout 2>&1 < /dev/null &
 ```
 详细解释: 
 [http://www.snailbook.com/faq/background-jobs.auto.html](http://www.snailbook.com/faq/background-jobs.auto.html)
@@ -420,10 +420,10 @@ done
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEzMjU3NDE5NSwtNzk2MjYyMzUsLTE2OT
-U5MDk3MzksMzMxMzk1MjczLDY4MTA1NTM0MCw5ODc1OTcxNjgs
-MjEyMTQ4ODY2MCw4MDg2MjQxMTAsLTE0NjM0MTEyMDUsMTkzOT
-IxOTMyNywtNDA5ODg4ODE1LC0xODk1NjQ2OTg3LDUyMTUzOTc1
-MiwzNDc0MDkyOCwtNTIyNDQ1NjE2LDE2NjE1MzYwLC0xNjI1Mj
-c0MDc1XX0=
+eyJoaXN0b3J5IjpbLTk4MzU5MzQ4NiwxMTMyNTc0MTk1LC03OT
+YyNjIzNSwtMTY5NTkwOTczOSwzMzEzOTUyNzMsNjgxMDU1MzQw
+LDk4NzU5NzE2OCwyMTIxNDg4NjYwLDgwODYyNDExMCwtMTQ2Mz
+QxMTIwNSwxOTM5MjE5MzI3LC00MDk4ODg4MTUsLTE4OTU2NDY5
+ODcsNTIxNTM5NzUyLDM0NzQwOTI4LC01MjI0NDU2MTYsMTY2MT
+UzNjAsLTE2MjUyNzQwNzVdfQ==
 -->
