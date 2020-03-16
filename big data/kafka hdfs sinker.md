@@ -13,10 +13,11 @@ data 组需要用flume 或spark streaming 消费kafka 数据写到hdfs ods 层, 
 1. 一个消费线程消费kafka partition,并在该消费线程直接写消息到sinker 的本地, 形成多个文件 file1, file2 ..., 接近hdfs block size, 就上传hdfs, 若此时sinker down 则读取zk 从consume max offset +1 消费
 2. hdfs response 成功就checksum 对比本地和hdfs 是否一致, 若一致则3, 若不一致或resp 不成功则4; 若resp 超时, 则checksum, 一致则3, 不一致则del hdfs file, 执行4
 3. 将文件名, checksum, consume max offset, filename 写到zk
-4. 重新上传hdfs, 直到2 一致
+4. 重新上传hdfs, 直到2 一致.
+5. 因为是单线程消费, 则不会同时产生很多文件, 所以只会产生一个未完成的文件在hdfs 目录, 可以将checksum, consume max offset 记录到文件头, sinker 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzgxNDU3MjExLDY3MDg4NTIyMSwyNDU3MT
+eyJoaXN0b3J5IjpbMTg4NzEyNzYyLDY3MDg4NTIyMSwyNDU3MT
 YyNjYsMjEzODc3NDQwMCwtMTczNDYzMDEwOF19
 -->
