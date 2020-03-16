@@ -8,9 +8,11 @@ data 组需要用flume 或spark streaming 消费kafka 数据写到hdfs ods 层, 
 看了下kafka exactly once 
 
 ### 初步方案
-一个消费线程消费kafka partition, 然后多个IO 线程写消息到sinker 的本地, 形成多个文件 file1, file2 ..., 接近hdfs block size, 就上传hdfs, hdfs response 成功就检查
+1. 一个消费线程消费kafka partition, 然后多个IO 线程写消息到sinker 的本地, 形成多个文件 file1, file2 ..., 接近hdfs block size, 就上传hdfs
+2. hdfs response 成功就checksum 对比本地和hdfs 是否一致, 
+3. 若一致, 则将文件名, checksum, consume max offset 写到zk
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExNjU1ODE1XX0=
+eyJoaXN0b3J5IjpbLTE3MzQ2MzAxMDhdfQ==
 -->
