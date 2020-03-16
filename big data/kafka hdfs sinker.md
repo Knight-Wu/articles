@@ -7,7 +7,7 @@ data 组需要用flume 或spark streaming 消费kafka 数据写到hdfs ods 层, 
 ### 调研
 看了下kafka exactly once, 
 1. 采用记录produce msg 序号的方式, 避免消息重复
-2. 如何 producer , consumer end to end exactly once, 则需要shi wu
+2. 如何 producer , consumer end to end exactly once, 则需要事务保证一批消息的原子性, 要么全部消费到要么一条都不消费到
 
 ### 初步方案
 1. 一个消费线程消费kafka partition,并在该消费线程直接写消息到sinker 的本地, 形成多个文件 file1, file2 ..., 接近hdfs block size, 就上传hdfs, 若此时sinker down 则读取zk 从consume max offset +1 消费
@@ -17,6 +17,6 @@ data 组需要用flume 或spark streaming 消费kafka 数据写到hdfs ods 层, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzYzNzQyNDAsNjcwODg1MjIxLDI0NT
-cxNjI2NiwyMTM4Nzc0NDAwLC0xNzM0NjMwMTA4XX0=
+eyJoaXN0b3J5IjpbMzgxNDU3MjExLDY3MDg4NTIyMSwyNDU3MT
+YyNjYsMjEzODc3NDQwMCwtMTczNDYzMDEwOF19
 -->
