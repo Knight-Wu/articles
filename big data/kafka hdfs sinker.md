@@ -10,7 +10,7 @@ data 组需要用flume 或spark streaming 消费kafka 数据写到hdfs ods 层, 
 2. 如何 producer , consumer end to end exactly once, 则需要事务保证一批消息的原子性, 要么全部消费到要么一条都不消费到
 
 ### 初步方案
-1. 一个消费线程消费kafka partition,并在该消费线程直接写消息到sinker 的本地, 形成多个文件 file1, file2 ..., 接近hdfs block size, 就上传hdfs, 若此时sinker down 则读取zk 从consume max offset +1 消费
+1. 一个消费线程消费kafka partition,并在该消费线程直接写消息到sinker 的本地, 形成多个文件 file1, file2 ..., 把consume offset 写到文件名中, 接近hdfs block size, 就上传hdfs, 若此时sinker down 则读取zk 从consume max offset +1 消费
 2. hdfs response 成功就checksum 对比本地和hdfs 是否一致, 若一致则3, 若不一致或resp 不成功则4; 若resp 超时, 则checksum, 一致则3, 不一致则del hdfs file, 执行4
 3. 将文件名, checksum, consume max offset, filename 写到zk
 4. 重新上传hdfs, 直到2 一致.
@@ -18,6 +18,7 @@ data 组需要用flume 或spark streaming 消费kafka 数据写到hdfs ods 层, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI5ODc0ODg2NSw2NzA4ODUyMjEsMjQ1Nz
-E2MjY2LDIxMzg3NzQ0MDAsLTE3MzQ2MzAxMDhdfQ==
+eyJoaXN0b3J5IjpbNzIzMDc4OTUyLDEyOTg3NDg4NjUsNjcwOD
+g1MjIxLDI0NTcxNjI2NiwyMTM4Nzc0NDAwLC0xNzM0NjMwMTA4
+XX0=
 -->
