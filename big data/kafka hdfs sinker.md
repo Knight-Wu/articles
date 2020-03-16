@@ -7,9 +7,10 @@ data 组需要用flume 或spark streaming 消费kafka 数据写到hdfs ods 层, 
 ### 调研
 看了下kafka exactly once 
 
-### 初步fang
+### 初步方案
+一个消费线程消费kafka partition, 然后多个IO 线程写消息到sinker 的本地, 形成多个文件 file1, file2 ..., 接近hdfs block size, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDY4NzQ3MzkwXX0=
+eyJoaXN0b3J5IjpbMTUyOTE5NTE3MF19
 -->
