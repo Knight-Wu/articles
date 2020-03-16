@@ -14,10 +14,10 @@ data 组需要用flume 或spark streaming 消费kafka 数据写到hdfs ods 层, 
 2. hdfs response 成功就checksum 对比本地和hdfs 是否一致, 若一致则3, 若不一致或resp 不成功则4; 若resp 超时, 则checksum, 一致则3, 不一致则del hdfs file, 执行4
 3. 将文件名, checksum, consume max offset, filename 写到zk
 4. 重新上传hdfs, 直到2 一致.
-5. 因为是单线程消费, 则不会同时产生很多文件, 所以只会产生一个未完成的文件在hdfs 目录, 可以将checksum, consume max offset 记录到文件头, sinker 
+5. 因为是单线程消费, 则不会同时产生很多文件, 所以只会产生一个未完成的文件在hdfs 目录, 可以将checksum, consume max offset 记录到文件头, sinker 重启后可以从hdfs 目录最后一个成功的hdfs 文件获取 consume max offset +1
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4NzEyNzYyLDY3MDg4NTIyMSwyNDU3MT
-YyNjYsMjEzODc3NDQwMCwtMTczNDYzMDEwOF19
+eyJoaXN0b3J5IjpbMTI5ODc0ODg2NSw2NzA4ODUyMjEsMjQ1Nz
+E2MjY2LDIxMzg3NzQ0MDAsLTE3MzQ2MzAxMDhdfQ==
 -->
