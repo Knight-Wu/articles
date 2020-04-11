@@ -1,3 +1,4 @@
+
 1. first download binary to linux server
 [https://www.eclipse.org/mat/downloads.php](https://www.eclipse.org/mat/downloads.php)
 
@@ -21,5 +22,5 @@ then will generate some htmlPage.zip, can download to local.
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNjg4MjY0NF19
+eyJoaXN0b3J5IjpbMTY5NjUyNzE5NF19
 -->
