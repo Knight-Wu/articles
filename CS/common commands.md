@@ -14,7 +14,7 @@
 不指定group.id 会随机指定一个groupid 
 > ./kafka-console-consumer.sh --bootstrap-server broker:9092 --topic topic  --consumer-property group.id=groupid --max-messages 1
 
-> ./kafka-console-consumer.sh --bootstrap-server broker:9092 --topic topic  --consumer-property group.id=groupid
+> ./kafka-console-consumer.sh --bootstrap-server broker:9092 --topic topic  
 
 
 * list all cousumergroup, not use --topic
@@ -54,8 +54,8 @@ git  rm -r --cached directory
 * mysql connect
 mysql -h hostName -P port  -u username -p'password'
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzUxMjY4MDEsLTE1MTUwODk3MDMsLT
-IxMjM0MDQwMjcsMTk3MDQ4MDU1NSwtMTIyODYyNzE5MiwyMDUx
-MjAzMzkzLC0yMDk1NTU2NTAzLC0xOTY2OTM4OTgxLC0zNTQzMz
-gxMThdfQ==
+eyJoaXN0b3J5IjpbLTE0OTE1MTg4MDYsLTIwMzUxMjY4MDEsLT
+E1MTUwODk3MDMsLTIxMjM0MDQwMjcsMTk3MDQ4MDU1NSwtMTIy
+ODYyNzE5MiwyMDUxMjAzMzkzLC0yMDk1NTU2NTAzLC0xOTY2OT
+M4OTgxLC0zNTQzMzgxMThdfQ==
 -->
