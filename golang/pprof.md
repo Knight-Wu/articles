@@ -15,9 +15,20 @@
 1. go tool pprof http://localhost:8825/debug/pprof/profile -seconds 60
 2. 然后会保存 pb.gz 文件到本地
 3. 如果linux 能直接打开最好, 如果打不开则scp 下载到本地
-4. 可以通过
+4. 可以通过cmd 直接进入web UI
+Type: cpu
+Time: May 17, 2020 at 9:18pm (+08)
+Duration: 30.12s, Total samples = 26.96s (89.50%)
+Entering interactive mode (type "help" for commands, "o" for options)
+(pprof) 
+
+5. 但是需要先安装 Graphviz, linux : apt-get install
+mac: brew install
+6. 第四步也可以 go tool pprof -http=:8810 pprof.x x x.samples.cpu.006.pb.gz
+
+```
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTkyMjY2NDM5LC05Njk5MzY0MDZdfQ==
+eyJoaXN0b3J5IjpbMTAzMjEyMTE2OCwtOTY5OTM2NDA2XX0=
 -->
