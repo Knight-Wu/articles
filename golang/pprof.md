@@ -11,9 +11,13 @@
 > go tool pprof http://ip:port/debug/pprof/goroutine?debug=1 需要加 debug=1, 不然有可能出现格式错误的问题. 
 
 ### 查看stacktrace duration
-
+```
+1. go tool pprof http://localhost:8825/debug/pprof/profile -seconds 60
+2. 然后会保存 pb.gz 文件到本地
+3. 如果linux 能直接打开最好, 如果打不开则scp 下载到本地
+4. 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDc4ODE0NjNdfQ==
+eyJoaXN0b3J5IjpbLTk2OTkzNjQwNl19
 -->
