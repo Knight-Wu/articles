@@ -24,11 +24,12 @@ Entering interactive mode (type "help" for commands, "o" for options)
 
 5. 但是需要先安装 Graphviz, linux : apt-get install
 mac: brew install
-6. 第四步也可以 go tool pprof -http=:8810 pprof.x x x.samples.cpu.006.pb.gz
+6. 第四步也可以 go tool pprof -http=:8810 pprof.xxx.samples.cpu.006.pb.gz
+7. 通过localhost:8810 webUI, 可以看到火焰图和
 
 ```
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzMjEyMTE2OCwtOTY5OTM2NDA2XX0=
+eyJoaXN0b3J5IjpbODE0NzIzMTQwLC05Njk5MzY0MDZdfQ==
 -->
