@@ -35,9 +35,9 @@ func (ur UserRepo) GetUser(id string) (*User, error) {
 
 The advantage of #2 is a little nuanced(细微差别).
 
-First, there's the possibility that the dependency we're needing here would actually be instantiated in another package; by doing this, assuming the type of that dependency is something like a  `sql.DB`  in the stdlib, this package no longer needs to import that other package. Very nice.
+First, there's the possibility that the dependency we're needing here would actually be instantiated in another package; by doing this, assuming the type of that dependency is something like a  `sql.DB`  in the stdlib, this package no longer needs to import that other package. Very nice. (依赖的问题)
 
-There's also a benefit in encapsulation, though its harder to explicitly outline why this leads to cleaner code. All of the things which UserRepo needs to do its job is now defined inside the UserRepo itself.
+There's also a benefit in encapsulation, though its harder to explicitly outline why this leads to cleaner code. All of the things which UserRepo needs to do its job is now defined inside the UserRepo itself. (封装的问题, 更整洁的代码)
 
 ```
 // 3
@@ -54,9 +54,9 @@ func (ur UserRepo) GetUser(id string) (*User, error) {
 
 ```
 
-The advantage of #3 is that it is significantly easier to test, because you only need to create mock types that fulfill the interface  `GetUser`  requires, versus mocking out the entire  `sql.DB`  struct. We also now get to forget that "qualification" on the first reason why #2 is advantageous; even if the dependency has a concrete type implementation in another package, this package doesn't have to import it, period.
+The advantage of #3 is that it is significantly easier to test, because you only need to create mock types that fulfill the interface  `GetUser`  requires, versus mocking out the entire  `sql.DB`  struct. We also now get to forget that "qualification" on the first reason why #2 is advantageous; even if the dependency has a concrete type implementation in another package, this package doesn't have to import it, period.(只需要 mock Queryer 这个 interface 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjg3NzY4MTkyXX0=
+eyJoaXN0b3J5IjpbLTYyNTIzOTk5Nl19
 -->
