@@ -54,9 +54,9 @@ func (ur UserRepo) GetUser(id string) (*User, error) {
 
 ```
 
-The advantage of #3 is that it is significantly easier to test, because you only need to create mock types that fulfill the interface  `GetUser`  requires, versus mocking out the entire  `sql.DB`  struct. We also now get to forget that "qualification" on the first reason why #2 is advantageous; even if the dependency has a concrete type implementation in another package, this package doesn't have to import it, period.(只需要 mock Queryer 这个 interface 
+The advantage of #3 is that it is significantly easier to test, because you only need to create mock types that fulfill the interface  `GetUser`  requires, versus mocking out the entire  `sql.DB`  struct. We also now get to forget that "qualification" on the first reason why #2 is advantageous; even if the dependency has a concrete type implementation in another package, this package doesn't have to import it, period.(只需要 mock Queryer 这个 interface , 简单构造 user 即可)
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyNTIzOTk5Nl19
+eyJoaXN0b3J5IjpbLTUwNTk5NTQ3MV19
 -->
