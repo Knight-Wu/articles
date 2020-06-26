@@ -15,10 +15,10 @@ hdfs debug recoverLease -path pathA
 3. 满足现有活动的max qps
 
 ### 设计
-一开始认为hdfs shang c设计的流程图
+一开始认为hdfs 上传是一个原子操作, 要不就上传失败无法被其他客户端看到, 要不就上传成功, 但是经过实验: 上传一个很大的文件上去, 中途 ctrl+c, 文件zhi
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2OTM1MDMxLC0xODkyNDYzNTY4LC0xOT
-k2NDY0MjQ5LDE4Nzk5MzE3MTMsLTgwNDQ2NDI4NSwtMTg2OTk1
-NDkxNywxOTI4MTYyNDQxXX0=
+eyJoaXN0b3J5IjpbLTE1ODY5MjE3NTcsLTE4OTI0NjM1NjgsLT
+E5OTY0NjQyNDksMTg3OTkzMTcxMywtODA0NDY0Mjg1LC0xODY5
+OTU0OTE3LDE5MjgxNjI0NDFdfQ==
 -->
