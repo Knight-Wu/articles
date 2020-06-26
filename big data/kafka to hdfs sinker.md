@@ -15,10 +15,10 @@ hdfs debug recoverLease -path pathA
 3. 满足现有活动的max qps
 
 ### 设计
-一开始认为hdfs 上传是一个原子操作, 要不就上传失败无法被其他客户端看到, 要不就上传成功, 但是经过实验: 上传一个很大的文件上去, 中途 ctrl+c, 文件zhi
+一开始认为hdfs 上传是一个原子操作, 要不就上传失败无法被其他客户端看到, 要不就上传成功, 但是经过实验: 上传一个很大的文件上去, 中途 ctrl+c, 文件只上传了部分, 并经过一个小时(hard recover limit), 文件大小又增加了一些( close 触发了flush) , 证明hdfs 上传不是一个原子性质的, 故在文件名上加上了上传前的文件长度, 以判断文件的完整性. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1ODY5MjE3NTcsLTE4OTI0NjM1NjgsLT
-E5OTY0NjQyNDksMTg3OTkzMTcxMywtODA0NDY0Mjg1LC0xODY5
-OTU0OTE3LDE5MjgxNjI0NDFdfQ==
+eyJoaXN0b3J5IjpbMTU4MTE1MDE4NiwtMTg5MjQ2MzU2OCwtMT
+k5NjQ2NDI0OSwxODc5OTMxNzEzLC04MDQ0NjQyODUsLTE4Njk5
+NTQ5MTcsMTkyODE2MjQ0MV19
 -->
