@@ -10,11 +10,15 @@ hdfs debug recoverLease -path pathA
 
 ### 目标
 经后续与关注flume 异常的同学以及领导讨论, 判断新开发一套系统的时间会比较短, 以及可预期, 于是开始设计新系统. 新系统需要满足以下目标: 
-1. 外部系统kafka, hdfs 挂掉, 不会丢消息, 系统block 住, 直到故障恢复
-2. 在kafka exactly once d, 不丢不重复消息, 这个需要kafka 也
+1. 外部系统kafka, hdfs 挂掉, 不会丢消息, 系统block 住, 直到故障恢复, 不需手动干预
+2. 在kafka exactly once 的情况下, 不丢不重复消息. 
+3. 满足现有活动的max qps
+
+### 设计
+一开始的设计的流程图
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2NzI3NjIxMywtMTg5MjQ2MzU2OCwtMT
-k5NjQ2NDI0OSwxODc5OTMxNzEzLC04MDQ0NjQyODUsLTE4Njk5
-NTQ5MTcsMTkyODE2MjQ0MV19
+eyJoaXN0b3J5IjpbLTIwNzQ0MDMwNjgsLTE4OTI0NjM1NjgsLT
+E5OTY0NjQyNDksMTg3OTkzMTcxMywtODA0NDY0Mjg1LC0xODY5
+OTU0OTE3LDE5MjgxNjI0NDFdfQ==
 -->
