@@ -39,14 +39,14 @@ hdfs debug recoverLease -path pathA
 * rebalance 
 首先kafka-2.2.1 rebalance  过程: stop fetch msgs -> onPartitionsRevoked(previous assigned partitions) -> reassign -> onPartitionsAssigned(partitions that are now assigned to the consumer) -> start to fetch msgs      
 
-本来一开始是在 onPartitionsRevoked() 这个函数中做剩余文件的上传等清理工作, 但是考虑到实现的复杂性以及实际上并不会加快很多rebalance 的过程, 就改为全部抛弃内存和磁盘中的文件, 在 onPartitionsAssigned() 中做offset 的寻找等工作, 如下图显示, 首先找到都有successFile 的上一个hour, 例如 country/dt/hour=16 都有successFile了, 那么就从 hour=17 开始找, 则先找出每一个path 的maxOffset, 例如找出 country=ID/dt=2020-06-01/hour=17  的最大的offset, 再找出 min of (path1MaxOffset, path2MaxOffset...) 作为seek offset, 为什么第一次是max, 第二次是min 呢, 第一次是min                                                                                                                                                                                                                                    
+本来一开始是在 onPartitionsRevoked() 这个函数中做剩余文件的上传等清理工作, 但是考虑到实现的复杂性以及实际上并不会加快很多rebalance 的过程, 就改为全部抛弃内存和磁盘中的文件, 在 onPartitionsAssigned() 中做offset 的寻找等工作, 如下图显示, 首先找到都有successFile 的上一个hour, 例如 country/dt/hour=16 都有successFile了, 那么就从 hour=17 开始找, 则先找出每一个path 的maxOffset, 例如找出 country=ID/dt=2020-06-01/hour=17  的最大的offset, 并跳过file actual size != fileLen 的文件, 再找出 min of (path1MaxOffset, path2MaxOffset...) 作为seek offset, 为什么第一次是max, 第二次是min 呢, 第一次是max 容易理解, 因为每个path 只有一个线程在消费, offset 递增的, 但是第二次是max , 因为是无法确保max offset 之前, 所有path 的文件都shun li                                                                                                                                                                                                                                    
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwMTk4OTM2MSwxNzM4MjkwODA5LC0yMT
-g3NzczMjcsLTkzNDg2NDU4MiwxODk1NzY4Mzk4LDIwNjU5MzM4
-NSwtMTI2MjA1MTI4MCw0MjM5OTM3OTAsMTMxMTM1NDE1MSwxMj
-MyNjczMDQzLC0xMDU4NzY4NjQ1LC0xMzEwMzg5ODcsLTE4OTI0
-NjM1NjgsLTE5OTY0NjQyNDksMTg3OTkzMTcxMywtODA0NDY0Mj
-g1LC0xODY5OTU0OTE3LDE5MjgxNjI0NDFdfQ==
+eyJoaXN0b3J5IjpbLTE0NTY4MzI2OTQsMTczODI5MDgwOSwtMj
+E4Nzc3MzI3LC05MzQ4NjQ1ODIsMTg5NTc2ODM5OCwyMDY1OTMz
+ODUsLTEyNjIwNTEyODAsNDIzOTkzNzkwLDEzMTEzNTQxNTEsMT
+IzMjY3MzA0MywtMTA1ODc2ODY0NSwtMTMxMDM4OTg3LC0xODky
+NDYzNTY4LC0xOTk2NDY0MjQ5LDE4Nzk5MzE3MTMsLTgwNDQ2ND
+I4NSwtMTg2OTk1NDkxNywxOTI4MTYyNDQxXX0=
 -->
