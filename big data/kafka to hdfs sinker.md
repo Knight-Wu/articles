@@ -25,11 +25,11 @@ hdfs debug recoverLease -path pathA
 
 ### 难点
 * 写successFile 
-因为有duo ge
+因为需要告诉下游某一个path 的数据已经全部到达, 需要有多个client 在不同机器同时append partition number 到一个文件里, 然后最后一个partition
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE0NTkzODk0LDEyMzI2NzMwNDMsLTEwNT
+eyJoaXN0b3J5IjpbODIyMzYwNDA2LDEyMzI2NzMwNDMsLTEwNT
 g3Njg2NDUsLTEzMTAzODk4NywtMTg5MjQ2MzU2OCwtMTk5NjQ2
 NDI0OSwxODc5OTMxNzEzLC04MDQ0NjQyODUsLTE4Njk5NTQ5MT
 csMTkyODE2MjQ0MV19
