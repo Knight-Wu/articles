@@ -23,10 +23,14 @@ hdfs debug recoverLease -path pathA
 
 ![enter image description here](https://drive.google.com/uc?id=1Kq1N5-yNbLI1dCdcRCRDCoLJQfpt8S6X)
 
+### 难点
+* 写successFile 
+
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTg3Njg2NDUsLTEzMTAzODk4NywtMT
-g5MjQ2MzU2OCwtMTk5NjQ2NDI0OSwxODc5OTMxNzEzLC04MDQ0
-NjQyODUsLTE4Njk5NTQ5MTcsMTkyODE2MjQ0MV19
+eyJoaXN0b3J5IjpbMTIzMjY3MzA0MywtMTA1ODc2ODY0NSwtMT
+MxMDM4OTg3LC0xODkyNDYzNTY4LC0xOTk2NDY0MjQ5LDE4Nzk5
+MzE3MTMsLTgwNDQ2NDI4NSwtMTg2OTk1NDkxNywxOTI4MTYyND
+QxXX0=
 -->
