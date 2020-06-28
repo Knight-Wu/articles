@@ -25,19 +25,21 @@ hdfs debug recoverLease -path pathA
 
 ### 难点
 * write successFile 
+
 因为需要告诉下游某一个path 的数据已经全部到达, 需要有多个client 在不同机器同时append partition number 到一个文件(LOADING ), 然后最后一个partition 线程rename 成 SUCCESS, 所以不同client 同时append 会出现lease 竞争的问题, 采取的策略就是碰到该异常重试, 但是在close file 也出现异常的时候会导致lease 没有释放, 导致其他客户端无法正常append, 最后采取的策略是若close 出现异常, 则执行 recoverLease(path) 这个函数
 
 * hdfs crc exception
+
 一个path 下只有一个线程写一个文件, 一开始文件后缀是startOffset, 然后需要先在本地 rename 成 lastOffset 再上传, 一开始只rename 了数据文件, 导致遗留了很多crc 文件, 并且上传一段时间就出现 crcException, 后面把crc file 也rename 就没出现这个异常. 
 
 * 类似 hdfs nn 双主现象, 一个partition 被同时两个实例消费
-在测试环境模拟 hdfs 和kafka 挂掉的现象, 通过屏蔽某一台 local 机器上 hdfs 8020, kafka 9092 端口, 该实例的partition 已经被其他实例消费, 但是由于他自身无法连接kafka 和hdfs 他并不知道, 当hdfs 首先恢复的时候, 会上传partition 的部分文件, 导致消息重复, 
+
+在测试环境模拟 hdfs 和kafka 挂掉的现象, 通过屏蔽某一台 local 机器上 hdfs 8020, kafka 9092 端口, 该实例的partition 已经被其他实例消费, 但是由于他自身无法连接kafka 和hdfs 他并不知道, 当hdfs 首先恢复的时候, 会上传partition 的部分文件, 导致消息重复, 解决办法: 当上传重试时间超过 kafka max poll ms 的时候就放弃上传, 如何发现这个问题: tong g
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjU4NDU1ODYsNDIzOTkzNzkwLDEzMT
-EzNTQxNTEsMTIzMjY3MzA0MywtMTA1ODc2ODY0NSwtMTMxMDM4
-OTg3LC0xODkyNDYzNTY4LC0xOTk2NDY0MjQ5LDE4Nzk5MzE3MT
-MsLTgwNDQ2NDI4NSwtMTg2OTk1NDkxNywxOTI4MTYyNDQxXX0=
-
+eyJoaXN0b3J5IjpbMjIwNDQ1NjQ2LDQyMzk5Mzc5MCwxMzExMz
+U0MTUxLDEyMzI2NzMwNDMsLTEwNTg3Njg2NDUsLTEzMTAzODk4
+NywtMTg5MjQ2MzU2OCwtMTk5NjQ2NDI0OSwxODc5OTMxNzEzLC
+04MDQ0NjQyODUsLTE4Njk5NTQ5MTcsMTkyODE2MjQ0MV19
 -->
