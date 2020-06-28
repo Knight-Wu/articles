@@ -37,13 +37,13 @@ hdfs debug recoverLease -path pathA
 在测试环境模拟 hdfs 和kafka 挂掉的现象, 通过屏蔽某一台 local 机器上 hdfs 8020, kafka 9092 端口, 该实例的partition 已经被其他实例消费, 但是由于他自身无法连接kafka 和hdfs 他并不知道, 当hdfs 首先恢复的时候, 会上传partition 的部分文件, 导致消息重复, 解决办法: 当上传重试时间超过 kafka max poll ms 的时候就放弃上传, 如何发现这个问题: 把partition 作为字段信息写到hive 表里, 发现有某些partition 里面有重复的消息, 通过查看多个实例的日志, 发现该partition 已经被其他实例接管之后, 仍然有旧实例上传文件. 
 
 * hdfs crash
-若hdfs crash, 无法上传, 则每个线程都会block ,不断重试, 最后block 主消费线程, 超过 max poll ms 则会触发rebalance, 追溯到每个 path( country/dt/hour) 的last success file, 从下一个path 获取每一个min offset in (consumeOffsetInPath1, consumeOffsetInPath2 ...), 为什么是min 而不是max 因为需要以hdfs 的offset 为准, 不能保证从minOffset 到maxOffset 之前, 中间没有上传失败的消息, 这个需要画图来说明
+若hdfs crash, 无法上传, 则每个线程都会block ,不断重试, 最后block 主消费线程, 超过 max poll ms 则会触发rebalance, 追溯到每个 path( country/dt/hour) 的last success file, 从下一个path 获取每一个min offset in (consumeOffsetInPath1, consumeOffsetInPath2 ...), 为什么是min 而不是max 因为需要以hdfs 的offset 为准, 不能保证从minOffset 到maxOffset 之前, 中间没有上传失败的消息, 这个需要画图来说明                                                                                                                                                                                                                                                                   
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5NTc2ODM5OCwyMDY1OTMzODUsLTEyNj
-IwNTEyODAsNDIzOTkzNzkwLDEzMTEzNTQxNTEsMTIzMjY3MzA0
-MywtMTA1ODc2ODY0NSwtMTMxMDM4OTg3LC0xODkyNDYzNTY4LC
-0xOTk2NDY0MjQ5LDE4Nzk5MzE3MTMsLTgwNDQ2NDI4NSwtMTg2
-OTk1NDkxNywxOTI4MTYyNDQxXX0=
+eyJoaXN0b3J5IjpbLTkzNDg2NDU4MiwxODk1NzY4Mzk4LDIwNj
+U5MzM4NSwtMTI2MjA1MTI4MCw0MjM5OTM3OTAsMTMxMTM1NDE1
+MSwxMjMyNjczMDQzLC0xMDU4NzY4NjQ1LC0xMzEwMzg5ODcsLT
+E4OTI0NjM1NjgsLTE5OTY0NjQyNDksMTg3OTkzMTcxMywtODA0
+NDY0Mjg1LC0xODY5OTU0OTE3LDE5MjgxNjI0NDFdfQ==
 -->
