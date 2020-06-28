@@ -25,12 +25,12 @@ hdfs debug recoverLease -path pathA
 
 ### 难点
 * 写successFile 
-
+因为有duo ge
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzMjY3MzA0MywtMTA1ODc2ODY0NSwtMT
-MxMDM4OTg3LC0xODkyNDYzNTY4LC0xOTk2NDY0MjQ5LDE4Nzk5
-MzE3MTMsLTgwNDQ2NDI4NSwtMTg2OTk1NDkxNywxOTI4MTYyND
-QxXX0=
+eyJoaXN0b3J5IjpbMjE0NTkzODk0LDEyMzI2NzMwNDMsLTEwNT
+g3Njg2NDUsLTEzMTAzODk4NywtMTg5MjQ2MzU2OCwtMTk5NjQ2
+NDI0OSwxODc5OTMxNzEzLC04MDQ0NjQyODUsLTE4Njk5NTQ5MT
+csMTkyODE2MjQ0MV19
 -->
