@@ -48,12 +48,12 @@ hdfs debug recoverLease -path pathA
 1. 使用线程池上传文件, 每个线程上传一个文件, 若文件上传过长时间, 则在程序退出的时候可能会被interrupt, 导致上传不完整, 解决办法: 加锁, 若上传正在进行, 则不能被 shutdownNow()
 2. 进程被kill -9, 导致: file is not a snappy file 或者文件长度和上传前不一致
 3. hdfs crash(可能)
-故需要增加fileLength 到文件名, 通过某种方式触发, 1通过加锁解决, 2 会触发rebalance, 则会check 文件名, 判断实际长度是否一致, 3 通过调下kafka max poll ms, 每次hdfs crash 导致的zhu xian ci a
+故需要增加fileLength 到文件名, 通过某种方式触发, 1通过加锁解决, 2 会触发rebalance, 则会check 文件名, 判断实际长度是否一致, 3 通过调下kafka max poll ms, 每次hdfs crash 导致的主线程block 都会触发rebalance. 
                                                                                                                                                                                                   
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxOTcwNzc1NywtODQxODMxMzcxLC01Nz
+eyJoaXN0b3J5IjpbMTg2NDM4MDM5MiwtODQxODMxMzcxLC01Nz
 kwNjQxMzgsMTczODI5MDgwOSwtMjE4Nzc3MzI3LC05MzQ4NjQ1
 ODIsMTg5NTc2ODM5OCwyMDY1OTMzODUsLTEyNjIwNTEyODAsND
 IzOTkzNzkwLDEzMTEzNTQxNTEsMTIzMjY3MzA0MywtMTA1ODc2
