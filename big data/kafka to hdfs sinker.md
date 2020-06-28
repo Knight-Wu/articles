@@ -37,6 +37,7 @@ hdfs debug recoverLease -path pathA
 在测试环境模拟 hdfs 和kafka 挂掉的现象, 通过屏蔽某一台 local 机器上 hdfs 8020, kafka 9092 端口, 该实例的partition 已经被其他实例消费, 但是由于他自身无法连接kafka 和hdfs 他并不知道, 当hdfs 首先恢复的时候, 会上传partition 的部分文件, 导致消息重复, 解决办法: 当上传重试时间超过 kafka max poll ms 的时候就放弃上传, 如何发现这个问题: 把partition 作为字段信息写到hive 表里, 发现有某些partition 里面有重复的消息, 通过查看多个实例的日志, 发现该partition 已经被其他实例接管之后, 仍然有旧实例上传文件. 
 
 * rebalance 
+
 首先kafka-2.2.1 rebalance  过程: stop fetch msgs -> onPartitionsRevoked(previous assigned partitions) -> reassign -> onPartitionsAssigned(partitions that are now assigned to the consumer) -> start to fetch msgs      
 
 本来一开始是在 onPartitionsRevoked() 这个函数中做剩余文件的上传等清理工作, 但是考虑到实现的复杂性以及实际上并不会加快很多rebalance 的过程, 就改为全部抛弃内存和磁盘中的文件, 在 onPartitionsAssigned() 中做offset 的寻找等工作, 如下图显示, 首先找到都有successFile 的上一个hour, 例如 country/dt/hour=16 都有successFile了, 那么就从 hour=17 开始找, 则先找出每一个path 的maxOffset, 例如找出 country=ID/dt=2020-06-01/hour=17  的最大的offset, 再找出 min of (path1MaxOffset, path2MaxOffset...) 作为seek offset, 为什么第一次是max, 第二次是min 呢, 第一次是max 容易理解, 因为每个path 只有一个线程在消费, offset 递增的, 但是第二次是max , 因为是无法确保max offset 之前, 所有path 的文件都顺利上传到hdfs 了, 因为在  onPartitionsRevoked() 做的是del, 就算做的是upload 若hdfs 挂了, 则会遗漏一部分消息在磁盘上, 所以以hdfs 的offset 为准, 选一个min , 然后每个pathx 对应一个thread, 当consume offset 大于 pathxMaxOffset 才开始写入文件, 此时又碰到另一个极端情况, 假设程序回到了一天前开始消费, successFile 之后有好几个path, 那么需要很久时间才能追得上, 每一个 hour 对应的thread 的清理时间都是二十多分钟左右(若一个path 有二十多分钟没有消息写入, 则清理对应的thread), 那么超过二十分钟的情况下, 实际消费的offset 又在此时之前呢, 所以需要判断此时消费的offset 大于path 对应的offset , 才能del; 这只是del 的第一个条件, 同时需要判断程序并没有因hdfs 和kafka crash 而导致的block, 因为此时block 了, 程序不能清理thread 也不能写successFile,    
@@ -45,10 +46,11 @@ rebalance 同时也是作为清理因hdfs crash 而导致的坏文件, 坏文件
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3OTA2NDEzOCwxNzM4MjkwODA5LC0yMT
-g3NzczMjcsLTkzNDg2NDU4MiwxODk1NzY4Mzk4LDIwNjU5MzM4
-NSwtMTI2MjA1MTI4MCw0MjM5OTM3OTAsMTMxMTM1NDE1MSwxMj
-MyNjczMDQzLC0xMDU4NzY4NjQ1LC0xMzEwMzg5ODcsLTE4OTI0
-NjM1NjgsLTE5OTY0NjQyNDksMTg3OTkzMTcxMywtODA0NDY0Mj
-g1LC0xODY5OTU0OTE3LDE5MjgxNjI0NDFdfQ==
+eyJoaXN0b3J5IjpbMTQzMzcwMDYxNiwtNTc5MDY0MTM4LDE3Mz
+gyOTA4MDksLTIxODc3NzMyNywtOTM0ODY0NTgyLDE4OTU3Njgz
+OTgsMjA2NTkzMzg1LC0xMjYyMDUxMjgwLDQyMzk5Mzc5MCwxMz
+ExMzU0MTUxLDEyMzI2NzMwNDMsLTEwNTg3Njg2NDUsLTEzMTAz
+ODk4NywtMTg5MjQ2MzU2OCwtMTk5NjQ2NDI0OSwxODc5OTMxNz
+EzLC04MDQ0NjQyODUsLTE4Njk5NTQ5MTcsMTkyODE2MjQ0MV19
+
 -->
