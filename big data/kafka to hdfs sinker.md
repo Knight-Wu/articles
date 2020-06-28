@@ -24,17 +24,17 @@ hdfs debug recoverLease -path pathA
 ![enter image description here](https://drive.google.com/uc?id=1Kq1N5-yNbLI1dCdcRCRDCoLJQfpt8S6X)
 
 ### 难点
-* 写successFile 
+* write successFile 
 因为需要告诉下游某一个path 的数据已经全部到达, 需要有多个client 在不同机器同时append partition number 到一个文件(LOADING ), 然后最后一个partition 线程rename 成 SUCCESS, 所以不同client 同时append 会出现lease 竞争的问题, 采取的策略就是碰到该异常重试, 但是在close file 也出现异常的时候会导致lease 没有释放, 导致其他客户端无法正常append, 最后采取的策略是若close 出现异常, 则执行 recoverLease(path) 这个函数
 
 * hdfs crc exception
 一个path 下只有一个线程写一个文件, 一开始文件后缀是startOffset, 然后需要先在本地 rename 成 lastOffset 再上传, 一开始只rename 了数据文件, 导致遗留了很多crc 文件, 并且上传一段时间就出现 crcException, 后面把crc file 也rename 就没出现这个异常. 
 
-* when
+* 类似 hdfs nn 双主现象
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDQ4MDQyNzAyLDQyMzk5Mzc5MCwxMzExMz
+eyJoaXN0b3J5IjpbMzMwMTA5NTI2LDQyMzk5Mzc5MCwxMzExMz
 U0MTUxLDEyMzI2NzMwNDMsLTEwNTg3Njg2NDUsLTEzMTAzODk4
 NywtMTg5MjQ2MzU2OCwtMTk5NjQ2NDI0OSwxODc5OTMxNzEzLC
 04MDQ0NjQyODUsLTE4Njk5NTQ5MTcsMTkyODE2MjQ0MV19
