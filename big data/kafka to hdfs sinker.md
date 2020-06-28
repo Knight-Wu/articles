@@ -44,15 +44,16 @@ hdfs debug recoverLease -path pathA
 
 * 如何保证文件上传前后的一致性
 
-导致一致性                                                                                                                                                                                                       
+以下几个情况是实际碰到导致文件不一致的:
+1. 使用线程池上传文件, 每个线程上传一个文件, 若文件上传过长时间, 则在程序                                                                                                                                                                                                        
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTg0MzIzMjYsLTU3OTA2NDEzOCwxNz
-M4MjkwODA5LC0yMTg3NzczMjcsLTkzNDg2NDU4MiwxODk1NzY4
-Mzk4LDIwNjU5MzM4NSwtMTI2MjA1MTI4MCw0MjM5OTM3OTAsMT
-MxMTM1NDE1MSwxMjMyNjczMDQzLC0xMDU4NzY4NjQ1LC0xMzEw
-Mzg5ODcsLTE4OTI0NjM1NjgsLTE5OTY0NjQyNDksMTg3OTkzMT
-cxMywtODA0NDY0Mjg1LC0xODY5OTU0OTE3LDE5MjgxNjI0NDFd
-fQ==
+eyJoaXN0b3J5IjpbLTU0NTE5NDc5MSwtNTc5MDY0MTM4LDE3Mz
+gyOTA4MDksLTIxODc3NzMyNywtOTM0ODY0NTgyLDE4OTU3Njgz
+OTgsMjA2NTkzMzg1LC0xMjYyMDUxMjgwLDQyMzk5Mzc5MCwxMz
+ExMzU0MTUxLDEyMzI2NzMwNDMsLTEwNTg3Njg2NDUsLTEzMTAz
+ODk4NywtMTg5MjQ2MzU2OCwtMTk5NjQ2NDI0OSwxODc5OTMxNz
+EzLC04MDQ0NjQyODUsLTE4Njk5NTQ5MTcsMTkyODE2MjQ0MV19
+
 -->
