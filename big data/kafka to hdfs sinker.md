@@ -30,12 +30,12 @@ hdfs debug recoverLease -path pathA
 * hdfs crc exception
 一个path 下只有一个线程写一个文件, 一开始文件后缀是startOffset, 然后需要先在本地 rename 成 lastOffset 再上传, 一开始只rename 了数据文件, 导致遗留了很多crc 文件, 并且上传一段时间就出现 crcException, 后面把crc file 也rename 就没出现这个异常. 
 
-
+* when
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDIzOTkzNzkwLDEzMTEzNTQxNTEsMTIzMj
-Y3MzA0MywtMTA1ODc2ODY0NSwtMTMxMDM4OTg3LC0xODkyNDYz
-NTY4LC0xOTk2NDY0MjQ5LDE4Nzk5MzE3MTMsLTgwNDQ2NDI4NS
-wtMTg2OTk1NDkxNywxOTI4MTYyNDQxXX0=
+eyJoaXN0b3J5IjpbNDQ4MDQyNzAyLDQyMzk5Mzc5MCwxMzExMz
+U0MTUxLDEyMzI2NzMwNDMsLTEwNTg3Njg2NDUsLTEzMTAzODk4
+NywtMTg5MjQ2MzU2OCwtMTk5NjQ2NDI0OSwxODc5OTMxNzEzLC
+04MDQ0NjQyODUsLTE4Njk5NTQ5MTcsMTkyODE2MjQ0MV19
 -->
