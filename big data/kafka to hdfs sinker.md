@@ -44,19 +44,20 @@ hdfs debug recoverLease -path pathA
 
 * 如何保证文件上传前后的一致性
 
-以下几个情况是实际碰到导致文件不一致的:
+以下几个情况是会导致文件不一致的:
 1. 使用线程池上传文件, 每个线程上传一个文件, 若文件上传过长时间, 则在程序退出的时候可能会被interrupt, 导致上传不完整, 解决办法: 加锁, 若上传正在进行, 则不能被 shutdownNow()
 2. 进程被kill -9, 导致: file is not a snappy file 或者文件长度和上传前不一致
-3. hdfs crash
+3. hdfs crash(可能)
+故需要增加fileLength 到文件名上
                                                                                                                                                                                                   
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0MTgzMTM3MSwtNTc5MDY0MTM4LDE3Mz
-gyOTA4MDksLTIxODc3NzMyNywtOTM0ODY0NTgyLDE4OTU3Njgz
-OTgsMjA2NTkzMzg1LC0xMjYyMDUxMjgwLDQyMzk5Mzc5MCwxMz
-ExMzU0MTUxLDEyMzI2NzMwNDMsLTEwNTg3Njg2NDUsLTEzMTAz
-ODk4NywtMTg5MjQ2MzU2OCwtMTk5NjQ2NDI0OSwxODc5OTMxNz
-EzLC04MDQ0NjQyODUsLTE4Njk5NTQ5MTcsMTkyODE2MjQ0MV19
-
+eyJoaXN0b3J5IjpbLTEwMjM4Nzg2NzMsLTg0MTgzMTM3MSwtNT
+c5MDY0MTM4LDE3MzgyOTA4MDksLTIxODc3NzMyNywtOTM0ODY0
+NTgyLDE4OTU3NjgzOTgsMjA2NTkzMzg1LC0xMjYyMDUxMjgwLD
+QyMzk5Mzc5MCwxMzExMzU0MTUxLDEyMzI2NzMwNDMsLTEwNTg3
+Njg2NDUsLTEzMTAzODk4NywtMTg5MjQ2MzU2OCwtMTk5NjQ2ND
+I0OSwxODc5OTMxNzEzLC04MDQ0NjQyODUsLTE4Njk5NTQ5MTcs
+MTkyODE2MjQ0MV19
 -->
