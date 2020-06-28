@@ -26,10 +26,12 @@ hdfs debug recoverLease -path pathA
 ### 难点
 * 写successFile 
 因为需要告诉下游某一个path 的数据已经全部到达, 需要有多个client 在不同机器同时append partition number 到一个文件(LOADING ), 然后最后一个partition 线程rename 成 SUCCESS, 所以不同client 同时append 会出现lease 竞争的问题, 采取的策略就是碰到该异常重试, 但是在close file 也出现异常的时候会导致lease 没有释放, 导致其他客户端无法正常append, 最后采取的策略是若close 出现异常, 则执行 recoverLease(path) 这个函数
+
+* 
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzgxOTM5NTg0LDEzMTEzNTQxNTEsMTIzMj
+eyJoaXN0b3J5IjpbNTg4MjE2MTY2LDEzMTEzNTQxNTEsMTIzMj
 Y3MzA0MywtMTA1ODc2ODY0NSwtMTMxMDM4OTg3LC0xODkyNDYz
 NTY4LC0xOTk2NDY0MjQ5LDE4Nzk5MzE3MTMsLTgwNDQ2NDI4NS
 wtMTg2OTk1NDkxNywxOTI4MTYyNDQxXX0=
