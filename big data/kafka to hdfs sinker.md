@@ -18,7 +18,7 @@ hdfs debug recoverLease -path pathA
 一开始认为hdfs 上传是一个原子操作, 要不就上传失败无法被其他客户端看到, 要不就上传成功, 但是经过实验: 上传一个很大的文件上去, 中途 ctrl+c, 文件只上传了部分, 并经过一个小时(hard recover limit), 文件大小又增加了一些( close 触发了flush) , 证明hdfs 上传不是一个原子性质的, 故在文件名上加上了上传前的文件长度, 以判断文件的完整性. 文件名: partitionNum#consumeMaxOffset#fileLen
 
 * 流程图
-
+![enter image description here](https://drive.google.com/file/d/1fiDEGMxJmxxdXbhpOPy5dbZLEykKs25H/view?usp=sharing)
 
 
 ![enter image description here](https://drive.google.com/uc?id=1Kq1N5-yNbLI1dCdcRCRDCoLJQfpt8S6X)
@@ -26,7 +26,7 @@ hdfs debug recoverLease -path pathA
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjA3ODA1MzEsLTEzMTAzODk4NywtMT
+eyJoaXN0b3J5IjpbLTEwNTg3Njg2NDUsLTEzMTAzODk4NywtMT
 g5MjQ2MzU2OCwtMTk5NjQ2NDI0OSwxODc5OTMxNzEzLC04MDQ0
 NjQyODUsLTE4Njk5NTQ5MTcsMTkyODE2MjQ0MV19
 -->
