@@ -30,12 +30,13 @@ hdfs debug recoverLease -path pathA
 * hdfs crc exception
 一个path 下只有一个线程写一个文件, 一开始文件后缀是startOffset, 然后需要先在本地 rename 成 lastOffset 再上传, 一开始只rename 了数据文件, 导致遗留了很多crc 文件, 并且上传一段时间就出现 crcException, 后面把crc file 也rename 就没出现这个异常. 
 
-* 类似 hdfs nn 双主现象
+* 类似 hdfs nn 双主现象, 一个partition 被同时两个实例消费
+在测试环境模拟 hdfs 和kafka 挂掉的现象, 通过屏蔽某一台local 机器上 hdfs 8020, kafka 9092 端口, 
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzMwMTA5NTI2LDQyMzk5Mzc5MCwxMzExMz
-U0MTUxLDEyMzI2NzMwNDMsLTEwNTg3Njg2NDUsLTEzMTAzODk4
-NywtMTg5MjQ2MzU2OCwtMTk5NjQ2NDI0OSwxODc5OTMxNzEzLC
-04MDQ0NjQyODUsLTE4Njk5NTQ5MTcsMTkyODE2MjQ0MV19
+eyJoaXN0b3J5IjpbNTg3MTg5MzUsNDIzOTkzNzkwLDEzMTEzNT
+QxNTEsMTIzMjY3MzA0MywtMTA1ODc2ODY0NSwtMTMxMDM4OTg3
+LC0xODkyNDYzNTY4LC0xOTk2NDY0MjQ5LDE4Nzk5MzE3MTMsLT
+gwNDQ2NDI4NSwtMTg2OTk1NDkxNywxOTI4MTYyNDQxXX0=
 -->
