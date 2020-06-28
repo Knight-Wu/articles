@@ -34,12 +34,14 @@ hdfs debug recoverLease -path pathA
 
 * 类似 hdfs nn 双主现象, 一个partition 被同时两个实例消费
 
-在测试环境模拟 hdfs 和kafka 挂掉的现象, 通过屏蔽某一台 local 机器上 hdfs 8020, kafka 9092 端口, 该实例的partition 已经被其他实例消费, 但是由于他自身无法连接kafka 和hdfs 他并不知道, 当hdfs 首先恢复的时候, 会上传partition 的部分文件, 导致消息重复, 解决办法: 当上传重试时间超过 kafka max poll ms 的时候就放弃上传, 如何发现这个问题: 把partition 作为字段信息写到hive 表里, 发现有某些partition 里面有重复通过查看多个实例的日志, 发现已经有
+在测试环境模拟 hdfs 和kafka 挂掉的现象, 通过屏蔽某一台 local 机器上 hdfs 8020, kafka 9092 端口, 该实例的partition 已经被其他实例消费, 但是由于他自身无法连接kafka 和hdfs 他并不知道, 当hdfs 首先恢复的时候, 会上传partition 的部分文件, 导致消息重复, 解决办法: 当上传重试时间超过 kafka max poll ms 的时候就放弃上传, 如何发现这个问题: 把partition 作为字段信息写到hive 表里, 发现有某些partition 里面有重复的消息, 通过查看多个实例的日志, 发现该partition 已经被其他实例接管之后, 仍然有旧实例上传文件. 
+
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzIzOTQxMTU5LDQyMzk5Mzc5MCwxMzExMz
-U0MTUxLDEyMzI2NzMwNDMsLTEwNTg3Njg2NDUsLTEzMTAzODk4
-NywtMTg5MjQ2MzU2OCwtMTk5NjQ2NDI0OSwxODc5OTMxNzEzLC
-04MDQ0NjQyODUsLTE4Njk5NTQ5MTcsMTkyODE2MjQ0MV19
+eyJoaXN0b3J5IjpbLTEyNjIwNTEyODAsNDIzOTkzNzkwLDEzMT
+EzNTQxNTEsMTIzMjY3MzA0MywtMTA1ODc2ODY0NSwtMTMxMDM4
+OTg3LC0xODkyNDYzNTY4LC0xOTk2NDY0MjQ5LDE4Nzk5MzE3MT
+MsLTgwNDQ2NDI4NSwtMTg2OTk1NDkxNywxOTI4MTYyNDQxXX0=
+
 -->
