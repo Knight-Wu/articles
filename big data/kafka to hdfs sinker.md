@@ -37,14 +37,14 @@ hdfs debug recoverLease -path pathA
 在测试环境模拟 hdfs 和kafka 挂掉的现象, 通过屏蔽某一台 local 机器上 hdfs 8020, kafka 9092 端口, 该实例的partition 已经被其他实例消费, 但是由于他自身无法连接kafka 和hdfs 他并不知道, 当hdfs 首先恢复的时候, 会上传partition 的部分文件, 导致消息重复, 解决办法: 当上传重试时间超过 kafka max poll ms 的时候就放弃上传, 如何发现这个问题: 把partition 作为字段信息写到hive 表里, 发现有某些partition 里面有重复的消息, 通过查看多个实例的日志, 发现该partition 已经被其他实例接管之后, 仍然有旧实例上传文件. 
 
 * rebalance 
-首先kafka- rebalance                                                                                                                                                                                                                                                    
+首先kafka-2.2.1 rebalance  过程: stop fetch msg -                                                                                                                                                                                                                                                
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3NDIxOTkzOSwtOTM0ODY0NTgyLDE4OT
-U3NjgzOTgsMjA2NTkzMzg1LC0xMjYyMDUxMjgwLDQyMzk5Mzc5
-MCwxMzExMzU0MTUxLDEyMzI2NzMwNDMsLTEwNTg3Njg2NDUsLT
-EzMTAzODk4NywtMTg5MjQ2MzU2OCwtMTk5NjQ2NDI0OSwxODc5
-OTMxNzEzLC04MDQ0NjQyODUsLTE4Njk5NTQ5MTcsMTkyODE2Mj
-Q0MV19
+eyJoaXN0b3J5IjpbLTE3MjA2MDczNDgsLTkzNDg2NDU4MiwxOD
+k1NzY4Mzk4LDIwNjU5MzM4NSwtMTI2MjA1MTI4MCw0MjM5OTM3
+OTAsMTMxMTM1NDE1MSwxMjMyNjczMDQzLC0xMDU4NzY4NjQ1LC
+0xMzEwMzg5ODcsLTE4OTI0NjM1NjgsLTE5OTY0NjQyNDksMTg3
+OTkzMTcxMywtODA0NDY0Mjg1LC0xODY5OTU0OTE3LDE5MjgxNj
+I0NDFdfQ==
 -->
