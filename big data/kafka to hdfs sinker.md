@@ -28,12 +28,14 @@ hdfs debug recoverLease -path pathA
 因为需要告诉下游某一个path 的数据已经全部到达, 需要有多个client 在不同机器同时append partition number 到一个文件(LOADING ), 然后最后一个partition 线程rename 成 SUCCESS, 所以不同client 同时append 会出现lease 竞争的问题, 采取的策略就是碰到该异常重试, 但是在close file 也出现异常的时候会导致lease 没有释放, 导致其他客户端无法正常append, 最后采取的策略是若close 出现异常, 则执行 recoverLease(path) 这个函数
 
 * hdfs crc exception
-一个path 下只有一个线程写一个文件, 一开始文件后缀是startOffset, 然后需要先在本地 rename 成 lastOffset 再上传, 一开始只rename 了数据文件, 导致遗留了很多crc 文件, 并且
+一个path 下只有一个线程写一个文件, 一开始文件后缀是startOffset, 然后需要先在本地 rename 成 lastOffset 再上传, 一开始只rename 了数据文件, 导致遗留了很多crc 文件, 并且上传一段时间就出现 crcException, 后面把crc file 也rename 就没出现这个异常. 
+
+
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDQyMTkzNjksMTMxMTM1NDE1MSwxMj
-MyNjczMDQzLC0xMDU4NzY4NjQ1LC0xMzEwMzg5ODcsLTE4OTI0
-NjM1NjgsLTE5OTY0NjQyNDksMTg3OTkzMTcxMywtODA0NDY0Mj
-g1LC0xODY5OTU0OTE3LDE5MjgxNjI0NDFdfQ==
+eyJoaXN0b3J5IjpbNDIzOTkzNzkwLDEzMTEzNTQxNTEsMTIzMj
+Y3MzA0MywtMTA1ODc2ODY0NSwtMTMxMDM4OTg3LC0xODkyNDYz
+NTY4LC0xOTk2NDY0MjQ5LDE4Nzk5MzE3MTMsLTgwNDQ2NDI4NS
+wtMTg2OTk1NDkxNywxOTI4MTYyNDQxXX0=
 -->
