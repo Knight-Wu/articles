@@ -45,11 +45,12 @@ hdfs debug recoverLease -path pathA
 * 如何保证文件上传前后的一致性
 
 以下几个情况是实际碰到导致文件不一致的:
-1. 使用线程池上传文件, 每个线程上传一个文件, 若文件上传过长时间, 则在程序                                                                                                                                                                                                        
+1. 使用线程池上传文件, 每个线程上传一个文件, 若文件上传过长时间, 则在程序退出的时候可能会被interrupt, 导致上传不完整, 解决办法: 加锁, 若上传正在进行, 则不能被 shutdownNow()
+2. j                                                                                                                                                                                                        
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0NTE5NDc5MSwtNTc5MDY0MTM4LDE3Mz
+eyJoaXN0b3J5IjpbMTc5MDgyMzE0NywtNTc5MDY0MTM4LDE3Mz
 gyOTA4MDksLTIxODc3NzMyNywtOTM0ODY0NTgyLDE4OTU3Njgz
 OTgsMjA2NTkzMzg1LC0xMjYyMDUxMjgwLDQyMzk5Mzc5MCwxMz
 ExMzU0MTUxLDEyMzI2NzMwNDMsLTEwNTg3Njg2NDUsLTEzMTAz
