@@ -39,14 +39,14 @@ hdfs debug recoverLease -path pathA
 * rebalance 
 首先kafka-2.2.1 rebalance  过程: stop fetch msgs -> onPartitionsRevoked(previous assigned partitions) -> reassign -> onPartitionsAssigned(partitions that are now assigned to the consumer) -> start to fetch msgs      
 
-本来一开始是在 onPartitionsRevoked() 这个函数中做剩余文件的上传等清理工作, 但是考虑到实现的复杂性以及实际上并不会加快很多rebalance 的过程, 就改为全部抛弃内存和磁盘中的文件, 在 onPartitionsAssigned() 中做offset 的寻找等工作, 如下图显示                                                                                                                                                                                                                                      
+本来一开始是在 onPartitionsRevoked() 这个函数中做剩余文件的上传等清理工作, 但是考虑到实现的复杂性以及实际上并不会加快很多rebalance 的过程, 就改为全部抛弃内存和磁盘中的文件, 在 onPartitionsAssigned() 中做offset 的寻找等工作, 如下图显示, 首先找到上一个successFile 所在的path,                                                                                                                                                                                                                                       
 > Written with [StackEdit](https://stackedit.io/).
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxODc3NzMyNywtOTM0ODY0NTgyLDE4OT
-U3NjgzOTgsMjA2NTkzMzg1LC0xMjYyMDUxMjgwLDQyMzk5Mzc5
-MCwxMzExMzU0MTUxLDEyMzI2NzMwNDMsLTEwNTg3Njg2NDUsLT
-EzMTAzODk4NywtMTg5MjQ2MzU2OCwtMTk5NjQ2NDI0OSwxODc5
-OTMxNzEzLC04MDQ0NjQyODUsLTE4Njk5NTQ5MTcsMTkyODE2Mj
-Q0MV19
+eyJoaXN0b3J5IjpbMTczODI5MDgwOSwtMjE4Nzc3MzI3LC05Mz
+Q4NjQ1ODIsMTg5NTc2ODM5OCwyMDY1OTMzODUsLTEyNjIwNTEy
+ODAsNDIzOTkzNzkwLDEzMTEzNTQxNTEsMTIzMjY3MzA0MywtMT
+A1ODc2ODY0NSwtMTMxMDM4OTg3LC0xODkyNDYzNTY4LC0xOTk2
+NDY0MjQ5LDE4Nzk5MzE3MTMsLTgwNDQ2NDI4NSwtMTg2OTk1ND
+kxNywxOTI4MTYyNDQxXX0=
 -->
