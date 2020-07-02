@@ -19,10 +19,11 @@
 [https://stackoverflow.com/questions/1151667/what-are-the-optimum-varchar-sizes-for-mysql](https://stackoverflow.com/questions/1151667/what-are-the-optimum-varchar-sizes-for-mysql)
 
 ###  mysql COLLATE
+对于mysql中那些字符类型的列，如`VARCHAR`，`CHAR`，`TEXT`类型的列，都需要有一个`COLLATE`类型来告知mysql如何对该列进行排序和比较。简而言之，**COLLATE会影响到ORDER BY语句的顺序，会影响到WHERE条件中大于小于号筛选出来的结果，会影响**`**DISTINCT**`**、**`**GROUP BY**`**、**`**HAVING**`**语句的查询结果**。另外，mysql建索引的时候，如果索引列是字符类型，也**会影响索引创建**，
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQ0NzExNDI5LDExMDE1MjUxMDIsNzY0MD
+eyJoaXN0b3J5IjpbOTkyNzU3MzcxLDExMDE1MjUxMDIsNzY0MD
 A1ODI0LC0yNjkyMDcxOTAsMzQzODUxNzcyXX0=
 -->
