@@ -18,6 +18,11 @@
 并不影响storage size, storage size 只跟存储的具体string 有关, 若是单字节编码, 需要用一个字节或两个字节来存储长度, max len <= 65535 bytes, , 但是 varchar(3) 和 varchar(4) 查询中使用的内存并不一样, 后者让查询引擎使用更多的内存, 所以需要合理计算 varchar(x)
 [https://stackoverflow.com/questions/1151667/what-are-the-optimum-varchar-sizes-for-mysql](https://stackoverflow.com/questions/1151667/what-are-the-optimum-varchar-sizes-for-mysql)
 
+* varchar vs char
+
+1. char 是定长, 在其他情况相同的时候, char 用于做索引会快 20% 
+> The book MySQL Database Design and Tuning performed something marvelous on a MyISAM table to prove this
+
 ###  mysql COLLATE
 对于mysql中那些字符类型的列，如`VARCHAR`，`CHAR`，`TEXT`类型的列，都需要有一个`COLLATE`类型来告知mysql如何对该列进行排序和比较。简而言之，**COLLATE会影响到ORDER BY语句的顺序，会影响到WHERE条件中大于小于号筛选出来的结果，会影响**`**DISTINCT**`**、**`**GROUP BY**`**、**`**HAVING**`**语句的查询结果**。另外，mysql建索引的时候，如果索引列是字符类型，也**会影响索引创建**，
 
@@ -27,7 +32,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3Njc4OTE3LC0xODg5ODU5NjU4LDExMD
-E1MjUxMDIsNzY0MDA1ODI0LC0yNjkyMDcxOTAsMzQzODUxNzcy
-XX0=
+eyJoaXN0b3J5IjpbLTIxNDQyOTA4MjYsMTM3Njc4OTE3LC0xOD
+g5ODU5NjU4LDExMDE1MjUxMDIsNzY0MDA1ODI0LC0yNjkyMDcx
+OTAsMzQzODUxNzcyXX0=
 -->
