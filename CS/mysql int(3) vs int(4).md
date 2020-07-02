@@ -23,6 +23,11 @@
 1. char 是定长, 在其他情况相同的时候, char 用于做索引会快 20% 
 > The book MySQL Database Design and Tuning performed something marvelous on a MyISAM table to prove this
 
+2. varchar 是变长, 如果实际存储的不是定长string, 那么肯定会更省空间. 
+3. ALTER TABLE tblname ROW_FORMAT=FIXED;
+这
+
+
 ###  mysql COLLATE
 对于mysql中那些字符类型的列，如`VARCHAR`，`CHAR`，`TEXT`类型的列，都需要有一个`COLLATE`类型来告知mysql如何对该列进行排序和比较。简而言之，**COLLATE会影响到ORDER BY语句的顺序，会影响到WHERE条件中大于小于号筛选出来的结果，会影响**`**DISTINCT**`**、**`**GROUP BY**`**、**`**HAVING**`**语句的查询结果**。另外，mysql建索引的时候，如果索引列是字符类型，也**会影响索引创建**，
 
@@ -32,7 +37,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNDQyOTA4MjYsMTM3Njc4OTE3LC0xOD
-g5ODU5NjU4LDExMDE1MjUxMDIsNzY0MDA1ODI0LC0yNjkyMDcx
-OTAsMzQzODUxNzcyXX0=
+eyJoaXN0b3J5IjpbLTE3NzYxMDQwNiwxMzc2Nzg5MTcsLTE4OD
+k4NTk2NTgsMTEwMTUyNTEwMiw3NjQwMDU4MjQsLTI2OTIwNzE5
+MCwzNDM4NTE3NzJdfQ==
 -->
