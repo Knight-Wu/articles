@@ -15,7 +15,7 @@
     > **INT**  with the stored value of 250000 will show  **250000**
 
 * varchar(3) vs varchar(4)
-并不影响storage size, storage size 只跟存储的具体string 有关, 若是单字节编码, 需要用一个字节或两个字节来存储长度, max len <= 65535 bytes, , 但是 varchar(3) 和 varchar(4) 查询中使用的内存并不一样, 后者会多
+并不影响storage size, storage size 只跟存储的具体string 有关, 若是单字节编码, 需要用一个字节或两个字节来存储长度, max len <= 65535 bytes, , 但是 varchar(3) 和 varchar(4) 查询中使用的内存并不一样, 后者让查询引擎使用更多的内存, 所以需要合理计算 varchar(x)
 [https://stackoverflow.com/questions/1151667/what-are-the-optimum-varchar-sizes-for-mysql](https://stackoverflow.com/questions/1151667/what-are-the-optimum-varchar-sizes-for-mysql)
 
 ###  mysql COLLATE
@@ -27,6 +27,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODk4NTk2NTgsMTEwMTUyNTEwMiw3Nj
-QwMDU4MjQsLTI2OTIwNzE5MCwzNDM4NTE3NzJdfQ==
+eyJoaXN0b3J5IjpbMTM3Njc4OTE3LC0xODg5ODU5NjU4LDExMD
+E1MjUxMDIsNzY0MDA1ODI0LC0yNjkyMDcxOTAsMzQzODUxNzcy
+XX0=
 -->
