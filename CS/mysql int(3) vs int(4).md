@@ -25,7 +25,9 @@
 
 2. varchar 是变长, 如果实际存储的不是定长string, 那么肯定会更省空间. 
 3. ALTER TABLE tblname ROW_FORMAT=FIXED;
-这
+让varchar 表现得跟char 一样, index 速度会加快, 但是存储的size 会增加不少
+
+
 
 
 ###  mysql COLLATE
@@ -37,7 +39,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NzYxMDQwNiwxMzc2Nzg5MTcsLTE4OD
-k4NTk2NTgsMTEwMTUyNTEwMiw3NjQwMDU4MjQsLTI2OTIwNzE5
-MCwzNDM4NTE3NzJdfQ==
+eyJoaXN0b3J5IjpbNzUyMjI3MjEyLDEzNzY3ODkxNywtMTg4OT
+g1OTY1OCwxMTAxNTI1MTAyLDc2NDAwNTgyNCwtMjY5MjA3MTkw
+LDM0Mzg1MTc3Ml19
 -->
