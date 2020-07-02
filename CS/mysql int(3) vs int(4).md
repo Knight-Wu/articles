@@ -19,6 +19,7 @@
 [https://stackoverflow.com/questions/1151667/what-are-the-optimum-varchar-sizes-for-mysql](https://stackoverflow.com/questions/1151667/what-are-the-optimum-varchar-sizes-for-mysql)
 
 * varchar vs char
+[https://dba.stackexchange.com/questions/2640/what-is-the-performance-impact-of-using-char-vs-varchar-on-a-fixed-size-field/2643#2643](https://dba.stackexchange.com/questions/2640/what-is-the-performance-impact-of-using-char-vs-varchar-on-a-fixed-size-field/2643#2643)
 
 1. char 是定长, 在其他情况相同的时候, char 用于做索引会快 20% 
 > The book MySQL Database Design and Tuning performed something marvelous on a MyISAM table to prove this
@@ -39,7 +40,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzUyMjI3MjEyLDEzNzY3ODkxNywtMTg4OT
-g1OTY1OCwxMTAxNTI1MTAyLDc2NDAwNTgyNCwtMjY5MjA3MTkw
-LDM0Mzg1MTc3Ml19
+eyJoaXN0b3J5IjpbLTE3NTE0MTcxNjMsMTM3Njc4OTE3LC0xOD
+g5ODU5NjU4LDExMDE1MjUxMDIsNzY0MDA1ODI0LC0yNjkyMDcx
+OTAsMzQzODUxNzcyXX0=
 -->
