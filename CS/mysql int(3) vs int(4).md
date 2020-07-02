@@ -15,12 +15,12 @@
     > **INT**  with the stored value of 250000 will show  **250000**
 
 * varchar(3) vs varchar(4)
-并不影响storage size, storage size 只跟存储的具体string 有关,  max storage size 仍然一样, 若是单字节编码, 大约是65535 bytes, 需要用一个字节或两个字节来存储长度, 但是在使用的内存并不一样, 
+并不影响storage size, storage size 只跟存储的具体string 有关, 若是单字节编码, 需要用一个字节或两个字节来存储长度, max len <= 65535 bytes, , 但是 varchar(3) 和 varchar(4) 使用的nei c
 [https://stackoverflow.com/questions/1151667/what-are-the-optimum-varchar-sizes-for-mysql](https://stackoverflow.com/questions/1151667/what-are-the-optimum-varchar-sizes-for-mysql)
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzY0MDA1ODI0LC0yNjkyMDcxOTAsMzQzOD
-UxNzcyXX0=
+eyJoaXN0b3J5IjpbLTc3MjM0NTIwNSw3NjQwMDU4MjQsLTI2OT
+IwNzE5MCwzNDM4NTE3NzJdfQ==
 -->
