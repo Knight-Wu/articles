@@ -28,6 +28,8 @@
 3. ALTER TABLE tblname ROW_FORMAT=FIXED;
 让varchar 表现得跟char 一样, index 速度会加快, 但是存储的size 会增加不少
 
+* varchar vs text
+两个都是变长的存储方式, 但是因为mysql max row size 是 65535, 所以当需要存储很大的string 的时候最好用text, 因为他存储的是string 的ref, 只需要9-12 bytes, 
 
 
 
@@ -40,7 +42,7 @@
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTE0MTcxNjMsMTM3Njc4OTE3LC0xOD
-g5ODU5NjU4LDExMDE1MjUxMDIsNzY0MDA1ODI0LC0yNjkyMDcx
-OTAsMzQzODUxNzcyXX0=
+eyJoaXN0b3J5IjpbLTE2MjMwOTgyODYsLTE3NTE0MTcxNjMsMT
+M3Njc4OTE3LC0xODg5ODU5NjU4LDExMDE1MjUxMDIsNzY0MDA1
+ODI0LC0yNjkyMDcxOTAsMzQzODUxNzcyXX0=
 -->
