@@ -4,10 +4,10 @@
 例如 100, 0100
 
 * varchar(3) vs varchar(4)
-并不影响storage size, max storage size 仍然一样, 大约是65535 bytes, 若shi
+并不影响storage size, max storage size 仍然一样, 若是单字节编码, 大约是65535 bytes, 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE0MTk5OTkyNl19
+eyJoaXN0b3J5IjpbMzQzODUxNzcyXX0=
 -->
