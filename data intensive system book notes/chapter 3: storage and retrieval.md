@@ -14,9 +14,9 @@ crash recovery: 可以存储 hash index 的 snapshot 在磁盘上, 避免 crash 
 2. hash index 不能友好的支持范围查询
 
 
-
+### SSTables( Sorted string table) and LSM-Trees( Log-Structured Merge-
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3OTU1NTYzMF19
+eyJoaXN0b3J5IjpbLTE1NTA5MDc3ODNdfQ==
 -->
