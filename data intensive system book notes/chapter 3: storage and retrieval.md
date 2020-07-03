@@ -5,10 +5,12 @@ append file: 一开始一直往一个文件里面 append, append 到一定大小
 
 crash recovery: 可以存储 hash index 的 snapshot 在磁盘上, 避免 crash 之后重新扫描文件
 
-* 为什么不直接在 file 进行 update key, 而是用 append 
+* 为什么不直接在 file 进行 update key, 而是append key, 然后再后台线程进行合并和去重呢? (why append only file ? )
+
+因为就算在 SSD 顺序读写也是更快的, append only file 很好的利用了这个特性, update key
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4MzAxNjI3MF19
+eyJoaXN0b3J5IjpbNTU3NjYwNDI5XX0=
 -->
