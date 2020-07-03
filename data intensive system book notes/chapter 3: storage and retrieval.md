@@ -15,9 +15,9 @@ crash recovery: 可以存储 hash index 的 snapshot 在磁盘上, 避免 crash 
 
 
 ### SSTables( Sorted string table) and LSM-Trees( Log-Structured Merge-Tree)
-SSTables 即 key 是排序的, 跟原来相比好处在哪呢, 
+SSTables 即 key 是排序的, 跟原来相比好处在哪呢, 两个 file segments jin'xi
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQyMzgxMTU3MywtMzIyMDU2NzgyXX0=
+eyJoaXN0b3J5IjpbLTY2OTU1ODQ0NCwtMzIyMDU2NzgyXX0=
 -->
