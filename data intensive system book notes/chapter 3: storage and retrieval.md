@@ -1,5 +1,5 @@
-### 存储 key val 最简单的模型, hash index and append only file
-存储的是 key 和 val, 
+**问题是如何存储 key val, **
+### 最简单的模型, hash index and append only file
 hash index: key, value(文件中字节的偏移量)
 append file: 一开始一直往一个文件里面 append, append 到一定大小, 进行文件 compaction, 只保留最新一个 key 的 val, 形成一个 segment, 然后可以在后台线程进行多个 segments 的合并, 合并完成之后再切换读和写, 并删除合并前的文件. 
 
@@ -11,10 +11,12 @@ crash recovery: 可以存储 hash index 的 snapshot 在磁盘上, 避免 crash 
 
 * 缺陷
 1. hash index 如果不能完全放在内存中, 磁盘随机 IO 会很慢
-2. hash index 不能友好的支持
+2. hash index 不能友好的支持范围查询
+
+
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjkwMTc5MzBdfQ==
+eyJoaXN0b3J5IjpbLTE4MDM4NjA2NzNdfQ==
 -->
