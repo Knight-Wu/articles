@@ -142,7 +142,7 @@ where a="A" and b in ('b','B') and c = 'C' , (a,b,c) 的索引仍然有效.
 3. 因为聚簇索引的是按顺序排列的, 如果是主键作为了聚簇索引, 则按主键进行排序, 主键最好设置为AUTO_INCREMENT, 插入的效率会很高, 否则如果是使用uuid 作为主键, 可能引起page split, 因为后面的插入的记录可能在之前形成的索引的page 中间, 引起page split; 但是设置为自增, 插入的热点集中在主键的上界, 引起gap lock的竞争.
 
 * 覆盖索引
-这是B+ tree 索引的在某些情况下的一个特性, 直接从索引就返回需要查询的数据了, 并不需要再次查询具体的表数据, 在这种情况下, 可以称为covering index, 而且在B+ tree 聚簇索引的情况下, 特别适用, 直接根据secondary index 返回索引列和主键. 并不需要二次查询主键. 如下图
+意思是, 直接从索引就返回需要查询的数据了, 并不需要再次查询具体的表数据, 直接根据secondary index 返回索引列和主键. 并不需要二次查询主键. 如下图
 ![enter image description here](https://drive.google.com/uc?id=1z1I_cejEGOnx70mEMPEB6724PqfTKy8_)
 
 * 好处
@@ -289,5 +289,5 @@ relational database index design and the optimizers
 * 全文索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODkyNTU4ODQ5XX0=
+eyJoaXN0b3J5IjpbLTk2ODk4Mjc4LDg5MjU1ODg0OV19
 -->
