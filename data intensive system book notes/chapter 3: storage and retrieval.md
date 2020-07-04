@@ -24,11 +24,13 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 
 现有的 storage engine 描述如下: 
 1. 写入 key , val 首先到 memTable(红黑树等数据结构)
-2. 当 memTable 膨胀到一定程度, 将有序的 key, val, 写入到磁盘 SSTable
-3. 
+2. 当 memTable 膨胀到一定程度, 将有序的 key, val, 写入到磁盘 SSTable( 也需要 index ? )
+3. 读请求的时候, 先查找 memTable, 再按时间顺序倒序查找 SSTable
+4. 在后台周期性合并 SSTables
+5. 为了防止 memTable 的数据在未写入c
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTE1OTkyMTQ1LDM4NDMzMjY2OCwxMTQzOT
-A4MTE0LDE1NzU1OTg3NDUsLTMyMjA1Njc4Ml19
+eyJoaXN0b3J5IjpbMTQ2MjAyMTQ5OSwzODQzMzI2NjgsMTE0Mz
+kwODExNCwxNTc1NTk4NzQ1LC0zMjIwNTY3ODJdfQ==
 -->
