@@ -38,9 +38,11 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 
 ### B tree
 读和写都需要多次 IO 定位到具体的 key 上, 
+
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk4NjEzMTA3LDIxMzM4MjU5MzUsLTkzNj
-U0NDc3OSwzODQzMzI2NjgsMTE0MzkwODExNCwxNTc1NTk4NzQ1
-LC0zMjIwNTY3ODJdfQ==
+eyJoaXN0b3J5IjpbNjEyNTQ3NzkxLDY5ODYxMzEwNywyMTMzOD
+I1OTM1LC05MzY1NDQ3NzksMzg0MzMyNjY4LDExNDM5MDgxMTQs
+MTU3NTU5ODc0NSwtMzIyMDU2NzgyXX0=
 -->
