@@ -18,10 +18,10 @@ crash recovery: 可以存储 hash index 的 snapshot 在磁盘上, 避免 crash 
 SSTables 即 key 是排序的, 跟原来相比好处在哪呢, 
 1. 排序之前, 两个 file segments 进行合并, 一个有 n 行, 另一个有 m 行, 合并多个重复的 key, 合并成一个 segment 的时间复杂度是 O(m*n), 排序之后是归并排序, 是 O(m+n)
 2. index 不需要保留每个 key, 只需要能断定 key 所在的范围, 再查找
-3. 因为一个 index key 能得到一组 key, 所以可以把这一组 key 在存入ci'p
+3. 因为一个 index key 能得到一组 key, 所以可以把这一组 key 在存入磁盘前进行压缩. 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExMzc3MDgyMiwxMTQzOTA4MTE0LDE1Nz
-U1OTg3NDUsLTMyMjA1Njc4Ml19
+eyJoaXN0b3J5IjpbMzg0MzMyNjY4LDExNDM5MDgxMTQsMTU3NT
+U5ODc0NSwtMzIyMDU2NzgyXX0=
 -->
