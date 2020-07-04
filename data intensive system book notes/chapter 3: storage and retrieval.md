@@ -30,8 +30,11 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 5. 为了防止 memTable 的数据在未写入磁盘的时候崩溃, 需要先写 write ahead log
 6. 如果查找不存在的key, 在现有的数据结构下代价会很高, 需要先查找 memTable, 再依次查找SSTable, 可以使用布隆过滤器, 迅速判断某一个 key 不存在. 
 
+思想: 一次写操作由一次顺序 IO(log append)和一次内存写就能完成, 比随机磁盘写ti's
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzNjU0NDc3OSwzODQzMzI2NjgsMTE0Mz
-kwODExNCwxNTc1NTk4NzQ1LC0zMjIwNTY3ODJdfQ==
+eyJoaXN0b3J5IjpbLTI2MTc5MzE1MSwtOTM2NTQ0Nzc5LDM4ND
+MzMjY2OCwxMTQzOTA4MTE0LDE1NzU1OTg3NDUsLTMyMjA1Njc4
+Ml19
 -->
