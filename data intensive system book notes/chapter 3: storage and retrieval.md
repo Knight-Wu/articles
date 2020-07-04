@@ -33,11 +33,12 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 思想: 一次写操作由一次顺序 IO(log append)和一次内存写就能完成, 大大提升了写性能, 写包括更新和删除, 这两个都是在内存中记一个标记, 待后续合并的时候就知道数据被更新了.
 
 * 问题
-1. nei
+1. 内存中的数据如何写到磁盘
+2. 磁盘的文件如何 merge
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4MjM4MzMzNywtOTM2NTQ0Nzc5LDM4ND
+eyJoaXN0b3J5IjpbMjEzMzgyNTkzNSwtOTM2NTQ0Nzc5LDM4ND
 MzMjY2OCwxMTQzOTA4MTE0LDE1NzU1OTg3NDUsLTMyMjA1Njc4
 Ml19
 -->
