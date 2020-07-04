@@ -27,10 +27,11 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 2. 当 memTable 膨胀到一定程度, 将有序的 key, val, 写入到磁盘 SSTable( 也需要 index ? )
 3. 读请求的时候, 先查找 memTable, 再按时间顺序倒序查找 SSTable
 4. 在后台周期性合并 SSTables
-5. 为了防止 memTable 的数据在未写入c
+5. 为了防止 memTable 的数据在未写入磁盘的时候崩溃, 需要先写 write ahead log
+6. 如果查找不存在的key, 在现有的数据结构下代价会很高, 需要先查找 memTable, 再依次查找
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2MjAyMTQ5OSwzODQzMzI2NjgsMTE0Mz
-kwODExNCwxNTc1NTk4NzQ1LC0zMjIwNTY3ODJdfQ==
+eyJoaXN0b3J5IjpbLTEyODEzODc2OTEsMzg0MzMyNjY4LDExND
+M5MDgxMTQsMTU3NTU5ODc0NSwtMzIyMDU2NzgyXX0=
 -->
