@@ -23,10 +23,12 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 那如何使插入的 key 是有序的呢, 使用红黑树等数据结构, 
 
 现有的 storage engine 描述如下: 
-1. 写入 key , val 首先到 memTable(红黑树等hu
+1. 写入 key , val 首先到 memTable(红黑树等数据结构)
+2. 当 memTable 膨胀到一定程度, 将有序的 key, val, 写入到磁盘 SSTable
+3. 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTQxNTgxNTUsMzg0MzMyNjY4LDExND
-M5MDgxMTQsMTU3NTU5ODc0NSwtMzIyMDU2NzgyXX0=
+eyJoaXN0b3J5IjpbNTE1OTkyMTQ1LDM4NDMzMjY2OCwxMTQzOT
+A4MTE0LDE1NzU1OTg3NDUsLTMyMjA1Njc4Ml19
 -->
