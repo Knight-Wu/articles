@@ -41,11 +41,11 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 
 ### B tree 和 LSM tree 的区别
  LSM tree 的优点: 写入吞吐量更大, 合并导致磁盘碎片更小, 
- 缺点: 当进行合并或压缩时, 会zhan'y
+ 缺点: 当进行合并或压缩时, 会占用磁盘的资源导致读写变慢, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDI0NDcxMzcsNjk4NjEzMTA3LDIxMz
-M4MjU5MzUsLTkzNjU0NDc3OSwzODQzMzI2NjgsMTE0MzkwODEx
-NCwxNTc1NTk4NzQ1LC0zMjIwNTY3ODJdfQ==
+eyJoaXN0b3J5IjpbMTY4Mzg5OTU0Myw2OTg2MTMxMDcsMjEzMz
+gyNTkzNSwtOTM2NTQ0Nzc5LDM4NDMzMjY2OCwxMTQzOTA4MTE0
+LDE1NzU1OTg3NDUsLTMyMjA1Njc4Ml19
 -->
