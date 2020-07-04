@@ -20,10 +20,13 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 2. index 不需要保留每个 key, 只需要能断定 key 所在的范围, 再查找
 3. 因为一个 index key 能得到一组 key, 所以可以把这一组 key 在存入磁盘前进行压缩. 
 
-那如何使插入的 key 是有序的呢, 使用红黑树等数据
+那如何使插入的 key 是有序的呢, 使用红黑树等数据结构, 
+
+现有的 storage engine 描述如下: 
+1. 写入 key , val 首先到 memTable(红黑树等hu
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTMzNDY0NzYsMzg0MzMyNjY4LDExND
+eyJoaXN0b3J5IjpbLTExMTQxNTgxNTUsMzg0MzMyNjY4LDExND
 M5MDgxMTQsMTU3NTU5ODc0NSwtMzIyMDU2NzgyXX0=
 -->
