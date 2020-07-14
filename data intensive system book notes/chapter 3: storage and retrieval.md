@@ -50,11 +50,11 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 
 适用于某一列中重复值特别多的, 将这一列用位图编码, 每一个独特的列值对应一个 bit 数组, col in (x,y,z) 转化为三个 bit 数组按位与, 即可得到满足要求的行数, 大大减少了存储和传输的带宽.
 
-位图编码也可以转换为游程编码, 
+位图编码也可以转换为游程编码(run-length encoded)
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzUzMTAwMDE3LDE1MjcxMzgxOTQsMTY4Mz
-g5OTU0Myw2OTg2MTMxMDcsMjEzMzgyNTkzNSwtOTM2NTQ0Nzc5
-LDM4NDMzMjY2OCwxMTQzOTA4MTE0LDE1NzU1OTg3NDUsLTMyMj
-A1Njc4Ml19
+eyJoaXN0b3J5IjpbMTIxNTk1MTM4NiwxNTI3MTM4MTk0LDE2OD
+M4OTk1NDMsNjk4NjEzMTA3LDIxMzM4MjU5MzUsLTkzNjU0NDc3
+OSwzODQzMzI2NjgsMTE0MzkwODExNCwxNTc1NTk4NzQ1LC0zMj
+IwNTY3ODJdfQ==
 -->
