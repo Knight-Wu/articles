@@ -46,9 +46,10 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 ### 列式存储
 有时候查询只需要一行中的某几列, 若用行存储, 则需要把拥有几百列的几行全部查出来才做过滤, 但是列存储, 把每一列都按照相同行顺序放在一个文件里. 
 
+* lie
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTg5NTIzNDcsMTY4Mzg5OTU0Myw2OT
+eyJoaXN0b3J5IjpbLTE5OTIxMTU0NDksMTY4Mzg5OTU0Myw2OT
 g2MTMxMDcsMjEzMzgyNTkzNSwtOTM2NTQ0Nzc5LDM4NDMzMjY2
 OCwxMTQzOTA4MTE0LDE1NzU1OTg3NDUsLTMyMjA1Njc4Ml19
 -->
