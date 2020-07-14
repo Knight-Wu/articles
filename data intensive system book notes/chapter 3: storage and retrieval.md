@@ -44,10 +44,10 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
  缺点: 当进行合并或压缩时, 会占用磁盘的资源导致读写变慢, 
 
 ### 列式存储
-有时候
+有时候查询只需要一行中的某几列, 若用行存储, 则需要把拥有几百列的几行全部查出来才做过滤, 但是列cun'c
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyMzYwMTM5NCwxNjgzODk5NTQzLDY5OD
+eyJoaXN0b3J5IjpbMTQ1NDIwODQ4OCwxNjgzODk5NTQzLDY5OD
 YxMzEwNywyMTMzODI1OTM1LC05MzY1NDQ3NzksMzg0MzMyNjY4
 LDExNDM5MDgxMTQsMTU3NTU5ODc0NSwtMzIyMDU2NzgyXX0=
 -->
