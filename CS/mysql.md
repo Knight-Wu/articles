@@ -214,7 +214,7 @@ SELECT age FROM users WHERE id = 1;
 ```
 
 * 不可重复读(unrepeatable read)
-    发生在一个事务的进行两次读取时, 可能会读取到不同的数据, 就是说在 A 事务在 t1 开始后, 读到了 B 事务在 t2 修改的数据, t2>t1
+    发生在一个事务的进行两次读取时, 可能会读取到不同的数据, 就是说在 A 事务在 t1 开始后, 进行了两次读取, 其中第二次读取, 读到了 B 事务在 t2 修改的数据, t2>t1. 
     
  ```
 
@@ -289,6 +289,6 @@ relational database index design and the optimizers
 * 全文索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzU3ODQwNzc5LC05Njg5ODI3OCw4OTI1NT
-g4NDldfQ==
+eyJoaXN0b3J5IjpbLTE4ODY1MTQzOSwtOTY4OTgyNzgsODkyNT
+U4ODQ5XX0=
 -->
