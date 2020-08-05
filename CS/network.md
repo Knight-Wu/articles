@@ -54,7 +54,7 @@ TCP与UDP应用：
 因为TCP 是全双工的协议, 双方都可以发送和接收, 必须要一方发送结束信号, 另一方ack 之后才表示结束, 否则经过前两次挥手之后只是单向断开, 服务器还是能向客户端发送数据, 
 
 * 为什么客户端关闭连接前要等待2MSL时间？为什么需要time-wait
-1. 为了客户端最后一个ack 能确保到达服务器, 最后一个ack 有可能丢失, 则服务器会超时重传连接释放报文, 若客户端不等待, 则无法再次发送最后一个ack, 服务器无法关闭连接. 所以需要time-wait, 来重发最后一个ack. 
+1. 为了客户端最后一个ack 能确保到达服务器, 最后一个ack 有可能丢失, 则服务器会超时重传最后一个 FIN, 若客户端不等待, 则无法再次发送最后一个ack, 服务器无法关闭连接. 所以需要time-wait, 来重发最后一个ack. 
 2. 等待延迟的网络报文完全失效, 若不等待time-wait, 客户端以同样的方式跟服务端建立连接之后, 服务端可能会接收到之前延时的报文. 
 
 
@@ -162,8 +162,8 @@ https://cloud.tencent.com/developer/article/1004354
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjIxODIxMjQsMTQ0MTIxNDI5NSwtMTc0ND
-QzMTI0LDY5ODM1NTkxOSwxMjQ5NDkzOTg1LDE3NTY1NjQ1OTMs
-LTE3MzM5NzQwNzUsMTY3MTA3Mzg2OCwtODg4MTYxMDI1LC0xMD
-Q1MTI3NDQzLC0zOTEyMDc4NTldfQ==
+eyJoaXN0b3J5IjpbMTE1NjUxMjM4LDIyMTgyMTI0LDE0NDEyMT
+QyOTUsLTE3NDQ0MzEyNCw2OTgzNTU5MTksMTI0OTQ5Mzk4NSwx
+NzU2NTY0NTkzLC0xNzMzOTc0MDc1LDE2NzEwNzM4NjgsLTg4OD
+E2MTAyNSwtMTA0NTEyNzQ0MywtMzkxMjA3ODU5XX0=
 -->
