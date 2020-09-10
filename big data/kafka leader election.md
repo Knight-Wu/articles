@@ -12,9 +12,10 @@ For most use cases we hope to handle, we think this tradeoff is a reasonable one
 
 https://kafka.apache.org/documentation/#replication
 
-kafka 采用的 ISR 的 replication, 而不是 majority vote, 因为容忍 f 个错误, ISR 需要的 replica 只要 f+1, 而 majority vote 需要 2f+1 replica, 但是 majority vote 不需要等待最慢的机器返回, 只会等待较快的一批机器, 而 ISR 比较省存储, 而且吞吐量会更高, 因为 replica 越多写请求返回越慢. 所以一些集群pei
+kafka 采用的 ISR 的 replication, 而不是 majority vote, 因为容忍 f 个错误, ISR 需要的 replica 只要 f+1, 而 majority vote 需要 2f+1 replica, 但是 majority vote 不需要等待最慢的机器返回, 只会等待较快的一批机器, 而 ISR 比较省存储, 而且吞吐量会更高, 因为 replica 越多写请求返回越慢. 所以一些集群配置的同步一般用 majority vote, 而大数据量的同步用 ISR. 
+> This is likely why quorum algorithms more commonly appear for shared cluster configuration such as ZooKeeper but are less common for primary data storage. For example in HDFS the namenode's high-availability feature is built on a [majority-vote-based journal](http://blog.cloudera.com/blog/2012/10/quorum-based-journaling-in-cdh4-1), but this more expensive approach is not used for the data itself.
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY1MDg3MDE0XX0=
+eyJoaXN0b3J5IjpbODk5Mzg1NzE3XX0=
 -->
