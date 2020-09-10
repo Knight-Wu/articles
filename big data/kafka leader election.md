@@ -17,8 +17,10 @@ kafka 采用的 ISR 的 replication, 而不是 majority vote, 因为容忍 f 个
 
 
 ### 如何手动调整 leader 呢
-手动分配 partitions, 让 prefered leader 的比例低于 10 %, 然后除服
+手动分配 partitions, 让 prefered leader 的比例低于 10 %, 然后run prefered leader election. 
+
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDcwMDE1NzIsODk5Mzg1NzE3XX0=
+eyJoaXN0b3J5IjpbLTM1OTgxNTEwOSw4OTkzODU3MTddfQ==
 -->
