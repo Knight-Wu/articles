@@ -12,9 +12,9 @@ For most use cases we hope to handle, we think this tradeoff is a reasonable one
 
 https://kafka.apache.org/documentation/#replication
 
-kafka 采用的 ISR 的 replication, 而不是 majority vote, 因为容忍 f 个错误, ISR 需要的 replica 只要 f+1, 而 majority vote 需要 2f+1 replica, 但是 majority vote 不需要等待最慢的机器返回, 只会等待较快的一批机器, 而 ISR 比较sheng
+kafka 采用的 ISR 的 replication, 而不是 majority vote, 因为容忍 f 个错误, ISR 需要的 replica 只要 f+1, 而 majority vote 需要 2f+1 replica, 但是 majority vote 不需要等待最慢的机器返回, 只会等待较快的一批机器, 而 ISR 比较省存储, 而且吞吐量会更高, 因为 replica 越多写请求返回越慢. 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NDcxMzk3NDVdfQ==
+eyJoaXN0b3J5IjpbMTM5NzgyNjEyNF19
 -->
