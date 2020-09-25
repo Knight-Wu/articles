@@ -12,7 +12,7 @@
 
 ### 查看stacktrace duration
 ```
-1. go tool pprof http://localhost:8825/debug/pprof/profile -seconds 60
+1. go tool pprof -seconds 60 http://localhost:pprofPort/debug/pprof/profile 
 若 parsing profile: unrecognized profile format, 则可能因为 golang 版本问题, 在 mac 本地执行试试
 3. 然后会保存 pb.gz 文件到本地
 4. 如果linux 能直接打开最好, 如果打不开则scp 下载到本地
@@ -25,13 +25,13 @@ Entering interactive mode (type "help" for commands, "o" for options)
 
 6. 但是需要先安装 Graphviz, linux : apt-get install
 mac: brew install
-7. 第四步也可以 go tool pprof -http=:8810 pprof.xxx.samples.cpu.006.pb.gz
-8. 通过localhost:8810 webUI, 可以看到火焰图
+7. 第四步也可以 go tool pprof -http=:port pprof.xxx.samples.cpu.006.pb.gz
+8. 通过localhost:port webUI, 可以看到火焰图
 
 ```
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3NjkzMjY4LDEzMDM1Mzc4NDgsODE0Nz
-IzMTQwLC05Njk5MzY0MDZdfQ==
+eyJoaXN0b3J5IjpbNzg0OTgzNDA3LC03NzY5MzI2OCwxMzAzNT
+M3ODQ4LDgxNDcyMzE0MCwtOTY5OTM2NDA2XX0=
 -->
