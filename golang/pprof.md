@@ -12,7 +12,7 @@
 
 ### 查看stacktrace duration
 ```
-1. go tool pprof -seconds 60 http://localhost:pprofPort/debug/pprof/profile 
+1. go tool pprof -seconds 120 http://localhost:pprofPort/debug/pprof/profile 
 若 parsing profile: unrecognized profile format, 则可能因为 golang 版本问题, 在 mac 本地执行试试
 3. 然后会保存 pb.gz 文件到本地
 4. 如果linux 能直接打开最好, 如果打不开则scp 下载到本地
@@ -32,6 +32,7 @@ mac: brew install
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzg0OTgzNDA3LC03NzY5MzI2OCwxMzAzNT
-M3ODQ4LDgxNDcyMzE0MCwtOTY5OTM2NDA2XX0=
+eyJoaXN0b3J5IjpbLTE3NDA3MzM5MDYsNzg0OTgzNDA3LC03Nz
+Y5MzI2OCwxMzAzNTM3ODQ4LDgxNDcyMzE0MCwtOTY5OTM2NDA2
+XX0=
 -->
