@@ -420,12 +420,38 @@ echo $i
 done
 
 ```
+
+### linux hard limit, such as file descriptor limit
+>$ **ulimit -aH**
+core file size (blocks)       unlimited
+data seg size (kbytes)        unlimited
+file size (blocks)            unlimited
+max locked memory (kbytes)    unlimited
+max memory size (kbytes)      unlimited
+open files                    1024
+pipe size (512 bytes)         8
+stack size (kbytes)           unlimited
+cpu time (seconds)            unlimited
+max user processes            4094
+virtual memory (kbytes)       unlimited
+
+### List File Opened By a PID
+``` 
+lsof -p pid  
+lsof -a -p pid
+ ```
+OR  
+```
+cd /proc/pid/fd  
+ls -l | less 
+You can count open file, enter:   ls -l | wc -l
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzMDQwNzIzMywxNjk5NjUxNzgwLC0xNz
-QzMzQxODkyLC05ODM1OTM0ODYsMTEzMjU3NDE5NSwtNzk2MjYy
-MzUsLTE2OTU5MDk3MzksMzMxMzk1MjczLDY4MTA1NTM0MCw5OD
-c1OTcxNjgsMjEyMTQ4ODY2MCw4MDg2MjQxMTAsLTE0NjM0MTEy
-MDUsMTkzOTIxOTMyNywtNDA5ODg4ODE1LC0xODk1NjQ2OTg3LD
-UyMTUzOTc1MiwzNDc0MDkyOCwtNTIyNDQ1NjE2LDE2NjE1MzYw
-XX0=
+eyJoaXN0b3J5IjpbLTM0NTYzOTM3MSwxNDMwNDA3MjMzLDE2OT
+k2NTE3ODAsLTE3NDMzNDE4OTIsLTk4MzU5MzQ4NiwxMTMyNTc0
+MTk1LC03OTYyNjIzNSwtMTY5NTkwOTczOSwzMzEzOTUyNzMsNj
+gxMDU1MzQwLDk4NzU5NzE2OCwyMTIxNDg4NjYwLDgwODYyNDEx
+MCwtMTQ2MzQxMTIwNSwxOTM5MjE5MzI3LC00MDk4ODg4MTUsLT
+E4OTU2NDY5ODcsNTIxNTM5NzUyLDM0NzQwOTI4LC01MjI0NDU2
+MTZdfQ==
 -->
