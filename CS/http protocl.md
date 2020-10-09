@@ -19,9 +19,9 @@ http1.1 头部必须是 ascii, 数据体可以是二进制; http 2 头部和数�
 2. 多工(Multiplexing)
 请求和响应不需要按照顺序一一对应, 如果 server 发送 respA 的过程非常耗时, 可以先发送 respA 已经好的部分, 然后发送 respB, 再发送 resp A
 3. 数据流
-每个shu
+http2 将某个请求或响应的所有数据包称作一个数据流(stream), 由某个 ID 指定, 客户端发送的 ID 均是奇数, 服务器的则是偶数; 数据流
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDA1OTEyMDYsNTA3MDM5MTk2LC0xMT
-E0MDc5Mjk1LDc5NDI5ODU5N119
+eyJoaXN0b3J5IjpbNjc0NDE3MDIwLDUwNzAzOTE5NiwtMTExND
+A3OTI5NSw3OTQyOTg1OTddfQ==
 -->
