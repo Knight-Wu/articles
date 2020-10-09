@@ -10,9 +10,13 @@
 使用 content-length 的前提是, 必须知道返回的数据长度, 意味着服务器要等所有操作完成才能发送数据, 太慢了, 1.1 规定可以不使用 content-length, 而使用分块传输编码, 只要请求或响应, 头信息有 Transfer-Encoding, 则表明resp 将由数量未定的数据包组成. 
 
 * 缺点
-resp 需要按次序返回, 容易造成dui'tou'yong'du
+resp 需要按次序返回, 容易造成队头拥堵
+
+### http 2 相比 http 1.1 的优点
+1. 二进制协议
+http1.1 头部必须是 ascii, shu'j
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwNzEwNzcwOCw1MDcwMzkxOTYsLTExMT
-QwNzkyOTUsNzk0Mjk4NTk3XX0=
+eyJoaXN0b3J5IjpbODU1NTAyNDc0LDUwNzAzOTE5NiwtMTExND
+A3OTI5NSw3OTQyOTg1OTddfQ==
 -->
