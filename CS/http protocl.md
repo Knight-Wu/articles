@@ -14,9 +14,9 @@ resp 需要按次序返回, 容易造成队头拥堵
 
 ### http 2 相比 http 1.1 的优点
 1. 二进制协议
-http1.1 头部必须是 ascii, shu'j
+http1.1 头部必须是 ascii, 数据体可以是二进制; http 2 头部和数据体都可以是二进制
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODU1NTAyNDc0LDUwNzAzOTE5NiwtMTExND
-A3OTI5NSw3OTQyOTg1OTddfQ==
+eyJoaXN0b3J5IjpbLTEzNjgzNjYzMzksNTA3MDM5MTk2LC0xMT
+E0MDc5Mjk1LDc5NDI5ODU5N119
 -->
