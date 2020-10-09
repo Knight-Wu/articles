@@ -7,9 +7,9 @@
 3. Content-Length 
  一个tcp 连接可以发送多个 resp, 就需要区分数据包是属于哪个 resp 
 4. 分块传输编码
-使用 content-length 的前提是, 必须知道返回的数据长度, 意味着服务器要等所有操作完成才能发送数据, 太慢了, 1.1 规定可以不使用 content-length, 而使用分块传输bian'ma
+使用 content-length 的前提是, 必须知道返回的数据长度, 意味着服务器要等所有操作完成才能发送数据, 太慢了, 1.1 规定可以不使用 content-length, 而使用分块传输编码, 只要请求或响应, 头信息有 Transfer-Encoding, 则表明resp 将由数量未定的数据包组成. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODgzODQyNTUsLTExMTQwNzkyOTUsNz
-k0Mjk4NTk3XX0=
+eyJoaXN0b3J5IjpbNTA3MDM5MTk2LC0xMTE0MDc5Mjk1LDc5ND
+I5ODU5N119
 -->
