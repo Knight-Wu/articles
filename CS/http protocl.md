@@ -7,7 +7,9 @@
 3. Content-Length 
  一个tcp 连接可以发送多个 resp, 就需要区分数据包是属于哪个 resp 
 4. 分块传输编码
+使用 content
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTQwNzkyOTUsNzk0Mjk4NTk3XX0=
+eyJoaXN0b3J5IjpbLTM1MDEzMjI3NSwtMTExNDA3OTI5NSw3OT
+QyOTg1OTddfQ==
 -->
