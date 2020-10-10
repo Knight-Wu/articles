@@ -54,14 +54,14 @@ name 列: a, b, c, d
 1 这个值对应 bit 数组 [1, 0, 0, 0]
 2 对应 bit 数组 [0, 1, 0, 0]
 a 对应 bit 数组 [1, 0, 0, 0]
-
- col in (x,y,z) 转化为三个 bit 数组按位与, 即可得到满足要求的行数, 大大减少了存储和传输的带宽.
+where name = "a" and id=2, 将 [0, 1, 0, 0] 与 [1, 0, 0, 0] 按位与, 结果等于 1 的行即返回
+大大减少了存储和传输的带宽.
 
 位图编码也可以转换为游程编码(run-length encoded)
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3NDI5MTc5NSwxMjE1OTUxMzg2LDE1Mj
-cxMzgxOTQsMTY4Mzg5OTU0Myw2OTg2MTMxMDcsMjEzMzgyNTkz
-NSwtOTM2NTQ0Nzc5LDM4NDMzMjY2OCwxMTQzOTA4MTE0LDE1Nz
-U1OTg3NDUsLTMyMjA1Njc4Ml19
+eyJoaXN0b3J5IjpbLTE2NTU1NTk5MTUsMTIxNTk1MTM4NiwxNT
+I3MTM4MTk0LDE2ODM4OTk1NDMsNjk4NjEzMTA3LDIxMzM4MjU5
+MzUsLTkzNjU0NDc3OSwzODQzMzI2NjgsMTE0MzkwODExNCwxNT
+c1NTk4NzQ1LC0zMjIwNTY3ODJdfQ==
 -->
