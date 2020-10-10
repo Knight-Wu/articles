@@ -49,14 +49,19 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 * 列压缩
 
 适用于某一列中重复值特别多的, 将这一列用位图编码, 每一列的所有列值组成一个数组, 某个列值对应一个 bit 数组, 相同 index 下, bit 数组为 1, 
-li
+例如 id 列 1, 2 , 3, 9
+name 列: a, b, c, d
+1 这个值对应 bit 数组 [1, 0, 0, 0]
+2 对应 bit 数组 [0, 1, 0, 0]
+a 对应 bit 数组 [1, 0, 0, 0]
+
  col in (x,y,z) 转化为三个 bit 数组按位与, 即可得到满足要求的行数, 大大减少了存储和传输的带宽.
 
 位图编码也可以转换为游程编码(run-length encoded)
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTk2MTc3NzkyLDEyMTU5NTEzODYsMTUyNz
-EzODE5NCwxNjgzODk5NTQzLDY5ODYxMzEwNywyMTMzODI1OTM1
-LC05MzY1NDQ3NzksMzg0MzMyNjY4LDExNDM5MDgxMTQsMTU3NT
-U5ODc0NSwtMzIyMDU2NzgyXX0=
+eyJoaXN0b3J5IjpbLTY3NDI5MTc5NSwxMjE1OTUxMzg2LDE1Mj
+cxMzgxOTQsMTY4Mzg5OTU0Myw2OTg2MTMxMDcsMjEzMzgyNTkz
+NSwtOTM2NTQ0Nzc5LDM4NDMzMjY2OCwxMTQzOTA4MTE0LDE1Nz
+U1OTg3NDUsLTMyMjA1Njc4Ml19
 -->
