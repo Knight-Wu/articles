@@ -44,24 +44,23 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
  缺点: 当进行合并或压缩时, 会占用磁盘的资源导致读写变慢, 
 
 ### 列式存储
-有时候查询只需要一行中的某几列, 若用行存储, 则需要把拥有几百列的几行全部查出来才做过滤, 但是列存储, 把每一列都按照相同行顺序放在一个文件里. 
+有时候查询只需要一行中的某几列, 若用行存储, 则需要把拥有几百列的几行全部查出来才做过滤, 但是列存储, 把每一列都按照相同行顺序放在一个文件里. (parquet 就是一种列式存储)
 
 * 列压缩( 96 页 )
-适用于列中不同值的数量远小于行数,  将这一列的每一个不同值用位图编码, 每个不同的值分别用一个 bit 数组表示, 如果这个 bit 数组中零很多, 也可以用游程编码,  
+适用于列中不同值的数量远小于行数,  将这一列的每一个不同值用位图编码, 每个不同的值分别用一个 bit 数组表示, 如果这个 bit 数组中零很多, 也可以用游程编码(run-length encoded), 进一步减小存储空间.  
 例如 id 列 1, 2 , 3, 9
 name 列: a, b, c, d
-1 这个值对应 bit 数组 [1, 0, 0, 0]
+1 这个值对应 bit 数组 [1, 0, 0, 0], 游程编码: 1 个 one, 3 个 zero
 2 对应 bit 数组 [0, 1, 0, 0]
 a 对应 bit 数组 [1, 0, 0, 0]
-where name = "a" and id=2, 将 [0, 1, 0, 0] 与 [1, 0, 0, 0] 按位与, 结果等于 1 的行即返回
-大大减少了存储和传输的带宽.
+where name = "a" and id=2, 将 [0, 1, 0, 0] 与 [1, 0, 0, 0] 按位与, 结果等于 1 的行即返回, 大大减少了存储和传输的带宽.
 
-位图编码也可以转换为游程编码(run-length encoded)
+位图编码也可以转换为游程编码(
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1NDExNzA4NywxNjE1MDQzNTQ2LC0xNj
-U1NTU5OTE1LDEyMTU5NTEzODYsMTUyNzEzODE5NCwxNjgzODk5
-NTQzLDY5ODYxMzEwNywyMTMzODI1OTM1LC05MzY1NDQ3NzksMz
-g0MzMyNjY4LDExNDM5MDgxMTQsMTU3NTU5ODc0NSwtMzIyMDU2
-NzgyXX0=
+eyJoaXN0b3J5IjpbODQ1MTUwNDEsMTYxNTA0MzU0NiwtMTY1NT
+U1OTkxNSwxMjE1OTUxMzg2LDE1MjcxMzgxOTQsMTY4Mzg5OTU0
+Myw2OTg2MTMxMDcsMjEzMzgyNTkzNSwtOTM2NTQ0Nzc5LDM4ND
+MzMjY2OCwxMTQzOTA4MTE0LDE1NzU1OTg3NDUsLTMyMjA1Njc4
+Ml19
 -->
