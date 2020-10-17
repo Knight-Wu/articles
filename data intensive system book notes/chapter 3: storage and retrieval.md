@@ -47,8 +47,7 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 有时候查询只需要一行中的某几列, 若用行存储, 则需要把拥有几百列的几行全部查出来才做过滤, 但是列存储, 把每一列都按照相同行顺序放在一个文件里. 
 
 * 列压缩
-
-适用于某一列中重复值特别多的, 将这一列用位图编码, 每一列的所有列值组成一个数组, 某个列值对应一个 bit 数组, 相同 index 下, bit 数组为 1, 
+适用于列中不同值的数量远小于行数,  将这一列用位图编码, 每一列的所有列值组成一个数组, 某个列值对应一个 bit 数组, 相同 index 下, bit 数组为 1, 
 例如 id 列 1, 2 , 3, 9
 name 列: a, b, c, d
 1 这个值对应 bit 数组 [1, 0, 0, 0]
@@ -60,8 +59,8 @@ where name = "a" and id=2, 将 [0, 1, 0, 0] 与 [1, 0, 0, 0] 按位与, 结果�
 位图编码也可以转换为游程编码(run-length encoded)
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTU1NTk5MTUsMTIxNTk1MTM4NiwxNT
-I3MTM4MTk0LDE2ODM4OTk1NDMsNjk4NjEzMTA3LDIxMzM4MjU5
-MzUsLTkzNjU0NDc3OSwzODQzMzI2NjgsMTE0MzkwODExNCwxNT
-c1NTk4NzQ1LC0zMjIwNTY3ODJdfQ==
+eyJoaXN0b3J5IjpbMTYxNTA0MzU0NiwtMTY1NTU1OTkxNSwxMj
+E1OTUxMzg2LDE1MjcxMzgxOTQsMTY4Mzg5OTU0Myw2OTg2MTMx
+MDcsMjEzMzgyNTkzNSwtOTM2NTQ0Nzc5LDM4NDMzMjY2OCwxMT
+QzOTA4MTE0LDE1NzU1OTg3NDUsLTMyMjA1Njc4Ml19
 -->
