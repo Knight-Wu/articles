@@ -55,12 +55,11 @@ name 列: a, b, c, d
 a 对应 bit 数组 [1, 0, 0, 0]
 where name = "a" and id=2, 将 [0, 1, 0, 0] 与 [1, 0, 0, 0] 按位与, 结果等于 1 的行即返回, 大大减少了存储和传输的带宽.
 
-位图编码也可以转换为游程编码(
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQ1MTUwNDEsMTYxNTA0MzU0NiwtMTY1NT
-U1OTkxNSwxMjE1OTUxMzg2LDE1MjcxMzgxOTQsMTY4Mzg5OTU0
-Myw2OTg2MTMxMDcsMjEzMzgyNTkzNSwtOTM2NTQ0Nzc5LDM4ND
-MzMjY2OCwxMTQzOTA4MTE0LDE1NzU1OTg3NDUsLTMyMjA1Njc4
-Ml19
+eyJoaXN0b3J5IjpbNDU3MDAzMTk4LDg0NTE1MDQxLDE2MTUwND
+M1NDYsLTE2NTU1NTk5MTUsMTIxNTk1MTM4NiwxNTI3MTM4MTk0
+LDE2ODM4OTk1NDMsNjk4NjEzMTA3LDIxMzM4MjU5MzUsLTkzNj
+U0NDc3OSwzODQzMzI2NjgsMTE0MzkwODExNCwxNTc1NTk4NzQ1
+LC0zMjIwNTY3ODJdfQ==
 -->
