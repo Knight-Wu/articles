@@ -6,11 +6,12 @@ json 和 xml , csv 等原生不能表达二进制数据, 均用 Unicode, 占用�
 
 ### Thrift , Protocol Buffer
 * 编码中如何压缩
-int64 不一定占用八字节, 将
+int64 不一定占用八字节, 将每个字节的首位用于标识是否还有下一字节, 
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjg4MDY3MjIzLC0xODMzMDQzOTMzXX0=
+eyJoaXN0b3J5IjpbLTExNjE3MTMwMDUsLTE4MzMwNDM5MzNdfQ
+==
 -->
