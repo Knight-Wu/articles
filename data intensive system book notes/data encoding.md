@@ -1,10 +1,12 @@
-向后兼容(back compatibility): 指的是数据是时间轴往后产生的, 所以是旧的代码产生的数据能被新的代码识别.
-向前兼容(forward compatibility): 数据是时间轴往前产生的, 所以新的代码产生的数据能被旧的代码识别. 
+向后兼容(back compatibility): 指的是新的代码能兼容旧的数据. 
+向前兼容(forward compatibility): 旧代码能兼容新数据, 主语都是代码或程序
 
+### 编码
+json 和 xml , csv 等不
 
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzMwNDM5MzNdfQ==
+eyJoaXN0b3J5IjpbMTMzNTMwMjk0MiwtMTgzMzA0MzkzM119
 -->
