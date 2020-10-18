@@ -4,9 +4,13 @@
 ### 编码
 json 和 xml , csv 等原生不能表达二进制数据, 均用 Unicode, 占用空间, 且均有一些不够兼容的小问题, 例如 xml 和 csv 无法区分数字和仅有数字代表的字符串, 
 
+### Thrift , Protocol Buffer
+* 编码中如何压缩
+int64 不一定占用八字节, 将
+
 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3NTMxMDQwLC0xODMzMDQzOTMzXX0=
+eyJoaXN0b3J5IjpbMjg4MDY3MjIzLC0xODMzMDQzOTMzXX0=
 -->
