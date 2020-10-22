@@ -10,10 +10,11 @@ int64 不一定占用八字节, 将每个字节的首位用于标识是否还有
 
 * 如何向前兼容和向后兼容
 向前兼容: 旧代码读新数据, 新数据中包含一个新的字段, 用一个新的 tag, 旧代码使用的是旧的 schema 不会识别出新的 tag , 即忽略新的字段
-向后兼容: 新代码读取老数据, 新的 schema 的改动不能引起读取老数据的错误, 新的 schema 新加一个 tag (字段) ,旧的数据没有故读不到, 但是不能改变旧字段, 所以建议字段均是 optional(防止改成 required 校验失败), 删除字段意味着新代码不会读到旧代码的相关字段而已
+向后兼容: 新代码读取老数据, 新的 schema 的改动不能引起读取老数据的错误, 新的 schema 新加一个 tag (字段) ,旧的数据没有故读不到, 但是不能改变旧字段, 所以建议字段均是 optional(防止改成 required 校验失败), 删除字段意味着新代码不会读到旧代码的相关字段而已,
+如果 tag 不变, 改变数据类型则需要考虑兼容, 否则会出现截断或数据丢失的风险. 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAxNDY3NjY2NSwxNjk1NTY2MDEzLC0xMT
-YxNzEzMDA1LC0xODMzMDQzOTMzXX0=
+eyJoaXN0b3J5IjpbLTk5MTAwMTI3MCwyMDE0Njc2NjY1LDE2OT
+U1NjYwMTMsLTExNjE3MTMwMDUsLTE4MzMwNDM5MzNdfQ==
 -->
