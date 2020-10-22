@@ -9,10 +9,11 @@ json 和 xml , csv 等原生不能表达二进制数据, 均用 Unicode, 占用�
 int64 不一定占用八字节, 将每个字节的首位用于标识是否还有下一字节, 
 
 * 如何向前兼容和向后兼容
-向前兼容: 旧代码读新数据, 新加一个字段, 用yi'ge
+向前兼容: 旧代码读新数据, 新数据中包含一个新的字段, 用一个新的 tag, 旧代码不会识别出新的 tag , 即忽略新的字段
+向后兼容: 新代码读取老数据, 
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzgwNzI1NzMsMTY5NTU2NjAxMywtMT
-E2MTcxMzAwNSwtMTgzMzA0MzkzM119
+eyJoaXN0b3J5IjpbNzkzODU5OTQzLDE2OTU1NjYwMTMsLTExNj
+E3MTMwMDUsLTE4MzMwNDM5MzNdfQ==
 -->
