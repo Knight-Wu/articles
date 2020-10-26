@@ -14,10 +14,10 @@ int64 不一定占用八字节, 将每个字节的首位用于标识是否还有
 如果 tag 不变, 改变数据类型则需要考虑兼容, 否则会出现截断或数据丢失的风险. 
 
 ### Avro
-encoded bytes 并不包含 schema name 等, 也不包含指定 schema tag, 所以 writer schema 和 reader schema 必须要完全compatibility ; reader schema 通过 field name 找到 writer schema 对应的 field, 
+encoded bytes 并不包含 schema name 等, 也不包含指定 schema tag, 所以 writer schema 和 reader schema 必须要完全compatibility ; reader schema 通过 field name 找到 writer schema 对应的 field, 故通常来说不能改 field name, 但是可以在新的 schema 设置某一个fiel
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQ1ODk0OTU0LC05OTEwMDEyNzAsMjAxND
-Y3NjY2NSwxNjk1NTY2MDEzLC0xMTYxNzEzMDA1LC0xODMzMDQz
-OTMzXX0=
+eyJoaXN0b3J5IjpbMTUzOTY5NjU3MiwtOTkxMDAxMjcwLDIwMT
+Q2NzY2NjUsMTY5NTU2NjAxMywtMTE2MTcxMzAwNSwtMTgzMzA0
+MzkzM119
 -->
