@@ -15,10 +15,13 @@ int64 不一定占用八字节, 将每个字节的首位用于标识是否还有
 
 ### Avro
 encoded bytes 并不包含 schema name 等, 也不包含指定 schema tag, 所以 writer schema 和 reader schema 必须要完全compatibility ; reader schema 通过 field name 找到 writer schema 对应的 field, 故通常来说不能改 field name, 但是可以在新的 schema 设置某一个field 为旧 schema 的 alias, 提供backward compatibility;
-那么 writer schema 如何
+
+* 那么 writer schema 如何让 reader 知道呢? 
+Large file with lots of records , include writer schema at the beginning of the file
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5OTE4NTA1NSwtOTkxMDAxMjcwLDIwMT
+eyJoaXN0b3J5IjpbMjA3MDYzMjYzNywtOTkxMDAxMjcwLDIwMT
 Q2NzY2NjUsMTY5NTU2NjAxMywtMTE2MTcxMzAwNSwtMTgzMzA0
 MzkzM119
 -->
