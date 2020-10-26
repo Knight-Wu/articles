@@ -19,11 +19,11 @@ encoded bytes 并不包含 schema name 等, 也不包含指定 schema tag, 所�
 * 那么 writer schema 如何让 reader 知道呢? 
 1. Large file with lots of records , include writer schema at the beginning of the file
 2. Database with individually written records, match record with schema with schema version
-3. Sending records over a network connection, 
+3. Sending records over a network connection, 通过 avro RPC 框架, 在 conn 建立的时候指定 schema , 并用在整个 conn 的过程中
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTIxODk4OTE0LC05OTEwMDEyNzAsMjAxND
-Y3NjY2NSwxNjk1NTY2MDEzLC0xMTYxNzEzMDA1LC0xODMzMDQz
-OTMzXX0=
+eyJoaXN0b3J5IjpbMTM1OTI3MzMwNywtOTkxMDAxMjcwLDIwMT
+Q2NzY2NjUsMTY5NTU2NjAxMywtMTE2MTcxMzAwNSwtMTgzMzA0
+MzkzM119
 -->
