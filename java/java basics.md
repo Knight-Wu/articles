@@ -254,7 +254,6 @@ hashmap key和value都可以为null, 因为key 为null, 则hash值为0, hash& ta
     因为threadLocal的应用场景决定了数据量并不大, 采用开放地址法, 并采用Fibonacci hashing, 使hash 分布均匀, 在小数据量的时候存取会很快.
   
 * hashcode 
-
 作为一个native 的方法, 有以下三点规范, 来自代码注释
 1. 当对一个java application 的一次调用中, 必须返回同一个整型, 提供的信息也用于对象的相等比较，且不会被修改,但是在两次调用中, 不必返回相同的值
 2. 如果两个对象使用equal 方法区判断是否相等, 则调用hashCode 必须返回相同的结果
@@ -267,7 +266,7 @@ static final int hash(Object key) {
     return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);  
 }
 ```
-讲原 int32 的 hashcode 无符号右移 16 位在与原 hashcode 异或, 等于说高 16 位不变, 低 16 位是低十六位与高十六位的异或的结果, 因为某些 size 比较小的 map, 例如 size=8, size-1=7, 二进制: 0000 0111, hashcode & (size-1), 只有低三位会
+讲原 int32 的 hashcode 无符号右移 16 位在与原 hashcode 异或, 等于说高 16 位不变, 低 16 位是低十六位与高十六位的异或的结果, 因为某些 size 比较小的 map, 例如 size=8, size-1=7, 二进制: 0000 0111, hashcode & (size-1), 只用了低三位, 大大增加了冲突的概率, 
 
 * java 7 和java 8的hashmap 的主要优化在于
 https://juejin.im/post/5aa5d8d26fb9a028d2079264#heading-20
@@ -340,9 +339,9 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNDk0MzAzNSwyMDY4MzU2NTQsMTg0Nj
-IyMTM1MCwzNDcwOTc4NDcsLTE0NTkzMzkyMDQsMjEzMjcyNTUs
-LTE4NjU5MTE3ODMsMTM5OTM3NTc4LDEyNTU2ODEzMTEsLTU3NT
-Q5MTY0OSwtOTc1OTY0Mzk5LC0xMTc5MzEyMDg0LC0yMDEzOTI3
-NDM5XX0=
+eyJoaXN0b3J5IjpbNjI5MjkxNDQ0LDIwNjgzNTY1NCwxODQ2Mj
+IxMzUwLDM0NzA5Nzg0NywtMTQ1OTMzOTIwNCwyMTMyNzI1NSwt
+MTg2NTkxMTc4MywxMzk5Mzc1NzgsMTI1NTY4MTMxMSwtNTc1ND
+kxNjQ5LC05NzU5NjQzOTksLTExNzkzMTIwODQsLTIwMTM5Mjc0
+MzldfQ==
 -->
