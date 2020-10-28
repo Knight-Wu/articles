@@ -214,10 +214,25 @@ https://blog.csdn.net/claram/article/details/77750899
 ```
 可能的结果值为：0、1、16、17、32、33、48、49，对于一个长度为 50 的数组，我们只命中了其中的 8 个index. 
 
-假定 length = 16，二进制值为 0010 0000，这里我们使用 8 位二进制数来进行计算。length - 1 = 15，二进制值为 0001 1111。我们计算任何整数与 31 进行与运算的可能的结果如下：
+假定 length = 16，length - 1 = 15，二进制值为 0000 1111。我们计算任何整数与 31 进行与运算的可能的结果如下：
 
 ```
-0000  0000  //0  0000  0001  //1  0000  0010  //2  0000  0011  //3  0000  0100  //4  0000  0101  //5  0000  0110  //6  0000  0111  //7  0000  1000  //8  0000  1001  //9  0000  1010  //10  0000  1011  //11  0000  1100  //12  0000  1101  //13  0000  1110  //14  0000  1111  //15  0001  0000  //16  0001  0001  //17  0001  0010  //18  0001  0011  //19  0001  0100  //20  0001  0101  //21  0001  0110  //22  0001  0111  //23  0001  1000  //24  0001  1001  //25  0001  1010  //26  0001  1011  //27  0001  1100  //28  0001  1101  //29  0001  1110  //30  0001  1111  //31
+
+0000  0000  //0  
+0000  0001  //1  
+0000  0010  //2  
+0000  0011  //3  
+0000  0100  //4  
+0000  0101  //5  
+0000  0110  //6  
+0000  0111  //7  
+0000  1000  //8  
+0000  1001  //9  
+0000  1010  //10  
+0000  1011  //11  
+0000  1100  //12  
+0000  1101  //13  
+0000  1110  //14  0000  1111  //15
 ```
 二是相当于对length取模，而且在速度、效率上比直接取模要快得多
 
@@ -313,8 +328,8 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3MDg1MDg3MCwzNDcwOTc4NDcsLTE0NT
-kzMzkyMDQsMjEzMjcyNTUsLTE4NjU5MTE3ODMsMTM5OTM3NTc4
-LDEyNTU2ODEzMTEsLTU3NTQ5MTY0OSwtOTc1OTY0Mzk5LC0xMT
-c5MzEyMDg0LC0yMDEzOTI3NDM5XX0=
+eyJoaXN0b3J5IjpbLTExOTAzODYwMzIsMzQ3MDk3ODQ3LC0xND
+U5MzM5MjA0LDIxMzI3MjU1LC0xODY1OTExNzgzLDEzOTkzNzU3
+OCwxMjU1NjgxMzExLC01NzU0OTE2NDksLTk3NTk2NDM5OSwtMT
+E3OTMxMjA4NCwtMjAxMzkyNzQzOV19
 -->
