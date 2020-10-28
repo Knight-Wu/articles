@@ -32,7 +32,13 @@ git reset 大致与git checkout 一致, 只是会清除掉历史记录, 并不�
 
 * 如何刚刚checkout 一个分支, 并没有任何commit 的时候, 就进行merge
 https://stackoverflow.com/questions/4657009/how-to-merge-all-files-manually-in-git/36563486
+
+
+#### git diff
+git diff 两个分支或者两个 tag , 并且也可以指定路径, 若不加路径就是全项目 diff, 
+eg: git diff tag1 tag2 [path]
+或者你本地在 tag1, git diff tag2 [path]
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5MTU2OTM4MF19
+eyJoaXN0b3J5IjpbLTE3MDcwNTU0OTksLTg5MTU2OTM4MF19
 -->
