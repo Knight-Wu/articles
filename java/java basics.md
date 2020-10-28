@@ -247,8 +247,10 @@ hashmap key和value都可以为null, 因为key 为null, 则hash值为0, hash& ta
 * 解决hash冲突的方法
     * 开放地址法(例如 ThreadLocalMap), 冲突时,往下遍历, 直到找到null的位置; 缺点: 容易产生元素的堆聚, 因为较长的链总是更容易产生冲突, 从而元素会落到链的末尾.
     * 拉链法(HashMap)
-    *问题* 
+    
+    
     * 两个方法的优劣, 为什么ThreadLocalMap 采用开放地址法
+
     因为threadLocal的应用场景决定了数据量并不大, 采用开放地址法, 并采用Fibonacci hashing, 使hash 分布均匀, 在小数据量的时候存取会很快.
   
 * hashcode 
@@ -330,8 +332,8 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyMDU0OTkwMiwxODQ2MjIxMzUwLDM0Nz
-A5Nzg0NywtMTQ1OTMzOTIwNCwyMTMyNzI1NSwtMTg2NTkxMTc4
-MywxMzk5Mzc1NzgsMTI1NTY4MTMxMSwtNTc1NDkxNjQ5LC05Nz
-U5NjQzOTksLTExNzkzMTIwODQsLTIwMTM5Mjc0MzldfQ==
+eyJoaXN0b3J5IjpbMjA2ODM1NjU0LDE4NDYyMjEzNTAsMzQ3MD
+k3ODQ3LC0xNDU5MzM5MjA0LDIxMzI3MjU1LC0xODY1OTExNzgz
+LDEzOTkzNzU3OCwxMjU1NjgxMzExLC01NzU0OTE2NDksLTk3NT
+k2NDM5OSwtMTE3OTMxMjA4NCwtMjAxMzkyNzQzOV19
 -->
