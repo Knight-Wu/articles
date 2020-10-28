@@ -260,6 +260,14 @@ hashmap key和value都可以为null, 因为key 为null, 则hash值为0, hash& ta
 2. 如果两个对象使用equal 方法区判断是否相等, 则调用hashCode 必须返回相同的结果
 3. 如果两个对象使用equal 方法比较是不相等的, 则调用hashcode 方法必须返回不同的结果. 开发者需要意识到对unequal 的对象产生不同的hashcode 有利于提高hashtable 的性能. 
 
+* jdk1.8 hash 方法
+```
+static final int hash(Object key) {  
+    int h;  
+    return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);  
+}
+```
+讲原 int32 的 hashcode 无符号右移 16 位, deng'yu
 
 * java 7 和java 8的hashmap 的主要优化在于
 https://juejin.im/post/5aa5d8d26fb9a028d2079264#heading-20
@@ -332,8 +340,9 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2ODM1NjU0LDE4NDYyMjEzNTAsMzQ3MD
-k3ODQ3LC0xNDU5MzM5MjA0LDIxMzI3MjU1LC0xODY1OTExNzgz
-LDEzOTkzNzU3OCwxMjU1NjgxMzExLC01NzU0OTE2NDksLTk3NT
-k2NDM5OSwtMTE3OTMxMjA4NCwtMjAxMzkyNzQzOV19
+eyJoaXN0b3J5IjpbMTQ4MDc1OTAzNiwyMDY4MzU2NTQsMTg0Nj
+IyMTM1MCwzNDcwOTc4NDcsLTE0NTkzMzkyMDQsMjEzMjcyNTUs
+LTE4NjU5MTE3ODMsMTM5OTM3NTc4LDEyNTU2ODEzMTEsLTU3NT
+Q5MTY0OSwtOTc1OTY0Mzk5LC0xMTc5MzEyMDg0LC0yMDEzOTI3
+NDM5XX0=
 -->
