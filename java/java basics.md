@@ -238,8 +238,6 @@ https://blog.csdn.net/claram/article/details/77750899
 ```
 每个 index 都用到了, 均匀分布. 
 
-二是相当于对length取模，而且在速度、效率上比直接取模要快得多
-
 
 * null 的key 放在数组的第一位
 hashmap key和value都可以为null, 因为key 为null, 则hash值为0, hash& table.length -1 均为0, 所以key 为null的object 放在table[0], val覆盖.
@@ -332,8 +330,8 @@ https://juejin.im/entry/5a4ed02a51882573541c29d5
 简而言之对象的状态一旦初始化之后就是不可变的, 由以下几个直接的现象: 一是final 不能被继承, 不能被子类所修改; 二是每次都返回一个新的对象, 三是无需要多线程的同步 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg0NjIyMTM1MCwzNDcwOTc4NDcsLTE0NT
-kzMzkyMDQsMjEzMjcyNTUsLTE4NjU5MTE3ODMsMTM5OTM3NTc4
-LDEyNTU2ODEzMTEsLTU3NTQ5MTY0OSwtOTc1OTY0Mzk5LC0xMT
-c5MzEyMDg0LC0yMDEzOTI3NDM5XX0=
+eyJoaXN0b3J5IjpbMTAyMDU0OTkwMiwxODQ2MjIxMzUwLDM0Nz
+A5Nzg0NywtMTQ1OTMzOTIwNCwyMTMyNzI1NSwtMTg2NTkxMTc4
+MywxMzk5Mzc1NzgsMTI1NTY4MTMxMSwtNTc1NDkxNjQ5LC05Nz
+U5NjQzOTksLTExNzkzMTIwODQsLTIwMTM5Mjc0MzldfQ==
 -->
