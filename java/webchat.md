@@ -157,8 +157,8 @@ select shop_id
 
    select shop_id
         ,count(1) online_agents_count
-    from webchat_agent_shop_relation_list_tab r
-    inner join webchat_agent_chat_analyze_tab a
+    from webchat_agent_shop_relation_list_tab(一千两百万, 460MB) r
+    inner join webchat_agent_chat_analyze_tab(三百万条, 300MB) a
        on a.account_id=r.account_id
     where online_status=0
        and heartbeat_time>(UNIX_TIMESTAMP()-180)
@@ -218,5 +218,6 @@ left join (
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5OTU1ODM5OSwtMjU1MzA4NjM1XX0=
+eyJoaXN0b3J5IjpbLTIwNDM3OTY2MjksLTY5OTU1ODM5OSwtMj
+U1MzA4NjM1XX0=
 -->
