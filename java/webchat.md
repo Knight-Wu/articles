@@ -213,7 +213,8 @@ left join (
 ) ht on sm.shop_id=ht.shop_id;
 
 
-
+## mapper
+```
 <select id="queryShopOpenCloseData" resultMap="webChatShopDataResultMap">  
     SELECT shop_id,  
             count(DISTINCT if(is_open, conversation_id, NULL)) as chats_open_count,  
@@ -237,7 +238,8 @@ left join (
             limit #{limit}  
         </if>  
 </select>  
-  
+  ```
+```
 <select id="queryShopPendingData" resultMap="webChatShopDataResultMap">  
     SELECT shop_id,  
            0 as chats_open_count,   
@@ -255,7 +257,8 @@ left join (
         limit #{limit}  
     </if>  
 </select>  
-  
+  ```
+  ```
 <select id="queryShopOnlineAgentData" resultMap="webChatShopDataResultMap">  
     SELECT shop_id,  
            0 AS chats_open_count,  
@@ -279,7 +282,8 @@ left join (
         limit ${limit}  
     </if>  
 </select>  
-  
+  ```
+```
 <resultMap id="webChatShopDataResultMap" type="io.shopee.datagroup.dataway.entity.WebChatShopData">  
     <result property="shopId" column="shop_id"/>  
     <result property="chatsOpenCount" column="chats_open_count"/>  
@@ -287,6 +291,9 @@ left join (
     <result property="chatsPendingCount" column="chats_pending_count"/>  
     <result property="onLineAgentsCount" column="online_agents_count"/>  
 </resultMap>  
+```
+
+```
   
 <select id="queryAccountOpenCloseUnreadData" resultMap="webChatAccountDataResultMap">  
     SELECT user_id AS account_id,   
@@ -308,6 +315,8 @@ left join (
     </if>  
 </select>  
   
+  ```
+```
 <select id="queryAccountOnlineStatusData" resultMap="webChatAccountDataResultMap">  
     SELECT account_id,  
            0 as chats_open_count,  
@@ -325,9 +334,10 @@ left join (
         limit ${limit}  
     </if>  
 </select>
+```
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5MjY2ODA0NywtMjA0Mzc5NjYyOSwtNj
+eyJoaXN0b3J5IjpbLTQwOTE4NDk5NCwtMjA0Mzc5NjYyOSwtNj
 k5NTU4Mzk5LC0yNTUzMDg2MzVdfQ==
 -->
