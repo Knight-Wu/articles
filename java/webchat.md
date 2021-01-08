@@ -138,7 +138,7 @@ select shop_id
     ) agent
     GROUP BY shop_id
 
-    schema: shopid,account_id,chats_open_count,chats_close_count
+ schema: shopid,account_id,chats_open_count,chats_close_count
 
 
 * chat_pending: 
@@ -218,5 +218,5 @@ left join (
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjk2NjcyMDMsLTI1NTMwODYzNV19
+eyJoaXN0b3J5IjpbLTY5OTU1ODM5OSwtMjU1MzA4NjM1XX0=
 -->
