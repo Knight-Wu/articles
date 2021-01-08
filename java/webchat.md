@@ -60,7 +60,7 @@ from (
     WHERE main_account_id=${p.main_account_id} AND dt=${p.dt} AND agent_id in ${p.agent_ids}
 ) sm on si.id=sm.agent_id
 
-each-shop-for-agent:
+## each-shop-for-agent:
 select si.id as shop_id,
     ifnull(sm.orders,0) orders,
     ifnull(sm.quantity,0) quantity,
@@ -87,7 +87,7 @@ from (
     AND agent_id=${p.agent_id}
 ) sm on si.id=sm.shop_id;
 
-each-agent-for-shop:
+## each-agent-for-shop:
 
 select si.id as agent_id,
     ifnull(sm.orders,0) orders,
@@ -120,8 +120,7 @@ from (
 
 ## shop-real-overview:
 
-chat open , close: 
-flink new sql:  
+* chat open , close: 
 
 select shop_id
         ,count(distinct if(is_open,conversation_id,null)) chats_open_count
@@ -142,7 +141,8 @@ select shop_id
     schema: shopid,account_id,chats_open_count,chats_close_count
 
 
-##chat_pending: 
+* chat_pending: 
+
 select shop_id
         ,count(1) chats_pending_count
    from webchat_pending_analyze_tab
@@ -153,7 +153,7 @@ select shop_id
    schema: shop_id,chats_pending_count, 历史全量, 好像最多是两年前的, 存 hbase, 目前表数据量六千多万, 2.78gb
 
 
-online_agent_count:
+* online_agent_count:
 
    select shop_id
         ,count(1) online_agents_count
@@ -218,5 +218,5 @@ left join (
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyMzMxOTU4NSwtMjU1MzA4NjM1XX0=
+eyJoaXN0b3J5IjpbLTIxMjk2NjcyMDMsLTI1NTMwODYzNV19
 -->
