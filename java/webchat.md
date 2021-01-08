@@ -214,10 +214,120 @@ left join (
 
 
 
-
+<select id="queryShopOpenCloseData" resultMap="webChatShopDataResultMap">  
+    SELECT shop_id,  
+            count(DISTINCT if(is_open, conversation_id, NULL)) as chats_open_count,  
+            count(DISTINCT if(is_close, conversation_id, NULL)) as chats_close_count,  
+            0 as chats_pending_count,  
+            0 as online_agents_count  
+        FROM  
+          (SELECT shop_id,  
+                  conversation_id,  
+                  if(conversation_status=0, 1, 0) as is_open,  
+                  if(conversation_status=1 AND last_close_time>#{p.today_ts},1, 0) as is_close  
+           FROM webchat_conversation_analyze_tab  
+           WHERE shop_id in   
+             <foreach item="sId" collection="p.shop_ids" separator="," open="(" close=")">  
+               #{sId}  
+             </foreach>  
+             AND mtime > (CURRENT_DATE() - interval 30 DAY)  
+             AND user_id > 0 ) agent  
+        GROUP BY shop_id  
+        <if test="limit!=null">  
+            limit #{limit}  
+        </if>  
+</select>  
+  
+<select id="queryShopPendingData" resultMap="webChatShopDataResultMap">  
+    SELECT shop_id,  
+           0 as chats_open_count,   
+           0 as chats_close_count,  
+           count(1) as chats_pending_count,  
+           0 as online_agents_count  
+        FROM webchat_pending_analyze_tab  
+        WHERE shop_id in   
+        <foreach item="sId" collection="p.shop_ids" separator="," open="(" close=")">  
+          #{sId}  
+        </foreach>  
+          AND pending_status = 1  
+        GROUP BY shop_id  
+    <if test="limit!=null">  
+        limit #{limit}  
+    </if>  
+</select>  
+  
+<select id="queryShopOnlineAgentData" resultMap="webChatShopDataResultMap">  
+    SELECT shop_id,  
+           0 AS chats_open_count,  
+           0 AS chats_close_count,  
+           0 AS chats_pending_count,  
+           count(*) AS online_agents_count  
+        FROM  
+          (SELECT shop_id,  
+                (heartbeat_time + 180 - UNIX_TIMESTAMP()) AS time_minus  
+          FROM webchat_agent_shop_relation_list_tab r  
+          INNER JOIN webchat_agent_chat_analyze_tab a ON a.account_id=r.account_id  
+          WHERE online_status=0  
+              AND shop_id in   
+              <foreach item="sId" collection="p.shop_ids" separator="," open="(" close=")">   
+                  #{sId}   
+              </foreach>  
+              AND r.agent_status=1) sub_tab  
+        WHERE sub_tab.time_minus > 0  
+        GROUP BY sub_tab.shop_id  
+    <if test="limit!=null">  
+        limit ${limit}  
+    </if>  
+</select>  
+  
+<resultMap id="webChatShopDataResultMap" type="io.shopee.datagroup.dataway.entity.WebChatShopData">  
+    <result property="shopId" column="shop_id"/>  
+    <result property="chatsOpenCount" column="chats_open_count"/>  
+    <result property="chatsCloseCount" column="chats_close_count"/>  
+    <result property="chatsPendingCount" column="chats_pending_count"/>  
+    <result property="onLineAgentsCount" column="online_agents_count"/>  
+</resultMap>  
+  
+<select id="queryAccountOpenCloseUnreadData" resultMap="webChatAccountDataResultMap">  
+    SELECT user_id AS account_id,   
+           SUM(IF(conversation_status = 0 AND status != 1, unread_status, 0)) AS chats_unread_count,  
+           SUM(IF(conversation_status = 0 AND status != 1, 1, 0)) AS chats_open_count,  
+           SUM(IF(conversation_status = 1 AND status != 1 AND last_close_time > #{p.today_ts}, 1, 0)) AS chats_close_count,  
+           0 as online_status,  
+           0 as online_time_count,  
+           0 as hangup_time_count  
+    FROM webchat_conversation_analyze_tab        
+    WHERE user_id IN  
+           <foreach item="sId" collection="p.account_ids" separator="," open="(" close=")">  
+             #{sId}  
+           </foreach>        
+          AND mtime > CURRENT_DATE() - INTERVAL 30 DAY        
+    GROUP BY user_id   
+    <if test="limit!=null">  
+        limit ${limit}  
+    </if>  
+</select>  
+  
+<select id="queryAccountOnlineStatusData" resultMap="webChatAccountDataResultMap">  
+    SELECT account_id,  
+           0 as chats_open_count,  
+           0 as chats_close_count,  
+           0 as chats_unread_count,  
+           IF(online_status != 2 AND heartbeat_time > unix_timestamp() - 180, online_status, 2) AS online_status,  
+           IF(online_time >= #{p.today_ts}, online_time_count, 0) AS online_time_count,  
+           IF(hangup_time >= #{p.today_ts}, hangup_time_count, 0) AS hangup_time_count        
+    FROM  webchat_agent_chat_analyze_tab        
+    WHERE account_id IN  
+        <foreach item="sId" collection="p.account_ids" separator="," open="(" close=")">  
+            #{sId}  
+        </foreach>          
+    <if test="limit!=null">  
+        limit ${limit}  
+    </if>  
+</select>
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDM3OTY2MjksLTY5OTU1ODM5OSwtMj
-U1MzA4NjM1XX0=
+eyJoaXN0b3J5IjpbMTM5MjY2ODA0NywtMjA0Mzc5NjYyOSwtNj
+k5NTU4Mzk5LC0yNTUzMDg2MzVdfQ==
 -->
