@@ -118,7 +118,7 @@ from (
 
 
 
-shop-real-overview:
+## shop-real-overview:
 
 chat open , close: 
 flink new sql:  
@@ -142,7 +142,7 @@ select shop_id
     schema: shopid,account_id,chats_open_count,chats_close_count
 
 
-chat_pending: 
+##chat_pending: 
 select shop_id
         ,count(1) chats_pending_count
    from webchat_pending_analyze_tab
@@ -218,5 +218,5 @@ left join (
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1NTMwODYzNV19
+eyJoaXN0b3J5IjpbMTUyMzMxOTU4NSwtMjU1MzA4NjM1XX0=
 -->
