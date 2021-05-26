@@ -275,7 +275,7 @@ COMMIT;
 mysql 默认隔离级别是重复读
 ![enter image description here](https://drive.google.com/uc?id=1NdpnXgkU7Q3TW0G73P0WPR_ejiUgf-Qp)
 
-**这个对隔离级别解释更详细 :** https://blog.csdn.net/qq_35190492/article/details/109044141
+**这个对隔离级别解释更详细 : 解释了 MVCC 和 undo log** https://blog.csdn.net/qq_35190492/article/details/109044141
 
 #### mysql 悲观锁和乐观锁
 https://blog.csdn.net/puhaiyang/article/details/72284702
@@ -289,6 +289,6 @@ relational database index design and the optimizers
 * 全文索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3Njg1MjU0OSwtMTg4NjUxNDM5LC05Nj
-g5ODI3OCw4OTI1NTg4NDldfQ==
+eyJoaXN0b3J5IjpbMTk2MjE3Njc1OSwxOTc2ODUyNTQ5LC0xOD
+g2NTE0MzksLTk2ODk4Mjc4LDg5MjU1ODg0OV19
 -->
