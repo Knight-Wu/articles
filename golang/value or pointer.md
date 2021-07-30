@@ -10,7 +10,11 @@ Any changes to the receiver made inside of a method defined on a value type (e.g
 This works because a pointer type can access the methods of its associated value type, but not vice versa.
 
 Since everything is passed by value, it should be obvious why a `*Cat` method is not usable by a `Cat` value; any one `Cat` value may have any number of `*Cat` pointers that point to it. If we try to call a `*Cat` method by using a `Cat` value, we never had a `*Cat` pointer to begin with. Conversely, if we have a method on the `Dog` type, and we have a `*Dog` pointer, we know exactly which `Dog` value to use when calling this method, because the `*Dog` pointer points to exactly one `Dog` value( 所以 method receiver 最好是 pointer)
+
+
+Remember: everything is pass-by-value in Go. That means that inside of the `UnmarshalJSON` method, the pointer `t` is not the same pointer as the pointer in its calling context; it is a copy. If you were to assign `t` to another value directly, you would just be reassigning a function-local pointer; the change would not be seen by the caller.
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyNjE3NTU5OSwtMTEzNzEwODE1OF19
+eyJoaXN0b3J5IjpbLTE1MjQ1NzIyMDYsMTUyNjE3NTU5OSwtMT
+EzNzEwODE1OF19
 -->
