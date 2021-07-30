@@ -23,8 +23,11 @@ is a function of type  `func(T, string)`; method receivers are passed into the f
 -   an  `interface{}`  value is not of any type; it is of  `interface{}`  type
 -   interfaces are two words wide; schematically they look like  `(type, value)`
 
+*  `var u User` will automatically [zero](https://href.li/?http://golang.org/ref/spec#The_zero_value "http://golang.org/ref/spec#The_zero_value") the `User` struct. Go is not like some other languages in that declaration and initialization occur separately,
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyNjI4MjgzNywtMTM5Mjk3MTE1OSwtNj
-kxNTU5ODA2LDE1MjYxNzU1OTksLTExMzcxMDgxNThdfQ==
+eyJoaXN0b3J5IjpbMzA0MTM2NzM2LDEzMjYyODI4MzcsLTEzOT
+I5NzExNTksLTY5MTU1OTgwNiwxNTI2MTc1NTk5LC0xMTM3MTA4
+MTU4XX0=
 -->
