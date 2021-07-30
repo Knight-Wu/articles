@@ -1,4 +1,5 @@
 
+### https://jordanorelli.com/post/32665860244/how-to-use-interfaces-in-go 总结
 func (t T)MyMethod(s string) {
     // ...
 }
@@ -16,9 +17,10 @@ Since everything is passed by value, it should be obvious why a `*Cat` method is
 Remember: everything is pass-by-value in Go. That means that inside of the `UnmarshalJSON` method, the pointer `t` is not the same pointer as the pointer in its calling context; it is a copy. If you were to assign `t` to another value directly, you would just be reassigning a function-local pointer; the change would not be seen by the caller.
 (包括指针也是, 所以在函数内把指针重新指向, 对函数外也不生效)
 
-
+as a rule of thumb you can just remember that it’s typically better to take in an `interface{}` value as a parameter than it is to return an `interface{}` value 
+(interface 最好作为参数而不是返回值) 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NDIxMTg1NjIsLTY5MTU1OTgwNiwxNT
+eyJoaXN0b3J5IjpbLTEzOTI5NzExNTksLTY5MTU1OTgwNiwxNT
 I2MTc1NTk5LC0xMTM3MTA4MTU4XX0=
 -->
