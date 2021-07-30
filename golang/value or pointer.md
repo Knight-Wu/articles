@@ -7,7 +7,9 @@ is a function of type  `func(T, string)`; method receivers are passed into the f
 
 Any changes to the receiver made inside of a method defined on a value type (e.g., `func (d Dog) Speak() { ... }`) will not be seen by the caller because the caller is scoping a completely separate `Dog` value.
 
+This works because a pointer type can access the methods of its associated value type, but not vice versa.
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzcxMDgxNThdfQ==
+eyJoaXN0b3J5IjpbMTUwNjc0NjE5OSwtMTEzNzEwODE1OF19
 -->
