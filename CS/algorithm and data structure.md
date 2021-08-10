@@ -498,6 +498,8 @@ https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-b
 常作为暴力破解, 穷举的一种优化, 类似于走迷宫,  走错了回头, 递归形式, 
 有以下几个规范: 达到递归的结束条件, 通常能得到一个穷举的答案; 
 
+### 跳表
+查询的时间复杂度是 O(lgn), n 为元素个数, 近似为二分查找, 等同于跳表的高度, 
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/
@@ -511,7 +513,7 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQwODQxMzQ4MCwxMzgyMzU4NDg4LDY5MD
-I2NDk3MCwtODMwODE5OTg5LDE3MTc0NTYyNjMsLTE1MTY1NDYz
-ODNdfQ==
+eyJoaXN0b3J5IjpbLTEwMzkwNDk2NDMsMTQwODQxMzQ4MCwxMz
+gyMzU4NDg4LDY5MDI2NDk3MCwtODMwODE5OTg5LDE3MTc0NTYy
+NjMsLTE1MTY1NDYzODNdfQ==
 -->
