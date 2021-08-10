@@ -501,7 +501,7 @@ https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-b
 ### 跳表
 查询的时间复杂度是 O(lgn), n 为元素个数, 近似为二分查找, 等同于跳表的高度, 
 插入和删除的时间复杂度其实也是 O(lgn), 但是比查询多了一点, 因为需要构建和删除索引, 
-
+范围查询的时间复杂度是 
 #### 资源
 * 算法第四版
 https://algs4.cs.princeton.edu/
@@ -515,7 +515,7 @@ https://leetcode.com/problems/rotate-string/solution/
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI3MDk5MDA2MSwxNDA4NDEzNDgwLDEzOD
-IzNTg0ODgsNjkwMjY0OTcwLC04MzA4MTk5ODksMTcxNzQ1NjI2
-MywtMTUxNjU0NjM4M119
+eyJoaXN0b3J5IjpbMjEwMzIwNzY3LDE0MDg0MTM0ODAsMTM4Mj
+M1ODQ4OCw2OTAyNjQ5NzAsLTgzMDgxOTk4OSwxNzE3NDU2MjYz
+LC0xNTE2NTQ2MzgzXX0=
 -->
