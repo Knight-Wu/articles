@@ -6,10 +6,12 @@ per-consumer queue with an associated BTree or other general-purpose random acce
 * zero copy 
 如果不用 zero copy, 那么从读文件到通过网络发送需要经过以下四个步骤
 1. 操作系统从磁盘读文件到内核空间的 page cache
-2. 应用从内核空间的 page cache 读到用户
+2. 应用从内核空间的 page cache 读到用户空间的 buffer
+3. 应用从用户空间的 buffer 写到内核空间的 socket buffer
+4. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NzI0Njc2NDAsMTE2NTk5Mzk0NCwtMj
-E0NDgyNzU3NiwxNjY5NTcwMTExLDEzMjAwOTUyNjcsLTkyODI2
-ODQ5Nl19
+eyJoaXN0b3J5IjpbLTU0NTkyNTYzMywxMTY1OTkzOTQ0LC0yMT
+Q0ODI3NTc2LDE2Njk1NzAxMTEsMTMyMDA5NTI2NywtOTI4MjY4
+NDk2XX0=
 -->
