@@ -7,11 +7,11 @@ per-consumer queue with an associated BTree or other general-purpose random acce
 相比 store and forward, 需要在 producer 持久化, 不可控
 
 * consumer 为啥用 pull 
-因为若 push, 速率要不由 broker 控制, 要不就需要来回协调, 还不如pull 由 consumer 控制速率, 以他最大的能力消费; 
-同样, 若 push , 因为不知道消费的速率则在低延迟的需求下, 需要小批量的发送消息到 consumer, 但是如果 pull , consumer 以尽可能的方式p
+1.因为若 push, 速率要不由 broker 控制, 要不就需要来回协调, 还不如pull 由 consumer 控制速率, 以他最大的能力消费; 
+同样, 若 push , 因为不知道消费的速率则在低延迟的需求下, 需要小批量的发送消息到 consumer, 但是如果 pull , consumer 以尽可能的方式 pull, 由 consumer 具体场景决定了延迟, 而不需要 broker 决定消息的延迟
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1NTYyMTg5MywtMTMyOTY0NjEzNCwxMT
+eyJoaXN0b3J5IjpbMTI2OTYwMjUxOSwtMTMyOTY0NjEzNCwxMT
 Y1OTkzOTQ0LC0yMTQ0ODI3NTc2LDE2Njk1NzAxMTEsMTMyMDA5
 NTI2NywtOTI4MjY4NDk2XX0=
 -->
