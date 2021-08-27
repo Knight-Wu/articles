@@ -8,10 +8,10 @@ per-consumer queue with an associated BTree or other general-purpose random acce
 1. 操作系统从磁盘读文件到内核空间的 page cache
 2. 应用从内核空间的 page cache 读到用户空间的 buffer
 3. 应用从用户空间的 buffer 写到内核空间的 socket buffer
-4. 
+4. 操作系统从内核空间的 socket buffer 读取数据写到 NIC buffer, 再网络发送
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0NTkyNTYzMywxMTY1OTkzOTQ0LC0yMT
-Q0ODI3NTc2LDE2Njk1NzAxMTEsMTMyMDA5NTI2NywtOTI4MjY4
-NDk2XX0=
+eyJoaXN0b3J5IjpbLTEzMjk2NDYxMzQsMTE2NTk5Mzk0NCwtMj
+E0NDgyNzU3NiwxNjY5NTcwMTExLDEzMjAwOTUyNjcsLTkyODI2
+ODQ5Nl19
 -->
