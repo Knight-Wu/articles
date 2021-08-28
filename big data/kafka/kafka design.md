@@ -12,10 +12,11 @@ per-consumer queue with an associated BTree or other general-purpose random acce
 
 ### kafka exactly once
 1. 消费和发送都是在 kafka topic 间, kafka 有 transaction 支持, 并且能够设置消息的隔离级别, 否则如果是其他目标系统, 则需要目标系统支持两阶段提交. 或者可以将consume offset 和输出结果一起保存, 也可以实现 exactly once , 例如讲 offset 保留到输出文件的文件名. 
-2. commit offset 设置在消息处理的前后能分别达到 at most once 和 at least once. 
+2. consumer, commit offset 设置在消息处理的前后能分别达到 at most once 和 at least once. 
+3. producer 默认是
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUxODIxOTk0LC0xODE5NzI3MTMwLC0xMz
-I5NjQ2MTM0LDExNjU5OTM5NDQsLTIxNDQ4Mjc1NzYsMTY2OTU3
-MDExMSwxMzIwMDk1MjY3LC05MjgyNjg0OTZdfQ==
+eyJoaXN0b3J5IjpbMTc1NDg0MDgsLTE4MTk3MjcxMzAsLTEzMj
+k2NDYxMzQsMTE2NTk5Mzk0NCwtMjE0NDgyNzU3NiwxNjY5NTcw
+MTExLDEzMjAwOTUyNjcsLTkyODI2ODQ5Nl19
 -->
