@@ -9,9 +9,12 @@ per-consumer queue with an associated BTree or other general-purpose random acce
 * consumer 为啥用 pull 
 1. push 消费速率难控制, 速率要不由 broker 控制, 要不就需要来回协调, 还不如pull 由 consumer 控制速率, 以他最大的能力消费; 
 2. push 消息延迟难取舍, 若 push , 因为不知道消费的速率则在低延迟的需求下, 需要小批量的发送消息到 consumer, 但是如果 pull , consumer 以尽可能的方式 pull, 由 consumer 具体场景决定了延迟, 而不需要 broker 决定消息的延迟.
+
+* kafka exactly once
+
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTk3MjcxMzAsLTEzMjk2NDYxMzQsMT
-E2NTk5Mzk0NCwtMjE0NDgyNzU3NiwxNjY5NTcwMTExLDEzMjAw
-OTUyNjcsLTkyODI2ODQ5Nl19
+eyJoaXN0b3J5IjpbNDA0MTIwNDMsLTE4MTk3MjcxMzAsLTEzMj
+k2NDYxMzQsMTE2NTk5Mzk0NCwtMjE0NDgyNzU3NiwxNjY5NTcw
+MTExLDEzMjAwOTUyNjcsLTkyODI2ODQ5Nl19
 -->
