@@ -11,10 +11,10 @@ per-consumer queue with an associated BTree or other general-purpose random acce
 2. push 消息延迟难取舍, 若 push , 因为不知道消费的速率则在低延迟的需求下, 需要小批量的发送消息到 consumer, 但是如果 pull , consumer 以尽可能的方式 pull, 由 consumer 具体场景决定了延迟, 而不需要 broker 决定消息的延迟.
 
 * kafka exactly once
-
+1. 消费和发送都是在 kafka topic 间, kafka 有 transaction 支持, 并且能够设置消息
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDA0MTIwNDMsLTE4MTk3MjcxMzAsLTEzMj
-k2NDYxMzQsMTE2NTk5Mzk0NCwtMjE0NDgyNzU3NiwxNjY5NTcw
-MTExLDEzMjAwOTUyNjcsLTkyODI2ODQ5Nl19
+eyJoaXN0b3J5IjpbOTM1MjcwNjYyLC0xODE5NzI3MTMwLC0xMz
+I5NjQ2MTM0LDExNjU5OTM5NDQsLTIxNDQ4Mjc1NzYsMTY2OTU3
+MDExMSwxMzIwMDk1MjY3LC05MjgyNjg0OTZdfQ==
 -->
