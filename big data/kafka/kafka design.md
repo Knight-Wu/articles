@@ -14,10 +14,13 @@ per-consumer queue with an associated BTree or other general-purpose random acce
 1. 消费和发送都是在 kafka topic 间, kafka 有 transaction 支持, 并且能够设置消息的隔离级别, 否则如果是其他目标系统, 则需要目标系统支持两阶段提交. 或者可以将consume offset 和输出结果一起保存, 也可以实现 exactly once , 例如讲 offset 保留到输出文件的文件名. 
 2. consumer, commit offset 设置在消息处理的前后能分别达到 at most once 和 at least once. 
 3. producer , 当有 retry 的情况是 at least once, 不 retry 就是 at most once, 设置了幂等(需要 ack=all, retry) 则是 exactly once. 
-4. 
+
+### kafka replication
+通过 ISR (in sync replica) , 假设 ISR 有三个 包括一个 leader, 那么只到 ISR 里面所有机器都 copy 了 message , messa
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3MTk1MDM2OCwtMTgxOTcyNzEzMCwtMT
-MyOTY0NjEzNCwxMTY1OTkzOTQ0LC0yMTQ0ODI3NTc2LDE2Njk1
-NzAxMTEsMTMyMDA5NTI2NywtOTI4MjY4NDk2XX0=
+eyJoaXN0b3J5IjpbMjAwMzExMTg4NiwtNTcxOTUwMzY4LC0xOD
+E5NzI3MTMwLC0xMzI5NjQ2MTM0LDExNjU5OTM5NDQsLTIxNDQ4
+Mjc1NzYsMTY2OTU3MDExMSwxMzIwMDk1MjY3LC05MjgyNjg0OT
+ZdfQ==
 -->
