@@ -20,10 +20,13 @@ per-consumer queue with an associated BTree or other general-purpose random acce
 
 ### leader election
 how 
+
+### log compaction
+message 由 key 和 value 组成, 每隔一段时间会对 log entry 进行 compact, 相同 key 只保留最新的那个 keyVal, 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwNjQ1MTc5OCwxMDc2NzY1MDU2LC01Nz
-E5NTAzNjgsLTE4MTk3MjcxMzAsLTEzMjk2NDYxMzQsMTE2NTk5
-Mzk0NCwtMjE0NDgyNzU3NiwxNjY5NTcwMTExLDEzMjAwOTUyNj
-csLTkyODI2ODQ5Nl19
+eyJoaXN0b3J5IjpbODUxMDg1Mjg3LDE2MDY0NTE3OTgsMTA3Nj
+c2NTA1NiwtNTcxOTUwMzY4LC0xODE5NzI3MTMwLC0xMzI5NjQ2
+MTM0LDExNjU5OTM5NDQsLTIxNDQ4Mjc1NzYsMTY2OTU3MDExMS
+wxMzIwMDk1MjY3LC05MjgyNjg0OTZdfQ==
 -->
