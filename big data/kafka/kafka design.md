@@ -16,10 +16,10 @@ per-consumer queue with an associated BTree or other general-purpose random acce
 3. producer , 当有 retry 的情况是 at least once, 不 retry 就是 at most once, 设置了幂等(需要 ack=all, retry) 则是 exactly once. 
 
 ### kafka replication
-通过 ISR (in sync replica) , 假设 ISR 有 n+1 个 包括一个 leader, 那么只到 ISR 里面所有机器都 copy 了 message , message 才能当做提交了, 能容忍n 个错误; 相比于 majoritory vote(2n+1个副本), 副本所带来的的写压力大大降低, 但是majo vote 的好处是不需要等待最慢的机器 ack . 
+通过 ISR (in sync replica) , 假设 ISR 有 n+1 个 包括一个 leader, 那么只到 ISR 里面所有机器都 copy 了 message , message 才能当做提交了, 能容忍n 个错误; 相比于 majority vote(2n+1个副本), 副本所带来的的写压力大大降低, 但是majority  vote 的好处是不需要等待最慢的机器 ack . 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1Nzg1MzgxOSwtNTcxOTUwMzY4LC0xOD
+eyJoaXN0b3J5IjpbMTA3Njc2NTA1NiwtNTcxOTUwMzY4LC0xOD
 E5NzI3MTMwLC0xMzI5NjQ2MTM0LDExNjU5OTM5NDQsLTIxNDQ4
 Mjc1NzYsMTY2OTU3MDExMSwxMzIwMDk1MjY3LC05MjgyNjg0OT
 ZdfQ==
