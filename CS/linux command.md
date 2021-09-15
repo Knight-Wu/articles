@@ -473,8 +473,9 @@ lsblk -d -o name,rota
 where  `ROTA`  means  `rotational device`(hdd)  (`1`  if true,  `0`  if false) 
 
 ### check raid conf
+https://www.cyberciti.biz/faq/how-to-check-raid-configuration-in-linux/
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTYyNzI1MzQ2LC03ODQ5ODAwMjEsLTM0NT
+eyJoaXN0b3J5IjpbMTI0MTQ1Mzk4LC03ODQ5ODAwMjEsLTM0NT
 YzOTM3MSwxNDMwNDA3MjMzLDE2OTk2NTE3ODAsLTE3NDMzNDE4
 OTIsLTk4MzU5MzQ4NiwxMTMyNTc0MTk1LC03OTYyNjIzNSwtMT
 Y5NTkwOTczOSwzMzEzOTUyNzMsNjgxMDU1MzQwLDk4NzU5NzE2
