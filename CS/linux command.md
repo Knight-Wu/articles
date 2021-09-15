@@ -452,14 +452,26 @@ You can count open file, enter:   ls -l | wc -l
 
 ###  Empty File Content by Redirecting to Null
 ```  
-> fileName
+echo > fileName
+```
+
+### monitor disk usage
+
+```
+dstat -cd --disk-util --disk-tps
+```
+
+### check ssd or hdd
+```
+cat /sys/block/sda/queue/rotational
+
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4NDk4MDAyMSwtMzQ1NjM5MzcxLDE0Mz
-A0MDcyMzMsMTY5OTY1MTc4MCwtMTc0MzM0MTg5MiwtOTgzNTkz
-NDg2LDExMzI1NzQxOTUsLTc5NjI2MjM1LC0xNjk1OTA5NzM5LD
-MzMTM5NTI3Myw2ODEwNTUzNDAsOTg3NTk3MTY4LDIxMjE0ODg2
-NjAsODA4NjI0MTEwLC0xNDYzNDExMjA1LDE5MzkyMTkzMjcsLT
-QwOTg4ODgxNSwtMTg5NTY0Njk4Nyw1MjE1Mzk3NTIsMzQ3NDA5
-MjhdfQ==
+eyJoaXN0b3J5IjpbMzk0MDU0OTQ3LC03ODQ5ODAwMjEsLTM0NT
+YzOTM3MSwxNDMwNDA3MjMzLDE2OTk2NTE3ODAsLTE3NDMzNDE4
+OTIsLTk4MzU5MzQ4NiwxMTMyNTc0MTk1LC03OTYyNjIzNSwtMT
+Y5NTkwOTczOSwzMzEzOTUyNzMsNjgxMDU1MzQwLDk4NzU5NzE2
+OCwyMTIxNDg4NjYwLDgwODYyNDExMCwtMTQ2MzQxMTIwNSwxOT
+M5MjE5MzI3LC00MDk4ODg4MTUsLTE4OTU2NDY5ODcsNTIxNTM5
+NzUyXX0=
 -->
