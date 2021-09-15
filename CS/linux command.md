@@ -464,10 +464,17 @@ dstat -cd --disk-util --disk-tps
 ### check ssd or hdd
 ```
 cat /sys/block/sda/queue/rotational
+```
+You should get  `1`  for hard disks and  `0` for a SSD.
 
 ```
+lsblk -d -o name,rota
+```
+where  `ROTA`  means  `rotational device`(hdd)  (`1`  if true,  `0`  if false) 
+
+### check raid conf
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzk0MDU0OTQ3LC03ODQ5ODAwMjEsLTM0NT
+eyJoaXN0b3J5IjpbNTYyNzI1MzQ2LC03ODQ5ODAwMjEsLTM0NT
 YzOTM3MSwxNDMwNDA3MjMzLDE2OTk2NTE3ODAsLTE3NDMzNDE4
 OTIsLTk4MzU5MzQ4NiwxMTMyNTc0MTk1LC03OTYyNjIzNSwtMT
 Y5NTkwOTczOSwzMzEzOTUyNzMsNjgxMDU1MzQwLDk4NzU5NzE2
