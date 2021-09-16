@@ -487,12 +487,18 @@ This is something that should be very slow on rotating drive in comparison with 
 
 ### check raid conf
 https://www.cyberciti.biz/faq/how-to-check-raid-configuration-in-linux/
+
+
+### check process if killed by os
+```
+dmesg -T | egrep -i 'killed process'
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDAyNTE3ODQsMTI0MTQ1Mzk4LC03OD
-Q5ODAwMjEsLTM0NTYzOTM3MSwxNDMwNDA3MjMzLDE2OTk2NTE3
-ODAsLTE3NDMzNDE4OTIsLTk4MzU5MzQ4NiwxMTMyNTc0MTk1LC
-03OTYyNjIzNSwtMTY5NTkwOTczOSwzMzEzOTUyNzMsNjgxMDU1
-MzQwLDk4NzU5NzE2OCwyMTIxNDg4NjYwLDgwODYyNDExMCwtMT
-Q2MzQxMTIwNSwxOTM5MjE5MzI3LC00MDk4ODg4MTUsLTE4OTU2
-NDY5ODddfQ==
+eyJoaXN0b3J5IjpbLTQzNzUxOTgzNywtMTcwMDI1MTc4NCwxMj
+QxNDUzOTgsLTc4NDk4MDAyMSwtMzQ1NjM5MzcxLDE0MzA0MDcy
+MzMsMTY5OTY1MTc4MCwtMTc0MzM0MTg5MiwtOTgzNTkzNDg2LD
+ExMzI1NzQxOTUsLTc5NjI2MjM1LC0xNjk1OTA5NzM5LDMzMTM5
+NTI3Myw2ODEwNTUzNDAsOTg3NTk3MTY4LDIxMjE0ODg2NjAsOD
+A4NjI0MTEwLC0xNDYzNDExMjA1LDE5MzkyMTkzMjcsLTQwOTg4
+ODgxNV19
 -->
