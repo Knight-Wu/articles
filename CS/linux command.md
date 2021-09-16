@@ -471,15 +471,28 @@ You should get  `1`  for hard disks and  `0` for a SSD.
 lsblk -d -o name,rota
 ```
 where  `ROTA`  means  `rotational device`(hdd)  (`1`  if true,  `0`  if false) 
+上面方法都不准, 
+测试随机读最准
+  
+Let's try to read 1000 random 4k blocks from first 16GB of a disk:
+
+```
+time for i in `seq 1 1000`; do
+    dd bs=4k if=/dev/sda count=1 skip=$(( $RANDOM * 128 )) >/dev/null 2>&1;
+done
+
+```
+
+This is something that should be very slow on rotating drive in comparison with SSD. On my desktop class SSD it ends in about a second. On desktop class 7200rpm rotating drive it ends in 10 seconds.
 
 ### check raid conf
 https://www.cyberciti.biz/faq/how-to-check-raid-configuration-in-linux/
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0MTQ1Mzk4LC03ODQ5ODAwMjEsLTM0NT
-YzOTM3MSwxNDMwNDA3MjMzLDE2OTk2NTE3ODAsLTE3NDMzNDE4
-OTIsLTk4MzU5MzQ4NiwxMTMyNTc0MTk1LC03OTYyNjIzNSwtMT
-Y5NTkwOTczOSwzMzEzOTUyNzMsNjgxMDU1MzQwLDk4NzU5NzE2
-OCwyMTIxNDg4NjYwLDgwODYyNDExMCwtMTQ2MzQxMTIwNSwxOT
-M5MjE5MzI3LC00MDk4ODg4MTUsLTE4OTU2NDY5ODcsNTIxNTM5
-NzUyXX0=
+eyJoaXN0b3J5IjpbLTE3MDAyNTE3ODQsMTI0MTQ1Mzk4LC03OD
+Q5ODAwMjEsLTM0NTYzOTM3MSwxNDMwNDA3MjMzLDE2OTk2NTE3
+ODAsLTE3NDMzNDE4OTIsLTk4MzU5MzQ4NiwxMTMyNTc0MTk1LC
+03OTYyNjIzNSwtMTY5NTkwOTczOSwzMzEzOTUyNzMsNjgxMDU1
+MzQwLDk4NzU5NzE2OCwyMTIxNDg4NjYwLDgwODYyNDExMCwtMT
+Q2MzQxMTIwNSwxOTM5MjE5MzI3LC00MDk4ODg4MTUsLTE4OTU2
+NDY5ODddfQ==
 -->
