@@ -153,7 +153,7 @@ grep -o keyword filename|wc -l
 total = used+ free+ buff/cache
 ![1](B6A2BA2EF42C420BBB5EF95034F9F367)
 
-* top
+* htop
  查看各进程资源
 top -Hbp processId // 查看这个进程的所有线程, 输入的pId 实际是线程id,
 https://blog.csdn.net/flysqrlboy/article/details/79314521
@@ -494,11 +494,11 @@ https://www.cyberciti.biz/faq/how-to-check-raid-configuration-in-linux/
 dmesg -T | egrep -i 'killed process'
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzNzUxOTgzNywtMTcwMDI1MTc4NCwxMj
-QxNDUzOTgsLTc4NDk4MDAyMSwtMzQ1NjM5MzcxLDE0MzA0MDcy
-MzMsMTY5OTY1MTc4MCwtMTc0MzM0MTg5MiwtOTgzNTkzNDg2LD
-ExMzI1NzQxOTUsLTc5NjI2MjM1LC0xNjk1OTA5NzM5LDMzMTM5
-NTI3Myw2ODEwNTUzNDAsOTg3NTk3MTY4LDIxMjE0ODg2NjAsOD
-A4NjI0MTEwLC0xNDYzNDExMjA1LDE5MzkyMTkzMjcsLTQwOTg4
-ODgxNV19
+eyJoaXN0b3J5IjpbMTg1ODMzNTk1MywtNDM3NTE5ODM3LC0xNz
+AwMjUxNzg0LDEyNDE0NTM5OCwtNzg0OTgwMDIxLC0zNDU2Mzkz
+NzEsMTQzMDQwNzIzMywxNjk5NjUxNzgwLC0xNzQzMzQxODkyLC
+05ODM1OTM0ODYsMTEzMjU3NDE5NSwtNzk2MjYyMzUsLTE2OTU5
+MDk3MzksMzMxMzk1MjczLDY4MTA1NTM0MCw5ODc1OTcxNjgsMj
+EyMTQ4ODY2MCw4MDg2MjQxMTAsLTE0NjM0MTEyMDUsMTkzOTIx
+OTMyN119
 -->
