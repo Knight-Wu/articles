@@ -458,8 +458,7 @@ echo > fileName
 ### monitor disk usage
 
 ```
-dstat -cd --disk-util --disk-tps
-```
+iostat -y 30 -m -h -x -d```
 
 ### check ssd or hdd
 ```
@@ -494,11 +493,11 @@ https://www.cyberciti.biz/faq/how-to-check-raid-configuration-in-linux/
 dmesg -T | egrep -i 'killed process'
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1ODMzNTk1MywtNDM3NTE5ODM3LC0xNz
-AwMjUxNzg0LDEyNDE0NTM5OCwtNzg0OTgwMDIxLC0zNDU2Mzkz
-NzEsMTQzMDQwNzIzMywxNjk5NjUxNzgwLC0xNzQzMzQxODkyLC
-05ODM1OTM0ODYsMTEzMjU3NDE5NSwtNzk2MjYyMzUsLTE2OTU5
-MDk3MzksMzMxMzk1MjczLDY4MTA1NTM0MCw5ODc1OTcxNjgsMj
-EyMTQ4ODY2MCw4MDg2MjQxMTAsLTE0NjM0MTEyMDUsMTkzOTIx
-OTMyN119
+eyJoaXN0b3J5IjpbMTU4MDE1NDYyNiwxODU4MzM1OTUzLC00Mz
+c1MTk4MzcsLTE3MDAyNTE3ODQsMTI0MTQ1Mzk4LC03ODQ5ODAw
+MjEsLTM0NTYzOTM3MSwxNDMwNDA3MjMzLDE2OTk2NTE3ODAsLT
+E3NDMzNDE4OTIsLTk4MzU5MzQ4NiwxMTMyNTc0MTk1LC03OTYy
+NjIzNSwtMTY5NTkwOTczOSwzMzEzOTUyNzMsNjgxMDU1MzQwLD
+k4NzU5NzE2OCwyMTIxNDg4NjYwLDgwODYyNDExMCwtMTQ2MzQx
+MTIwNV19
 -->
