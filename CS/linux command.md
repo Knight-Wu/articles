@@ -459,7 +459,7 @@ echo > fileName
 
 ```
 iostat -y 30 -m -h -x -d```
-
+```
 ### check ssd or hdd
 ```
 cat /sys/block/sda/queue/rotational
@@ -491,21 +491,26 @@ https://www.cyberciti.biz/faq/how-to-check-raid-configuration-in-linux/
 ### check process if killed by os
 ```
 dmesg -T | egrep -i 'killed process'
-
-``
+```
+dmesg 获取系统日志
 
 
 ### benchmark disk performance
-* 读
-* 写吞吐量
-dd if=/dev/zero of=/tmp/mnt/temp oflag=direct bs=128k count=32k
+> lsblk
+获取磁盘
+* 读吞吐量
+>hdparm -tv /dev/sdc1
 
+* 写吞吐量
+```
+dd if=/dev/zero of=/tmp/mnt/temp oflag=direct bs=128k count=32k
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5NDYwODY5MSwxNTgwMTU0NjI2LDE4NT
-gzMzU5NTMsLTQzNzUxOTgzNywtMTcwMDI1MTc4NCwxMjQxNDUz
-OTgsLTc4NDk4MDAyMSwtMzQ1NjM5MzcxLDE0MzA0MDcyMzMsMT
-Y5OTY1MTc4MCwtMTc0MzM0MTg5MiwtOTgzNTkzNDg2LDExMzI1
-NzQxOTUsLTc5NjI2MjM1LC0xNjk1OTA5NzM5LDMzMTM5NTI3My
-w2ODEwNTUzNDAsOTg3NTk3MTY4LDIxMjE0ODg2NjAsODA4NjI0
-MTEwXX0=
+eyJoaXN0b3J5IjpbLTExMzU4NDAxODYsMTU4MDE1NDYyNiwxOD
+U4MzM1OTUzLC00Mzc1MTk4MzcsLTE3MDAyNTE3ODQsMTI0MTQ1
+Mzk4LC03ODQ5ODAwMjEsLTM0NTYzOTM3MSwxNDMwNDA3MjMzLD
+E2OTk2NTE3ODAsLTE3NDMzNDE4OTIsLTk4MzU5MzQ4NiwxMTMy
+NTc0MTk1LC03OTYyNjIzNSwtMTY5NTkwOTczOSwzMzEzOTUyNz
+MsNjgxMDU1MzQwLDk4NzU5NzE2OCwyMTIxNDg4NjYwLDgwODYy
+NDExMF19
 -->
