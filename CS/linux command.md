@@ -497,7 +497,8 @@ dmesg 获取系统日志
 
 ### benchmark disk performance
 > lsblk
-获取磁盘
+
+获取磁盘基本信息
 * 读吞吐量
 >hdparm -tv /dev/sdc1
 
@@ -505,8 +506,14 @@ dmesg 获取系统日志
 ```
 dd if=/dev/zero of=/tmp/mnt/temp oflag=direct bs=128k count=32k
 ```
+
+* 读写 iops
+https://support.binarylane.com.au/support/solutions/articles/1000055889-how-to-benchmark-disk-i-o
+```
+./fio --randrepeat=1 --ioengine=libaio --direct=1 --gtod_reduce=1 --name=test --filename=test --bs=4k --iodepth=64 --size=4G --readwrite=randrw --rwmixread=75
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzU4NDAxODYsMTU4MDE1NDYyNiwxOD
+eyJoaXN0b3J5IjpbLTE3OTE4NTg3NDYsMTU4MDE1NDYyNiwxOD
 U4MzM1OTUzLC00Mzc1MTk4MzcsLTE3MDAyNTE3ODQsMTI0MTQ1
 Mzk4LC03ODQ5ODAwMjEsLTM0NTYzOTM3MSwxNDMwNDA3MjMzLD
 E2OTk2NTE3ODAsLTE3NDMzNDE4OTIsLTk4MzU5MzQ4NiwxMTMy
