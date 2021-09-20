@@ -491,13 +491,21 @@ https://www.cyberciti.biz/faq/how-to-check-raid-configuration-in-linux/
 ### check process if killed by os
 ```
 dmesg -T | egrep -i 'killed process'
-```
+
+``
+
+
+### benchmark disk performance
+* 读
+* 写吞吐量
+dd if=/dev/zero of=/tmp/mnt/temp oflag=direct bs=128k count=32k
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4MDE1NDYyNiwxODU4MzM1OTUzLC00Mz
-c1MTk4MzcsLTE3MDAyNTE3ODQsMTI0MTQ1Mzk4LC03ODQ5ODAw
-MjEsLTM0NTYzOTM3MSwxNDMwNDA3MjMzLDE2OTk2NTE3ODAsLT
-E3NDMzNDE4OTIsLTk4MzU5MzQ4NiwxMTMyNTc0MTk1LC03OTYy
-NjIzNSwtMTY5NTkwOTczOSwzMzEzOTUyNzMsNjgxMDU1MzQwLD
-k4NzU5NzE2OCwyMTIxNDg4NjYwLDgwODYyNDExMCwtMTQ2MzQx
-MTIwNV19
+eyJoaXN0b3J5IjpbMTM5NDYwODY5MSwxNTgwMTU0NjI2LDE4NT
+gzMzU5NTMsLTQzNzUxOTgzNywtMTcwMDI1MTc4NCwxMjQxNDUz
+OTgsLTc4NDk4MDAyMSwtMzQ1NjM5MzcxLDE0MzA0MDcyMzMsMT
+Y5OTY1MTc4MCwtMTc0MzM0MTg5MiwtOTgzNTkzNDg2LDExMzI1
+NzQxOTUsLTc5NjI2MjM1LC0xNjk1OTA5NzM5LDMzMTM5NTI3My
+w2ODEwNTUzNDAsOTg3NTk3MTY4LDIxMjE0ODg2NjAsODA4NjI0
+MTEwXX0=
 -->
