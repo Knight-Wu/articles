@@ -6,10 +6,10 @@
 
 ### term index
 .tip 文件, 实际上就是 index to the term dictionary, 具体结构见: https://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html, 每一个 field 都会产生一个独立 FST , 
-FST 相当于一个 SortedMap<ByteSequence,SomeOutput>, key 是
+FST 相当于一个 SortedMap<ByteSequence,SomeOutput>, key 是 term 的前缀, val 是term 的一些信息在 disk 的位置
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwNzk3NzI5MywyMTQ3MzczODIxLC0xNz
+eyJoaXN0b3J5IjpbLTE5NTEwNDczNSwyMTQ3MzczODIxLC0xNz
 YxMTE2ODgxXX0=
 -->
