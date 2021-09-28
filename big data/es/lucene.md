@@ -5,10 +5,11 @@
 .tim 文件, 可通过 term 找到 docId 以及 term 的元数据(例如 term 在 doc 中的词频; 以 block 的形式组织, 每个 block 保存着一定数量的 term 或 reference to a sub-block.
 
 ### term index
-.tip 文件, 实际上就是 index to the term dictionary, 具体结构见: https://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html, 每一个 field 都会产生一个
+.tip 文件, 实际上就是 index to the term dictionary, 具体结构见: https://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html, 每一个 field 都会产生一个独立 FST , 
+FST 相当于一个 SortedMap<ByteSequence,SomeOutput>, key 是
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyODUwOTEyOCwyMTQ3MzczODIxLC0xNz
+eyJoaXN0b3J5IjpbMTYwNzk3NzI5MywyMTQ3MzczODIxLC0xNz
 YxMTE2ODgxXX0=
 -->
