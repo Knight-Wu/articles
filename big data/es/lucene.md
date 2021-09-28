@@ -11,9 +11,9 @@ dictionary 以 block 的形式组织
 FST 相当于一个 SortedMap<ByteSequence,SomeOutput>, key 是 term 的前缀, val 是block 在 disk 的位置, block 即 term dictionary 提到的.  
 
 ### term frequencies
-.doc 文件, 保存着
+.doc 文件, 保存着 term 对应的 doc 列表, 以及 term 出现的频率. 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyOTcyMDU3MywtMTY4MzgwNzI3NCwyMT
+eyJoaXN0b3J5IjpbMTUzMDkxOTMzMiwtMTY4MzgwNzI3NCwyMT
 Q3MzczODIxLC0xNzYxMTE2ODgxXX0=
 -->
