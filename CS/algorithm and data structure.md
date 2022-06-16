@@ -12,7 +12,6 @@
 用文字表述：算法时间复杂度为log（n）时，不同底数对应的时间复杂度的倍数关系为常数，不会随着底数的不同而不同，因此可以将不同底数的对数函数所代表的时间复杂度，当作是同一类复杂度处理，即抽象成一类问题。
 当然这里的底数2和3可以用a和b替代，a，b大于等于2，属于整数。a,b取值是如何确定的呢？
 有点编程经验的都知道，分而治之的概念。排序算法中有一个叫做“归并排序”或者“合并排序”的算法，它用到的就是分而治之的思想，而它的时间复杂度就是N*logN，此算法采用的是二分法，所以可以认为对应的对数函数底数为2，也有可能是三分法，底数为3，以此类推。
-
 ### 树
 * 树的遍历
 最简单的划分：是深度优先（先访问子节点，再访问父节点，最后是第二个子节点）？还是广度优先（先访问第一个子节点，再访问第二个子节点，最后访问父节点）？ 深度优先可进一步按照根节点相对于左右子节点的访问先后来划分。如果把左节点和右节点的位置固定不动，那么根节点放在左节点的左边，称为前序（pre-order）、根节点放在左节点和右节点的中间，称为中序（in-order）、根节点放在右节点的右边，称为后序（post-order）。对广度优先而言，遍历没有前序中序后序之分：给定一组已排序的子节点，其“广度优先”的遍历只有一种唯一的结果。
@@ -267,38 +266,35 @@ static void selectS(int[] arr) {
 初始化建堆的时间复杂度O(n), 整个算法的时间复杂度O(nlgn)
 ```
 
-static void heapS(int[] arr) {  
-    int len = arr.length - 1;  
-    for (int i = (len - 1) / 2; i >= 0; i--) {  
-        buildHeap(arr, i, len);  
-    }  
-  
-    for (int i = len; i > 0; i--) {  
-  
-        int temp = arr[0];  
-        arr[0] = arr[i];  
-        arr[i] = temp;  
-        buildHeap(arr, 0, i - 1);  
-    }  
-}  
-  
-static void buildHeap(int[] arr, int i, int len) {  
-    int l = i * 2 + 1;  
-    int r = i * 2 + 2;  
-    int moreI = l;  
-    if (l > len) {  
-        return;  
-    }  
-    if (r <= len && arr[r] > arr[moreI]) {  
-        moreI = r;  
-    }  
-    if (arr[moreI] > arr[i]) {  
-        int temp = arr[moreI];  
-        arr[moreI] = arr[i];  
-        arr[i] = temp;  
-        buildHeap(arr, moreI, len);  
-    }  
-}
+  static int[] heapSortAsc(int[] arr) {
+    for (int i = (arr.length - 2) / 2; i >= 0; i--) {
+      buildMaxHeap(arr, i, arr.length - 1);
+    }
+
+    for (int i = arr.length - 1; i >= 1; i--) {
+      int tmp = arr[0];
+      arr[0] = arr[i];
+      arr[i] = tmp;
+      buildMaxHeap(arr,   0, i - 1);
+    }
+    return arr;
+  }
+
+  static void buildMaxHeap(int[] arr, int leaf, int end) {
+    int l = leaf * 2 + 1;
+    int r = leaf * 2 + 2;
+    if (l > end) return;
+    int max = l;
+    if (r <= end && arr[r] > arr[l]) {
+      max = r;
+    }
+    if (arr[max] > arr[leaf]) {
+      int tmp = arr[leaf];
+      arr[leaf] = arr[max];
+      arr[max] = tmp;
+    }
+    buildMaxHeap(arr, max, end);
+  }
 
 ```
 
