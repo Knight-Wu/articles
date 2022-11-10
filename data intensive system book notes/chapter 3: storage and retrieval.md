@@ -7,7 +7,7 @@ crash recovery: 可以存储 hash index 的 snapshot 在磁盘上, 避免 crash 
 
 * 为什么不直接在 file 进行 update key, 而是append key, 然后再后台线程进行合并和去重呢? (why append only file ? )
 
-因为就算在 SSD 顺序读写也是更快的, append only file 很好的利用了这个特性, update key 会造成随机读写. 
+因为就算在 SSD 顺序读写也是比不上内存的, append only file 很好的利用了这个特性, update key 会造成随机读写. 
 
 * 缺陷
 1. hash index 如果不能完全放在内存中, 磁盘随机 IO 会很慢
@@ -19,9 +19,7 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 1. 排序之前, 两个 file segments 进行合并, 一个有 n 行, 另一个有 m 行, 合并多个重复的 key, 合并成一个 segment 的时间复杂度是 O(m*n), 排序之后是归并排序, 是 O(m+n)
 2. index 不需要保留每个 key, 只需要能断定 key 所在的范围, 再查找
 3. 因为一个 index key 能得到一组 key, 所以可以把这一组 key 在存入磁盘前进行压缩. 
-
 那如何使插入的 key 是有序的呢, 使用红黑树等数据结构, 
-
 现有的 storage engine 描述如下: 
 1. 写入 key , val 首先到 memTable(红黑树等数据结构)
 2. 当 memTable 膨胀到一定程度, 将有序的 key, val, 写入到磁盘 SSTable( 每个 SSTable 对应一个 sparse index(稀疏 index) ? )
@@ -32,16 +30,6 @@ SSTables 即 key 是排序的, 跟原来相比好处在哪呢,
 
 思想: 一次写操作由一次顺序 IO(log append)和一次内存写就能完成, 大大提升了写性能, 写包括更新和删除, 这两个都是在内存中记一个标记, 待后续合并的时候就知道数据被更新了.
 
-* 问题
-1. 内存中的数据如何写到磁盘
-2. 磁盘的文件如何 merge
-
-### B tree
-读和写都需要多次 IO 定位到具体的 key 上, 
-
-### B tree 和 LSM tree 的区别
- LSM tree 的优点: 写入吞吐量更大, 合并导致磁盘碎片更小, 
- 缺点: 当进行合并或压缩时, 会占用磁盘的资源导致读写变慢, 
 
 ### 列式存储
 有时候查询只需要一行中的某几列, 若用行存储, 则需要把拥有几百列的几行全部查出来才做过滤, 但是列存储, 把每一列都按照相同行顺序放在一个文件里. (parquet 就是一种列式存储)

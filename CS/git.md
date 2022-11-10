@@ -38,7 +38,42 @@ https://stackoverflow.com/questions/4657009/how-to-merge-all-files-manually-in-g
 git diff 两个分支或者两个 tag , 并且也可以指定路径, 若不加路径就是全项目 diff, 
 eg: git diff tag1 tag2 [path]
 或者你本地在 tag1, git diff tag2 [path]
-> Written with [StackEdit](https://stackedit.io/).
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDcwNTU0OTksLTg5MTU2OTM4MF19
--->
+
+#### Changing an Older or Multiple Commits
+If you need to change the message of an older or multiple commits, you can use an interactive git rebase to change one or more older commits.
+
+The rebase command rewrites the commit history, and it is strongly discouraged to rebase commits that are already pushed to the remote Git repository .
+
+Navigate to the repository containing the commit message you want to change.
+
+Type git rebase -i HEAD~N, where N is the number of commits to perform a rebase on. For example, if you want to change the 4th and the 5th latest commits, you would type:
+
+git rebase -i HEAD~5
+The command will display the latest X commits in your default text editor :
+
+pick 43f8707f9 fix: update dependency json5 to ^2.1.1
+pick cea1fb88a fix: update dependency verdaccio to ^4.3.3
+pick aa540c364 fix: update dependency webpack-dev-server to ^3.8.2
+pick c5e078656 chore: update dependency flow-bin to ^0.109.0
+pick 11ce0ab34 fix: Fix spelling.
+
+Rebase 7e59e8ead..11ce0ab34 onto 7e59e8ead (5 commands)
+Move to the lines of the commit message you want to change and replace pick with reword:
+
+reword 43f8707f9 fix: update dependency json5 to ^2.1.1
+reword cea1fb88a fix: update dependency verdaccio to ^4.3.3
+pick aa540c364 fix: update dependency webpack-dev-server to ^3.8.2
+pick c5e078656 chore: update dependency flow-bin to ^0.109.0
+pick 11ce0ab34 fix: Fix spelling.
+
+ebase 7e59e8ead..11ce0ab34 onto 7e59e8ead (5 commands)
+Copy
+Save the changes and close the editor.
+
+For each chosen commit, a new text editor window will open. Change the commit message, save the file, and close the editor.
+
+fix: update dependency json5 to ^2.1.1
+Copy
+Force push the changes to the remote repository:
+
+git push --force <remoteName> <branchName>

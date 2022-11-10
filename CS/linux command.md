@@ -1,3 +1,7 @@
+* awk get first column and for each and run command
+```
+deploy=$(kubectl get deploy|grep indexer|awk '{ print $1}');for d in $deploy;do kubectl set image deployment/$d indexer=image:tag;done
+```
 * grep and tail 
  
 ```
@@ -6,6 +10,7 @@ tail -n 10000 fileName| grep  "search phrase"
 
 tail -nf file.name 
 // 滚动获取文件的后n行
+tail -f -n +1 file|grep error // 从file 第一行开始grep 再tail
 ```
 * 返回文件及目录中关键词的个数
 ```
@@ -189,7 +194,6 @@ sz // 下载文件,
 
 
 >cat /etc/*-release
-
 * yum
 > yum search packageName
 * yum提示another app is currently holding the yum lock;waiting for it to exit
@@ -450,7 +454,7 @@ You can count open file, enter:   ls -l | wc -l
 ### Count All Open File Handles
 > lsof | wc -l
 
-###  Empty File Content by Redirecting to Null
+### Empty File Content by Redirecting to Null
 ```  
 echo > fileName
 ```

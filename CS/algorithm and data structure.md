@@ -1,3 +1,7 @@
+### 待加强问题
+https://leetcode.cn/problems/kth-largest-element-in-an-array/
+排序
+
 #### 时间复杂度
 
 ![enter image description here](https://drive.google.com/uc?id=1Z8qA1kFoTaSy9EXHAevCVd5Pk2nFHEVe)
@@ -261,13 +265,17 @@ static void selectS(int[] arr) {
 
 ```
 * 堆排序
+因为一个数组可以以完全二叉树的形式表示, 左子树下标是根的 2n+1, 右子树下标是根的 2n+2, 那如何转换为最大堆呢, 最大元素是根元素; 
+1. 找到第一个下标最小的非叶子节点(数组长度除以2), 
+2. 然后跟叶子节点比较, 把最大的元素交换并放到根节点, 
+3. 再依次递减遍历所有节点, 并每次交换完之后再次执行步骤2, 判断叶子节点是否符合最大堆 
+
 是最好的增量排序方式, 比二叉搜索树更加对cpu cache 友好, 
-假设最后排序是升序, 首先将数组建立成一个最大堆, 最大的元素在arr[0], 次大的元素在其子节点, 然后将arr[0] 和arr[len-1]交换, 交换之后再以现在的根节点建堆, 将 arr[0]放在合适的位置. 
 初始化建堆的时间复杂度O(n), 整个算法的时间复杂度O(nlgn)
 ```
 
   static int[] heapSortAsc(int[] arr) {
-    for (int i = (arr.length - 2) / 2; i >= 0; i--) {
+    for (int i = arr.length / 2; i >= 0; i--) {
       buildMaxHeap(arr, i, arr.length - 1);
     }
 
@@ -280,12 +288,12 @@ static void selectS(int[] arr) {
     return arr;
   }
 
-  static void buildMaxHeap(int[] arr, int leaf, int end) {
+  static void buildMaxHeap(int[] arr, int leaf, int heapSize) {
     int l = leaf * 2 + 1;
     int r = leaf * 2 + 2;
-    if (l > end) return;
+    if (l > heapSize) return;
     int max = l;
-    if (r <= end && arr[r] > arr[l]) {
+    if (r <= heapSize && arr[r] > arr[l]) {
       max = r;
     }
     if (arr[max] > arr[leaf]) {
@@ -293,7 +301,7 @@ static void selectS(int[] arr) {
       arr[leaf] = arr[max];
       arr[max] = tmp;
     }
-    buildMaxHeap(arr, max, end);
+    buildMaxHeap(arr, max, heapSize);
   }
 
 ```
@@ -322,13 +330,8 @@ static void hillS(int[] arr) {
 ```
 * 桶排序
 将元素放到几个子数组里面, 按照跟min 元素的差值来划分, 并在每个子数组中进行插入排序. 最坏时间复杂度O(n*n), 平均时间复杂度O(n), 见英文维基百科
-
 * 二叉搜索树
 插入是从顶向下, 递归的形式, 比节点小, 则比左儿子, 比节点大, 则比右儿子,  新插入的值总是落在叶子节点.
-
-
-
-
 ### 查找
 #### 布隆过滤器
 用途在于数据量非常庞大的时候, 判断数据是否在集合中, 减少数据集的空间占用, 用一个bit 数组来保存, 假设有n个hash 函数, 新来的一个元素a, 
@@ -492,8 +495,22 @@ public void nodeToQueue(TreeNode root, Queue<TreeNode> queue) {
 * 回溯思想
 https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
 常作为暴力破解, 穷举的一种优化, 类似于走迷宫,  走错了回头, 递归形式, 
-有以下几个规范: 达到递归的结束条件, 通常能得到一个穷举的答案; 
+有以下几个规范: 达到递归的结束条件, 通常能得到一个穷举的答案;
 
+公式:
+```
+result = []
+路径理解为结果集
+void backtrack(路径, 选择列表):
+    if 满足结束条件:
+        result.add(路径)
+        return
+    
+    for 选择 in 选择列表:
+        做选择
+        backtrack(路径, 选择列表)
+        撤销选择 
+```
 ### 跳表
 说得很清楚: https://www.jianshu.com/p/9d8296562806
 查询的时间复杂度等于跳表的高度乘每层高度比较的次数(常数), 是 O(lgn), n 为元素个数, 近似为二分查找, 等同于跳表的高度, 
@@ -509,7 +526,6 @@ https://algs4.cs.princeton.edu/
 https://www.coursera.org/learn/algorithms-part1/
 
 #### 待解决问题
-* paxos 的应用
 * 回文字符串
 https://leetcode.com/problems/rotate-string/solution/
 

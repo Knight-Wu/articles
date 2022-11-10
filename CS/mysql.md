@@ -46,7 +46,7 @@ https://dev.mysql.com/doc/refman/8.0/en/performance-schema-query-profiling.html
 
 #### 优化关联查询
 确保关联的列上有索引, 当表A和表B 在列c上关联时, 只需要在第二个表, 表b 上的列c 建索引, 表A 就不需要了.
-#### 优化limit 
+#### 优化limit
 在limit 性能低底下的时候加上索引
 #### 优化union 查询
 除非必要, 不要用union, 用union all(不排除重复的)
@@ -67,8 +67,6 @@ an .ibd file for each MySQL table, 代表了一个space, 由一个32 bit 的spac
 
 ![enter image description here](https://drive.google.com/uc?id=1yIYifmSdffYSZn2Ojms8fZ2LvxeSkLv1)
 Each page within a space is assigned a 32-bit integer page number, often called “offset”, which is actually just the page’s offset from the beginning of the space (not necessarily the file, for multi-file spaces). So, page 0 is located at file offset 0, page 1 at file offset 16384=16*1024 bytes, and so on. (The astute may remember that InnoDB has a limit of 64TiB of data; this is actually a limit per space, and is due primarily to the page number being a 32-bit integer combined with the default page size: 2的32次方 x 16 KiB = 64 TiB.
-
-
 #### MyISAM
 不支持行锁, 只支持表锁, 不支持事务, 不支持崩溃后快速回复, 不支持外键, 适合读的场景
 
@@ -87,6 +85,8 @@ Each page within a space is assigned a 32-bit integer page number, often called 
 * Because B+Trees store the indexed columns in order, they’re useful for searching for ranges of data.(叶子节点的记录持有一个指向下一条记录的指针, 保存着下条记录在这个page 的offset; 记录间物理上并不是顺序排列的)
 * primary key value 是存在非叶子节点的, 如果过长, 非叶子节点的记录数就会减少, 索引的结构会更大. 
 
+* B+ tree and B tree difference
+B+ 树把所有的 val 都存储在叶子节点, B 树把 val 跟 key 一起保存, 叶子节点和中间节点都有, 所有 B + 树的中间节点更小, 假设每次从磁盘拿取的数据大小相同, 那么 b+ 树数据的 key 更多, 范围更大, 更容易命中, 那么对应的 IO 次数就会更少; 而且因为 B+ 树叶子节点像一个链表, 而且所有 val 都在叶子节点, 非常方便做范围查找, 而不像 B 树做范围查找相当于一个深度优先搜索, IO 次数更多, 肯定测试对比过 B+ 树的平均查询性能更好, 而且数据都在叶子节点利于压缩, 可以用字符串前缀压缩和 整型的 delta 压缩等, 
 
 > how to search quickly between records in b+ tree node
 https://blog.jcole.us/2013/01/14/efficiently-traversing-innodb-btrees-with-the-page-directory/
@@ -193,7 +193,7 @@ https://dev.mysql.com/doc/refman/8.0/en/explain-output.html
 using_index 和using_where 区别: https://stackoverflow.com/questions/25672552/whats-the-difference-between-using-index-and-using-where-using-index-in-the
 
 
-####  事务隔离级别（定义了一个事务可能受其他并发事务影响的程度）
+#### 事务隔离级别（定义了一个事务可能受其他并发事务影响的程度）
 > 数据并发问题
 
 * 脏读(dirty read), A事务读到了B事务尚未提交的数据, 可理解为读到了脏数据, 若此时B事务回滚, 则会产生数据不一致的情况.
