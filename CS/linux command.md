@@ -1,6 +1,6 @@
 * awk get first column and for each and run command
 ```
-deploy=$(kubectl get deploy|grep indexer|awk '{ print $1}');for d in $deploy;do kubectl set image deployment/$d indexer=image:tag;done
+deploys=$(kubectl -n log-live get deploy|grep ussfs|awk '{ print $1}');readarray -t array<<<"$deploys";for d in $(echo $deploys);do kubectl -n log-live scale deployments.apps $d --replicas=0;done
 ```
 * grep and tail 
  

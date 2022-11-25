@@ -1,5 +1,6 @@
 ### 待加强问题
 https://leetcode.cn/problems/kth-largest-element-in-an-array/
+
 排序
 
 #### 时间复杂度
@@ -508,8 +509,11 @@ void backtrack(路径, 选择列表):
     
     for 选择 in 选择列表:
         做选择
+        如果需要去重: if(j>i && a[j] == a[j-1]) continue;
         backtrack(路径, 选择列表)
         撤销选择 
+
+
 ```
 ### 跳表
 说得很清楚: https://www.jianshu.com/p/9d8296562806

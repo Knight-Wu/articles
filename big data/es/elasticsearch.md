@@ -127,7 +127,6 @@ $ curator  --config curator-cfg.yml curator-action-delete.yml
 * template
 curl -X DELETE "ip:port/_template/templateName"
 curl -X GET "ip:port/_template/templateName"
-
 * es version
  curl -XGET "ip:port"
 
@@ -169,7 +168,6 @@ We can also use boosting to increase our term importance by using the ^ characte
 
 查询特殊字符:
 In case you want to search for one of the special characters (which are +, -, &&, ||, !, (, ),{ }, [ ], ^, ", ~, *, ?, :, \, /), you need to escape it with the use of the backslash (\)character
-
 ### es basic concepts
 * index 
 可以理解为database
