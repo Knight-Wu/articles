@@ -31,6 +31,11 @@ browser -> querymaster: 周期性查询query status, 如果没有异常, 就fetc
 antlr:
 语法和文法. 语法指的是go 等编程语言的语法, 而文法指的是能精确描述语法的语言, 能判断此段语法是否有错. 
 
+* 向量化计算
+目前应该是没有实现的查询这边, 向量化计算实际上是需要语言的api 有支持, 原理实际上是将多个可并行化的指令批量执行, 例如for 循环累加之前步长是1, 向量化后就是一个指令做多个累加, 但是需要考虑向量化前后结果的一致. 
+* logreduce
+目前就是每条日志按空格等分割成token, 然后数字变成 *** , 形成一个template, 然后再根据template, 提炼出一个字典树, 每个token 为一个node, children 为下一个token 组成的tokenlist. 
+
 ## indexer
 
 indexer:
@@ -42,7 +47,7 @@ indexer --> oss: chunk 和 chunk的索引信息(以下称为index) 存入对象�
 ### 优化点
 1. chunkwriter 使用对象锁, 可以改成每个列一个锁. 充分并发
 2. chunkwriter 里面各种编码对象可以采用reset, 而不是new 一个, 减少gc
-3. 
+3. 把kafka 去掉, 与indexer 结合到一起, 数据缓存到本地磁盘, 并支持查询, 固定实例消费. 
 
 ### 亮点
 1. bloom 改良
