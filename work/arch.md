@@ -16,7 +16,7 @@ worker client --> worker server: 通过ip:port, grpc 查询, 先查询缓存若�
 一致性hash 有心跳检测 rpc, 返回失败, 则过滤掉失败的节点
 
 ## querymaster
-pipeline search, 管道查询类似linux 的管道, 流式返回
+pipeline search, 管道查询类似linux 的管道, 流式返回, 传统基于ELK的查询是查询完所有日志后才返回, 浪费资源而且很慢, 用户的搜索大多是探索式的, 逐步修改查询条件, 需要快速返回; 也有部分是统计性质的, 需要聚合, 解析等功能. 每天生成4PB的数据
 
 querymaster:
 
@@ -28,10 +28,15 @@ browser -> querymaster: 周期性查询query status, 如果没有异常, 就fetc
 例如starttime 和 endtime, 是如何转为es 的range 查询的, 等于说根据key 拿到逻辑执行计划的开始时间和结束时间, 然后再构造es 查询函数 range, 最后转成json 查询es.
 而逻辑执行计划说白了就是把各种算子, 排序,解析等序列化传输到物理执行引擎, 常见的就是json, 然后物理执行引擎, 再构造具体的查询代码. 
 
-antlr:
+* 如何流式返回
+<img width="1348" alt="image" src="https://user-images.githubusercontent.com/20329409/204509608-0b988423-ef8d-48a0-83af-51c56c95bc8b.png">
+<img width="1348" alt="image" src="https://user-images.githubusercontent.com/20329409/204510782-1a940917-7c60-4d9a-82fb-f5195866b9b3.png">
+
+
+* antlr
 语法和文法. 语法指的是go 等编程语言的语法, 而文法指的是能精确描述语法的语言, 能判断此段语法是否有错. 
 
-* 向量化计算
+* 向量化计算, 单指令多数据流（Single Instruction Multiple Data），简称SIMD。
 目前应该是没有实现的查询这边, 向量化计算实际上是需要语言的api 有支持, 原理实际上是将多个可并行化的指令批量执行, 例如for 循环累加之前步长是1, 向量化后就是一个指令做多个累加, 但是需要考虑向量化前后结果的一致. 
 * logreduce
 目前就是每条日志按空格等分割成token, 然后数字变成 *** , 形成一个template, 然后再根据template, 提炼出一个字典树, 每个token 为一个node, children 为下一个token 组成的tokenlist. 
@@ -98,6 +103,15 @@ indexer 采用grpc 双向stream 连接, 因为processorsrv 是请求发起方, �
 
 10. objid 分布式唯一的uuid, 其实只是bucket里面唯一即可, bucket1 和bucket2 objid 有可能有重复, 实际上是bucket/objid 这个路径唯一即可, 一个实例在消费某个topic 的三个partition, 1,3,5, 那么 5 当做snowflake 算法的workerid , 因为由kafka 保证, 不会有一个parititon 同时被两个进程消费. 
 
+## 之前架构的问题和优化点
+### es
+* es 写入时指定routing key, 随机生成的, 因为查询时用不到, 一批数据只写入一个节点, 避免一个慢节点拖慢所有写入, 请求直接写入数据节点, 省去写入客户端节点的不必要的转发
+* master 单线程处理task, 本质是因为es 的整个集群状态是一个数据结构体, 目前是单个master 单线程执行的, 计算开销大, 且无法并行, 例如需要计算某个节点迁入迁出多少shard , 复杂度是单个节点shard 数乘集群shard 数, 当集群shard 数达到十万加级别时, 就非常耗时, 拖慢了其他task. 
+
+# TODO
+1. java 新功能
+2. es 之前存在的问题
+3. 成本到底省在哪了
 
 
 # 系统设计
