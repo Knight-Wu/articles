@@ -4,7 +4,6 @@
 
 ## 常见技巧
 * 当某些起始条件不满足, 例如数组第一个是n-1, n=0 时, 导致代码很复杂, 可以尝试把数组开辟成n+1, 总体加一, 往后移, n=1 存放n=0的值.
-* 链表题的 FakeHead 把应该返回的答案放到FakeHead 的next 节点, 与后续代码模式就匹配了, 不需要写额外的if else.
 
 ### 单调栈
 用于解决找到下一个更大的数此类问题, 用途较窄, 指的是从栈顶到栈底是单调递增或者递减的栈, 可以理解成一个临时存放数据的地方, 要怎么去想是单调递增还是递减呢, 就看什么数据需要暂存在栈里, 也就是不能马上返回或者解决的, 这样就好想, 符合单调的数据就一直压栈, 否则就弹出再压栈. 
@@ -35,7 +34,9 @@
 有点编程经验的都知道，分而治之的概念。排序算法中有一个叫做“归并排序”或者“合并排序”的算法，它用到的就是分而治之的思想，而它的时间复杂度就是N*logN，此算法采用的是二分法，所以可以认为对应的对数函数底数为2，也有可能是三分法，底数为3，以此类推。
 ### 树
 * 编程模式
-大多数都是看题目, 然后想代码应该写在前序位置还是中序, 还是后序? 
+二叉树题目的递归解法可以分两类思路，第一类是遍历一遍二叉树得出答案，第二类是通过分解问题计算出答案，这两类思路分别对应着 回溯算法核心框架 和 动态规划核心框架。 
+例如下面这个就是类似回溯算法的模式.然后想代码应该写在前序位置还是中序, 还是后序? 
+
 ```
 void traverse(TreeNode root) {
     // 前序位置
@@ -45,6 +46,85 @@ void traverse(TreeNode root) {
     // 后序位置
 }
 ```
+
+回溯
+```
+
+List<List<Integer>> res = new LinkedList<>();
+LinkedList<Integer> track = new LinkedList<>();
+
+/* 主函数，输入一组不重复的数字，返回它们的全排列 */
+List<List<Integer>> permute(int[] nums) {
+    backtrack(nums);
+    return res;
+}
+
+// 回溯算法框架
+void backtrack(int[] nums) {
+    if (track.size() == nums.length) {
+		// 穷举完一个全排列
+        res.add(new LinkedList(track));
+        return;
+    }
+    
+    for (int i = 0; i < nums.length; i++) {
+        if (track.contains(nums[i]))
+            continue;
+		// 前序遍历位置做选择
+        track.add(nums[i]);
+        backtrack(nums);
+        // 后序遍历位置取消选择
+        track.removeLast();
+    }
+}
+```
+
+
+二叉树深度可以写出以上所说的一种是回溯递归的模式, 第二种是分解, 把复杂问题简单化分解的方式
+第一种: 
+```
+// 记录最大深度
+int res = 0;
+int depth = 0;
+
+// 主函数
+int maxDepth(TreeNode root) {
+	traverse(root);
+	return res;
+}
+
+// 二叉树遍历框架
+void traverse(TreeNode root) {
+	if (root == null) {
+		// 到达叶子节点
+		res = Math.max(res, depth);
+		return;
+	}
+	// 前序遍历位置
+	depth++;
+	traverse(root.left);
+	traverse(root.right);
+	// 后序遍历位置
+	depth--;
+}
+```
+
+第二种:
+```
+int maxDepth(TreeNode root) {
+	if (root == null) {
+		return 0;
+	}
+	// 递归计算左右子树的最大深度
+	int leftMax = maxDepth(root.left);
+	int rightMax = maxDepth(root.right);
+	// 整棵树的最大深度
+	int res = Math.max(leftMax, rightMax) + 1;
+
+	return res;
+}
+```
+
 * 树的遍历
 最简单的划分：是深度优先（先访问子节点，再访问父节点，最后是第二个子节点）？还是广度优先（先访问第一个子节点，再访问第二个子节点，最后访问父节点）？ 深度优先可进一步按照根节点相对于左右子节点的访问先后来划分。如果把左节点和右节点的位置固定不动，那么根节点放在左节点的左边，称为前序（pre-order）、根节点放在左节点和右节点的中间，称为中序（in-order）、根节点放在右节点的右边，称为后序（post-order）。对广度优先而言，遍历没有前序中序后序之分：给定一组已排序的子节点，其“广度优先”的遍历只有一种唯一的结果。
 
@@ -503,10 +583,10 @@ public void nodeToQueue(TreeNode root, Queue<TreeNode> queue) {
 
 
 
-> 链表
-
-1. 路程相减法或者叫指针追赶法
-2. 起始情况如果需要ListNode prev. 可以假设一个fakeHead 作为prev.
+## 链表
+* 路程相减法或者叫指针追赶法
+* 快慢指针法, 一个一次一步, 一个一次两步找链表的中间节点. 
+*  FakeHead 把应该返回的答案放到FakeHead 的next 节点, 与后续代码模式就匹配了, 不需要写额外的if else.
 
 ### 常用算法
 * 递归思想
@@ -522,8 +602,8 @@ public void nodeToQueue(TreeNode root, Queue<TreeNode> queue) {
 
 * 回溯思想
 https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
-常作为暴力破解, 穷举的一种优化, 类似于走迷宫,  走错了回头, 递归形式, 
-有以下几个规范: 达到递归的结束条件, 通常能得到一个穷举的答案;
+常作为暴力破解, 穷举的一种优化, 类似于走迷宫,  走错了回头, 递归形式, 类似遍历一个多叉树, 与二叉搜索树的递归模式类似. 
+
 
 公式:
 ```
