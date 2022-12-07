@@ -5,6 +5,15 @@
 ## 常见技巧
 * 当某些起始条件不满足, 例如数组第一个是n-1, n=0 时, 导致代码很复杂, 可以尝试把数组开辟成n+1, 总体加一, 往后移, n=1 存放n=0的值.
 
+### 优先级队列
+按照元素的大小去出队列, 又称最大堆, 或最小堆, 当碰到求一批元素的最大或最小值时, 可以直接用.
+最大堆, 实际就是一个二叉树, 根元素为最大, 大于或等于左节点和右节点, 子树也满足最大堆. 
+
+```
+   // 这样就是最小堆, 反过来 b-a 就是最大堆
+    PriorityQueue<Integer> q = new PriorityQueue<>(size, (a,b) -> (a.val - b.val));
+```
+
 ### 单调栈
 用于解决找到下一个更大的数此类问题, 用途较窄, 指的是从栈顶到栈底是单调递增或者递减的栈, 可以理解成一个临时存放数据的地方, 要怎么去想是单调递增还是递减呢, 就看什么数据需要暂存在栈里, 也就是不能马上返回或者解决的, 这样就好想, 符合单调的数据就一直压栈, 否则就弹出再压栈. 
 ### 二维动态规划
@@ -373,20 +382,24 @@ static void selectS(int[] arr) {
 
 ```
 * 堆排序
+如何记忆, 想象每次都是构建最大堆, 那么二叉树如何构建最大元素是根节点的呢, 就是从非叶子节点开始逐步冒泡呗, 把最大元素冒泡到根节点就完成了一次构建最大堆, 然后把根节点元素放到数组末尾, 再从数组末尾-1 的位置再次构建最大堆
 因为一个数组可以以完全二叉树的形式表示, 左子树下标是根的 2n+1, 右子树下标是根的 2n+2, 那如何转换为最大堆呢, 最大元素是根元素; 
 1. 找到第一个下标最小的非叶子节点(数组长度除以2), 
 2. 然后跟叶子节点比较, 把最大的元素交换并放到根节点, 
 3. 再依次递减遍历所有节点, 并每次交换完之后再次执行步骤2, 判断叶子节点是否符合最大堆 
 
 是最好的增量排序方式, 比二叉搜索树更加对cpu cache 友好, 
-初始化建堆的时间复杂度O(n), 整个算法的时间复杂度O(nlgn)
+初始化建堆的时间复杂度O(n), 整个算法的时间复杂度: O(nlgn)+O(n),
+建堆的有两种方式, 一种是bottom-up 就是下面这种, 时间复杂度O(n), 另一种是 top-down , 时间复杂度是O(nlogn), 如何实现呢? 为什么会有这个差异? 
 ```
 
   static int[] heapSortAsc(int[] arr) {
+    // 第一步, 建堆的时间复杂度: O(n)
     for (int i = arr.length / 2; i >= 0; i--) {
       buildMaxHeap(arr, i, arr.length - 1);
     }
 
+    // 第二步, O(nlog(n))
     for (int i = arr.length - 1; i >= 1; i--) {
       int tmp = arr[0];
       arr[0] = arr[i];
@@ -396,23 +409,25 @@ static void selectS(int[] arr) {
     return arr;
   }
 
-  static void buildMaxHeap(int[] arr, int leaf, int heapSize) {
-    int l = leaf * 2 + 1;
-    int r = leaf * 2 + 2;
+// 第三步: 堆调整的时间复杂度O(logn), 为树的高度, 因为第二步每次都是最大元素和最末尾元素交换, 然后末尾元素是较小的, 都要交换到树底, 所以复杂度为树的高度. 
+  static void buildMaxHeap(int[] arr, int node, int heapSize) {
+    int l = node * 2 + 1;
+    int r = node * 2 + 2;
     if (l > heapSize) return;
     int max = l;
     if (r <= heapSize && arr[r] > arr[l]) {
       max = r;
     }
-    if (arr[max] > arr[leaf]) {
-      int tmp = arr[leaf];
-      arr[leaf] = arr[max];
+    if (arr[max] > arr[node]) {
+      int tmp = arr[node];
+      arr[node] = arr[max];
       arr[max] = tmp;
     }
     buildMaxHeap(arr, max, heapSize);
   }
 
 ```
+
 
 * 希尔排序
 插入排序的变种, gap 由 len/2, len/4 递减, 直至变为gap=1的插入排序, 此时大部分元素已经排序好了.  
@@ -584,9 +599,85 @@ public void nodeToQueue(TreeNode root, Queue<TreeNode> queue) {
 
 
 ## 链表
-* 路程相减法或者叫指针追赶法
+```
+// 反转链表
+ListNode res = null;
+
+void reverseLinkedList(ListNode node){
+    help(node);
+    return res;
+}
+
+ListNode help(ListNode node){
+    if(node.next == null){
+        res = node;
+        return node;
+    }
+    ListNode next = help(node.next);
+    next.next = node;
+    node.next = null;
+    return node;
+}
+```
+
+```
+// 反转链表的一部分
+ListNode tail = null;
+ListNode recuHead = null;
+void reverseLinkedList(ListNode node, int left, int right){
+    int i=1;
+    ListNode begin = null;
+    ListNode head = node;
+    while(i++ < left){
+        begin = node;
+        node = node.next;
+    }
+    ListNode recuTail = help(node, i, right );
+    recuTail.next = tail;
+    begin.next = recuHead;
+    return head;
+}
+
+ListNode help(ListNode node, int index, int end){
+    if(index == end){
+        recuHead = node;
+        tail = node.next;
+        return node;
+    }
+    ListNode next = help(node.next);
+    next.next = node;
+    node.next = null;
+    return node;
+}
+
+```
+```
+// 反转链表前 N 个节点
+ListNode successor = null;
+ListNode reverseN(ListNode head, int n){
+    if(n == 1){
+        successor = head.next;
+        return head;
+    }
+    ListNode last = reverseN(head.next, n-1);
+    head.next.next =head;
+    head.next = successor;
+    return last;
+}
+
+```
+```
+ListNode reverseBetween(ListNode head, int m, int n){
+    
+}
+
+```
+常见思路: 
 * 快慢指针法, 一个一次一步, 一个一次两步找链表的中间节点. 
-*  FakeHead 把应该返回的答案放到FakeHead 的next 节点, 与后续代码模式就匹配了, 不需要写额外的if else.
+* 先用一个指针跑k 步, 再用第二个指针从头开始跑, 那么第二个指针跑的步就是第一个指针到末尾节点跑的步.
+* 两步和一步指针判断有没有环, 如果有, 再相交时, 再用一步指针, 从头跑, 再次相交的位置就是环的起点.
+* FakeHead 把应该返回的答案放到FakeHead 的next 节点, 与后续代码模式就匹配了, 不需要写额外的if else.
+* 判断链表有没有相交, 可以用两个指针, 走完A 链表继续走B 链表, 如果相交最后肯定汇合到一个点. 
 
 ### 常用算法
 * 递归思想
