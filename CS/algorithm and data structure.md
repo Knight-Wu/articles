@@ -666,9 +666,36 @@ ListNode reverseN(ListNode head, int n){
 }
 
 ```
+**第一次做出递归hard 题, 感觉真的懂如何用递归了, 不需要辅助函数不需要外部变量**
 ```
-ListNode reverseBetween(ListNode head, int m, int n){
-    
+// https://leetcode.com/problems/reverse-nodes-in-k-group/
+ ListNode reverseKGroup(ListNode head, int k){
+     if(k == 1){
+         return head;
+     }
+    int count = k;
+    ListNode c = head;
+    ListNode res = null;
+    while(head != null && k > 0){
+        res = head;
+       head = head.next;
+       k--;
+    }
+    if(k != 0){
+        return c;
+    }
+    ListNode nextK = reverseKGroup(head, count);
+    ListNode prevC = c;
+    ListNode nn = null;
+    ListNode next = c.next;
+    while(count-- > 1 && next != null){
+        nn = next.next;
+        next.next = c;
+        c = next;
+        next = nn;
+    }
+    prevC.next = nextK;
+    return res;
 }
 
 ```
