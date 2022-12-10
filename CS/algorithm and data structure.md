@@ -16,7 +16,29 @@
 
 ### 单调栈
 用于解决找到下一个更大的数此类问题, 用途较窄, 指的是从栈顶到栈底是单调递增或者递减的栈, 可以理解成一个临时存放数据的地方, 要怎么去想是单调递增还是递减呢, 就看什么数据需要暂存在栈里, 也就是不能马上返回或者解决的, 这样就好想, 符合单调的数据就一直压栈, 否则就弹出再压栈. 
-### 二维动态规划
+# 动态规划
+## 题目
+```
+// https://leetcode.cn/problems/coin-change/
+转移方程: 
+dp(n, coin[i]) = dp(n-coin[i])+1
+   int res = Integer.MAX_VALUE; // 
+    public int coinChange(int[] coins, int amount) {
+        help(coins,0,amount);
+        return res;
+    }
+    
+    public int help(int[] coins,int num, int amount) {
+        if(amount == 0) { res = Math.min(res, num);}
+        if(amount < 0) return -1;
+        for(int c: coins){
+            int method = help(coins,num+1, amount-c);
+            if(method < 0) continue;
+        }
+}
+
+```
+## 二维动态规划
 #### https://leetcode.com/problems/unique-paths/submissions/
 1. 最优解法, 解法1.
 一维数组, 实际上就是选择 x,y 中最小的那一个作为一维数组的长度, 然后逐行遍历上去, arr[i] += arr[i-1]

@@ -126,6 +126,7 @@ indexer 采用grpc 双向stream 连接, 因为processorsrv 是请求发起方, �
 1. java 新功能
 2. es 之前存在的问题
 3. 成本到底省在哪了
+4. queryworker 如何在内存中做全文搜索的
 
 
 # 系统设计
