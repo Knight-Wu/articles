@@ -60,7 +60,8 @@
 * 某些测试用例没通过
 最常见的就是一些边界没考虑好, 或者初始情况没想清楚或者是笔误了, 因为公式一旦写对就只有这些其他可能了. 
 
-* 如何把空间复杂度降维度5
+* 如何把空间复杂度降维度?
+首先把基础的空间复杂度的方案写对, ac 之后, 然后根据代码看当前状态与之前的什么状态有关, 是否只与之前的某个状态有关, 就用一个值代表, 或者之前的某一行状态有关, 就用一行, 从二维空间压缩到一维, 如果用一维不行, 可能就要用一维加一些临时变量作为之前的状态暂存值. 
 ## 动态规划常见类型题目
 * 最长子序列
 
@@ -89,6 +90,54 @@ dp(n, coin[i]) = dp(n-coin[i])+1
         }
 }
 
+```
+```
+// https://leetcode.cn/problems/coin-change-2/
+int [][] dp = new int [coins.length + 1][amount + 1];
+int change(int amount, int[] coins){
+    for(int i = 1; i< coins.length; i++){
+        dp[i][0] = 1;
+    }
+    for(int i = 1; i < coins.length + 1; i++){
+        for(int j = 1; j <= amount; j++){
+            if(coins[i-1] > j){
+                dp[i][j] = dp[i-1][j];
+            }else{
+                dp[i][j] = dp[i][j-coins[i - 1]] + dp[i-1][j];
+            }
+        }
+    }
+    return dp[coins.length][amount];
+}
+
+// https://leetcode.cn/problems/coin-change-2/, save space
+int [] dp = new int [amount + 1];
+int change(int amount, int[] coins){
+    dp[0] = 1;
+    for(int i = 1; i < coins.length + 1; i++){
+        for(int j = 1; j <= amount; j++){
+            if(coins[i-1] <= j){
+                dp[j] = dp[j-coins[i - 1]] + dp[j];
+            }
+        }
+    }
+    return dp[coins.length][amount];
+}
+```
+```
+// 最长回文子序列, save space
+  for (int i = n - 2; i >= 0; i--) {
+        int tmp = 0;
+        for (int j = i + 1; j < n; j++) {
+           int tmp = dp[j];
+            // 状态转移方程
+            if (s[i] == s[j])
+                dp[j] = pre + 2;
+            else
+                dp[j] = max(dp[j], dp[j - 1]);
+            pre = tmp;
+        }
+    }
 ```
 ## 二维动态规划
 #### https://leetcode.com/problems/unique-paths/submissions/
