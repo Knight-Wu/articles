@@ -6,7 +6,165 @@
 * 当某些起始条件不满足, 例如数组第一个是n-1, n=0 时, 导致代码很复杂, 可以尝试把数组开辟成n+1, 总体加一, 往后移, n=1 存放n=0的值.
 * 自顶向下, 例如nsum, 4 sum, 3 sum 等题目, 只要你能做出two sum, 然后把复杂情况拆解到简单情况, nsum 就能套用 2 sum, 3 sum 的做法, 递归和计算机编程的美妙就体现了. 详见:https://mp.weixin.qq.com/s/fSyJVvggxHq28a0SdmZm6Q
 * 双指针, 链表中常见就是快慢指针, 数组中就是左右指针, 说白了就是两个变量, 减少循环次数
+* 前缀和数组, 前缀和主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
 
+这个技巧在生活中运用也挺广泛的，比方说，你们班上有若干同学，每个同学有一个期末考试的成绩（满分 100 分），那么请你实现一个 API，输入任意一个分数段，返回有多少同学的成绩在这个分数段内。
+
+那么，你可以先通过计数排序的方式计算每个分数具体有多少个同学，然后利用前缀和技巧来实现分数段查询的 API：
+
+int[] scores; // 存储着所有同学的分数
+// 试卷满分 100 分
+int[] count = new int[100 + 1]
+// 记录每个分数有几个同学
+for (int score : scores)
+    count[score]++
+// 构造前缀和
+for (int i = 1; i < count.length; i++)
+    count[i] = count[i] + count[i-1];
+
+// 利用 count 这个前缀和数组进行分数段查询
+
+* 差分数组
+差分数组的主要适用场景是频繁对原始数组的某个区间的元素进行增减。
+
+比如说，我给你输入一个数组 nums，然后又要求给区间 nums[2..6] 全部加 1，再给 nums[3..9] 全部减 3，再给 nums[0..4] 全部加 2，再给…
+
+一通操作猛如虎，然后问你，最后 nums 数组的值是什么？
+
+常规的思路很容易，你让我给区间 nums[i..j] 加上 val，那我就一个 for 循环给它们都加上呗，还能咋样？这种思路的时间复杂度是 O(N)，由于这个场景下对 nums 的修改非常频繁，所以效率会很低下。
+
+这里就需要差分数组的技巧，类似前缀和技巧构造的 prefix 数组，我们先对 nums 数组构造一个 diff 差分数组，diff[i] 就是 nums[i] 和 nums[i-1] 之差：
+```
+// 差分数组工具类
+class Difference {
+    // 差分数组
+    private int[] diff;
+    
+    /* 输入一个初始数组，区间操作将在这个数组上进行 */
+    public Difference(int[] nums) {
+        assert nums.length > 0;
+        diff = new int[nums.length];
+        // 根据初始数组构造差分数组
+        diff[0] = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            diff[i] = nums[i] - nums[i - 1];
+        }
+    }
+
+    /* 给闭区间 [i, j] 增加 val（可以是负数）*/
+    public void increment(int i, int j, int val) {
+        diff[i] += val;
+        if (j + 1 < diff.length) {
+            diff[j + 1] -= val;
+        }
+    }
+
+    /* 返回结果数组 */
+    public int[] result() {
+        int[] res = new int[diff.length];
+        // 根据差分数组构造结果数组
+        res[0] = diff[0];
+        for (int i = 1; i < diff.length; i++) {
+            res[i] = res[i - 1] + diff[i];
+        }
+        return res;
+    }
+}
+```
+
+* 旋转矩阵
+
+顺时针旋转九十度:
+我们可以先将 n x n 矩阵 matrix 按照左上到右下的对角线进行镜像对称,
+然后再对矩阵的每一行进行反转,
+发现结果就是 matrix 顺时针旋转 90 度的结果.
+```
+// 将二维矩阵原地顺时针旋转 90 度
+public void rotate(int[][] matrix) {
+    int n = matrix.length;
+    // 先沿对角线镜像对称二维矩阵
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) {
+            // swap(matrix[i][j], matrix[j][i]);
+            int temp = matrix[i][j];
+            matrix[i][j] = matrix[j][i];
+            matrix[j][i] = temp;
+        }
+    }
+    // 然后反转二维矩阵的每一行
+    for (int[] row : matrix) {
+        reverse(row);
+    }
+}
+
+// 反转一维数组
+void reverse(int[] arr) {
+    int i = 0, j = arr.length - 1;
+    while (j > i) {
+        // swap(arr[i], arr[j]);
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        i++;
+        j--;
+    }
+}
+```
+
+仔细想想，旋转二维矩阵的难点在于将「行」变成「列」，将「列」变成「行」，而只有按照对角线的对称操作是可以轻松完成这一点的，对称操作之后就很容易发现规律了。
+既然说道这里，我们可以发散一下，如何将矩阵逆时针旋转 90 度呢？
+思路是类似的，只要通过另一条对角线镜像对称矩阵，然后再反转每一行，就得到了逆时针旋转矩阵的结果：
+
+* 矩阵的螺旋遍历
+解题的核心思路是按照右、下、左、上的顺序遍历数组，并使用四个变量圈定未遍历元素的边界：
+```
+List<Integer> spiralOrder(int[][] matrix) {
+    int m = matrix.length, n = matrix[0].length;
+    int upper_bound = 0, lower_bound = m - 1;
+    int left_bound = 0, right_bound = n - 1;
+    List<Integer> res = new LinkedList<>();
+    // res.size() == m * n 则遍历完整个数组
+    while (res.size() < m * n) {
+        if (upper_bound <= lower_bound) {
+            // 在顶部从左向右遍历
+            for (int j = left_bound; j <= right_bound; j++) {
+                res.add(matrix[upper_bound][j]);
+            }
+            // 上边界下移
+            upper_bound++;
+        }
+        
+        if (left_bound <= right_bound) {
+            // 在右侧从上向下遍历
+            for (int i = upper_bound; i <= lower_bound; i++) {
+                res.add(matrix[i][right_bound]);
+            }
+            // 右边界左移
+            right_bound--;
+        }
+        
+        if (upper_bound <= lower_bound) {
+            // 在底部从右向左遍历
+            for (int j = right_bound; j >= left_bound; j--) {
+                res.add(matrix[lower_bound][j]);
+            }
+            // 下边界上移
+            lower_bound--;
+        }
+        
+        if (left_bound <= right_bound) {
+            // 在左侧从下向上遍历
+            for (int i = lower_bound; i >= upper_bound; i--) {
+                res.add(matrix[i][left_bound]);
+            }
+            // 左边界右移
+            left_bound++;
+        }
+    }
+    return res;
+}
+
+```
 ### 优先级队列
 按照元素的大小去出队列, 又称最大堆, 或最小堆, 当碰到求一批元素的最大或最小值时, 可以直接用.
 最大堆, 实际就是一个二叉树, 根元素为最大, 大于或等于左节点和右节点, 子树也满足最大堆. 
