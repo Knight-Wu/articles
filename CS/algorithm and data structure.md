@@ -165,6 +165,103 @@ List<Integer> spiralOrder(int[][] matrix) {
 }
 
 ```
+
+* 滑动窗口算法
+
+回顾一下，遇到子数组/子串相关的问题，你只要能回答出来以下几个问题，就能运用滑动窗口算法：
+
+1、什么时候应该扩大窗口？
+
+2、什么时候应该缩小窗口？
+
+3、什么时候应该更新答案？
+```
+/* 滑动窗口算法框架 */
+void slidingWindow(string s) {
+    unordered_map<char, int> window;
+    
+    int left = 0, right = 0;
+    while (right < s.size()) {
+        // c 是将移入窗口的字符
+        char c = s[right];
+        // 增大窗口
+        right++;
+        // 进行窗口内数据的一系列更新
+        ...
+
+        /*** debug 输出的位置 ***/
+        // 注意在最终的解法代码中不要 print
+        // 因为 IO 操作很耗时，可能导致超时
+        printf("window: [%d, %d)\n", left, right);
+        /********************/
+        
+        // 判断左侧窗口是否要收缩
+        while (window needs shrink) {
+            // d 是将移出窗口的字符
+            char d = s[left];
+            // 缩小窗口
+            left++;
+            // 进行窗口内数据的一系列更新
+            ...
+        }
+    }
+}
+```
+实战题目:
+```
+//https://leetcode.com/problems/minimum-window-substring/ , 注意Integer 需要 equal 方法判断相等.
+ public String minWindow(String s, String t) {
+       // 记录t 以及 滑动窗口window中 字符与个数的映射关系
+        HashMap<Character, Integer> window_map = new HashMap<>();
+        HashMap<Character, Integer> t_map = new HashMap<>();
+        for (int i = 0; i < t.length(); i++) {
+            char c1 = t.charAt(i);
+            t_map.put(c1, t_map.getOrDefault(c1, 0) + 1);
+        }
+        // 双指针, 
+        int left = 0;
+        int right = 0;
+        int count = 0;
+        // 用于更新满足的窗口window的长度,如果是len一直是MAX_VALUE，说明没有满足的串
+        int len = Integer.MAX_VALUE;
+        // 用于记录window串的起始位置，则返回 s[start, len]
+        int start = 0;
+
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            right++;
+            // 只要c是t中出现的字符就更新
+            if (t_map.containsKey(c)) {
+                window_map.put(c, window_map.getOrDefault(c, 0) + 1);
+                // 更新c字符出现的次数
+                if (window_map.get(c).equals(t_map.get(c))) {
+                    count++;
+                }
+            }
+            // System.out.println(window_map); 
+            // ----------------------------------
+            // 收缩window的长度
+            while (count == t_map.size()) {
+                // 更新并记录window的长度,以及window的起始位置start
+                if (right - left < len) {
+                    start = left;
+                    len = right - left;
+                }
+
+                char d = s.charAt(left);
+                left++;
+
+                if (t_map.containsKey(d)) {
+                    if (window_map.get(d).equals(t_map.get(d))) {
+                        count--;
+                    }
+                    window_map.put(d, window_map.get(d) - 1);
+                }
+            }
+        } 
+        return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
+    }
+```
 ### 优先级队列
 按照元素的大小去出队列, 又称最大堆, 或最小堆, 当碰到求一批元素的最大或最小值时, 可以直接用.
 最大堆, 实际就是一个二叉树, 根元素为最大, 大于或等于左节点和右节点, 子树也满足最大堆. 
