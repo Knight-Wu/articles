@@ -262,7 +262,70 @@ void slidingWindow(string s) {
         return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
     }
 ```
-### 优先级队列
+## 二分查找
+```
+int binary_search(int[] nums, int target) {
+    int left = 0, right = nums.length - 1; 
+    while(left <= right) { // 表示查找的区间, left > right 时才无区分可找
+        int mid = left + (right - left) / 2; // 用减法防止两者相加溢出
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid - 1; 
+        } else if(nums[mid] == target) {
+            // 直接返回
+            return mid;
+        }
+    }
+    // 直接返回
+    return -1;
+}
+
+
+// 找左侧边界, 例如: [1,2,2,2,3], target=2, 左侧边界是 1
+int left_bound(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid - 1;
+        } else if (nums[mid] == target) {
+            // 别返回，锁定左侧边界
+            right = mid - 1;
+        }
+    }
+    // 判断 target 是否存在于 nums 中
+    // 此时 target 比所有数都大，返回 -1
+    if (left == nums.length) return -1;
+    // 判断一下 nums[left] 是不是 target
+    return nums[left] == target ? left : -1;
+}
+
+// 找右侧边界, 例如: [1,2,2,2,3], target=2, 左侧边界是 1
+int right_bound(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid - 1;
+        } else if (nums[mid] == target) {
+            // 别返回，锁定右侧边界
+            left = mid + 1; 
+        }
+    }
+    // 此时 left - 1 索引越界
+    if (left - 1 < 0) return -1; // 如果target 很小, 找不到, 那么 left 一直为 0, 要返回的是下标为 left -1 的数据, 会越界.
+    // 判断一下 nums[left] 是不是 target
+    return nums[left - 1] == target ? (left - 1) : -1; // 为什么是 left -1 因为 left = mid + 1, 最后都加了1, 
+```
+分析二分查找的一个技巧是：不要出现 else，而是把所有情况用 else if 写清楚，这样可以清楚地展现所有细节
+另外提前说明一下，计算 mid 时需要防止溢出，代码中 left + (right - left) / 2 就和 (left + right) / 2 的结果相同，但是有效防止了 left 和 right 太大，直接相加导致溢出的情况。
+
+### 优先级队列, 最大堆或最小堆
 按照元素的大小去出队列, 又称最大堆, 或最小堆, 当碰到求一批元素的最大或最小值时, 可以直接用.
 最大堆, 实际就是一个二叉树, 根元素为最大, 大于或等于左节点和右节点, 子树也满足最大堆. 
 
