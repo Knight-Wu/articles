@@ -263,6 +263,96 @@ void slidingWindow(string s) {
     }
 ```
 ## 二分查找
+* 什么时候可以想到用二分查找 
+
+可以从题目中抽象出一个自变量 x, 一个关于x 的函数 f(x), 以及一个目标值 target, 同时要满足 f(x) 关于 x 单调递增或递减. 并且题目让你计算满足 f(x) == target 时 x 的值. 
+例如 https://leetcode.cn/problems/koko-eating-bananas/, x 是吃香蕉的速度, f(x) 是吃完所有香蕉需要的时间. 显然单调递减. 那么吃香蕉的时间限制在 H 之内就是target 的值. 
+找到 x 的取值范围作为二分搜索的区间 left 和right
+
+```
+// https://leetcode.com/problems/koko-eating-bananas
+
+  public int minEatingSpeed(int[] piles, int h) {
+        int right = 0;
+        for(int n : piles){
+            right += n;
+        }
+        int left = 1;
+        
+        right = 1000000000;
+        long res = right;
+        while(left <= right){
+            int mid = left + (right - left) / 2;
+            int v = mid;
+            long time = 0 ;
+            for(int n : piles){
+                if(v < n){
+                    if(n % v != 0){
+                        time += 1;
+                    }
+                    time +=  (n / v);
+                }else{
+                    time += 1;
+                }
+            }
+            if( time > h){
+                left = mid + 1;
+            }else if( time <= h){
+                right = mid - 1;
+                res = Math.min(res, v);
+            }
+        }
+        return (int)res;
+    }
+```
+
+```
+// https://leetcode.com/problems/split-array-largest-sum, 这题可以抽象成, 码头有一堆货物, 要求最多用 k 天送完货物, 要求每天运送最少的货物量是多少. 例如 https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/, 简直和这一题是一样的. 
+  public int splitArray(int[] nums, int k) {
+        int max = 0;
+        int right = 0;
+        for(int n : nums){
+            max = Math.max(max, n);
+            right += n;
+        }
+        int left = max;
+        int res = right;
+        while(left <= right){
+            int mid = left + (right - left)/2;
+            int day = fun(nums, mid);
+            if(day <= k){ // 注意这个, 只要是小于等于 k 的, 都可以分割成 k 因为后面的元素可以单独一个元素就作为一个子数组. 
+                res = Math.min(res, mid); 
+                right = mid - 1;
+            }else if(day > k){
+                left = mid + 1;
+            }
+        }
+        return res;
+    }
+
+    int fun(int [] nums, int x){
+        int day = 0;
+        int cap = x;
+        for(int i = 0; i < nums.length; i++){
+            if(cap >= nums[i]){
+                cap -= nums[i];
+            }else{
+                day++;
+                cap = x;
+                i--;
+            }
+        }
+        if(cap != x){
+            day++;
+        }
+        return day;
+    }
+```
+* 技巧
+
+分析二分查找的一个技巧是：不要出现 else，而是把所有情况用 else if 写清楚，这样可以清楚地展现所有细节.
+另外提前说明一下，计算 mid 时需要防止溢出，代码中 left + (right - left) / 2 就和 (left + right) / 2 的结果相同，但是有效防止了 left 和 right 太大，直接相加导致溢出的情况。
+
 ```
 int binary_search(int[] nums, int target) {
     int left = 0, right = nums.length - 1; 
@@ -322,8 +412,8 @@ int right_bound(int[] nums, int target) {
     // 判断一下 nums[left] 是不是 target
     return nums[left - 1] == target ? (left - 1) : -1; // 为什么是 left -1 因为 left = mid + 1, 最后都加了1, 
 ```
-分析二分查找的一个技巧是：不要出现 else，而是把所有情况用 else if 写清楚，这样可以清楚地展现所有细节
-另外提前说明一下，计算 mid 时需要防止溢出，代码中 left + (right - left) / 2 就和 (left + right) / 2 的结果相同，但是有效防止了 left 和 right 太大，直接相加导致溢出的情况。
+
+
 
 ### 优先级队列, 最大堆或最小堆
 按照元素的大小去出队列, 又称最大堆, 或最小堆, 当碰到求一批元素的最大或最小值时, 可以直接用.
