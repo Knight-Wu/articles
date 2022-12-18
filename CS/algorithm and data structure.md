@@ -510,6 +510,40 @@ for 状态1 in 状态1的所有取值：
 代码模板如下:
 ![ccdb8efcdfd459dc0c9710b4fb99e8f](https://user-images.githubusercontent.com/20329409/206965299-8866273f-96f5-4ddc-90e5-7975e3dfeab0.jpg)
 
+## 贪心算法
+贪心算法可以理解为动态规划的一种特例, 不需要穷举所有情况即可得到最优解. 
+什么是贪心选择性质呢，简单说就是：每一步都做出一个局部最优的选择，最终的结果就是全局最优。注意哦，这是一种特殊性质，其实只有一部分问题拥有这个性质。
+
+比如你面前放着 100 张人民币，你只能拿十张，怎么才能拿最多的面额？显然每次选择剩下钞票中面值最大的一张，最后你的选择一定是最优的。
+
+然而，大部分问题明显不具有贪心选择性质。比如打斗地主，对手出对儿三，按照贪心策略，你应该出尽可能小的牌刚好压制住对方，但现实情况我们甚至可能会出王炸
+
+```
+// 本文解决一个很经典的贪心算法问题 Interval Scheduling（区间调度问题）, https://leetcode.com/problems/non-overlapping-intervals
+// 输入一个区间的集合，请你计算，要想使其中的区间都互不重叠，至少需要移除几个区间？其实等于计算如果区间不重叠, 那么不重叠的区间个数最多是多少, 
+// 其实就是按照区间的结束位置升序排列, 选择最早结束的开始作为开始的第一个区间, 那么后续能够容纳的区间长度和个数都是最多的, 证明靠大脑想想和测试用例保证是对的, 略. 
+public int eraseOverlapIntervals(int[][] intervals) {
+        int [][] t = intervals;
+        Arrays.sort(t, (a, b) -> {
+            if(a[1] < b[1]){
+                return -1;
+            }else if(a[1] > b[1]){
+                return 1;
+            }else {
+                return 0;
+            }
+        });
+        int end = t[0][1];
+        int cnt = 1 ;
+        for(int [] a : t){
+            if( a[0] >= end){
+                end = a[1];
+                cnt++;
+            }
+        }
+        return t.length - cnt;
+    }
+```
 ## 题目
 ```
 // https://leetcode.cn/problems/coin-change/
