@@ -6,7 +6,10 @@
 * 当某些起始条件不满足, 例如数组第一个是n-1, n=0 时, 导致代码很复杂, 可以尝试把数组开辟成n+1, 总体加一, 往后移, n=1 存放n=0的值.
 * 自顶向下, 例如nsum, 4 sum, 3 sum 等题目, 只要你能做出two sum, 然后把复杂情况拆解到简单情况, nsum 就能套用 2 sum, 3 sum 的做法, 递归和计算机编程的美妙就体现了. 详见:https://mp.weixin.qq.com/s/fSyJVvggxHq28a0SdmZm6Q
 * 双指针, 链表中常见就是快慢指针, 数组中就是左右指针, 说白了就是两个变量, 减少循环次数
-* 这些算法题一般都不会代码很长, 如果代码很长超过五十行, 或者if else 超过三个, 就要考虑是不是有些规律没想到, 导致没法归纳, 此时可以问下面试官, 问下提示或者是否可以归纳. 
+* 这些算法题一般都不会代码很长, 如果代码很长超过五十行, 或者if else 超过三个, 就要考虑是不是有些规律没想到, 导致没法归纳, 此时可以问下面试官, 问下提示或者是否可以归纳.
+* 如果想高效地，等概率地随机获取元素，就要使用数组作为底层容器。然后取模.
+
+* 如果要保持数组元素的紧凑性，可以把待删除元素换到最后，然后 pop 掉末尾的元素，这样时间复杂度就是 O(1) 了。因为最后一个元素remove 的时候, 置空即可, 如果是中间的元素remove, 就需要arraylist 的拷贝了, 然后我们需要额外的哈希表记录值到索引的映射, 然后把最后一个元素放到要remove 的元素的位置. 
 
 # 前缀和数组
 
@@ -727,6 +730,85 @@ int removeCoveredIntervals(int[][] intvs) {
 
 ```
 
+#  设计一个常数时间插入、删除和获取随机元素的数据结构
+
+```
+
+// 力扣第 380 题
+class RandomizedSet {
+    HashMap<Integer, Integer> map;
+    ArrayList<Integer> list;
+    Random random;
+    public RandomizedSet() {
+        random = new Random();
+        list = new ArrayList<>();
+        map = new HashMap<>();
+    }
+    
+    public boolean insert(int val) {
+        if(map.containsKey(val)){
+            return false;
+        }
+        list.add(val);
+        int index = list.size() - 1;
+        map.put(val, index);
+        return true;
+    }
+    
+    public boolean remove(int val) {
+        if(!map.containsKey(val)){
+            return false;
+        }
+        int index = map.remove(val);
+        if(index < list.size() - 1){
+            int lastEle = list.get(list.size() - 1);
+            list.set(index, lastEle);
+            map.put(lastEle, index);
+        }
+        list.remove(list.size() - 1);
+        return true;
+    }
+    
+    public int getRandom() {
+        return list.get(random.nextInt(list.size()));
+    }
+}
+
+```
+类似题目
+```
+// https://leetcode.com/problems/random-pick-with-blacklist/description/
+
+   Random r = new Random();
+   int board = 0;
+     HashMap<Integer, Integer> map;
+    public Solution(int n, int[] blacklist) {
+        board = n - blacklist.length;
+       map = new HashMap<>();
+        for(int b : blacklist){
+            map.put(b, -1);
+        }
+        int last = n - 1;
+        for(int b: blacklist){
+            if(b >= board){
+                continue;
+            }
+            while(map.containsKey(last)){
+                last--;
+            }
+            map.put(b, last--);
+        }
+    }
+    
+    public int pick() {
+        int ran = r.nextInt(board);
+        Integer val = map.get(ran);
+        if(val != null){
+            return val;
+        }
+        return ran;
+    }
+```
 # 二叉树
 * 编程模式
 二叉树题目的递归解法可以分两类思路，第一类是遍历一遍二叉树得出答案，第二类是通过分解问题计算出答案，这两类思路分别对应着 回溯算法核心框架 和 动态规划核心框架。 
