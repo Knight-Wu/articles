@@ -692,6 +692,41 @@ int removeCoveredIntervals(int[][] intvs) {
 }
 ```
 
+```
+// https://leetcode.cn/problems/interval-list-intersections/description/, 两个区间列表的交集
+
+   public int[][] intervalIntersection(int[][] firstList, int[][] secondList) {
+        LinkedList<int []> list = new LinkedList<>();
+        int [][] list1 = firstList;
+        int [][] list2 = secondList;
+        int i = 0;
+        int j = 0;
+        while( i < firstList.length && j < secondList.length ){
+            int [] ii = list1[i];
+            int [] jj = list2[j];
+            int [] cur = new int [2];
+            if(!((ii[1] < jj[0]) || (ii[0] > jj[1] ))){ // 包含和相交都属于有交集, 是不相交的取反
+                cur[0] = Math.max(ii[0], jj[0]);
+                cur[1] = Math.min(ii[1], jj[1]);
+                list.add(cur);
+            }
+            if(ii[1] < jj[1]){ // 只要ii 区间的end 小于 jj 说明 ii 就可以前进了, 画图就好了, 就几种情况而已
+                i++;
+            }else{
+                j++;
+            }
+        }
+        int [][] res = new int [list.size()][2];
+        int k = 0;
+        for(int [] tmp: list){
+            res[k] = list.get(k);
+            k++;
+        }
+        return res;
+    }
+
+```
+
 # 二叉树
 * 编程模式
 二叉树题目的递归解法可以分两类思路，第一类是遍历一遍二叉树得出答案，第二类是通过分解问题计算出答案，这两类思路分别对应着 回溯算法核心框架 和 动态规划核心框架。 
