@@ -1548,12 +1548,13 @@ ListNode reverseN(ListNode head, int n){
  
 * **尾递归**
 
-* 回溯思想
+# 回溯思想(DFS 深度优先搜索)
+类似深度遍历一个多叉树
+
 https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
 常作为暴力破解, 穷举的一种优化, 类似于走迷宫,  走错了回头, 递归形式, 类似遍历一个多叉树, 与二叉搜索树的递归模式类似. 
 
-
-公式:
+代码框架
 ```
 result = []
 路径理解为结果集
@@ -1570,7 +1571,80 @@ void backtrack(路径, 选择列表):
 
 
 ```
-### 跳表
+# BFS
+与dfs 的区别, 空间复杂度高, 但是对于特定任务时间复杂度低.
+BFS 可以找到最短距离，但是空间复杂度高，而 DFS 的空间复杂度较低。
+
+还是拿刚才我们处理二叉树问题的例子，假设给你的这个二叉树是满二叉树，节点数为 N，对于 DFS 算法来说，空间复杂度无非就是递归堆栈，最坏情况下顶多就是树的高度，也就是 O(logN)。
+
+但是你想想 BFS 算法，队列中每次都会储存着二叉树一层的节点，这样的话最坏情况下空间复杂度应该是树的最底层节点的数量，也就是 N/2，用 Big O 表示的话也就是 O(N)。
+
+由此观之，BFS 还是有代价的，一般来说在找最短路径的时候使用 BFS，其他时候还是 DFS 使用得多一些（主要是递归代码好写）
+
+
+* 代码框架
+```
+// 计算从起点 start 到终点 target 的最近距离
+int BFS(Node start, Node target) {
+    Queue<Node> q; // 核心数据结构
+    Set<Node> visited; // 避免走回头路
+    
+    q.offer(start); // 将起点加入队列
+    visited.add(start);
+    int step = 0; // 记录扩散的步数
+
+    while (q not empty) {
+        int sz = q.size();
+        /* 将当前队列中的所有节点向四周扩散 */
+        for (int i = 0; i < sz; i++) {
+            Node cur = q.poll();
+            /* 划重点：这里判断是否到达终点 */
+            if (cur is target)
+                return step;
+            /* 将 cur 的相邻节点加入队列 */
+            for (Node x : cur.adj()) {
+                if (x not in visited) {
+                    q.offer(x);
+                    visited.add(x);
+                }
+            }
+        }
+        /* 划重点：更新步数在这里 */
+        step++;
+    }
+}
+```
+例题
+```
+// 二叉树最小高度
+int minDepth(TreeNode root) {
+    if (root == null) return 0;
+    Queue<TreeNode> q = new LinkedList<>();
+    q.offer(root);
+    // root 本身就是一层，depth 初始化为 1
+    int depth = 1;
+    
+    while (!q.isEmpty()) {
+        int sz = q.size();
+        /* 将当前队列中的所有节点向四周扩散 */
+        for (int i = 0; i < sz; i++) {
+            TreeNode cur = q.poll();
+            /* 判断是否到达终点 */
+            if (cur.left == null && cur.right == null) 
+                return depth;
+            /* 将 cur 的相邻节点加入队列 */
+            if (cur.left != null)
+                q.offer(cur.left);
+            if (cur.right != null) 
+                q.offer(cur.right);
+        }
+        /* 这里增加步数 */
+        depth++;
+    }
+    return depth;
+}
+```
+# 跳表
 说得很清楚: https://www.jianshu.com/p/9d8296562806
 查询的时间复杂度等于跳表的高度乘每层高度比较的次数(常数), 是 O(lgn), n 为元素个数, 近似为二分查找, 等同于跳表的高度, 
 空间复杂度是 O(n), 
