@@ -67,7 +67,7 @@ indexer --> oss: chunk 和 chunk的索引信息(以下称为index) 存入对象�
 
 分为前缀和不用前缀两种方式: 
 前缀: 
-例如 32个词使用一个前缀, term index 树形结构最后得到的是前缀, val 是词典块的地址, 然后找到词典块, 再二分查找得到具体词的postings, chunkid 列表
+例如 32个词使用一个前缀, term index 树形结构最后得到的是前缀, val 是词典块的地址, 然后找到词典块, 再二分查找得到具体词的postings 就是chunkid 列表
 
 不用前缀: term index 树形结构最后得到的是整个完整的词, val 是词的posting 对应的文件偏移, 就没有词典里面二分查找的过程了. 但是term index 大小会比用前缀大很多. 
 
