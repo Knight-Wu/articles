@@ -11,6 +11,170 @@
 
 * 如果要保持数组元素的紧凑性，可以把待删除元素换到最后，然后 pop 掉末尾的元素，这样时间复杂度就是 O(1) 了。因为最后一个元素remove 的时候, 置空即可, 如果是中间的元素remove, 就需要arraylist 的拷贝了, 然后我们需要额外的哈希表记录值到索引的映射, 然后把最后一个元素放到要remove 的元素的位置. 
 
+# 随机算法
+如何判断一个算法是不是随机均等的, 可以先算出随机的结果总数, 然后看是否能够产生这么多结果. 以及结果间是否是均等的.
+
+* 如何映射一维数组到二维空间. 
+```
+class Game {
+    int m, n;
+    // 长度为 m * n 的一维棋盘
+    // 值为 true 的地方代表有雷，false 代表没有雷
+    boolean[] board;
+
+    // 将二维数组中的坐标 (x, y) 转化为一维数组中的索引
+    int encode(int x, int y) {
+        return x * n + y;
+    }
+
+    // 将一维数组中的索引转化为二维数组中的坐标 (x, y)
+    int[] decode(int index) {
+        return new int[] {index / n, index % n};
+    }
+}
+```
+
+* 如何随机打乱一个数组?
+
+分析洗牌算法正确性的准则：产生的结果必须有 n! 种可能。这个很好解释，因为一个长度为 n 的数组的全排列就有 n! 种，也就是说打乱结果总共有 n! 种。算法必须能够反映这个事实，才是正确的。
+
+有了这个原则再看代码应该就容易理解了：
+
+对于 nums[0]，我们把它随机换到了索引 [0, n) 上，共有 n 种可能性；
+
+对于 nums[1]，我们把它随机换到了索引 [1, n) 上，共有 n - 1 种可能性；
+
+对于 nums[2]，我们把它随机换到了索引 [2, n) 上，共有 n - 2 种可能性；
+
+以此类推，该算法可以生成 n! 种可能的结果，所以这个算法是正确的，能够保证随机性。
+
+```
+// leetcode 384
+class Solution {
+    private int[] nums;
+    private Random rand = new Random();
+    
+    public Solution(int[] nums) {
+        this.nums = nums;
+    }
+    
+    public int[] reset() {
+        return nums;
+    }
+    
+    // 洗牌算法
+    public int[] shuffle() {
+        int n = nums.length;
+        int[] copy =  Arrays.copyOf(nums, n);
+        for (int i = 0 ; i < n; i++) {
+            // 生成一个 [i, n-1] 区间内的随机数
+            int r = i + rand.nextInt(n - i);
+            // 交换 nums[i] 和 nums[r]
+            swap(copy, i, r);
+        }
+        return copy;
+    }
+    
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}
+
+```
+
+* 给你一个未知长度的单链表，请你设计一个算法，只能遍历一次，随机地返回链表中的一个节点。
+
+```
+/* 返回链表中一个随机节点的值 */
+int getRandom(ListNode head) {
+    Random r = new Random();
+    int i = 0, res = 0;
+    ListNode p = head;
+    // while 循环遍历链表
+    while (p != null) {
+        i++;
+        // 生成一个 [0, i) 之间的整数
+        // 这个整数等于 0 的概率就是 1/i
+        if (0 == r.nextInt(i)) {
+            res = p.val;
+        }
+        p = p.next;
+    }
+    return res;
+}
+```
+
+我们来证明一下，假设总共有 n 个元素，我们要的随机性无非就是每个元素被选择的概率都是 1/n 对吧，那么对于第 i 个元素，它被选择的概率就是：
+
+图片
+
+第 i 个元素被选择的概率是 1/i，在第 i+1 次不被替换的概率是 1 - 1/(i+1)，在第 i+2 次不被替换的概率是 1 - 1/(i+2)，以此类推，相乘的结果是第 i 个元素最终被选中的概率，也就是 1/n。因此，该算法的逻辑是正确的。
+
+同理，如果要在单链表中随机选择 k 个数，只要在第 i 个元素处以 k/i 的概率选择该元素，以 1 - k/i 的概率保持原有选择即可。代码如下：
+
+```
+/* 返回链表中 k 个随机节点的值 */
+int[] getRandom(ListNode head, int k) {
+    Random r = new Random();
+    int[] res = new int[k];
+    ListNode p = head;
+
+    // 前 k 个元素先默认选上
+    for (int i = 0; i < k && p != null; i++) {
+        res[i] = p.val;
+        p = p.next;
+    }
+
+    int i = k;
+    // while 循环遍历链表
+    while (p != null) {
+        i++;
+        // 生成一个 [0, i) 之间的整数
+        int j = r.nextInt(i);
+        // 这个整数小于 k 的概率就是 k/i
+        if (j < k) {
+            res[j] = p.val;
+        }
+        p = p.next;
+    }
+    return res;
+}
+```
+图片
+
+对于某个 i 来说, k 个位置中选中这个位置的概率是 k/i, 那么后续这个位置不被选中, 对于 i+1 来说, 选中这个位置的概率是A = k/(i+1) / k , 不选中就是 1 - A, 以此类推
+
+
+类似的，回到扫雷游戏的随机初始化问题，我们可以写一个这样的 sample 抽样函数：
+
+
+```
+// 在区间 [lo, hi) 中随机抽取 k 个数字
+int[] sample(int lo, int hi, int k) {
+    Random r = new Random();
+    int[] res = new int[k];
+
+    // 前 k 个元素先默认选上
+    for (int i = 0; i < k; i++) {
+        res[i] = lo + i;
+    }
+
+    int i = k;
+    // while 循环遍历数字区间
+    while (i < hi - lo) {
+        i++;
+        // 生成一个 [0, i) 之间的整数
+        int j = r.nextInt(i);
+        // 这个整数小于 k 的概率就是 k/i
+        if (j < k) {
+            res[j] = lo + i - 1;
+        }
+    }
+    return res;
+}
+```
 # 前缀和数组
 
  前缀和主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和。
