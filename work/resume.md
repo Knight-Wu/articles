@@ -23,18 +23,13 @@
 #### Shopee - 虾皮信息科技有限公司 （ 2019 年 七月 ~  至今, 2021 年度绩效 A ）
 2019 年 五月到 2021 年九月在 seller 当大数据后台开发，主要开发了后三个项目。2021 年九月至今，在日志平台当后台开发，主要开发了前四个项目；
 ##### 重构日志平台
-替换 elastic stack（以下简称ELK）, 组件除了对象存储全部从零开发，每天新增日志数据量 4PB，新架构在不改变用户需求和数据量不变的基础上只用了原架构三分之一的机器数量。简要描述一下架构，agent 多数部署在用户机器，将日志发送到kafka，indexer 消费kafka，流式累积一批日志形成一个chunk 写入公司自研对象存储，发送 chunk 的元信息（所属业务，日志的开始时间和结束时间等）到元数据kafka，metaSvr 消费元数据kafka 构建chunk 的元信息写入es；查询时前端通过websocket 与queryMaster 连接，querymaster 将自研的类似linux 管道的 pipeline search 查询语句转换为逻辑执行计划发送给queryWorker，整个查询过程均是流式返回，queryWorker 查询元信息es 过滤大部分chunk，例如可以通过时间，日志级别等过滤，再将关键字发送给indexSeach，indexSearch 分词后查询索引，返回chunkId 列表给queryWorker，queryMaster 最后将数据聚合后再流式返回前端。
+重构的原因是 elastic stack（以下简称ELK）架构下机器成本太高，es 集群大规模下有很多问题，以及原先架构的一些历史问题。组件除了对象存储全部从零开发，每天新增日志数据量 4PB，新架构在不改变用户需求和数据量不变的基础上只用了原架构三分之一的机器数量。简要描述一下架构，agent 采集日志后发送到kafka，indexer 消费，流式累积一批日志形成一个chunk 写入公司自研对象存储，发送 chunk 的元信息（所属业务，日志的开始时间和结束时间等）到元数据kafka，metaSvr 消费元数据kafka 构建chunk 的元信息写入es；查询时前端通过websocket 与 queryMaster 连接，querymaster 将自研的类似linux 管道的 pipeline search 查询语句转换为逻辑执行计划发送给queryWorker，整个查询过程均是流式返回，queryWorker 查询元信息es 过滤大部分chunk，再将关键字发送给indexSeach，indexSearch 分词后查询索引，返回chunkId 列表给queryWorker，queryWorker 匹配日志原文后发送给 queryMaster 做聚合。
 
-查询：
-![diagram-3717781545449084827](https://user-images.githubusercontent.com/20329409/209085348-bebd369b-f803-4796-a99d-53c72c0339db.png)
-
-写入：
-![diagram-12618553849534760398](https://user-images.githubusercontent.com/20329409/209085441-b8c1fba0-3ced-4c8d-8eea-454178d0d3d0.png)
-
-
-1. 负责设计和开发 indexer，indexer 从 kafka 接收日志，按照列式存储的格式流式写入，每个列都支持流式编码写入, 相比累积一批原始日志数据在内存中再写入，大大降低占用的内存。多条日志写入一个 chunk，存到公司自研对象存储。多线程高并发写入，单核写入带宽相比ELK 提升了四倍, 压缩率比从原来 es 的 1:1 提升到 1:6。
+1. 负责设计和开发 indexer，indexer 从 kafka 接收日志，按照列式存储的格式流式写入，每个列都支持流式编码写入, 相比累积一批原始日志数据在内存中再写入，大大降低占用的内存。chunk 存到公司自研对象存储。多线程高并发写入，单核写入带宽相比ELK 提升了四倍, 压缩率比从原来 es 的 1:1 提升到 1:6。
 2. 写入过程中分词构建索引。通过查询的关键字分词后返回所属的chunkId。索引分为自研bloom 和基于lucene fst 结构自研的（以下简称fst）两种。自研 bloom 支持无锁多线程写入，通过零拷贝和内部字节数组的数据结构相比 guava 的bloom 序列化反序列化时间少了百分之三十，大小只有原始日志数据的 0.1% 。fst 类似lucene 的倒排索引，分为前缀查找和不前缀两种，相比于bloom 不会产生fpp，但是大小是bloom 的五倍。相比 es 的重量级索引，增大了查询扫描的数据量却大大减少了存储的数据和写入时的计算开销，增大的查询数据量在流式查询并返回的架构下，用户感知到的查询时间并没有增加。
 3. 负责设计和开发 indexSearch，查询引擎调用 index-search 查询 bloom 或 fst 进行过滤, 返回分词后每个词所在的 chunk 的列表，索引数据缓存在本地磁盘加速搜索。采用一致性hash 保证同一个索引id 都会落到同一台机器的缓存上。同时消费元信息kafka 保证新的数据有更大的概率在缓存中。
+4. 实时查询
+5. 用户自定义索引
 
 
 
