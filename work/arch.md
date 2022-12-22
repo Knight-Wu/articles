@@ -153,7 +153,7 @@ indexer 采用grpc 双向stream 连接, 因为processorsrv 是请求发起方, �
 
 * 按照 4,8,16,以及小于4 的这group 分组之后的优点
 
-图片
+![image](https://user-images.githubusercontent.com/20329409/209163513-47164d6a-54ee-4ea2-ae6d-4113388aa31e.png)
 
 * 如何判断es 集群需要扩容
 
