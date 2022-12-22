@@ -12,7 +12,7 @@
  - github: https://github.com/Knight-Wu
 
 ### 能力
-> 维护了一个博客, 总结了一些经验和知识: https://github.com/Knight-Wu/articles, 能熟练使用并清楚大部分原理, 包括es, kafka, spark, hdfs; 能快速上手常用的技术; 具备大数据环境下较强的故障追踪能力和调优经验, 给数仓解决过多个生产问题。熟练使用java，golang，具有丰富的高并发的开发经验; 强烈求知欲和对工作负责的态度，善于在工作解决实际问题和异常，善于读源码发现根本问题。可流畅阅读英文文档并使用英文写作。
+> 维护了一个博客, 总结了一些经验和知识: https://github.com/Knight-Wu/articles, 能熟练使用并清楚大部分原理, 包括es, kafka, spark, hdfs; 能快速上手常用的技术; 具备大数据环境下较强的故障追踪能力和调优经验, 给数仓解决过多个生产问题。熟练使用java，golang，具有丰富的高并发的开发经验; 强烈求知欲和对工作负责的态度，善于在工作解决实际问题和异常，善于读源码发现根本问题。可流畅阅读英文文档并使用英文写作。对 bitcoin 原理有所研究。
 
 
 <br />
@@ -23,7 +23,14 @@
 #### Shopee - 虾皮信息科技有限公司 （ 2019 年 七月 ~  至今, 2021 年度绩效 A ）
 2019 年 五月到 2021 年九月在 seller 当大数据后台开发，主要开发了后三个项目。2021 年九月至今，在日志平台当后台开发，主要开发了前四个项目；
 ##### 重构日志平台
-替换 elastic stack（以下简称ELK）, 组件除了对象存储全部从零开发，每天新增日志数据量 4PB，新架构在不改变用户需求和数据量不变的基础上只用了原架构三分之一的机器数量。简要描述一下架构，agent 多数部署在用户机器，将日志发送到kafka，indexer 消费kafka，流式累积一批日志形成一个chunk 写入公司自研对象存储，发送 chunk 的元信息（所属业务，日志的开始时间和结束时间等）到元数据kafka，metaSvr 消费元数据kafka 构建chunk 的元信息写入es；查询时前端通过websocket 与queryMaster 连接，querymaster 将自研的类似linux 管道的 pipeline search 查询语句转换为逻辑执行计划发送给queryWorker，queryWorker 查询元信息es 过滤大部分chunk，例如可以通过时间，日志级别等过滤，再将关键字发送给indexSeach，indexSearch 分词后查询索引，返回chunkId 列表给queryWorker，queryMaster 最后将数据聚合后再流式返回前端。
+替换 elastic stack（以下简称ELK）, 组件除了对象存储全部从零开发，每天新增日志数据量 4PB，新架构在不改变用户需求和数据量不变的基础上只用了原架构三分之一的机器数量。简要描述一下架构，agent 多数部署在用户机器，将日志发送到kafka，indexer 消费kafka，流式累积一批日志形成一个chunk 写入公司自研对象存储，发送 chunk 的元信息（所属业务，日志的开始时间和结束时间等）到元数据kafka，metaSvr 消费元数据kafka 构建chunk 的元信息写入es；查询时前端通过websocket 与queryMaster 连接，querymaster 将自研的类似linux 管道的 pipeline search 查询语句转换为逻辑执行计划发送给queryWorker，整个查询过程均是流式返回，queryWorker 查询元信息es 过滤大部分chunk，例如可以通过时间，日志级别等过滤，再将关键字发送给indexSeach，indexSearch 分词后查询索引，返回chunkId 列表给queryWorker，queryMaster 最后将数据聚合后再流式返回前端。
+
+查询：
+![diagram-3717781545449084827](https://user-images.githubusercontent.com/20329409/209085348-bebd369b-f803-4796-a99d-53c72c0339db.png)
+
+写入：
+![diagram-12618553849534760398](https://user-images.githubusercontent.com/20329409/209085441-b8c1fba0-3ced-4c8d-8eea-454178d0d3d0.png)
+
 
 1. 负责设计和开发 indexer，indexer 从 kafka 接收日志，按照列式存储的格式流式写入，每个列都支持流式编码写入, 相比累积一批原始日志数据在内存中再写入，大大降低占用的内存。多条日志写入一个 chunk，存到公司自研对象存储。多线程高并发写入，单核写入带宽相比ELK 提升了四倍, 压缩率比从原来 es 的 1:1 提升到 1:6。
 2. 写入过程中分词构建索引。通过查询的关键字分词后返回所属的chunkId。索引分为自研bloom 和基于lucene fst 结构自研的（以下简称fst）两种。自研 bloom 支持无锁多线程写入，通过零拷贝和内部字节数组的数据结构相比 guava 的bloom 序列化反序列化时间少了百分之三十，大小只有原始日志数据的 0.1% 。fst 类似lucene 的倒排索引，分为前缀查找和不前缀两种，相比于bloom 不会产生fpp，但是大小是bloom 的五倍。相比 es 的重量级索引，增大了查询扫描的数据量却大大减少了存储的数据和写入时的计算开销，增大的查询数据量在流式查询并返回的架构下，用户感知到的查询时间并没有增加。
