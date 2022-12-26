@@ -13,7 +13,7 @@ spark-1.6和hive-2.2是兼容的
 hive -hiveconf spark.driver.extraClassPath=./antlr-runtime-3.4.jar
   -hiveconf spark.executor.extraClassPath=./antlr-runtime-3.4.jar 
   -hiveconf spark.yarn.dist.files=/opt/cloudera/parcels/CDH-5.12.1-1.cdh5.12.1.p0.3/jars/antlr-runtime-3.4.jar
-// 将jar包放到driver和executor的container中, 前两个参数告诉container jar包在哪 , 第三个参数会把jar包加载到container中.
+// 将jar包放到driver和executor的container中, 前两个参数告诉把jar 包加入java 启动的classpath, 第三个参数会把jar包加载到yarn container中.
 ```
 
 ```
@@ -77,6 +77,10 @@ r>=3 &&( floor(r/2) >= 12 || r>=n && (block is flushed or appended))
 * 解决办法
 dfs.client.block.write.replace-datanode-on-failure.policy = always, 
 dfs.client.block.write.replace-datanode-on-failure.best-effort = true
+
+* 后续效果
+
+成功解决了，后续没有出现此类错误。
 
 
 ### spark on yarn 的容错策略
@@ -144,12 +148,3 @@ ts=2018-12-03 19:16:51; [cost=1.280502ms] result=@ArrayList[
 ]
 
 ```
-
-
-
-
-
-> Written with [StackEdit](https://stackedit.io/).
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1ODg2ODAxMF19
--->
