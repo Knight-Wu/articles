@@ -1096,6 +1096,49 @@ int maxDepth(TreeNode root) {
 满二叉树, 完全二叉树, 平衡二叉树
 ![enter image description here](https://drive.google.com/uc?id=1WvdQnszfoBQkf94qiUDM2W_a4BWwArD8)
 深度为k, 拥有2的k+1次方减一的节点的为满二叉树, 每一层的节点数都是最大节点数; 而若最后一层不是满的, 其余层都是满的, 则为完全二叉树, 具有n个节点的完全二叉树的深度为log2n +1(以2为底数)。深度为k的完全二叉树, 最少有2的k次方个节点, 最多有2的k+1 次方减一个节点. 
+## 二叉树的构造
+二叉树的构造问题一般都是使用「分解问题」的思路：构造整棵树 = 根节点 + 构造左子树 + 构造右子树。先找出根节点，然后根据根节点的值找到左右子树的元素，进而递归构建出左右子树。
+
+前中序, 后中序能完全确定一颗二叉树, 但是前后序不能, 因为我们假设前序遍历的第二个元素是左子树的根节点，但实际上左子树有可能是空指针，那么这个元素就应该是右子树的根节点。由于这里无法确切进行判断，所以导致了最终答案的不唯一。
+前中序和后中序构造, 都是要求出左子树的节点个数, 并且终止条件是 前序(后序) 的指针, if preStart > preEnd , return null; 画一个非完全二叉树, 构造出前中序序列, 即可, 左右子树的preStart, 和preEnd 都是用根节点的pre 索引, 不会用到 inorder 的索引.
+
+```
+// 中后序构造
+// 存储 inorder 中值到索引的映射
+HashMap<Integer, Integer> valToIndex = new HashMap<>();
+
+TreeNode buildTree(int[] inorder, int[] postorder) {
+    for (int i = 0; i < inorder.length; i++) {
+        valToIndex.put(inorder[i], i);
+    }
+    return build(inorder, 0, inorder.length - 1,
+                 postorder, 0, postorder.length - 1);
+}
+
+/* 
+    build 函数的定义：
+    后序遍历数组为 postorder[postStart..postEnd]，
+    中序遍历数组为 inorder[inStart..inEnd]，
+    构造二叉树，返回该二叉树的根节点 
+*/
+TreeNode build(int[] inorder, int inStart, int inEnd,
+               int[] postorder, int postStart, int postEnd) {
+    // root 节点对应的值就是后序遍历数组的最后一个元素
+    int rootVal = postorder[postEnd];
+    // rootVal 在中序遍历数组中的索引
+    int index = valToIndex.get(rootVal);
+
+    TreeNode root = new TreeNode(rootVal);
+    // 递归构造左右子树
+    root.left = build(preorder, ?, ?,
+                      inorder, ?, ?);
+
+    root.right = build(preorder, ?, ?,
+                       inorder, ?, ?);
+    return root;
+}
+```
+
 ## 二叉树的题目
 ```
 // 二叉树的最大直径
