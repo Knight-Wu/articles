@@ -22,3 +22,19 @@
 * 两阶段提交
 
 如果第二阶段提交时, 有节点回复失败, 要回滚, 然后此时有部分节点又回滚失败了呢? 多个节点数据不一致, 只要大多数节点是一致的就是可用的? 
+
+* lucene 写入过程
+
+1. 先写memotable , 做校验, 然后再写log 记录操作, 保证数据多份, 然后返回客户端成功
+2. memotable 达到一定大小持久化成segment(这个过程叫refresh), 最后刷到磁盘之后才清空log
+3. 要形成segment 之后才能够做全文搜索, 这时候才构建索引, 否则只能根据docId 搜索memotable.
+4. segment 也是append only 的模式, 不能改的, 类似LSM, segment 数量太多会合并 merge, 小文件会影响性能. 
+
+* es 数据分布
+
+index 可以理解为用于业务上的定义一批数据, routing 字段用于数据在多个shard 分布, 默认hash, routing 字段默认是doc_id.
+shard 可能包含多个或一个(合并后)lucene segment, shard 可以理解为es 对lucene segment 的封装, 只能存在于单台机器, 多个shard 就组成了一个分布式的存储, 解决性能问题. 
+
+* es 数据一致性如何保证
+
+A "primary shard" is the main home for a document. A "replica shard" is a copy of the primary shard that provides (1) failover in case the primary dies and (2) increased read throughput
