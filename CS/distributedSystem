@@ -9,6 +9,7 @@
 * 数据复制
 
 让所有的服务器都有相同的数据，提供相当的服务, 解决单机故障问题. 有主从复制, 和对等复制.
+es 数据复制由写入节点不一定是客户端并发向多个副本写入, 多个副本能扩展读的能力
 
 * cap 理论
 
@@ -27,7 +28,7 @@
 
 1. 先写memotable , 做校验, 然后再写log 记录操作, 保证数据多份, 然后返回客户端成功
 2. memotable 达到一定大小持久化成segment(这个过程叫refresh), 最后刷到磁盘之后才清空log
-3. 要形成segment 之后才能够做全文搜索, 这时候才构建索引, 否则只能根据docId 搜索memotable.
+3. 要形成segment 之后才能够做全文搜索, 这时候才构建索引, 否则只能根据docId 搜索memotable. docId 只在单个shard 内唯一, 多个shard 有可能重复
 4. segment 也是append only 的模式, 不能改的, 类似LSM, segment 数量太多会合并 merge, 小文件会影响性能. 
 
 * es 数据分布
