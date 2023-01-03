@@ -1179,6 +1179,26 @@ int maxDeep(TreeNode node){
         helper(root.right, res, d+1);
     }
 ```
+
+## 二杈搜索树(binary search tree, BST)
+左子树的所有节点都小于根节点, 右子树的所有节点都大于根节点的二叉树, 同样左子树和右子树也都是BST.
+
+中序遍历可以得到递增序列. 反之可以得到递减序列
+```
+// 递增
+void traverse(TreeNode root){
+    traverse(root.left);
+    print(root.val);
+    traverse(root.right);
+}
+
+// 递减
+void traverse(TreeNode root){
+    traverse(root.right);
+    print(root.val);
+    traverse(root.left);
+}
+```
 # AVL 树
 平衡二叉搜索树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。当只有一个根节点时, 根节点的高度定义为1.
 
