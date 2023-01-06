@@ -32,13 +32,16 @@ replica 的HW 是在下次fetch 请求才会拉取leader 的HW , 所以leader �
 加入一个leader epoch, 类似leader 的版本号, 和当前epoch 下的第一条消息的offset, 和raft 很类似. 
 第一种情况, r 重启后去 l 发送 leaderEpochRequest, 如果l 没挂会返回对应的start offset, 就不会截断, 如果l 挂了, 那么r 被选为leader ,也不会截断, 但是如果 r 在数据落盘之前就挂了呢, 如果能接受unclean.leader, 而且此时是 l 和r 一起挂, 是能接受理论上数据丢失的. 
 
+第二种情况, r 先恢复, r offset=0 是m0, offset=1 是m2, 变为新的l, l 恢复后会去 r 发起leaderEpochReq, 返回更大的epoch, 和startOffset=1, 那么 旧的l 就会截断1 开始的日志, 并从LEO = 1 开始fetch. 
+
 * leader epoch 的步骤
 
 如果一个replica 变成了leader, 就增加epoch, 并把LEO 作为startOffset, 并刷盘. 
 如果一个r 变成了follower, 就会把当前磁盘的epoch 发给 leader, leader , 如果epoch 和leader 相同, 就返回leader 的LEO, 如果大于LEO, 就截断, 否则直接以r 的LEO fetch;
 如果epoch 小于leader, 则返回新的epoch, 和startOffset, 大于startOffset 的消息开始截断, 并从截断后的LEO 开始fetch.
 
-第二种情况, r 先恢复, r offset=0 是m0, offset=1 是m2, 变为新的l, l 恢复后会去 r 发起leaderEpochReq, 返回更大的epoch, 和startOffset=1, 那么 旧的l 就会截断1 开始的日志, 并从LEO = 1 开始fetch. 
+* 如何选leader
+
 ### 手动计算consume 和 produce 的速度
 date;./kafka-consumer-groups.sh --describe --group groupid  --broker:9092| sort > lag.msg
 执行这个命令两次, 记录时间, 然后将两个 lag.msg 导入到 google sheet, 但是初始数据都在一列, 此时 选择 Data 菜单下" split text to columns " , 就可以分成多列, 通过两个时间点内的 current-offset 的相差计算consume 速度, log end offset(是最新的一条消息进入到 log 里面的位置) 计算 produce 的速度. 
