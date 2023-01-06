@@ -3,11 +3,42 @@
 每个partition 的每个副本都有自己 HW(高水位), 每个partition 的leader的 HW = max(current HW,min(all replicas LEO)), 可以理解为在HW 之前的消息才可读, 不会出现幻读等场景. 
 replica 的 HW = min(fetch 消息的时候leader 发送的自己的HW, replica 自己的LEO)
 
-更新流程图
+* 0.10 版本的kafka 在采用HW 作为replica 恢复时有可能会造成数据不一致. 
 
-因为leader HW 是在 replica fetch 请求之后, 而且每个replica 的fetch 请求都有可能更新leader HW, 而relica 的HW 是fetch 请求返回之后, 所以leader 的HW 和replica 的HW 是有可能出现某些时间上是不一致的. 
+* 例如第一种情况 
+
+1. client 向 leader 写入一条消息 m0( offset 0), leader LEO=1, 
+2. replica 向 leader l 拉取消息, 发送自己的LEO=0, l 返回 消息m0, HW = 0.
+3. client 继续写入一条消息 m1, leader LEO = 2,
+4. r 向l 拉取消息, 发送自己LEO=1, l 回复 消息m1, 并更新 l HW = 1, 返回 HW=1, 意味着小于offset 1 的消息都被所有replica 提交, 对消费者可读取. r 的HW = min(r LEO, l HW) = 1, r 写消息m1 进入本地文件系统cache.
+5. r 继续向l 拉取消息, 发送 LEO=2, l 此时没有新消息回复, 更新 l HW=2, 但此时r 在收到此回复之前下线再重启, 然后此时 r HW = 1, offset 小于1的消息才是提交的,
+6. 此时r 向l fetch 消息就能更新自己的HW 与l 保持一致, 但此时l 挂了, 那么r 只能根据HW=1, truncate offset=1 的消息m1
+7. 所以之前m1 消息在l 已经被提交了, 可能被读取了, 但此时 m1 又不存在了, 造成了数据的不一致. 
+
+* 另一种情况
+在上述情况的第五步之后, l 和 r 都挂了, 由于 r 的m1 只写入了cache, 彻底丢失
+1. 然后 r 先回复, 设置了unclean.leader.enable = true, r 被选为leader, 新写入一条消息 m2, 此时r offset=0 是m0, offset=1 是m2.
+2. 此时 l 回复 , HW = 2, 那么 从 r(此时的leader) 发送fetch req, LEO = 2, 从offset=2 开始返回, 那么 offset=1 这个位置两个副本就产生了不一致的消息, 一个是m2, 一个是 m1. 
+
+* 数据不一致的根本原因
+ 
+replica 的HW 是在下次fetch 请求才会拉取leader 的HW , 所以leader 的HW 和replica 的HW 是有可能出现某些时间上是不一致的. 
+根据replica 的HW 来恢复是不可靠的. 
 
 
+* 那么kafka 是如何解决的呢
+
+
+加入一个leader epoch, 类似leader 的版本号, 和当前epoch 下的第一条消息的offset, 和raft 很类似. 
+第一种情况, r 重启后去 l 发送 leaderEpochRequest, 如果l 没挂会返回对应的start offset, 就不会截断, 如果l 挂了, 那么r 被选为leader ,也不会截断, 但是如果 r 在数据落盘之前就挂了呢, 如果能接受unclean.leader, 而且此时是同
+是l 和r 一起挂, 是能接受理论上数据丢失的. 
+
+* leader epoch 的步骤
+
+如果一个replica 变成了leader, 就增加epoch, 并把LEO 作为startOffset, 并刷盘. 
+如果一个r 变成了follower, 就会把当前磁盘的epoch 发给 leader, leader 返回新的epoch 和start offset, 如果offset 比本地的更大就会truncate, 如果不大, 就以当前LEO 继续fetch.
+
+第二种情况, r 先恢复, r offset=0 是m0, offset=1 是m2, 变为新的l, l 恢复后会去 r 发起leaderEpochReq, 返回更大的epoch, 和startOffset=1, 那么 旧的l 就会截断1 开始的日志, 并从LEO = 1 开始fetch. 
 ### 手动计算consume 和 produce 的速度
 date;./kafka-consumer-groups.sh --describe --group groupid  --broker:9092| sort > lag.msg
 执行这个命令两次, 记录时间, 然后将两个 lag.msg 导入到 google sheet, 但是初始数据都在一列, 此时 选择 Data 菜单下" split text to columns " , 就可以分成多列, 通过两个时间点内的 current-offset 的相差计算consume 速度, log end offset(是最新的一条消息进入到 log 里面的位置) 计算 produce 的速度. 
