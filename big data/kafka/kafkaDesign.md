@@ -41,7 +41,7 @@ replica 的HW 是在下次fetch 请求才会拉取leader 的HW , 所以leader �
 如果epoch 小于leader, 则返回新的epoch, 和startOffset, 大于startOffset 的消息开始截断, 并从截断后的LEO 开始fetch.
 
 * 如何选leader
-
+多个broker 一起监听 zk 事件, 由zk 保证只有某个 broker 竞争成功成为controller, 然后由这个去轮训分发每个partition, 哪个replica 所在的broker 为leader. 当然需要一些负载均衡策略. 
 ### 手动计算consume 和 produce 的速度
 date;./kafka-consumer-groups.sh --describe --group groupid  --broker:9092| sort > lag.msg
 执行这个命令两次, 记录时间, 然后将两个 lag.msg 导入到 google sheet, 但是初始数据都在一列, 此时 选择 Data 菜单下" split text to columns " , 就可以分成多列, 通过两个时间点内的 current-offset 的相差计算consume 速度, log end offset(是最新的一条消息进入到 log 里面的位置) 计算 produce 的速度. 
