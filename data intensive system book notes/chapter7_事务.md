@@ -84,6 +84,12 @@ MVCC 解决不了, 需要串行化隔离级别.
 
 读写不互相阻塞, 但是如果在串行化的隔离级别下回退化为当前读
 
+* 如何找undo log 中合适的TRX_ID
+
+根据链表倒序找
+![image](https://user-images.githubusercontent.com/20329409/211465534-c2a5bd9f-dff3-49f5-9c4a-be0e8358fa12.png)
+
+
 * 新增字段
 
   * DB_ROW_ID 6byte, 隐含的自增ID（隐藏主键），如果数据表没有主键，InnoDB会自动以DB_ROW_ID产生一个聚簇索引.
