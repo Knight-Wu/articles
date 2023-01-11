@@ -1249,39 +1249,66 @@ B+ 树的非叶子节点不需要指针去指向数据, 也就是说比B 树有�
 
 > 时间复杂度分析: 
 > In the _worst_ case, merge sort does about 39% fewer comparisons than [quicksort](https://en.wikipedia.org/wiki/Quicksort "Quicksort") does in the _average_ case. In terms of moves, merge sort's worst case complexity is [O](https://en.wikipedia.org/wiki/Big_O_notation "Big O notation")(_n_ log _n_)—the same complexity as quicksort's best case, and merge sort's best case takes about half as many iterations as the worst case
+
+如图: 
+
+其实时间复杂度就是merge 两个有序数组时, merge 的次数, 就是merge 的总次数乘每次数组的个数, 如上图, 就是这个树的总元素个数, 二叉树的树高是logN, 数组长度是N, 
+总比较次数就是N*logN, 其实就是数每行的元素个数的累加总和. 
+
 > 
 ```
-public static int[] mergeSort(int[] arr) {  
-    int[] result = new int[arr.length];  
-    int len = arr.length;  
-    mergeSortRecu(arr, result, 0, len - 1);  
-    return result;  
-}  
-  
-public static void mergeSortRecu(int[] arr, int[] result, int start, int end) {  
-    if (start >= end)  
-        return;// 递归返回, 此时start==end, 数组只有一个元素  
-  int start1 = start;  
-    int mid = start + (end - start)/2 ;  
-    int end1 = mid;  
-    int start2 = mid + 1;  
-    int end2 = end;  
-    mergeSortRecu(arr, result, start1, end1);  
-    mergeSortRecu(arr, result, start2, end2);  
-    int k = start;  
-    while (start1 <= end1 && start2 <= end2) {  
-        result[k++] = arr[start1] < arr[start2] ? arr[start1++] : arr[start2++];  
-    }  
-    while (start1 <= end1) {  
-        result[k++] = arr[start1++];  
-    }  
-    while (start2 <= end2) {  
-        result[k++] = arr[start2++];  
-    }  
-    
-    for (int j = start; j <= end; j++) {// j<=end, 需要等于, 因为end 也是下标  
-  arr[j] = result[j];// 拷贝到原数组, 之后原数组arr 就部分有序, 然后归并: 就是将两个有序子序列合并  
-  }  
+class Merge {
+
+    // 用于辅助合并有序数组
+    private static int[] temp;
+
+    public static void sort(int[] nums) {
+        // 先给辅助数组开辟内存空间, 比在递归中开辟快
+        temp = new int[nums.length];
+        // 排序整个数组（原地修改）
+        sort(nums, 0, nums.length - 1);
+    }
+
+    // 定义：将子数组 nums[lo..hi] 进行排序
+    private static void sort(int[] nums, int lo, int hi) {
+        if (lo == hi) {
+            // 单个元素不用排序
+            return;
+        }
+        // 这样写是为了防止溢出，效果等同于 (hi + lo) / 2
+        int mid = lo + (hi - lo) / 2;
+        // 先对左半部分数组 nums[lo..mid] 排序
+        sort(nums, lo, mid);
+        // 再对右半部分数组 nums[mid+1..hi] 排序
+        sort(nums, mid + 1, hi);
+        // 将两部分有序数组合并成一个有序数组
+        merge(nums, lo, mid, hi);
+    }
+
+    // 将 nums[lo..mid] 和 nums[mid+1..hi] 这两个有序数组合并成一个有序数组
+    private static void merge(int[] nums, int lo, int mid, int hi) {
+        // 先把 nums[lo..hi] 复制到辅助数组中
+        // 以便合并后的结果能够直接存入 nums
+        for (int i = lo; i <= hi; i++) {
+            temp[i] = nums[i];
+        }
+
+        // 数组双指针技巧，合并两个有序数组
+        int i = lo, j = mid + 1;
+        for (int p = lo; p <= hi; p++) {
+            if (i == mid + 1) {
+                // 左半边数组已全部被合并
+                nums[p] = temp[j++];
+            } else if (j == hi + 1) {
+                // 右半边数组已全部被合并
+                nums[p] = temp[i++];
+            } else if (temp[i] > temp[j]) {
+                nums[p] = temp[j++];
+            } else {
+                nums[p] = temp[i++];
+            }
+        }
+    }
 }
 
 ```
