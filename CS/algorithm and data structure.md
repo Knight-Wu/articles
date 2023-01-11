@@ -359,12 +359,6 @@ void slidingWindow(string s) {
         right++;
         // 进行窗口内数据的一系列更新
         ...
-
-        /*** debug 输出的位置 ***/
-        // 注意在最终的解法代码中不要 print
-        // 因为 IO 操作很耗时，可能导致超时
-        printf("window: [%d, %d)\n", left, right);
-        /********************/
         
         // 判断左侧窗口是否要收缩
         while (window needs shrink) {
@@ -409,7 +403,7 @@ void slidingWindow(string s) {
                     count++;
                 }
             }
-            // System.out.println(window_map); 
+            
             // ----------------------------------
             // 收缩window的长度
             while (count == t_map.size()) {

@@ -19,7 +19,7 @@
 
 ![enter image description here](https://drive.google.com/uc?id=1oBOiQAmfVNUQpNunfBTbUgKR-Pqpl1C-)
 
-> 总结来看, 由于dn写失败, 导致nn检查小于最小副本数, executor接受到无法关闭文件的异常, driver 反序列化executor 端异常时出现classNotFoundEx.
+> 总结来看, 由于dn写失败, 导致nn检查小于最小副本数, executor接受到无法关闭文件的异常, driver 反序列化 executor 端异常时出现classNotFoundEx.
  
 * 解决过程
 4. 关于第一个现象, 一开始只发现了第一个现象, 没有发现executor的异常, 所以自然是觉得jar包问题, 尝试了如下几种添加jar包的方式: 
