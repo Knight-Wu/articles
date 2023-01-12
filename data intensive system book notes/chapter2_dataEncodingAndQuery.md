@@ -1,3 +1,14 @@
+# 何为关系型
+
+数据被组织成关系，每个关系是数据中行的无序集合，
+在数据库和在编程内存中或者磁盘上只是数据模型的不同，orm就是object relation mapping 用作数据模型的映射
+
+* NOSQL 
+
+指的是not only sql
+# Tips
+* 存储国家等字符串信息时，为什么要加个id呢，因为像编码一样更容易修改，id像一个引用，最终文本只存在一个地方，只修改一个地方; 防止重复; 
+
 向后兼容(back compatibility): 指的是新的代码能兼容旧的数据. 
 向前兼容(forward compatibility): 旧代码能兼容新数据, 主语都是代码或程序
 
@@ -22,10 +33,3 @@ encoded bytes 并不包含 schema name 等, 也不包含指定 schema tag, 所�
 1. Large file with lots of records , include writer schema at the beginning of the file
 2. Database with individually written records, match record with schema with schema version
 3. Sending records over a network connection, 通过 avro RPC 框架, 在 conn 建立的时候指定 schema , 并用在整个 conn 的过程中
-
-> Written with [StackEdit](https://stackedit.io/).
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwMjE2NzcxMywxMzU5MjczMzA3LC05OT
-EwMDEyNzAsMjAxNDY3NjY2NSwxNjk1NTY2MDEzLC0xMTYxNzEz
-MDA1LC0xODMzMDQzOTMzXX0=
--->
