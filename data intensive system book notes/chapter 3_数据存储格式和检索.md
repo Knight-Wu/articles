@@ -93,7 +93,17 @@ where name = "a" and id=2, 将 [0, 1, 0, 0] 与 [1, 0, 0, 0] 按位与, 结果�
 
 这个是原地修改page , LSM 是不修改, 只append, 然后合并
 
-* B 树 IO 次数 ?
+* B 树 IO 次数, vs B 树
+
+    * 如何计算B 树的IO 次数呢
+ 因为B+ 树叶子节点和非叶子节点存储的指针数量不一样, B+ 树不好计算, 时间复杂度跟page 大小无关, 虽然一般16 KB, 但是不懂能存几行数据, 每行的大小未知. 所以一般假设每个page 能存 B 行数据, 那么总共有 N 行, 总的B 树的高度就是 logB N, 以B 为底, 类比二叉树, 就是 (logN) / (logB), 
+例如
+Say you have a billion rows, and you can currently fit 64 keys in a node. Then the depth of the tree is (log 109)/ log 64 ≈ 30/6 = 5. Now you rebuild the tree with keys half the size and you get log 109 / log 128 ≈ 30/7 = 4.3. Assuming the top 3 levels of the tree are in memory, then you go from 2 disk seeks on average to 1.3 disk seeks on average, for a 35% speedup.
+    * 如何计算B+ 树存储的行数呢
+    通常三层可以存储千万条数据, 假设每个page 16 KB, 每行1KB, 叶子节点存 16 行, 根节点保留在内存, 三层总条数: 16 * 1000 * 1000 = 一千六百万行, 四层就160 亿行, 保留两层在内存 16MB, 三层 16GB. 
+    
+</br> 
+B+Tree 非叶子节点上是不存储数据的，仅存储键值，数据存储在同一层的叶节点，而B-Tree节点中不仅存储键值，也会存储数据。之所以这么做是因为在数据库中页的大小是固定的，innodb中页的默认大小是16KB。如果不存储数据，那么就会存储更多的键值，相应的树的阶数(节点的子节点树)就会更大，树就会更矮更胖，如此一来我们查找数据进行磁盘的IO次数有会再次减少，数据查询的效率也会更快。另外，B+Tree的阶数是等于键值的数量的，如果B+Tree一个节点可以存储1000个键值，那么4层(包括根节点)B+树可以存储1000×1000×1000=10亿个数据。一般根节点是常驻内存的，所以一般我们查找10亿数据，只需要3次磁盘IO, 每读一个page 算一次磁盘IO, 所以具体几次取决于有几层是放在磁盘上的. 
 
 * WAL , write ahead log 也叫 redo log
 
