@@ -1226,6 +1226,29 @@ TreeNode getMin(TreeNode node) {
     return node;
 }
 ```
+```
+// 不同二叉树的个数, leetcode 96
+class Solution {
+    int [][] memo ; 
+    public int numTrees(int n) {
+        memo = new int [n+1][n+1];
+       return count(1, n);
+    }
+
+    int count(int low, int high){
+        if(low >= high) return 1;
+        if(memo[low][high] != 0) return memo[low][high];
+        int res = 0 ;
+        for(int i =low; i<=high;i++){
+            int l = count(low, i-1);
+            int r = count(i+1, high);
+            res += l*r;
+        }
+        memo[low][high] = res;
+        return res;
+    }
+}
+```
 # AVL 树
 平衡二叉搜索树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。当只有一个根节点时, 根节点的高度定义为1.
 
