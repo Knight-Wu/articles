@@ -1173,7 +1173,172 @@ int maxDeep(TreeNode node){
         helper(root.right, res, d+1);
     }
 ```
+## 二叉树最近公共祖先节点
+为什么要写这样一个奇怪的find函数呢?
+如果在前序位置做是否找到的判断就可以提前返回不需要找后续了, 如果在后序位置就要遍历所有节点. 
+```
+// 二叉树最近公共祖先节点的代码基础模板, 最近公共祖先系列问题的解法都是把这个函数作为框架的
+// 定义：在以 root 为根的二叉树中寻找值为 val1 或 val2 的节点
+TreeNode find(TreeNode root, int val1, int val2) {
+    // base case
+    if (root == null) {
+        return null;
+    }
+    // 前序位置，看看 root 是不是目标值
+    if (root.val == val1 || root.val == val2) {
+        return root;
+    }
+    // 去左右子树寻找
+    TreeNode left = find(root.left, val1, val2);
+    TreeNode right = find(root.right, val1, val2);
+    // 后序位置，已经知道左右子树是否存在目标值
+    return left != null ? left : right;
+}
+```
 
+
+```
+先来看看力扣第 236 题「二叉树的最近公共祖先」：
+
+给你输入一棵不含重复值的二叉树，以及存在于树中的两个节点p和q，请你计算p和q的最近公共祖先节点。
+
+TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    return find(root, p.val, q.val);
+}
+
+// 在二叉树中寻找 val1 和 val2 的最近公共祖先节点
+TreeNode find(TreeNode root, int val1, int val2) {
+    if (root == null) {
+        return null;
+    }
+    // 前序位置
+    if (root.val == val1 || root.val == val2) {
+        // 如果遇到目标值，直接返回
+        return root;
+    }
+    TreeNode left = find(root.left, val1, val2);
+    TreeNode right = find(root.right, val1, val2);
+    // 后序位置，已经知道左右子树是否存在目标值
+    if (left != null && right != null) {
+        // 当前节点是 LCA 节点
+        return root;
+    }
+
+    return left != null ? left : right;
+}
+```
+
+
+```
+比如力扣第 1676 题「二叉树的最近公共祖先 IV」：
+
+依然给你输入一棵不含重复值的二叉树，但这次不是给你输入p和q两个节点了，而是给你输入一个包含若干节点的列表nodes（这些节点都存在于二叉树中），让你算这些节点的最近公共祖先。
+
+TreeNode lowestCommonAncestor(TreeNode root, TreeNode[] nodes) {
+    // 将列表转化成哈希集合，便于判断元素是否存在
+    HashSet<Integer> values = new HashSet<>();
+    for (TreeNode node : nodes) {
+        values.add(node.val);
+    }
+
+    return find(root, values);
+}
+
+// 在二叉树中寻找 values 的最近公共祖先节点
+TreeNode find(TreeNode root, HashSet<Integer> values) {
+    if (root == null) {
+        return null;
+    }
+    // 前序位置
+    if (values.contains(root.val)){
+        return root;
+    }
+
+    TreeNode left = find(root.left, values);
+    TreeNode right = find(root.right, values);
+    // 后序位置，已经知道左右子树是否存在目标值
+    if (left != null && right != null) {
+        // 当前节点是 LCA 节点
+        return root;
+    }
+
+    return left != null ? left : right;
+}
+
+```
+
+```
+比如力扣第 1644 题「二叉树的最近公共祖先 II」：
+
+给你输入一棵不含重复值的二叉树的，以及两个节点p和q，如果p或q不存在于树中，则返回空指针，否则的话返回p和q的最近公共祖先节点。
+
+// 用于记录 p 和 q 是否存在于二叉树中
+boolean foundP = false, foundQ = false;
+
+TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    TreeNode res = find(root, p.val, q.val);
+    if (!foundP || !foundQ) {
+        return null;
+    }
+    // p 和 q 都存在二叉树中，才有公共祖先
+    return res;
+}
+
+// 在二叉树中寻找 val1 和 val2 的最近公共祖先节点
+TreeNode find(TreeNode root, int val1, int val2) {
+    if (root == null) {
+        return null;
+    }
+    TreeNode left = find(root.left, val1, val2);
+    TreeNode right = find(root.right, val1, val2);
+
+    // 后序位置，判断当前节点是不是 LCA 节点
+    if (left != null && right != null) {
+        return root;
+    }
+
+    // 后序位置，判断当前节点是不是目标值
+    if (root.val == val1 || root.val == val2) {
+        // 找到了，记录一下
+        if (root.val == val1) foundP = true;
+        if (root.val == val2) foundQ = true;
+        return root;
+    }
+
+    return left != null ? left : right;
+}
+```
+
+```
+看力扣第 235 题「二叉搜索树的最近公共祖先」：
+
+给你输入一棵不含重复值的二叉搜索树，以及存在于树中的两个节点p和q，请你计算p和q的最近公共祖先节点。
+
+TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    // 保证 val1 较小，val2 较大
+    int val1 = Math.min(p.val, q.val);
+    int val2 = Math.max(p.val, q.val);
+    return find(root, val1, val2);
+}
+
+// 在 BST 中寻找 val1 和 val2 的最近公共祖先节点
+TreeNode find(TreeNode root, int val1, int val2) {
+    if (root == null) {
+        return null;
+    }
+    if (root.val > val2) {
+        // 当前节点太大，去左子树找
+        return find(root.left, val1, val2);
+    }
+    if (root.val < val1) {
+        // 当前节点太小，去右子树找
+        return find(root.right, val1, val2);
+    }
+    // val1 <= root.val <= val2
+    // 则当前节点就是最近公共祖先
+    return root;
+}
+```
 ## 二杈搜索树(binary search tree, BST)
 左子树的所有节点都小于根节点, 右子树的所有节点都大于根节点的二叉树, 同样左子树和右子树也都是BST.
 
