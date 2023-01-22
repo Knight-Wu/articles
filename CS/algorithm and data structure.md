@@ -1414,6 +1414,31 @@ class Solution {
     }
 }
 ```
+## 完全二叉树
+
+完全二叉树如下图，每一层都是紧凑靠左排列的, 中间没有空的节点
+```
+// 计算完全二叉树的节点个数, 时间复杂度是O(logN * logN), N 为树的总节点个数, 因为递归的深度是 logN, while 循环的次数也是树高.
+public int countNodes(TreeNode root) {
+    TreeNode l = root, r = root;
+    // 沿最左侧和最右侧分别计算高度
+    int hl = 0, hr = 0;
+    while (l != null) {
+        l = l.left;
+        hl++;
+    }
+    while (r != null) {
+        r = r.right;
+        hr++;
+    }
+    // 如果左右侧计算的高度相同，则是一棵满二叉树
+    if (hl == hr) {
+        return (int)Math.pow(2, hl) - 1;
+    }
+    // 如果左右侧的高度不同，则按照普通二叉树的逻辑计算
+    return 1 + countNodes(root.left) + countNodes(root.right);
+}
+```
 # AVL 树
 平衡二叉搜索树（Self-balancing binary search tree）又被称为AVL树（有别于AVL算法），且具有以下性质：它是一棵空树或它的左右两个子树的高度差的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。当只有一个根节点时, 根节点的高度定义为1.
 
