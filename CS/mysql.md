@@ -111,6 +111,42 @@ https://blog.jcole.us/2013/01/14/efficiently-traversing-innodb-btrees-with-the-p
 
 > 使用B+ tree 索引的原则
 
+* 多列索引
+
+可以认为是多个列的值拼成一个值作为这个索引的值, 所以必须要精确匹配并查找到索引的值才行, 所以就有了类似最左匹配原则等. 
+https://dev.mysql.com/doc/refman/8.0/en/multiple-column-indexes.html
+
+例如
+```
+CREATE TABLE test (
+    id         INT NOT NULL,
+    last_name  CHAR(30) NOT NULL,
+    first_name CHAR(30) NOT NULL,
+    PRIMARY KEY (id),
+    INDEX name (last_name,first_name)
+);
+
+SELECT * FROM test WHERE last_name='Jones';
+
+SELECT * FROM test
+  WHERE last_name='Jones' AND first_name='John';
+
+SELECT * FROM test
+  WHERE last_name='Jones'
+  AND (first_name='John' OR first_name='Jon');
+
+SELECT * FROM test
+  WHERE last_name='Jones'
+  AND first_name >='M' AND first_name < 'N';
+
+前四个查询可以匹配索引, 后面查询不能匹配. 就是因为要能完全按照索引列的顺序拼出索引的值.
+
+SELECT * FROM test WHERE first_name='John';
+
+SELECT * FROM test
+  WHERE last_name='Jones' OR first_name='John';
+```
+
 1. 最左前缀匹配原则, 碰到范围查询(>、<、between、like) 就终止匹配, 比如a = 1 and b = 2 and c > 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d 作为查询条件, and 连接的列顺序可以交换。但是跳列和非and 情况下列顺序混乱都是用不了索引的. 
 https://dev.mysql.com/doc/refman/8.0/en/multiple-column-indexes.html
  
