@@ -1,6 +1,7 @@
 ### 除了加锁, 还有什么方式实现并发安全
 1. 采用副本, copy on write, threadlocal
 2. cas
+3. merge, 类似bitcoin 的多个链的merge.
 
 ## copy on write
 
