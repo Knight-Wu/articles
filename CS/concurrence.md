@@ -1,4 +1,28 @@
-#### java多线程体系图
+### 除了加锁, 还有什么方式实现并发安全
+1. 采用副本, copy on write, threadlocal
+2. cas
+
+## copy on write
+
+写时复制技术, 适用于读多写少的场景, 写的时候还是要加锁的, 写写互斥, 也可以只在copy 的时候加, 然后比较老对象的引用, CAS .
+读的时候不需要加锁. 
+
+下面这两个问题只适用于openjdk 19, copyOnWriteArrayList
+* 为什么写的时候要copy, 而不是直接在原数组上操作, 虽然写的时候已经持有一个全局锁了
+
+因为读的时候没有加锁, 要保证读写的原子性, 否则可能读到异常的写到一半的数据, 所以每次写都copy 一份出来, 然后在新的数据上操作, 最后再指向新的数据, 利用java 赋值语句的原子性, 使得读到的数据要么是旧的, 要么是新的. 
+
+* 为什么遍历的时候不能add 也不能remove
+
+add 和remove 方法都会抛出 UnsupportEx, 因为遍历的时候相当于读, 是不能再去写的, 这个类就不是做这种事的, 并没有实现读写的互斥, 因为你遍历
+的时候是根据snapshot 去遍历, 如果你这时候写又有一份可能完全不一样的snapshot, 会造成数据混乱. 
+
+* 那么如何多线程并发的遍历并修改, 并且此时有新的数据写进来. 
+
+貌似只能
+
+
+# java多线程体系图
 [link](https://yq.aliyun.com/articles/61960?utm_campaign=wenzhang&utm_medium=article&utm_source=QQ-qun&utm_content=m_10571)
 
 ## 基本概念
