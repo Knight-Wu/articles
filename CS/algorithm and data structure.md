@@ -1,5 +1,4 @@
 # 待加强问题
-* https://leetcode.cn/problems/kth-largest-element-in-an-array/
 * 排序
 
 # 常见技巧
@@ -2201,10 +2200,3 @@ https://www.coursera.org/learn/algorithms-part1/
 #### 待解决问题
 * 回文字符串
 https://leetcode.com/problems/rotate-string/solution/
-
-> Written with [StackEdit](https://stackedit.io/).
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzg1MDQxNTcsNTE2MDQ0MDA3LDE0MD
-g0MTM0ODAsMTM4MjM1ODQ4OCw2OTAyNjQ5NzAsLTgzMDgxOTk4
-OSwxNzE3NDU2MjYzLC0xNTE2NTQ2MzgzXX0=
--->
