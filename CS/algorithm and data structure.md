@@ -1600,6 +1600,47 @@ class Merge {
 
 > 平均时间复杂度待研究
 
+> 加入随机性, 避免最坏情况时间复杂度退化为 O(n的平方)
+
+```
+class Solution {
+    Random r = new Random();
+    public int findKthLargest(int[] nums, int k) {
+        int t = nums.length - k;
+        return qs(nums, 0, nums.length - 1, t);
+    }
+
+    int qs(int [] nums, int s, int e, int t){
+        int p = partition(nums, s, e);
+        if(p == t){
+            return nums[p];
+        }else if(t > p){
+            return qs(nums, p+1, e, t);
+        }
+        return qs(nums, s, p-1, t);
+    }
+
+    int partition(int [] nums ,int s, int e){
+        int ran = r.nextInt(e - s + 1) + s; // s <= ran <= e
+        swap(nums, ran, e);
+        int pivot = nums[e];
+        int j = s;
+        for(int i = s; i < e; i++){ // 因为pivot 是 e, 所以 i < e
+            if(nums[i] <= pivot){
+                swap(nums, i, j++);
+            }
+        }
+        swap(nums, j, e); // 此时 nums[j] > pivot
+        return j;
+    }
+
+    void swap(int [] nums, int a, int b){
+        int tmp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = tmp;
+    }
+}
+```
 
 > 版本一
 ```
