@@ -674,6 +674,39 @@ for 状态1 in 状态1的所有取值：
 代码模板如下:
 ![ccdb8efcdfd459dc0c9710b4fb99e8f](https://user-images.githubusercontent.com/20329409/206965299-8866273f-96f5-4ddc-90e5-7975e3dfeab0.jpg)
 
+* 买卖股票问题 2
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
+
+```
+int n = stocks.length;
+int [][] res = new int [n][2];
+// 0 卖出, 1 持有
+res[0][0] = 0;
+res[0][1] = -stocks[0];
+for(int i = 1; i < n; i++){
+    res[i][0] = Math.max(res[i-1][1] + stocks[i], res[i-1][0]);
+    res[i][1] = Math.max(res[i-1][1], res[i-1][0] - stocks[i]);
+}
+
+return res[n-1][0];
+
+
+int n = stocks.length;
+
+// 0 卖出, 1 持有
+res[0][0] = 0;
+res[0][1] = -stocks[0];
+
+int a = 0;
+int b = -stocks[0];
+for(int i = 1; i < n; i++){
+    int oldA = a
+    a = Math.max(b + stocks[i], oldA);
+    b = Math.max(b, oldA - stocks[i]);
+}
+
+return res[n-1][0];
+```
 ## 贪心算法
 贪心算法可以理解为动态规划的一种特例, 不需要穷举所有情况即可得到最优解. 
 什么是贪心选择性质呢，简单说就是：每一步都做出一个局部最优的选择，最终的结果就是全局最优。注意哦，这是一种特殊性质，其实只有一部分问题拥有这个性质。
