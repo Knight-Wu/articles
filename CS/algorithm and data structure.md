@@ -1011,6 +1011,348 @@ class RandomizedSet {
         return ran;
     }
 ```
+
+
+
+## 回溯
+
+形式一、元素无重不可复选，即 nums 中的元素都是唯一的，每个元素最多只能被使用一次，这也是最基本的形式。
+
+以组合为例，如果输入 nums = [2,3,6,7]，和为 7 的组合应该只有 [7]。
+
+形式二、元素可重不可复选，即 nums 中的元素可以存在重复，每个元素最多只能被使用一次。
+
+以组合为例，如果输入 nums = [2,5,2,1,2]，和为 7 的组合应该有两种 [2,2,2,1] 和 [5,2]。
+
+形式三、元素无重可复选，即 nums 中的元素都是唯一的，每个元素可以被使用若干次。
+
+以组合为例，如果输入 nums = [2,3,6,7]，和为 7 的组合应该有两种 [2,2,3] 和 [7]。
+
+```
+// 回溯算法框架
+
+List<List<Integer>> result = new LinkedList<>();
+LinkedList<Integer> list = new LinkedList<>();
+
+
+void backtrack(int [] nums):
+    if 满足结束条件:
+        result.add(new ArrayList<>(list));
+        return
+    
+    for n in nums:
+        做选择
+        backtrack(nums)
+        撤销选择
+```
+
+* 实战题目
+
+```
+// https://leetcode.cn/problems/combination-sum-ii/
+
+给定一个候选人编号的集合 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。
+
+candidates 中的每个数字在每个组合中只能使用 一次 。
+
+注意：解集不能包含重复的组合。 
+
+ 
+
+示例 1:
+
+输入: candidates = [10,1,2,7,6,1,5], target = 8,
+输出:
+[
+[1,1,6],
+[1,2,5],
+[1,7],
+[2,6]
+]
+
+
+class Solution {
+    List<List<Integer>> res = new LinkedList<>();
+    LinkedList<Integer> list = new LinkedList<>();
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        Arrays.sort(candidates);
+        help(candidates, target, 0);
+        return res;
+    }
+
+    void help(int[] candidates, int t, int start){
+        if( t == 0){
+            res.add(new ArrayList<>(list));
+            return;
+        }
+        for(int i = start; i < candidates.length; i++){
+            if(i != start && candidates[i] == candidates[i-1]){
+                continue;
+            }
+            if(candidates[i] > t){
+                return;
+            }
+            t -= candidates[i];
+            list.add(candidates[i]);
+            help(candidates, t, i+1);
+            t += candidates[i];
+            list.removeLast();
+        }
+    }
+}
+
+
+// https://leetcode.cn/problems/permutations-ii/description/
+
+给定一个可包含重复数字的序列 nums ，按任意顺序 返回所有不重复的全排列。
+
+ 
+
+示例 1：
+
+输入：nums = [1,1,2]
+输出：
+[[1,1,2],
+ [1,2,1],
+ [2,1,1]]
+
+
+class Solution {
+   List<List<Integer>> res = new LinkedList<>();
+LinkedList<Integer> track = new LinkedList<>();
+boolean[] used;
+
+public List<List<Integer>> permuteUnique(int[] nums) {
+    // 先排序，让相同的元素靠在一起
+    Arrays.sort(nums);
+    used = new boolean[nums.length];
+    backtrack(nums);
+    return res;
+}
+
+void backtrack(int[] nums) {
+    if (track.size() == nums.length) {
+        res.add(new LinkedList(track));
+        return;
+    }
+
+    for (int i = 0; i < nums.length; i++) {
+        if (used[i]) {
+            continue;
+        }
+        // 新添加的剪枝逻辑，固定相同的元素在排列中的相对位置
+        // 当出现重复元素时，比如输入 nums = [1,2,2',2'']，2' 只有在 2 已经被使用的情况下才会被选择，
+        // 同理，2'' 只有在 2' 已经被使用的情况下才会被选择，这就保证了相同元素在排列中的相对位置保证固定。
+        if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
+            continue;
+        }
+        track.add(nums[i]);
+        used[i] = true;
+        backtrack(nums);
+        track.removeLast();
+        used[i] = false;
+    }
+}
+}
+
+// https://leetcode.cn/problems/permutations/
+给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。
+
+ 
+
+示例 1：
+
+输入：nums = [1,2,3]
+输出：[[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+class Solution {
+        List<List<Integer>> res = new LinkedList<>();
+
+    LinkedList<Integer> list = new LinkedList<>();
+    boolean [] used ;
+    public List<List<Integer>> permute(int[] nums) {
+        used = new boolean[nums.length];
+        help(nums);
+        return res;
+    }
+
+    void help(int [] nums){
+        if(list.size() == nums.length){
+            res.add(new ArrayList<>(list));
+            return;
+        }
+
+        for(int i = 0; i < nums.length; i++){
+            if(used[i]){
+                continue;
+            }
+            list.add(nums[i]);
+            used[i] = true;
+            help(nums);
+            list.removeLast();
+            used[i] = false;
+        }
+    }
+}
+
+
+https://leetcode.cn/problems/combination-sum/description/
+
+给你一个 无重复元素 的整数数组 candidates 和一个目标整数 target ，找出 candidates 中可以使数字和为目标数 target 的 所有 不同组合 ，并以列表形式返回。你可以按 任意顺序 返回这些组合。
+
+candidates 中的 同一个 数字可以 无限制重复被选取 。如果至少一个数字的被选数量不同，则两种组合是不同的。 
+
+对于给定的输入，保证和为 target 的不同组合数少于 150 个。
+
+ 
+
+示例 1：
+
+输入：candidates = [2,3,6,7], target = 7
+输出：[[2,2,3],[7]]
+解释：
+2 和 3 可以形成一组候选，2 + 2 + 3 = 7 。注意 2 可以使用多次。
+7 也是一个候选， 7 = 7 。
+仅有这两种组合。
+
+class Solution {
+        List<List<Integer>> res = new LinkedList<>();
+    LinkedList<Integer> list = new LinkedList<>();
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        Arrays.sort(candidates);
+        help(candidates, target, 0);
+        return res;
+    }
+
+    void help(int[] candidates, int t, int start){
+        if( t == 0){
+            res.add(new ArrayList<>(list));
+            return;
+        }
+        for(int i = start; i < candidates.length; i++){
+            if(candidates[i] > t){
+                return;
+            }
+            t -= candidates[i];
+            list.add(candidates[i]);
+            help(candidates, t, i); // 重点: 从i 开始即可, 不是 i+1 . 
+            t += candidates[i];
+            list.removeLast();
+        }
+    }
+
+ 
+}
+```
+
+来回顾一下排列/组合/子集问题的三种形式在代码上的区别。
+
+由于子集问题和组合问题本质上是一样的，无非就是 base case 有一些区别，所以把这两个问题放在一起看。
+
+```
+形式一、元素无重不可复选，即 nums 中的元素都是唯一的，每个元素最多只能被使用一次，backtrack 核心代码如下：
+
+/* 组合/子集问题回溯算法框架 */
+void backtrack(int[] nums, int start) {
+    // 回溯算法标准框架
+    for (int i = start; i < nums.length; i++) {
+        // 做选择
+        track.addLast(nums[i]);
+        // 注意参数
+        backtrack(nums, i + 1);
+        // 撤销选择
+        track.removeLast();
+    }
+}
+
+/* 排列问题回溯算法框架 */
+void backtrack(int[] nums) {
+    for (int i = 0; i < nums.length; i++) {
+        // 剪枝逻辑
+        if (used[i]) {
+            continue;
+        }
+        // 做选择
+        used[i] = true;
+        track.addLast(nums[i]);
+
+        backtrack(nums);
+        // 撤销选择
+        track.removeLast();
+        used[i] = false;
+    }
+}
+形式二、元素可重不可复选，即 nums 中的元素可以存在重复，每个元素最多只能被使用一次，其关键在于排序和剪枝，backtrack 核心代码如下：
+
+Arrays.sort(nums);
+/* 组合/子集问题回溯算法框架 */
+void backtrack(int[] nums, int start) {
+    // 回溯算法标准框架
+    for (int i = start; i < nums.length; i++) {
+        // 剪枝逻辑，跳过值相同的相邻树枝
+        if (i > start && nums[i] == nums[i - 1]) {
+            continue;
+        }
+        // 做选择
+        track.addLast(nums[i]);
+        // 注意参数
+        backtrack(nums, i + 1);
+        // 撤销选择
+        track.removeLast();
+    }
+}
+
+
+Arrays.sort(nums);
+/* 排列问题回溯算法框架 */
+void backtrack(int[] nums) {
+    for (int i = 0; i < nums.length; i++) {
+        // 剪枝逻辑
+        if (used[i]) {
+            continue;
+        }
+        // 剪枝逻辑，固定相同的元素在排列中的相对位置
+        if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
+            continue;
+        }
+        // 做选择
+        used[i] = true;
+        track.addLast(nums[i]);
+
+        backtrack(nums);
+        // 撤销选择
+        track.removeLast();
+        used[i] = false;
+    }
+}
+形式三、元素无重可复选，即 nums 中的元素都是唯一的，每个元素可以被使用若干次，只要删掉去重逻辑即可，backtrack 核心代码如下：
+
+/* 组合/子集问题回溯算法框架 */
+void backtrack(int[] nums, int start) {
+    // 回溯算法标准框架
+    for (int i = start; i < nums.length; i++) {
+        // 做选择
+        track.addLast(nums[i]);
+        // 注意参数
+        backtrack(nums, i);
+        // 撤销选择
+        track.removeLast();
+    }
+}
+
+
+/* 排列问题回溯算法框架 */
+void backtrack(int[] nums) {
+    for (int i = 0; i < nums.length; i++) {
+        // 做选择
+        track.addLast(nums[i]);
+        backtrack(nums);
+        // 撤销选择
+        track.removeLast();
+    }
+}
+```
+
 # 二叉树
 * 编程模式
 二叉树题目的递归解法可以分两类思路，第一类是遍历一遍二叉树得出答案，第二类是通过分解问题计算出答案，这两类思路分别对应着 回溯算法核心框架 和 动态规划核心框架。 
@@ -1036,39 +1378,6 @@ void traverse(TreeNode root) {
     // 后序位置
 }
 ```
-
-回溯
-```
-
-List<List<Integer>> res = new LinkedList<>();
-LinkedList<Integer> track = new LinkedList<>();
-
-/* 主函数，输入一组不重复的数字，返回它们的全排列 */
-List<List<Integer>> permute(int[] nums) {
-    backtrack(nums);
-    return res;
-}
-
-// 回溯算法框架
-void backtrack(int[] nums) {
-    if (track.size() == nums.length) {
-		// 穷举完一个全排列
-        res.add(new LinkedList(track));
-        return;
-    }
-    
-    for (int i = 0; i < nums.length; i++) {
-        if (track.contains(nums[i]))
-            continue;
-		// 前序遍历位置做选择
-        track.add(nums[i]);
-        backtrack(nums);
-        // 后序遍历位置取消选择
-        track.removeLast();
-    }
-}
-```
-
 
 二叉树深度可以写出以上所说的一种是回溯递归的模式, 第二种是分解, 把复杂问题简单化分解的方式
 第一种: 
