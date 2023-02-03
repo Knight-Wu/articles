@@ -123,30 +123,27 @@ TCP与UDP应用：
 #### TCP_WAIT 过多是否异常
 [2014-tcp-time-wait-state-linux](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
 [https://blog.oldboyedu.com/tcp-wait/](https://blog.oldboyedu.com/tcp-wait/)
+* time wait 过多的原因
+
+因为客户端建立短连接, 新建后立马又断掉. 
+正常的TCP客户端连接在关闭后，会进入一个TIME_WAIT的状态，持续的时间一般在2 MSL (一分钟)，对于连接数不高的场景，对系统也不会有什么影响，
+但如果短时间内（例如1s内）进行大量的短连接，则可能出现这样一种情况：客户端所在的操作系统的socket端口和文件描述符被用尽，客户端无法再发起新的连接！
+
+举例来说：
+  假设每秒建立了1000个短连接（Web场景下是很常见的，例如每个请求都去访问memcached），假设TIME_WAIT的时间是1分钟，则1分钟内需要建立6W个短连接，由于TIME_WAIT时间是1分钟，这些短连接1分钟内都处于TIME_WAIT状态，都不会释放，而Linux默认的本地端口范围配置是：net.ipv4.ip_local_port_range = 32768, 因此这种情况下新的请求由于没有本地端口就不能建立了。
+
 * time_wait 状态的作用
 
-1. 确保前一个连接A 发的消息因为网络阻塞,  A连接关闭后, 可能被后续新建的连接(如果源ip, 源端口, 目的ip, 目的端口,协议都和A 连接相同的)收到, 导致数据错乱
+主动关闭方为客户端, 被动关闭方为服务器, 
+1. 确保最后客户端的ack, 服务器可以收到, 如果服务器没收到则一定会在 2MSL 时间内重传最后一个Fin, 如果不等待, 则重传的 Fin 就收不到, 服务器就会处于last ack 状态一直等待, 浪费服务器资源, 导致服务器端口耗尽. 
 
-> The most known one is to **prevent delayed segments** from one connection being accepted by a later connection relying on the same quadruplet (source address, source port, destination address, destination port). The sequence number also needs to be in a certain range to be accepted. This narrows a bit the problem but it still exists, especially on fast connections with large receive windows. [RFC 1337](https://tools.ietf.org/html/rfc1337 "RFC 1337: TIME-WAIT Assassination Hazards in TCP") explains in details what happens when the `TIME-WAIT`state is deficient.
-
-2. 确保被动关闭方B 能知道主动关闭方 A 已经完全关闭了, 否则会一直处于LAST_ACK 的状态, 认为旧有的连接没有完全关闭, 占用一个socket 五元组, 并且有可能导致新建的连接失败.
-> Without the `TIME-WAIT` state, a connection could be reopened while the remote end still thinks the previous connection is valid. When it receives a _SYN_ segment (and the sequence number matches), it will answer with a _RST_ as it is not expecting such a segment. The new connection will be aborted with an error
-
-time_wait 会等待60秒后关闭.
-> [RFC 793](https://tools.ietf.org/html/rfc793 "RFC 793: Transmission Control Protocol")  requires the  `TIME-WAIT`  state to last twice the time of the  MSL. On Linux, this duration is  **not**  tunable and is defined in  `include/net/tcp.h`  as one minute:
-define TCP_TIMEWAIT_LEN (60*HZ) /* how long to wait to destroy TIME-WAIT
-  state, about 60 seconds. There have been  [propositions to turn this into a tunable value](http://web.archive.org/web/2014/http://comments.gmane.org/gmane.linux.network/244411 "[RFC PATCH net-next] tcp: introduce tcp_tw_interval to specifiy the time of TIME-WAIT")  but it has been refused on the ground the  `TIME-WAIT`  state is a good thing.
+2. 这个可以不说, 等待2 MSL 的时间后, 这个链接的消息在网络上都消失, 避免导致后续新建的连接(如果源ip, 源端口, 目的ip, 目的端口,协议都和A 连接相同的)收到, 导致数据错乱
 
 * time_wait 的危害
 
 1. 占用 Connection table slot
 
-A connection in the  `TIME-WAIT`  state is kept for one minute in the connection table. This means, another connection with the same  _quadruplet_  (source address, source port, destination address, destination port) cannot exist.
-
-For a web server, the destination address and the destination port are likely to be constant. If your web server is behind a L7 load-balancer, the source address will also be constant. On Linux, the client port is by default allocated in a port range of about 30,000 ports (this can be changed by tuning  `net.ipv4.ip_local_port_range`). This means that only 30,000 connections can be established between the web server and the load-balancer every minute, so about  **500 connections per second**.
-
-If the  `TIME-WAIT`  sockets are on the client side, such a situation is easy to detect. The call to  `connect()`  will return  `EADDRNOTAVAIL`  and the application will log some error message about that. On the server side, this is more complex as there is no log and no counter to rely on. 
-简而言之, 会导致client 无法同一时间发起更多的连接, 因为time_wait 释放需要一分钟, 此时会占用 Connection table 这样一个四元组 (source address, source port, destination address, destination port), 而这个四元组同一时刻只能有一个.
+简而言之, 会导致client 无法同一时间发起更多的连接, 因为time_wait 释放需要一分钟, 每秒新建 500 个conn 就会占满, 此时会占用 Connection table 这样一个四元组 (source address, source port, destination address, destination port), 而这个四元组同一时刻只能有一个.
 
 2. 内存的消耗
 
@@ -159,15 +156,18 @@ First, from the application point of view, a  `TIME-WAIT`  socket does not consu
 
 > 总之 TCP_WAIT 在几百几千是挺正常的, 几万才算多, 最大值取决于当前节点配置的客户端端口数量,  如果应用层面没出现异常, 可以忽略.
 
-* 如何解决time-wait 过多, 造成建立不起更多的连接
+* 如何解决time-wait 过多
+
+短连接过多或突然客户端关闭大量链接, 在客户端出现大量time wait. 
 https://cloud.tencent.com/developer/article/1004354
 
+* close_wait过多原因
 
-> Written with [StackEdit](https://stackedit.io/).
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbOTE3MzM1NjE1LDExNTY1MTIzOCwyMjE4Mj
-EyNCwxNDQxMjE0Mjk1LC0xNzQ0NDMxMjQsNjk4MzU1OTE5LDEy
-NDk0OTM5ODUsMTc1NjU2NDU5MywtMTczMzk3NDA3NSwxNjcxMD
-czODY4LC04ODgxNjEwMjUsLTEwNDUxMjc0NDMsLTM5MTIwNzg1
-OV19
--->
+close_wait 出现在服务端, 被动关闭方, 简而言之就是没有发送 Fin 包, FIN包的底层实现其实就是调用socket的close方法，这里的问题出在正常执行close方法。
+
+close_wait 按照正常操作的话应该很短暂的一个状态，接收到客户端的fin包并且回复客户端ack之后，会继续发送FIN包告知客户端关闭关闭连接，之后迁移到Last_ACK状态。但是close_wait过多只能说明没有迁移到Last_ACK，也就是服务端是否发送FIN包，只有发送FIN包才会发生迁移，所以问题定位在是否发送FIN包。
+
+## big-endian vs little-endian
+
+大端: 就是把低字节存在高位, 方便阅读和debug, 方便人从上到下就可以顺序读取整个字节
+小端: 就是把低字节存在低位, 方便先读低字节, 例如判断奇数和偶数. 
