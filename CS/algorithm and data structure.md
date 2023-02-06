@@ -10,6 +10,110 @@
 
 * 如果要保持数组元素的紧凑性，可以把待删除元素换到最后，然后 pop 掉末尾的元素，这样时间复杂度就是 O(1) 了。因为最后一个元素remove 的时候, 置空即可, 如果是中间的元素remove, 就需要arraylist 的拷贝了, 然后我们需要额外的哈希表记录值到索引的映射, 然后把最后一个元素放到要remove 的元素的位置. 
 
+# 双指针
+
+```
+给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
+
+找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+
+返回容器可以储存的最大水量
+
+      public int maxArea(int[] height) {
+        int l = 0, r = height.length - 1;
+        int ans = 0;
+        while (l < r) {
+            int area = Math.min(height[l], height[r]) * (r - l);
+            ans = Math.max(ans, area);
+            if (height[l] <= height[r]) {
+                ++l;
+            }
+            else {
+                --r;
+            }
+        }
+        return ans;
+    }
+```
+
+```
+三数之和
+给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k ，同时还满足 nums[i] + nums[j] + nums[k] == 0 。请
+
+你返回所有和为 0 且不重复的三元组。
+
+注意：答案中不可以包含重复的三元组。
+和两数之和不同的是, 因为要去重, 所以要排序, 就不用map 了. 
+
+   public List<List<Integer>> threeSum(int[] nums) {
+      Arrays.sort(nums);
+        List<List<Integer>> res = new LinkedList<>();
+        
+        for(int i = 0; i <= nums.length - 3; i++){
+            if(nums[i] > 0){
+                break;
+            }
+            int sum = 0 - nums[i];
+            int l = i + 1;
+            int r = nums.length - 1;
+            while(l < r){
+                int left = nums[l];
+                int right = nums[r];
+                int add = left + right;
+                if(add < sum){
+                    while(l < r && nums[l] == left){
+                        l++;
+                    }
+                }else if(add > sum){
+                    while(l < r && nums[r] == right){
+                        r--;
+                    }
+                }else{
+                    List<Integer> tmp = new LinkedList<>();
+                    tmp.add(nums[i]);
+                    tmp.add(left);
+                    tmp.add(right);
+                    res.add(tmp);
+                     while(l < r && nums[l] == left){
+                        l++;
+                    }
+                    while(l < r && nums[r] == right){
+                        r--;
+                    }
+                }
+            }
+            while(i <= nums.length - 3 && nums[i] == nums[i+1]){
+                i++;
+            }
+        }
+        return res;
+    }
+```
+
+```
+两数之和
+给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
+
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素在答案里不能重复出现。
+
+你可以按任意顺序返回答案。
+
+     public int[] twoSum(int[] nums, int target) {
+        int[] indexs = new int[2];
+        HashMap<Integer,Integer> hash = new HashMap<Integer,Integer>();
+        for(int i = 0; i < nums.length; i++){
+            if(hash.containsKey(nums[i])){
+                indexs[0] = i;
+                indexs[1] = hash.get(nums[i]);
+                return indexs;
+            }
+            // 将数据存入 key为补数 ，value为下标
+            hash.put(target-nums[i],i);
+        }
+   
+        return indexs;
+    }
+```
 # 随机算法
 如何判断一个算法是不是随机均等的, 可以先算出随机的结果总数, 然后看是否能够产生这么多结果. 以及结果间是否是均等的.
 
