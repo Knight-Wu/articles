@@ -114,7 +114,77 @@
         return indexs;
     }
 ```
+
+# flag 加减
+```
+给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> res = new LinkedList<>();
+        int[][] m = matrix;
+        int [][] step = new int [4][2];
+        step[0] = new int [] {0,1};
+        step[1] = new int [] {1, 0};
+        step[2] = new int [] {0, -1};
+        step[3] = new int [] {-1, 0};
+        int index = 0;
+        int row = matrix.length;
+        int col = matrix[0].length;
+        int sum = row * col;
+        boolean [][] visit = new boolean [row][col];
+        int r = 0;
+        int c = 0;
+        for(int i = 0; i < sum; i++){
+            res.add(m[r][c]);
+            visit[r][c] = true;
+            int nextRow = r + step[index][0];
+            int nextCol = c + step[index][1];
+            if(nextRow < 0 || nextRow >= row || nextCol < 0 || nextCol >= col || visit[nextRow][nextCol]){
+                index = (index + 1) % 4;
+            }
+            r = r + step[index][0];
+            c = c + step[index][1];
+        }
+        return res;
+    }
+```
 # 随机算法
+
+## 构造任意 randN
+
+```
+下面将需要生成的随机数中最大值记为n
+
+先去生成一个等概率产生0和1的方法：rand2() 。
+
+实现：调用 rand7() ，1,2,3 返回1，4,5,6 返回2，7 重来。
+将n转为二进制，看看是几位的二进制。
+
+例如本题的 10 ，二进制为 1010 。也就是说仅仅需要4位二进制数就能表示10进制的10。 用这个 rand2() 方法生成n的每个二进制位。
+创建一个数为 rand2() ，每次左移一位再加 rand2() 。
+
+如果出现不符合题意的情况，再次调用 rand10() 。
+
+例如如上步骤可能生成 0000 , 1011 、…… 、1111 （分别为0,11、 …… 、15），显然这些都是不在[1,10]中的正整数，所以只能重新生成。
+
+
+    public int rand10() {
+        int res = rand2();
+        for(int i = 0; i < 3; i++){
+            res = res << 1;
+            res = rand2() | res;
+        }
+        if(res >= 1 && res <= 10){
+            return res;
+        }
+        return rand10();
+    }
+
+    public int rand2(){
+        int res = rand7();
+        return res == 7 ? rand2() : res % 2;
+    }
+
+```
 如何判断一个算法是不是随机均等的, 可以先算出随机的结果总数, 然后看是否能够产生这么多结果. 以及结果间是否是均等的.
 
 * 如何映射一维数组到二维空间. 
