@@ -296,21 +296,13 @@ shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manag
 3. [http://www.cnblogs.com/jcchoiling/p/6440102.html](http://www.cnblogs.com/jcchoiling/p/6440102.html)
 4. **Tungsten-Sorted Shuffle**的源码: UnsafeShuffleWriter.scala
 
-相比于Hash-Based Shuffle 的主要改进是减小了大量shuffle的中间文件, 减少了memory的使用, GC的压力以及减小了文件句柄, shuffle map端产生的临时文件, 当内存不够时会dump到磁盘形成临时文件, 然后再merge成最终的data 文件. 每一个shuffleMapTask只产生两个文件, 一个data文件, 一个index文件用来存储数据文件的partition信息.spark-2.X版本中已经没有hashShuffle了, 只有sort和Tungsten-Sorted 两种shuffle. Tungsten详情参见: 
+相比于Hash-Based Shuffle 的主要改进是减少了文件的数量，这样可以减少每个文件对应的一个内存buffer，减少内存，以及IO。
+文件的数量是map task num * 2，主要原理是map 阶段有N 个partition，现在内存中分配n 块内存，内存容不下了，生成一个临时文件，文件头部是一个list：partitionId，startByteOffset。每次内存容不下了就生成一个这样的临时文件，临时文件数量可控制，例如有10 - 100 个临时文件时，合并成一个大的文件，头部仍然是一个list：partitionId，startByteOffset。最后map 结束，生成两个文件一个data 文件， 一个index 文件：list：partitionId，startByteOffset。
+	
+进一步分为sort和Tungsten-Sorted 两种shuffle.  Tungsten详情参见: 
 1. [https://issues.apache.org/jira/browse/SPARK-7081](https://issues.apache.org/jira/browse/SPARK-7081)
 2. [https://0x0fff.com/spark-architecture-shuffle/](https://0x0fff.com/spark-architecture-shuffle/) 
 
-Sorted-Based Shuffle 
-
->Sort-Based Shuffle 的弱点
-
-1.  如果 Mapper 中 Task 的数量过大，依旧会产生很多小文件，此时在 Shuffle 传数据的过程中到 Reducer 端，Reducer 会需要同时大量的记录来进行反序例化，导致大量内存消耗和GC 的巨大负担
-2. 通常的shuffle 算子是不需要进行排序的, 如果按照key 进行排序, 例如sortByKey, 则需要进行map, reduce的两次排序, 具体参见: 
-
->    When conducting an operation that requires sorting the records within partitions, we end up sorting the same data twice: first by partition in the mapper, and then by key in the reducer.
->    [https://blog.cloudera.com/blog/2015/01/improving-sort-performance-in-apache-spark-its-a-double/](https://blog.cloudera.com/blog/2015/01/improving-sort-performance-in-apache-spark-its-a-double/)
-
-[https://blog.csdn.net/duan_zhihua/article/details/71190682](https://blog.csdn.net/duan_zhihua/article/details/71190682)
 
 > 提升shuffle 的性能
 
