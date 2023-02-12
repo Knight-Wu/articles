@@ -1,3 +1,6 @@
+## 问题
+为什么executor 执行结果要返回driver，数据应该直接留在本地blockMangager，driver 只是保存数据去哪找吧？
+
 #### spark执行的大致流程
 参考自:https://github.com/JerryLead/SparkInternals
 ![enter image description here](https://drive.google.com/uc?id=1bHUSmMyvvt0AExkVkPJx9wplKzlnCWxr)
