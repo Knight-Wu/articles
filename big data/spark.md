@@ -308,25 +308,13 @@ shuffle 一开始是Hash-Based Shuffle, 1.1及之后的版本默认的sort-manag
 
 [https://www.cloudera.com/documentation/enterprise/5-9-x/topics/admin_spark_tuning.html](https://www.cloudera.com/documentation/enterprise/5-9-x/topics/admin_spark_tuning.html)
  
-* 使用高效的算子
+* groupByKey vs reduceByKey
 
-groupByKey when performing an associative reductive operation. For example, rdd.groupByKey().mapValues(_.sum) produces the same result as rdd.reduceByKey(_ + _). However, the former transfers the entire dataset across the network, while the latter computes local sums for each key in each partition and combines those local sums into larger sums after shuffling
-
-* 在map 端进行数据压缩, 减少传输的数据量
-* **还有呢? **
-
-
-
-
-
+reduceByKey 会先进行combine，数据会少，groupByKey 不会combine
 
 > spark和MR的shuffle的区别
 
 MR的combine和reduce 的records必须先sort. 而且显式的分为 map(), spill, merge, shuffle, sort, reduce几个阶段. 而spark 只有不同的 stage 和一系列的 transformation(), 说白了是编程模式的不同.
-
-> 问题
-* Sort-Based Shuffle map端的聚合好像只在combineByKey 才有, 不是能减少map 端的数据输出量吗, 为何不是一旦有shuffle, 就在map端进行聚合, 换言之combineByKey 和reduceByKey 有何不同
-* spark 算子选择
 
 
 
