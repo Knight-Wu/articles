@@ -116,8 +116,58 @@ SoftReference来实现, 除非内存准备溢出了, 不然不会被回收.
 
 * 弱引用
 WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引用时, 如果GC运行, 那么该对象就会被回收.
-例子：ThreadLocal 
+例子：ThreadLocal , ThreadLocal 可以理解为一个变量，每个thread 都有各自的threadLocalMap，threadLocal -> val 的一个map，所以一个threadLocal 在不同 thread 有不同的val，key都是这个threadlocal，但是val 不同，来形成thread 的内部变量。
 
+```
+public class ThreadLocalDemo {
+
+   public static ThreadLocal<String> threadLocal =  new ThreadLocal<String>();
+
+    public static void main(String[] args) {
+        ThreadLocalDemo.threadLocal.set("hello world main");
+        System.out.println("创建新线程前，主线程" + Thread.currentThread().getName() + "的threadlocal字符值为："  + ThreadLocalDemo.threadLocal.get());
+
+        try {
+            Thread thread = new Thread() {
+                @Override
+                public void run() {
+                    ThreadLocalDemo.threadLocal.set("new thread");
+                    System.out.println("新线程" + Thread.currentThread().getName() + "的threadlocal字符值为：" + ThreadLocalDemo.threadLocal.get());
+                }
+            };
+            thread.start();
+            thread.join();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("创建新线程后，主线程" + Thread.currentThread().getName() + "的threadlocal字符值为："  + ThreadLocalDemo.threadLocal.get());
+
+    }
+}
+```
+上面这段代码会有以下输出：
+![image](https://user-images.githubusercontent.com/20329409/218415062-1251494d-c779-4321-9a9f-e9bfb85cf651.png)
+
+会形成以下对象引用：
+![image](https://user-images.githubusercontent.com/20329409/218415183-87d91660-d091-4ab8-acb6-dce8c304dc00.png)
+
+Entry是弱引用
+```
+static class Entry extends WeakReference<ThreadLocal<?>> {
+    /** The value associated with this ThreadLocal. */
+    Object value;
+
+    Entry(ThreadLocal<?> k, Object v) {
+        super(k);
+        value = v;
+    }
+}
+```
+那么为什么设置成弱引用，看上面那个弱引用的图就很明显了，就是让线程释放对threadLocal 的引用后，threadLocal 对象能被gc 。
+例如假设我们在主线程或新线程中添加一行代码 ThreadLocalDemo.threadLocal = null; 只要一个线程添加就可以吗？ 
+引用如图：
+![image](https://user-images.githubusercontent.com/20329409/218417325-e766815a-4637-49b3-ad52-975190bd7627.png)
+那么 threadLocal 对象就只被Entry 弱引用所引用，就会自动被gc，否则会造成内存泄露。
 * 虚引用
 > DirectByteBuffer
 
