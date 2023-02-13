@@ -461,7 +461,9 @@ https://tech.meituan.com/jvm_optimize.html
 [高级语言虚拟机论坛](https://hllvm-group.iteye.com/)
 
 
+* 默认的GC 方式
 
+从java 9 之后是G1 ，之前server 端是 parallel ，client 是serial
 
 
 #### GC 常用命令
