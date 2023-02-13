@@ -168,6 +168,7 @@ static class Entry extends WeakReference<ThreadLocal<?>> {
 引用如图：
 ![image](https://user-images.githubusercontent.com/20329409/218417325-e766815a-4637-49b3-ad52-975190bd7627.png)
 那么 threadLocal 对象就只被Entry 弱引用所引用，就会自动被gc，否则会造成内存泄露。
+threadLocal remove 方法等的作用？
 * 虚引用
 > DirectByteBuffer
 
