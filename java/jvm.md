@@ -115,7 +115,9 @@ jmap -dump:format=b,file-fileName pid
 SoftReference来实现, 除非内存准备溢出了, 不然不会被回收.
 
 * 弱引用
-WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引用时, 如果GC运行, 那么该对象就会被回收.例子 ThreadLocal 设置成弱引用是为了防止, 线程结束后, 还有其他强引用阻止threadlocal 的val 被回收
+WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引用时, 如果GC运行, 那么该对象就会被回收.
+例子：ThreadLocal 
+
 * 虚引用
 > DirectByteBuffer
 
@@ -137,7 +139,7 @@ WeakReference的对象, 若只被弱引用引用, 不被其他任何强引用引
 * 分代收集算法
 对新生代和老年代采用不同的垃圾收集算法, 例如HotSpot新生代采用标记-复制, 老年代采用标记整理
 
-### java heap 分代(基于jdk1.8)
+### java heap 分代(基于 jdk1.8)
 * 新生代(PSYoungGen)
  eden space , survivor(from space , to space) ,可设置比例,采用标记复制算法
 * 老年代(ParOldGen)
