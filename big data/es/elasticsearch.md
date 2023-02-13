@@ -144,7 +144,7 @@ curl -X DELETE "ip:port/indexName"
 
 ### master elasticSearch
 1. lucene 和 es 的关系
-2.   Apache Lucene architecture, 四个重要概念
+2. Apache Lucene architecture, 四个重要概念
 
 * Getting deeper into Lucene index
 
