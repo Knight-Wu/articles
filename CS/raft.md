@@ -9,7 +9,14 @@ https://raft.github.io/raft.pdf
 
 * 如何发起选举
 
-leader 会周期性的发送
+leader 会周期性的发送appendEntity 请求给follower，是心跳也是日志append rpc，如果follower 一段时间没有收到，就转为candidate 状态，任期号加一，先给自己投一票，并发送requestVoteRpc 给其他follower，
+requestVoteRpc 会携带任期号，和最新日志的序列号和日志所属的任期号，如果接受者发现候选者的任期号以及日志的序列号和任期号大于等于自己的，则投支持票。如果收到大多数投票就变为leader。
+其次，如果在等待投票过程中发现有其他leader 的append rpc，并且任期号大于等于自己的，则自己变为follower 状态。
+最后如果一次投票时间内没有选出新的leader，则超过，任期号加一，再次投一次。
+
+* 如何避免同时成为candidate
+
+每个follower 等待心跳超时的值是一个随机值。
 
 * 常见的分布式故障如何解决,
 
@@ -17,7 +24,7 @@ leader 会周期性的发送
 
 * 怎么选择最新, 最多数据的候选者作为新的 leader 呢
 
-与旧 leader 心跳失败的 follower 都会变为 candidate, 然后发送 requestVote rpc 到其他 follower, 获得大多数票的 cadidate 变为新的 leader , 请求中带上candidate 的 term, 最新的日志的 term 和 index , 其他接收请求的 follower 如果自己的日志比 candidate 的新, 或者 term 更大, 则不投票, 否则投票; 得到大多数投票的 follower 或者接收到新的 leader 的 append 请求(只要新的 leader 的 term id 大于自己的)就自动变为 follower.
+与旧 leader 心跳失败的 follower 都会变为 candidate, 然后发送 requestVote rpc 到其他 follower, 获得大多数票的 cadidate 变为新的 leader , 请求中带上candidate 的 term, 最新的日志的 term 和 index , 其他接收请求的 follower 如果自己的日志比 candidate 的新, 或者 term 更大, 则不投票, 否则投票; 日志比较的原则是，如果本地的最后一条log entry的term id更大，则更加新，如果term id一样大，则日志 index更大的更新。
 
 * raft 是否是强一致的
 
@@ -33,3 +40,17 @@ leader 会周期性的发送
 * 如何保证客户端请求只执行了一次呢？
 
 如果leader 在commit 之后，返回客户端响应之前挂掉，那么客户端会一直尝试请求，新的leader 因为包含了已经commit 的结果，记录了请求id，那么重试的请求因为请求id 已经重复了，就不会重新执行，而是直接返回成功。
+
+* 日志一致性的保证
+
+1. 如果不同日志中的两个条目有着相同的索引和任期号，则它们所存储的命令是相同的（原因：leader 最多在一个任期里的一个日志索引位置创建一条日志条目，日志条目在日志的位置从来不会改变）。
+
+
+2. 如果不同日志中的两个条目有着相同的索引和任期号，则它们之前的所有条目都是完全一样的（原因：每次 RPC 发送附加日志时，leader 会把这条日志的前面的日志的下标和任期号一起发送给 follower，如果 follower 发现和自己的日志不匹配，那么就拒绝接受这条日志，这个称之为一致性检查）。
+
+如果leader 发现和follower 日志不匹配，会强制follower 的日志修改成与leader 同步，具体步骤是不断发送AppendEntity rpc，直到找到某条日志的index，和term 一致，那么删除冲突的日志，开始同步。
+
+* 定期备份，snapshot
+
+目的是当新的节点加入的时候，需要同步的日志很多很慢，所以定期当日志条数达到某个规模的时候，每个节点把自身的状态，以及last log index，last log term 持久化到磁盘。
+做一次snapshot可能耗时过长，会影响正常日志同步。可以通过使用copy-on-write技术避免snapshot过程影响正常日志同步。
