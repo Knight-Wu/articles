@@ -2,6 +2,7 @@
 https://raft.github.io/raft.pdf
 
 
+
 * raft 用在什么地方 
 
 多台机器需要达成一致和共识的地方, 向一个集群写入数据, 一个 leader, 多个 follower, 如何保证数据在业务看来是一致的, 写入成功的数据后续肯定能读到, 哪怕 leader 发生了切换. 
