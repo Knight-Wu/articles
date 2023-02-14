@@ -62,3 +62,43 @@ requestVoteRpc 会携带任期号，和最新日志的序列号和日志所属�
 ![image](https://user-images.githubusercontent.com/20329409/218666469-7a25fe4e-feda-415e-8dcb-3ad4842e81b6.png)
 
 例如某个follower 和leader 失联，然后任期号增加，成为新的leader，然后同时有新旧两个leader 存在，其实没关系，哪个leader 能和大多数节点联系上那么他就是leader，并且每个节点在当前任期号的情况下只能投一次票，就保证了只有一个leader 是真正的，然后后续旧的leader 恢复过来，会以新的leader 的数据覆盖他。
+
+* 如果某个follower 偶尔失联，并且有最新的日志，会导致反复选举吗？ 
+
+不会的，因为其他follower 在超时时间内仍然收到leader 的心跳，确保当前leader 存在，那么这个follower 的投票会被否决，
+
+>The third issue is that removed servers (those not inCnew) can disrupt the cluster. These servers will not re-ceive heartbeats, so they will time out and start new elec-tions. They will then send RequestVote RPCs with newterm numbers, and this will cause the current leader torevert to follower state. A new leader will eventually beelected, but the removed servers will time out again andthe process will repeat, resulting in poor availability.To prevent this problem, servers disregard RequestVoteRPCs when they believe a current leader exists. Specif-ically, if a server receives a RequestVote RPC withinthe minimum election timeout of hearing from a cur-rent leader, it does not update its term or grant its vote.This does not affect normal elections, where each serverwaits at least a minimum election timeout before startingan election. However, it helps avoid disruptions from re-moved servers: if a leader is able to get heartbeats to itscluster, then it will not be deposed by larger term num-bers.
+
+
+* 成员变更
+
+
+
+Raft两阶段成员变更过程如下：
+
+1. Leader收到成员变更请求。
+2. Leader在本地生成一个新的log entry，其内容是Cold∪Cnew，代表当前时刻新旧成员配置共存，写入本地日志，同时将该log entry复制至Cold∪Cnew中的所有副本。在此之后新的日志同步需要保证得到Cold和Cnew两个多数派的确认；
+3.Follower收到Cold∪Cnew的log entry后更新本地日志，并且此时就以该配置作为自己的成员配置；
+4.如果Cold和Cnew中的两个多数派确认了Cold U Cnew这条日志，Leader就提交这条log entry并切换到Cnew；
+5.接下来Leader生成一条新的log entry，其内容是新成员配置Cnew，同样将该log entry写入本地日志，同时复制到Follower上；
+6. Follower收到新成员配置Cnew后，将其写入日志，并且从此刻起，就以该配置作为自己的成员配置，并且如果发现自己不在Cnew这个成员配置中会自动退出；
+7. Leader收到Cnew的多数派确认后，表示成员变更成功，后续的日志只要得到Cnew多数派确认即可。Leader给客户端回复成员变更执行成功。
+
+异常分析：
+1.如果Leader的Cold U Cnew尚未推送到Follower，Leader就挂了，此后选出的新Leader并不包含这条日志，此时新Leader依然使用Cold作为自己的成员配置。
+2.如果Leader的Cold U Cnew推送到大部分的Follower后就挂了，此后选出的新Leader可能是Cold也可能是Cnew中的某个Follower。
+3.如果Leader在推送Cnew配置的过程中挂了，那么同样，新选出来的Leader可能是Cold也可能是Cnew中的某一个，此后客户端继续执行一次改变配置的命令即可。
+4.如果大多数的Follower确认了Cnew这个消息后，那么接下来即使Leader挂了，新选出来的Leader肯定位于Cnew中。
+5.新加入的节点在catch up 之前不会被认为是在多数投票者里面，避免了刚加入忙于catch up 而无法投票的情况。
+
+两阶段成员变更比较通用且容易理解，但是实现比较复杂，同时两阶段的变更协议也会在一定程度上影响变更过程中的服务可用性，因此我们期望增强成员变更的限制，以简化操作流程。
+两阶段成员变更，之所以分为两个阶段，是因为对Cold与Cnew的关系没有做任何假设，为了避免Cold和Cnew各自形成不相交的多数派选出两个Leader，才引入了两阶段方案。
+如果增强成员变更的限制，假设Cold与Cnew任意的多数派交集不为空，这两个成员配置就无法各自形成多数派，那么成员变更方案就可能简化为一阶段。
+那么如何限制Cold与Cnew，使之任意的多数派交集不为空呢？方法就是每次成员变更只允许增加或删除一个成员。
+可从数学上严格证明，只要每次只允许增加或删除一个成员，Cold与Cnew不可能形成两个不相交的多数派。
+
+一阶段成员变更（还需要再理解）：
+成员变更限制每次只能增加或删除一个成员（如果要变更多个成员，连续变更多次）。
+成员变更由Leader发起，Cnew得到多数派确认后，返回客户端成员变更成功。
+一次成员变更成功前不允许开始下一次成员变更，因此新任Leader在开始提供服务前要将自己本地保存的最新成员配置重新投票形成多数派确认。
+Leader只要开始同步新成员配置，即可开始使用新的成员配置进行日志同步。
