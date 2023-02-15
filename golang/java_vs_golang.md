@@ -21,6 +21,12 @@ go 有显式传值或者传引用, java 总是pass by value, 通过拷贝引用�
 
 * java 是面向对象语言, golang 按照官网说法是也不是(yes and no)
 
+> 官网:Yes and no. Although Go has types and methods and allows an object-oriented style of programming, there is no type hierarchy. The concept of “interface” in Go provides a different approach that we believe is easy to use and in some ways more general. There are also ways to embed types in other types to provide something analogous — but not identical — to subclassing. Moreover, methods in Go are more general than in C   or Java: they can be defined for any sort of data, even built-in types such as plain, “unboxed” integers. They are not restricted to structs (classes).
+> 翻译: 是和不是。 虽然 Go 有类型和方法，并允许面向对象的编程风格，但没有类型层次结构。 Go 中的“接口”概念提供了一种不同的方法，我们认为这种方法易于使用，并且在某些方面更通用。 还有一些方法可以将类型嵌入到其他类型中，以提供类似于 但不完全相同 - 子类化的东西。 此外，Go 中的方法比 C 或 Java 中的方法更通用：它们可以为任何类型的数据定义，甚至是内置类型，例如普通的“未装箱”整数。 它们不限于结构（类）。
+
+其实能实现类似OOP 的对象的东西, 但是是没有类型层次结构的, 有父类, 但是没有严格的父类的父类这种层次结构. 并且接口也是更加通用的方式. 
+
+* 什么是OOP , 对比面向过程
 OOP 把对象作为程序的基本单元, 一个对象包含了属性(数据)和操作属性(数据)的函数,  
 面向对象的程序设计把计算机程序视为一组对象的集合，而每个对象都可以接收其他对象发过来的消息(调用其他对象的方法)，并处理这些消息，计算机程序的执行就是一系列消息在各个对象之间传递, 或者说是对象的交互.
 

@@ -15,17 +15,25 @@ requestVoteRpc 会携带任期号，和最新日志的序列号和日志所属�
 其次，如果在等待投票过程中发现有其他leader 的append rpc，并且任期号大于等于自己的，则自己变为follower 状态。
 最后如果一次投票时间内没有选出新的leader，则超过，任期号加一，再次投一次。
 
+ * raft 用在什么地方
+ 多台机器需要达成一致和共识的地方, 向一个集群写入数据, 一个 leader, 多个 follower, 如何保证数据以整个集群为整体看来是一致的, 而不是以客户端的角度看来是一致的, 写入成功的数据后续肯定能读到, 哪怕 leader 发生了切换. 但是返回客户端失败也有可能实际写入成功. 例如五台机器, 只复制了 leader 和一个 follower, 如果返回给 client 前, leader 挂了, 那么新的 leader 如果是这台 follower 数据会比客户端认为的要新, 可以认为是只有复制到大多数节点才保证提交, 但是整个集群数据也是一致的. 
+
+
+ ## 常见的分布式可能导致不一致性的问题如何解决, 
+ a. 写入返回客户端成功之后, leader 挂掉  
+ 因为是大多数节点返回成功才最终返回 client 成功, 而且选择新 leader 选择的是有最多最新数据的节点, 所以依然能保证一致性.
+ b. 返回客户端成功之前, leader 挂掉, 那么客户端会收到失败, 而可以继续尝试. 如何避免重复请求呢, 保证满足串行化语义呢, 给每个 client 分配一个 client id, 并且让 client 每个请求申请一个 uuid, leader 检测到重复就丢弃. 
+ c. 如果只是单个 follower 失去去 leader 的联系, 转为 candidate, 并 increase own term , 再发送 requestVote 给其他节点, 但是只要其他节点与 leader 的append rpc 没有超时, 则不会投票给这个 follower, 更加证明这是一个强 leader 的系统. 
+ d. 如何保证 client 每次都读取到最新的数据呢, 假设请求刚转发到旧 leader, 就发生了新旧 leader 的切换, 旧 leader 数据已经是旧的了, 例如新的客户端请求, 由于 leader 地址是缓存的有时效的, 可能访问到旧 leader, 那如何避免呢, 可以让 leader 要确保返回最新的数据之前联系一下大多数节点, 保证自己是当前的 leader; 
+ 或者可以维持一个和多数节点通过 append rpc 更新的一个 lease 租约 , 假设选举超时是 1s, leader 广播到所有节点并接受返回是 20-50ms, 那么可以设置 lease 超时时间为: 假设旧leader 与大多数节点通信之后是第 0s,  选出新 leader 是第 1s, 那么lease 就要小于 1s , 如果超过 1s 还没与大多数节点做过一次 append, 则认为 lease 超时
+
 * 如何避免同时成为candidate
 
 每个follower 等待心跳超时的值是一个随机值。
 
-* 常见的分布式故障如何解决,
-
-写入返回客户端成功之后, leader 挂掉: 因为是大多数节点返回成功才最终返回 client 成功, 而且选择新 leader 选择的是有最多数据的节点, 所以依然能保证一致性.
-
 * 怎么选择最新, 最多数据的候选者作为新的 leader 呢
 
-与旧 leader 心跳失败的 follower 都会变为 candidate, 然后发送 requestVote rpc 到其他 follower, 获得大多数票的 cadidate 变为新的 leader , 请求中带上candidate 的 term, 最新的日志的 term 和 index , 其他接收请求的 follower 如果自己的日志比 candidate 的新, 或者 term 更大, 则不投票, 否则投票; 日志比较的原则是，如果本地的最后一条log entry的term id更大，则更加新，如果term id一样大，则日志 index更大的更新。
+与旧 leader 心跳失败的 follower 都会变为 candidate, 然后发送 requestVote rpc 到其他 follower, 获得大多数票的 cadidate 变为新的 leader , 因为要获得大多数投票, 所以日志最新的节点肯定在多数节点其中, 请求中带上candidate 的 term, 最新的日志的 term 和 index , 其他接收请求的 follower 如果自己的日志比 candidate 的新, 或者 term 更大, 则不投票, 否则投票; 日志比较的原则是，如果本地的最后一条log entry的term id更大，则更加新，如果term id一样大，则日志 index更大的更新。
 
 * raft 是否是强一致的
 
