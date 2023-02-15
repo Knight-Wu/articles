@@ -1,4 +1,81 @@
+## 构造死锁sql
+其实就是两个事务, 每个事务两条sql, 第二条sql 等待其他事务的第一条sql 释放, 互相等待就发生了死锁. 
+-- 事务1
+begin;
+-- SQL1更新id为1的
+update user set age = 1 where id = 1;
+-- SQL2更新id为2的
+update user set age = 2 where id = 2;
+commit;
+复制代码
+-- 事务2
+begin;
+-- SQL1更新id为2的
+update user set age = 3 where id = 2;
+-- SQL2更新id为1的
+update user set age = 4 where id = 1;
+commit;
 
+过程是先执行事务1 sql 1, 事务2 的sql 1, 再执行事务1 的sql 2 此时发生了等待, 因为是修改, 独占锁住了同一行, 然后再执行事务2 的sql 2 就会死锁. 
+事务1的commit 成功，再查看数据，id为1和2的age字段分别被修改为了1和2，即事务1执行成功。
+事务2即使再执行commit数据也不会发生变化，因为事务2报错终止操作被回滚了。
+
+* java 程序模拟数据库死锁
+```
+通过Java操作数据库，模拟在实际应用中的数据库死锁。
+首先是第一个业务方法，其实和上面用SQL模拟死锁的思路是一样的，这里的业务也很简单，先更新id为1的，再更新id为2的
+@Transactional(rollbackFor = Exception.class)
+public void updateById() {
+    User record1 = new User();
+    record1.setId(1);
+    record1.setAge(1);
+    userMapper.updateByPrimaryKey(record1);
+    System.out.println("事务1 执行第一条SQL完毕");
+
+    User record2 = new User();
+    record2.setId(2);
+    record2.setAge(2);
+    userMapper.updateByPrimaryKey(record1);
+    System.out.println("事务1 执行第二条SQL完毕");
+}
+复制代码
+然后第二个业务方法，同样，模拟上面的SQL死锁，先更新id为2的，然后为了使这个先后顺序更加明显，效果更突出，我们让第二个业务方法休眠30毫秒，再更新id为1的
+@Transactional(rollbackFor = Exception.class)
+public void updateById1() {
+    User record1 = new User();
+    record1.setId(2);
+    record1.setAge(3);
+    userMapper.updateByPrimaryKeySelective(record1);
+    System.out.println("事务2 执行第一条SQL完毕");
+    //休眠，保证先后执行顺序
+    try {
+        Thread.sleep(30);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+    User record2 = new User();
+    record2.setId(1);
+    record2.setAge(4);
+    userMapper.updateByPrimaryKeySelective(record2);
+    System.out.println("事务2 执行第二条SQL完毕");
+}
+复制代码
+然后我们进行单元测试，开两个线程，模拟多个用户请求，触发不同的业务操作数据库
+@Test
+public void testDeadLock() {
+    new Thread(() -> {
+      userService.updateById(); 
+      System.out.println("事务1 执行完毕");
+    }).start();
+
+    new Thread(() -> {
+      userService.updateById1(); 
+      System.out.println("事务2 执行完毕");
+    }).start();
+    Thread.sleep(2000);//休眠，等待两个线程，确保都能执行
+}
+
+```
 ## high performance mysql 3rd notes
 ### 6. query performance optimization
 #### 查询性能的度量
