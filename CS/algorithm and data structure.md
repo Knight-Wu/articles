@@ -2740,6 +2740,58 @@ int minDepth(TreeNode root) {
     return depth;
 }
 ```
+## DFS vs BFS
+```
+// https://leetcode.cn/problems/number-of-provinces , 这题有BFS 和DFS 两种解法， DFS 就是深度， 一直往下走， BFS 是把相邻的城市先走完，按照顺序加到队列里。
+    public int findCircleNumDfs(int[][] isConnected) {
+        int city = isConnected.length;
+        boolean [] visit = new boolean [city];
+        int res = 0;
+        for(int i = 0; i < city; i++){
+            
+            if(!visit[i]){
+                res++;
+                visit[i] = true;
+                dfs(i, isConnected, visit);
+            }
+        }
+        return res;
+    }
+
+    void dfs(int i, int [][] isConnected, boolean [] visit){
+        int [] path = isConnected[i];
+        for(int j = 0; j < path.length; j++){
+            if(path[j] == 1 && !visit[j]){
+                visit[j] = true;
+                dfs(j, isConnected, visit);
+            }
+        }
+    }
+
+     public int findCircleNumBfs(int[][] isConnected) {
+         // 1818
+         int city = isConnected.length;
+        boolean [] visit = new boolean [city];
+        int res = 0;
+        Queue<Integer> q = new LinkedList<>();
+        for(int i = 0; i < city; i++){
+            if(!visit[i]){
+              q.add(i);
+              res++;
+              while(!q.isEmpty()){
+                  int c = q.poll();
+                  visit[c] = true;
+                  for(int j = 0; j < city; j++){
+                      if(isConnected[c][j] == 1 && !visit[j]){
+                          q.add(j);
+                      }
+                  }
+              }
+            }
+        }
+        return res;
+     }
+```
 # 跳表
 说得很清楚: https://www.jianshu.com/p/9d8296562806
 查询的时间复杂度等于跳表的高度乘每层高度比较的次数(常数), 是 O(lgn), n 为元素个数, 近似为二分查找, 等同于跳表的高度, 
