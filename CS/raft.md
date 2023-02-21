@@ -9,6 +9,8 @@ https://raft.github.io/raft.pdf
 多台机器需要达成一致和共识的地方, 向一个集群写入数据, 一个 leader, 多个 follower, 如何保证数据在业务看来是一致的, 写入成功的数据后续肯定能读到, 哪怕 leader 发生了切换. 
 
 * 如何发起选举
+* 
+![image](https://user-images.githubusercontent.com/20329409/220304308-ef1e06b4-ad0e-4c5e-ac63-4d5d1d5f7a36.png)
 
 leader 会周期性的发送appendEntity 请求给follower，是心跳也是日志append rpc，如果follower 一段时间没有收到，就转为candidate 状态，任期号加一，先给自己投一票，并发送requestVoteRpc 给其他follower，
 requestVoteRpc 会携带任期号，和最新日志的序列号和日志所属的任期号，如果接受者发现候选者的任期号以及日志的序列号和任期号大于等于自己的，则投支持票。如果收到大多数投票就变为leader。
