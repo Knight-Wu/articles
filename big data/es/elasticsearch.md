@@ -2,6 +2,34 @@
 es 在 7.X 版本之前有可能会出现脑裂的情况，因为minimum_master_nodes 配置不正确，默认值是1，推荐配置的是有master 资格的节点数/2 +1,例如 3/2 +1 = 2 , 如果没有按照推荐配置，那么如果有三个master 资格节点，
 配置默认值1，那么可能会出现三个master 的情况，因为只需要投一票就可以了。
 7.X 版本之后基于raft 实现了一套选举方法，有些不同于raft。
+* ES实现的Raft算法选主流程
+
+ES 实现的 Raft 中，选举流程与标准的有很多区别：
+
+1. 初始为 Candidate状态
+2. 执行 PreVote 流程，并拿到 maxTermSeen
+3. 准备 RequestVote 请求（StartJoinRequest），基于maxTermSeen，将请求中的 term 加1（尚未增加节点当前 term）
+4. 并行发送 RequestVote，异步处理。目标节点列表中包括本节点。
+
+ES 实现中，候选人不先投自己，而是直接并行发起 RequestVote，这相当于候选人有投票给其他候选人的机会。这样的好处是可以在一定程度上避免3个节点同时成为候选人时，都投自己，无法成功选主的情况。
+
+ES 不限制每个节点在某个 term 上只能投一票，节点可以投多票，这样会产生选出多个主的情况：
+![image](https://user-images.githubusercontent.com/20329409/220305744-9fbf106f-bd6f-4d62-864a-2d17f42aa187.png)
+
+
+
+Node2被选为主：收到的投票为：Node2,Node3
+Node3被选为主：收到的投票为：Node3,Node1
+
+对于这种情况，ES 的处理是让最后当选的 Leader 成功。作为 Leader，如果收到 RequestVote请求，他会无条件退出 Leader 状态。在本例中，Node2先被选为主，随后他收到 Node3的 RequestVote 请求，那么他退出 Leader 状态，切换为CANDIDATE，并同意向发起 RequestVote候选人投票。因此最终 Node3成功当选为 Leader。
+
+* 如何维护选举节点列表
+
+现在的做法不再记录“quorum” 的具体数值，取而代之的是记录一个节点列表，这个列表中保存所有具备 master 资格的节点，称为 VotingConfiguration，他会持久化到集群状态中
+默认情况下，ES 自动维护VotingConfiguration，有新节点加入的时候比较好办，但是当有节点离开的时候，他可能是暂时的重启，也可能是永久下线。你也可以人工维护 VotingConfiguration，配置项为：cluster.auto_shrink_voting_configuration ，当你选择人工维护时，有节点永久下线，需要通过 voting exclusions API 将节点排除出去。如果使用默认的自动维护VotingConfiguration，也可以使用 voting exclusions API 来排除节点，例如一次性下线半数以上的节点。
+
+如果在维护VotingConfiguration时发现节点数量为偶数，ES 会将其中一个排除在外，保证 VotingConfiguration是奇数。因为当是偶数的情况下，网络分区将集群划分为大小相等的两部分，那么两个子集群都无法达到“多数”的条件。
+
 ### 某些字段不需要直接查询, 从而关闭 index, 减少空间使用
 
 
