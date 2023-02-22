@@ -1,3 +1,5 @@
+## 问题
+ * 一个shard 有多个segment 组成，如何搜索
 ### es 选主， es 会不会出现脑裂
 es 在 7.X 版本之前有可能会出现脑裂的情况，因为minimum_master_nodes 配置不正确，默认值是1，推荐配置的是有master 资格的节点数/2 +1,例如 3/2 +1 = 2 , 如果没有按照推荐配置，那么如果有三个master 资格节点，
 配置默认值1，那么可能会出现三个master 的情况，因为只需要投一票就可以了。
@@ -33,7 +35,12 @@ Node3被选为主：收到的投票为：Node3,Node1
 ### dynamic mapping
 es 能够识别新加字段，以及自动推断新加字段的索引，但是会触发一个mapping task，由master 同步到所有节点，如果很频繁会很耗性能。
 ### 写入
+![image](https://user-images.githubusercontent.com/20329409/220523703-d451d112-030f-4b8f-b291-1d4f986bb75c.png)
 
+![image](https://user-images.githubusercontent.com/20329409/220523717-2faf81a9-6d00-4208-8400-d3846aa00ba0.png)
+1. 首先随机挑选一个节点作为协调节点转发请求，然后primary shard 所在节点写入，之后再将数据同步到副本，协调节点等primary shard 和secondary shard 都执行完成之后再返回成功。
+2. 在某个节点写入的时候，先写memo table，再写log，memo table 会隔默认一秒refresh 成segment 才构建lucene 索引，才可以搜索；在内存中还没有refresh 之前可以根据docid 来搜索；直到segment 持久化到磁盘之后才会把log 清空。
+3. segment 会定期合并，整个写入类似 LSM 
 
 ### 某些字段不需要直接查询, 从而关闭 index, 减少空间使用
 
@@ -216,8 +223,11 @@ This allows us to store variousdocument types in one index and have different ma
 控制着text 如何被解析成token, 例如 field 的type, (field 由key 和val组成 df) 
 * node 
 分为data node, master, 和tribe node(用于多个cluster 的协调, 使得用起来好像在一个 cluster )
-* shard
-Elasticsearch divide index data to several physical Lucene indices, every lucene indice is called shard
+* Shard（分片） 
+一个Shard就是一个Lucene实例，是一个完整的搜索引擎。一个索引可以只包含一个Shard，只是一般情况下会用多个分片，可以拆分索引到不同的节点上，分担索引压力。
+
+* segment 
+elasticsearch中的每个分片包含多个segment，每一个segment都是一个倒排索引；在查询的时，会把所有的segment查询结果汇总归并后最为最终的分片查询结果返回；
 * Replica
 每一个 shard 都有多个副本3. 倒排索引, reversed index
 
