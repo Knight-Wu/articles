@@ -50,6 +50,24 @@ es 能够识别新加字段，以及自动推断新加字段的索引，但是�
 query then fetch
 1. query：先由协调节点广播查询请求到所有shard，primary shard 和 replica shard 都可以接受请求，然后查询索引，得到docId
 2. 再由docId 进行路由，请求转发到shard，进行查询，最后结果聚合到协调节点再返回。
+# es 数据一致性
+主备同步的模型，由primary 负责写入，然后再复制到其他replica，参考了 PacificA paper of Microsoft Research，每一个shard 和他的副本称作 replication group，
+* 写入
+
+主副本负责接受协调节点的写入请求，并做校验，然后写入本地，再把请求并行转发到其他replica，wait_for_active_shard 配置控制等待几个副本写入成功才返回，所以响应时间会受最慢的副本影响。
+
+* 写入过程中错误处理
+
+1. 如果是primary shard 挂了，会等一分钟，如果没响应就写到其他replica，
+2. 如果是primary 成功，但是写入replica 失败，不管是返回失败或者是没有响应等任何非正常的情况，primary shard 都会报告master ，将失败shard 从in-sync replicas 中移除，直到master 响应之后才会返回客户端响应，并且master 会同时新建一个新的replica。那么就可以保证in-sync replicas 都是和primary 数据一致的。
+3. primary 在同步请求给replica 过程中也会校验自己是否还是primary，因为可能因为网络分区的原因primary 不知道已经有新的primary 了，如果不是primary 了，就会把请求转发到真正的primary。与此同时为了避免没有写入，导致没有跟其他节点通信不知道自己是否是真正的primary，primary 还会每隔一秒心跳master 一次检查自己是否是primary。
+
+* 搜索
+
+1. 因为数据先写入primary 本地，有可能还没写入返回成功就被搜索到（类似read uncommitted）
+2. 只要 N+1 个副本就能忍受 N 个副本故障。
+3. 牺牲了写性能换取读性能：in-sync replicas 可以认为都是一致的，那么读取只要读任何一个就可以了，代价就是写入要写多个，并且最慢的那个返回之后才能返回客户端成功。
+4. es 也会发生dirty read，因为在与replica 和master 通信前是无法知道是不是真正的primary shard，那么就有可能读到旧数据。
 
 ## ES在高并发下如何保证读写一致性？
 （1）对于更新操作：可以通过版本号使用乐观并发控制，以确保新版本不会被旧版本覆盖
@@ -60,7 +78,9 @@ query then fetch
 one：写操作只要有一个primary shard是active活跃可用的，就可以执行
 all：写操作必须所有的primary shard和replica shard都是活跃可用的，才可以执行
 quorum：默认值，要求ES中大部分的副本是活跃可用的，才可以执行写操作
-（3）对于读操作，可以设置 replication 为 sync(默认)，数据要同时写入主和副分片之后才能被搜索到，避免了主搜索到挂掉之后副本搜索不到的不一致的情况；、如果设置replication 为 async 时，也可以通过设置搜索请求参数 _preference 为 primary 来查询主分片。
+（3）对于读操作，正常情况是replica 和primary 是保持同步的，但是如果replica 写入异常，会把错误存储到元数据中 cluster state，搜索时跳过这个replica，但在此之前有可能读到旧的数据，但是鉴于es 是个近实时搜索的系统，数据必须要refresh 才能搜到，也是可以接受的。
+可以设置 replication 为 sync(默认)，数据要同时写入主和副分片之后才能被搜索到，避免了主搜索到挂掉之后副本搜索不到的不一致的情况，但是如果副副本写入失败，也还是会搜索到旧的数据；如果设置replication 为 async 时，也可以通过设置搜索请求参数 _preference 为 primary 来查询主分片。
+
 ### 某些字段不需要直接查询, 从而关闭 index, 减少空间使用
 
 
