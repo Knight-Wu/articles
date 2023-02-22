@@ -30,6 +30,11 @@ Node3被选为主：收到的投票为：Node3,Node1
 
 如果在维护VotingConfiguration时发现节点数量为偶数，ES 会将其中一个排除在外，保证 VotingConfiguration是奇数。因为当是偶数的情况下，网络分区将集群划分为大小相等的两部分，那么两个子集群都无法达到“多数”的条件。
 
+### dynamic mapping
+es 能够识别新加字段，以及自动推断新加字段的索引，但是会触发一个mapping task，由master 同步到所有节点，如果很频繁会很耗性能。
+### 写入
+
+
 ### 某些字段不需要直接查询, 从而关闭 index, 减少空间使用
 
 
