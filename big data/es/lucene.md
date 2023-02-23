@@ -1,4 +1,73 @@
+* lucene 用法图
+![image](https://user-images.githubusercontent.com/20329409/220824791-229315c5-c028-448e-be9e-f66bd43e875e.png)
+```
+　　结合代码说明一下四个步骤：
 
+IndexWriter iw=new IndexWriter();//创建IndexWriter
+Document doc=new Document( new StringField("name", "Donald Trump", Field.Store.YES)); //构建索引文档
+iw.addDocument(doc);            //做索引库
+IndexReader reader = DirectoryReader.open(FSDirectory.open(new File(index)));
+IndexSearcher searcher = new IndexSearcher(reader); //打开索引
+Query query = parser.parse("name:trump");//解析查询
+
+TopDocs results =searcher.search(query, 100);//检索并取回前100个文档号
+for(ScoreDoc hit:results.hits)
+{
+    Document doc=searcher .doc(hit.doc)//真正取文档
+}
+```
+# 索引原理
+参考：https://www.cnblogs.com/sessionbest/articles/8689030.html
+![image](https://user-images.githubusercontent.com/20329409/220824893-1f407eca-206d-4da3-b4f1-a119ec882c96.png)
+
+其中词典结构尤为重要，有很多种词典结构，各有各的优缺点，最简单如排序数组，通过二分查找来检索数据，更快的有哈希表，磁盘查找有B树、B+树，但一个能支持TB级数据的倒排索引结构需要在时间和空间上有个平衡，下图列了一些常见词典的优缺点：
+![image](https://user-images.githubusercontent.com/20329409/220825197-3a15e2fe-24f0-452f-90df-08731c9b099e.png)
+
+mysql innodb B+ tree:
+理论基础：平衡多路查找树
+    优点：外存索引、可更新
+    缺点：空间大、速度不够快
+![image](https://user-images.githubusercontent.com/20329409/220825216-3103017c-ad4d-48a4-856c-a411a267f09b.png)
+
+跳跃表：
+  优点：结构简单、跳跃间隔、级数可控，Lucene3.0之前使用的也是跳跃表结构，后换成了FST，但跳跃表在Lucene其他地方还有应用如倒排表合并和文档号索引。
+    缺点：模糊查询支持不好
+![image](https://user-images.githubusercontent.com/20329409/220825287-f0e4c00a-7927-4351-b3d9-294e54a69b0a.png)
+
+
+　FST
+　　Lucene现在使用的索引结构
+  
+  ![image](https://user-images.githubusercontent.com/20329409/220825385-e3f46ec2-6c56-4386-ad5e-8d4ec2a172d0.png)
+理论基础:   《Direct construction of minimal acyclic subsequential transducers》，通过输入有序字符串构建最小有向无环图。
+优点：内存占用率低，压缩率一般在3倍~20倍之间、模糊查询支持好、查询快
+缺点：结构复杂、输入要求有序、更新不易
+Lucene里有个FST的实现，从对外接口上看，它跟Map结构很相似，有查找，有迭代：
+```
+String inputs={"abc","abd","acf","acg"}; //keys
+long outputs={1,3,5,7};                  //values
+FST<Long> fst=new FST<>();
+for(int i=0;i<inputs.length;i++)
+{
+    fst.add(inputs[i],outputs[i])
+}
+//get 
+Long value=fst.get("abd");               //得到3
+//迭代
+BytesRefFSTEnum<Long> iterator=new BytesRefFSTEnum<>(fst);
+while(iterator.next!=null){...}
+```
+
+数据结构	HashMap	TreeMap	FST
+构建时间(ms)	185	500	1512
+查询所有key(ms)	106	218	890
+
+　　可以看出，FST性能基本跟HaspMap差距不大，但FST有个不可比拟的优势就是占用内存小，只有HashMap10分之一左右，这对大数据规模检索是至关重要的，毕竟速度再快放不进内存也是没用的。
+　　因此一个合格的词典结构要求有：
+　　1. 查询速度。
+　　2. 内存占用。
+　　3. 内存+磁盘结合。
+　　后面我们将解析Lucene索引结构，重点从Lucene的FST实现特点来阐述这三点。
 # 如何解释fst 呢
 
 目的是根据词去寻找docId，然后对docId 求并集交集等集合运算。
