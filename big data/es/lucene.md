@@ -18,6 +18,8 @@ for(ScoreDoc hit:results.hits)
 ```
 # 索引原理
 参考：https://www.cnblogs.com/sessionbest/articles/8689030.html
+https://zhuanlan.zhihu.com/p/35814539
+
 ![image](https://user-images.githubusercontent.com/20329409/220824893-1f407eca-206d-4da3-b4f1-a119ec882c96.png)
 
 其中词典结构尤为重要，有很多种词典结构，各有各的优缺点，最简单如排序数组，通过二分查找来检索数据，更快的有哈希表，磁盘查找有B树、B+树，但一个能支持TB级数据的倒排索引结构需要在时间和空间上有个平衡，下图列了一些常见词典的优缺点：
