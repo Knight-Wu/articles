@@ -51,10 +51,13 @@ query then fetch
 1. query：先由协调节点广播查询请求到所有shard，primary shard 和 replica shard 都可以接受请求，然后查询索引，得到docId
 2. 再由docId 进行路由，请求转发到shard，进行查询，最后结果聚合到协调节点再返回。
 # es 数据一致性
+总而言之是个最终一致性的系统，读可能读到未写完的数据（因为先写primary local 再写replica），可能读到旧的数据（primary 在与replica 和master 交互前不能保证是当前的primary），可能之前读到同一个doc 新的数据又读
+到旧的数据（先从primary 读到但是replica 写失败，master还没把replica 从in-sync replica去掉的时候，又从replica 读到了旧的数据）
+
 主备同步的模型，由primary 负责写入，然后再复制到其他replica，参考了 PacificA paper of Microsoft Research，每一个shard 和他的副本称作 replication group，
 * 写入
 
-主副本负责接受协调节点的写入请求，并做校验，然后写入本地，再把请求并行转发到其他replica，wait_for_active_shard 配置控制等待几个副本写入成功才返回，所以响应时间会受最慢的副本影响。
+主副本负责接受协调节点的写入请求，并做校验，然后写入本地，再把请求并行转发到其他replica，wait_for_active_shard 配置控制等待几个副本写入成功才返回，如果达不到这个配置的参数会一直重试等待，所以响应时间会受最慢的副本影响。但是好处是in-sync 副本都是一致的，读任何一个副本就可以了，提升了读的性能。
 
 * 写入过程中错误处理
 
@@ -69,10 +72,10 @@ query then fetch
 3. 牺牲了写性能换取读性能：in-sync replicas 可以认为都是一致的，那么读取只要读任何一个就可以了，代价就是写入要写多个，并且最慢的那个返回之后才能返回客户端成功。
 4. es 也会发生dirty read，因为在与replica 和master 通信前是无法知道是不是真正的primary shard，那么就有可能读到旧数据。
 
-## ES在高并发下如何保证读写一致性？
-（1）对于更新操作：可以通过版本号使用乐观并发控制，以确保新版本不会被旧版本覆盖
-
+* 更新doc
+对于更新操作：可以通过版本号使用乐观并发控制，以确保新版本不会被旧版本覆盖
 每个文档都有一个_version 版本号，这个版本号在文档被改变时加一。类似cas，只有当当前版本和期待版本一致，才能成功，其实最后写入的时候也是要加锁的。
+## ES在高并发下如何保证读写一致性，这个出处有待考证？
 （2）对于写操作，一致性级别支持 quorum/one/all，默认为 quorum，即只有当大多数副本可用时才允许写操作。但即使大多数可用，也可能存在因为网络等原因导致写入副本失败，这样该副本被认为故障，副本将会在一个不同的节点上重建。
 
 one：写操作只要有一个primary shard是active活跃可用的，就可以执行
@@ -80,7 +83,17 @@ all：写操作必须所有的primary shard和replica shard都是活跃可用的
 quorum：默认值，要求ES中大部分的副本是活跃可用的，才可以执行写操作
 （3）对于读操作，正常情况是replica 和primary 是保持同步的，但是如果replica 写入异常，会把错误存储到元数据中 cluster state，搜索时跳过这个replica，但在此之前有可能读到旧的数据，但是鉴于es 是个近实时搜索的系统，数据必须要refresh 才能搜到，也是可以接受的。
 可以设置 replication 为 sync(默认)，数据要同时写入主和副分片之后才能被搜索到，避免了主搜索到挂掉之后副本搜索不到的不一致的情况，但是如果副副本写入失败，也还是会搜索到旧的数据；如果设置replication 为 async 时，也可以通过设置搜索请求参数 _preference 为 primary 来查询主分片。
+## ClusterState commit 之后如何保证不回退
+这里是为了解决这样一个问题，我们知道，新的Meta一旦在某个节点上commit，那么这个节点就会执行相应的操作，比如删除某个Shard等，这样的操作是不可回退的。而假如此时Master节点挂掉了，新产生的Master一定要在新的Meta上进行更改，不能出现回退，否则就会出现Meta回退了但是操作无法回退的情况。本质上就是Meta更新没有保证一致性。
 
+早期的ES版本没有解决这个问题，后来引入了两阶段提交的方式(Add two phased commit to Cluster State publishing)。所谓的两阶段提交，是把Master发布ClusterState分成两步，第一步是向所有节点send最新的ClusterState，当有超过半数的master节点返回ack时，再发送commit请求，要求节点commit接收到的ClusterState。如果没有超过半数的节点返回ack，那么认为本次发布失败，同时退出master状态，执行rejoin重新加入集群。
+
+* 问题
+
+但是没法解决这个问题：
+如果master在commit阶段，只commit了少数几个节点就出现了网络分区，将master与这几个少数节点分在了一起，其他节点可以互相访问。此时其他节点构成多数派，会选举出新的master，由于这部分节点中没有任何节点commit了新的ClusterState，所以新的master仍会使用更新前的ClusterState，造成Meta不一致。
+
+貌似raft 也无法解决？如果集群五个节点，leader 只成功复制到了一个节点A，然后leader 和节点A 就和其他三个节点通信不了了，然后三个节点选出了新的leader，然后这次更新就丢失了，除非有个client 一直重试遍历所有可达节点。
 ### 某些字段不需要直接查询, 从而关闭 index, 减少空间使用
 
 
