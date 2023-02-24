@@ -1,5 +1,8 @@
-## 问题
-为什么executor 执行结果要返回driver，数据应该直接留在本地blockMangager，driver 只是保存数据去哪找吧？
+## spark 和 mr 区别，快在哪里
+* spark 有dag 构建了复杂任务的依赖关系，一些相同的依赖就不需要重复计算，可以缓存下来，但是mr 
+模型就很难做这个事。
+* 基于内存作为反复迭代的任务，每次中间结果都反复写磁盘，小io 性能很差，spark 先用内存，不够再用磁盘，性能会好很多
+* mr 适用于那些不要求速度长时间运行的离线任务，资源会用的少点。
 
 #### spark执行的大致流程
 参考自:https://github.com/JerryLead/SparkInternals
