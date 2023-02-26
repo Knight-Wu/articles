@@ -6,14 +6,14 @@
 Linux has a unique implementation of threads.To the Linux kernel, there is no concept of a thread. Linux implements all threads as standard processes.The Linux kernel does not provide any special scheduling semantics or data structures to represent threads. Instead, a thread is merely a process that shares certain resources with other processes.(线程只是抽象的概念, 在内核的角度来看只是与其他进程共享资源的一种特殊的进程. )
 Each thread has a unique task_struct and appears to the kernel as a normal process.
 threads just happen to share resources, such as an address space, with other processes.
-#### user and   kernel space
+#### user and kernel space
 Because a process in the UNIX system can execute in two modes, kernel or user, it uses a separate stack for each mode. When a system call is made, a _trap_ instruction is executed which causes an _interrupt_ which makes the hardware switch to kernel mode. The kernel stack of a process is null when the process executes in user mode(硬件在用户态和内核态的切换)
 #### process creation
 分为两个步骤, fork() 和exec()
 * fork()
  creates a child process that is a copy of the current process. It differs from the parent only in its PID (which is unique), its PPID (parent’s PID, which is set to the original process),
  linux 的fork 不同于传统的fork, 是基于copy on write, 将copy 延迟到真正写入开始的时候, 如果fork() 之后马上exec(), 就压根不需要copy. 
-*  fork的开销
+* fork的开销
 is the duplication of the parent’s page tables and the creation of a unique process descriptor for the child
 * exec()
 The kernel loads an executable file into memory during an _exec_ system call, and the loaded process consists of at least three parts, called _regions_: text, data, and stack
