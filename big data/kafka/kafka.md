@@ -1,4 +1,6 @@
-### log end offset and high watermark
+# kafka transaction 事务
+
+# log end offset and high watermark
 每个partition 的每个副本都有自己的LEO, 标识当前写入的最后一条消息. 
 每个partition 的每个副本都有自己 HW(高水位), 每个partition 的leader的 HW = max(current HW,min(all replicas LEO)), 可以理解为在HW 之前的消息才可读, 不会出现幻读等场景. 
 replica 的 HW = min(fetch 消息的时候leader 发送的自己的HW, replica 自己的LEO)

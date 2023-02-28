@@ -2,6 +2,22 @@
  * 一个shard 有多个segment 组成，如何搜索
  * 写入要写几个副本才成功，读呢，有可能的异常情况。
  * docId 不是默认的路由规则吗，如何保证跟其他shard 不会重复的。
+
+# es 版本升级
+## overview
+https://www.elastic.co/guide/en/elasticsearch/reference/7.17/setup-upgrade.html
+* 直接降版本是不支持的, 可以先保留一个老版本的snapshot
+* 旧版本的index 是可以在新版本中被读取的
+
+## 滚动升级
+将master 和 非master 节点分成两组升级, 先升级非master 节点, 再升级master 节点, 新版本的非master 节点可以加入旧
+master 的集群, 反之不能
+
+## deprecation log 
+https://www.elastic.co/guide/en/elasticsearch/reference/7.17/logging.html#deprecation-logging
+
+如果是大版本的升级, major 版本, 则可以看deprecation log 会提示在以后的版本中哪些功能会不支持或者改动
+
 ### es 选主， es 会不会出现脑裂
 es 在 7.X 版本之前有可能会出现脑裂的情况，因为minimum_master_nodes 配置不正确，默认值是1，推荐配置的是有master 资格的节点数/2 +1,例如 3/2 +1 = 2 , 如果没有按照推荐配置，那么如果有三个master 资格节点，
 配置默认值1，那么可能会出现三个master 的情况，因为只需要投一票就可以了。
