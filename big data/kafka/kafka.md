@@ -1,4 +1,10 @@
 # kafka transaction 事务
+## 流程
+1. 根据transactionId 找对应的transaction corrdinator, transactionId hash 之后对 __transaction_state topic 的partition 取余, 然后partition 所在的leader 就是 transaction corrdinator
+2. producer begin transaction, transaction corrdinator 记录 transactionId 对应的信息到 __transaction_state topic.
+3. producer 发送信息到各个partition
+4. producer commit transaction, transaction corrdinator 记录一些准备信息, 如果commit 成功或者失败就发送一个 transaction marker 给各个partition, 标志事务中的消息是否可读.
+5. consumer 根据事务级别是 read committed, 还是 read uncommited, 判断这些消息是否可见. 如果是 read committed ,要发送了success transaction marker 之后这些消息就才能被 consumer 读到. 
 
 # log end offset and high watermark
 每个partition 的每个副本都有自己的LEO, 标识当前写入的最后一条消息. 
