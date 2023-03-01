@@ -1,11 +1,50 @@
 # kafka transaction 事务
-## 流程
-1. 根据transactionId 找对应的transaction corrdinator, transactionId hash 之后对 __transaction_state topic 的partition 取余, 然后partition 所在的leader 就是 transaction corrdinator
-2. producer begin transaction, transaction corrdinator 记录 transactionId 对应的信息到 __transaction_state topic.
-3. producer 发送信息到各个partition
-4. producer commit transaction, transaction corrdinator 记录一些准备信息, 如果commit 成功或者失败就发送一个 transaction marker 给各个partition, 标志事务中的消息是否可读.
-5. consumer 根据事务级别是 read committed, 还是 read uncommited, 判断这些消息是否可见. 如果是 read committed ,要发送了success transaction marker 之后这些消息就才能被 consumer 读到. 
 
+
+## 大体流程
+![image](https://user-images.githubusercontent.com/20329409/222062903-b0b174d1-a94f-4a04-8809-9cb798efb59e.png)
+
+1. FindCoordinatorRequest , 根据transactionId 找对应的transaction corrdinator, transactionId hash 之后对 __transaction_state topic 的partition 取余, 然后partition 所在的leader 就是 transaction corrdinator
+2. 根据 transaction id 返回一个固定的producer id, 用于继续执行或者回滚之前的遗留事务.
+3. producer begin transaction, transaction corrdinator 记录 发送的topicpartition 到 transaction log.
+4. producer 发送信息到各个partition
+5. producer 发送 EndTxnRequest, tc 先写 prepare commit 日志(5.1a)
+6. transaction coordinator 发送 transaction marker 到 leader partition 标志这些消息可见或清除, leader 并把这些消息记录在partition 中.
+7. transaction coordinator  最后写事务结果 到 transaction log.
+8. consumer 根据事务级别是 read committed, 还是 read uncommited, 判断这些消息是否可见. 如果是 read committed ,要发送了success transaction marker 之后这些消息就才能被 consumer 读到. 
+
+## 详细流程
+![image](https://user-images.githubusercontent.com/20329409/222064514-928c32aa-f79a-4456-b564-4a3402a8a25f.png)
+
+</br>
+1. 找transaction coordinator -- FindCoordinatorRequest , 根据transactionId 找对应的transaction corrdinator, transactionId hash 之后对 __transaction_state topic 的partition 取余, 然后partition 所在的leader 就是 transaction corrdinator
+</br>
+2. 获取producerId -- InitPidRequest, 每一个transactionId 返回一个固定的 pid, 用于继续执行或者回滚之前的遗留事务.
+</br>
+3. 开始事务 --  The beginTransaction() API
+</br>
+4. 如果是先消费再producer 的场景会包括多种请求:
+</br>
+4.1 图中4.1a, AddPartitionsToTxnRequest, 事务当中每次新写一个topic partition, 就写 tp 的信息到transaction log, 用于后续写transaction marker. 
+</br>
+4.2 producer 发送消息到broker -- ProduceRequest
+</br>
+4.3 AddOffsetCommitsToTxnRequest, 图中 4.3a, 如果是producer 先消费一个topic 再写另一个topic 的场景, 会记录消费的offset 到 transaction log
+</br>
+4.4 TxnOffsetCommitRequest, 图中 4.4 a, producer 会发送消费的offset 信息到consumer coordinator 持久化, cc 会校验 pid 和 epoch(版本号), 排除那些旧的producer, 除非事务提交不然offset 的变化是不可见的.
+</br>
+5. 提交或中止事务
+</br>
+5.1 producer 发送 EndTxnRequest, 先写准备日志(5.1a), 再发送 transaction marker 到 partition, 最后写 commit 或 abort 到 transaction log.
+</br>
+5.2 WriteTxnMarkerRequest, transaction coordinator 发送 WriteTxnMarkerRequest 给 leader partition 来让这些消息可见或者清除, 图中 5.2a
+</br>
+5.3 写最后的commit 结果, 成功或者回滚, 写到transaction log, 图中 5.3 , 然后transaction log 就可以清除了. 
+
+
+### 参考
+1. https://juejin.cn/post/7122295644919693343
+2. https://cwiki.apache.org/confluence/display/KAFKA/KIP-98+-+Exactly+Once+Delivery+and+Transactional+Messaging#KIP98ExactlyOnceDeliveryandTransactionalMessaging-DataFlow
 # log end offset and high watermark
 每个partition 的每个副本都有自己的LEO, 标识当前写入的最后一条消息. 
 每个partition 的每个副本都有自己 HW(高水位), 每个partition 的leader的 HW = max(current HW,min(all replicas LEO)), 可以理解为在HW 之前的消息才可读, 不会出现幻读等场景. 
