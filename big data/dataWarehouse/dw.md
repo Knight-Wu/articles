@@ -1,9 +1,15 @@
 # 分层
+![image](https://user-images.githubusercontent.com/20329409/222394515-43af809b-f865-4a86-8145-968f8780b060.png)
+
+![image](https://user-images.githubusercontent.com/20329409/222394796-11ba8644-de2d-42bf-9473-e258cace83c0.png)
 
 ## 参考
 1. https://cloud.tencent.com/developer/article/1396891
 
 ## 简要概括
+
+![image](https://user-images.githubusercontent.com/20329409/222394754-e78a9da5-90a3-4b59-b5fc-931e21677b48.jpeg)
+
 
 例如电商系统中，用户访问日志这一部分数据。
 
