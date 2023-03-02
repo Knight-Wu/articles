@@ -764,6 +764,50 @@ int right_bound(int[] nums, int target) {
 
 ### 单调栈
 用于解决找到下一个更大的数此类问题, 用途较窄, 指的是从栈顶到栈底是单调递增或者递减的栈, 可以理解成一个临时存放数据的地方, 要怎么去想是单调递增还是递减呢, 就看什么数据需要暂存在栈里, 也就是不能马上返回或者解决的, 这样就好想, 符合单调的数据就一直压栈, 否则就弹出再压栈. 
+### 单调队列
+```
+https://leetcode.cn/problems/sliding-window-maximum/
+239. 滑动窗口最大值
+给你一个整数数组 nums，有一个大小为 k 的滑动窗口从数组的最左侧移动到数组的最右侧。你只可以看到在滑动窗口内的 k 个数字。滑动窗口每次只向右移动一位。
+
+返回 滑动窗口中的最大值 。
+
+输入：nums = [1,3,-1,-3,5,3,6,7], k = 3
+输出：[3,3,5,5,6,7]
+解释：
+滑动窗口的位置                最大值
+---------------               -----
+[1  3  -1] -3  5  3  6  7       3
+ 1 [3  -1  -3] 5  3  6  7       3
+ 1  3 [-1  -3  5] 3  6  7       5
+ 1  3  -1 [-3  5  3] 6  7       5
+ 1  3  -1  -3 [5  3  6] 7       6
+ 1  3  -1  -3  5 [3  6  7]      7
+
+
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        Deque<Integer> q = new LinkedList<>();
+        int [] res = new int [nums.length - k + 1];
+        for(int i = 0; i < k; i++){
+            while(!q.isEmpty() && nums[i] >= nums[q.peekLast()]){
+                q.pollLast();
+            }
+            q.offerLast(i);
+        }
+        res[0] = nums[q.peekFirst()];
+        for(int i = k; i < nums.length; i++){
+            while(!q.isEmpty() && nums[i] >= nums[q.peekLast()]){
+                q.pollLast();
+            }
+            q.offerLast(i);
+            while(q.peekFirst() <= i - k){
+                q.pollFirst();
+            }
+            res[i - k + 1] = nums[q.peekFirst()];
+        }
+        return res;
+    }
+```
 # 动态规划
 ## 思维模式
 有两种, 一种是迭代的自底向上的思路, 第二种是递归的自顶向下的思路, 顶代表的是复杂和抽象, 底代表的是简单和具体. 并且可能需要注意重叠子问题用备忘录来解决, 否则可能时间复杂度过高. 
