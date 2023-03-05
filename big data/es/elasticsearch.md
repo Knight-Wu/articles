@@ -12,6 +12,18 @@ https://www.elastic.co/guide/en/elasticsearch/reference/7.17/setup-upgrade.html
 ## 滚动升级
 将master 和 非master 节点分成两组升级, 先升级非master 节点, 再升级master 节点, 新版本的非master 节点可以加入旧
 master 的集群, 反之不能
+1. 看deprecation log，看是否在新版本中有功能不支持，需要代码改动
+2. 在测试环境先完整升级演练一遍。 
+3. 可以用snapshot 备份数据。
+4. 防止重启过程副本在其他节点重建
+5. 停止节点
+6. 升级节点文件
+7，启动
+8，恢复第四部的配置
+9. cat/health 看集群是否变绿
+10. 在其他节点重复升级
+
+* 如果是整个集群的重启，先启动master 节点，直到选出新的leader，再重启数据节点。
 
 ## deprecation log 
 https://www.elastic.co/guide/en/elasticsearch/reference/7.17/logging.html#deprecation-logging
