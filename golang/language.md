@@ -4,9 +4,73 @@
 * 切换开销: process > kernel thread > user thread, goroutine 就相当于一类user thread , 切换更轻量
 * 一个kernel thread 内存占用 8 MB, 而一个 goroutine 只需要 2KB.
 * goroutine scheduler 都发生在用户空间, 阻塞了 goroutine 也不会阻塞内核线程,
+* goroutine 的内存放在 heap, 发生切换的时候再 copy
+
+![image](https://user-images.githubusercontent.com/20329409/234452487-3b70007e-09e1-4b78-9c56-7001b2519125.png)
+
+## 原理
+
+G: Goroutine, the function we run in a Go program using the go keyword.
+M: 理解为系统线程, Machine, or worker thread, which stands for system thread, and M is an object in runtime that creates a system thread and binds to that.
+P: Processor, 理解为 CPU core, 当 M 关联到 P 的时候代码就可以执行
+
+### g , m , p 的关系
+
+![image](https://user-images.githubusercontent.com/20329409/234453413-4062b977-dc1e-4b5e-8952-4f4237818d57.png)
+
+* g 的 global queue 
+如果 p 的 groutine local queue 满了, 会把一部分 goroutine 放到 global queue
+
+* p local queue
+
+创建的 goroutine 会先放到 p local queue.
+
+* P list
+
+所有 p 都会按照 GOMAXPROCS 参数创建好, All P’s are created at program startup and stored in an array of up to GOMAXPROCS
+
+* M
+
+要跑的时候, 会先去拿 P, 再去 P 的 local queue 拿 G, 如果 local queue 空的, 会去 global 或者其他 p 的 local queue 去拿放到自己的 local queue .
+
+### 为什么需要 P
+Before Golang 1.1, there was no P component in the scheduler. The performance of the scheduler was still poor at this time. Dmitry Vyukov of the community summarized the problems in the current scheduler and designed to introduce the P component to solve the current problems ([Scalable Go Scheduler Design Doc](https://docs.google.com/document/d/1TTj4T2JO42uD5ID9e89oa0sLKhJYD0Y_kqxDv3I3XMw/edit#heading=h.mmq8lm48qfcw)), and introduced the P component in Go 1.1. The introduction of the P component not only solves several problems listed in the documentation, but also introduces some good mechanisms.
+
+* global queue lock
+
+之前没有p 的时候, 需要 global queue lock, 因为所有的 g 都在全局队列里, 引入了 p, 就可以大多数情况无锁访问 p 的 local G queue.
+
+* G switching problem
+
+frequent switching of runnable G by M will increase the latency and overhead, for example, the newly created G will be put into the global queue instead of being executed locally in M, which will cause unnecessary overhead and latency, and should be executed on the M that created the G first; after the P component is introduced, the newly created G will be put into the local queue of the G-associated P first.
+* M’s memory cache (M.mcache) problem
+
+mcache 是一个 M object local cache 存放 G 的对象, 但是 M 有可能被 block by 系统调用, 所以 cache 就浪费了. 而且 cache 绑定到 M 的一个好处是G 如果再次被调度到 M 就可以重用, 但实际几率很少, 所以引入 P 之后 mcache 搬到了 P, 只有在运行的时候才会被占用, 不会造成空间浪费, 也避免了锁, 因为是没有其他线程去竞争的. 
+
+* Frequent thread blocking and wake-up problems
+
+因为之前是 M 做系统调用, 卡住就等到释放, 现在卡住会新建 M 去关联 P 和 G 继续执行. In the original scheduler, the number of system threads is limited by runtime.GOMAXPROCS(). Only one system thread is opened by default. And since M performs operations such as system calls, when M blocks, it does not create a new M to perform other tasks, but waits for M to wake up, and M switches between blocking and waking frequently, which causes additional overhead. In the new scheduler, when M is in the system scheduling state, it will be disassociated from the bound P and will wake up the existing or create a new M to run other G bound to P.
+
+
+### P 的目前的逻辑
+* 数量
+The number of P’s is initialized at runtime startup and is by default equal to the number of logical cores of the cpu. It can be set at program startup with the environment variable GOMAXPROCS or the runtime.GOMAXPROCS() method, and the number of P’s is fixed for the duration of the program.
+
+* IO 密集型
+
+io 密集型系统中 P 的数量可以多于逻辑核心, 因为 M 会被 system call block, 此时 P 会被阻塞一会, 等待周期性 check (10MS) 去释放 P 和 G 到新的 M. 
+
+In the IO-intensive scenario, the number of P can be adjusted appropriately, because M needs to be bound to P to run, and M will fall into the system call when executing G. At this time, P associated with M is in the waiting state, if the system call never returns, then the CPU resources are actually wasted during this time waiting for the system call, although there is a sysmon monitoring thread in runtime can seize G, here is to seize P associated with G, let P rebind a M to run G, but sysmon is periodic execution of seizure, after sysmon stable operation every 10ms to check whether to seize P, 
+
+The open source database project https://github.com/dgraph-io/dgraph adjusts GOMAXPROCS to 128 to increase the IO processing power.
+
+* p 状态
+
+<img width="695" alt="image" src="https://user-images.githubusercontent.com/20329409/234467418-f25a923c-6b61-498d-9147-e7f317d48db7.png">
 
 ## gmp 疑问
 * 阻塞了 goroutine 也不会阻塞内核线程, java 会吗
+
 
 ### debug binary file in local machine
 1. download a small utility program named gops, available at [https://github.com/google/gops](https://github.com/google/gops). This program helps the IDE find Go process running on your machine. Then invoke the _Attach to Process…_ feature again.
