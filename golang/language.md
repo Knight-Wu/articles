@@ -1,4 +1,13 @@
 
+# GMP model 
+## 为什么需要 gmp 模型
+* 切换开销: process > kernel thread > user thread, goroutine 就相当于一类user thread , 切换更轻量
+* 一个kernel thread 内存占用 8 MB, 而一个 goroutine 只需要 2KB.
+* goroutine scheduler 都发生在用户空间, 阻塞了 goroutine 也不会阻塞内核线程,
+
+## gmp 疑问
+* 阻塞了 goroutine 也不会阻塞内核线程, java 会吗
+
 ### debug binary file in local machine
 1. download a small utility program named gops, available at [https://github.com/google/gops](https://github.com/google/gops). This program helps the IDE find Go process running on your machine. Then invoke the _Attach to Process…_ feature again.
 2. If you are running with Go 1.10 or newer, you need to add `-gcflags="all=-N -l"` to the `go build` command. 然后运行. 
