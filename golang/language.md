@@ -88,7 +88,7 @@ When the G associated with M enters the system call, M will actively unbind with
 /proc/sys/kernel/pid_max: indicates the limit of the system global PID number value, every process or thread has an ID, the process or thread will fail to be created if the value of the ID exceeds this number.
 /proc/sys/vm/max_map_count: indicates a limit on the number of VMAs (virtual memory areas) a process can have.
 
-* M 中的 G0
+* M 中的 G0(g 零)
 
 ```
 type m struct {
