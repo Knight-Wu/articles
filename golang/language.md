@@ -1,5 +1,7 @@
 
 # GMP model 
+### 参考资料
+https://www.sobyte.net/post/2022-07/go-gmp/
 ## 为什么需要 gmp 模型
 * 切换开销: process > kernel thread > user thread, goroutine 就相当于一类user thread , 切换更轻量
 * 一个kernel thread 内存占用 8 MB, 而一个 goroutine 只需要 2KB.
