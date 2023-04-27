@@ -9,11 +9,24 @@
 ![image](https://user-images.githubusercontent.com/20329409/234452487-3b70007e-09e1-4b78-9c56-7001b2519125.png)
 
 ## 原理
+G 理解为goroutine 一个可执行的 function, M 和操作系统线程是一一对应的关系, P 理解为 cpu core, 但IO 密集型任务中可以多于 cpu 核心数, 因为 P 的切换需要周期性检查有延迟. 
+G 需要绑定到 M, M 需要找到可用的 P 才能执行代码.
 
 G: Goroutine, the function we run in a Go program using the go keyword.
+
 M: 理解为系统线程, Machine, or worker thread, which stands for system thread, and M is an object in runtime that creates a system thread and binds to that.
+
 P: Processor, 理解为 CPU core, 当 M 关联到 P 的时候代码就可以执行
 
+* 创建 goroutine 的过程
+
+1. go语言里面go关键字用于创建goroutine（协程），实际调用的是newproc函数
+
+2. newproc创建出一个goroutine结构体：G，分配2kb的协程栈（在systemstack环境下调用）
+
+3. 然后把G加入P队列中，等待执行
+
+4. 切回原来的goroutine执行指令
 ### g , m , p 的关系
 
 ![image](https://user-images.githubusercontent.com/20329409/234453413-4062b977-dc1e-4b5e-8952-4f4237818d57.png)
