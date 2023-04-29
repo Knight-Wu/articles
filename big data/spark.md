@@ -1,3 +1,64 @@
+# 随机抽样
+Apache Spark 是一个大规模数据处理框架，它提供了多种抽样方法以从大量数据中获取样本。在 Spark 中，数据通常以分布式数据集 (Resilient Distributed Dataset, RDD) 或数据框 (DataFrame) 的形式存在。以下是 Spark 中的一些抽样方法及其原理：
+
+1. 简单随机抽样（Simple Random Sampling）：简单随机抽样是从数据集中随机选取样本的过程，每个元素被选中的概率是相等的。在 Spark 中，可以使用 RDD 的 `sample()` 或 DataFrame 的 `sample()` 函数实现简单随机抽样。这两个函数都接受一个布尔参数（决定是否有放回抽样）、一个抽样比例和一个随机数生成器种子。
+
+2. 分层抽样（Stratified Sampling）：分层抽样首先将数据集划分为若干个互不重叠的子集（或称为“层”），然后从每个子集中独立进行简单随机抽样。这种方法可以保证每个层中的样本比例在最终样本中得到体现。在 Spark 中，可以使用 RDD 的 `sampleByKey()` 或 `sampleByKeyExact()` 函数实现分层抽样。这两个函数都需要一个包含键值对的 RDD，其中键表示层的标识，值表示层内的元素。
+
+3. 随机权重抽样（Weighted Random Sampling）：在随机权重抽样中，每个元素被选中的概率与其分配的权重成正比。这种抽样方法适用于不同元素之间存在不同重要性的情况。Spark 并未直接提供实现随机权重抽样的函数，但可以通过编写自定义函数来实现。
+
+抽样方法的选择取决于数据集的特点以及分析任务的需求。在 Spark 中，抽样方法的实现原理基本上都是基于伯努利试验或泊松抽样。这些方法通过生成随机数来决定是否选择数据集中的某个元素。在分布式环境中，各节点独立进行抽样操作，最后将抽样结果汇总起来。
+
+## 简单随机抽样
+Spark中的简单随机抽样（Simple Random Sampling，SRS）基于随机数生成器来选择DataFrame中的行。在Spark中实现简单随机抽样的原理是基于Bernoulli采样和Poisson采样。下面是详细的解释：
+
+1. Bernoulli采样：对于每一行，生成一个[0, 1]之间的随机数。如果该随机数小于或等于预定的抽样比例（`fraction`），则选择该行；否则不选择。这种方法适用于无放回的抽样，即每行最多被抽取一次。
+
+2. Poisson采样：对于每一行，生成一个服从Poisson分布的随机数，其中λ（Poisson分布的参数）等于预定的抽样比例乘以数据集的大小。然后，使用这个随机数作为该行被抽取的次数。这种方法适用于有放回的抽样，即每行可以被抽取多次。
+
+在实际应用中，Spark通过以下步骤实现简单随机抽样：
+
+1. 初始化随机数生成器：使用指定的随机数种子（`seed`）初始化一个伪随机数生成器（PRNG）。使用相同的种子可以确保每次运行时获得相同的随机抽样结果。
+
+2. 遍历数据集：对于数据集中的每一行，使用随机数生成器生成一个[0, 1]之间的随机数。对于Bernoulli采样，根据随机数和抽样比例决定是否选择该行。对于Poisson采样，使用随机数作为该行被抽取的次数。
+
+3. 创建新的DataFrame：将选中的行添加到新的DataFrame中，以便后续操作。
+
+4. 返回结果：返回包含随机抽取行的新DataFrame。
+
+需要注意的是，简单随机抽样可能会导致不均衡的数据分布，尤其是当数据具有多个类别或群组时。在这种情况下，可以考虑使用分层抽样或聚类抽样等更复杂的抽样方法。
+
+在Spark中，你可以使用DataFrame的`sample`方法来进行简单随机抽样。这个方法会返回一个新的DataFrame，其中包含原始DataFrame中的一部分随机抽取的行。以下是如何使用`sample`方法的一个示例：
+
+```python
+from pyspark.sql import SparkSession
+
+# 初始化SparkSession
+spark = SparkSession.builder \
+    .appName("Simple Random Sampling") \
+    .getOrCreate()
+
+# 加载数据
+data = spark.read.csv("your_data_file.csv", header=True, inferSchema=True)
+
+# 设置抽样比例和随机数种子
+fraction = 0.1  # 这意味着大约10%的行将被随机抽取
+seed = 42  # 设置随机数种子以保证结果可重复
+
+# 进行简单随机抽样
+sampled_data = data.sample(fraction, seed)
+
+# 显示抽样结果
+sampled_data.show()
+```
+
+在这个示例中，`fraction`参数表示你想从原始数据中抽取的行的比例。在这个例子中，我们抽取大约10%的行。`seed`参数是随机数生成器的种子，通过设置相同的种子，你可以确保每次运行时获得相同的随机抽样结果。
+
+使用`sample`方法后，`sampled_data` DataFrame 将包含原始数据中随机抽取的行。你可以使用`show`方法查看抽样结果。
+
+请注意，这个示例假设你已经安装并配置了PySpark环境。如需详细信息，请参阅官方文档：https://spark.apache.org/docs/latest/sql-programming-guide.html
+
+
 ## spark 和 mr 区别，快在哪里
 * spark 有dag 构建了复杂任务的依赖关系，一些相同的依赖就不需要重复计算，可以缓存下来，但是mr 
 模型就很难做这个事。
