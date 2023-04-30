@@ -1,6 +1,30 @@
+# kafka consume protocol
+## 新建一个 consumer group 或者 rebalance 时候的步骤
+
+1. 找到消费组 group 所属的 corrdinator
+![image](https://user-images.githubusercontent.com/20329409/235361432-ac7d1a9c-ab80-4c0c-a386-c69c205473ec.png)
+
+1.1 消费者 client 发送 findCorrdinator request, 携带 groupId 到任何一个 broker. 
+1.2 hash(groupId) 对 __consumer_offset 的 partition 数量取模, partition 所属的 leader broker 即为 group corrdinator. 并返回 group Corrdinator 的地址给 client.
+
+
+2. members join(成员变更)
+![image](https://user-images.githubusercontent.com/20329409/235361604-972e9bf7-bb01-4181-927c-b6a07befc0c9.png)
+2.1 选取第一个加入的 consumer 作为 consumer leader.
+2.2 group Corrdinator 会返回所有消费者实例信息给 consumer leader, 然后 leader 就可以根据策略去生成 partition 分配的规则, 哪个 partition 分配给哪个 consumer.
+
+
+3. Partitions Assigned
+![image](https://user-images.githubusercontent.com/20329409/235362069-32348847-06ac-46b6-a27a-82208ed1b8ba.png)
+
+3.1 consumer leader 会发起 SyncGroupRequest , 把partition 分配的规则发给 group Corrdinator. 
+3.2 group Corrdinator 就把具体的分配信息发送给对应的 consumer, 每个 consumer 只知道自己需要消费的 partition, 然后 consumer 就开始消费了. 
+
+## commitOffsetRequest(提交 offset )
+
+![image](https://user-images.githubusercontent.com/20329409/235362305-6eae5f00-3e70-47f5-8f31-2b815ba303bc.png)
+
 # kafka transaction 事务
-
-
 ## 大体流程
 ![image](https://user-images.githubusercontent.com/20329409/222062903-b0b174d1-a94f-4a04-8809-9cb798efb59e.png)
 
@@ -90,7 +114,7 @@ replica 的HW 是在下次fetch 请求才会拉取leader 的HW , 所以leader �
 * 如何选leader
 多个broker 一起监听 zk 事件, 由zk 保证只有某个 broker 竞争成功成为controller, 然后由这个去轮训分发每个partition, 哪个replica 所在的broker 为leader. 当然需要一些负载均衡策略. 
 ### 手动计算consume 和 produce 的速度
-date;./kafka-consumer-groups.sh --describe --group groupid  --broker:9092| sort > lag.msg
+date;./kafka-consumer-s.sh --describe --group groupid  --broker:9092| sort > lag.msg
 执行这个命令两次, 记录时间, 然后将两个 lag.msg 导入到 google sheet, 但是初始数据都在一列, 此时 选择 Data 菜单下" split text to columns " , 就可以分成多列, 通过两个时间点内的 current-offset 的相差计算consume 速度, log end offset(是最新的一条消息进入到 log 里面的位置) 计算 produce 的速度. 
 
 * 如何使用 page cache 的, 能否精确控制, 只是通过调参数? 
