@@ -24,6 +24,14 @@
 
 ![image](https://user-images.githubusercontent.com/20329409/235362305-6eae5f00-3e70-47f5-8f31-2b815ba303bc.png)
 
+## offsetFetchRequest
+![image](https://user-images.githubusercontent.com/20329409/235390137-30a6b129-b46d-40b5-96d9-f06ee4da1c19.png)
+
+##  Static Group Membership 可以避免 rebalance
+![image](https://user-images.githubusercontent.com/20329409/235407997-b35f3467-5bd5-4fe8-847e-58fce6cfc4b9.png)
+
+* 某个 consumer 只要制定了 group.instance.id, 如果重启了在session.timeout.ms 之前恢复都不会触发 rebalance, 当然这个过程中consumer 所消费的 partition 是不会被消费的
+* 当有新成员加入时肯定会触发Rebalance重新分配分区
 # kafka transaction 事务
 ## 大体流程
 ![image](https://user-images.githubusercontent.com/20329409/222062903-b0b174d1-a94f-4a04-8809-9cb798efb59e.png)
