@@ -20,6 +20,19 @@ hudi may is the best.
 <img width="942" alt="image" src="https://user-images.githubusercontent.com/20329409/236150185-6d5a3b3b-4c13-493e-badd-19e61db7cb05.png">
 
 ## hudi 
+
+### file layout
+
+* Hudi organizes data tables into a directory structure under a base path on a distributed file system
+* Tables are broken up into partitions
+* Within each partition, files are organized into file groups, uniquely identified by a file ID
+* Each file group contains several file slices
+* Each slice contains a base file (.parquet) produced at a certain commit/compaction instant time, along with set of log files (.log.*) that contain inserts/updates to the base file since the base file was produced.
+* Hudi adopts Multiversion Concurrency Control (MVCC), where compaction action merges logs and base files to produce new file slices and cleaning action gets rid of unused/older file slices to reclaim space on the file system.
+
+
+![image](https://user-images.githubusercontent.com/20329409/236415238-217d2e5a-e478-4ef7-8a1c-652e292bc481.png)
+
 ### file format
 
 Hudi stores all ingested data in two different storage formats. The actual formats used are pluggable, but fundamentally require the following characteristics:
@@ -50,5 +63,8 @@ Hudi stores all ingested data in two different storage formats. The actual forma
 ![image](https://user-images.githubusercontent.com/20329409/236375966-dc4a4508-8aad-4b31-bc5d-2f4fd94ec038.png)
 
 
-snapshot 读
+snapshot 读会先把 delta log file 和列式文件合并之后再读, 读延迟高但是数据延迟低; 而 read optimzed 读则会只读列式文件, 读延迟低, 但是数据延迟高, 有些数据在 delta log 中没有读到. 
+
+
+
 
