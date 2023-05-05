@@ -41,4 +41,14 @@ Hudi stores all ingested data in two different storage formats. The actual forma
 ### copy on write table
 ![image](https://user-images.githubusercontent.com/20329409/236374615-bf97ebe5-43d3-4769-a5ac-077d55ee7932.png)
 
-* update 的更新会
+* update 的操作会在已有的 file group 新建一个文件. insert 新建一个 file group, 上图每个颜色是一个 file group.
+
+* 会首先查 timeline 然后 filter file group 里面的一些文件. SQL queries running against such a table (eg: select count(*) counting the total records in that partition), first checks the timeline for the latest commit and filters all but latest file slices of each file group. 
+
+
+### merge on read table
+![image](https://user-images.githubusercontent.com/20329409/236375966-dc4a4508-8aad-4b31-bc5d-2f4fd94ec038.png)
+
+
+snapshot 读
+
