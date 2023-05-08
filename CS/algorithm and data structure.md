@@ -2146,32 +2146,189 @@ class Merge {
 
 ```
 
-* 快速排序
+## 快速排序
 选一个基准数, 小于基准数的放到右边, 大于的放到左边, 并一直递归到数组只有一个元素, 再返回, 平均时间复杂度: O(nlgn), 
 
 > 最好时间复杂度
 
 数组已经按升序排好序, pivot 为中间元素, 则第一次遍历需要n 次比较, 然后均分成n/2 和 n/2 的两组进行递归, 满足O(n) = 2O(n/2)+ O(n), 则最好时间复杂度为O(nlgn)
 
-> 最坏时间复杂度
+> 最坏时间复杂度 O(n 的平方)
 
 数组元素为降序, 当需要排成升序的时候. 或者元素都相等的时候(没有使用三分法). 为O(n的平方)
 详见 https://en.wikipedia.org/wiki/Quicksort  " Worst-case analysis"
 
-> 平均时间复杂度待研究
+例如 4, 3, 2, 1, 之前为降序需要变为升序, pivot 选了最左边的元素, 
+```
+4 3 2 1
 
-> 加入随机性, 避免最坏情况时间复杂度退化为 O(n的平方)
+3 2 1 4
+
+2 1 3 4
+
+1 2 3 4
+需要经历这个过程, 就是 O(n 的平方)
+```
+所以需要加入随机选择 pivot , 避免退化成 O(n 的平方),
+
+> 平均时间复杂度待研究, 需要看算法推导
+
+
+> 版本一
 
 ```
 class Solution {
     Random r = new Random();
+
+public void quickSort(int [] arr){
+    QSRecu(arr, 0, arr.length - 1);
+}
+
+    void QSRecu(int [] nums, int s, int e){
+        if(s >= e){
+            return;
+        }
+        int p = partition(nums, s, e);// 返回下标, 左边的比他小, 右边的比他大
+        QSRecu(nums, s, p - 1);
+        QSRecu(nums, p + 1, e);
+    }
+
+    int partition(int [] nums ,int s, int e){
+        int ran = r.nextInt(e - s + 1) + s; // s <= ran <= e
+        swap(nums, ran, e);
+        int pivot = nums[e];
+        int j = s;
+        for(int i = s; i < e; i++){ // 因为pivot 是 e, 所以 i < e
+            if(nums[i] <= pivot){
+                swap(nums, i, j++);
+            }
+        }
+        swap(nums, j, e); // 此时 nums[j] > pivot
+        return j;
+    }
+
+    void swap(int [] nums, int a, int b){
+        int tmp = nums[a];
+        nums[a] = nums[b];
+        nums[b] = tmp;
+    }
+}
+```
+> 版本二
+
+```
+// 思想: 把小于pivot 的数移到前面, 大于pivot 的数移到后面, 然后用一个指针指向第一个大于pivot 的数, 最后交换这个指针和末尾指针.
+static void QSRecu(int[] arr, int start, int end) {  
+    if (start >= end)  
+        return;  
+    int l = start;  
+    int pivot = arr[end];  
+    for (int i = start; i < end; i++) {  
+        if (arr[i] < pivot) {  
+            if (i != l) {  
+                swap(arr, i, l);  
+            }  
+            l++;  
+        }  
+    }  
+    swap(arr, l, end);  
+  
+    QSRecu(arr, start, l - 1);  
+    QSRecu(arr, l + 1, end);  
+}
+
+
+public void quickSort(int [] arr){
+    QSRecu(arr, 0, arr.length - 1);
+}
+```
+
+> 版本三, 三分法, 针对有元素相等的情况下, 
+
+```
+// 三分法, 用三个指针, 左边指针-1为小于pivot的index, 右边指针+1 位大于pivot 的index  , 第三个指针是比较指针 pivot 为最左边的start
+void QSRecu(int[] arr, int start, int end) {  
+    if (start >= end) return;  
+    int pivot = arr[end];  
+    int left = start + 1;  
+    int s = start;  
+    int right= end;  
+    while (left <= right) {  
+        if (arr[left] < pivot) swap(arr, s++, left++);  
+        else if (arr[left] > pivot) swap(arr, left,right--);  
+        else left++;  
+    }  
+    QSRecu(arr, start, s - 1);  
+    QSRecu(arr, right+ 1, end);  
+}
+
+public void quickSort(int [] arr){
+    QSRecu(arr, 0, arr.length - 1);
+}
+```
+
+
+### topK 问题, 从无序数组中找到 topK 元素
+以下示例是找最小的 topK, 最大则相反
+
+* 方法 1 , 堆排序, 时间复杂度 O(nlogk), 空间复杂度 O(k)
+```
+public int[] getLeastNumbers(int[] arr, int k) {
+    if (k == 0) {
+        return new int[0];
+    }
+    // 使用一个最大堆（大顶堆）
+    // Java 的 PriorityQueue 默认是小顶堆，添加 comparator 参数使其变成最大堆, 堆顶为最大元素
+    Queue<Integer> heap = new PriorityQueue<>(k, (i1, i2) -> Integer.compare(i2, i1));
+
+    for (int e : arr) {
+        // 当前数字小于堆顶元素才会入堆
+        if (heap.isEmpty() || heap.size() < k || e < heap.peek()) {
+            heap.offer(e);
+        }
+        if (heap.size() > k) {
+            heap.poll(); // 删除堆顶最大元素
+        }
+    }
+
+    // 将堆中的元素存入数组
+    int[] res = new int[heap.size()];
+    int j = 0;
+    for (int e : heap) {
+        res[j++] = e;
+    }
+    return res;
+}
+
+```
+
+* 方法 2 快速排序
+时间复杂度 O(n), 
+最坏时间复杂度 O(n 的平方), 
+例如 4, 3, 2, 1 找最小的一个元素, pivot 选了最左边的元素, 
+```
+4 3 2 1
+
+3 2 1 4
+
+2 1 3 4
+
+1 2 3 4
+需要经历这个过程, 就是 O(n 的平方)
+```
+所以需要加入随机避免退化成 O(n 的平方), 以下是代码
+
+```
+class Solution {
+    Random r = new Random();
+    // quick sort to find top K, 加入随机避免退化成 O(n 的平方)
     public int findKthLargest(int[] nums, int k) {
         int t = nums.length - k;
         return qs(nums, 0, nums.length - 1, t);
     }
 
     int qs(int [] nums, int s, int e, int t){
-        int p = partition(nums, s, e);
+        int p = partition(nums, s, e);// 返回下标, 下标为 k 即前面有了 k 个数.
         if(p == t){
             return nums[p];
         }else if(t > p){
@@ -2202,83 +2359,8 @@ class Solution {
 }
 ```
 
-> 版本一
-```
-static void QSRecu(int[] arr, int start, int end) {  
-    if (start >= end)// 一定要注意这个返回, 不然就算start > end, 还是会一直进while 循环.  
-  return;  
-    int l = start;  
-    int r = end;  
-    int pivot = arr[(start+(end-start)/2) >> 1];  // 防止start+end overflow
-    while (l <= r) {  
-        while (arr[l] < pivot) {  
-            l++;  
-        }  
-        while (arr[r] > pivot) {  
-            r--;  
-        }  
-  
-        if (l < r) {  
-            int temp = arr[l];  
-            arr[l] = arr[r];  
-            arr[r] = temp;  
-            l++;  
-            r--;  
-        } else if (l == r) {// 注意最后l和r 相等或相差一的两种情况.   
- l++;  
-        }  
-    }  
-    QSRecu(arr, start, r);// l++之后, l是大于r 的  
-  QSRecu(arr, l, end);  
-}
 
-```
-
-> 版本二
-
-```
-// 思想: 把小于pivot 的数移到前面, 大于pivot 的数移到后面, 然后用一个指针指向第一个大于pivot 的数, 最后交换这个指针和末尾指针.
-static void QSRecu1(int[] arr, int start, int end) {  
-    if (start >= end)  
-        return;  
-    int l = start;  
-    int pivot = arr[end];  
-    for (int i = start; i < end; i++) {  
-        if (arr[i] < pivot) {  
-            if (i != l) {  
-                swap(arr, i, l);  
-            }  
-            l++;  
-        }  
-    }  
-    swap(arr, l, end);  
-  
-    QSRecu1(arr, start, l - 1);  
-    QSRecu1(arr, l + 1, end);  
-}
-```
-
-> 版本三, 三分法, 针对有元素相等的情况下, 
-
-```
-// 三分法, 用三个指针, 左边指针-1为小于pivot的index, 右边指针+1 位大于pivot 的index  , 第三个指针是比较指针 pivot 为最左边的start
-void qsRecu2(int[] arr, int start, int end) {  
-    if (start >= end) return;  
-    int pivot = arr[end];  
-    int left = start + 1;  
-    int s = start;  
-    int right= end;  
-    while (left <= right) {  
-        if (arr[left] < pivot) swap(arr, s++, left++);  
-        else if (arr[left] > pivot) swap(arr, left,right--);  
-        else left++;  
-    }  
-    qsRecu2(arr, start, s - 1);  
-    qsRecu2(arr, right+ 1, end);  
-}
-```
-
-* 冒泡排序
+## 冒泡排序
 每完全冒泡一次, 就把一个最大或最小的元素放到了数组的一端, 最坏情况需要O(n*n) 交换, 而插入排序最坏情况只需要O(n) 交换, 因为新插入的元素是可以跟有序子序列的每个元素进行比较, 而冒泡排序只能跟相邻元素进行比较
 ```
 static void popS(int [] arr){  
