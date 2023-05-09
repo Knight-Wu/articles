@@ -65,6 +65,16 @@ Hudi stores all ingested data in two different storage formats. The actual forma
 
 snapshot 读会先把 delta log file 和列式文件合并之后再读, 读延迟高但是数据延迟低; 而 read optimzed 读则会只读列式文件, 读延迟低, 但是数据延迟高, 有些数据在 delta log 中没有读到. 
 
+### metadata table
+
+* motivation
+
+减少 list file 的代价, 例如在 S3 等对象存储, list file 是很好性能的
+Running a TPCDS benchmark the p50 list latencies for a single folder scales ~linearly with the amount of files/objects:
+
+Number of files/objects	100	1K	10K	100K
+P50 list latency	50ms	131ms	1062ms	9932ms
+Whereas listings from the Metadata Table will not scale linearly with file/object count and instead take about 100-500ms per read even for very large tables. Even better, the timeline server caches portions of the metadata (currently only for writers), and provides ~10ms performance for listings.
 
 
 
