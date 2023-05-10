@@ -69,12 +69,37 @@ snapshot 读会先把 delta log file 和列式文件合并之后再读, 读延�
 
 * motivation
 
-减少 list file 的代价, 例如在 S3 等对象存储, list file 是很好性能的
-Running a TPCDS benchmark the p50 list latencies for a single folder scales ~linearly with the amount of files/objects:
+减少 list file 的代价, 例如在 S3 等对象存储, list file 是很好性能的.
 
-Number of files/objects	100	1K	10K	100K
-P50 list latency	50ms	131ms	1062ms	9932ms
+<img width="889" alt="image" src="https://user-images.githubusercontent.com/20329409/236986977-bc9dafc9-ed7d-4b2a-a15e-aacc2a662e04.png">
+有了 metadata table, 就不会随着文件的数量而线性上升, 通常在很大的表中每次 list 只需要 100 - 500 ms, 有了 timeline server cache 之后降低到十几毫秒.
 Whereas listings from the Metadata Table will not scale linearly with file/object count and instead take about 100-500ms per read even for very large tables. Even better, the timeline server caches portions of the metadata (currently only for writers), and provides ~10ms performance for listings.
 
 
+### operation type
+* insert vs bulkInsert 的区别呢, bulkInsert 保持记录有序, 对大量查询的场景很友好, 但是根据哪个字段排序呢 ? 
 
+
+### writing path
+写入步骤
+
+1. Deduping
+First your input records may have duplicate keys within the same batch and duplicates need to be combined or reduced by key.
+2. Index Lookup
+Next, an index lookup is performed to try and match the input records to identify which file groups they belong to.
+3. File Sizing
+Then, based on the average size of previous commits, Hudi will make a plan to add enough records to a small file to get it close to the configured maximum limit.
+4. Partitioning
+We now arrive at partitioning where we decide what file groups certain updates and inserts will be placed in or if new file groups will be created
+5. Write I/O
+Now we actually do the write operations which is either creating a new base file, appending to the log file, or versioning an existing base file.
+6. Update Index
+Now that the write is performed, we will go back and update the index.
+7. Commit
+Finally we commit all of these changes atomically. (A callback notification is exposed)
+8. Clean (if needed)
+Following the commit, cleaning is invoked if needed.
+9. Compaction
+If you are using MOR tables, compaction will either run inline, or be scheduled asynchronously
+10. Archive
+Lastly, we perform an archival step which moves old timeline items to an archive folder.
