@@ -19,7 +19,7 @@
 hudi may is the best.
 <img width="942" alt="image" src="https://user-images.githubusercontent.com/20329409/236150185-6d5a3b3b-4c13-493e-badd-19e61db7cb05.png">
 
-## hudi 
+# hudi 
 
 ### file layout
 
@@ -103,3 +103,9 @@ Following the commit, cleaning is invoked if needed.
 If you are using MOR tables, compaction will either run inline, or be scheduled asynchronously
 10. Archive
 Lastly, we perform an archival step which moves old timeline items to an archive folder.
+
+### How do I model the data stored in Hudi?
+当做 key-val 存储, 需要有个 partition field, 和 primary key(加速更新, 查询).
+When writing data into Hudi, you model the records like how you would on a key-value store - specify a key field (unique for a single partition/across dataset), a partition field (denotes partition to place key into) and preCombine/combine logic that specifies how to handle duplicates in a batch of records written. This model enables Hudi to enforce primary key constraints like you would get on a database table. See here for an example.
+
+When querying/reading data, Hudi just presents itself as a json-like hierarchical table, everyone is used to querying using Hive/Spark/Presto over Parquet/Json/Avro.
