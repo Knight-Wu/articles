@@ -965,6 +965,173 @@ return res[n-1][0];
 2、存在问题(bool)：dp[i]=dp[i]||dp[i-num];
 3、组合问题：dp[i]+=dp[i-num];
 
+因此把背包类型和问题类型结合起来就会出现以下细分的题目类型：
+1、0/1背包最值问题
+2、0/1背包存在问题
+3、0/1背包组合问题
+4、完全背包最值问题
+5、完全背包存在问题
+6、完全背包组合问题
+7、分组背包最值问题
+8、分组背包存在问题
+9、分组背包组合问题
+这九类问题我认为几乎可以涵盖力扣上所有的背包问题
+
+```
+下面看一下具体的题目分析：
+
+1049. 最后一块石头的重量 II
+这道题看出是背包问题比较有难度
+最后一块石头的重量：从一堆石头中,每次拿两块重量分别为x,y的石头,若x=y,则两块石头均粉碎;若x<y,两块石头变为一块重量为y-x的石头求最后剩下石头的最小重量(若没有剩下返回0)
+问题转化为：把一堆石头分成两堆,求两堆石头重量差最小值
+进一步分析：要让差值小,两堆石头的重量都要接近sum/2;我们假设两堆分别为A,B,A<sum/2,B>sum/2,若A更接近sum/2,B也相应更接近sum/2
+进一步转化：将一堆stone放进最大容量为sum/2的背包,求放进去的石头的最大重量MaxWeight,最终答案即为sum-2*MaxWeight;、
+0/1背包最值问题：外循环stones,内循环target=sum/2倒序,应用转移方程1
+
+
+int lastStoneWeightII(vector<int> &stones)
+{
+    int sum = accumulate(stones.begin(), stones.end(), 0);
+    int target = sum / 2;
+    vector<int> dp(target + 1);
+    for (int stone : stones)
+        for (int i = target; i >= stone; i--)
+            dp[i] = max(dp[i], dp[i - stone] + stone);
+    return sum - 2 * dp[target];
+}
+322. 零钱兑换
+零钱兑换：给定amount,求用任意数量不同面值的零钱换到amount所用的最少数量
+完全背包最值问题：外循环coins,内循环amount正序,应用状态方程1
+
+
+int coinChange(vector<int> &coins, int amount)
+{
+    vector<long long> dp(amount + 1, INT_MAX); //给dp数组每个位置赋初值为INT_MAX是为了最后判断是否能填满amount,要用long long 类型
+    dp[0] = 0;  //dp[i]:换到面值i所用的最小数量
+    for (int coin : coins)
+    {
+        for (int i = 0; i <= amount; i++)
+        {
+            if (coin <= i)
+                dp[i] = min(dp[i], dp[i - coin] + 1);
+        }
+    }
+    return dp[amount] == INT_MAX ? -1 : dp[amount];
+}
+416. 分割等和子集
+分割等和子集：判断是否能将一个数组分割为两个子集,其和相等
+0-1背包存在性问题：是否存在一个子集,其和为target=sum/2,外循环nums,内循环target倒序,应用状态方程2
+
+
+bool canPartition(vector<int> &nums)
+{
+    int sum = accumulate(nums.begin(), nums.end(), 0);
+    if (sum % 2 == 1)  //如果是和为奇数显然无法分成两个等和子集
+        return false;
+    int target = sum / 2; 
+    vector<int> dp(target + 1, 0); //dp[i]:是否存在子集和为i
+    dp[0] = true;   //初始化：target=0不需要选择任何元素，所以是可以实现的
+    for (int num : nums)
+        for (int i = target; i >= num; i--)
+            dp[i] = dp[i] || dp[i - num];
+    return dp[target];
+}
+494. 目标和
+目标和：给数组里的每个数字添加正负号得到target
+数组和sum,目标和s, 正数和x,负数和y,则x+y=sum,x-y=s,那么x=(s+sum)/2=target
+0-1背包不考虑元素顺序的组合问题:选nums里的数得到target的种数,外循环nums,内循环target倒序,应用状态方程3
+
+
+int findTargetSumWays(vector<int> &nums, int s)
+{
+    int sum = accumulate(nums.begin(), nums.end(), 0);
+    if ((sum + s) % 2 != 0 || sum < s)
+        return 0;
+    int target = (sum + s) / 2;
+    vector<int> dp(target + 1);
+    dp[0] = 1;
+    for (int num : nums)
+        for (int i = target; i >= num; i--)
+            dp[i] += dp[i - num];
+    return dp[target];
+}
+279. 完全平方数
+完全平方数：对于一个正整数n,找出若干个完全平方数使其和为n,返回完全平方数最少数量
+完全背包的最值问题：完全平方数最小为1,最大为sqrt(n),故题目转换为在nums=[1,2.....sqrt(n)]中选任意数平方和为target=n
+外循环nums,内循环target正序,应用转移方程1
+
+
+int numSquares(int n)
+{
+    vector<int> dp(n + 1, INT_MAX); //dp[i]:和为i的完全平方数的最小数量
+    dp[0] = 0;
+    for (int num = 1; num <= sqrt(n); num++)
+    {
+        for (int i = 0; i <= n; i++)
+        {
+            if (i >= num * num)
+                dp[i] = min(dp[i], dp[i - num * num] + 1);
+        }
+    }
+    return dp[n];
+}
+377. 组合总和 Ⅳ
+组合总和IV：在nums中任选一些数,和为target
+考虑顺序的组合问题：外循环target,内循环nums,应用状态方程3
+
+
+int combinationSum4(vector<int> &nums, int target)
+{
+    vector<int> dp(target + 1);
+    dp[0] = 1;
+    for (int i = 1; i <= target; i++)
+    {
+        for (int num : nums)
+        {
+            if (num <= i) 
+                dp[i] += dp[i - num];
+        }
+    }
+    return dp[target];
+}
+518. 零钱兑换 II
+零钱兑换2：任选硬币凑成指定金额,求组合总数
+完全背包不考虑顺序的组合问题：外循环coins,内循环target正序,应用转移方程3
+
+
+int change(int amount, vector<int> &coins)
+{
+    vector<int> dp(amount + 1);
+    dp[0] = 1;
+    for (int coin : coins)
+        for (int i = 1; i <= amount; i++)
+            if (i >= coin)
+                dp[i] += dp[i - coin];
+    return dp[amount];
+}
+1155. 掷骰子的N种方法
+投掷骰子的方法数：d个骰子,每个有f个面(点数为1,2,...f),求骰子点数和为target的方法
+分组0/1背包的组合问题：dp[i][j]表示投掷i个骰子点数和为j的方法数;三层循环：最外层为背包d,然后先遍历target后遍历点数f
+应用二维拓展的转移方程3：dp[i][j]+=dp[i-1][j-f];
+
+
+int numRollsToTarget(int d, int f, int target)
+{
+    vector<vector<int>> dp(d + 1, vector<int>(target + 1, 0));
+    dp[0][0] = 1;
+    for (int i = 1; i <= d; i++)
+        for (int j = 1; j <= target; j++)
+            for (int k = 1; k <= f && j >= k; k++)
+                dp[i][j] += dp[i - 1][j - k];
+    return dp[d][target];
+}
+
+```	
+	
+	
+	
+	
+	
 ## 贪心算法
 贪心算法可以理解为动态规划的一种特例, 不需要穷举所有情况即可得到最优解. 
 什么是贪心选择性质呢，简单说就是：每一步都做出一个局部最优的选择，最终的结果就是全局最优。注意哦，这是一种特殊性质，其实只有一部分问题拥有这个性质。
