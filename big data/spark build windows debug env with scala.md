@@ -8,7 +8,7 @@
 2. 下载hadoop windows编译好的包和spark 包, hadoop 下载: [hadoop-2.6.0 windows](http://www.barik.net/archive/2015/01/19/172716/), 这个链接是从 [[NoClassDefFoundError com.apache.hadoop.fs.FSDataInputStream when execute spark-shell](https://stackoverflow.com/questions/30906412/noclassdeffounderror-com-apache-hadoop-fs-fsdatainputstream-when-execute-spark-s)这个回答里面找的; spark下载: [spark-download](https://spark.apache.org/downloads.html), 这个是官网地址, choose a package type: pre-build with user-provided apache hadoop , 因为我们之前已经从其他地方下载了hadoop, 也可以选择使用hadoop 编译的版本, 这个没有试过, 
 3.  从github 选择对应的分支, 下载spark的源码, 然后导入idea
 4. 添加集群配置到hadoop 和spark的配置路径
-	hadoop的配置路径: ./etc/hadoop , spark的配置路径: ./conf, 因为公司用的cloudera 集群, 我直接从cloudera-manager 下载了yarn和hadoop的客户端配置
+	hadoop的配置路径: ./etc/hadoop , spark的配置路径: ./conf
 
 5. 测试hadoop 环境
 
