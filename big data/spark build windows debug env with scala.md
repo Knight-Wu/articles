@@ -48,7 +48,7 @@ which contains the (client side) configuration files for the Hadoop cluster. The
 > main 启动类/
 
 配置里 driver_extra_java_options 是从remote debug复制过来的, 具体后面会讲解.
-![enter image description here](https://drive.google.com/uc?id=1ymtejwlzml7ub5b6uYB0A_BmJqZEz9LS)
+![image](https://github.com/Knight-Wu/articles/assets/20329409/a4fa0511-bf66-4569-a784-aff8cf8a8af4)
 
 > 具体的spark main class 可以借鉴 SPARK_HOME/examples/ 里面的代码.
 
