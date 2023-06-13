@@ -679,7 +679,7 @@ outputDir=/user/wutong/mblOutput
 mblFile=mbl.txt
 hdfs dfs -rm -r -f ${outputDir}
 ${SPARK_HOME}"/bin/spark-submit" \
---class com.mucfc.cms.spark.job.mainClass.PushMblToMerchantShellMain \
+--class PushMblToMerchantShellMain \
 --master yarn \
 --deloy-mode client \
 --queue root \
