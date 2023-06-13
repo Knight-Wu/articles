@@ -153,7 +153,7 @@ Date startTime
 mapper:
 
 ```
-<resultMap id="teamResultMap" type="com.mucfc.result.QueryTeamResult">
+<resultMap id="teamResultMap" type="QueryTeamResult">
     <id column="id" property="teamId" jdbcType="INTEGER" javaType="int" />
     <result column="name" property="teamName"  jdbcType="VARCHAR" javaType="String"/>
 </resultMap>
