@@ -2,13 +2,13 @@
 ## sqoop执行mysql命令,貌似只限于增删查改
 * eval statement
 ```
-sh  /app/hadoop/sqoop/bin/sqoop   eval  --connect "jdbc:mysql://crm-mysql.prd.cfcmu.com:3306/crm_cust?useUnicode=true&characterEncoding=utf-8"   --username hive --password Hive#Qsmyhs4g -e "truncate crm_cust.exp_ntw_act"
+sh  /app/hadoop/sqoop/bin/sqoop   eval  --connect "jdbc:mysql://sample.com:3306/crm_cust?useUnicode=true&characterEncoding=utf-8"   --username hive --password Hive#Qsmyhs4g -e "truncate crm_cust.exp_ntw_act"
 ```
 
 # export to RDBMS
 ## example 
 ```
-sh  /app/hadoop/sqoop/bin/sqoop export -D mapred.job.queue.name=group1 -D sqoop.export.records.per.statement=100 -D sqoop.export.statements.per.transaction=60 --connect "jdbc:mysql://crm-mysql.prd.cfcmu.com:3306/crm_cust?useUnicode=true&characterEncoding=utf-8" --username hive --password Hive#Qsmyhs4g --table exp_usr_inf --update-key cust_id,usr_id --update-mode allowinsert --fields-terminated-by '\001' --export-dir "hdfs://bdCluster/hive210/warehouse/crm_app.db/exp_usr_inf" --input-null-string '\\N' --input-null-non-string '\\N' -m 30
+sh  /app/hadoop/sqoop/bin/sqoop export -D mapred.job.queue.name=group1 -D sqoop.export.records.per.statement=100 -D sqoop.export.statements.per.transaction=60 --connect "jdbc:mysql://mysql.com:3306/db?useUnicode=true&characterEncoding=utf-8" --username hive --password pwd --table exp_usr_inf --update-key cust_id,usr_id --update-mode allowinsert --fields-terminated-by '\001' --export-dir "hdfs:table" --input-null-string '\\N' --input-null-non-string '\\N' -m 30
 
 ```
 ## configuration
