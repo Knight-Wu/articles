@@ -1,5 +1,29 @@
+## mysql innodb 可以放多少数据, 比如三层innodb 可以放多少数据, 需要查询几次page
+假设一条数据 1KB, 主键是bigint 8byte
+一个page 默认16KB, 有1KB 元数据, 其他15KB 用来放数据, 每个叶子结点可以放 15KB /1KB = 15 条数据, 
+非叶子结点需要放主键和page number, 8 byte + 4 byte = 12 byte, 那么一个非叶子结点可以存多少条引用数据呢, 15KB / 12 byte = 1280, 
+
+那么两层innodb可以存放的行数: 1280 * 15 = 19200 (两万条), 需要查两次page
+三层: 1280 * 1280 * 15 = 2450 (万条), 需要查三次page. 
+那么此时需要几次磁盘IO 取决于内存(InnoDB buffer size) 可以放下多少索引, 以及有多少个表, 和多少个索引列, 
+两层innodb 的大小: 1280 * 16 KB + 16 KB 约等于 16MB, 
+三层innodb 的大小: 1280 * 1280 * 16 KB + 1280 * 16 KB + 16 约等于 25GB,
+那么通常来说三层innodb 不能完全放到内存里, 就需要一次磁盘IO. 
+
+下图是三层两阶的B+ 树图示: 
+![image](https://github.com/Knight-Wu/articles/assets/20329409/20cb6f6c-fbbb-4fdf-9c24-2a5b082fb368)
+查找过程是根据id 在page 中进行二分查找, 然后找到page number 相当于地址, 再找下层page , 直到找到叶子结点, 如果是非聚簇索引就先用索引列找到主键, 再根据主键去找行数据. 
+
+下图是page 的结构图示: 
+![image](https://github.com/Knight-Wu/articles/assets/20329409/5df9f864-a7b2-47a7-b89d-5501351ce0fa)
+
+* 如何找到根页呢
+
+其实每张表的根页位置在表文件中是固定的，即page number=3的页, 等于告诉了你根页在表数据文件的offset. 
+
 ## 构造死锁sql
 其实就是两个事务, 每个事务两条sql, 第二条sql 等待其他事务的第一条sql 释放, 互相等待就发生了死锁. 
+```
 -- 事务1
 begin;
 -- SQL1更新id为1的
@@ -15,7 +39,7 @@ update user set age = 3 where id = 2;
 -- SQL2更新id为1的
 update user set age = 4 where id = 1;
 commit;
-
+```
 过程是先执行事务1 sql 1, 事务2 的sql 1, 再执行事务1 的sql 2 此时发生了等待, 因为是修改, 独占锁住了同一行, 然后再执行事务2 的sql 2 就会死锁. 
 事务1的commit 成功，再查看数据，id为1和2的age字段分别被修改为了1和2，即事务1执行成功。
 事务2即使再执行commit数据也不会发生变化，因为事务2报错终止操作被回滚了。
