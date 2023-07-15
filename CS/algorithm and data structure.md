@@ -2382,23 +2382,20 @@ class Merge {
 > 平均时间复杂度待研究, 需要看算法推导
 
 
-> 版本一
+> 版本一，加入随机，避免交换次数过多，退化为O（n的平方）
+
 
 ```
 class Solution {
     Random r = new Random();
+    public void quickSort(int[] nums) {
+        qs(nums, 0, nums.length - 1);
+    }
 
-public void quickSort(int [] arr){
-    QSRecu(arr, 0, arr.length - 1);
-}
-
-    void QSRecu(int [] nums, int s, int e){
-        if(s >= e){
-            return;
-        }
-        int p = partition(nums, s, e);// 返回下标, 左边的比他小, 右边的比他大
-        QSRecu(nums, s, p - 1);
-        QSRecu(nums, p + 1, e);
+    void qs(int [] nums, int s, int e){
+        int p = partition(nums, s, e);
+        qs(nums, p+1, e);
+        qs(nums, s, p-1);
     }
 
     int partition(int [] nums ,int s, int e){
@@ -2422,8 +2419,8 @@ public void quickSort(int [] arr){
     }
 }
 ```
-> 版本二
 
+> 版本二，不随机
 ```
 // 思想: 把小于pivot 的数移到前面, 大于pivot 的数移到后面, 然后用一个指针指向第一个大于pivot 的数, 最后交换这个指针和末尾指针.
 static void QSRecu(int[] arr, int start, int end) {  
