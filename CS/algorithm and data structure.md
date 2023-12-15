@@ -460,9 +460,9 @@ class Difference {
 
     /* 给闭区间 [i, j] 增加 val（可以是负数）*/
     public void increment(int i, int j, int val) {
-        diff[i] += val;
+        diff[i] += val; // means ele in num[i] += val, so all eles whose index >= i += val 
         if (j + 1 < diff.length) {
-            diff[j + 1] -= val;
+            diff[j + 1] -= val; // means ele in num[j+1] -= val, so all eles whose index >= j+1 -= val 
         }
     }
 
