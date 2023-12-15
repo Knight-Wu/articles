@@ -171,7 +171,6 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
                 indexs[1] = hash.get(nums[i]);
                 return indexs;
             }
-            // 将数据存入 key为补数 ，value为下标
             hash.put(target-nums[i],i);
         }
    
