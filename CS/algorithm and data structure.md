@@ -663,7 +663,7 @@ void slidingWindow(string s) {
         return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
     }
 ```
-## 二分查找
+# 二分查找
 * 什么时候可以想到用二分查找 
 
 可以从题目中抽象出一个自变量 x, 一个关于x 的函数 f(x), 以及一个目标值 target, 同时要满足 f(x) 关于 x 单调递增或递减. 并且题目让你计算满足 f(x) == target 时 x 的值. 
@@ -816,7 +816,7 @@ int right_bound(int[] nums, int target) {
 
 
 
-### 优先级队列, 最大堆或最小堆
+# 优先级队列, 最大堆或最小堆
 按照元素的大小去出队列, 又称最大堆, 或最小堆, 当碰到求一批元素的最大或最小值时, 可以直接用.
 最大堆, 实际就是一个二叉树, 根元素为最大, 大于或等于左节点和右节点, 子树也满足最大堆. 
 
@@ -825,9 +825,9 @@ int right_bound(int[] nums, int target) {
     PriorityQueue<Integer> q = new PriorityQueue<>(size, (a,b) -> (a.val - b.val));
 ```
 
-### 单调栈
+# 单调栈
 用于解决找到下一个更大的数此类问题, 用途较窄, 指的是从栈顶到栈底是单调递增或者递减的栈, 可以理解成一个临时存放数据的地方, 要怎么去想是单调递增还是递减呢, 就看什么数据需要暂存在栈里, 也就是不能马上返回或者解决的, 这样就好想, 符合单调的数据就一直压栈, 否则就弹出再压栈. 
-### 单调队列
+# 单调队列
 ```
 https://leetcode.cn/problems/sliding-window-maximum/
 239. 滑动窗口最大值
