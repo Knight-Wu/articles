@@ -3020,7 +3020,7 @@ ListNode reverseN(ListNode head, int n){
 * FakeHead 把应该返回的答案放到FakeHead 的next 节点, 与后续代码模式就匹配了, 不需要写额外的if else.
 * 判断链表有没有相交, 可以用两个指针, 走完A 链表继续走B 链表, 如果相交最后肯定汇合到一个点. 
 
-# 常用算法
+
 ## 递归
 * 如何判断题目是否能用递归呢
 看题目是否能找出子问题或者类似问题(只是参数变化), 以及子问题和父问题的关系, 最后递归结束时为一般情况;
@@ -3035,9 +3035,8 @@ ListNode reverseN(ListNode head, int n){
 1. 注意递归中, 传递的参数的类型, 基本类型例如int, char 等, 在函数栈的嵌套中拷贝一个新的值到下一个函数调用, 每个函数栈的变量的改变不影响其他函数栈; 但是如果是对象类型, 则传递的是对象的引用, 多个函数栈中会改变对象的值; 但是如果传递的是新的字符串, 则不会改变
 2. 灵活使用递归中的全局变量和参数, 能让递归更易理解. 
  
-* **尾递归**
 
-# 回溯思想(DFS 深度优先搜索)
+## 回溯思想(DFS 深度优先搜索)
 类似深度遍历一个多叉树
 
 https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
@@ -3060,7 +3059,7 @@ void backtrack(路径, 选择列表):
 
 
 ```
-# BFS
+## BFS
 与dfs 的区别, 空间复杂度高, 但是对于特定任务时间复杂度低.
 BFS 可以找到最短距离，但是空间复杂度高，而 DFS 的空间复杂度较低。
 
