@@ -836,12 +836,14 @@ int right_bound(int[] nums, int target) {
 
 
 # 优先级队列, 最大堆或最小堆
+
 按照元素的大小去出队列, 又称最大堆, 或最小堆, 当碰到求一批元素的最大或最小值时, 可以直接用.
 最大堆, 实际就是一个二叉树, 根元素为最大, 大于或等于左节点和右节点, 子树也满足最大堆. 
 
 ```
    // 这样就是最小堆, 反过来 b-a 就是最大堆
     PriorityQueue<Integer> q = new PriorityQueue<>(size, (a,b) -> (a.val - b.val));
+    int min = q.pop();
 ```
 
 # 单调栈
