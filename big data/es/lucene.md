@@ -1,3 +1,22 @@
+Table of Contents
+=================
+
+* [lucene 用法图](#lucene-用法图)
+* [FST 在索引上与其他数据结构的比较](#fst-在索引上与其他数据结构的比较)
+  * [mysql innodb B\+ tree](#mysql-innodb-b-tree)
+  * [跳跃表](#跳跃表)
+  * [FST](#fst)
+* [如何解释fst 呢](#如何解释fst-呢)
+  * [id list 中如何快速查找这个id 呢](#id-list-中如何快速查找这个id-呢)
+    * [SkipList有以下几个特征](#skiplist有以下几个特征)
+    * [fst 分为前缀和不用前缀两种方式](#fst-分为前缀和不用前缀两种方式)
+* [lucene 文件类型](#lucene-文件类型)
+  * [term dictionary](#term-dictionary)
+  * [term index](#term-index)
+  * [term frequencies](#term-frequencies)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
+
 # lucene 用法图
 ![image](https://user-images.githubusercontent.com/20329409/220824791-229315c5-c028-448e-be9e-f66bd43e875e.png)
 ```
