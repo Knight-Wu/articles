@@ -28,8 +28,8 @@ for(ScoreDoc hit:results.hits)
 </br>
 ## mysql innodb B+ tree
 理论基础：平衡多路查找树
-    优点：外存索引、可更新
-    缺点：空间大、速度不够快
+    优点：外存索引、可更新,
+    缺点：空间大、更新速度不够快
 ![image](https://user-images.githubusercontent.com/20329409/220825216-3103017c-ad4d-48a4-856c-a411a267f09b.png)
 </br>
 ## 跳跃表
