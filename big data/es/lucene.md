@@ -1,4 +1,4 @@
-* lucene 用法图
+# lucene 用法图
 ![image](https://user-images.githubusercontent.com/20329409/220824791-229315c5-c028-448e-be9e-f66bd43e875e.png)
 ```
 　　结合代码说明一下四个步骤：
@@ -26,19 +26,20 @@ for(ScoreDoc hit:results.hits)
 其中词典结构尤为重要，有很多种词典结构，各有各的优缺点，最简单如排序数组，通过二分查找来检索数据，更快的有哈希表，磁盘查找有B树、B+树，但一个能支持TB级数据的倒排索引结构需要在时间和空间上有个平衡，下图列了一些常见词典的优缺点：
 ![image](https://user-images.githubusercontent.com/20329409/220825197-3a15e2fe-24f0-452f-90df-08731c9b099e.png)
 </br>
-mysql innodb B+ tree:
+## mysql innodb B+ tree
 理论基础：平衡多路查找树
     优点：外存索引、可更新
     缺点：空间大、速度不够快
 ![image](https://user-images.githubusercontent.com/20329409/220825216-3103017c-ad4d-48a4-856c-a411a267f09b.png)
 </br>
-跳跃表：
+## 跳跃表
   优点：结构简单、跳跃间隔、级数可控，Lucene3.0之前使用的也是跳跃表结构，后换成了FST，但跳跃表在Lucene其他地方还有应用如倒排表合并和文档号索引。
     缺点：模糊查询支持不好
 ![image](https://user-images.githubusercontent.com/20329409/220825287-f0e4c00a-7927-4351-b3d9-294e54a69b0a.png)
 
 </br>
-　FST　Lucene现在使用的索引结构
+
+## FST　Lucene现在使用的索引结构
   
   ![image](https://user-images.githubusercontent.com/20329409/220825385-e3f46ec2-6c56-4386-ad5e-8d4ec2a172d0.png)
 理论基础:   《Direct construction of minimal acyclic subsequential transducers》，通过输入有序字符串构建最小有向无环图。
@@ -79,9 +80,9 @@ lucene 的做法是用三个数据结构去表示，分别是term index， term 
 </br>
 term index 理解为字典树，但是会做前缀和后缀的压缩，然后查询某个词的时间复杂度从hashMap 的O（1）变为这个词的长度O（n），因为要遍历这个词，遍历之后得到term 的id list 地址。
 
-* id list 中如何快速查找这个id 呢
+## id list 中如何快速查找这个id 呢
 常见的是二分查找，lucene 是采用skip list，就是把数据进行分层，每层有几个索引，类似多叉树的查找方式，降低了树的深度，
-SkipList有以下几个特征：
+### SkipList有以下几个特征
 1. 元素排序的，对应到我们的倒排链，lucene是按照docid进行排序，从小到大。
 2. 跳跃有一个固定的间隔，这个是需要建立SkipList的时候指定好，例如下图以间隔是3
 3. SkipList的层次，这个是指整个SkipList有几层
@@ -91,7 +92,7 @@ SkipList有以下几个特征：
 
 有了这个SkipList以后比如我们要查找docid=12，原来可能需要一个个扫原始链表，1，2，3，5，7，8，10，12。有了SkipList以后先访问第一层看到是然后大于12，进入第0层走到3，8，发现15大于12，然后进入原链表的8继续向下经过10和12。
 </br>
-fst 分为前缀和不用前缀两种方式: 
+### fst 分为前缀和不用前缀两种方式
 前缀: 
 例如 32个词使用一个前缀, term index 树形结构最后得到的是前缀, val 是词典块的地址, 然后找到词典块, 再二分查找得到具体词，然后就可以找到id list。
 
