@@ -1,7 +1,57 @@
-# lucene and ES
+# Pic show the arch of lucene and ES
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/3f7d8e48-d5f5-46ee-8f11-8e2163c878ce)
 
+# Getting deeper into Lucene index
 
+NormsA norm is a factor associated with each indexed document and  stores normalization factorsused to compute the **score** relative to the query.
+Term vectors
+是一个document 维度的倒排索引, 由term 和他出现的频率决定, 并包括term 的position 
+
+## Posting formats
+控制着index file 如何被写入磁盘的
+
+## doc values
+Lucene index is the so-called inverted index. However, forcertain features, such as faceting or aggregations, such architecture is not the best one. 因为faceting 和aggregation operate on the document level, 而不是term level, 所以需要doc value存储着  uninvert the field 用于上面的那些操作, 
+
+
+## Lucene query language (可以简单讲下查询的语法)
+fuzzy search
+if we would run a query, such as writer~2, both the terms writer and writers would be considered a match
+For example, let’s take the followingquery:title:"mastering Elasticsearch"It would match the document with the title field containing mastering Elasticsearch,but not mastering book Elasticsearch. However, if we would run a query, such astitle:"mastering Elasticsearch"~2, it would result in both example documentsmatched.
+
+We can also use boosting to increase our term importance by using the ^ character andproviding a float number. Boosts lower than one would result in decreasing the documentimportance. Boosts higher than one will result in increasing the importance. The defaultboost value is 1
+
+查询特殊字符:
+In case you want to search for one of the special characters (which are +, -, &&, ||, !, (, ),{ }, [ ], ^, ", ~, *, ?, :, \, /), you need to escape it with the use of the backslash (\)character
+# es basic concepts
+* index 
+可以理解为database
+与lucene 的关系,  Elasticsearch uses Apache Lucene library to write and read the data from the index. What you should remember is that a single Elasticsearch index may be built of more than a single Apache Lucene index—by using shards.
+
+* type 
+This allows us to store variousdocument types in one index and have different mappings for different document types, 类 table
+* Mapping
+控制着text 如何被解析成token, 例如 field 的type, (field 由key 和val组成 df) 
+* node 
+分为data node, master, 和tribe node(用于多个cluster 的协调, 使得用起来好像在一个 cluster )
+* Shard（分片） 
+一个Shard就是一个Lucene实例，是一个完整的搜索引擎。一个索引可以只包含一个Shard，只是一般情况下会用多个分片，可以拆分索引到不同的节点上，分担索引压力。
+
+* lucene segment 
+elasticsearch中的每个shard 是一个 lunene index, 包含多个segment，每个 seg 和他的索引都是不可变的, 理念与 LSM 类似, 只能 merge, 每一个segment都有其对应的一系列索引；在查询的时，会把所有的segment查询结果汇总归并后最为最终的分片查询结果返回；
+* Replica
+每一个 shard 都有多个副本3.
+
+# Apache Lucene scoring
+A score is a factor that describes how well the document matched the query. 等于说要提高query 的准确性, 准确匹配到我们想要的结果的话, 就需要了解score 的计算原理
+scoring mechanism: the TF/IDF(term frequency/inverse document frequency) algorithm
+* In order to calculate the score property for adocument, multiple factors are taken into account, which are as follows( ignore)
+* What you should be aware of is what matters when it comes to document score. Basically,there are a few rules
+1. term 越稀有, doc 的 score 越高
+2.  doc 的 fields 越少, score 越高
+3. 设置的权重, (索引和搜索时设置的), 越大, score 越高
+
+可以讲下这个例子, An example . Till now we’ve seen how scoring works. Now we would like to show you a simpleexample of how the scoring works in real life. To do this, we will create a new indexcalled scoring.
 ## 问题
  * 一个shard 有多个segment 组成，如何搜索
  * 写入要写几个副本才成功，读呢，有可能的异常情况。
@@ -267,67 +317,7 @@ curl -X GET "ip:port/_template/templateName"
 curl -X PUT "ip:port/indexName"
 curl -X DELETE "ip:port/indexName"
 
-### documation 重点, 可以作为ppt 的内容
-1. request 和response的json的格式, 如何快速查询, 而不是每次都google 
-应该不需要用query json来查, 毕竟写json 还是太麻烦了, 另外 :`_score` field in the search results , 这个字段是啥意思, 
 
-2. how to use sql in ES. 
-
-# master elasticSearch
-1. lucene 和 es 的关系
-2. Apache Lucene architecture, 四个重要概念
-
-* Getting deeper into Lucene index
-
-NormsA norm is a factor associated with each indexed document and  stores normalization factorsused to compute the **score** relative to the query.
-Term vectors
-是一个document 维度的倒排索引, 由term 和他出现的频率决定, 并包括term 的position 
-
-Posting formats
-控制着index file 如何被写入磁盘的
-
-doc values
-Lucene index is the so-called inverted index. However, forcertain features, such as faceting or aggregations, such architecture is not the best one. 因为faceting 和aggregation operate on the document level, 而不是term level, 所以需要doc value存储着  uninvert the field 用于上面的那些操作, 
-
-
-* Lucene query language (可以简单讲下查询的语法)
-fuzzy search
-if we would run a query, such as writer~2, both the terms writer and writers would be considered a match
-For example, let’s take the followingquery:title:"mastering Elasticsearch"It would match the document with the title field containing mastering Elasticsearch,but not mastering book Elasticsearch. However, if we would run a query, such astitle:"mastering Elasticsearch"~2, it would result in both example documentsmatched.
-
-We can also use boosting to increase our term importance by using the ^ character andproviding a float number. Boosts lower than one would result in decreasing the documentimportance. Boosts higher than one will result in increasing the importance. The defaultboost value is 1
-
-查询特殊字符:
-In case you want to search for one of the special characters (which are +, -, &&, ||, !, (, ),{ }, [ ], ^, ", ~, *, ?, :, \, /), you need to escape it with the use of the backslash (\)character
-# es basic concepts
-* index 
-可以理解为database
-与lucene 的关系,  Elasticsearch uses Apache Lucene library to write and read the data from the index. What you should remember is that a single Elasticsearch index may be built of more than a single Apache Lucene index—by using shards.
-
-* type 
-This allows us to store variousdocument types in one index and have different mappings for different document types, 类 table
-* Mapping
-控制着text 如何被解析成token, 例如 field 的type, (field 由key 和val组成 df) 
-* node 
-分为data node, master, 和tribe node(用于多个cluster 的协调, 使得用起来好像在一个 cluster )
-* Shard（分片） 
-一个Shard就是一个Lucene实例，是一个完整的搜索引擎。一个索引可以只包含一个Shard，只是一般情况下会用多个分片，可以拆分索引到不同的节点上，分担索引压力。
-
-* lucene segment 
-elasticsearch中的每个shard 是一个 lunene index, 包含多个segment，每个 seg 和他的索引都是不可变的, 理念与 LSM 类似, 只能 merge, 每一个segment都有其对应的一系列索引；在查询的时，会把所有的segment查询结果汇总归并后最为最终的分片查询结果返回；
-* Replica
-每一个 shard 都有多个副本3.
-
-# Apache Lucene scoring
-A score is a factor that describes how well the document matched the query. 等于说要提高query 的准确性, 准确匹配到我们想要的结果的话, 就需要了解score 的计算原理
-scoring mechanism: the TF/IDF(term frequency/inverse document frequency) algorithm
-* In order to calculate the score property for adocument, multiple factors are taken into account, which are as follows( ignore)
-* What you should be aware of is what matters when it comes to document score. Basically,there are a few rules
-1. term 越稀有, doc 的 score 越高
-2.  doc 的 fields 越少, score 越高
-3. 设置的权重, (索引和搜索时设置的), 越大, score 越高
-
-可以讲下这个例子, An example . Till now we’ve seen how scoring works. Now we would like to show you a simpleexample of how the scoring works in real life. To do this, we will create a new indexcalled scoring.
 
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
