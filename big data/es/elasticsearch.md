@@ -1,3 +1,41 @@
+Table of Contents
+=================
+
+* [Pic show the arch of lucene and ES](#pic-show-the-arch-of-lucene-and-es)
+* [Getting deeper into Lucene index](#getting-deeper-into-lucene-index)
+  * [Posting formats](#posting-formats)
+  * [doc values](#doc-values)
+  * [Lucene query language (可以简单讲下查询的语法)](#lucene-query-language-可以简单讲下查询的语法)
+* [es basic concepts](#es-basic-concepts)
+* [Apache Lucene scoring](#apache-lucene-scoring)
+  * [问题](#问题)
+* [es 版本升级](#es-版本升级)
+  * [overview](#overview)
+  * [滚动升级](#滚动升级)
+  * [deprecation log](#deprecation-log)
+* [es 选主， es 会不会出现脑裂](#es-选主-es-会不会出现脑裂)
+  * [ES实现的Raft算法选主流程](#es实现的raft算法选主流程)
+  * [如何维护选举节点列表](#如何维护选举节点列表)
+* [dynamic mapping](#dynamic-mapping)
+* [写入](#写入)
+* [搜索](#搜索)
+* [es 数据一致性](#es-数据一致性)
+  * [写入](#写入-1)
+  * [写入过程中错误处理](#写入过程中错误处理)
+  * [搜索](#搜索-1)
+  * [更新doc](#更新doc)
+  * [ES在高并发下如何保证读写一致性，这个出处有待考证？](#es在高并发下如何保证读写一致性这个出处有待考证)
+  * [ClusterState commit 之后如何保证不回退](#clusterstate-commit-之后如何保证不回退)
+  * [问题](#问题-1)
+* [某些字段不需要直接查询, 从而关闭 index, 减少空间使用](#某些字段不需要直接查询-从而关闭-index-减少空间使用)
+* [curator 删除过期的 indexer](#curator-删除过期的-indexer)
+* [常用命令](#常用命令)
+  * [template](#template)
+  * [es version](#es-version)
+  * [index](#index)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
+
 # Pic show the arch of lucene and ES
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/3f7d8e48-d5f5-46ee-8f11-8e2163c878ce)
 
