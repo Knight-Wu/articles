@@ -1,21 +1,3 @@
-Table of Contents
-=================
-
-* [lucene 用法图](#lucene-用法图)
-* [FST 在索引上与其他数据结构的比较](#fst-在索引上与其他数据结构的比较)
-  * [mysql innodb B\+ tree](#mysql-innodb-b-tree)
-  * [跳跃表](#跳跃表)
-  * [FST](#fst)
-* [如何解释fst 呢](#如何解释fst-呢)
-  * [id list 中如何快速查找这个id 呢](#id-list-中如何快速查找这个id-呢)
-    * [SkipList有以下几个特征](#skiplist有以下几个特征)
-    * [fst 分为前缀和不用前缀两种方式](#fst-分为前缀和不用前缀两种方式)
-* [lucene 文件类型](#lucene-文件类型)
-  * [term dictionary](#term-dictionary)
-  * [term index](#term-index)
-  * [term frequencies](#term-frequencies)
-
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
 # lucene 用法图
 ![image](https://user-images.githubusercontent.com/20329409/220824791-229315c5-c028-448e-be9e-f66bd43e875e.png)
@@ -80,11 +62,12 @@ BytesRefFSTEnum<Long> iterator=new BytesRefFSTEnum<>(fst);
 while(iterator.next!=null){...}
 ```
 </br>
-数据结构	HashMap	TreeMap	FST
-构建时间(ms)	185	500	1512
-查询所有key(ms)	106	218	890
-
-　　可以看出，FST性能基本跟HaspMap差距不大，但FST有个不可比拟的优势就是占用内存小，只有HashMap10分之一左右，这对大数据规模检索是至关重要的，毕竟速度再快放不进内存也是没用的。
+```
+数据结构	       HashMap	   TreeMap	  FST
+构建时间(ms)	   185	       500	      1512
+查询所有key(ms)	106	       218	      890
+```
+　　可以看出，FST性能基本跟HaspMap差距不大，但FST有个不可比拟的优势就是占用内存小，只有HashMap10分之一左右，这对大数据规模检索是至关重要的，毕竟速度再快放不进内存也是没用的。</br>
 　　因此一个合格的词典结构要求有：
 　　1. 查询速度。
 　　2. 内存占用。
