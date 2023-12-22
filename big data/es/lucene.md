@@ -1,4 +1,6 @@
-
+# 参考资料
+1. https://www.cnblogs.com/sessionbest/articles/8689030.html
+2. https://zhuanlan.zhihu.com/p/35814539
 # lucene 用法图
 ![image](https://user-images.githubusercontent.com/20329409/220824791-229315c5-c028-448e-be9e-f66bd43e875e.png)
 ```
@@ -18,6 +20,7 @@ for(ScoreDoc hit:results.hits)
 }
 ```
 # FST 倒排索引
+## 简单概括
 整体图示:
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/1f4275ca-32bb-463c-ad26-f316267d6d7f)
 
@@ -34,9 +37,9 @@ FST，它的特点就是：
 
 　　tip部分，就是 term index, 词典的索引, 每列(对应到 es 就是每个需要 indexed 的 field )一个FST索引，所以会有多个FST，每个FST存放前缀和后缀块指针，这里前缀就为a、ab、ac。tim里面存放后缀块和词的其他信息如倒排表(docId list, es 叫做 posting list, 在内存中的实现为跳表, 方便查找和合并)指针、TFDF等，doc文件里就为每个单词的倒排表。
 　　所以它的检索过程分为三个步骤：
-　　1. 内存加载tip文件，通过FST匹配前缀找到后缀词块位置。
-　　2. 根据词块位置，读取磁盘中tim文件中后缀块并找到后缀和相应的posting list位置信息。
-　　3. 根据posting list 位置去doc文件中加载倒排表。
+　　1. 内存加载tip文件，通过FST在内存中匹配前缀找到后缀词块位置。
+　　2. 根据词块位置，读取磁盘中term dictionary 文件中后缀块并找到后缀和相应的posting list位置信息。
+　　3. 根据posting list 位置去doc文件中加载具体的数据. 
 　　这里就会有两个问题，第一就是前缀如何计算，第二就是后缀如何写磁盘并通过FST定位，下面将描述下Lucene构建FST过程:
 　　已知FST要求输入有序，所以Lucene会将解析出来的文档单词预先排序，然后构建FST，我们假设输入为abd,abd,acf,acg，那么整个构建过程如下：
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/765dd943-358d-42bd-8949-49ef44ed2923)
@@ -56,28 +59,58 @@ FST，它的特点就是：
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/b7dce0e6-1002-4228-b4a8-2867e5f4cb3d)
 
 ## 数据结构
-
-
-### term dictionary
-.tim 文件, 可通过 term 找到 docId 以及 term 的元数据(例如 term 在 doc 中的词频; 
-dictionary 以 block 的形式组织
+以下内容基本来自: https://lucene.apache.org/core/9_9_1/core/org/apache/lucene/codecs/lucene90/blocktree/Lucene90BlockTreeTermsWriter.html
 
 ### term index
-.tip 文件, 实际上就是 index to the term dictionary, 具体结构见: https://blog.mikemccandless.com/2010/12/using-finite-state-transducers-in.html,
-每一个 field 都会产生一个独立 FST , 
-FST 相当于一个 SortedMap<ByteSequence,SomeOutput>, key 是 term 的前缀, val 是block 在 disk 的位置, block 即 term dictionary 提到的.  
 
-## 如何解释fst 呢
+![image](https://github.com/Knight-Wu/articles/assets/20329409/ca832d5f-66c6-4bfc-ab8e-abc679df48d1)
 
-目的是根据词去寻找docId，然后对docId 求并集交集等集合运算。
-常见的方法就是用hashmap 去存，key 是词，value 是对应的docId 列表，但是数据量很大的情况下就很消耗空间，
-</br>
-lucene 的做法是用三个数据结构去表示，分别是term index， term dictionary，id（posting） skip list。
-</br>
-term index 理解为字典树，但是会做前缀和后缀的压缩，然后查询某个词的时间复杂度从hashMap 的O（1）变为这个词的长度O（n），因为要遍历这个词，遍历之后得到term 的id list 地址。
+term index is the .tip file, term index 相当于 term dictionary 的 index, 会加载进内存中, 用于决定这个 term 存不存在, 不存在就不需要做磁盘查找了. 
+每一个 field 都会产生一个独立 FST , FST 相当于一个 Map, key 是 term 的前缀, val 是term dictionary 在 disk 的位置.
 
-## id list 中如何快速查找这个id 呢
+### term dictionary
+
+![image](https://github.com/Knight-Wu/articles/assets/20329409/40d79a87-4864-40e8-b6d2-ccbc86829f61)
+
+前面说到 term index 的 val 就是这个 term dictionary 的文件位置, term dictionary 里面分 block 存储, 每个 block 词的数量, 就是 entry 的数量(by default 25-48), 设置为 1 就是不共享前缀, 如果超过设置的词的数量, 就会有指针指向下一个 block 的地址. 找到对应的词之后就可以找到 posting list 的文件位置, 再去磁盘查找 posting list 文件, 应该是对的, 但是这个过程和 Term Metadata 的结构感觉对不上.
+![image](https://github.com/Knight-Wu/articles/assets/20329409/40ae7917-949b-4990-b724-320d8092563f)
+
+
+### Term Metadata
+![image](https://github.com/Knight-Wu/articles/assets/20329409/b5ffca4c-f7fe-43c0-99ff-a2049777be48)
+
+The .tmd file contains the list of term metadata (such as FST index metadata) and field level statistics (such as sum of total term freq).
+
+## posting list 中如何快速查找这个id 呢
 常见的是二分查找，lucene 是采用skip list，就是把数据进行分层，每层有几个索引，类似多叉树的查找方式，降低了树的深度，
+### posting list 在磁盘中如何压缩
+1. 数据压缩，可以看下图怎么将6个数字从原先的24bytes压缩到7bytes。
+![image](https://github.com/Knight-Wu/articles/assets/20329409/f7093d21-7054-4362-a199-bdb6b6feeacb)
+
+### posting list 如何合并
+跳跃表加速合并，因为布尔查询时，and 和or 操作都需要合并倒排表，这时就需要快速定位相同文档号，所以利用跳跃表来进行相同文档号查找。
+这部分可参考ElasticSearch的一篇博客，里面有一些性能测试：https://www.elastic.co/blog/frame-of-reference-and-roaring-bitmaps
+简单合并的例子:
+
+假如我们的查询条件是name = “Alice”，那么按照之前的介绍，首先在term字典中定位是否存在这个term，如果存在的话进入这个term的倒排链，并根据参数设定返回分页返回结果即可。这类查询，在数据库中使用二级索引也是可以满足，那lucene的优势在哪呢。假如我们有多个条件，例如我们需要按名字或者年龄单独查询，也需要进行组合 name = "Alice" and age = "18"的查询，那么使用传统二级索引方案，你可能需要建立两张索引表，然后分别查询结果后进行合并，这样如果age = 18的结果过多的话，查询合并会很耗时。那么在lucene这两个倒排链是怎么合并呢。
+假如我们有下面三个倒排链需要进行合并。
+
+![image](https://github.com/Knight-Wu/articles/assets/20329409/c3d9f751-db5a-4ec4-9e3c-921c0be06e87)
+
+在lucene中会采用下列顺序进行合并：
+```
+1. 在termA开始遍历，得到第一个元素docId=1, currentDocId = 1
+2. Set currentDocId
+3. 在termB中 search(currentDocId) = 1 (返回大于等于currentDocId的一个doc),
+
+因为currentDocId == 1，继续
+如果currentDocId 和返回的不相等，设置currentDocId 为最短postling list 的下一个 docId, 执行2，然后继续
+如果到termC后依然符合，返回结果
+并且设置 : currentDocId = termC的nextItem
+然后继续步骤3 依次循环。直到某个倒排链到末尾。
+```
+整个合并步骤我可以发现，如果某个链很短，会大幅减少比对次数，并且由于SkipList结构的存在，在某个倒排中定位某个docid的速度会比较快不需要一个个遍历。可以很快的返回最终的结果。从倒排的定位，查询，合并整个流程组成了lucene的查询过程，和传统数据库的索引相比，lucene合并过程中的优化减少了读取数据的IO，倒排合并的灵活性也解决了传统索引较难支持多条件查询的问题。
+
 ### SkipList有以下几个特征
 1. 元素排序的，对应到我们的倒排链，lucene是按照docid进行排序，从小到大。
 2. 跳跃有一个固定的间隔，这个是需要建立SkipList的时候指定好，例如下图以间隔是3
@@ -88,25 +121,8 @@ term index 理解为字典树，但是会做前缀和后缀的压缩，然后查
 
 有了这个SkipList以后比如我们要查找docid=12，原来可能需要一个个扫原始链表，1，2，3，5，7，8，10，12。有了SkipList以后先访问第一层看到是然后大于12，进入第0层走到3，8，发现15大于12，然后进入原链表的8继续向下经过10和12。
 </br>
-## fst 分为前缀和不用前缀两种方式
-前缀: 
-
-</br>
-不用前缀: term index 树形结构最后得到的是整个完整的词, val 是词的id list 对应的文件偏移, 就没有词典里面二分查找的过程了. 但是term index 大小会比用前缀大很多. 
-</br>
-term index 在内存中可以理解为 term -> dictionary address 的sortedmap, 但是由于是树形结构 key 的前缀和后缀是共用的, 所以内存要少得多. 但是查找的时候效率就不是 O(1) 了, 是 O(term 的长度). 
-</br>
-term dictionary 在内存中理解为 term -> chunkid, 在磁盘中term 会前缀压缩. 
-
-下图中就是前缀的表示：
-![image](https://user-images.githubusercontent.com/20329409/220820606-709b3d3b-b9e6-4af3-b381-e1787482d2f1.png)
-
-## 还有如何进行id 列表的合并呢
-  
 ## FST 在索引上与其他数据结构的比较
-参考：
-1. https://www.cnblogs.com/sessionbest/articles/8689030.html
-2. https://zhuanlan.zhihu.com/p/35814539
+
 
 ![image](https://user-images.githubusercontent.com/20329409/220824893-1f407eca-206d-4da3-b4f1-a119ec882c96.png)
 
@@ -160,12 +176,3 @@ while(iterator.next!=null){...}
 　　2. 内存占用。
 　　3. 内存+磁盘结合。
 　　后面我们将解析Lucene索引结构，重点从Lucene的FST实现特点来阐述这三点。
-
-
-
-# lucene 文件类型
-
-
-
-## term frequencies
-.doc 文件, 保存着 term 对应的 doc 列表, 以及 term 出现的频率. 
