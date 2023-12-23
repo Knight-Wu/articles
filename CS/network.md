@@ -59,8 +59,8 @@
  https://www.jianshu.com/p/65605622234b
 
 ### 建立连接
+<img width="741" alt="image" src="https://github.com/Knight-Wu/articles/assets/20329409/55fbff63-aba1-4fbf-a1bc-2a6886b2a51a">
 
-![image](https://github.com/Knight-Wu/articles/assets/20329409/e11df83d-3257-4ab4-823c-87d5cc68fd49)
 
 
 #### 为什么需要三次握手
