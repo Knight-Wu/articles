@@ -12,24 +12,24 @@
 ![image](https://user-images.githubusercontent.com/20329409/217435360-834e3e82-d8f6-4d6d-b9eb-37ce83aa73b5.png)
 上述过程省去了查本地缓存的两步, 第一步是查浏览器缓存, 第二部是查本地dns 解析文件, linux 是/etc/hosts, 才到本地dns 服务器. 
 
-* 本地dns 服务器
+## 本地dns 服务器
 
 本地DNS一般是指你电脑上网时IPv4或者IPv6设置中填写的那个DNS。这个有可能是手工指定的或者是DHCP自动分配的。如果你的电脑是直连运营商网络，一般默认设置情况下DNS为DHCP分配到的运营商的服务器地址。如果你的电脑和运营商之间还加了无线或者有线路由，那极有可能路由器本身还内置了一个DNS转发器，这玩意的作用是将发往他所有的DNS请求转发到上层DNS。此时由于路由器本身也接管了下挂电脑的DHCP服务，所以它分配给下面电脑的DNS地址就是它自身，所以你能看到电脑的DNS分配到的可能是192.168.1.1。实际上就是路由器自身，而路由器的DNS转发器将请求转发到上层ISP的DNS。所以这里说DNS是局域网或者是运营商的都可以（因为最终都是转发到运营商，小细节不用纠结）。
 
 
-#### TCP/IP协议
+# TCP/IP协议
 　　既然是网络编程，涉及几个系统之间的交互，那么首先要考虑的是如何准确的定位到网络上的一台或几台主机，另一个是如何进行可靠高效的数据传输。这里就要使用到TCP/IP协议。
 
 　　TCP/IP协议（传输控制协议）由网络层的IP协议和传输层的TCP协议组成。IP层负责网络主机的定位，数据传输的路由，由IP地址可以唯一的确定Internet上的一台主机。TCP层负责面向应用的可靠的或非可靠的数据传输机制，这是网络编程的主要对象。
 
-#### TCP与UDP
+## TCP与UDP
 　　TCP是一种面向连接的保证可靠传输的协议。通过TCP协议传输，得到的是一个顺序的无差错的数据流。发送方和接收方的成对的两个socket之间必须建立连接，以便在TCP协议的基础上进行通信，当一个socket（通常都是server socket）等待建立连接时，另一个socket可以要求进行连接，一旦这两个socket连接起来，它们就可以进行双向数据传输，双方都可以进行发送或接收操作。
 
 　　UDP是一种面向无连接的协议，每个数据报都是一个独立的信息，包括完整的源地址或目的地址，它在网络上以任何可能的路径传往目的地，因此能否到达目的地，到达目的地的时间以及内容的正确性都是不能被保证的。
 
-TCP与UDP区别：
 
-TCP特点：
+
+### TCP特点：
 
 　　1、TCP是面向连接的协议，通过三次握手建立连接，通讯完成时要拆除连接，由于TCP是面向连接协议，所以只能用于点对点的通讯。而且建立连接也需要消耗时间和开销。
 
@@ -37,7 +37,7 @@ TCP特点：
 
 　　3、TCP是一个可靠的协议，它能保证接收方能够完整正确地接收到发送方发送的全部数据, 而且是顺序的.
 
-UDP特点：
+### UDP特点：
 
 　　1、UDP是面向无连接的通讯协议，UDP数据包括目的端口号和源端口号信息，由于通讯不需要连接，所以可以实现广播发送。
 
@@ -45,24 +45,24 @@ UDP特点：
 
 　　3、UDP是一个不可靠的协议，发送方所发送的数据报并不一定以相同的次序到达接收方(不保证顺序)。
 
-TCP与UDP应用：
+### TCP与UDP应用：
 
 　　1、TCP在网络通信上有极强的生命力，例如远程连接（Telnet）和文件传输（FTP）都需要不定长度的数据被可靠地传输。但是可靠的传输是要付出代价的，对数据内容正确性的检验必然占用计算机的处理时间和网络的带宽，因此TCP传输的效率不如UDP高。
 
 　　2，UDP操作简单，而且仅需要较少的监护，因此通常用于局域网高可靠性的分散系统中client/server应用程序。例如视频会议系统，并不要求音频视频数据绝对的正确，只要保证连贯性就可以了，这种情况下显然使用UDP会更合理一些。
 
 
-### TCP 
+## TCP 
 参考链接: 
  [https://en.wikipedia.org/wiki/Transmission_Control_Protoco](https://en.wikipedia.org/wiki/Transmission_Control_Protoco)
  [understand-tcp-ip-network-stack](https://cizixs.com/2017/07/27/understand-tcp-ip-network-stack/)
  https://www.jianshu.com/p/65605622234b
 
-#### 建立连接
+### 建立连接
 
 ![enter image description here](https://drive.google.com/uc?id=1oroW4PjFfuKpe0BGhCTr1WlVMjvYbk3g) 
 
-* 为什么需要三次握手
+#### 为什么需要三次握手
 
 防止服务端接收到网络上滞留的请求连接包, 若没有第三次 ack 的过程, 服务端接收了此类包发送一个syn+ack, 并一直等待客户端发送数据, 导致浪费资源, 而且是死锁的情况, 若有第三次的ack, 则客户端收到syn+ack, 但是因为之前的包已经过时, 不会再次发送ack, 故服务器不会盲等.
 
@@ -70,23 +70,23 @@ TCP与UDP应用：
 “这个问题的本质是, 信道不可靠, 但是通信双发需要就某个问题达成一致. 而要解决这个问题,  无论你在消息中包含什么信息, 三次通信是理论上的最小值. 所以三次握手不是TCP本身的要求, 而是为了满足"在不可靠信道上可靠地传输信息"这一需求所导致的. 请注意这里的本质需求,信道不可靠, 数据传输要可靠. 三次达到了, 那后面你想接着握手也好, 发数据也好, 跟进行可靠信息传输的需求就没关系了. 因此,如果信道是可靠的, 即无论什么时候发出消息, 对方一定能收到, 或者你不关心是否要保证对方收到你的消息, 那就能像UDP那样直接发送消息就可以了.”。这可视为对“三次握手”目的的另一种解答思路。
 
 
-#### 关闭连接
+### 关闭连接
 
 ![enter image description here](https://drive.google.com/uc?id=1Uqsp8zQ1CHq2bwsThdbCDFo38K_23koR)
 
-* 为什么需要四次挥手
+#### 为什么需要四次挥手
 
 因为TCP 是全双工的协议, 双方都可以发送和接收, 必须要一方发送结束信号, 另一方ack 之后才表示结束, 否则经过前两次挥手之后只是单向断开, 服务器还是能向客户端发送数据, 
 
-* 为什么不能把服务器发送的 ACK 和 FIN 合并起来，变成三次挥手？
+#### 为什么不能把服务器发送的 ACK 和 FIN 合并起来，变成三次挥手？
 
 因为服务器收到客户端断开连接的请求时，可能还有一些数据没有发完，这时先回复 ACK，表示接收到了断开连接的请求。等到数据发完之后再发 FIN，断开服务器到客户端的数据传送。
 
-* 如果第二次挥手时服务器的 ACK 没有送达客户端，会怎样？
+#### 如果第二次挥手时服务器的 ACK 没有送达客户端，会怎样？
 
 客户端没有收到 ACK 确认，会重新发送 FIN 请求
 
-* 为什么客户端关闭连接前要等待2MSL时间？为什么需要time-wait
+#### 为什么客户端关闭连接前要等待2MSL时间？为什么需要time-wait
 
 1. 为了客户端最后一个ack 能确保到达服务器, 最后一个ack 有可能丢失, 则服务器会超时重传, 如果在2 MSL 时间内还没有超时重传, 证明已经接受到了最后一个ack, 若客户端不等待, 则无法再次发送最后一个ack, 服务器无法关闭连接. 所以需要time-wait, 来重发最后一个ack. 
 2. 客户端发送完最后一个确认报文后，在这个2MSL时间中，就可以使本连接持续的时间内所产生的所有报文段都从网络中消失。这样新的连接中不会出现旧连接的请求报文。
@@ -101,7 +101,7 @@ TCP与UDP应用：
 
 
 
-2. TCP 需要的资源
+### TCP 需要的资源
 
 > Most implementations allocate an entry in a table that maps a session to a running operating system process. Because TCP packets do not include a session identifier, both endpoints identify the session using the client's address and port. Whenever a packet is received, the TCP implementation must perform a lookup on this table to find the destination process. Each entry in the table is known as a Transmission Control Block or TCB. It contains information about the endpoints (IP and port), status of the connection, running data about the packets that are being exchanged and buffers for sending and receiving data.
 
@@ -112,7 +112,7 @@ TCP与UDP应用：
 
 意思是作为TCP 连接的server 端, 只需要消耗内存, 因为可以多个连接都连到一个端口, 但是client 端却需要新建一个随机端口, 并在连接时一直持有, 若应用没有合理的释放资源, 会导致端口不够用.
 
-#### TCP 报文首部
+### TCP 报文
 序号: 发送的报文中第一个字节的序号
 确认号: 期望收到的下一个字节的序号, 若为N , 则表示到N-1 的所有序号的数据都已收到
 
@@ -169,7 +169,7 @@ TCP的报文重传有两种独立的办法。
 每接收一个发送帧, 接收窗口前移, 当接收到一整个发送窗口时才发送一个ack,  在接收窗口之外的包一律丢弃
 
 
-#### 网络的拥塞控制
+### 网络的拥塞控制
 * 慢开始和拥塞避免算法
 拥塞窗口, 可能等于发送窗口, 但是也会受接收方建议的窗口大小的影响, 一开始先将拥塞窗口调的很小, 每收到一次完整的拥塞窗口确认之后, 则拥塞窗口翻倍. 呈指数增加,  当拥塞窗口到达一定阈值 a, 则采用拥塞避免算法, 线性增加. 当出现超时重传等情况时, 就有可能出现了拥塞, 则马上将阈值a 调为一半, 拥塞窗口调为1
 思想为: 乘法减小, 加法增大, 拥塞的时候立马降低, 再缓慢恢复. 
@@ -178,7 +178,7 @@ TCP的报文重传有两种独立的办法。
 如果是发送超时重传的话, 使用的是慢开始和拥塞避免算法; 但是如果是接收方没有接收到中间的几个分组, 但是接收到了后面的几个新分组, 就立马向发送方发送重复确认(不需要等待自己发送的时候再捎带), 然后发送方立马重传没有接收的分组, 这叫快重传, 
 而且因为接收方是接收到了后面的几个分组的, 拥塞并不严重, 所以发送方将拥塞窗口设定为阈值 a 的一半, 并采用拥塞避免算法, 线性增大. 
 
-#### TCP_WAIT 过多是否异常
+### TCP_WAIT 过多是否异常
 [2014-tcp-time-wait-state-linux](https://vincent.bernat.ch/en/blog/2014-tcp-time-wait-state-linux)
 [https://blog.oldboyedu.com/tcp-wait/](https://blog.oldboyedu.com/tcp-wait/)
 * time wait 过多的原因
