@@ -60,7 +60,8 @@
 
 ### 建立连接
 
-![enter image description here](https://drive.google.com/uc?id=1oroW4PjFfuKpe0BGhCTr1WlVMjvYbk3g) 
+![image](https://github.com/Knight-Wu/articles/assets/20329409/e11df83d-3257-4ab4-823c-87d5cc68fd49)
+
 
 #### 为什么需要三次握手
 
@@ -71,8 +72,8 @@
 
 
 ### 关闭连接
+![image](https://github.com/Knight-Wu/articles/assets/20329409/70870f3f-9ca4-46f8-91ec-0b6966abd1d3)
 
-![enter image description here](https://drive.google.com/uc?id=1Uqsp8zQ1CHq2bwsThdbCDFo38K_23koR)
 
 #### 为什么需要四次挥手
 
