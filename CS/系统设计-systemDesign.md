@@ -1,5 +1,11 @@
+# 参考资料
+https://help.aliyun.com/zh/tablestore/use-cases/scheme-analysis?spm=a2c4g.11186623.0.i5
 
 # 系统设计
+## 常用数据
+![image](https://github.com/Knight-Wu/articles/assets/20329409/81b38dda-f6b2-49dd-b1dd-0e3684636c83)
+
+
 ## 设计一个推特(feed 流系统)
 ### 系统分类
 
