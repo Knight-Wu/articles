@@ -907,7 +907,7 @@ for(int i = 1; i < n; i++){
 
 return res[n-1][0];
 
-
+// 下面是节省空间的版本
 int n = stocks.length;
 
 // 0 卖出, 1 持有
