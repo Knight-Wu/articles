@@ -193,7 +193,43 @@ for t=t1;t <= t2; t++{
 
 ## LRUCache
 ```
-class LRUCache {
+// here is LRUCache for only update when access(get)
+public class LRUCache<K, V> {
+  private LinkedHashMap<K, V> cache;
+  private int cap;
+
+  public LRUCache(int cap) {
+    this.cap = cap;
+    this.cache =
+        new LinkedHashMap<>(cap, 0.75f, true) {
+          @Override
+          public boolean removeEldestEntry(Map.Entry<K, V> eldest) {
+            return this.size() > cap;
+          }
+        };
+  }
+
+  public V get(K key) {
+    return cache.get(key);
+  }
+
+  public void put(K key, V val) {
+    cache.put(key, val);
+  }
+
+  public static void main(String[] args) {
+    LRUCache<Integer, Integer> ca = new LRUCache<>(2);
+    ca.put(1, 1);
+    ca.put(2, 2);
+    ca.put(3, 3);
+    Assert.assertNull(ca.get(1));
+    Assert.assertEquals(2, ca.get(2).intValue());
+    ca.put(4, 4);
+    Assert.assertNull(ca.get(3));
+  }
+}
+
+class LRUCacheUpdWhenGetAndPut {
     int cap;
     LinkedHashMap<Integer, Integer> cache = new LinkedHashMap<>();
     public LRUCache(int capacity) { 
