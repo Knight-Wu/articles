@@ -210,10 +210,12 @@ public class LRUCache<K, V> {
   }
 
   public V get(K key) {
+    // will unlink this node, and link it the the tail of the double linkedlist
     return cache.get(key);
   }
 
   public void put(K key, V val) {
+    // will set the element to the tail, also make it to be the latest
     cache.put(key, val);
   }
 
