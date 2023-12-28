@@ -32,6 +32,11 @@ https://help.aliyun.com/zh/tablestore/use-cases/scheme-analysis?spm=a2c4g.111866
 
 
 ## 设计一个推特(feed 流系统)
+### 设计文档
+#### 写流程
+1. 生成帖子 id, LSM 模式写入, 分区策略
+#### 读流程
+1. 根据用户 id 查询帖子, 然后 merge 排序展示. 
 ### 系统分类
 
 Feed流种类较多，可根据接收的数据和关系数据进行分类。
