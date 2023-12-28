@@ -3,24 +3,28 @@
 https://help.aliyun.com/zh/tablestore/use-cases/scheme-analysis?spm=a2c4g.11186623.0.i5
 
 # 系统设计
-## 常见思路
-### 思考思路
+
+## 要点
 
 * 说白了任何系统设计都是涉及到写, 存储, 读, 
 * 分布式系统最重要的就是要能水平扩展, 否则找个 mysql 存了任何业务问题都能解决. 写, 存储, 读都要能水平扩展. 
-#### 写
+## 写
 常见的就是 LSM 思想, 写WAL 和内存, 写 WAL 是顺序写, 将随机写转变为顺序写和内存写
 
-#### 存储
+## 存储
 考虑数据如何分区, 如何复制, 如何设计表, 如何保持数据一致性, 这个一致性根据业务常见和读的需求不同而不同
 
-#### 读
+## 读
 如何保证性能, 如何保证符合业务要求的数据一致性, 例如转账是必须两边都要看到同样的符合转账记录的数据. 
 ### 数据分区(parition)
 就是把热点数据分开, 让读写都可以水平扩展, 通过把数据分散到多台机器, 分布式解决单机的瓶颈问题
 * 如何思考具体的分区策略呢
 
 就是看热点数据是哪种, 怎么设定 key, 指定什么策略才能把热点 key 分散. 
+
+* 数据密集型系统笔记
+
+  https://github.com/Knight-Wu/articles/blob/master/books/data_intensive_system_book_notes/chapter6_%E5%88%86%E5%8C%BA.md
 ## 常用数据
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/81b38dda-f6b2-49dd-b1dd-0e3684636c83)
 
