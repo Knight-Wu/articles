@@ -75,7 +75,13 @@ Feed内容太有话题性，快速传播。
  * 单个模块的不可用，不应该阻止整个关键的读Feed流路径。如果大V的无法读取，但是普通用户的要能返回，等服务恢复后，再补齐大V的内容即可。
  * 限流: 当模块无法承受这么大流量的时候，模块不应该完全不可服务，而应该能继续提供最大的服务能力，超过的拒绝掉。
 
-帖子 id = 用户 id + seqId, can get which data partitions to store those tweet when specify userId, 若有 n 个 partition, partition 数量根据什么而定? 存某个大 v 的所有帖子, 则写入能力是 n 倍, 取模写入, 读取的时候每个 partition 读前5 条最新的, 假设第一页是五条, 最后在 merge, 因为每个 parition 的读取是并行的, 可以水平扩展, 读取时间取决于最慢的那个partition, 最后再按时间 merge, 而且大 v 的数量有限, 按大 v 的热度排序, 取最热的一批大 v, 把最新五条帖子写入缓存, 直到用完缓存, 
+帖子 id = 用户 id + seqId, can get which data partitions to store those tweet when specify userId, 例如先通过 user id 做 hash 然后得到 prefix, 
+</br> 每个 partition id 由 prefix 和 suffix 构成, 那么可以根据 prefix 定位这些 parition 在哪, 然后剩下的在某个 parition 中根据 userId 做扫描, 就是单机数据库的问题了
+</br>
+假设某个大 v 有 n 个 partition, 然后根据seqId 取模写入, 某个大 v 的 partition 应该不需要很多, 因为发帖很少, 总集群的 partition 数量根据所需的写入能力而定
+</br> 一般都是写入数据写入 log 多副本之后, 就可以返回成功了, log 多副本因为顺序写磁盘加上写内存, 顺序写磁盘不会比内存慢多少, 就是一个 LSM 的架构. 
+</br>
+读取的时候每个 partition 读前5 条最新的, 假设第一页是五条, 最后在 merge, 因为每个 parition 的读取是并行的, 可以水平扩展, 读取时间取决于最慢的那个partition, 最后再按时间 merge, 而且大 v 的数量有限, 按大 v 的热度排序, 取最热的一批大 v, 把最新五条帖子写入缓存, 直到用完缓存, 
 ### 读写 feed 流程
 #### 发布Feed流程
 当你发布一条Feed消息的时候，流程是这样的：
