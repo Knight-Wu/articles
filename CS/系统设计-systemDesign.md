@@ -24,7 +24,7 @@ https://help.aliyun.com/zh/tablestore/use-cases/scheme-analysis?spm=a2c4g.111866
 
 就是看热点数据是哪种, 怎么设定 key, 指定什么策略才能把热点 key 分散. 
 
-* 数据密集型系统笔记
+* 数据密集型系统笔记-数据分区
 
   https://github.com/Knight-Wu/articles/blob/master/books/data_intensive_system_book_notes/chapter6_%E5%88%86%E5%8C%BA.md
 ## 常用数据
