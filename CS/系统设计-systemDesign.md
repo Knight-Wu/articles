@@ -1,5 +1,7 @@
 
 # 参考资料
+* 阿里云这里有常见的业务系统的设计方案
+
 https://help.aliyun.com/zh/tablestore/use-cases/scheme-analysis?spm=a2c4g.11186623.0.i5
 
 # 系统设计
