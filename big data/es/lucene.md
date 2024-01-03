@@ -34,26 +34,37 @@ FST，它的特点就是：
 
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/31799322-67b4-44e7-ad90-11bf35a689aa)
 
-
-　　tip部分，就是 term index, 词典的索引, 每列(对应到 es 就是每个需要 indexed 的 field )一个FST索引，所以会有多个FST，每个FST存放前缀和后缀块指针，这里前缀就为a、ab、ac。tim里面存放后缀块和词的其他信息如倒排表(docId list, es 叫做 posting list, 在内存中的实现为跳表, 方便查找和合并)指针、TFDF等，doc文件里就为每个单词的倒排表。
+</br>
+　　tip部分，就是 term index, 词典的索引, 每列(对应到 es 就是每个需要 indexed 的 field )一个FST索引，所以会有多个FST，每个FST存放前缀和后缀块指针，这里前缀就为a、ab、ac。
+ </br> tim里面存放后缀块和词的其他信息如倒排表(docId list, es 叫做 posting list, 在内存中的实现为跳表, 方便查找和合并)指针、TFDF等.
+ </br> doc文件里就为每个单词的倒排表。
+ </br>
 　　所以它的检索过程分为三个步骤：
-　　1. 内存加载tip文件，通过FST在内存中匹配前缀找到后缀词块位置。
+　　1. 内存加载tip文件就是term index，通过FST在内存中匹配前缀找到后缀词块位置。
+  
 　　2. 根据词块位置，读取磁盘中term dictionary 文件中后缀块并找到后缀和相应的posting list位置信息。
+  
 　　3. 根据posting list 位置去doc文件中加载具体的数据. 
+  </br>
 　　这里就会有两个问题，第一就是前缀如何计算，第二就是后缀如何写磁盘并通过FST定位，下面将描述下Lucene构建FST过程:
+  </br>
 　　已知FST要求输入有序，所以Lucene会将解析出来的文档单词预先排序，然后构建FST，我们假设输入为abd,abd,acf,acg，那么整个构建过程如下：
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/765dd943-358d-42bd-8949-49ef44ed2923)
 
 
 1. 插入abd时，没有输出。
+   
 2. 插入abe时，计算出前缀ab，但此时不知道后续还不会有其他以ab为前缀的词，所以此时无输出。
+
 3. 插入acf时，因为是有序的，知道不会再有ab前缀的词了，这时就可以写tip和tim了，tim中写入后缀词块d、e和它们的倒排表位置ip_d,ip_e，tip中写入a，b和以ab为前缀的后缀词块位置(真实情况下会写入更多信息如词频等)。
+
 4. 插入acg时，计算出和acf共享前缀ac，这时输入已经结束，所有数据写入磁盘。tim中写入后缀词块f、g和相对应的倒排表位置，tip中写入c和以ac为前缀的后缀词块位置。
 
-
+</br>
 以上是一个简化过程，Lucene的FST实现的主要优化策略有：
 
 1. 最小后缀数。Lucene对写入tip的前缀有个最小后缀数要求，默认25，这时为了进一步减少内存使用。如果按照25的后缀数，那么就不存在ab、ac前缀，将只有一个跟节点，abd、abe、acf、acg将都作为后缀存在tim文件中。我们的10g的一个索引库，索引内存消耗只占20M左右。
+
 2. 前缀计算基于byte，而不是char，这样可以减少后缀数，防止后缀数太多，影响性能。如对宇(e9 b8 a2)、守(e9 b8 a3)、安(e9 b8 a4)这三个汉字，FST构建出来，不是只有根节点，三个汉字为后缀，而是从unicode码出发，以e9、b8为前缀，a2、a3、a4为后缀，如下图：
 
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/b7dce0e6-1002-4228-b4a8-2867e5f4cb3d)
