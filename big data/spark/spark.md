@@ -1,3 +1,39 @@
+# OOM 问题
+## 
+
+# 数据倾斜(data skew)
+## 场景: jdbc 读取 mysql, 分区列是时间, 有些时间段数据量很大
+
+* 数据倾斜为何产生
+因为读取 adb , 通过 jdbc 协议, jdbc 链接的时候需要指定 numOfPartition, 用作拆分成子 sql, 因为我们分区字段是时间, 就是将一年的时间拆分成 numOfPartition 这么多段, 每段查出来的数据就是 spark 的一个 partition, 如果一段里面的数据例如是流量高峰那么这个 Partition 的数据量一大, 就会造成 OOM.
+### 如何解决
+#### 估算单个 partition 多大来避免 OOM, 没有根本解决问题
+
+采取预先估算生产每个表的每秒写入行数, 再乘以每行大小, 可以得到峰值 partition 的大小, 然后测试环境通过多次测试可以得到比如 4GB 的一个 executor 可以放下多少 partition , 每个多大, 就可以以此类推当生产 parititon 是某个大小时, 需要指定的 numOfParition 的数量. 但是这样性能不是最优, 因为 partition 数量太多, 会造成任务切换开销不如数量少一点时快, 但目前没有更优的, 保证稳定性优先.
+#### 通过给 ADB 加上一个自增列
+例如读 1w 条, 就给他们标上 id , 1到 1w , 然后以这列作为分区列, 那么每个 partition 所获取到的行数就是固定的, 
+可以通过 mysql row_num 函数做到:
+
+```
+SELECT *, ROW_NUMBER() OVER ( ORDER BY bet_end_time) FROM pg_analytic_db.player_bet where bet_end_time >= '2022-07-26 11:08:40.165' and bet_end_time <= '2022-07-26 12:08:40.165';
+```
+</br> 但是这个首先需要扫描全表, 加上一个字段, 对表有变更, 如果读出来的时候再加, 也需要指定分区列, 在读出来的时候就 OOM 了, 已经测试过. 
+
+##### 通过salting 随机
+这个不行, 因为要先读出来才能在 key 加随机后缀, 进行打散, 但是在从 mysql 读出来的时候就 OOM 了
+![image](https://github.com/Knight-Wu/private/assets/20329409/c42a79d9-5a66-4722-a480-e6e8d9331e60)
+
+##### 最佳方案: 通过 streaming read jdbc, 让 spark 自动把多余数据写到磁盘
+之前我们把 sql 拆分成多个子 sql 并行查询, 每个子 sql 都是查询同样的时间长度, 一个子 sql 查询得到的数据是一个 partition 的数据, 但是按时间拆分, 可能一些sql 查询的是业务高峰, 那段时间的数据量特别大, 就会导致 partition 大过预期就 OOM, 而且是读取的时候就发生了没法通过写到磁盘, 随机打散等方式解决, 但是思考 spark 肯定是能够把内存装不下的数据自动写到磁盘的, 不然无法操作大于内存的源数据, 于是看了 JDBCRDD 的源码, jdbc 的 mysql 官方文档, 发现的确有通过游标的方式打开 streaming read, 然后一个 partition 再大都不会 OOM 了, spark UI 提示会写到磁盘, 猜想之前在网络层虽然也是一批批的拉取数据, 但是是拉完了这个 partition 所有数据才会开始下一步处理, 但是 streaming read 就是拉取一部分 spark 处理一部分, 下次拉多少内部判断, spark api 就可以把判断数据量大小从而写入磁盘, 之前是还没到 spark api 判断就 OOM 了, 自然不会写到磁盘.
+* 关键代码
+   * spark JDBCRDD 传参, 构造 Query
+     ![image](https://github.com/Knight-Wu/private/assets/20329409/22e71e84-c7c7-4f7a-9cc9-60c4ef9de1df)
+   * JDBC 判断是否是 streaming read
+     [jdbc doc https://dev.mysql.com/doc/connector-j/en/connector-j-reference-implementation-notes.html](https://dev.mysql.com/doc/connector-j/en/connector-j-reference-implementation-notes.html)
+     ![image](https://github.com/Knight-Wu/private/assets/20329409/299ee750-cf96-4c87-990a-e7629982f39e)
+   * 所以只需要把 fetchSize 设置成 Integer.MIN_VALUE 即可
+
+
 # 代码生成技术
 简单来说是这几点. 
 
