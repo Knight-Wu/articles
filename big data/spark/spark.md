@@ -1,8 +1,85 @@
 # OOM 问题
-## 
+## dataframe.sample().mapPartition() 出现 OOM 
+```
+sample data error, Traceback (most recent call last):
+  File "/tmp/data_correctness_check_job.py", line 150, in check_sample_data
+    if df1_minus_df2.count() > 0:
+  File "/opt/amazon/spark/python/lib/pyspark.zip/pyspark/rdd.py", line 1521, in count
+    return self.mapPartitions(lambda i: [sum(1 for _ in i)]).sum()
+  File "/opt/amazon/spark/python/lib/pyspark.zip/pyspark/rdd.py", line 1508, in sum
+    return self.mapPartitions(lambda x: [sum(x)]).fold(  # type: ignore[return-value]
+  File "/opt/amazon/spark/python/lib/pyspark.zip/pyspark/rdd.py", line 1336, in fold
+    vals = self.mapPartitions(func).collect()
+  File "/opt/amazon/spark/python/lib/pyspark.zip/pyspark/rdd.py", line 1197, in collect
+    sock_info = self.ctx._jvm.PythonRDD.collectAndServe(self._jrdd.rdd())
+  File "/opt/amazon/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/java_gateway.py", line 1321, in __call__
+    return_value = get_return_value(
+  File "/opt/amazon/spark/python/lib/pyspark.zip/pyspark/sql/utils.py", line 190, in deco
+    return f(*a, **kw)
+  File "/opt/amazon/spark/python/lib/py4j-0.10.9.5-src.zip/py4j/protocol.py", line 326, in get_return_value
+    raise Py4JJavaError(
+py4j.protocol.Py4JJavaError: An error occurred while calling z:org.apache.spark.api.python.PythonRDD.collectAndServe.
+: org.apache.spark.SparkException: Job aborted due to stage failure: Task 144 in stage 158.0 failed 4 times, most recent failure: Lost task 144.6 in stage 158.0 (TID 80085) ( executor 1536): ExecutorLostFailure (executor 1536 exited caused by one of the running tasks) Reason: Remote RPC client disassociated. Likely due to containers exceeding thresholds, or network issues. Check driver logs for WARN messages.
+```
+### sample 的原理
+![image](https://github.com/Knight-Wu/articles/assets/20329409/4dad4952-4d47-42b7-8b4d-07fc6e76f970)
+withReplacement=true, use this sample class:
+![image](https://github.com/Knight-Wu/articles/assets/20329409/b35232fb-1655-49c3-b872-31e4c6667068)
+
+如果用的是这个代码, 抽样的比例是 fraction, sample(withReplacement=True, fraction), 用的就是这个抽样类: BernoulliCellSampler,  抽样的原理就是每个 partition id 作为一个 random seed, 保证每个 partition 的 random seed 不一样, 然后读取 partition 的每条记录, 
+每条记录都会产生一个随机数从 0 到 1 之间, 如果随机数小于 fraction, 就会选择这条记录, 所以按理来说不会OOM, 但是还是有 OOM , 目前没有一个很好的解释
+
+#### 解决办法
+* 减小 partition size
+```
+pyspark
+spark_conf.set("spark.hadoop.fs.s3a.block.size", "10M") # default is 30M
+spark_conf.set("spark.sql.files.maxPartitionBytes", "10048576") # default is 134217728 (128 MB)
+```
+
+* 把数据装到内存和磁盘
+
+dataframe.persist(MemoryAndDisk), force using disk 如果需要用的话, 因为我们机器数量 20 台, 每天内存 32 GB, 磁盘每天 100 GB 以上, 肯定够放下一天的数据, 这样比减小 partition size 要快, 在确定能放下数据的情况下, 暂时先用这个方法, 如果放不下了再选择减小 partition size. 
 
 # 数据倾斜(data skew)
-## 场景: jdbc 读取 mysql, 分区列是时间, 有些时间段数据量很大
+## 常见情况
+某个parttion的大小远大于其他parttion，stage执行的时间取决于task（parttion）中最慢的那个，导致某个stage执行过慢, 或者 OOM
+情形暂定为两种
+   1. 相同的key的数据量太大(一般都是因为这个)
+   2. 不同的key在同一个parttion的数据量太大
+
+## 常见解决思路
+* 提升并行程度, 适用情况2.
+* 在hive端就去除倾斜的现象, 保证spark端使用的时效
+* 过滤少数导致数据倾斜的key
+* 将key添加随机前缀, 进行局部聚合,然后去掉随机前缀, 再进行全局聚合
+* 自定义parttion
+* 避免shuffle, 通过将小表广播到大表所在的节点, 进行hash-join
+* 通过抽样来
+
+## 实际场景两表 join, 一个大表的重复 key 很多
+
+大厂大数据平台数据分析的题目
+```
+大表A(大概每天的增量数据有3T)
+uuid url time 
+url为用户每天访问的url, 有些热门网址出现的次数就非常多了, 就有数据倾斜的问题
+
+小表B(映射表数据为大概300GB)
+url result
+
+需要将A和B join, 生成结果保存在hive
+uuid time url result
+```
+> 思路
+
+1. 因为是热门网址的url, 故可以将表A抽样百分之十,  取这百分之十的最热门的top100个url, 生成表C
+2. 将表C作为小表广播, 与表B join, 获取top100 的url的result
+3. 再将表C 广播, 与表A join, 则数据倾斜比较严重的url都已经有了result
+4. 再经过一次filter, 把已经有了result的url排除掉, 剩下的就时其余比较平均的url, 生成表D
+5. 将表D与表B join, 则可以获取所有的result.
+
+## 实际场景: jdbc 读取 mysql, 分区列是时间, 有些时间段数据量很大
 
 * 数据倾斜为何产生
 因为读取 adb , 通过 jdbc 协议, jdbc 链接的时候需要指定 numOfPartition, 用作拆分成子 sql, 因为我们分区字段是时间, 就是将一年的时间拆分成 numOfPartition 这么多段, 每段查出来的数据就是 spark 的一个 partition, 如果一段里面的数据例如是流量高峰那么这个 Partition 的数据量一大, 就会造成 OOM.
@@ -647,42 +724,7 @@ spark.executor.extraClassPath=./antlr-runtime-3.4.jar  spark.yarn.dist.files=/op
 5. [https://spark.apache.org/docs/latest/running-on-yarn.html](https://spark.apache.org/docs/latest/running-on-yarn.html)
 
 
-### 数据倾斜
-某个parttion的大小远大于其他parttion，stage执行的时间取决于task（parttion）中最慢的那个，导致某个stage执行过慢
-情形暂定为两种
-   1. 相同的key的数据量太大(一般都是因为这个)
-   2. 不同的key在同一个parttion的数据量太大
 
-> 解决办法
-* 提升并行程度, 适用情况2.
-* 在hive端就去除倾斜的现象, 保证spark端使用的时效
-* 过滤少数导致数据倾斜的key
-* 将key添加随机前缀, 进行局部聚合,然后去掉随机前缀, 再进行全局聚合
-* 自定义parttion
-* 避免shuffle, 通过将小表广播到大表所在的节点, 进行hash-join
-* 通过抽样来
-
-> 例题
-
-大厂大数据平台数据分析的题目
-```
-大表A(大概每天的增量数据有3T)
-uuid url time 
-url为用户每天访问的url, 有些热门网址出现的次数就非常多了, 就有数据倾斜的问题
-
-小表B(映射表数据为大概300GB)
-url result
-
-需要将A和B join, 生成结果保存在hive
-uuid time url result
-```
-> 思路
-
-1.  因为是热门网址的url, 故可以将表A抽样百分之十,  取这百分之十的最热门的top100个url, 生成表C
-2. 将表C作为小表广播, 与表B join, 获取top100 的url的result
-3. 再将表C 广播, 与表A join, 则数据倾斜比较严重的url都已经有了result
-4. 再经过一次filter, 把已经有了result的url排除掉, 剩下的就时其余比较平均的url, 生成表D
-5. 将表D与表B join, 则可以获取所有的result. 
 
 
 ### spark sql和presto的区别
