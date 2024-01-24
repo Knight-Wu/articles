@@ -1,4 +1,4 @@
-## mysql innodb 可以放多少数据, 比如三层innodb 可以放多少数据, 需要查询几次page
+# mysql innodb 可以放多少数据, 比如三层innodb 可以放多少数据, 需要查询几次page
 假设一条数据 1KB, 主键是bigint 8byte
 一个page 默认16KB, 有1KB 元数据, 其他15KB 用来放数据, 每个叶子结点可以放 15KB /1KB = 15 条数据, 
 非叶子结点需要放主键和page number, 8 byte + 4 byte = 12 byte, 那么一个非叶子结点可以存多少条引用数据呢, 15KB / 12 byte = 1280, 
@@ -21,7 +21,7 @@
 
 其实每张表的根页位置在表文件中是固定的，即page number=3的页, 等于告诉了你根页在表数据文件的offset. 
 
-## 构造死锁sql
+# 构造死锁sql
 其实就是两个事务, 每个事务两条sql, 第二条sql 等待其他事务的第一条sql 释放, 互相等待就发生了死锁. 
 ```
 -- 事务1
@@ -101,8 +101,8 @@ public void testDeadLock() {
 
 ```
 ## high performance mysql 3rd notes
-### 6. query performance optimization
-#### 查询性能的度量
+# 6. query performance optimization
+## 查询性能的度量
 In MySQL, the simplest query cost metrics are:
  Response time, Number of rows examined, Number of rows returned
 * response time 
@@ -112,16 +112,16 @@ In general, MySQL can apply a WHERE clause in three ways, from best to worst:
 • Apply the conditions to the index lookup operation to eliminate nonmatching rows. This happens at the storage engine layer.
 • Use a covering index (“Using index” in the Extra column) to avoid row accesses, and filter out nonmatching rows after retrieving each result from the index. This happens at the server layer, but it doesn’t require reading rows from the table.
 • Retrieve rows from the table, then filter nonmatching rows (“Using where” in the Extra column). This happens at the server layer
-#### 分解关联查询
+# 分解关联查询
 在应用程序层面关联多个表的查询, 而不是在mysql 层面直接关联
 
-#### 如何衡量查询时间
+# 如何衡量查询时间
 * information_schema
 https://dev.mysql.com/doc/refman/8.0/en/performance-schema-query-profiling.html
 
 * 开启慢查询日志
 
-#### mysql 查询过程
+# mysql 查询过程
 1. 客户端发送查询语句到服务器
 2. 服务器查询缓存, 缓存命中直接返回, 否则进入3
 3. 服务器进行sql 解析和预处理, 再由优化器生成对应的执行计划
@@ -146,17 +146,17 @@ https://dev.mysql.com/doc/refman/8.0/en/performance-schema-query-profiling.html
 * mysql 如何执行关联查询
 ![enter image description here](https://drive.google.com/uc?id=1ENqjSNgGGsiCMbk1Q2FQ6A6SadjXwQvM)
 
-#### 优化关联查询
+## 优化关联查询
 确保关联的列上有索引, 当表A和表B 在列c上关联时, 只需要在第二个表, 表b 上的列c 建索引, 表A 就不需要了.
-#### 优化limit
+## 优化limit
 在limit 性能低底下的时候加上索引
-#### 优化union 查询
+## 优化union 查询
 除非必要, 不要用union, 用union all(不排除重复的)
-####  存储引擎
-#### InnoDB 
+#  存储引擎
+## InnoDB 
 是mysql 默认的事务型引擎, 支持事务, 支持行锁, 支持崩溃后自动恢复, 基于聚簇索引, 
 https://juejin.im/post/5b1685bef265da6e5c3c1c34
-#### innodb file structure
+### innodb file structure
 * space
 ![enter image description here](https://drive.google.com/uc?id=1vNYq2tfqF9cXoIu6RkVMrbERRjManKDT)
 an .ibd file for each MySQL table, 代表了一个space, 由一个32 bit 的space id 确定. 由多个pages 组成, 最多是2的32次方的page,  For more efficient management, pages are grouped into blocks of 1 MiB (64 contiguous pages with the default page size of 16 KiB), and  called an **“extent”**
@@ -173,8 +173,8 @@ Each page within a space is assigned a 32-bit integer page number, often called 
 不支持行锁, 只支持表锁, 不支持事务, 不支持崩溃后快速回复, 不支持外键, 适合读的场景
 
 
-### 索引
-#### B+ tree vs skip list
+# 索引
+## B+ tree vs skip list
 总结来说B+ tree 是对磁盘文件的索引，树高越低，IO次数越低，相比跳表树高低很多，查询会快，但是写入需要page 的合并和更新以及分裂，写一条数据可能需要重写整个page，存在写放大。随着写入进行会进行page 的分裂和合并，
 产生随机IO。
 
@@ -185,10 +185,10 @@ B+树是多叉树结构，每个结点都是一个16k的数据页，能存放较
 因此存放同样量级的数据，B+树的高度比跳表的要少，如果放在mysql数据库上来说，就是磁盘IO次数更少，因此B+树查询更快。
 
 而针对写操作，B+树需要拆分合并索引数据页，跳表则独立插入，并根据随机函数确定层数，没有旋转和维持平衡的开销，因此跳表的写入性能会比B+树要好。
-#### INNODB 索引
+# INNODB 索引
 
 
-* B+ tree index structure in INNODB 
+## B+ tree index structure in INNODB 
 
 ![enter image description here](https://drive.google.com/uc?id=1jOIFUv2qT3d__lWSkkqsfuff2_N7LDoK)
 
@@ -309,7 +309,7 @@ where a="A" and b in ('b','B') and c = 'C' , (a,b,c) 的索引仍然有效.
 
 
 
-#### hash index
+## hash index
 > only the Memory storage engine supports explicit hash indexes. They are
 the default index type for Memory tables, though Memory tables can have B-Tree indexes, too.
  ![enter image description here](https://drive.google.com/uc?id=1MWG_sNbdCIJ5SodnSlhs5k1lNgHU0i9J)
@@ -320,7 +320,7 @@ the default index type for Memory tables, though Memory tables can have B-Tree i
 3. 不支持范围查询
 4. 当hash entry 冲突很多的时候, 冲突的值会退化成列表
 
-#### 慢查询优化
+# 慢查询优化
 用explain 语句查看执行计划, 目标是降低 rows
 https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 
@@ -328,7 +328,7 @@ https://dev.mysql.com/doc/refman/5.5/en/explain-output.html
 2. 把where 条件应用到表中, 从返回记录数最小的表开始查起
 3. order by limit 形式的sql语句让排序的表优先查
 
-#### mysql explain
+# mysql explain
 主要是优化查询的行数
 
 * join type
@@ -340,8 +340,20 @@ https://dev.mysql.com/doc/refman/8.0/en/explain-output.html
 * extra
 using_index 和using_where 区别: https://stackoverflow.com/questions/25672552/whats-the-difference-between-using-index-and-using-where-using-index-in-the
 
+# ACID
+## atomicity
+原子性, 事务执行的要么成功要么失败, 没有第三个状态
 
-#### 事务隔离级别（定义了一个事务可能受其他并发事务影响的程度）
+## consistency
+一致性, 什么样的结果是一致的, 需要由应用程序去定义, 除非数据库是一个强读写一致的系统, 否则数据库的在一致性方面的表现是由应用程序去决定的. 
+
+## Isolation
+隔离性, 事务有不同的隔离级别, 理想情况不能互相影响, 事务感知不到其他事务的存在, 相当于串行执行, 但是需要一些手段去保障, 所以需要牺牲一点性能
+
+## durability
+持久性, 一旦事务提交成功可以认为已经持久化到了数据库, 但是能容忍什么故障或者多少故障, 由副本数以及副本间的同步协议等特性去决定的
+
+# 事务隔离级别（定义了一个事务可能受其他并发事务影响的程度）
 > 数据并发问题
 
 * 脏读(dirty read), A事务读到了B事务尚未提交的数据, 可理解为读到了脏数据, 若此时B事务回滚, 则会产生数据不一致的情况.
@@ -425,15 +437,15 @@ mysql 默认隔离级别是重复读
 
 **这个对隔离级别解释更详细 : 解释了 MVCC 和 undo log** https://blog.csdn.net/qq_35190492/article/details/109044141
 
-#### mysql 悲观锁和乐观锁
+# mysql 悲观锁和乐观锁
 https://blog.csdn.net/puhaiyang/article/details/72284702
 悲观锁就是先加锁再查询, 分为共享锁和互斥锁
 乐观锁是用版本号, 写操作的时候要判断此时的版本号是否和之前最新的版本号一致.
-#### 资料
+# 资料
 https://blog.jcole.us/innodb/
 relational database index design and the optimizers
 
-### int(3) vs int(4)
+# int(3) vs int(4)
 跟storage size 并没有关系, 仍然需要4 bytes, 
 但是若指定了ZERO_FILL, 则不足三位会在前面补0, 
 
@@ -481,7 +493,7 @@ Reasons to use  `VARCHAR`:
 
 
 
-### mysql COLLATE
+# mysql COLLATE
 对于mysql中那些字符类型的列，如`VARCHAR`，`CHAR`，`TEXT`类型的列，都需要有一个`COLLATE`类型来告知mysql如何对该列进行排序和比较。简而言之，**COLLATE会影响到ORDER BY语句的顺序，会影响到WHERE条件中大于小于号筛选出来的结果，会影响**`**DISTINCT**`**、**`**GROUP BY**`**、**`**HAVING**`**语句的查询结果**。另外，mysql建索引的时候，如果索引列是字符类型，也**会影响索引创建**，
 
 这是mysql的一个遗留问题，mysql中的`utf8`最多只能支持3bytes长度的字符编码，对于一些需要占据4bytes的文字，mysql的`utf8`就不支持了，要使用`utf8mb4`才行。
@@ -493,7 +505,7 @@ Reasons to use  `VARCHAR`:
 eyJoaXN0b3J5IjpbLTE5NjYyNDcwNDVdfQ==
 -->
 
-#### 问题
+# 问题
 * 全文索引
 > Written with [StackEdit](https://stackedit.io/).
 <!--stackedit_data:
