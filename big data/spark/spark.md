@@ -109,7 +109,13 @@ SELECT *, ROW_NUMBER() OVER ( ORDER BY bet_end_time) FROM pg_analytic_db.player_
      [jdbc doc https://dev.mysql.com/doc/connector-j/en/connector-j-reference-implementation-notes.html](https://dev.mysql.com/doc/connector-j/en/connector-j-reference-implementation-notes.html)
      ![image](https://github.com/Knight-Wu/private/assets/20329409/299ee750-cf96-4c87-990a-e7629982f39e)
    * 所以只需要把 fetchSize 设置成 Integer.MIN_VALUE 即可
-
+   * 默认 streaming 拉取的时候一次一条,  可以这样设置streaming 一次拉取100 条
+     ```
+     conn = DriverManager.getConnection("jdbc:mysql://localhost/?useCursorFetch=true", "user", "s3cr3t");
+     stmt = conn.createStatement();
+     stmt.setFetchSize(100);
+     rs = stmt.executeQuery("SELECT * FROM your_table_here");
+     ```
 
 # 代码生成技术
 简单来说是这几点. 
