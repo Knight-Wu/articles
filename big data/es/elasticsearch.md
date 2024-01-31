@@ -6,6 +6,16 @@
 
 When Elasticsearch detects a new field in a document, it dynamically adds the field to the type mapping by default. The dynamic parameter controls this behavior.
 
+# data tier
+
+## 如何控制分层策略, 多久到下一层
+停留在某一层的由容量和时间同时控制
+
+https://www.elastic.co/guide/en/elasticsearch/reference/current/set-up-lifecycle-policy.html
+
+## 分哪几层
+https://www.elastic.co/guide/en/elasticsearch/reference/current/data-tiers.html
+
 # es shard
 ## shard size recommendation
 Aim for shards of up to 200M documents, or with sizes between 10GB and 50GB
