@@ -37,9 +37,6 @@ https://help.aliyun.com/zh/tablestore/use-cases/scheme-analysis?spm=a2c4g.111866
 * 数据密集型系统笔记-数据分区
 
   https://github.com/Knight-Wu/articles/blob/master/books/data_intensive_system_book_notes/chapter6_%E5%88%86%E5%8C%BA.md
-## 常用数据
-![image](https://github.com/Knight-Wu/articles/assets/20329409/81b38dda-f6b2-49dd-b1dd-0e3684636c83)
-
 ## 设计一个分布式限流器.
 分为中心化的和去中心化的
 
@@ -66,16 +63,25 @@ https://help.aliyun.com/zh/tablestore/use-cases/scheme-analysis?spm=a2c4g.111866
 
 ## 设计一个推特(feed 流系统)
 ### 详细设计
-数据估算: 10,0000,0000 注册 user, 活跃用户 421 million monthly active users in 2023 and about 220 million daily actives
-write : 600 tweet /s, 
-read: 60 0000 tweet /s, 
-tweet size: 280 character, 140 Chinese word, assume 0.2 kb
+* 数据估算: 10,0000,0000 注册 user, 活跃用户 421 million monthly active users in 2023 and about 220 million daily actives
+* write : 600 tweet /s, 
+* read: 60 0000 tweet /s, 
+* tweet size: 280 character, 140 Chinese word, assume 0.2 kb
 
 
 assume pull 5 tweets per fresh
 
 #### 架构图
-![image](https://github.com/Knight-Wu/articles/assets/20329409/8b1e36ce-7a32-4924-a477-392081b58131)
+```
+@startuml
+phone -> loadBalance(nginx): 鉴权(包括给访问 cdn 的数据授权), 转换协议, 应对攻击, cpu 用在处理连接  
+phone -> CDN: get video and img: 推特内容可能才两百字节, 存 CDN 提升不大. 
+loadBalance ->  backendService: 做具体的写入和查询, 属于逻辑层, 可以在应用服务器加缓存, 减少对 cache 服务的压力. 
+backendService -> StorageService: 存储层, 包括 cache 和数据库
+@enduml
+
+```
+![image](https://github.com/Knight-Wu/articles/assets/20329409/5d015815-9f86-4328-8018-7cfd95185246)
 
 #### post api
  
