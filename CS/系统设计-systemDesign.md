@@ -3,6 +3,15 @@
 * 阿里云这里有常见的业务系统的设计方案
 
 https://help.aliyun.com/zh/tablestore/use-cases/scheme-analysis?spm=a2c4g.11186623.0.i5
+# 性能指标
+## 硬件的性能
+![image](https://github.com/Knight-Wu/articles/assets/20329409/cde90358-ea69-4e0b-bf7b-3b0bedbe1884)
+参考: https://www.cs.cornell.edu/projects/ladis2009/talks/dean-keynote-ladis2009.pdf
+* 每年的延迟分布情况:https://colin-scott.github.io/personal_website/research/interactive_latency.html
+
+## 框架的性能
+![image](https://github.com/Knight-Wu/articles/assets/20329409/1d910feb-9563-4ee2-b1d8-95e97cfeb4ae)
+
 
 # 系统设计
 
@@ -56,7 +65,67 @@ https://help.aliyun.com/zh/tablestore/use-cases/scheme-analysis?spm=a2c4g.111866
 如果集群 down 或者多个实例挂掉的情况, 客户端应该能 failover 使用本地的限流器进行粗粒度的单机限流, 例如有一个转发层, 可以定期把key 对应的内存中限流的数据结构返回给客户端, 对于某个客户端来说只保留自己的 key 的限流数据, 在集群访问不了的情况下进行 failback
 
 ## 设计一个推特(feed 流系统)
-### 设计文档
+### 详细设计
+数据估算: 10,0000,0000 注册 user, 活跃用户 421 million monthly active users in 2023 and about 220 million daily actives
+write : 600 tweet /s, 
+read: 60 0000 tweet /s, 
+tweet size: 280 character, 140 Chinese word, assume 0.2 kb
+
+
+assume pull 5 tweets per fresh
+
+#### 架构图
+![image](https://github.com/Knight-Wu/articles/assets/20329409/8b1e36ce-7a32-4924-a477-392081b58131)
+
+#### post api
+ 
+post api, post with userId, content from client -> validation service -> storage service 
+stoage service : 
+1. gen tweet id 
+2. 查 followRelation 获取被关注者 id list, 然后写 tweetId kv, append , 如果是大 v 则不写 tweetID kv
+3. 写 userId kv
+4. 写 tweetMeta kv
+
+5. send to content to oss , save cost
+
+
+
+
+
+
+
+
+ #### pull api
+
+login serivce, validate -> pull api, query with timestamp, userId from client -> query service
+
+query service:
+
+
+1. query tweetId kv db, key is userId, val is 被关注者发帖的帖子 id list, 按照时间戳倒序排, 每次被关注者发帖的时候都会更新这个列表, 除了大 v, 如果关注者里面有大 v, 需要专门根据大 v 的 userID 查 tweetMeta kv, </br>
+如果没有大 v, 就走 3, 实际上是 push 模式, 但是如果关注者很多几千个, 解决不了一下归并几千个 帖子 id lsit 的问题, 不知道哪些可以跳过, 不知道他们时间分布的情况, 而且读远多于写, 优化读取路径会性价比更高
+
+
+
+
+
+2. query tweetMeta kv db, userid -> 自己发帖的 tweet id(including timestamp, meta) list, sorted, 每个 list 取五条, return query service a merge sorted list
+2.1 写入的时候先写 cache, 再写 db, 查询也是先查 cache, 除非 cache 查不到,会造成部分用户看到最新帖子部分看不到 , 差异在秒级. 某个热点的 userId 集中在 redis 的某个机器, 可以添加读副本, 并且在上一层逻辑层的服务器内存加一层缓存, 因为应用服务器那层对某个 userId 的查询是分散在多台机器的, 
+2.2 支持一直刷新, 类似深翻页:
+ query the last tweet id list from lastedReturnId, 存储结构支持类似 skip list , index: range index, 因为 tweet id 肯定有序, 一个 chunk 指定开始 id 和结束 id, 就可以马上定位到哪个 chunk 包含需要的 id, 
+
+2.3 如果大 v 的 userId 存在热点问题, 可以通过在 queryService 在应用服务器内存加缓存, 或者 tweetMeta kv 增加读的副本数解决吗, 如何感知某个 key 分布在多个 data partition 呢
+
+
+3. query service 查询 tweet content by id, 
+3.1 content cache 在 oss 前面,  tweetId is key, val is content, redis, 异步更新, 网红的 tweetId 会成为热点需要有多个副本都可以读取的能力. 
+
+3.1 与 2.1 要先更新 3.1 保证能根据 id 找到 content, 如果实在找不到 content, 再去 query service 拿一个新的 id 会增加 RTT, 
+所以可以查 10 个 content, 如果最新的五条能返回就直接返回, 如果某一条找不到 content, 就返回第六新的 content. 
+
+
+4. get the 帖子内容从 oss, 并发的, 只需要等最新的五条, return to client
+
 #### 写流程
 1. 生成帖子 id, LSM 模式写入, 分区策略
 #### 读流程
