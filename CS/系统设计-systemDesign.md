@@ -63,6 +63,12 @@ https://help.aliyun.com/zh/tablestore/use-cases/scheme-analysis?spm=a2c4g.111866
 * 但是为了不浪费B 机房的资源, 会让B 机房服务一部分请求, 如下图:
 
 ![alt text](../pic/system_design/doubleRead.png)
+
+
+### 异地多活
+* 两个机房就近服务用户
+* 数据库双主模式, 但是没法做到实时同步, 备份数据有一定延迟, 没法做到秒级切换, 可以在同城有双机房的情况下, 作为核心业务的最后的一道保障
+![alt text](../pic/system_design/multiRegion.png)
 ## 设计一个分布式限流器.
 分为中心化的和去中心化的
 
