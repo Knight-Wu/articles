@@ -101,7 +101,7 @@ SELECT *, ROW_NUMBER() OVER ( ORDER BY bet_end_time) FROM pg_analytic_db.player_
 ![image](https://github.com/Knight-Wu/private/assets/20329409/c42a79d9-5a66-4722-a480-e6e8d9331e60)
 
 ##### 最佳方案: 通过 streaming read jdbc, 让 spark 自动把多余数据写到磁盘
-之前我们把 sql 拆分成多个子 sql 并行查询, 每个子 sql 都是查询同样的时间长度, 一个子 sql 查询得到的数据是一个 partition 的数据, 但是按时间拆分, 可能一些sql 查询的是业务高峰, 那段时间的数据量特别大, 就会导致 partition 大过预期就 OOM, 而且是读取的时候就发生了没法通过写到磁盘, 随机打散等方式解决, 但是思考 spark 肯定是能够把内存装不下的数据自动写到磁盘的, 不然无法操作大于内存的源数据, 于是看了 JDBCRDD 的源码, jdbc 的 mysql 官方文档, 发现的确有通过游标的方式打开 streaming read, 然后一个 partition 再大都不会 OOM 了, spark UI 提示会写到磁盘, 猜想之前在网络层虽然也是一批批的拉取数据, 但是是拉完了这个 partition 所有数据才会开始下一步处理, 但是 streaming read 就是拉取一部分 spark 处理一部分, 下次拉多少内部判断, spark api 就可以把判断数据量大小从而写入磁盘, 之前是还没到 spark api 判断就 OOM 了, 自然不会写到磁盘.
+之前我们把 sql 拆分成多个子 sql 并行查询, 每个子 sql 都是查询同样的时间长度, 一个子 sql 查询得到的数据是一个 partition 的数据, 但是按时间拆分, 可能一些sql 查询的是业务高峰, 那段时间的数据量特别大, 就会导致 partition 大过预期就 OOM, 而且是读取的时候就发生了没法通过写到磁盘, 随机打散等方式解决, 但是思考 spark 肯定是能够把内存装不下的数据自动写到磁盘的, 不然无法操作大于内存的源数据, 于是看了 JDBCRDD 的源码, jdbc 的 mysql 官方文档, 发现的确有通过游标的方式打开 streaming read, 然后一个 partition 再大都不会 OOM 了, spark UI 提示会写到磁盘, 猜想之前在网络层虽然也是一批批的拉取数据, 但是是拉完了这个 partition 所有数据才会开始下一步处理, 但是 streaming read 就是拉取partition 的几条数据spark 处理这几条, 下次拉多少内部判断, spark api 就可以把判断数据量大小从而写入磁盘, 之前是还没到 spark api 还在jdbc 网络读取的时候可能就 OOM 了, 自然不会写到磁盘.
 * 关键代码
    * spark JDBCRDD 传参, 构造 Query
      ![image](https://github.com/Knight-Wu/private/assets/20329409/22e71e84-c7c7-4f7a-9cc9-60c4ef9de1df)
