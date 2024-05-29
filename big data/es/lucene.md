@@ -137,9 +137,7 @@ The .tmd file contains the list of term metadata (such as FST index metadata) an
 
 ![image](https://user-images.githubusercontent.com/20329409/220824893-1f407eca-206d-4da3-b4f1-a119ec882c96.png)
 
-其中词典结构尤为重要，有很多种词典结构，各有各的优缺点，最简单如排序数组，通过二分查找来检索数据，更快的有哈希表，磁盘查找有B树、B+树，但一个能支持TB级数据的倒排索引结构需要在时间和空间上有个平衡，下图列了一些常见词典的优缺点：
-![image](https://user-images.githubusercontent.com/20329409/220825197-3a15e2fe-24f0-452f-90df-08731c9b099e.png)
-</br>
+其中词典结构尤为重要，有很多种词典结构，各有各的优缺点，最简单如排序数组，通过二分查找来检索数据，更快的有哈希表，磁盘查找有B树、B+树，但一个能支持TB级数据的倒排索引结构需要在时间和空间上有个平衡
 ### mysql innodb B+ tree
 理论基础：平衡多路查找树
     优点：外存索引、可更新,
