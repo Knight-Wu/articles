@@ -180,7 +180,7 @@ null
 * 当使用一个reference的时候,但是没有指向任何object,或者指向的object出错,实际为null的时候.
 > The best way to avoid this type of exception is to always check for null when you did not create the object yourself." If the caller passes null, but null is not a valid argument for the method, then it's correct to throw the exception back at the caller because it's the caller's fault
 
-#### hashmap
+### hashmap
 
 ![enter image description here](https://drive.google.com/uc?id=1CliBbv1YMdfPtT7NwlZwoxL6MUf_MRmj)
 * 一些基础概念
