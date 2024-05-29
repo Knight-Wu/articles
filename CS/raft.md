@@ -7,25 +7,26 @@ https://raft.github.io/raft.pdf
 # raft 用在什么地方 
 
 
- 多台机器需要达成一致和共识的地方, 向一个集群写入数据, 一个 leader, 多个 follower, 如何保证数据以整个集群为整体看来是一致的, 而不是以客户端的角度看来是一致的, 写入成功的数据后续肯定能读到, 哪怕 leader 发生了切换. 但是返回客户端失败也有可能实际写入成功. 例如五台机器, 只复制了 leader 和一个 follower, 如果返回给 client 前, leader 挂了, 那么新的 leader 如果是这台 follower 数据会比客户端认为的要新, 可以认为是只有复制到大多数节点才保证提交, 但是整个集群数据也是一致的. 
+ 多台机器需要达成一致和共识的地方, 向一个集群写入数据, 一个 leader, 多个 follower, 如何保证数据以整个集群为整体看来是一致的, 而不是以客户端的角度看来是一致的, 写入成功的数据后续肯定能读到, 哪怕 leader 发生了切换. 但是返回客户端失败也有可能实际写入成功. 例如五台机器, 只复制了 leader 和两个 follower, 如果返回给 client 的包丢失了, client 得到失败的结果, 此时 leader 挂了, 那么新的 leader 选出来之后数据会比客户端认为的要新, 这个情况也是有的, 但是整个集群数据也是一致的. 
 # 如何发起选举
 
 ![image](https://user-images.githubusercontent.com/20329409/220304308-ef1e06b4-ad0e-4c5e-ac63-4d5d1d5f7a36.png)
 
 leader 会周期性的发送appendEntity 请求给follower，是心跳也是日志append rpc，如果follower 一段时间没有收到，就转为candidate 状态，任期号加一，先给自己投一票，并发送requestVoteRpc 给其他follower，
-requestVoteRpc 会携带任期号，和最新日志的序列号和日志所属的任期号，如果接受者发现候选者的任期号以及日志的序列号和任期号大于等于自己的，则投支持票。如果收到大多数投票就变为leader。
+requestVoteRpc 会携带任期号，和最新日志的序列号和日志所属的任期号，如果follower 发现 candidate 的任期号以及日志的序列号和任期号大于等于自己的，则投支持票。如果 candidate 收到大多数投票就变为leader。
 其次，如果在等待投票过程中发现有其他leader 的append rpc，并且任期号大于等于自己的，则自己变为follower 状态。
-最后如果一次投票时间内没有选出新的leader，则超过，任期号加一，再次投一次。
+如果在规定时间内没有选出新的leader，则超时，任期号加一，再次投一次。
 
 
 
-# raft 如何避免不脑裂
+# raft 如何避免不脑裂(同时有多个leader ?)
 
-某个节点选举成功要得到大多数节点的投票，且每个节点在每个单独任期号能只能投一次支持票，那么只有一个节点能选举胜出，只要候选节点的任期号和日志都是最新的就可以投支持票。例如旧的leader 失联，已经选出新的leader ，
-那么旧的leader 恢复后与其他节点通信就发现自己的任期号已经比较小，那么就会变为follower ， 向新的leader 请求数据。
+某个节点选举成功要得到大多数节点的投票，且每个节点在每个单独任期号能只能投一次支持票，那么只有一个节点能选举胜出，只要候选节点的任期号和日志都是最新的就可以投支持票。如果发生网络隔离, 旧的leader 失联，已经选出新的leader ，
+那么旧的leader 恢复后与其他节点通信就发现自己的任期号已经比较小，那么就会变为follower, 向新的leader 请求数据。所以不会发生脑裂
 
-# raft read
-参考：https://blog.csdn.net/weixin_43705457/article/details/120572291
+# 如何保证线性读
+参考：
+https://blog.csdn.net/weixin_43705457/article/details/120572291
 https://zhuanlan.zhihu.com/p/25367435
 
 如果要保证线性读，一个简单的例子就是在 t1 的时间我们写入了一个值，那么在 t1 之后，我们的读一定能读到这个值，不可能读到 t1 之前的值。
@@ -38,7 +39,7 @@ https://zhuanlan.zhihu.com/p/25367435
  因为是大多数节点返回成功才最终返回 client 成功, 而且选择新 leader 选择的是有最多最新数据的节点, 所以依然能保证一致性.
  ## 返回客户端成功之前, leader 挂掉, 那么客户端会收到失败, 而可以继续尝试. 如何避免重复请求呢, 保证满足串行化语义呢, 给每个 client 分配一个 client id, 并且让 client 每个请求申请一个 uuid, leader 检测到重复就丢弃. 
  ## 如果只是单个 follower 失去去 leader 的联系
- 转为 candidate, 并 increase own term , 再发送 requestVote 给其他节点, 但是只要其他节点与 leader 的append rpc 没有超时, 则不会投票给这个 follower, 更加证明这是一个强 leader 的系统. 
+ 转为 candidate, 并 increase own term , 再发送 requestVote 给其他节点, 但是只要其他节点与 leader 的append rpc 没有超时, 则不会投票给这个 candidate, candidate 转变为follower, 不管candidate 的任期号是否更大, 否则就会因为单个follower 失联导致经常发起选举, 更加证明这是一个强 leader 的系统. 
  ## 如何保证 client 每次都读取到最新的数据呢
  假设请求刚转发到旧 leader, 就发生了新旧 leader 的切换, 旧 leader 数据已经是旧的了, 例如新的客户端请求, 由于 leader 地址是缓存的有时效的, 可能访问到旧 leader, 那如何避免呢, 可以让 leader 要确保返回最新的数据之前联系一下大多数节点, 保证自己是当前的 leader; 
  或者可以维持一个和多数节点通过 append rpc 更新的一个 lease 租约 , 假设选举超时是 1s, leader 广播到所有节点并接受返回是 20-50ms, 那么可以设置 lease 超时时间为: 假设旧leader 与大多数节点通信之后是第 0s,  选出新 leader 是第 1s, 那么lease 就要小于 1s , 如果超过 1s 还没与大多数节点做过一次 append, 则认为 lease 超时
