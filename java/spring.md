@@ -1,17 +1,54 @@
 # spring的理解
     
     spring是以IOC和AOP为核心的众多组件的总称, 其他还包括spring-boot, spring-mvc等组件, 涵盖了后台开发的从前端到后台交互, 后台分层, 中间件, 数据库等持久层等几乎方位的支持.
-# spring IOC
-## 大致思想
-首先spring的控制反转来源于依赖倒置(Dependency Inversion Principle )的思想, 
-传统的依赖顺序是高层依赖底层, 而依赖倒置指的是底层依赖高层. 例如车子的建造, 车子依赖车身, 车身依赖底盘, 底盘依赖车轮, 若需要改动车轮的规格, 则以上所有东西都需要改, 若反过来, 先定好车子的样子, 车身 -> 车子, 底盘 -> 车身, 轮子 -> 底盘, 要改车轮, 不会影响其他.  
+## spring IOC
+控制反转（Inversion of Control，IoC）是 Spring 框架的核心概念之一，它改变了传统的对象创建和管理方式，将这些责任从应用程序代码中转移到了容器中，从而实现了松耦合和更好的可测试性。
 
-## 概念关系
-依赖倒置是思想, 控制反转是实现该思想的一个思路, 依赖注入是该思路的具体实现方法, 依赖注入可以简要说是把底层类作为参数传递给上层类, 实现上层对下层的控制, 而IOC容器则封装了底层类的构造方法, 不需要知道底层类的实现细节以及 具体的构造函数的如何调用, 只需要按照依赖注入即可.
+控制反转的基本概念
+传统的编程模式中，对象的创建和依赖关系的管理是由应用程序代码本身负责的。这意味着对象需要主动创建它所依赖的其他对象，导致代码之间紧密耦合，难以测试和维护。控制反转则将对象的创建和管理职责交给外部的 IoC 容器，从而实现了以下几个方面的改进：
 
+### 松耦合
 
----
-以下内容均参考 [spring-framework-reference/core/beans-annotation-config](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-annotation-config)
+对象不再自己创建依赖对象，而是由 IoC 容器来注入依赖。这样，对象之间的依赖关系由外部配置文件或注解来定义，减少了对象之间的耦合。
+### 可测试性
+
+由于对象的依赖是通过注入提供的，可以很容易地替换这些依赖，使用模拟对象（Mock）进行单元测试，而不需要修改对象本身的代码。
+### 灵活性和可配置性
+
+应用程序的依赖关系可以通过配置文件（如 XML）或注解来定义和管理，使得应用程序更具灵活性和可配置性，方便进行修改和维护。
+IoC 的实现方式
+Spring 框架通过依赖注入（Dependency Injection，DI）来实现控制反转。
+### 依赖注入有多种方式
+
+#### 构造函数注入
+
+通过构造函数将依赖注入到对象中。构造函数注入在对象创建时立即注入所有依赖，确保依赖的不可变性。
+java
+Copy code
+public class ExampleService {
+    private final Dependency dependency;
+
+    @Autowired
+    public ExampleService(Dependency dependency) {
+        this.dependency = dependency;
+    }
+}
+#### Setter方法注入
+
+通过 setter 方法注入依赖。这种方式允许在对象创建后再进行依赖注入，提供了更大的灵活性，但可能导致依赖在对象生命周期内发生变化。
+java
+Copy code
+public class ExampleService {
+    private Dependency dependency;
+
+    @Autowired
+    public void setDependency(Dependency dependency) {
+        this.dependency = dependency;
+    }
+}
+#### 字段注入
+
+直接在字段上使用 @Autowired 注解进行依赖注入。这种方式最为简洁，但难以进行单元测试，因为需要通过反射来设置字段的值。
 
 # 注解
 ## xml和annotation两种方式比较
