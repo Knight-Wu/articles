@@ -1,27 +1,28 @@
-* spring的理解
+# spring的理解
     
     spring是以IOC和AOP为核心的众多组件的总称, 其他还包括spring-boot, spring-mvc等组件, 涵盖了后台开发的从前端到后台交互, 后台分层, 中间件, 数据库等持久层等几乎方位的支持.
-### spring IOC
-* 大致思想
+# spring IOC
+## 大致思想
 首先spring的控制反转来源于依赖倒置(Dependency Inversion Principle )的思想, 
 传统的依赖顺序是高层依赖底层, 而依赖倒置指的是底层依赖高层. 例如车子的建造, 车子依赖车身, 车身依赖底盘, 底盘依赖车轮, 若需要改动车轮的规格, 则以上所有东西都需要改, 若反过来, 先定好车子的样子, 车身 -> 车子, 底盘 -> 车身, 轮子 -> 底盘, 要改车轮, 不会影响其他.  
 
-* 概念关系
+## 概念关系
 依赖倒置是思想, 控制反转是实现该思想的一个思路, 依赖注入是该思路的具体实现方法, 依赖注入可以简要说是把底层类作为参数传递给上层类, 实现上层对下层的控制, 而IOC容器则封装了底层类的构造方法, 不需要知道底层类的实现细节以及 具体的构造函数的如何调用, 只需要按照依赖注入即可.
 
 
 ---
 以下内容均参考 [spring-framework-reference/core/beans-annotation-config](https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-annotation-config)
 
-* xml和annotation两种方式比较
+# 注解
+## xml和annotation两种方式比较
 
     annotation使配置更简洁, 和源码放在一起, 更精确, 但是配置比较分散, 不在一个地方很难控制 ; xml的方式不需要去动源码, 所以不需要重新编译, 
     
-* @Required 和@Autowired 比较
+## @Required 和@Autowired 比较
 
     前者如果没有注入成功, 会报错, 且只能用于setter method.; 后者可以设置是否required(默认true) ,并且当无法autowire时会自动忽略, 适用于constructor, field , setter method or config method.
     
-* @Autowired
+## @Autowired
     
     按照byType注入, 可以设置required=false, 找不到bean时也不报错, 后续可能报NPE.
     * 用于constructor, 当构造函数有多个时, 可以将指定一个进行autowired, 否则将默认以贪婪模式(参数最多的构造函数进行构造).
@@ -49,7 +50,7 @@
     // ...
     }
     ```
-* @Qualifier
+## @Qualifier
     
     > 可以结合@Autowire使用, 当某个type有多个实例时, 可以用@Qualifier 指定某个id的bean注入. @Qualifier和@Autowired结合使用时, 和@Resource几乎等同. 例如
 
@@ -68,7 +69,7 @@
 	</bean>
 
 ```
-* @Resource
+## @Resource
      
     既可以byName, 也可以byType注入, 默认byName, 就是按照bean的id注入.
     * 装配顺序
@@ -82,7 +83,7 @@
     
     *问题*  在细看一下@Qualifier
     
-* @Component、@Repository、@Service、@Controller
+## @Component、@Repository、@Service、@Controller
 
     如果 Web 应用程序采用了经典的三层分层结构的话，最好在持久层、业务层和控制层分别采用上述注解对分层中的类进行注释。@Service用于标注业务层组件.@Controller用于标注控制层组件（如struts中的action）.@Repository用于标注数据访问组件，即DAO组件. @Component泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。
     
@@ -91,11 +92,11 @@
         前者是显式的返回一个object, 然后注入到application context, 让spring代管理, 例如可以适用于第三方的lib, 无法再源码上@Component; 后者是让spring创建并管理, 隐式的创建.
 
 
-### classpath*: / 与 classpath:/
+## classpath*: / 与 classpath:/
 *  classpath*:/ 表示在此classpath(当前项目的classpath及类路径的classpath)下的所有兄弟和子孙路径的 classpath下满足要求的所有文件
 *  classpath:/ 表示classpath下的第一层子路径的第一个符合要求的文件
 
-### build project
+# build project
 
 * 新建maven project ，选择archetype 为webapp或site，例如 module 名为 test，module file location 和content root 均为test路径
 * web项目下相对路径和绝对路径：
@@ -104,7 +105,7 @@
   * ".." 代表上一层目录。
   * "/" 代表根目录。
 
-### 前后台传输数据
+# 前后台传输数据
 
 
 >1. 前台需要把对象通过JSON.stringfy转换json字符串，后台在参数对应加上@RequestBody,并且Request的content-type必须为json,不然会出现415的错误.
@@ -149,7 +150,7 @@ Date startTime
 ```
 
 
-### mybatis返回map
+## mybatis返回map
 mapper:
 
 ```
@@ -167,7 +168,7 @@ public List<QueryTeamResult> queryTeam(int level){
 }
 ```
 
-### jetty启动时修改资源文件,可以通过update更新
+## jetty启动时修改资源文件,可以通过update更新
 
 修改/${jetty_home}/etc/webdefault.xml 将true改为false
 并在pom文件中配置
@@ -197,7 +198,7 @@ pom.xml
 </plugin>
 ```
 
-### httpServletResquest
+## httpServletResquest
 
 * getAttribute()
 >An attribute is a server variable that exists within a specified scope i.e.:
@@ -210,7 +211,7 @@ page (JSP only): available for the current JSP page only
 > returns http request parameters. Those passed from the client to the server. For example http://example.com/servlet?parameter=1. 
 Can only return String
 
-### spring @value
+## spring @value
 * static field cant inject directly.
 ```
 // 类需要加@Component 标签
@@ -227,7 +228,7 @@ public void setTest(String a){
 [link](http://www.baeldung.com/properties-with-spring#usage)
 
 
-## mybatis
+# mybatis
 * 搞清楚mybatis ${var}和#{var}的区别
 #### Boolean 值传递
 数据库类型是tinyInt, dto字段类型是Boolean或boolean, 
@@ -240,7 +241,7 @@ public void setTest(String a){
 ```
 
 
-### spring AOP
+# spring AOP
 > 代理技术可以说是封装了切面类(功能加强类)的逻辑和目标类的逻辑, 解耦两者的代码, 让功能加强类的逻辑能无缝插入目标类, 不产生浸入式代码.
 因为以下两种原生代理, 存在以下几个问题: 
 > 1. 不能对目标类的某些方法进行选择后进行切面
@@ -264,7 +265,7 @@ public void setTest(String a){
 *问题* 
 为什么只能基于接口做代理.
 
-* CGLib代理
+## CGLib代理
 
     采用动态创建子类的方法, 因此不能对final, private等方法进行切面; 而且相比于JDK性能比较高, 创建代理对象的时间比较长, 适用于spring 多数类都是单例的情况.
 
@@ -331,14 +332,14 @@ public , non static , non final ,called by class outside(非必须)
 
 
 
-#### 事务传播行为（为了解决业务层方法之间事务互相调用的问题）
+# 事务传播行为（为了解决业务层方法之间事务互相调用的问题）
 * require
 > 如果当前没有事务, 则开启新事务, 否则会使用当前事务
 
 * require_new
 > 都会开始新事务, 适用于嵌套事务的情况, 如果a事务里面调用了一个b事务, 想让b中异常了, 但是a还是能正常提交, 则需要开启一个新事务, 则用require_new .
 
-#### 事务回滚
+## 事务回滚
 > By default all RuntimeExceptions rollback transaction whereas checked exceptions don't. This is an EJB legacy. You can configure this by using rollbackFor() and noRollbackFor() annotation parameters:
 
 ```
@@ -346,7 +347,7 @@ public , non static , non final ,called by class outside(非必须)
 This will rollback transaction after throwing any exception 
 ```
 
-#### bean的生命周期
+# bean的生命周期
 ![181453414212066](6713CD4BADC64913AB494E6F2FCFF3BE)
 > 包括以下几类
 
