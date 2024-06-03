@@ -61,13 +61,34 @@ Every time an M is started, the first goroutine created is g0. Each M will have 
 G 需要绑定 M 来跑, M 需要绑定 P 来跑. 
 G is bound to M to run, and M needs to be bound to P to run, so theoretically the number of running G at the same time is equal to the number of P
 
-## 为什么需要 gmp 模型
-* 切换开销: process > kernel thread > user thread, goroutine 就相当于一类user thread , 切换更轻量
-* 一个kernel thread 内存占用 8 MB, 而一个 goroutine 只需要 2KB.
-* goroutine scheduler 都发生在用户空间, 阻塞了 goroutine 也不会阻塞内核线程,
-* goroutine 的内存放在 heap, 发生切换的时候再 copy
+### 调度过程中阻塞 
+GMP模型的阻塞可能发生在下面几种情况：
 
-![image](https://user-images.githubusercontent.com/20329409/234452487-3b70007e-09e1-4b78-9c56-7001b2519125.png)
+1. I/O，select
+2. block on syscall
+3. channel
+4. 等待锁
+5. runtime.Gosched()
+#### 用户态阻塞 
+当goroutine因为channel操作或者network I/O而阻塞时（实际上golang已经用netpoller实现了goroutine网络I/O阻塞不会导致M被阻塞，仅阻塞G），对应的G会被放置到某个wait队列(如channel的waitq)，该G的状态由_Gruning变为_Gwaitting，而M会跳过该G尝试获取并执行下一个G，如果此时没有runnable的G供M运行，那么M将解绑P，并进入sleep状态；当阻塞的G被另一端的G2唤醒时（比如channel的可读/写通知），G被标记为runnable，尝试加入G2所在P的runnext，然后再是P的Local队列和Global队列。
+
+#### 系统调用阻塞 
+当G被阻塞在某个系统调用上时，此时G会阻塞在_Gsyscall状态，M也处于 block on syscall 状态，此时的M可被抢占调度：执行该G的M会与P解绑，而P则尝试与其它idle的M绑定，继续执行其它G。如果没有其它idle的M，但P的Local队列中仍然有G需要执行，则创建一个新的M；当系统调用完成后，G会重新尝试获取一个idle的P进入它的Local队列恢复执行，如果没有idle的P，G会被标记为runnable加入到Global队列。
+
+## 为什么需要 gmp 模型
+### 高效的并发模型
+
+Goroutine 比系统线程更轻量，创建和销毁的开销更小。使用 GMP 模型，可以在单个进程内创建数十万甚至数百万个 Goroutine，而不会像线程那样引起过多的资源消耗和调度开销。
+### 调度灵活性
+
+GMP 模型允许在 P 上运行多个 Goroutine，并在不同的 M 线程之间切换。这样，Go 运行时可以更好地利用多核处理器的性能，最大限度地提高并发执行效率。
+### 阻塞操作处理
+
+当 Goroutine 执行阻塞操作（如 I/O 操作）时，Go 运行时会将其从当前的 M 线程中剥离出来，并分配另一个 Goroutine 到该 M 线程上继续执行。这种机制确保了阻塞操作不会阻塞整个线程，提高了程序的响应性和吞吐量。
+### 自动扩展和收：
+
+GMP 模型可以根据负载自动调整 M 线程的数量，以适应当前的工作量。它可以在需要时创建更多的 M 线程，或者在空闲时销毁不必要的 M 线程，从而高效地管理系统资源。
+
 
 ### g , m , p 的关系
 
@@ -93,18 +114,21 @@ Before Golang 1.1, there was no P component in the scheduler. The performance of
 
 * global queue lock
 
-之前没有p 的时候, 需要 global queue lock, 因为所有的 g 都在全局队列里, 引入了 p, 就可以大多数情况无锁访问 p 的 local G queue.
+之前没有p 的时候, 需要 global queue lock, 因为所有的 g 都在全局队列里, 引入了 p, 就可以大多数情况无锁访问 p 的 local G queue.</br>
+为什么不直接把本地队列挂在M 上呢 ? 
+一般来讲，M 的数量都会多于 P。像在 Go 中，M 的数量默认是 10000，P 的默认数量的 CPU 核数。另外由于 M 的属性，也就是如果存在系统阻塞调用，阻塞了 M，又不够用的情况下，M 会不断增加。
+M 不断增加的话，如果本地队列挂载在 M 上，那就意味着本地队列也会随之增加。这显然是不合理的
+* G 切换问题
 
-* G switching problem
+切换G 带来的开销, 如果没有P, 一个goroutine 里面创建的g 会先放到全局g 的队列, 而不是直接被执行, 现在有了P 就直接放到P 的本地队列直接被执行
 
-frequent switching of runnable G by M will increase the latency and overhead, for example, the newly created G will be put into the global queue instead of being executed locally in M, which will cause unnecessary overhead and latency, and should be executed on the M that created the G first; after the P component is introduced, the newly created G will be put into the local queue of the G-associated P first.
 * M’s memory cache (M.mcache) problem
 
 mcache 是一个 M object local cache 存放 G 的对象, 但是 M 有可能被 block by 系统调用, 所以 cache 就浪费了. 而且 cache 绑定到 M 的一个好处是G 如果再次被调度到 M 就可以重用, 但实际几率很少, 所以引入 P 之后 mcache 搬到了 P, 只有在运行的时候才会被占用, 不会造成空间浪费, 也避免了锁, 因为是没有其他线程去竞争的. 
 
-* Frequent thread blocking and wake-up problems
+* Frequent thread blocking and wake-up problems ?
 
-因为之前是 M 做系统调用, 卡住就等到释放, 现在卡住会新建 M 去关联 P 和 G 继续执行. In the original scheduler, the number of system threads is limited by runtime.GOMAXPROCS(). Only one system thread is opened by default. And since M performs operations such as system calls, when M blocks, it does not create a new M to perform other tasks, but waits for M to wake up, and M switches between blocking and waking frequently, which causes additional overhead. In the new scheduler, when M is in the system scheduling state, it will be disassociated from the bound P and will wake up the existing or create a new M to run other G bound to P.
+In the original scheduler, the number of system threads is limited by runtime.GOMAXPROCS(). Only one system thread is opened by default. And since M performs operations such as system calls, when M blocks, it does not create a new M to perform other tasks, but waits for M to wake up, and M switches between blocking and waking frequently, which causes additional overhead. In the new scheduler, when M is in the system scheduling state, it will be disassociated from the bound P and will wake up the existing or create a new M to run other G bound to P.
 
 
 ### debug binary file in local machine
