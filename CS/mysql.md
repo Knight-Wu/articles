@@ -426,7 +426,7 @@ COMMIT;
 
 > At the READ COMMITTED isolation level, each query sees a snapshot of the database taken at the start of each query. Therefore, they each see different data for the updated row. No serialization failure is possible in this mode (because no promise of serializability is made), and Transaction 1 will not have to be retried.(这段怎么跟之前说的 read commited 不一样 ? )
 
-* 幻象读(Phantom reads),是不可重复读的特例, 相当于是范围读.
+* 幻象读(Phantom reads),是不可重复读的特例, 相当于是前后两次读读到不同的行数, 所以引入了 gap lock 锁, 在RR 隔离级别下, 如果读取的时候加select for update 锁范围, 那么会和插入互斥, 如果读取的时候不加锁, 那么还是会在事务中前后两次读取看到插入的记录. 
 
 ```
     Transaction 1	                                        Transaction 2
@@ -446,7 +446,42 @@ COMMIT;
 > Note that Transaction 1 executed the same query twice. If the highest level of isolation were maintained, the same set of rows should be returned both times, and indeed that is what is mandated to occur in a database operating at the SQL SERIALIZABLE isolation level. However, at the lesser isolation levels, a different set of rows may be returned the second time.
 
 > In the SERIALIZABLE isolation mode, Query 1 would result in all records with age in the range 10 to 30 being locked, thus Query 2 would block until the first transaction was committed. In REPEATABLE READ mode, the range would not be locked, allowing the record to be inserted and the second execution of Query 1 to include the new row in its results.
- 
+
+* 防止幻读所引入的范围锁(gap lock) 引起的死锁的一道题目
+
+
+ ```
+MySQL，InnoDB引擎，RR隔离级别下，有如下表 t1 :
+id | name | score
+-------|---------------|------------
+15 | kobe | 24
+18 | curry | 77
+20 | rose | 5
+30 | irvin | 91
+37 | james | 22
+49 | jordan | 83
+50 | durant | 89
+
+
+如下场景会发生什么？
+
+【事务A执行】
+time1： update t1 set score=100 where id = 25;
+time3： insert into t1(id, name, score) value (25, 'jimmy', 90);
+
+【事务B执行】
+time2： update t1 set score=100 where id = 26;
+time4： insert into t1(id, name, score) value (26, 'tommy', 90);
+
+</br>
+答案:</br>
+先是t1 id 25 有行锁, 然后 t2 行锁, t3 从20-30 的gap lock, 就等事务A释放行锁, t4 等 事务b 的gap lock 就互相等待, 造成死锁
+
+</br> 参考:
+https://dev.mysql.com/doc/refman/8.4/en/innodb-locking.html#:~:text=A%20gap%20lock%20is%20a,of%2015%20into%20column%20t.
+![image](https://github.com/Knight-Wu/articles/assets/20329409/0fd07bd6-415f-40fb-aa1c-2de31cac1196)
+
+```
 * 丢失更新(lost update)
 指在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。
     
