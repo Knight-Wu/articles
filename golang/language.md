@@ -23,6 +23,34 @@ The open source database project https://github.com/dgraph-io/dgraph adjusts GOM
 
 <img width="695" alt="image" src="https://user-images.githubusercontent.com/20329409/234467418-f25a923c-6b61-498d-9147-e7f317d48db7.png">
 
+* P 的字段, 完整见源码
+
+  ```
+  type p struct {
+    id          int32
+    status      uint32 // P的状态
+    link        puintptr // 下一个P, P链表
+    m           muintptr // 拥有这个P的M
+    mcache      *mcache  
+
+    // P本地runnable状态的G队列，无锁访问
+    runqhead uint32
+    runqtail uint32
+    runq     [256]guintptr
+    
+    runnext guintptr // 一个比runq优先级更高的runnable G
+
+    // 状态为dead的G链表，在获取G时会从这里面获取
+    gFree struct {
+        gList
+        n int32
+    }
+
+    gcBgMarkWorker       guintptr // (atomic)
+    gcw gcWork
+
+}
+  ```
 ### M 的定义
 M 每次创建就会创建一个操作系统线程, 所以 M 的数量是有上限的, 默认 10000, 创建太多 M 的内存开销很大, 每个 8 MB.
 M is an object in runtime that represents a thread. Each M object created creates a thread bound to M. New threads are created by executing the clone() system call. runtime defines the maximum number of M to be 10000. The maximum number of M is defined in runtime as 10000, which can be adjusted by debug.SetMaxThreads(n).
@@ -44,16 +72,31 @@ When the G associated with M enters the system call, M will actively unbind with
 /proc/sys/vm/max_map_count: indicates a limit on the number of VMAs (virtual memory areas) a process can have.
 
 * M 中的 G0(g 零)
+Every time an M is started, the first goroutine created is g0. Each M will have its own g0. g0 is mainly used to record the stack information used by the worker thread, and is only used to be responsible for scheduling, which needs to be used when executing the scheduling code. When executing the user goroutine code, the stack of the user goroutine is used, and the stack switch occurs when scheduling.
+
+* G的内部结构中重要字段如下，完全结构参见源码
 
 ```
+
 type m struct {
-    g0      *g     // goroutine with scheduling stack
-    ......
+    g0      *g     // g0, 每个M都有自己独有的g0
+
+    curg          *g       // 当前正在运行的g
+    p             puintptr // 隶属于哪个P
+    nextp         puintptr // 当m被唤醒时，首先拥有这个p
+    id            int64
+    spinning      bool // 是否处于自旋
+
+    park          note
+    alllink       *m // on allm
+    schedlink     muintptr // 下一个m, m链表
+    mcache        *mcache  // 内存分配
+    lockedg       guintptr // 和 G 的lockedm对应
+    freelink      *m // on sched.freem
 }
 ```
-只用来记录线程的栈信息, 只用于调度的. 
 
-Every time an M is started, the first goroutine created is g0. Each M will have its own g0. g0 is mainly used to record the stack information used by the worker thread, and is only used to be responsible for scheduling, which needs to be used when executing the scheduling code. When executing the user goroutine code, the stack of the user goroutine is used, and the stack switch occurs when scheduling.
+
 ### G 的定义
 
 每次 go func 就会创建一个 G, 如果 G 里面工作很简单, 数量很多也没关系, 如果是需要网络连接和创建文件, 则太多的 G 会导致too many files open or Resource temporarily unavailable 
@@ -61,6 +104,24 @@ Every time an M is started, the first goroutine created is g0. Each M will have 
 G 需要绑定 M 来跑, M 需要绑定 P 来跑. 
 G is bound to M to run, and M needs to be bound to P to run, so theoretically the number of running G at the same time is equal to the number of P
 
+* G的内部结构中重要字段如下，完全结构参见源码
+
+```
+type g struct {
+    stack       stack   // g自己的栈
+    m            *m      // 隶属于哪个M
+    sched        gobuf   // 保存了g的现场，goroutine切换时通过它来恢复
+    atomicstatus uint32  // G的运行状态
+    goid         int64
+    schedlink    guintptr // 下一个g, g链表
+    preempt      bool //抢占标记
+    lockedm      muintptr // 锁定的M,g中断恢复指定M执行
+    gopc          uintptr  // 创建该goroutine的指令地址
+    startpc       uintptr  // goroutine 函数的指令地址
+}
+```
+#### 发生G 切换时
+在 Go 语言的协程（Goroutine）中，切换上下文时，状态的保存和管理是由 Go 运行时系统负责的。具体来说，状态保存在 Goroutine 自身的数据结构中，确保在上下文切换时，Goroutine 可以恢复到正确的执行点继续运行。
 ### 调度过程中阻塞 
 GMP模型的阻塞可能发生在下面几种情况：
 
