@@ -1,7 +1,66 @@
 
 # GMP model 
-### 参考资料
-https://www.sobyte.net/post/2022-07/go-gmp/
+![image](https://github.com/Knight-Wu/articles/assets/20329409/1051e364-079a-4cda-8e9b-c2e384f0286f)
+
+## 总体流程图
+![image](https://github.com/Knight-Wu/articles/assets/20329409/42d24bd6-aaa6-45ad-8332-e7900b036879)
+
+## 定义
+
+### P 的定义
+* 数量
+The number of P’s is initialized at runtime startup and is by default equal to the number of logical cores of the cpu. It can be set at program startup with the environment variable GOMAXPROCS or the runtime.GOMAXPROCS() method, and the number of P’s is fixed for the duration of the program.
+
+* IO 密集型
+
+io 密集型系统中 P 的数量可以多于逻辑核心, 因为 M 会被 system call block, 此时 P 会被阻塞一会, 等待周期性 check (10MS) 去释放 P 和 G 到新的 M. 
+
+In the IO-intensive scenario, the number of P can be adjusted appropriately, because M needs to be bound to P to run, and M will fall into the system call when executing G. At this time, P associated with M is in the waiting state, if the system call never returns, then the CPU resources are actually wasted during this time waiting for the system call, although there is a sysmon monitoring thread in runtime can seize G, here is to seize P associated with G, let P rebind a M to run G, but sysmon is periodic execution of seizure, after sysmon stable operation every 10ms to check whether to seize P, 
+
+The open source database project https://github.com/dgraph-io/dgraph adjusts GOMAXPROCS to 128 to increase the IO processing power.
+
+* p 状态
+
+<img width="695" alt="image" src="https://user-images.githubusercontent.com/20329409/234467418-f25a923c-6b61-498d-9147-e7f317d48db7.png">
+
+### M 的定义
+M 每次创建就会创建一个操作系统线程, 所以 M 的数量是有上限的, 默认 10000, 创建太多 M 的内存开销很大, 每个 8 MB.
+M is an object in runtime that represents a thread. Each M object created creates a thread bound to M. New threads are created by executing the clone() system call. runtime defines the maximum number of M to be 10000. The maximum number of M is defined in runtime as 10000, which can be adjusted by debug.SetMaxThreads(n).
+
+* M 的创建
+
+第一种是主线程 : M0, The Golang program creates the main thread when it starts, and the main thread is the first M i.e. M0.
+另一种是当有 G 要创建或运行时, 并且有空闲的 P, 就会去找空闲的 M, 没有的话就创建.
+When a new G is created or a G goes from _Gwaiting to _Grunning and there is a free P, startm() will be called, first getting an M from the global queue (sched.midle) and binding the free P to execute the G. If there is no free M, M will be created by newm().
+
+如果 G (当做一个 function), 触发了系统调用, M 会释放 P; 如果结束了系统调用, M 会找空闲的 P,找不到就进入 sleep. 并且会记录 old P , 结束系统调用的时候倾向于找 old P, 因为之前的内存可以用, 减少拷贝. 
+When the G associated with M enters the system call, M will actively unbind with the associated P. When the G associated with M executes the exitsyscall() function to exit the system call, M will find a free P to bind, if no free P is found then M will call stopm() to enter the sleep state.
+
+* thread info
+
+
+/proc/sys/kernel/threads-max: indicates the maximum number of threads supported by the system.
+/proc/sys/kernel/pid_max: indicates the limit of the system global PID number value, every process or thread has an ID, the process or thread will fail to be created if the value of the ID exceeds this number.
+/proc/sys/vm/max_map_count: indicates a limit on the number of VMAs (virtual memory areas) a process can have.
+
+* M 中的 G0(g 零)
+
+```
+type m struct {
+    g0      *g     // goroutine with scheduling stack
+    ......
+}
+```
+只用来记录线程的栈信息, 只用于调度的. 
+
+Every time an M is started, the first goroutine created is g0. Each M will have its own g0. g0 is mainly used to record the stack information used by the worker thread, and is only used to be responsible for scheduling, which needs to be used when executing the scheduling code. When executing the user goroutine code, the stack of the user goroutine is used, and the stack switch occurs when scheduling.
+### G 的定义
+
+每次 go func 就会创建一个 G, 如果 G 里面工作很简单, 数量很多也没关系, 如果是需要网络连接和创建文件, 则太多的 G 会导致too many files open or Resource temporarily unavailable 
+
+G 需要绑定 M 来跑, M 需要绑定 P 来跑. 
+G is bound to M to run, and M needs to be bound to P to run, so theoretically the number of running G at the same time is equal to the number of P
+
 ## 为什么需要 gmp 模型
 * 切换开销: process > kernel thread > user thread, goroutine 就相当于一类user thread , 切换更轻量
 * 一个kernel thread 内存占用 8 MB, 而一个 goroutine 只需要 2KB.
@@ -10,25 +69,6 @@ https://www.sobyte.net/post/2022-07/go-gmp/
 
 ![image](https://user-images.githubusercontent.com/20329409/234452487-3b70007e-09e1-4b78-9c56-7001b2519125.png)
 
-## 原理
-G 理解为goroutine 一个可执行的 function, M 和操作系统线程是一一对应的关系, P 理解为 cpu core, 但IO 密集型任务中可以多于 cpu 核心数, 因为 P 的切换需要周期性检查有延迟. 
-G 需要绑定到 M, M 需要找到可用的 P 才能执行代码.
-
-G: Goroutine, the function we run in a Go program using the go keyword.
-
-M: 理解为系统线程, Machine, or worker thread, which stands for system thread, and M is an object in runtime that creates a system thread and binds to that.
-
-P: Processor, 理解为 CPU core, 当 M 关联到 P 的时候代码就可以执行
-
-* 创建 goroutine 的过程
-
-1. go语言里面go关键字用于创建goroutine（协程），实际调用的是newproc函数
-
-2. newproc创建出一个goroutine结构体：G，分配2kb的协程栈（在systemstack环境下调用）
-
-3. 然后把G加入P队列中，等待执行
-
-4. 切回原来的goroutine执行指令
 ### g , m , p 的关系
 
 ![image](https://user-images.githubusercontent.com/20329409/234453413-4062b977-dc1e-4b5e-8952-4f4237818d57.png)
@@ -65,64 +105,6 @@ mcache 是一个 M object local cache 存放 G 的对象, 但是 M 有可能被 
 * Frequent thread blocking and wake-up problems
 
 因为之前是 M 做系统调用, 卡住就等到释放, 现在卡住会新建 M 去关联 P 和 G 继续执行. In the original scheduler, the number of system threads is limited by runtime.GOMAXPROCS(). Only one system thread is opened by default. And since M performs operations such as system calls, when M blocks, it does not create a new M to perform other tasks, but waits for M to wake up, and M switches between blocking and waking frequently, which causes additional overhead. In the new scheduler, when M is in the system scheduling state, it will be disassociated from the bound P and will wake up the existing or create a new M to run other G bound to P.
-
-
-### P 的逻辑
-* 数量
-The number of P’s is initialized at runtime startup and is by default equal to the number of logical cores of the cpu. It can be set at program startup with the environment variable GOMAXPROCS or the runtime.GOMAXPROCS() method, and the number of P’s is fixed for the duration of the program.
-
-* IO 密集型
-
-io 密集型系统中 P 的数量可以多于逻辑核心, 因为 M 会被 system call block, 此时 P 会被阻塞一会, 等待周期性 check (10MS) 去释放 P 和 G 到新的 M. 
-
-In the IO-intensive scenario, the number of P can be adjusted appropriately, because M needs to be bound to P to run, and M will fall into the system call when executing G. At this time, P associated with M is in the waiting state, if the system call never returns, then the CPU resources are actually wasted during this time waiting for the system call, although there is a sysmon monitoring thread in runtime can seize G, here is to seize P associated with G, let P rebind a M to run G, but sysmon is periodic execution of seizure, after sysmon stable operation every 10ms to check whether to seize P, 
-
-The open source database project https://github.com/dgraph-io/dgraph adjusts GOMAXPROCS to 128 to increase the IO processing power.
-
-* p 状态
-
-<img width="695" alt="image" src="https://user-images.githubusercontent.com/20329409/234467418-f25a923c-6b61-498d-9147-e7f317d48db7.png">
-
-### M 的逻辑
-M 每次创建就会创建一个操作系统线程, 所以 M 的数量是有上限的, 默认 10000, 创建太多 M 的内存开销很大, 每个 8 MB.
-M is an object in runtime that represents a thread. Each M object created creates a thread bound to M. New threads are created by executing the clone() system call. runtime defines the maximum number of M to be 10000. The maximum number of M is defined in runtime as 10000, which can be adjusted by debug.SetMaxThreads(n).
-
-* M 的创建
-
-第一种是主线程 : M0, The Golang program creates the main thread when it starts, and the main thread is the first M i.e. M0.
-另一种是当有 G 要创建或运行时, 并且有空闲的 P, 就会去找空闲的 M, 没有的话就创建.
-When a new G is created or a G goes from _Gwaiting to _Grunning and there is a free P, startm() will be called, first getting an M from the global queue (sched.midle) and binding the free P to execute the G. If there is no free M, M will be created by newm().
-
-如果 G (当做一个 function), 触发了系统调用, M 会释放 P; 如果结束了系统调用, M 会找空闲的 P,找不到就进入 sleep. 并且会记录 old P , 结束系统调用的时候倾向于找 old P, 因为之前的内存可以用, 减少拷贝. 
-When the G associated with M enters the system call, M will actively unbind with the associated P. When the G associated with M executes the exitsyscall() function to exit the system call, M will find a free P to bind, if no free P is found then M will call stopm() to enter the sleep state.
-
-* thread info
-
-
-/proc/sys/kernel/threads-max: indicates the maximum number of threads supported by the system.
-/proc/sys/kernel/pid_max: indicates the limit of the system global PID number value, every process or thread has an ID, the process or thread will fail to be created if the value of the ID exceeds this number.
-/proc/sys/vm/max_map_count: indicates a limit on the number of VMAs (virtual memory areas) a process can have.
-
-* M 中的 G0(g 零)
-
-```
-type m struct {
-    g0      *g     // goroutine with scheduling stack
-    ......
-}
-```
-只用来记录线程的栈信息, 只用于调度的. 
-
-Every time an M is started, the first goroutine created is g0. Each M will have its own g0. g0 is mainly used to record the stack information used by the worker thread, and is only used to be responsible for scheduling, which needs to be used when executing the scheduling code. When executing the user goroutine code, the stack of the user goroutine is used, and the stack switch occurs when scheduling.
-### G 的逻辑
-
-每次 go func 就会创建一个 G, 如果 G 里面工作很简单, 数量很多也没关系, 如果是需要网络连接和创建文件, 则太多的 G 会导致too many files open or Resource temporarily unavailable 
-
-G 需要绑定 M 来跑, M 需要绑定 P 来跑. 
-G is bound to M to run, and M needs to be bound to P to run, so theoretically the number of running G at the same time is equal to the number of P
-
-## gmp 疑问
-* 阻塞了 goroutine 也不会阻塞内核线程, java 会吗
 
 
 ### debug binary file in local machine
