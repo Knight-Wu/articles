@@ -25,7 +25,7 @@ The open source database project https://github.com/dgraph-io/dgraph adjusts GOM
 
 * P 的字段, 完整见源码
 
-  ```
+```
   type p struct {
     id          int32
     status      uint32 // P的状态
@@ -50,7 +50,8 @@ The open source database project https://github.com/dgraph-io/dgraph adjusts GOM
     gcw gcWork
 
 }
-  ```
+```
+
 ### M 的定义
 M 每次创建就会创建一个操作系统线程, 所以 M 的数量是有上限的, 默认 10000, 创建太多 M 的内存开销很大, 每个 8 MB.
 M is an object in runtime that represents a thread. Each M object created creates a thread bound to M. New threads are created by executing the clone() system call. runtime defines the maximum number of M to be 10000. The maximum number of M is defined in runtime as 10000, which can be adjusted by debug.SetMaxThreads(n).
