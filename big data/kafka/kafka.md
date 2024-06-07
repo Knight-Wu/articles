@@ -33,8 +33,67 @@
 * 某个 consumer 只要制定了 group.instance.id, 如果重启了在session.timeout.ms 之前恢复都不会触发 rebalance, 当然这个过程中consumer 所消费的 partition 是不会被消费的
 * 当有新成员加入时肯定会触发Rebalance重新分配分区
 # kafka transaction 事务
-## 大体流程
+## 发送者幂等性
+幂等性的工作原理很简单，每条消息都有一个「主键」，这个主键由 <ProducerID, Partition, SeqNumber 消息自增的 ID> 组成，保证在单个分区能消息不重复, 是为了解决回复ack 跟客户端的时候ack 丢失的问题, 
+</br>
+但是扩容了分区数量导致发往其他分区这种情况的消息重复不能避免, kafka 重启之后producerId 也会变, 所以在业务眼中不是完美的消息不重复发的方案. 所以需要引入事务
+
+```
+props.put("enable.idempotence", true)
+
+```
+## 事务
+只是发送者的事务, 只能保证发送者一条不多一条不少的一批消息发到broker , 然后消费者原子性的可见, 不能保证消费者只消费一次, 消费还是要去重. 
+### 使用
+```
+创建一个 Producer，指定一个事务 ID：
+ini复制代码Properties properties = new Properties();
+properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+//设置事务ID，必须
+properties.setProperty(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "transactional_id_1");
+KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
+
+使用事务发送消息：
+php复制代码// 初始化事务
+producer.initTransactions();
+// 开启事务
+producer.beginTransaction();
+​
+//发送10条消息往kafka，假如中间有异常，所有消息都会发送失败
+try {
+    for (int i = 0; i < 10; i++) {
+        producer.send(new ProducerRecord<>("topic-test", "a message" + i));
+    }
+}
+// 提交事务
+producer.commitTransaction();
+} catch (Exception e) {
+    // 终止事务
+    producer.abortTransaction();
+} finally {
+    producer.close();
+}
+
+```
+### 大体流程
 ![image](https://user-images.githubusercontent.com/20329409/222062903-b0b174d1-a94f-4a04-8809-9cb798efb59e.png)
+
+1）启动生产者，分配协调器
+我们在使用事务的时候，必须给生产者指定一个事务 ID，生产者启动时，Kafka 会根据事务 ID 来分配一个事务协调器（Transaction Coordinator） 。每个 Broker 都有一个事务协调器，负责分配 PID（Producer ID） 和管理事务。
+事务协调器的分配涉及到一个特殊的主题 __transaction_state，该主题默认有50个分区，每个分区负责一部分事务；Kafka 根据事务ID的hashcode值 % 50 计算出该事务属于哪个分区， 该分区 Leader 所在 Broker 的事务协调器就会被分配给该生产者。
+分配完事务协调器后，该事务协调器会给生产者分配一个 PID，接下来生产者就可以准备发送消息了。
+2）发送消息
+生产者分配到 PID 后，要先告诉事务协调器要把详细发往哪些分区，协调器会做一个记录，然后生产者就可以开始发送消息了，这些消息与普通的消息不同，它们带着一个字段标识自己是事务消息。
+当生产者事务内的消息发送完毕，会向事务协调器发送 Commit 或 Abort 请求，此时生产者的工作已经做完了，它只需要等待 Kafka 的响应。
+3）确认事务
+当生产者开始发送消息时，协调器判定事务开始。它会将开始的信息持久化到主题 __transaction_state 中。
+当生产者发送完事务内的消息，或者遇到异常发送失败，协调器会收到 Commit 或 Abort 请求(用户客户端代码里的)，接着事务协调器会跟所有主题通信，告诉它们事务是成功还是失败的。
+如果是成功，主题会汇报自己已经收到消息，协调者收到所有主题的回应便确认了事务完成，并持久化这一结果。
+如果是失败的，主题会把这个事务内的消息丢弃，并汇报给协调者，协调者收到所有结果后再持久化这一信息，事务结束；整个放弃事务的过程消费者是无感知的，它并不会收到这些数据。
+
+### 详细流程
 
 1. FindCoordinatorRequest , 根据transactionId 找对应的transaction corrdinator, transactionId hash 之后对 __transaction_state topic 的partition 取余, 然后partition 所在的leader 就是 transaction corrdinator
 2. 根据 transaction id 返回一个固定的producer id, 用于继续执行或者回滚之前的遗留事务.
@@ -45,33 +104,6 @@
 7. transaction coordinator  最后写事务结果 到 transaction log.
 8. consumer 根据事务级别是 read committed, 还是 read uncommited, 判断这些消息是否可见. 如果是 read committed ,要发送了success transaction marker 之后这些消息就才能被 consumer 读到. 
 
-## 详细流程
-![image](https://user-images.githubusercontent.com/20329409/222064514-928c32aa-f79a-4456-b564-4a3402a8a25f.png)
-
-</br>
-1. 找transaction coordinator -- FindCoordinatorRequest , 根据transactionId 找对应的transaction corrdinator, transactionId hash 之后对 __transaction_state topic 的partition 取余, 然后partition 所在的leader 就是 transaction corrdinator
-</br>
-2. 获取producerId -- InitPidRequest, 每一个transactionId 返回一个固定的 pid, 用于继续执行或者回滚之前的遗留事务.
-</br>
-3. 开始事务 --  The beginTransaction() API
-</br>
-4. 如果是先消费再producer 的场景会包括多种请求:
-</br>
-4.1 图中4.1a, AddPartitionsToTxnRequest, 事务当中每次新写一个topic partition, 就写 tp 的信息到transaction log, 用于后续写transaction marker. 
-</br>
-4.2 producer 发送消息到broker -- ProduceRequest
-</br>
-4.3 AddOffsetCommitsToTxnRequest, 图中 4.3a, 如果是producer 先消费一个topic 再写另一个topic 的场景, 会记录消费的offset 到 transaction log
-</br>
-4.4 TxnOffsetCommitRequest, 图中 4.4 a, producer 会发送消费的offset 信息到consumer coordinator 持久化, cc 会校验 pid 和 epoch(版本号), 排除那些旧的producer, 除非事务提交不然offset 的变化是不可见的.
-</br>
-5. 提交或中止事务
-</br>
-5.1 producer 发送 EndTxnRequest, 先写准备日志(5.1a), 再发送 transaction marker 到 partition, 最后写 commit 或 abort 到 transaction log.
-</br>
-5.2 WriteTxnMarkerRequest, transaction coordinator 发送 WriteTxnMarkerRequest 给 leader partition 来让这些消息可见或者清除, 图中 5.2a
-</br>
-5.3 写最后的commit 结果, 成功或者回滚, 写到transaction log, 图中 5.3 , 然后transaction log 就可以清除了. 
 
 
 ### 参考
