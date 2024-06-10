@@ -282,7 +282,29 @@ kafka 采用的 ISR 的 replication, 而不是 majority vote, 因为容忍 f 个
 ### 如何手动调整 leader 呢
 手动分配 partitions, 让 prefered leader 的比例低于 10 %, 然后run prefered leader election. 
 
-> Written with [StackEdit](https://stackedit.io/).
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjgzNjE3ODBdfQ==
--->
+# kafka 重复消费的问题, 例如上游是订单系统, 下游是库存系统, 如何保证下游不重复消费
+
+来自一道面试题, 例如上游是订单系统, 下游是库存系统, 中间通过kafka 连接, 通常都是先扣库存成功, 再提交offset , 如果提交offset 失败了, 通常会造成重复消费, 
+
+## 如何解决
+### 发送端消息幂等(不适用)
+去重的key 是 producerId + topicPartition + seqNum, 只能保证在单个partition 里面去重, 而且kafka 重启producerId 就换了
+
+### kafka 事务(不适用)
+只能保证发送端一批消息, 只发送一次到broker, 而且同时被消费者可见, 不能保证offset 没提交重复消费的情况
+
+### 使用外部存储(要支持事务)记录状态, 把消息id 等唯一key 记录下来, 下次进来之后判断是否已有
+例如消息中的某些字段组成这条消息的id,把 mysql 处理业务逻辑, 以及消息是否消费在同一个事务提交(所以不支持事务的不行, 否则记录消息是否重复消费之前如果挂了, 还是会重复消费) , 最后提交offset.
+分为以下几步:</br>
+
+1. 消费消息
+
+2. 判断是否消费过
+
+3. 处理业务逻辑
+
+4. 记录已经消费过
+
+5. 提交offset
+</br>
+把3,4 两部在一个事务中提交, 要么一起成功要么失败, 就可以支持, 下次消息进来在第二部就可以过滤了. 重点在于数据库必须支持事务
