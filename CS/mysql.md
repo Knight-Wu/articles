@@ -359,7 +359,8 @@ https://dev.mysql.com/doc/refman/8.0/en/explain-output.html
 * extra
 using_index 和using_where 区别: https://stackoverflow.com/questions/25672552/whats-the-difference-between-using-index-and-using-where-using-index-in-the
 
-# ACID
+# 事务
+## 事务的特性(ACID)
 ## atomicity
 原子性, 事务执行的要么成功要么失败, 没有第三个状态
 
@@ -372,10 +373,11 @@ using_index 和using_where 区别: https://stackoverflow.com/questions/25672552/
 ## durability
 持久性, 一旦事务提交成功可以认为已经持久化到了数据库, 但是能容忍什么故障或者多少故障, 由副本数以及副本间的同步协议等特性去决定的
 
-# 事务隔离级别（定义了一个事务可能受其他并发事务影响的程度）
-> 数据并发问题
-
-* 脏读(dirty read), A事务读到了B事务尚未提交的数据, 可理解为读到了脏数据, 若此时B事务回滚, 则会产生数据不一致的情况.
+## 事务隔离级别（定义了一个事务可能受其他并发事务影响的程度）
+![image](https://github.com/Knight-Wu/articles/assets/20329409/691021cc-8803-47e6-94cd-2b9cff58b961)
+## 事务解决的问题
+### 脏读(dirty read)
+A事务读到了B事务尚未提交的数据, 可理解为读到了脏数据, 若此时B事务回滚, 则会产生数据不一致的情况.
 
 ```
 Transaction 1	                                          Transaction 2
@@ -392,8 +394,8 @@ SELECT age FROM users WHERE id = 1;
 
 ```
 
-* 不可重复读(unrepeatable read)
-    发生在一个事务的进行两次读取时, 可能会读取到不同的数据, 就是说在 A 事务在 t1 开始后, 进行了两次读取, 其中第二次读取, 读到了 B 事务在 t2 修改的数据, t2>t1. 
+### 不可重复读(unrepeatable read)
+发生在一个事务的进行两次读取时, 可能会读取到不同的数据, 就是说在 A 事务在 t1 开始后, 进行了两次读取, 其中第二次读取, 读到了 B 事务在 t2 修改的数据, t2>t1. 
     
  ```
 
@@ -412,22 +414,8 @@ COMMIT;
 
 ```
 
-   根据不同的隔离级别, 会有不同结果
-> At the SERIALIZABLE and REPEATABLE READ isolation levels, the DBMS must return the old value for the second SELECT. At READ COMMITTED and READ UNCOMMITTED, the DBMS may return the updated value; this is a non-repeatable read.
-    
-* 有两种策略来处理此种情况
-    1. 延迟事务2的执行直到事务1提交或者回滚, 等于说维护一个时序: serial schedule T1, T2. 
-    2. 为了获取更好的性能,让事务2被先提交, 事务1的执行必须满足时序 T1, T2, 若不满足事务1被回滚.
-
-在不同模型下, 结果会不一样
-> Using a lock-based concurrency control method, at the REPEATABLE READ isolation mode, the row with ID = 1 would be locked, thus blocking Query 2 until the first transaction was committed or rolled back. In READ COMMITTED mode, the second time Query 1 was executed, the age would have changed.
-
-> Under multiversion concurrency control, at the SERIALIZABLE isolation level, both SELECT queries see a snapshot of the database taken at the start of Transaction 1. Therefore, they return the same data. However, if Transaction 1 then attempted to UPDATE that row as well, a serialization failure would occur and Transaction 1 would be forced to roll back.
-
-> At the READ COMMITTED isolation level, each query sees a snapshot of the database taken at the start of each query. Therefore, they each see different data for the updated row. No serialization failure is possible in this mode (because no promise of serializability is made), and Transaction 1 will not have to be retried.(这段怎么跟之前说的 read commited 不一样 ? )
-
-* 幻象读(Phantom reads),是不可重复读的特例, 相当于是前后两次读读到不同的行数, 所以引入了 gap lock 锁, 在RR 隔离级别下, 如果读取的时候加select for update 锁范围, 那么会和插入互斥, 如果读取的时候不加锁, 那么还是会在事务中前后两次读取看到插入的记录. 
-
+### 幻象读(Phantom reads)
+是不可重复读的特例, 相当于是前后两次范围读读到不同的行数
 ```
     Transaction 1	                                        Transaction 2
 /* Query 1 */
@@ -443,9 +431,22 @@ COMMIT;
 
 
 ```
-> Note that Transaction 1 executed the same query twice. If the highest level of isolation were maintained, the same set of rows should be returned both times, and indeed that is what is mandated to occur in a database operating at the SQL SERIALIZABLE isolation level. However, at the lesser isolation levels, a different set of rows may be returned the second time.
 
-> In the SERIALIZABLE isolation mode, Query 1 would result in all records with age in the range 10 to 30 being locked, thus Query 2 would block until the first transaction was committed. In REPEATABLE READ mode, the range would not be locked, allowing the record to be inserted and the second execution of Query 1 to include the new row in its results.
+#### MVCC 在可重复读的隔离级别下, 使用快照读(一般select), 如何解决一般情况下的幻读的
+可重复读隔离级是由 MVCC（多版本并发控制）实现的，实现的方式是开始事务后（执行 begin 语句后），在执行第一个查询语句后，会创建一个 Read View，后续的查询语句利用这个 Read View，通过这个 Read View 就可以在 undo log 版本链找到事务开始时的数据，所以事务过程中每次查询的数据都是一样的，即使中途有其他事务插入了新纪录，是查询不出来这条数据的，所以就很好了避免幻读问题，但是有一定概率还是会出现幻读。
+
+#### MVCC 在可重复读的隔离级别下, 如何出现幻读的
+* 出自https://xiaolincoding.com/mysql/transaction/phantom.html#%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8F%91%E7%94%9F%E5%B9%BB%E8%AF%BB%E7%8E%B0%E8%B1%A1%E7%9A%84%E5%9C%BA%E6%99%AF
+
+* 场景一, 普通select
+![image](https://github.com/Knight-Wu/articles/assets/20329409/ab77d616-8a76-4484-9728-f3aaf73c3fa9)
+
+* 场景二, 先select , 再select for update
+![image](https://github.com/Knight-Wu/articles/assets/20329409/f4135850-9095-4b5d-8f66-367a1bb2c7da)
+
+#### 如何彻底解决幻像读
+针对当前读（select ... for update 等语句），是通过 next-key lock（记录锁+间隙锁）方式解决了幻读，因为当执行 select ... for update 语句的时候，会加上 next-key lock，如果有其他事务在 next-key lock 锁范围内插入了一条记录，那么这个插入语句就会被阻塞，无法成功插入，所以就很好了避免幻读问题。
+
 
 * 防止幻读所引入的范围锁(gap lock) 引起的死锁的一道题目
 
@@ -482,14 +483,24 @@ https://dev.mysql.com/doc/refman/8.4/en/innodb-locking.html#:~:text=A%20gap%20lo
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/0fd07bd6-415f-40fb-aa1c-2de31cac1196)
 
 ```
-* 丢失更新(lost update)
+### 丢失更新(lost update)
 指在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。
-    
-* 以上均参见[wiki isolation](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Dirty_reads)
-mysql 默认隔离级别是重复读
+
 ![enter image description here](https://drive.google.com/uc?id=1NdpnXgkU7Q3TW0G73P0WPR_ejiUgf-Qp)
 
-**这个对隔离级别解释更详细 : 解释了 MVCC 和 undo log** https://blog.csdn.net/qq_35190492/article/details/109044141
+## MVCC 多版本并发控制
+应该是在不同的隔离级别有不同的实现细节, 从而实现不同的隔离级别,
+参考 https://www.xiaolincoding.com/mysql/transaction/mvcc.html#read-view-%E5%9C%A8-mvcc-%E9%87%8C%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84
+
+### ReadView(类似全局数据所属的事务id 的快照)
+三个主体的交互, 一是当前事务所属id, 二是当前事务所操作的数据的事务id, 三是readView 
+![image](https://github.com/Knight-Wu/articles/assets/20329409/8b4248ac-e1a3-48d4-be0d-a46d89120f26)
+
+### 可重复读是如何工作的, 一个例子
+https://www.xiaolincoding.com/mysql/transaction/mvcc.html#%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84
+
+### 读提交是如何工作的, 一个例子
+https://www.xiaolincoding.com/mysql/transaction/mvcc.html#%E8%AF%BB%E6%8F%90%E4%BA%A4%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84
 
 # mysql 悲观锁和乐观锁
 https://blog.csdn.net/puhaiyang/article/details/72284702
