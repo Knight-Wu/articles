@@ -82,32 +82,34 @@ The challenge we would face would be ..., I know that would be a hard part, if I
 不要大声思考。面对冷漠的面试官，你更容易保持沉默。最好在对自己要说的话没有把握之前不要开口
 ## uuid, snowflake id, auto_increment id 在 RDMS 使用上的区别
 
-* uuid
+### uuid
 
 uuid generated in client, usually longer, not waste performance in db, and it is random so will trigger random IO</br>
 
-* auto increment id
+### auto increment id
 
 auto increment id is auto incremental , usually is 4 or 8 bytes, better for inserting, but can be guessed the pattern of the id, and will have hot spot problem, because it will trigger the split of the largest leaf nodes if in mysql, but using partitioning 
 table can solve it, but if so, we coupling the how we partition the table and id generating</br>
 
-* snowflake id
+### snowflake id
 
  snowflakes id is the best, it is incremental, so better for insertion, not trigger random IO also not hotspot(have multiple tables)
 
 ## RPC 和 REST 的区别
 
-* RPC 
+### RPC 
 
 is used for internal communication; effient because it uses some effient protocol(such as serialization protocol), and it is used for complicated operations
 
-* REST API
+### REST API
 
 it is used in external communication, and because of json and http protocol, it is not effient as RPC; it is used for some simple operations; 
 
 ## SQL DB VS NOSQL
-图片
-* SQL DB 
+### 如何在系统设计中选择数据库
+
+![](../pic/system_design/image.png)
+### SQL DB 
 
   * SQL that searches for the data that you want without having to write custom code. This is an advantage over time because the compiler that transforms your SQL query into machine code can be optimized
 
@@ -121,13 +123,99 @@ one record in that page，will need to rewrite the whole page。
 	* SQL not work well in mixed schema，because if a new val is introduced，it will update the data
 in all nodes，this is time consuming。
 
-* NOSQL
+### NOSQL
 	* faster for writes but slower for read
 	* LSMT data structure and how compaction and SS tables improve efficiency
 	* not suitable for strong consistence
 	* usually not support complicated query。
+
+## web security
+### rainbow table
+彩虹表（Rainbow Table）是一种用于密码破解的工具。它通过预计算常见密码的哈希值，并将这些哈希值存储在一个表中，使得在进行密码破解时，可以快速查找已知哈希值对应的密码。彩虹表利用了时间-空间权衡（time-space tradeoff），在预计算阶段花费大量时间生成哈希值表，从而在破解阶段节省时间。
+
+#### 防御方法
+为了防止密码被彩虹表破解，可以采取以下防御措施：
+
+* 使用强密码：使用长度较长、复杂度较高的密码，增加彩虹表生成的难度。
+
+* 使用盐值：在生成密码哈希值时加入盐值，使得同一密码在不同的盐值下生成不同的哈希值，增加破解难度。
+
+* 多次哈希：对密码进行多次哈希处理，增加破解难度。
+### salting
+![](../pic/system_design/image-1.png)
+
+Say we use ten random characters as our salt, and user A's password salt is "a8h2rmd1tb". User A's password is "password123". If an attacker obtains the credential database, they will certainly have the hash of "password123" in their rainbow table. But they almost definitely will not have the hash of "password123:a8h2rmd1tb" in their rainbow table, which means they won't be able to derive user A's password from the table
+### session tokens
+作为后续的密码凭证, 因为用户不需要每次都提交密码了, simple way to track authentication is to generate a token the user can submit with subsequent requests to track that they are, in fact, signed in. This token should be randomly generated—be sure to use a secure random number generator—and long enough to be infeasible to brute force
+
+* Don't store the token in your database in plain text, but rather salt and hash it the same way you would a password. Session tokens should also come with an expiration date, as short as it can
+
+### json web tokens
+![](../pic/system_design/image-2.png)
+![](../pic/system_design/image-3.png)
+#### 解决的问题
+解决的是跨域名登录的问题, 用户在一个网站登录之后, 其他网站也能免密登录, 如果不用JWT 等方法, 就需要把session 数据共享, 有个数据库共享所有session, 另一种方案是服务器索性不保存 session 数据了，所有数据都保存在客户端, JWT 就是这种方案的一个代表。
+
+#### 特点
+（1）JWT 默认是不加密，但也是可以加密的。生成原始 Token 以后，可以用密钥再加密一次。
+
+（2）JWT 不加密的情况下，不能将秘密数据写入 JWT。
+
+（3）JWT 不仅可以用于认证，也可以用于交换信息。有效使用 JWT，可以降低服务器查询数据库的次数。
+
+（4）JWT 的最大缺点是，由于服务器不保存 session 状态，因此无法在使用过程中废止某个 token，或者更改 token 的权限。也就是说，一旦 JWT 签发了，在到期之前就会始终有效，除非服务器部署额外的逻辑。
+
+（5）JWT 本身包含了认证信息，一旦泄露，任何人都可以获得该令牌的所有权限。为了减少盗用，JWT 的有效期应该设置得比较短。对于一些比较重要的权限，使用时应该再次对用户进行认证。
+
+（6）为了减少盗用，JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。
+
+## 缓存
+本质上，这正是缓存的含义：存储昂贵的计算，以便您不必再次计算。
+
+### 为什么要使用缓存, 减少昂贵的网络计算、网络调用、数据库查询或资产获取的延迟。
+
+一般情况下，缓存的使用是以牺牲更多存储空间（或更多内存）为代价的。一般我们将其存储在内存（RAM）中，但也可以存储在磁盘上。
+
+### 80/20 规则：您希望将 80% 的读取请求存储在 20% 的cache 中。只存热门数据, 使用Least at used 实现只存热门
+
+80/20 rule: You want to store 80% of read requests in 20% of storage (or memory). Typically, these are the most popular requests.
+
+### 缓存离用户越近, 就越高效
+
+### Write-through and Write-back patterns
+![](../pic/system_design/image-4.png)
+the application directly writes the data to the cache. And then the cache synchronously (or asynchronously) writes the data to the database. When we write it synchronously it’s called “write-through,” and when we write it asynchronously it’s called “write-back” (or “write-behind”). In the asynchronous example, we put the data in a queue, which writes the data back to the database and improves the latency of writes on your application.
+
+* disadvantage
+
+  * cache unnecessary data
+  *  if the database goes down before the data is written to the database, this causes inconsistency.
+### message queue
+#### 根据消息队列的不同实现，可以有以下属性的不同组合
+
+1. Guaranteed delivery.
+2. No duplicate messages are delivered.
+3. Ensure that the order of messages is maintained.
+4. At least once delivery with idempotent consumers.
+
+### replication
+#### single leader
+#### multiple leaders
+##### Conflict resolution for concurrent writes
+1. Keeping the update with the largest client timestamp.
+2. Sticky routing—writes from same client/index go to the same leader.
+3. Keeping and returning all the updates.
+
+#### Leaderless 
+P2P, block chain
+#### 目标
+
+1. 避免单点故障并提高机器故障时的可用性。
+2. 为了更好地服务全球用户，通过按不同的地理位置组织副本来为附近的副本的用户提供服务。
+3. 提高吞吐量。机器越多，可以满足的请求就越多
+
 # 参考资料
-* 阿里云这里有常见的业务系统的设计方案
+## 阿里云这里有常见的业务系统的设计方案
 
 https://help.aliyun.com/zh/tablestore/use-cases/scheme-analysis?spm=a2c4g.11186623.0.i5
 # 性能指标
