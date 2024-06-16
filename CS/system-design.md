@@ -106,12 +106,26 @@ is used for internal communication; effient because it uses some effient protoco
 it is used in external communication, and because of json and http protocol, it is not effient as RPC; it is used for some simple operations; 
 
 ## SQL DB VS NOSQL
-
+图片
 * SQL DB 
 
   * SQL that searches for the data that you want without having to write custom code. This is an advantage over time because the compiler that transforms your SQL query into machine code can be optimized
 
   * SQL has stronger ACID guarantees
+	* SQL with B plus trees index, means slower when ingestion compared to NOSQL db，it uses
+log to append，it is sequential disk write rather than the b plus tree will trigger 
+random disk IO and write Amplification，the reason of random disk io is the pages it going 
+to write are not sequential。the reason of write amplification is if it is going to modify
+one record in that page，will need to rewrite the whole page。
+	* SQL has higher latency，This is because strong consistency requires that the database lock particular fields when it is being modified.
+	* SQL not work well in mixed schema，because if a new val is introduced，it will update the data
+in all nodes，this is time consuming。
+
+* NOSQL
+	* faster for writes but slower for read
+	* LSMT data structure and how compaction and SS tables improve efficiency
+	* not suitable for strong consistence
+	* usually not support complicated query。
 # 参考资料
 * 阿里云这里有常见的业务系统的设计方案
 
