@@ -1,3 +1,44 @@
+# 国外的系统设计面试
+
+## some tips
+* The clarification阶段最重要的是把重点说出来。而不是每个点都说。这块控制的。两三分钟比较好。然后自己做一些假设，然后问。然后说是假设。我们可以后面调整。然后呢，假设他觉得你不合理，他肯定会说出来，然后他说他没有说，那么就继续</br>尤其不要说那些最基本的什么可用性啊。嗯，单点容错这种。这最基本的是肯定要有的，不需要问，但是是在系统大体设计出来之后再谈如何实现而不是在需求澄清阶段
+
+* High level design最重要。这架构图。在那个data model和和API design,特别是API design没有这么重要。特别简单的接口就不需要说，不需要主动说，除非侧重考这部分
+
+* High level design和 data model design可以先写data model design,然后再根据数据类型画架构图是比较顺着思路的
+
+* 例如DB选择的时候。嗯，我要打到更高层级的一个要求的话，是不能一刀切的，必须要说。比较好的方法是哪个？但是次一点的方法也可以做，但是有什么缺点？
+
+* 有很多方向可以细化(deep dive)。选熟悉的方向: 选主, 存储的格式
+
+* shard key 的权衡: photo 表shard方案，如果按照photoid做shard，那么可能对某个user来说，他需要读。多个shard。增加延迟的问题，如果按照user 做shard会有热点的问题，但是面试当中不一定要做这个决定可以说出优劣之后说根据具体的机器做实验之后根据数据选择更好的
+
+* 引入一个组件是需要理由的，不能在系统设计上不能想到一个组件之间就画出来，需要有理由，还要有trade off，以及缺点，然后为什么选择了他？而不是强硬的生搬硬套就像做题一样。你给人感觉你没有这方面的经验，只能生搬硬套
+
+* 你在某个问题上引。doing 20 percent of thing will get 80 percent profit 。在某个合适的地方引入就是高级的信号, </br> 如果一开始就陷入到某个细节中，没有表现出全局的思维，肯定是低级
+
+* 状态机的时候。要记几个状态，例如 not started, Pending, 成功, 失败，失败分为可重试不可重试。记录重试次数，上一次重试时间
+
+* Workload isolation , cpu intensive, IO intensive, bandwidth intensive 就不能混在一起, 否则会can not scale independently
+
+* 如果衡量面试成功的标准不是你说了什么，而是你让面试官说了什么，那会怎样？想象一下，你说的话激起了面试官的好奇心，他们别无选择，只能继续问“再告诉我一些情况”。如果你让他们深入挖掘的领域是你擅长的领域：恭喜你，你正在施展绝地思维技巧
+
+* 简单来说，面试官的目标是找到足够的数据来聘用你。鉴于面试官可用的时间有限，他们必须尝试获取足够多的关于你能力的积极信号，以便他们有理由给你“聘用”评级。在一小时内，你必须向面试官展示你了解系统的基本原理（端到端）。你还应该能够命名和解释（至少在高层次上）系统的每个部分，描述你所做的权衡，并找到解决方案。
+</br>
+实现这一点的最佳方法是想象你正在向一群初级工程师解释一份设计文档。他们会问你关于你的决定的问题，并想知道你试图解决的问题。预测这些问题和你的回答将为你在面试中取得成功奠定基础。
+
+* 面试官希望与您就问题限制和参数进行来回的对话，所以请避免对提示做出假设。
+系统设计问题的初始提示往往故意忽略细节。许多候选人会犯这样的错误：根据初始提示推断细节，并根据这些假设制定解决方案。
+例如，假设面试官要求你设计一个“照片共享服务”，并对其功能进行最低限度的定义。这可能会导致一些候选人想象他们正在重建 Instagram，并开始设计，假设所有图像都相对较小，不会被仔细检查，并且可以接受大量压缩以节省存储和带宽。</br>
+但是面试官并没有让你重建 Instagram，所以你需要记住，照片共享服务有很多种。面试官可能想到了 Imgur 或 Photobucket 之类的网站，这些网站更适合基本的网络图片托管。或者他们可能在考虑 Flickr 或 500px 之类的网站，这些服务是为摄影师打造的，用于展示高分辨率作品。
+
+* ![想看到什么不想看到什么](../pic/system_design/9e9c054e344730fc82d5a2264e4606f.png)
+## uuid, snowflake id, auto_increment id 在 RDMS 使用上的区别
+
+uuid generated in client, not waste performance in db, and it is random so will trigger random IO</br>
+auto increment id is auto incremental , better for inserting, but will have hot spot problem, because it will trigger the split of the largest leaf nodes if in mysql, but using partitioning 
+table can solve it, but if so, we coupling the how we partition the table and id generating</br>
+so snowflakes id is the best, it is incremental, so better for insertion, not trigger random IO also not hotspot(have multiple tables)
 
 # 参考资料
 * 阿里云这里有常见的业务系统的设计方案
