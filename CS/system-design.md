@@ -1,6 +1,10 @@
 # 国外的系统设计面试
 
 ## some tips
+* 说自己之前没有做过系统面试, 但是会尽力
+
+Although I have not participated the system design, but I prepared a lot, I hope can present u a reasonable answer 
+
 * The clarification阶段最重要的是把重点说出来。而不是每个点都说。这块控制的。两三分钟比较好。然后自己做一些假设，然后问。然后说是假设。我们可以后面调整。然后呢，假设他觉得你不合理，他肯定会说出来，然后他说他没有说，那么就继续</br>尤其不要说那些最基本的什么可用性啊。嗯，单点容错这种。这最基本的是肯定要有的，不需要问，但是是在系统大体设计出来之后再谈如何实现而不是在需求澄清阶段
 
 * High level design最重要。这架构图。在那个data model和和API design,特别是API design没有这么重要。特别简单的接口就不需要说，不需要主动说，除非侧重考这部分
@@ -32,14 +36,82 @@
 例如，假设面试官要求你设计一个“照片共享服务”，并对其功能进行最低限度的定义。这可能会导致一些候选人想象他们正在重建 Instagram，并开始设计，假设所有图像都相对较小，不会被仔细检查，并且可以接受大量压缩以节省存储和带宽。</br>
 但是面试官并没有让你重建 Instagram，所以你需要记住，照片共享服务有很多种。面试官可能想到了 Imgur 或 Photobucket 之类的网站，这些网站更适合基本的网络图片托管。或者他们可能在考虑 Flickr 或 500px 之类的网站，这些服务是为摄影师打造的，用于展示高分辨率作品。
 
-* ![想看到什么不想看到什么](../pic/system_design/9e9c054e344730fc82d5a2264e4606f.png)
+* 想看到什么不想看到什么
+
+![](../pic/system_design/9e9c054e344730fc82d5a2264e4606f.png)
+
+* 你不需要对每一个细节都进行询问，但一定要确保为你所做的决定提供一些理由，并让面试官知道你的决定在不同情况下会如何改变。系统设计问题没有一个明确的答案，所以面试官只是想看看你能证明你的答案是合理的。
+
+* 面试官并不希望看到问题从开始到结束的既定路径。他们希望看到你的经验和决策会给他们带来怎样独特的方向。
+编码问题通常有一个预期的路径。通常你会从一个显而易见但效率低下的解决方案开始，然后面试官会提示你进行一系列改进。这些改进会引导你找到越来越有效的解决方案，直到你最终找到最佳实现。
+
+* 当在设计面试中面临选择时，很容易关注技术细节，但请记住，计算机系统是为人类用户服务的，因此您需要将技术决策锚定在它们所实现的用户体验上
+
+* 为了说话而说话只会让自己被面试官的绳索勒死
+
+* 您诚实地交流您所知道的和不知道的事情。
+
+* 不要跳过问题并忽略面试官的提示，不要试图在不解决面试官顾虑的情况下继续进行面试。
+
+* “我们可以使用这种类型的数据库，或者其他类型的数据库，这些都有其优点和缺点......并且基于所有这些权衡，我将使用那种类型的数据库。 ” , 说出优劣之后要做出决定
+
+* 我将使用 Cassandra...”除非你对此非常熟悉，因为下一个问题是：“为什么是 Cassandra 而不是 some_other_db？说nosql 就可以了
+
+* 在整个面试过程中，不要多次留下长时间（几分钟）的沉默, 一两分钟的关键沉默是可以的, 但是要注意时间, 实在不行了就说出问题和自己的思考
+
+* 面试官看过你的简历后，决定故意挑战你，让你设计一些你没有做过的东西。在这种情况下，不要担心——只要记住“设计系统没有正确的方法”。运用你最好的判断力和行业知识来想出一个合理的方案。此外，要诚实地说明你的知识空白，不要害怕提问。表现出你的好奇心和学习意愿。
+
+* 保持简单。分布式系统的第一条规则是，如果不需要，就应该避免使用它们！始终考虑维护成本。
+
+* 怎么样说不知道, I am not certain, but I have an idea
+
+* 如何以有益的方式反驳面试官
+
+承认并肯定面试官。以“当然”、“好的”或“是”开头，
+
+* 如何说不想陷入细节
+
+I not wanna jump into the details for now, but if we want, we can come back to it later
+
+* 如何说接下来的问题比较困难
+
+The challenge we would face would be ..., I know that would be a hard part, if I go wrong pls correct me(or may I ash u a question before I begin)
+
+* 面对冷漠的面试官
+
+不要大声思考。面对冷漠的面试官，你更容易保持沉默。最好在对自己要说的话没有把握之前不要开口
 ## uuid, snowflake id, auto_increment id 在 RDMS 使用上的区别
 
-uuid generated in client, not waste performance in db, and it is random so will trigger random IO</br>
-auto increment id is auto incremental , better for inserting, but will have hot spot problem, because it will trigger the split of the largest leaf nodes if in mysql, but using partitioning 
-table can solve it, but if so, we coupling the how we partition the table and id generating</br>
-so snowflakes id is the best, it is incremental, so better for insertion, not trigger random IO also not hotspot(have multiple tables)
+* uuid
 
+uuid generated in client, usually longer, not waste performance in db, and it is random so will trigger random IO</br>
+
+* auto increment id
+
+auto increment id is auto incremental , usually is 4 or 8 bytes, better for inserting, but can be guessed the pattern of the id, and will have hot spot problem, because it will trigger the split of the largest leaf nodes if in mysql, but using partitioning 
+table can solve it, but if so, we coupling the how we partition the table and id generating</br>
+
+* snowflake id
+
+ snowflakes id is the best, it is incremental, so better for insertion, not trigger random IO also not hotspot(have multiple tables)
+
+## RPC 和 REST 的区别
+
+* RPC 
+
+is used for internal communication; effient because it uses some effient protocol(such as serialization protocol), and it is used for complicated operations
+
+* REST API
+
+it is used in external communication, and because of json and http protocol, it is not effient as RPC; it is used for some simple operations; 
+
+## SQL DB VS NOSQL
+
+* SQL DB 
+
+  * SQL that searches for the data that you want without having to write custom code. This is an advantage over time because the compiler that transforms your SQL query into machine code can be optimized
+
+  * SQL has stronger ACID guarantees
 # 参考资料
 * 阿里云这里有常见的业务系统的设计方案
 
