@@ -140,6 +140,12 @@ The challenge we would face would be ..., I know that would be a hard part, if I
 * 打字和选择组件名字的时候要快
 
 * 图中的箭头可以是抽象的， 不需要直接表示数据流向， 因为这不是真实的系统设计图，表示真实的就太复杂和困难了
+
+* 需求阶段, 到准备开始下一个阶段之前, 许多人忘记了他们可以直接询问面试官是否遗漏了任何重要要求。
+
+* pull 方式的时候要计算一下tps , 如果tps 很高那么pull 就不适用.
+
+* 处理流任务和聚合的时候, 多层过滤有利于减小最后给到存储的压力
 ## uuid, snowflake id, auto_increment id 在 RDMS 使用上的区别
 
 ### uuid
@@ -242,8 +248,8 @@ Say we use ten random characters as our salt, and user A's password salt is "a8h
 
 80/20 rule: You want to store 80% of read requests in 20% of storage (or memory). Typically, these are the most popular requests.
 
-### 缓存离用户越近, 就越高效
-
+### 缓存离用户越近, 就越高效(The closer the cache is to the user, the more efficient it is)
+面试的时候要提一嘴这个, 在用到cache 的时候
 ### Write-through and Write-back patterns
 ![](../pic/system_design/image-4.png)
 the application directly writes the data to the cache. And then the cache synchronously (or asynchronously) writes the data to the database. When we write it synchronously it’s called “write-through,” and when we write it asynchronously it’s called “write-back” (or “write-behind”). In the asynchronous example, we put the data in a queue, which writes the data back to the database and improves the latency of writes on your application.
@@ -311,7 +317,18 @@ Hash trees allow efficient and secure verification of the contents of large data
 * 应用侧的cache + cache 集群, 在应用侧cache 按照另一个key 进行shard
 
 * 一致性hash，解决热点问题，因为可以加虚拟节点
+
+### data partitioning
+
+* 说分区的时候最好说要注意热点问题
+
+we better to design a good key partitioning strategy to reduce the hotspot.
 ## 常见系统设计题目
+### topK 设计问题
+
+#### 多层过滤, 提前聚合
+it is similar like the combination phase in the map-reduce, agg as early as it can, then output the agg data
+to the downstream, finally only a small fraction of data will arrive at the DB
 
 ### 设计一个支付系统
 通常要求是接受客户的请求, 请求第三方支付系统完成支付, 要求exactly once
