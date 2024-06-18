@@ -198,6 +198,13 @@ the application directly writes the data to the cache. And then the cache synchr
 3. Ensure that the order of messages is maintained.
 4. At least once delivery with idempotent consumers.
 
+#### 消息队列的引用原因
+当有以下几种原因出现的时候会引用 MQ
+1. decouple the producer and consumer, producer do not need to care about how to consume
+2. asynchronous processing
+3. persist the msg, then will be multiple consumers to consume
+4. can easily scale the consumer to handle large traffic
+ 
 ### replication
 #### single leader
 #### multiple leaders
@@ -213,6 +220,33 @@ P2P, block chain
 1. 避免单点故障并提高机器故障时的可用性。
 2. 为了更好地服务全球用户，通过按不同的地理位置组织副本来为附近的副本的用户提供服务。
 3. 提高吞吐量。机器越多，可以满足的请求就越多
+## 常见系统设计题目
+
+### 设计一个支付系统
+通常要求是接受客户的请求, 请求第三方支付系统完成支付, 要求exactly once
+
+#### 异步处理
+先使用 idempotent key 记录数据库后, 再请求第三方, 根据可重试请求和不可重试请求进行重试
+
+#### RPC 调用下游银行和记录幂等性操作的前置操作分开, 避免RPC 受到攻击
+
+[引用自airbnb payment service](https://medium.com/airbnb-engineering/avoiding-double-payments-in-a-distributed-payments-system-2981f6b070bb#id_token=eyJhbGciOiJSUzI1NiIsImtpZCI6ImMzYWJlNDEzYjIyNjhhZTk3NjQ1OGM4MmMxNTE3OTU0N2U5NzUyN2UiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiIyMTYyOTYwMzU4MzQtazFrNnFlMDYwczJ0cDJhMmphbTRsamRjbXMwMHN0dGcuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiIyMTYyOTYwMzU4MzQtazFrNnFlMDYwczJ0cDJhMmphbTRsamRjbXMwMHN0dGcuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMTQ3MDM0MzQyMjQyMjg4MjM1MzQiLCJlbWFpbCI6IjEyMzk1NjI1MDhndWdlQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYmYiOjE3MTg2ODA2ODAsIm5hbWUiOiJKZWRpIEtuaWdodCIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS9BQ2c4b2NLQm5WbVZweDdhM0hvbVRDZVFYMmJBR3VwOFpOMzI2N0ViTnY2SzhkR1Z3cWxkX2c9czk2LWMiLCJnaXZlbl9uYW1lIjoiSmVkaSIsImZhbWlseV9uYW1lIjoiS25pZ2h0IiwiaWF0IjoxNzE4NjgwOTgwLCJleHAiOjE3MTg2ODQ1ODAsImp0aSI6ImUzNTgxZmIyYjI4MmJlZjY5YmNhYjM2YzQ5ZWI0OWU1ZWU2MjcxMzUifQ.m4AiCILALwd6YdYjLmhngPLfLu3vXle0TTUxtaTEIVwmlHJRuqjYglm5LCJtBGsMW-nttQbowi8DsopQJ1nSP4CJ8crlN3rRE01MWlUWRnTM-9sjQ8Ez_IxqLVx68nt1coC3m84fXTBDp0JMjCcxPiutK59VmcPPhK5slCm7mMjFCtvi1OqB0Nff6U7P0vywDtPXMoH_2jMAtyPj3TzndIHLr-ywxPEY9CyvKaRt4xNJLoE8z_ILUMW576AwFiCvBYTUQveqIgRFqVA51J96maV9KtJzHce58tJt7b_PJstM-7Zp59hxtF_IwupHAY1BLGFwqiGYkIapiT-dVbgvUQ)
+![alt text](../pic/system_design/image5.png)
+
+![alt text](../pic/system_design/image6.png)
+
+#### 记录 idempotent key 的数据库操作要和其他相关操作, 合并到同一个数据事务中
+就是pre-commit 只能由一个数据库事务组成, 不能分开多个, 否则不能保证原子性, 原理同kafka commit
+#### 如何避免客户端的多次无效重试呢
+1. 限流可以避免恶意的, 通过LB 实现
+2. 如果是正常的提交重试, 如果前面已经有个请求在pending 了, 则可以检查后直接返回特定错误码告诉客户端晚一点重试, too many request 之类的
+
+#### 记录从第三方返回的response, 以便后续直接根据相同的请求返回给客户端. 
+
+#### sticky to master
+prevent the data lag between the master and slave
+
+#### 如何避免两个请求同时执行, 可以采取数据库加锁的方式
 
 # 参考资料
 ## 阿里云这里有常见的业务系统的设计方案
