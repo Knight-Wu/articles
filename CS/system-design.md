@@ -147,7 +147,11 @@ The challenge we would face would be ..., I know that would be a hard part, if I
 
 * 处理流任务和聚合的时候, 多层过滤有利于减小最后给到存储的压力
 
-* 用户接入层填access layer , 然后填包含LB, DNS, auth service 等这些.
+* 用户接入层填access layer , 然后填包含LB, DNS, auth(JWT used for Single Sign-On) 等这些.
+
+* 如果广度优先思考的方法想不到合适的service , 就使用DFS 深度优先, 根据entity 的关系或者重点功能点去写下来思考, 过程中可能就会想到涉及到其他service
+
+* 测试google 共享窗口, 能不能看到其他窗口
 ## uuid, snowflake id, auto_increment id 在 RDMS 使用上的区别
 
 ### uuid
