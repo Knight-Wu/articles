@@ -146,6 +146,8 @@ The challenge we would face would be ..., I know that would be a hard part, if I
 * pull 方式的时候要计算一下tps , 如果tps 很高那么pull 就不适用.
 
 * 处理流任务和聚合的时候, 多层过滤有利于减小最后给到存储的压力
+
+* 用户接入层填access layer , 然后填包含LB, DNS, auth service 等这些.
 ## uuid, snowflake id, auto_increment id 在 RDMS 使用上的区别
 
 ### uuid

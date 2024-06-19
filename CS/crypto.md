@@ -1,6 +1,51 @@
 # TODO
 1. 究竟数字签名如何促成交易.
 
+# 钱包
+## 私钥, 公钥, 地址
+通过一些手段例如助记词生成用户的私钥, 用私钥签名交易后, 把交易信息发到链上, 使用椭圆曲线加密算法（如ECDSA）从私钥生成公钥。对公钥进行哈希处理（不同的加密货币有不同的哈希算法和编码格式）生成用户地址
+
+* 地址冲突
+
+有可能的, 但是几率很低, SHA-256：输出是256位（32字节），即有2^256种可能的哈希值。即使发生了地址碰撞, 没有私钥也是无法访问地址的
+
+* 私钥冲突
+
+比特币私钥是一个256位的随机数。私钥空间有2^256种可能性，大约等于10^77, 每种可能性出现的概率相同, 所以冲突概率几乎等于零
+## 智能合约钱包
+### feature
+* Smart contract code is public: Anyone can view, audit and verify the smart contract code.
+* Blockchain data transparency: All transactions and operations are recorded on the blockchain, open and transparent.
+* Immutable ledger: Blockchain technology ensures the immutability of records.
+* Community auditing and verification: Smart contracts are usually audited by the community and professional auditing companies to ensure their security and correctness.
+
+## 中心化交易所的钱包如何保证安全
+Tiered storage architecture
+### Hot wallet layer
+handles daily transactions and user withdrawal requests, and has the ability to respond quickly.
+### Cold wallet layer 
+stores most of the funds, keeps them offline, and only interacts with the hot wallet when large transfers are required.
+
+### Multi-signature control
+
+Interaction between cold and hot wallets requires multi-signature authorization to prevent single points of failure and internal abuse.
+
+### Deposit
+
+ Users deposit cryptocurrencies to the address provided by Binance, with funds going into the hot wallet first. Hot wallets regularly transfer funds beyond daily needs to cold wallets.
+### Withdrawal
+ When a user initiates a withdrawal request, funds are transferred from the hot wallet. If the hot wallet balance is insufficient, the system will initiate the process of transferring funds from the cold wallet to the hot wallet
+# 交易费用, gas
+### 为什么需要gas
+#### Prevent Network Abuse
+Gas fees ensure every action costs something, limiting how much computing power each user can use. And prevent DDOS attack.
+#### Miner Rewards
+Motivate Miners to Process Transactions
+#### Encourage Efficient Code
+ Developers aim to write optimized code to use less gas, making smart contracts cheaper and more efficient for users.
+
+#### Build Economic Models
+ Gas fees help create an economic system within the blockchain, ensuring the network can sustain itself through fees.
 # network
 ## 如何发现其他节点, 服务发现的
 * 通过dns 动态获取对应ip, 如果获取超时, 则直连在代码中写死的一批长时间保活的服务器. IBD 节点如果和任意节点连上也就获得了该节点知晓的所有节点, 由此可见p2p 架构的优势. 
