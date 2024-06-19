@@ -71,7 +71,7 @@ Although I have not participated the system design, but I prepared a lot, I hope
 
 * 如何说不想陷入细节
 
-I not wanna jump into the details for now, but if we want, we can come back to it later
+I not wanna jump into the details now, but if we want, we can come back to it later
 
 * 如何说接下来的问题比较困难
 
