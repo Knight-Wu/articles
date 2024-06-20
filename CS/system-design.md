@@ -152,13 +152,15 @@ The challenge we would face would be ..., I know that would be a hard part, if I
 * 如果广度优先思考的方法想不到合适的service , 就使用DFS 深度优先, 根据entity 的关系或者重点功能点去写下来思考, 过程中可能就会想到涉及到其他service
 
 * write all important down, 写requirement 和 estimation 之后写下主要的entity , 和实体要做的简单api 操作, 以及他们的关系. requirement 和 estimation 在十分钟之内搞完, 后面可以补充, 然后deep dive 问what part u would want me to deep dive ?
-* 测试google 共享窗口, 能不能看到其他窗口
 * 选择db 的时候, 先考虑是否需要ACID 和strong consistency, 再考虑schema 是否经常改变, 如果都不需要就是nosql, 再说nosql 的优点和缺点和sql 的优点和缺点
 * 当碰到数数聚合事件类题目，数据的refreshness很关键，多久能算出这个数据当有更新的时候; 这类题目有个可以统一数据的model ，方便后续的开发和存储
 * 做一些决定和一些选择时，一定要说清楚上下文、上下门。才是关键，否则面试官会认为你比较菜，因为可能他想的不一样
 * 通用的一点就是一些数据分为better for reading format 和writing format ，合适的地方提出来; 说选什么数据库选什么存储的时候可以说。嗯。怎么读关系到怎么存。这是个signal
 * 增加一个系统，它的一个缺点就是增加系统的复杂度。不仅包括系统的还包括组织上的; Tradeoff 不仅仅要说系统的，还要说组织架构的人的
 * 拿到一个没有做过的题目, 从最核心的数据入手, 然后read path, write path 写出可能的方案和trade off, 最后过了一遍之后, 自己也有感觉了, 就可以选一个path 画图. 
+* Tradeoff 不仅仅要说系统的，还要说组织架构的人的
+* 可以一开始有把握的时候一句话说下这道题是一个什么题目
+* 如何解决这道题的思路更重要
 ## uuid, snowflake id, auto_increment id 在 RDMS 使用上的区别
 
 ### uuid
@@ -189,27 +191,25 @@ it is used in external communication, and because of json and http protocol, it 
 
 ![](../pic/system_design/image.png)
 ### SQL DB 
-
-  * SQL that searches for the data that you want without having to write custom code. This is an advantage over time because the compiler that transforms your SQL query into machine code can be optimized
-
-  * SQL has stronger ACID guarantees
-	* SQL with B plus trees index, means slower when ingestion compared to NOSQL db，it uses
+* SQL that searches for the data that you want without having to write custom code. This is an advantage over time because the compiler that transforms your SQL query into machine code can be optimized
+* SQL has stronger ACID guarantees
+* SQL with B plus trees index, means slower when ingestion compared to NOSQL db，it uses
 log to append，it is sequential disk write rather than the b plus tree will trigger 
 random disk IO and write Amplification，the reason of random disk io is the pages it going 
 to write are not sequential。the reason of write amplification is if it is going to modify
 one record in that page，will need to rewrite the whole page。
-	* SQL has higher latency，This is because strong consistency requires that the database lock particular fields when it is being modified.
-	* SQL not work well in mixed schema，because if a new val is introduced，it will update the data
+* SQL has higher latency，This is because strong consistency requires that the database lock particular fields when it is being modified.
+* SQL not work well in mixed schema，because if a new val is introduced，it will update the data
 in all nodes，this is time consuming。
 
 ### NOSQL
-	* faster for writes but slower for read
-  * flexible data models
-  * easy to scale 
-  * machine cost is usually cheaper
-	* LSMT data structure and how compaction and SS tables improve efficiency
-	* not suitable for strong consistence
-	* usually not support complicated query。
+* faster for writes but slower for read
+* flexible data models
+* easy to scale 
+* machine cost is usually cheaper
+* LSMT data structure and how compaction and SS tables improve efficiency
+* not suitable for strong consistence
+* usually not support complicated query。
 
 ## web security
 ### rainbow table
@@ -270,10 +270,9 @@ Say we use ten random characters as our salt, and user A's password salt is "a8h
 ![](../pic/system_design/image-4.png)
 the application directly writes the data to the cache. And then the cache synchronously (or asynchronously) writes the data to the database. When we write it synchronously it’s called “write-through,” and when we write it asynchronously it’s called “write-back” (or “write-behind”). In the asynchronous example, we put the data in a queue, which writes the data back to the database and improves the latency of writes on your application.
 
-* disadvantage
-
-  * cache unnecessary data
-  *  if the database goes down before the data is written to the database, this causes inconsistency.
+### disadvantage
+* cache unnecessary data
+*  if the database goes down before the data is written to the database, this causes inconsistency.
 ### message queue
 #### 根据消息队列的不同实现，可以有以下属性的不同组合
 
@@ -781,7 +780,7 @@ for t=t1;t <= t2; t++{
 
 采用发消息, 数据只显示在用户客户端上, 换了个客户端需要从其他客户端同步消息, 一个人读了一篇文章, 就给他所有好友发一条消息, 只累加文章读取数. 
 
-## LRUCache
+## LRUCache(Least Recently Used)
 ```
 // here is LRUCache for only update when access(get)
 public class LRUCache<K, V> {
