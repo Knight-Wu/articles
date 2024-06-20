@@ -151,7 +151,14 @@ The challenge we would face would be ..., I know that would be a hard part, if I
 
 * 如果广度优先思考的方法想不到合适的service , 就使用DFS 深度优先, 根据entity 的关系或者重点功能点去写下来思考, 过程中可能就会想到涉及到其他service
 
+* write all important down, 写requirement 和 estimation 之后写下主要的entity , 和实体要做的简单api 操作, 以及他们的关系. requirement 和 estimation 在十分钟之内搞完, 后面可以补充, 然后deep dive 问what part u would want me to deep dive ?
 * 测试google 共享窗口, 能不能看到其他窗口
+* 选择db 的时候, 先考虑是否需要ACID 和strong consistency, 再考虑schema 是否经常改变, 如果都不需要就是nosql, 再说nosql 的优点和缺点和sql 的优点和缺点
+* 当碰到数数聚合事件类题目，数据的refreshness很关键，多久能算出这个数据当有更新的时候; 这类题目有个可以统一数据的model ，方便后续的开发和存储
+* 做一些决定和一些选择时，一定要说清楚上下文、上下门。才是关键，否则面试官会认为你比较菜，因为可能他想的不一样
+* 通用的一点就是一些数据分为better for reading format 和writing format ，合适的地方提出来; 说选什么数据库选什么存储的时候可以说。嗯。怎么读关系到怎么存。这是个signal
+* 增加一个系统，它的一个缺点就是增加系统的复杂度。不仅包括系统的还包括组织上的; Tradeoff 不仅仅要说系统的，还要说组织架构的人的
+* 拿到一个没有做过的题目, 从最核心的数据入手, 然后read path, write path 写出可能的方案和trade off, 最后过了一遍之后, 自己也有感觉了, 就可以选一个path 画图. 
 ## uuid, snowflake id, auto_increment id 在 RDMS 使用上的区别
 
 ### uuid
@@ -197,6 +204,9 @@ in all nodes，this is time consuming。
 
 ### NOSQL
 	* faster for writes but slower for read
+  * flexible data models
+  * easy to scale 
+  * machine cost is usually cheaper
 	* LSMT data structure and how compaction and SS tables improve efficiency
 	* not suitable for strong consistence
 	* usually not support complicated query。
@@ -316,8 +326,6 @@ Hash trees allow efficient and secure verification of the contents of large data
 桶里积累的令牌可以应对burst traffic 
 
 ### 热点问题
-* 名人的key 热点问题，可以针对某个key 监测出来之后加1-10的后缀，分散到多个key 只对某个名人的key 生效
-
 * 可以监测热点key , 然后有热点, 后端服务推送所有服务器
 
 * 应用侧的cache + cache 集群, 在应用侧cache 按照另一个key 进行shard
@@ -330,6 +338,9 @@ Hash trees allow efficient and secure verification of the contents of large data
 
 we better to design a good key partitioning strategy to reduce the hotspot.
 ## 常见系统设计题目
+### 视频存储类题目
+#### 需要视频转码, 用户上传之后使用专门的硬件去更新这个视频, 更新视频的新的位置, 为了转换成cpu 的格式, 省cpu, gpu 比较贵
+
 ### topK 设计问题
 
 #### 多层过滤, 提前聚合
