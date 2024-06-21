@@ -202,7 +202,7 @@ one record in that page，will need to rewrite the whole page。
 * SQL not work well in mixed schema，because if a new val is introduced，it will update the data
 in all nodes，this is time consuming。
 
-### NOSQL
+### NOSQL DB
 * faster for writes but slower for read
 * flexible data models
 * easy to scale 
@@ -210,6 +210,10 @@ in all nodes，this is time consuming。
 * LSMT data structure and how compaction and SS tables improve efficiency
 * not suitable for strong consistence
 * usually not support complicated query。
+
+### memory + WAL(redis can support)
+* simple and fast, but only support simple query and small data size
+* use replica + snapshot + WAL to tolerance partition failure, take some time to recover if replica goes down
 
 ## web security
 ### rainbow table
@@ -251,6 +255,13 @@ Say we use ten random characters as our salt, and user A's password salt is "a8h
 
 （6）为了减少盗用，JWT 不应该使用 HTTP 协议明码传输，要使用 HTTPS 协议传输。
 
+## CDN
+1. Only serve the most popular videos from CDN and other videos from our high capacity
+2. For less popular content, we may not need to store many encoded video versions. Short
+videos can be encoded on-demand.
+3. Some videos are popular only in certain regions. There is no need to distribute these
+videos to other regions.
+4. expensive
 ## 缓存
 本质上，这正是缓存的含义：存储昂贵的计算，以便您不必再次计算。
 
@@ -272,7 +283,10 @@ the application directly writes the data to the cache. And then the cache synchr
 
 ### disadvantage
 * cache unnecessary data
-*  if the database goes down before the data is written to the database, this causes inconsistency.
+* inconsistency.
+
+### solve inconsistency between cache and db
+write operation invalid the cache first, then write db , then write cache 
 ### message queue
 #### 根据消息队列的不同实现，可以有以下属性的不同组合
 
@@ -768,6 +782,22 @@ for t=t1;t <= t2; t++{
 }
 
 ## 秒杀系统, 抢红包系统
+### 思想
+1. 商品有限, 大部分是无效请求, 需要层层过滤拦截流量
+2. 充分利用缓存
+3. 消息框架进行削峰. 
+
+### 各层设计
+![enter image description here](https://drive.google.com/uc?id=1rbSNXgqxHxJYnxVr8jjVMgNmv5-EjJoJ)
+* web 层
+页面限制提交速度, 防止重复提交; 同一个userId , 做页面缓存
+* 服务层
+读请求直接读缓存, 缓存的是商品的库存, 每次库存更改的时候更新缓存, 写请求根据商品数量直接放队列,  队列可以是各台应用服务器的内存队列, 也可以是消息框架的队列,  同步等待下游的返回, 再把队列的请求去访问订单系统, 支付系统的数据库
+* 数据库层
+分库分表意义不大, 压力大的请求基本都会落在一个表的. 
+[https://time.geekbang.org/column/intro/127](https://time.geekbang.org/column/intro/127)
+
+### 流程
 微信红包分为发, 抢, 拆, 看到领取结果几个阶段, 
 发就是发一条特殊类型的消息到群聊里, 
 然后抢可以设计为有个队列, 按照用户请求的顺序排队, 然后进队列前和后判断红包有没有抢完, 如果还有红包就到拆的页面, 就是多个请求并发 CAS 获取红包金额, 减红包数量, 红包的随机金额是根据发红包的时候
