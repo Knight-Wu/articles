@@ -1,55 +1,161 @@
 
 ---
 
-# java IO的历史, 为什么IO 模型需要这样进化, 好在哪
-从一开始的Socket BIO, 同步阻塞, 等待连接和读写的时候是阻塞的, 只能忙等,并且一个连接必须开多一个线程去接受否则会因为一个客户端慢导致其他客户端受影响; 若开多个线程会导致线程切换开销大, 无法应对海量连接; 到1.4的 NIO, 同步非阻塞, 连接和读写请求非阻塞, 单线程采用selector去接受请求, 再根据事件的不同用不同的线程去处理, 但是读写,创建连接仍然是同步的, 需要等待读写,连接的完成才能进行业务处理, 业务线程会等待读写的完成; 再到 1.7的NIO2(也可以叫做 AIO ,异步非阻塞IO), 完全是异步通知的模式, 读写以及连接完了通过回调函数通知业务线程, 业务线程发生切换处理读写事件, 处理完之后才会继续之前的工作, 等于是完全异步通知的模式, 不浪费任何一点cpu 的资源.
+# java IO的历史, 为什么IO 模型需要这样进化
+从一开始的Socket BIO, 同步阻塞, 等待连接和读写的时候是阻塞的, 只能忙等, 并且一个事件（读,写, 建立连接)必须开多一个线程去处理, 因为读写等函数是阻塞的, 需要等待实际读写的执行, 那么一阻塞, 新的请求到来时就需要新开线程, 否则会造成新连接的排队; 那么就会带来两个问题一个是线程数过多, 二线程切换开销大, 导致无法应对海量连接; 
+</br>
+到1.4的 NIO(Non blocking IO), 同步非阻塞, 连接和读写请求非阻塞, 单线程采用selector去接受请求, 再根据事件的不同用不同的线程去处理 ,NIO使用了多路复用器机制，以socket使用来说，多路复用器通过不断轮询各个连接的状态，只有在socket有流可读或者可写时，应用程序才需要去处理它， 对比BIO 就是不阻塞应用但是需要轮询事件, 事件到来的时候代表读写等操作是可以进行了, 那么既然读写等操作不需要等待, IO 线程池一般开启cpu 核心个线程即够, 速度是内存拷贝的速度, GB/s 的级别, 那么避免了BIO 的线程多, 切换开销大的问题, 可以应对海量连接了;
+</br>
+AIO 是基于事件回调机制实现的，也就用户线程操作之后会直接返回，不会堵塞在那里，当读写处理完成，操作系统会通知相应的线程进行后续的操作。不需要再像 NIO 去轮询事件, 完全异步通知的模式, 需要操作系统支持.
+
+## 异步同步,阻塞和非阻塞
+阻塞 VS 非阻塞：人是否坐在水壶前面一直等。
+</br>
+同步 VS 异步：水壶是不是在水烧开之后主动通知人
+
+BIO （Blocking I/O）：同步阻塞 I/O 模式。
+</br>
+NIO （New I/O）：同步非阻塞模式。
+</br>
+AIO （Asynchronous I/O）：异步非阻塞 I/O 模型。
 
 
 
 
-#### 服务器单线程处理
-> 可能一个客户端慢导致其他客户端受影响
-    
-#### 服务器多线程处理
-*问题* 
- 1.1 可以开启cpu核心数个线程进行并发处理, 但是如何处理后续海量连接等问题...
+## BIO 
+![alt text](../pic/system_design/image8.png)
+从一开始的Socket BIO, 同步阻塞, 等待连接和读写的时候是阻塞的, 只能忙等, 并且一个事件（读,写, 建立连接)必须开多一个线程去处理, 因为读写等函数是阻塞的, 需要等待实际读写的执行, 那么一阻塞, 新的请求到来时就需要新开线程, 否则会造成新连接的排队; 那么就会带来两个问题一个是线程数过多, 二线程切换开销大, 导致无法应对海量连接; 
 
-#### nio处理, 主线程根据selector获取到不同的事件(包括连接, 写和读)
-主线程轮询selector, 获取到accept 事件后, 表明有新连接进来, 并把这个新连接注册一个读事件到selector 上, 当这个连接可读的时候, IO 线程就会处理读事件, 完成连接的读.  在处理完IO后，业务一般还会有自己的业务逻辑，有的还会有其他的阻塞IO，如DB操作，RPC等。只要有阻塞，就需要新起一个线程, 否则当前线程. 
-但是仍然会面对 1.1的问题
+## NIO
+![alt text](../pic/system_design/image7.png)
+到1.4的 NIO(Non blocking IO), 同步非阻塞, 连接和读写请求非阻塞, 单线程采用selector去接受请求, 再根据事件的不同用不同的线程去处理, 这是一种IO多路复用的思想, 但是对比BIO 就是事件到来的时候代表读写等操作是可以进行了, 但是需要等待数据从网卡到内存的拷贝, 那么既然读写等操作不需要等待, IO 线程池一般开启cpu 核心个线程即够, 速度是内存拷贝的速度, GB/s 的级别, 那么避免了BIO 的线程多, 切换开销大的问题, 可以应对海量连接了;
+
+### 代码
 ```
+/**
+ * NIO 服务端
+ */
+public class NioServerTest {
 
-interface ChannelHandler{
-      void channelReadable(Channel channel);
-      void channelWritable(Channel channel);
-   }
-   class Channel{
-     Socket socket;
-     Event event;//读，写或者连接
-   }
+    public static void main(String[] args) throws IOException {
+        // 打开服务器套接字通道
+        ServerSocketChannel ssc = ServerSocketChannel.open();
+        // 服务器配置为非阻塞
+        ssc.configureBlocking(false);
+        // 进行服务的绑定，监听8080端口
+        ssc.socket().bind(new InetSocketAddress(8080));
 
-   //IO线程主循环:
-   class IoThread extends Thread{
-   public void run(){
-   Channel channel;
-   while(channel=Selector.select()){//选择就绪的事件和对应的连接
-      if(channel.event==accept){
-         registerNewChannelHandler(channel);//如果是新连接，则注册一个新的读写处理器
-      }
-      if(channel.event==write){
-         getChannelHandler(channel).channelWritable(channel);//如果可以写，则执行写事件
-      }
-      if(channel.event==read){
-          getChannelHandler(channel).channelReadable(channel);//如果可以读，则执行读事件
-      }
+        // 构建一个Selector选择器,并且将channel注册上去
+        Selector selector = Selector.open();
+        // 将serverSocketChannel注册到selector,并对accept事件感兴趣(serverSocketChannel只能支持accept操作)
+        ssc.register(selector, SelectionKey.OP_ACCEPT);
+
+        while (true){
+            // 查询指定事件已经就绪的通道数量，select方法有阻塞效果,直到有事件通知才会有返回，如果为0就跳过
+            int readyChannels = selector.select();
+            if(readyChannels == 0) {
+                continue;
+            };
+            //通过选择器取得所有key集合
+            Set<SelectionKey> selectedKeys = selector.selectedKeys();
+            Iterator<SelectionKey> iterator = selectedKeys.iterator();
+            while (iterator.hasNext()){
+                SelectionKey key = iterator.next();
+                //判断状态是否有效
+                if (!key.isValid()) {
+                    continue;
+                }
+                if (key.isAcceptable()) {
+                    // 处理通道中的连接事件
+                    ServerSocketChannel server = (ServerSocketChannel) key.channel();
+                    SocketChannel sc = server.accept();
+                    sc.configureBlocking(false);
+                    System.out.println("接收到新的客户端连接，地址：" + sc.getRemoteAddress());
+
+                    // 将通道注册到选择器并处理通道中可读事件
+                    sc.register(selector, SelectionKey.OP_READ);
+                } else if (key.isReadable()) {
+                    // 处理通道中的可读事件
+                    SocketChannel channel = (SocketChannel) key.channel();
+                    ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+                    while (channel.isOpen() && channel.read(byteBuffer) != -1) {
+                        // 长连接情况下,需要手动判断数据有没有读取结束 (此处做一个简单的判断: 超过0字节就认为请求结束了)
+                        if (byteBuffer.position() > 0) {
+                            break;
+                        };
+                    }
+                    byteBuffer.flip();
+
+                    //获取缓冲中的数据
+                    String result = new String(byteBuffer.array(), 0, byteBuffer.limit());
+                    System.out.println("收到客户端发送的信息，内容：" + result);
+
+                    // 将通道注册到选择器并处理通道中可写事件
+                    channel.register(selector, SelectionKey.OP_WRITE);
+                } else if (key.isWritable()) {
+                    // 处理通道中的可写事件
+                    SocketChannel channel = (SocketChannel) key.channel();
+                    ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+                    byteBuffer.put("server send".getBytes());
+                    byteBuffer.flip();
+                    channel.write(byteBuffer);
+
+                    // 将通道注册到选择器并处理通道中可读事件
+                    channel.register(selector, SelectionKey.OP_READ);
+                    //写完之后关闭通道
+                    channel.close();
+                }
+                //当前事件已经处理完毕，可以丢弃
+                iterator.remove();
+            }
+        }
     }
-   }
-   Map<Channel，ChannelHandler> handlerMap;//所有channel的对应事件处理器
-  }
-
+}
 ```
 
-* buffer
+```
+/**
+ * NIO 客户端
+ */
+public class NioClientTest {
+
+    public static void main(String[] args) throws IOException {
+        // 打开socket通道
+        SocketChannel sc = SocketChannel.open();
+        //设置为非阻塞
+        sc.configureBlocking(false);
+        //连接服务器地址和端口
+        sc.connect(new InetSocketAddress("127.0.0.1", 8080));
+        while (!sc.finishConnect()) {
+            // 没连接上,则一直等待
+            System.out.println("客户端正在连接中，请耐心等待");
+        }
+
+        // 发送内容
+        ByteBuffer writeBuffer = ByteBuffer.allocate(1024);
+        writeBuffer.put("Hello，我是客户端".getBytes());
+        writeBuffer.flip();
+        sc.write(writeBuffer);
+
+        // 读取响应
+        ByteBuffer readBuffer = ByteBuffer.allocate(1024);
+        while (sc.isOpen() && sc.read(readBuffer) != -1) {
+            // 长连接情况下,需要手动判断数据有没有读取结束 (此处做一个简单的判断: 超过0字节就认为请求结束了)
+            if (readBuffer.position() > 0) {
+                break;
+            };
+        }
+        readBuffer.flip();
+
+        String result = new String(readBuffer.array(), 0, readBuffer.limit());
+        System.out.println("客户端收到服务端：" + sc.socket().getRemoteSocketAddress() + "，返回的信息：" + result);
+
+        // 关闭通道
+        sc.close();
+    }
+}
+```
+### buffer
 jdk 文档如下: 
 https://docs.oracle.com/javase/7/docs/api/java/nio/channels/SocketChannel.html#read(java.nio.ByteBuffer[])
 
@@ -84,67 +190,101 @@ clear, 保证还有remaning, 因为remaning = limit- position
  * MappedByteBuffer 
    可以作为利用内存来映射region of file, 可以快速进行大文件的读写, 详见 jdk官方文档.
 
-* channel
+### buffer vs stream
+ stream不是缓存的, 不能移动数据, 除非进行cache, 而buffer 是一整块数据过来, 可以移动数据, 移动指针, 更加的灵活
+
+### channel
 > A Java NIO FileChannel is a channel that is connected to a file. Using a file channel you can read data from a file, and write data to a file. The Java NIO FileChannel class is NIO's an alternative to reading files with the standard Java IO API. A FileChannel cannot be set into non-blocking mode. It always runs in blocking mode.
 
-* selector
+### selector
 用于单线程去接受网络事件, 包括读写,连接,接收; 避免了多线程接收连接导致的资源消耗高, 线程上下文切换慢, 也不能解决海量连接的问题.
 
-* 同步与异步, 阻塞与非阻塞
-    同步指的是主线程需要轮询事件是否完成, 异步则是事件完成后通知主线程; 阻塞则指主线程在等待结果时, 不做其他事, 非阻塞指主线程在等待结果时可以做其他事; 一般采用的都是异步非阻塞才能达到不切换线程上下文, 不忙等的问题.
 
-#### nio与bio的区别
-* buffer vs stream
-> stream不是缓存的, 不能移动数据, 除非进行cache, 而buffer 是一整块数据过来, 可以移动数据, 移动指针, 更加的灵活
-
-* non blocking vs blocking
-> bio 每接收到一个新的连接, 因为接收连接,再进行读写这个过程是阻塞的, 不知道什么时候数据会过来,  必须要创建一个新的线程去等待数据, 若数据没准备好, 则线程结束, 会频繁切换唤醒线程, 保存线程上下文, 造成大量的资源浪费; 而nio 是主线程去接收成百上千数量的连接, 并在selector上面注册对应的事件, 当数据准备好之后, 事件驱动的方式给读写线程一个通知(操作系统提供的select/poll/epoll/kqueue 等函数功能), 让读写线程知道数据是ok的, 立马进行读写(一般是开启cpu 核心个线程数, 该过程是同步阻塞的, 占用cpu的工作, 属于memory copy, 速率在 GB/s 以上, 性能很高), nio相比于bio 适用于大量长连接的场景, 例如即时通讯软件 qq.  
-
-#### AIO(异步非阻塞IO)
+## AIO
+AIO 是基于事件回调机制实现的，也就用户线程操作之后会直接返回，不会堵塞在那里，当读写处理完成，操作系统会通知相应的线程进行后续的操作。不需要再像 NIO 去轮询
 
 ```
-// 使用server上的accept方法
+/**
+ * aio 服务端
+ */
+public class AioServer {
 
-public abstract <A> void accept(A attachment,CompletionHandler<AsynchronousSocketChannel,? super A> handler);
-CompletionHandler为回调接口，当有客户端accept之后，就做handler中的事情。
+    public AsynchronousServerSocketChannel serverChannel;
 
-socketServer = AsynchronousServerSocketChannel.open().bind(new InetSocketAddress (PORT));
-socketServer.accept(null,
-                new CompletionHandler<AsynchronousSocketChannel, Object>() {
-                    final ByteBuffer buffer = ByteBuffer.allocate(1024);
- 
-                    public void completed(AsynchronousSocketChannel result,
-                            Object attachment) {
-                        System.out.println(Thread.currentThread().getName());
-                        Future<Integer> writeResult = null;
-                        try {
-                            buffer.clear();
-                            result.read(buffer).get(100, TimeUnit.SECONDS);
-                            buffer.flip();
-                            writeResult = result.write(buffer);
-                        } catch (InterruptedException | ExecutionException e) {
-                            e.printStackTrace();
-                        } catch (TimeoutException e) {
-                            e.printStackTrace();
-                        } finally {
-                            try {
-                                server.accept(null, this);
-                                writeResult.get();
-                                result.close();
-                            } catch (Exception e) {
-                                System.out.println(e.toString());
+    /**
+     * 监听客户端请求
+     * @throws Exception
+     */
+    public void listen() throws Exception {
+        //打开一个服务端通道
+        serverChannel = AsynchronousServerSocketChannel.open();
+        serverChannel.bind(new InetSocketAddress(8080));//监听8080端口
+        //服务监听
+        serverChannel.accept(this, new CompletionHandler<AsynchronousSocketChannel,AioServer>(){
+
+            @Override
+            public void completed(AsynchronousSocketChannel client, AioServer attachment) {
+                try {
+                    if (client.isOpen()) {
+                        System.out.println("接收到新的客户端连接，地址：" + client.getRemoteAddress());
+                        final ByteBuffer buffer = ByteBuffer.allocate(1024);
+                        //读取客户端发送的信息
+                        client.read(buffer, client, new CompletionHandler<Integer, AsynchronousSocketChannel>(){
+
+                            @Override
+                            public void completed(Integer result, AsynchronousSocketChannel attachment) {
+                                try {
+                                    //读取请求，处理客户端发送的数据
+                                    buffer.flip();
+                                    String content = new String(buffer.array(), 0, buffer.limit());
+                                    System.out.println("服务端收到客户端发送的信息：" + content);
+
+                                    //向客户端发送数据
+                                    ByteBuffer writeBuffer = ByteBuffer.allocate(1024);
+                                    writeBuffer.put("server send".getBytes());
+                                    writeBuffer.flip();
+                                    attachment.write(writeBuffer).get();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                             }
-                        }
-                    }
- 
-                    @Override
-                    public void failed(Throwable exc, Object attachment) {
-                        System.out.println("failed: " + exc);
-                    }
-                });
-// 这里使用了Future来实现即时返回
 
+                            @Override
+                            public void failed(Throwable exc, AsynchronousSocketChannel attachment) {
+                                try {
+                                    exc.printStackTrace();
+                                    attachment.close();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    //当有新客户端接入的时候，直接调用accept方法，递归执行下去，保证多个客户端都可以阻塞
+                    attachment.serverChannel.accept(attachment, this);
+                }
+            }
+
+            @Override
+            public void failed(Throwable exc, AioServer attachment) {
+                exc.printStackTrace();
+            }
+        });
+    }
+
+    public static void main(String[] args) throws Exception {
+        //启动服务器，并监听客户端
+        new AioServer().listen();
+        //因为是异步IO执行，让主线程睡眠但不关闭
+        Thread.sleep(Integer.MAX_VALUE);
+    }
+}
 ```
+
+
 
 
 ### java stream
