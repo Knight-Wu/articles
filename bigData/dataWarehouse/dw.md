@@ -1,3 +1,35 @@
+# 实时数仓
+## 好处
+1. 实时性高, 延迟低, 不用像离线数仓T+1 才能出数据.
+
+## 演变历史
+### 早期
+![image](https://github.com/Knight-Wu/articles/assets/20329409/1a13eac1-e4d1-466a-a720-813f51550e22)
+1. 问题
+![image](https://github.com/Knight-Wu/articles/assets/20329409/40aa307f-a68f-4e0f-ab9e-26ca38fdfaaf)
+
+2. 解决方案
+   ![image](https://github.com/Knight-Wu/articles/assets/20329409/3439cdc0-1eee-4f16-a041-66f15e1b0988)
+
+### lambda 架构, 实时和离线分离
+![image](https://github.com/Knight-Wu/articles/assets/20329409/ee6b4e84-3c60-4dcb-84d9-0905e329b711)
+
+* 问题
+比较好资源
+  ![image](https://github.com/Knight-Wu/articles/assets/20329409/79ea62ce-37c6-4bfb-a58b-b9d82770bc5a)
+
+### kappa 架构
+![image](https://github.com/Knight-Wu/articles/assets/20329409/fe06dec5-4d35-4b8a-9b10-54757c9e2d14)
+
+* kappa vs lambda
+
+  ![image](https://github.com/Knight-Wu/articles/assets/20329409/bf747b64-f5c2-4338-aa59-3662ece4c65f)
+
+### 最终架构
+![image](https://github.com/Knight-Wu/articles/assets/20329409/7b310944-7b66-4886-8f1d-e0890ef37baa)
+
+## 离线数仓的优势
+分层明确, 发展时间长比较规范化
 # 分层
 ![image](https://user-images.githubusercontent.com/20329409/222394515-43af809b-f865-4a86-8145-968f8780b060.png)
 
@@ -9,7 +41,7 @@
 一、数据运营层：ODS（Operational Data Store）
 把业务数据拷贝过来，减少后续对业务系统的访问。
 </br>
-“面向主题的”，数据运营层，也叫ODS层，是最接近数据源中数据的一层，数据源中的数据，经过抽取、洗净、传输，也就说传说中的 ETL 之后，装入本层。本层的数据，总体上大多是按照源头业务系统的分类方式而分类的。
+“面向主题的”，数据运营层，也叫ODS层，是最接近数据源中数据的一层，不需要ETL 直接装入本层。本层的数据，总体上大多是按照源头业务系统的分类方式而分类的。
 </br>
 一般来讲，为了考虑后续可能需要追溯数据问题，因此对于这一层就不建议做过多的数据清洗工作，原封不动地接入原始数据即可，至于数据的去噪、去重、异常值处理等过程可以放在后面的DWD层来做。
 
@@ -17,13 +49,11 @@
 
 数据仓库层是我们在做数据仓库时要核心设计的一层，在这里，从 ODS 层中获得的数据按照主题建立各种数据模型。DW层又细分为 DWD（Data Warehouse Detail）层、DWM（Data WareHouse Middle）层和DWS（Data WareHouse Servce）层。
 
-1. 数据明细层：DWD（Data Warehouse Detail）
+1. 数据事实层(或者数据明细层)：DWD（Data Warehouse Detail）
 
-该层一般保持和ODS层一样的数据粒度，并且提供一定的数据质量保证。同时，为了提高数据明细层的易用性，该层会采用一些维度退化手法，将维度退化至事实表中，减少事实表和维表的关联。
-</br>
-另外，在该层也会做一部分的数据聚合，将相同主题的数据汇集到一张表中，提高数据的可用性，后文会举例说明。
+该层一般保持和ODS层一样的数据粒度，按主题进行管理，经过清洗的明细数据.
 
-2. 数据中间层：DWM（Data WareHouse Middle）
+2. 数据中间层：DWM（Data WareHouse Middle）,可以不要
 
 该层会在DWD层的数据基础上，对数据做轻度的聚合操作，生成一系列的中间表，提升公共指标的复用性，减少重复加工。
 </br>
@@ -31,23 +61,29 @@
 
 3. 数据服务层：DWS（Data WareHouse Servce）
 
-又称数据集市或宽表。按照业务划分，如流量、订单、用户等，生成字段比较多的宽表，用于提供后续的业务查询，OLAP分析，数据分发等。
+又称宽表。经过聚合的数据, 按照业务划分，如流量、订单、用户等，生成字段比较多的宽表，用于提供后续的业务查询，OLAP分析，数据分发等。
 </br>
 一般来讲，该层的数据表会相对比较少，一张表会涵盖比较多的业务内容，由于其字段较多，因此一般也会称该层的表为宽表。
 </br>
+
+* 是否可以不需要DWM
+  
 在实际计算中，如果直接从DWD或者ODS计算出宽表的统计指标，会存在计算量太大并且维度太少的问题，因此一般的做法是，在DWM层先计算出多个小的中间表，然后再拼接成一张DWS的宽表。由于宽和窄的界限不易界定，也可以去掉DWM这一层，只留DWS层，将所有的数据在放在DWS亦可。
+
+
+4. DIM 维表层
+
+维表层主要包含两部分数据：
+</br>
+高基数维度数据：一般是用户资料表、商品资料表类似的资料表。数据量可能是千万级或者上亿级别。
+</br>
+低基数维度数据：一般是配置表，比如枚举值对应的中文含义，或者日期维表。数据量可能是个位数或者几千几万。
 
 三、数据应用层：APP（Application）
 
 在这里，主要是提供给数据产品和数据分析使用的数据，一般会存放在 ES、PostgreSql、Redis等系统中供线上系统使用，也可能会存在 Hive 或者 Druid 中供数据分析和数据挖掘使用。比如我们经常说的报表数据，一般就放在这里。
 
-四、维表层（Dimension）
-
-最后补充一个维表层，维表层主要包含两部分数据：
-</br>
-高基数维度数据：一般是用户资料表、商品资料表类似的资料表。数据量可能是千万级或者上亿级别。
-</br>
-低基数维度数据：一般是配置表，比如枚举值对应的中文含义，或者日期维表。数据量可能是个位数或者几千几万。
+四、
 
 ## 参考
 1. https://cloud.tencent.com/developer/article/1396891
