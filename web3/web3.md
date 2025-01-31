@@ -94,6 +94,7 @@ PoH：通信次数分析
 
 
 # bitcoin 如何防止double spend
+<img width="823" alt="image" src="https://github.com/user-attachments/assets/ba46bec6-7f69-4f44-b2fc-ab6408a09d3c" />
 
 1. 攻击者A 首先花费了 10 btc， 交易a 记录在id=200 区块上， 然后已经被多数miner 所确认
 2. 此时区块增长到了205， 攻击者此时维护了当前区块链副本，把id=200 的区块的交易a 修改成区块b，尝试修改之前已经发生的交易
