@@ -1,4 +1,4 @@
-# solana 如何判断某个交易是否过期，过期时间是多少
+<img width="596" alt="image" src="https://github.com/user-attachments/assets/9952c4b2-97f2-4661-aeb2-f3f5a19291a8" /># solana 如何判断某个交易是否过期，过期时间是多少
 https://solana.com/zh/docs/advanced/confirmation
 
 1. 提交交易的时候需要带上latestBlockHash
@@ -50,5 +50,11 @@ https://solana.com/zh/docs/advanced/confirmation
 # POH
 <img width="795" alt="image" src="https://github.com/user-attachments/assets/a008657b-4d3f-4f2b-a05f-c3d176e3fc28" />
 
-POH 是一个链式结构，前面hash 的输出是后面hash 的输入，只要hash 是防碰撞的，为了得到后续的hash 结果必须依次从头计算，所以前序
+POH 是一个链式结构，前面hash 的输出是后面hash 的输入，只要hash 是防碰撞的，为了得到后续的hash 结果必须依次从头计算，而且只能单线程计算，所以前序
 事件肯定发生在后续事件的前面，并且可以根据hash 的计算时间以及区块的生成间隔，大致估算事件发生的时间
+
+## POH 的验证
+<img width="596" alt="image" src="https://github.com/user-attachments/assets/0e92b718-ac8b-48bf-9867-938c08caf7ae" />
+因为当验证时已经获得了每个index 的hash output，只需要根据input 和data，计算是否output 是符合预期的，所以在多核cpu 上可以并行运行，验证的时间会比生成POH 链的时间大幅降低。 
+
+
