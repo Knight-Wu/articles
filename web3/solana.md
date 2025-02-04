@@ -48,5 +48,7 @@ https://solana.com/zh/docs/advanced/confirmation
 1. 使用turbine 协议，分片广播，让部分节点转发区块，减少带宽负担，避免全网广播
 
 # POH
+<img width="795" alt="image" src="https://github.com/user-attachments/assets/a008657b-4d3f-4f2b-a05f-c3d176e3fc28" />
+
 POH 是一个链式结构，前面hash 的输出是后面hash 的输入，只要hash 是防碰撞的，为了得到后续的hash 结果必须依次从头计算，所以前序
 事件肯定发生在后续事件的前面，并且可以根据hash 的计算时间以及区块的生成间隔，大致估算事件发生的时间
