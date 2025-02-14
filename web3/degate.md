@@ -2,8 +2,14 @@
 先总览一遍文档, 有个大体的了解, 不懂的问题记录下来, 最后去找答案, 有必要就看白皮书, 但是白皮书是之前的设想, 可能不符合当前的情况了
 
 
+# Advantages
+<img width="1512" alt="image" src="https://github.com/user-attachments/assets/bc44e0c9-3547-4eca-a5c4-97fe87d3ce57" />
+## How to make fee less
+
 
 # Feature
+
+
 
 ## Grid Trading
 
