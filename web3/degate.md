@@ -82,8 +82,20 @@ Gas Saving Deposit: Depositing into a DEX protocol often incurs a high one-time 
 通过类似转账而不是合约调用, 为什么合约调用有更高gas 
 
 
-# difference from other exchange
 
 
 # Zero Knowledge Rollup technology
 on-chain and off-chain operations that enable off-chain processing of all account and asset changes followed by a rollup to the on-chain smart contract.
+
+# degate 个人感觉需要提升的点
+
+## 尽快尽好的支持跨链
+
+## 介绍ZK rollup 更通俗易懂, 着重强调如何能让用户信任, 是否能做到足够安全
+
+## 交易费用再尽可能降低, vs raydium 
+
+
+# difference from other DEX
+## degate vs raydium
+由于solana 的天然优势, 例如 POH 导致不需要等待多节点同步, Sealevel 支持并行处理交易, raydium 在交易延迟, 交易qps, 交易费用都胜出, degate 的唯一优势在跨链方面, 因为在链下更容易支持跨链? 
