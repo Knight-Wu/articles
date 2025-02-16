@@ -4,7 +4,33 @@
 
 # Advantages
 <img width="1512" alt="image" src="https://github.com/user-attachments/assets/bc44e0c9-3547-4eca-a5c4-97fe87d3ce57" />
+
 ## How to make fee less
+链下将交易批量打包, 只发送打包信息到链上做零知识证明 
+and only sends packaged information on-chain for zero-knowledge proof, which is different from traditional DEXs where every order and transaction is initiated and completed on-chain. This saves a lot of gas fees, and does not depend on the confirmation time of the L1 blockchain network.
+
+### trade fee
+Trading Fee Rate of Order Book Pairs
+Stable trading pairs: Maker 0.00%, Taker 0.01%
+Other trading pairs: Maker 0.00%, Taker 0.07% 0.1%
+
+Trading Fee Rate of Swap Pairs
+0.99%, on top of external DEX fee rate
+
+Gas Fee
+Gas fees are calculated based on the real-time gas costs on Ethereum.
+
+
+## Fast transaction
+链下将交易批量打包, 只发送打包信息到链上做零知识证明, 不需要等待链上确认
+
+## Trustless
+
+## Data availablty
+
+## Transparency
+
+## Orderbook transaction
 
 
 # Feature
