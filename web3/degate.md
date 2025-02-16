@@ -82,6 +82,7 @@ Gas Saving Deposit: Depositing into a DEX protocol often incurs a high one-time 
 通过类似转账而不是合约调用, 为什么合约调用有更高gas 
 
 
+# difference from other exchange
 
 
 # Zero Knowledge Rollup technology
