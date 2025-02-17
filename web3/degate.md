@@ -1,13 +1,59 @@
-# How to research degate
-先总览一遍文档, 有个大体的了解, 不懂的问题记录下来, 最后去找答案, 有必要就看白皮书, 但是白皮书是之前的设想, 可能不符合当前的情况了
 
 
-# Advantages
-<img width="1512" alt="image" src="https://github.com/user-attachments/assets/bc44e0c9-3547-4eca-a5c4-97fe87d3ce57" />
+# How did you research on DeGate?
 
-## How to make fee less
-链下将交易批量打包, 只发送打包信息到链上做零知识证明 
-and only sends packaged information on-chain for zero-knowledge proof, which is different from traditional DEXs where every order and transaction is initiated and completed on-chain. This saves a lot of gas fees, and does not depend on the confirmation time of the L1 blockchain network.
+1. 先总览一遍文档, 有个大体的了解, 不懂的问题记录下来, 最后去找答案, 有必要就看白皮书, 白皮书能反映当时创立的想法, 但可能不完全符合现在的情况, 但是最好有时间也能读一下.
+
+2. 用了一些常用的功能, 包括充值和买卖, 目前充值只能直接充值usdt, usdc, eth, 最好能多支持几种常用的token, 例如sol, 会更方便
+
+3. 了解一些最重要功能背后的链路, 例如从充值到撮合订单, 到促成交易, 了解清楚后其他功能的逻辑可能就大同小异
+
+4. 了解degate 的优劣 
+
+# In summary, what do you understand about DeGate?
+
+1. first is the summary:
+A fairly launched, Dao-centric, Zero Knowledge based self-custody trading protocol built on Ethereum. DeGate is Limit Orders, Decentralized and Self-Custody.
+
+DeGate is an Orderbook Decentralized Exchange (DEX) protocol built on Zero Knowledge (ZK) technology. As a ZK Rollup, DeGate fills a key gap in the market by providing spot order book trading in self-custody manner, and grid trading within the Ethereum ecosystem, offering an experience similar to centralized exchanges (CEX). DeGate is a DAO-centric, self-custody exchange, with a DAO fully controlling its treasury. DeGate is a protocol of the community, by the community, and for the community.
+
+
+2. <img width="1512" alt="image" src="https://github.com/user-attachments/assets/bc44e0c9-3547-4eca-a5c4-97fe87d3ce57" />
+
+
+3. 拿用户充值来举例子
+3.1 用户发起转账到degate 的合约, 不会直接在eth 链上发起一笔交易, 由于degate 在layer2 , 会把请求发给degate off chain node, offchain node 会发起一笔交易, 提交到zk roll up service , 这个serivce 由operator, circuit, postman , merkle tree 等module 组成, 由于这是一个infra service, 暂时不会深入他的细节, 只管他的输入和输出, 输入就是一个off chain transaction, 多个transaction会生成一个 zkBlocks, and generate the proof for the zkblock, 把这个proof 提交到链上来更新链上的状态, 链上部分由多个合约组成, 会协调处理链上请求, 例如storing user funds, verifying the zero-knowledge proofs submitted by the off-chain node and storing the latest Merkle tree roots.
+
+4. 特点
+
+4.1 比传统的dex 节省gas fee 和交易快速, 也比直接在l1 网络交易要快, 因为 only sends packaged information on-chain for zero-knowledge proof, 相当于在链下把交易打包之后发送到链上, 减少了链上的计算 which is different from traditional DEXs where every order and transaction is initiated and completed on-chain. This saves a lot of gas fees, and does not depend on the confirmation time of the L1 blockchain network, 这会提升交易的qps
+
+4.2  trustless, transparency
+这两个比较类似打算一起来说, 因为是dex, 代码开源, 可以供查看和audit, 保证了透明性, 增加了信任度; 
+
+4.3 self custody of assets,
+DeGate operates as a DAO, which has full control over the Treasury. The members of the DAO are DG token holders, who participate in the governance process, and delegate decision making. 
+also provide “Exodus Mode ”, 保证用户的钱在极端offchain 服务挂掉的情况下也能取得出来; 
+
+4.4 data avaliablity
+主要依赖于l1 的eth, 因为打包后的交易信息存储在eth, 如果链下的degate node 挂了, 也有 Exodus Mode 保证钱能去出来
+
+4.5 其他功能
+grid trading (适用于半自动化的快速交易)
+Permissionless Listing(任何人都可以自由到degate上币, 但可能缺乏流动性)
+
+5. 个人认为需要提高的点, 
+5.1 虽然我们强调是去中心化的, 由dao 管理, 我目前并没有找到详细资料关于如何参与DAO 以及DAO 是如何按照schedule 运作的, 可能我漏掉了,   
+而且虽然我们代码已经开源, 但多数人不太可能通过代码去构建对我们平台的信任, degate 的关键点在于链下打包交易和零知识证明, 零知识证明是关键, 但是比较晦涩难懂, 关于零知识证明没有找到一个通俗易懂的描述, 应该着重强调如何能让用户信任, 是否能做到足够安全; 关于链下处理交易也缺乏详细的描述
+
+5.2 对比其他交易量更大的DEX, 例如raydium on solana 
+由于solana 的POH 和Sealevel 等技术, 在交易延迟, 交易吞吐量, 交易费用方面据我了解可能都比degate 更具吸引力, 而且所有操作都在链上, 更容易被用户相信, 所以我认为degate 需要重点开发跨链部分, 支持交易任何链和任何token , 由于我们off chain 处理的灵活性, 这部分有天然的优势, 需要加以放大; 在交易费用方面也尽可能的进一步优化. 
+
+
+
+# How does DeGate project align as an opportunity for your Professional and Personal goals?
+
+因为我认为后续web3 还是交易的天下, 从一开始的bitcoin, 再到eth 上的智能合约, 再到defi, NFT 和现在的meme token , 无一不证明了交易一直是主赛道, 而DeGate is an Orderbook Decentralized Exchange (DEX) protocol built on Zero Knowledge (ZK) technology, 我能学习到很多交易方面的知识, 以及l1 和 l2 网络的在交易方面的trade off, 既符合个人的兴趣又能赶上发展的趋势. 
 
 ### trade fee
 Trading Fee Rate of Order Book Pairs
@@ -83,19 +129,3 @@ Gas Saving Deposit: Depositing into a DEX protocol often incurs a high one-time 
 
 
 
-
-# Zero Knowledge Rollup technology
-on-chain and off-chain operations that enable off-chain processing of all account and asset changes followed by a rollup to the on-chain smart contract.
-
-# degate 个人感觉需要提升的点
-
-## 尽快尽好的支持跨链
-
-## 介绍ZK rollup 更通俗易懂, 着重强调如何能让用户信任, 是否能做到足够安全
-
-## 交易费用再尽可能降低, vs raydium 
-
-
-# difference from other DEX
-## degate vs raydium
-由于solana 的天然优势, 例如 POH 导致不需要等待多节点时间同步, Sealevel 支持并行处理交易, raydium 在交易延迟, 交易qps, 交易费用都胜出, degate 的唯一优势在跨链方面, 因为在链下更容易支持跨链? 
