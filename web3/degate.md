@@ -98,4 +98,4 @@ on-chain and off-chain operations that enable off-chain processing of all accoun
 
 # difference from other DEX
 ## degate vs raydium
-由于solana 的天然优势, 例如 POH 导致不需要等待多节点同步, Sealevel 支持并行处理交易, raydium 在交易延迟, 交易qps, 交易费用都胜出, degate 的唯一优势在跨链方面, 因为在链下更容易支持跨链? 
+由于solana 的天然优势, 例如 POH 导致不需要等待多节点时间同步, Sealevel 支持并行处理交易, raydium 在交易延迟, 交易qps, 交易费用都胜出, degate 的唯一优势在跨链方面, 因为在链下更容易支持跨链? 

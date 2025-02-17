@@ -28,7 +28,7 @@ https://solana.com/zh/docs/advanced/confirmation
 # Leader 选举
 ## 如何选出leader
 1. 采用POS 和轮转机制来选出leader，所有质押sol 的validator 都有可能成为leader，质押越多的概率越高。
-2. 每个slot（时间单位，400MS，bitcoin 是十分钟，eth 是12秒）会有一个leader，每个epoch 周期由多个slot 组成，每次开始新的epoch 会事先计算好每个slot 对应的leader，
+2. 每个slot（时间单位，400MS，bitcoin 是十分钟，eth 是12秒）会有一个leader，每个epoch 周期由多个slot 组成，每次开始新的epoch 会事先计算好每个slot 对应的leader，每个slot 会生成一个block, block time 是400 MS
 
 ## 为什么需要有epoch 
 一个epoch 大约为2.5 天，每次质押的sol 变化将在下个epoch 生效，每次epoch 结束时会清理不活跃的账户并收取租金。
@@ -58,3 +58,25 @@ POH 是一个链式结构，前面hash 的输出是后面hash 的输入，只要
 因为当验证时已经获得了每个index 的hash output，只需要根据input 和data，计算是否output 是符合预期的，所以在多核cpu 上可以并行运行，验证的时间会比生成POH 链的时间大幅降低。 
 
 
+# why solana transaction is low latency
+1. 校验POH 链很快, 可以并行去做, 因为已经知道每个POH 节点的输入和输出了
+# why solana can support high transaction QPS
+
+# why fee in solana is low
+
+# global clock sync
+因为400 ms 一个block time , 在leader schedule 中, 下一个指定的leader 如何在上一个leader 生成一个新的block 之后, 仅过了不到半秒, 就继续接着生成下一个block 呢, 这个全局的精确时钟同步是如何做到的?
+
+内部有一个sha256 counter, 由于sha256 函数在所有电脑芯片上跑几乎都差不多时间, 所以根据每台电脑上sha256 的计算次数来大概的预估时间. 
+
+计算公式:
+hash(n)= sha256(hash(n - 1), counter)
+
+每个validator 都会在本地单核单线程的运行这个公式, 由于在不同电脑运行的时间都相差无几, counter 几乎都一样, 
+通过事先计算好的leader schedule list, 各个未来的leader 知道各自要运行的slot , 把这个slot 转换成未来的
+counter 就可以按时当上leader 
+
+# 如何动态调整POH 的生成速度
+
+# 如何选择最长链, 如果有某个slot 出块延迟, 如何处理
+会选择最大的 POH counter 作为最长链
