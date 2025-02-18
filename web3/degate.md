@@ -17,8 +17,8 @@ A fairly launched, Dao-centric, Zero Knowledge based self-custody trading protoc
 
 DeGate is an Orderbook Decentralized Exchange (DEX) protocol built on Zero Knowledge (ZK) technology. As a ZK Rollup, DeGate fills a key gap in the market by providing spot order book trading in self-custody manner, and grid trading within the Ethereum ecosystem, offering an experience similar to centralized exchanges (CEX). DeGate is a DAO-centric, self-custody exchange, with a DAO fully controlling its treasury. DeGate is a protocol of the community, by the community, and for the community.
 
-
-2. <img width="1512" alt="image" src="https://github.com/user-attachments/assets/bc44e0c9-3547-4eca-a5c4-97fe87d3ce57" />
+2. VS other CEX and DEX
+<img width="1512" alt="image" src="https://github.com/user-attachments/assets/bc44e0c9-3547-4eca-a5c4-97fe87d3ce57" />
 
 
 3. 拿用户充值来举例子
@@ -43,19 +43,24 @@ grid trading (适用于半自动化的快速交易)
 Permissionless Listing(任何人都可以自由到degate上币, 但可能缺乏流动性)
 
 5. 个人认为需要提高的点, 
-5.1 虽然我们强调是去中心化的, 由dao 管理, 我目前并没有找到详细资料关于如何参与DAO 以及DAO 是如何按照schedule 运作的, 可能我漏掉了,   
-而且虽然我们代码已经开源, 但多数人不太可能通过代码去构建对我们平台的信任, degate 的关键点在于链下打包交易和零知识证明, 零知识证明是关键, 但是比较晦涩难懂, 关于零知识证明没有找到一个通俗易懂的描述, 应该着重强调如何能让用户信任, 是否能做到足够安全; 关于链下处理交易也缺乏详细的描述
+5.1 虽然我们强调是去中心化的, 由dao 管理, 我目前并没有找到详细资料关于如何参与DAO 以及DAO 是如何按照schedule 运作的, 可能我漏掉了,  
 
-5.2 对比其他交易量更大的DEX, 例如raydium on solana 
-由于solana 的POH 和Sealevel 等技术, 在交易延迟, 交易吞吐量, 交易费用方面据我了解可能都比degate 更具吸引力, 而且所有操作都在链上, 更容易被用户相信, 所以我认为degate 需要重点开发跨链部分, 支持交易任何链和任何token , 由于我们off chain 处理的灵活性, 这部分有天然的优势, 需要加以放大; 在交易费用方面也尽可能的进一步优化. 
+5.2 虽然我们代码已经开源, 但多数人不太可能通过代码去构建对我们平台的信任, degate 的关键点在于链下打包交易和零知识证明, 零知识证明是关键, 但是比较晦涩难懂, 关于零知识证明没有找到一个通俗易懂的描述, 应该着重强调如何能让用户信任, 是否能做到足够安全; 
+关于链下处理交易也缺乏详细的描述, 可对比传统券商：用户股票交易也非实时上链，但通过托管和清算机制保障安全。DeGate的链下匹配+链上结算可类比此模式，但需强调资产由智能合约托管
+
+5.3 对比其他交易量更大的DEX, 例如raydium on solana 
+由于solana 的POH 和Sealevel 等技术, 在交易延迟, 交易吞吐量, 交易费用方面据我了解可能都比degate 更具吸引力, 而且所有操作都在链上, 更容易被用户相信, 所以我认为degate 需要重点开发跨链部分, 当前跨链桥安全性频发（如Poly Network攻击），DeGate若能用ZK技术实现无需信任的跨链, 可成为差异化优势, 优先支持主流链（BTC、Solana），通过链下订单簿聚合流动性，用户无需手动跨链即可交易多链资产。由于我们off chain 处理的灵活性, 这部分有天然的优势, 需要加以放大; 在gas fee·方面也尽可能的进一步优化. 
 
 
 
 # How does DeGate project align as an opportunity for your Professional and Personal goals?
 
-因为我认为后续web3 还是交易的天下, 从一开始的bitcoin, 再到eth 上的智能合约, 再到defi, NFT 和现在的meme token , 无一不证明了交易一直是主赛道, 而DeGate is an Orderbook Decentralized Exchange (DEX) protocol built on Zero Knowledge (ZK) technology, 我能学习到很多交易方面的知识, 以及l1 和 l2 网络的在交易方面的trade off, 既符合个人的兴趣又能赶上发展的趋势. 
+因为我认为后续web3 还是交易的天下, 从一开始的bitcoin, 再到eth 上的智能合约, 再到defi, NFT 和现在的meme token , 无一不证明了交易一直是主赛道, 而DeGate is an Orderbook Decentralized Exchange (DEX) protocol built on Zero Knowledge (ZK) technology, 我能学习到很多交易方面的知识, 例如学习ZK-Rollup的运作机制, 研究订单簿DEX的流动性激励设计（如做市商奖励、挂单/吃单费率平衡）, 如果持续推进跨链，可以接触到多链生态的多项技术。 
+既符合个人的兴趣又能赶上发展的趋势. 
 
-### trade fee
+# DEGATE
+
+## trade fee
 Trading Fee Rate of Order Book Pairs
 Stable trading pairs: Maker 0.00%, Taker 0.01%
 Other trading pairs: Maker 0.00%, Taker 0.07% 0.1%
@@ -65,21 +70,6 @@ Trading Fee Rate of Swap Pairs
 
 Gas Fee
 Gas fees are calculated based on the real-time gas costs on Ethereum.
-
-
-## Fast transaction
-链下将交易批量打包, 只发送打包信息到链上做零知识证明, 不需要等待链上确认
-
-## Trustless
-
-## Data availablty
-
-## Transparency
-
-## Orderbook transaction
-
-
-# Feature
 
 
 
@@ -101,7 +91,7 @@ A fairly launched, Dao-centric, Zero Knowledge based self-custody trading protoc
 
 DeGate is an Orderbook Decentralized Exchange (DEX) protocol built on Zero Knowledge (ZK) technology. As a ZK Rollup, DeGate fills a key gap in the market by providing spot order book trading in self-custody manner, and grid trading within the Ethereum ecosystem, offering an experience similar to centralized exchanges (CEX). DeGate is a DAO-centric, self-custody exchange, with a DAO fully controlling its treasury. DeGate is a protocol of the community, by the community, and for the community.
 
-##  trust mechanism of the entire DeGate protocol
+###  trust mechanism of the entire DeGate protocol
 the is guaranteed by two factors: ZK-Rollup data availability and "Exodus Mode".
 
 ### zk roll-up
