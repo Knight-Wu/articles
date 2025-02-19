@@ -85,8 +85,8 @@ uuid time url result
 因为读取 adb , 通过 jdbc 协议, jdbc 链接的时候需要指定 numOfPartition, 用作拆分成子 sql, 因为我们分区字段是时间, 就是将一年的时间拆分成 numOfPartition 这么多段, 每段查出来的数据就是 spark 的一个 partition, 如果一段里面的数据例如是流量高峰那么这个 Partition 的数据量一大, 就会造成 OOM.
 ### 如何解决
 #### 估算单个 partition 多大来避免 OOM, 没有根本解决问题
-
-采取预先估算生产每个表的每秒写入行数, 再乘以每行大小, 可以得到峰值 partition 的大小, 然后测试环境通过多次测试可以得到比如 4GB 的一个 executor 可以放下多少 partition , 每个多大, 就可以以此类推当生产 parititon 是某个大小时, 需要指定的 numOfParition 的数量. 但是这样性能不是最优, 因为 partition 数量太多, 会造成任务切换开销不如数量少一点时快, 但目前没有更优的, 保证稳定性优先.
+一般是设置 partiiton 的数量, 总数据量除以partition 的数量得到partition 需要处理的数据大小, 如果这个数据超过了某个executor 的内存大小就会OOM, 实际上可以做一个数学计算估算峰值一秒的数据大小, 
+然后某个partiiton 假设读取x 秒的数据, 可以得到partition 数据的大小, 所以当parition 非常大的时候, 极端情况下某个parition 只负责一秒的数据处理, 说白了就是把数据分片划分得足够多, 这样会造成partition 数量非常大, 造成任务切换开销很大, 性能比较低, 但是稳定性会好一点. 
 #### 通过给 ADB 加上一个自增列
 例如读 1w 条, 就给他们标上 id , 1到 1w , 然后以这列作为分区列, 那么每个 partition 所获取到的行数就是固定的, 
 可以通过 mysql row_num 函数做到:
@@ -101,7 +101,7 @@ SELECT *, ROW_NUMBER() OVER ( ORDER BY bet_end_time) FROM pg_analytic_db.player_
 ![image](https://github.com/Knight-Wu/private/assets/20329409/c42a79d9-5a66-4722-a480-e6e8d9331e60)
 
 ##### 最佳方案: 通过 streaming read jdbc, 让 spark 自动把多余数据写到磁盘
-打开streaming read 之前是通过计算partition 的数量然后把总时间范围拆分成多个小的时间范围，等于说你要查一天的数据，用一百个分区，就把 一天的时间分成一百份，然后通过一百个子查询去查询mysql，每返回一个子查询的所有数据spark 才会判断内存数据是否需要写到磁盘，如果这个子查询的数据量太大就会造成OOM，等于说spark 还没来及的判断是否要写入磁盘就发生了OOM, 于是看了 JDBCRDD 的源码, jdbc 的 mysql 官方文档, 发现的确有通过游标的方式打开 streaming read, 等于之前是以子查询的方式查询mysql, 一次会拉去一个partition, 才判断是否写道磁盘上, 而是每次查询少量几条的数据, 就判断一次是否写到磁盘上.
+打开streaming read 之前, 是通过计算partition 的数量然后把总时间范围拆分成多个小的时间范围，等于说你要查一天的数据，用一百个分区，就把 一天的时间分成一百份，然后通过一百个子查询去查询mysql，每返回一个子查询的所有数据spark 才会判断内存数据是否需要写到磁盘，如果这个子查询的数据量太大就会造成OOM，等于说spark 还没来及的判断是否要写入磁盘就发生了OOM, 于是看了 JDBCRDD 的源码, 发现有通过游标的方式打开 streaming read, 等于之前是以子查询的方式查询mysql, 一次会拉去一个partition, 而是每次查询固定条数的数据, 就判断是否写到磁盘上. 就很均匀, 然后parition 的数量不需要很多,  因为能写到磁盘上, 减少了任务切换的开销, 性能也有显著提升. 
 * 关键代码
    * spark JDBCRDD 传参, 构造 Query
      ![image](https://github.com/Knight-Wu/private/assets/20329409/22e71e84-c7c7-4f7a-9cc9-60c4ef9de1df)
