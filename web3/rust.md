@@ -1,3 +1,4 @@
+
 # why rust does not need GC at runtime
 所有权和借用规则在编译阶段静态分析内存使用，无需运行时垃圾回收.
 
@@ -9,6 +10,9 @@
 
 ## 把一个旧变量赋予一个新变量
 rust stack 和heap 很不一样, 不像其他语言区分没这么大.
+
+
+<img width="991" alt="image" src="https://github.com/user-attachments/assets/87b62819-97d7-4f5b-a74c-14d17ed2a18b" />
 
 * 当发生在stack 上
 
