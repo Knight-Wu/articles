@@ -15,6 +15,7 @@ rust stack 和heap 很不一样, 不像其他语言区分没这么大.
 所有的copy 都是deep copy, 例如int , bool 等变量
 
 * 当发生在heap 上
+<img width="1038" alt="image" src="https://github.com/user-attachments/assets/e9a6fbcf-d14f-4bfe-b7f9-56460db2cc6b" />
 
-除非你显示调用clone , 都是move. 
+除非你显示调用clone , 都是move. 之前的变量会失效. 
 
