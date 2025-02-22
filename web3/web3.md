@@ -1,3 +1,23 @@
+# 51 % 攻击
+The attacker's strategy is simple:
+
+1. Send 100 BTC to a merchant in exchange for some product (preferably a rapid-delivery digital good)
+2. Wait for the delivery of the product
+3. Produce another transaction sending the same 100 BTC to himself
+4. Try to convince the network that his transaction to himself was the one that came first.
+   
+Once step (1) has taken place, after a few minutes some miner will include the transaction in a block, say block number 270000. After about one hour, five more blocks will have been added to the chain after that block, with each of those blocks indirectly pointing to the transaction and thus "confirming" it. At this point, the merchant will accept the payment as finalized and deliver the product; since we are assuming this is a digital good, delivery is instant. Now, the attacker creates another transaction sending the 100 BTC to himself. If the attacker simply releases it into the wild, the transaction will not be processed; miners will attempt to run APPLY(S,TX) and notice that TX consumes a UTXO which is no longer in the state. So instead, the attacker creates a "fork" of the blockchain, starting by mining another version of block 270000 pointing to the same block 269999 as a parent but with the new transaction in place of the old one. Because the block data is different, this requires redoing the proof-of-work. Furthermore, the attacker's new version of block 270000 has a different hash, so the original blocks 270001 to 270005 do not "point" to it; thus, the original chain and the attacker's new chain are completely separate. The rule is that in a fork the longest blockchain is taken to be the truth, and so legitimate miners will work on the 270005 chain while the attacker alone is working on the 270000 chain. In order for the attacker to make his blockchain the longest, he would need to have more computational power than the rest of the network combined in order to catch up (hence, "51% attack").
+
+简单解释就是:
+1. 先做了一笔交易, 假设花费100 BTC, 然后等收货之后需要再次使用这个100 BTC, 并把之前第一笔交易抹掉或者第二笔交易发生在前面
+2. 假设第一笔交易已经在block 100 上了, 后面又有101, 102 block, 那么攻击者需要重新生成block 100, ... 102 , 那么他需要重新计算POW, 而且比其他任何分叉要计算的快, 否则他不能成为最长的那个
+3. 那么为了成为最长的, 就需要掌握最多的算力, 只有他掌握51% 以上的算力时才能保证他的分支是最长的.
+
+# No coin in genesis state
+In order to compensate miners for this computational work, the miner of every block is entitled to include a transaction giving themselves 25 BTC out of nowhere. Additionally, if any transaction has a higher total denomination in its inputs than in its outputs, the difference also goes to the miner as a "transaction fee".
+
+ Incidentally, this is also the only mechanism by which BTC are issued; the genesis state contained no coins at all.
+BTC 的产生是在挖矿得到新区块的时候作为奖励给矿工, 创世的时候是没有比特币的. 
 # UTXO(Unspent Transaction Output)
 因为在比特币等系统中不存在账户-余额这种类似数据库记录的东西, 那么如何判断用户的余额是否够支出呢? 
 每次交易前会根据用户地址查询关联的所有交易, 用总收入减总支出就是余额, 过程中可能需要合并多项UTXO 
@@ -149,6 +169,8 @@ PoH：通信次数分析
 # Merkle tree
 
  ## Merkle Tree 解决了哪些问题？
+
+![image](https://github.com/user-attachments/assets/5884896a-72c6-4056-85c4-45d6c53f6047)
 
 1. 验证某个交易是否存在
 
