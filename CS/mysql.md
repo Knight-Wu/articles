@@ -289,14 +289,14 @@ https://blog.jcole.us/2013/01/14/efficiently-traversing-innodb-btrees-with-the-p
 ![enter image description here](https://drive.google.com/uc?id=1CCbvzgDAKugLkRhRx-7d7kg1bLVsLWL2)
 
 根据以上结构, 支持全值匹配, 最左匹配, 范围匹配, 而且因为index value 也是排序的, 所以也优化了 order by, 
-* 缺点
+
+## innodb 索引缺点
 1. 不支持列顺序混乱的匹配, 例如index: (A,B,C), 查询顺序是(A,C,B), 只支持到A 列, 因为不知道B 列的长度.
 2. 不支持跳列, 必须指定前几个列的值. 
 3. if your query is WHERE last_name="Smith" AND first_name LIKE 'J%' AND dob='1976-12-23' , the index access will use only the first two columns in the index, because the LIKE is a range condition
 
-> 使用B+ tree 索引的原则
 
-* 多列索引
+## 多列索引
 
 可以认为是多个列的值拼成一个值作为这个索引的值, 所以必须要精确匹配并查找到索引的值才行, 所以就有了类似最左匹配原则等. 
 https://dev.mysql.com/doc/refman/8.0/en/multiple-column-indexes.html
@@ -345,14 +345,14 @@ where a="A" and b in ('b','B') and c = 'C' , (a,b,c) 的索引仍然有效.
  只采取索引列的前缀作为索引, 减少空间, 但是这个前缀要能一定程度上的获取你想要的结果. 可以具体参考"高性能mysql 5.3.2"
 6. 多个单列索引, 可能会引起索引的合并, 
 
-* clustered index
+## clustered index(聚簇索引)
 聚簇索引并不是一个索引类型, 而是一种数据存储方式, 而InnoDB 的聚簇索引实际上就是B+ tree 的叶子节点将key 和data row 存放在一起. 
 
 >  When you define a  `PRIMARY KEY`  on your table,  `InnoDB`  uses it as the clustered index. Define a primary key for each table that you create. If there is no logical unique and non-null column or set of columns, add a new  [auto-increment](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_auto_increment "auto-increment")  column, whose values are filled in automatically.(如果有主键的话, 就把主键作为 clustered index )
     
 >  If you do not define a  `PRIMARY KEY`  for your table, MySQL locates the first  `UNIQUE` and `NOT NULL`  col  as the clustered index. (如果没有主键, 选择一个unique 的index 作为聚簇索引,  要求该索引的所有key col 都要求非 null) and failing that, a 48-bit hidden “Row ID” field is automatically added to the table structure and used as the primary key. _Always_ add a primary key yourself. The hidden one is useless to you but still costs 6 bytes per row.
 
-* Secondary Indexes
+## Secondary Indexes(非聚簇索引)
 > All indexes other than the clustered index are known as [secondary indexes](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_secondary_index "secondary index").(非聚簇索引都是二级索引)
 > In `InnoDB`, each record in a secondary index contains the primary key columns for the row, as well as the columns specified for the secondary index. (每一条在secondary index 的记录都包含主键, 所以主键尽可能短)
 
@@ -360,23 +360,71 @@ where a="A" and b in ('b','B') and c = 'C' , (a,b,c) 的索引仍然有效.
 
 1. 聚簇索引数据访问更快, row 直接保存在索引的叶子节点; 非聚簇索引查找行, 需要两次查找, 因为非聚簇索引的叶子节点保存的是主键列, 再通过主键列去聚簇索引中找到对应的行. 
 2. 聚簇索引的更新代价更大, 
-3. 因为聚簇索引的是按顺序排列的, 如果是主键作为了聚簇索引, 则按主键进行排序, 主键最好设置为AUTO_INCREMENT, 插入的效率会很高, 否则如果是使用uuid 作为主键, 可能引起page split, 因为后面的插入的记录可能在之前形成的索引的page 中间, 引起page split; 但是设置为自增, 插入的热点集中在主键的上界, 引起gap lock的竞争.
+3. 因为聚簇索引的是按顺序排列的, 如果是主键作为了聚簇索引, 则按主键进行排序, 主键最好设置为AUTO_INCREMENT, 插入的效率会很高, 否则如果是使用uuid 作为主键, 可能引起page split, 因为后面的插入的记录可能在之前形成的索引的page 中间, 引起页分裂 page split; 但是设置为自增, 插入的热点集中在主键的上界, 可能会引起热点.
 
-* 覆盖索引
-意思是, 直接从索引就返回需要查询的数据了, 并不需要再次查询具体的表数据, 直接根据secondary index 返回索引列和主键. 并不需要二次查询主键. 如下图
+## 覆盖索引
+意思是, 直接从索引就返回需要查询的数据了, 并不需要再次查询具体的表数据, 例如当只查索引列和主键的时候, 直接根据secondary index 返回索引列和主键. 并不需要二次查询主键的索引, 来定位整行数据. 如下图
 ![enter image description here](https://drive.google.com/uc?id=1z1I_cejEGOnx70mEMPEB6724PqfTKy8_)
 
-* 好处
+* 覆盖索引好处
 1. 能减少数据量, 减少随机IO
 
 
-* 使用索引来排序
+## 使用索引来排序
 最好设计索引的时候覆盖查询和排序两种任务, 只有当索引列的顺序和order by 的列顺序一致时, 且所有列的排序方向也跟索引是一致时(索引是正序, order by 也是正序), 具体参考"高性能 mysql 5.3.7"
  
-* 多列索引和多个单列索引
-最好能建成多列索引, 能匹配的查询更多, 多个单列索引在某些情况下, 会经过index merge 优化, 但是优化的成本会比较高, 所以最好能建成多列索引
+## 多列索引和多个单列索引
+1. 多列索引（联合索引）
+适用场景
+查询条件包含多个列（AND 条件）
 
-* 为什么选择性低的列不适合做索引
+例如：WHERE col1 = A AND col2 = B。
+
+多列索引 (col1, col2) 可高效定位数据，避免多次回表扫描。
+
+覆盖索引（Covering Index）
+
+若索引包含查询所需的所有字段（如 SELECT col1, col2），可直接从索引返回数据，无需访问表数据页。
+
+排序或分组操作
+
+如 ORDER BY col1, col2 或 GROUP BY col1, col2，联合索引能避免额外排序步骤。
+
+最左前缀匹配
+
+若查询仅使用索引的最左前缀（如 WHERE col1 = A），仍可利用索引。但若跳过前缀（如 WHERE col2 = B），索引可能失效。
+
+优势
+减少 I/O 次数：单次索引扫描即可满足复合条件。
+
+高效排序/分组：避免临时表或文件排序。
+
+覆盖查询优化：直接通过索引返回数据。
+
+缺点
+维护成本高：插入、更新时需维护更多列的组合。
+
+灵活性低：若查询条件不固定（如不同列组合），需创建多个联合索引。
+
+2. 多个单列索引
+适用场景
+查询条件独立使用各列（OR 条件或分散查询）
+
+例如：WHERE col1 = A 或 WHERE col2 = B，单列索引 col1 和 col2 可分别被优化器选择。
+
+列选择性差异大
+
+若某列选择性高（唯一值多），单独索引更有效（如用户 ID），而低选择性列（如性别）可能不适用。
+
+频繁更新的列
+
+单列索引维护成本低于多列索引，适合频繁写入的场景。
+
+数据库支持索引合并（Index Merge）
+
+如 MySQL 的 Index Merge 优化，可将多个单列索引的结果合并（如 WHERE col1 = A AND col2 = B）。
+
+## 为什么选择性低的列不适合做索引
 因为除非是聚簇索引, 直接能返回数据,  不然查索引要多消耗 IO , 再去扫描表, 有可能还不如直接去扫描表. 
 
 
