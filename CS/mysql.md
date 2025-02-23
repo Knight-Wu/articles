@@ -534,6 +534,9 @@ COMMIT;
 
 ```
 
+### 快照读和当前读
+![image](https://github.com/user-attachments/assets/94f39f1d-2572-47d3-b1ca-698ff88df009)
+
 #### MVCC 在可重复读的隔离级别下, 使用快照读(一般select), 如何解决一般情况下的幻读的
 可重复读隔离级是由 MVCC（多版本并发控制）实现的，实现的方式是开始事务后（执行 begin 语句后），在执行第一个查询语句后，会创建一个 Read View，后续的查询语句利用这个 Read View，通过这个 Read View 就可以在 undo log 版本链找到事务开始时的数据，所以事务过程中每次查询的数据都是一样的，即使中途有其他事务插入了新纪录，是查询不出来这条数据的，所以就很好了避免幻读问题，但是有一定概率还是会出现幻读。
 
@@ -591,12 +594,13 @@ https://dev.mysql.com/doc/refman/8.4/en/innodb-locking.html#:~:text=A%20gap%20lo
 ![enter image description here](https://drive.google.com/uc?id=1NdpnXgkU7Q3TW0G73P0WPR_ejiUgf-Qp)
 
 ## MVCC 多版本并发控制
-应该是在不同的隔离级别有不同的实现细节, 从而实现不同的隔离级别,
-参考 https://www.xiaolincoding.com/mysql/transaction/mvcc.html#read-view-%E5%9C%A8-mvcc-%E9%87%8C%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84
-
-### ReadView(类似全局数据所属的事务id 的快照)
+### 如何实现
 三个主体的交互, 一是当前事务所属id, 二是当前事务所操作的数据的事务id, 三是readView 
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/8b4248ac-e1a3-48d4-be0d-a46d89120f26)
+
+### 读提交和可重复读, 用 readview 实现上的区别
+
+![image](https://github.com/user-attachments/assets/1b639486-520a-4903-b07c-64dd0e71c0d4)
 
 ### 可重复读是如何工作的, 一个例子
 https://www.xiaolincoding.com/mysql/transaction/mvcc.html#%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84
