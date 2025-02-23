@@ -252,14 +252,17 @@ k=8 满足 8 ≤ 8 < 9 → 进入第二个子节点（指向键值 8 对应的�
 
 操作：在叶子节点中顺序或二分查找 k=8：
 
+
 * 下图是三层两阶的B+ 树图示: 
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/20cb6f6c-fbbb-4fdf-9c24-2a5b082fb368)
 </br>
 查找过程是根据id 在page 中进行二分查找, 然后找到page number 相当于地址, 再找下层page , 直到找到叶子结点, 如果是非聚簇索引就先用索引列找到主键, 再根据主键去找行数据. 
 </br>
 * 下图是page 的结构图示: 
-![page 的结构](https://github.com/Knight-Wu/articles/assets/20329409/5df9f864-a7b2-47a7-b89d-5501351ce0fa)
+
+![](https://github.com/Knight-Wu/articles/assets/20329409/5df9f864-a7b2-47a7-b89d-5501351ce0fa)
 </br>
+
 ![enter image description here](https://drive.google.com/uc?id=1jOIFUv2qT3d__lWSkkqsfuff2_N7LDoK)
 
 * leaf node size=page size=16KB , 可以在初始化mysql instance 的时候进行配置
