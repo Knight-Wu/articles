@@ -190,9 +190,9 @@ sampled_data.show()
 ## spark 和 mr 区别，快在哪里
 * spark 有dag 构建了复杂任务的依赖关系，一些相同的依赖就不需要重复计算，可以缓存下来，但是mr 
 模型就很难做这个事。
-* 复杂任务时 MR 可能会分为多个 map reduce 过程，中间需要多次写hdfs 保存中间结果，网络和多次的io 都很慢，spark 则是懒计算的，需要计算才计算，先用内存尽可能的保存中间结果，减少IO 次数，并且可以在数据本地就近计算。
-* mr 适用于那些不要求速度长时间运行的离线任务，资源会用的少点。
-* 进程与线程： MapReduce框架基于进程，前一个MapReduce进程结束之后再启动下一个进程；而Spark是基于线程的，task运行在线程上，不同stage的task可以复用线程；进程的创建和销毁比线程的创建和销毁开销大。
+* 复杂任务时 MR 可能会分为多个 map reduce 过程，中间需要多次写hdfs 保存中间结果，网络和多次的io 都很慢，spark 则是懒计算的，构建DAG, 优化任务执行顺序，减少 Shuffle 次数, 而且计算结果尽可能的保存在内存. 
+* mr 适用于那些不要求速度长时间运行的离线任务，基于磁盘的设计更稳定，适合处理超大规模离线数据，长期运行不易崩溃, 硬件成本也比较低
+*  spark 提供 Transformation 和 Action 两大类算子（如 map, filter, join） , MR 仅支持 Map 和 Reduce 操作，扩展性有限 
 #### spark执行的大致流程
 参考自:https://github.com/JerryLead/SparkInternals
 ![enter image description here](https://drive.google.com/uc?id=1bHUSmMyvvt0AExkVkPJx9wplKzlnCWxr)
