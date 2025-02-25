@@ -40,14 +40,25 @@ L2s come in different shapes and sizes in terms of their relationship with Ether
 ### arch
 ![image](https://github.com/user-attachments/assets/22f7a0ee-2c04-45ca-b0ed-be2b36a8d7a5)
 https://docs.polygon.technology/cdk/concepts/architecture/ 
-## Data availably
+## Data availability
 ### Validium
 Validiums achieve scalability by keeping all transaction data off-chain and only post state commitments (and validity proofs) when relaying state updates to the main Ethereum chain. While off-chain data availability introduces trade-offs, it can lead to massive improvements in scalability (validiums can process ~9,000 transactions).
 
 * VS other layer2 project
 
 optimistic rollups and ZK-rollups 把一些交易数据存到链上, 但是他们的扩展性就会收到eth 主网带宽的限制.
+#### Data availablity committee (DAC)
+* First of all, the transaction data is not published to the L1 but only the hash of the data.
+* Secondly, a trusted-sequencer collects transactions from the transaction pool manager, puts them into batches and computes the hash of the transaction data.
+* After verifying the proposed hash values individually, each DAC member signs them and sends the signature to the sequencer.(tx hash 需要被DAC member 验证)
 
+#### Data flow
+![image](https://github.com/user-attachments/assets/0288dc6d-952c-4853-a911-a3f090311e3a)
+1. L2 sequencer  收集用户交易, 并分成不同batch, 计算batch hash 
+2. 将batch 数据和hash 发送给DAC 做验证, DAC 验证之后做签名, 并存储hash 在本地数据库
+3. Sequencer 将DAC 的签名和hash 发送到ETH 上, 等待验证.
+4. ETH 上使用多签技术, 验证DAC 的签名是否有效, 进而确定这个batch 是否得到批准.
+5. aggregator 生成prove 给prover 做验证. 
 ### Transaction lifecycle
 Submitted: The transaction is submitted to the L2.
 Executed: The transaction is executed on the L2 by the sequencer.(对于用户来说已经完成了)
