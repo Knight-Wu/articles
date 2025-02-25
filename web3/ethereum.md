@@ -72,6 +72,26 @@ Aggregated: A ZK-proof is generated, posted, and verified on Ethereum to prove t
 ### Batch, block, Transaction
 ![image](https://github.com/user-attachments/assets/0ef3a3e3-cbf0-4178-adb4-5ccd1c4f2651)
 
+### ZK prove
+* how it works
+
+As we already mentioned, there is a prover (the party that proves that they have some information) and a verifier (the party that verifies the prover has the info).
+
+在这个过程的第一步中，证明者（Alice）和验证者（Bob）先确定使用哪些参数和加密算法。
+
+然后，证明者生成一个加密承诺(commitment)，这个承诺代表了她所证明的陈述内容，但并不暴露具体内容。
+
+接着，验证者会随机提出挑战(challenge)，证明者根据挑战和承诺生成一个回应(response)。
+
+然后，验证者会将回应与挑战和承诺进行对比，来判断陈述是否有效。
+
+从挑战开始，验证者可以多次提出挑战，以确保陈述是正确的，并且置信度越来越高。
+
+简而言之，这个零知识证明过程主要包含3个步骤：承诺、挑战和回应。
+
+举个例子，假设我们说的是世界上最好吃的巧克力饼干，这个过程可以这么描述：
+
+Bob和Alice约定，要证明她有这个食谱，Alice会烤饼干，而Bob会尝尝这些饼干（尝饼干就是挑战）。Alice烤好了饼干，Bob尝了一口，结果饼干确实是世界上最好吃的巧克力饼干。
 ## xlayer
 ### Architectural
 ![image](https://github.com/user-attachments/assets/5465ae04-9e8d-4d13-9b5c-8b50927ea4e7)
