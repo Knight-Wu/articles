@@ -2,10 +2,96 @@
 # GMP model 
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/1051e364-079a-4cda-8e9b-c2e384f0286f)
 
-## 总体流程图
-![image](https://github.com/Knight-Wu/articles/assets/20329409/42d24bd6-aaa6-45ad-8332-e7900b036879)
+## 为什么需要 gmp 模型
+### 概况
+总而言之为了提高 cpu 的使用率, 当一个任务需要cpu 等待时立马切换到其他任务上, 一种思路是遇到阻塞时, 新起一个线程去工作, 这样任务和操作系统线程之间是 1:1 的关系, 但是会造成切换开销过大, 线程太多, 消耗太多内存; 
+那么就需要任务和线程之前是N:M 的关系, 由一种调度关系去把任务调度到能执行的线程上, 线程的数量不能太多, 任务要足够轻量化来降低切换开销和内存消耗, 那么就有了GMP 模型. 
+### 高效的并发模型
 
-## 定义
+Goroutine 比系统线程更轻量，创建和销毁的开销更小。使用 GMP 模型，可以在单个进程内创建数十万甚至数百万个 Goroutine，而不会像线程那样引起过多的资源消耗和调度开销。
+### 调度灵活性
+
+GMP 模型允许在 P 上运行多个 Goroutine，并在不同的 M 线程之间切换。这样，Go 运行时可以更好地利用多核处理器的性能，最大限度地提高并发执行效率。
+### 阻塞操作处理
+
+当 Goroutine 执行阻塞操作（如 I/O 操作）时，Go 运行时会将其从当前的 M 线程中剥离出来，并分配另一个 Goroutine 到该 M 线程上继续执行。这种机制确保了阻塞操作不会阻塞整个线程，提高了程序的响应性和吞吐量。
+### 自动扩展和收：
+
+GMP 模型可以根据负载自动调整 M 线程的数量，以适应当前的工作量。它可以在需要时创建更多的 M 线程，或者在空闲时销毁不必要的 M 线程，从而高效地管理系统资源。
+
+## goroutine 的资源占用
+每个协程初始化栈大小是2KB, 会随调用深度增加而扩大, 栈会保存函数的参数以及调用信息, 栈是每个协程独有的, 当变量很大的时候会保存在堆上, 当多个协程共享变量的时候, 这个变量就需要放在堆上了. 
+## 原理
+### GMP 是什么
+![image](https://github.com/user-attachments/assets/e5605f8a-4fd3-4a94-b273-736f11414416)
+![image](https://github.com/user-attachments/assets/03f5ce90-4691-4e12-91cd-ad6f82f24d39)
+
+简单介绍:
+全局队列（Global Queue）：存放等待运行的 G。
+P 的本地队列(用于存放本地的G)：同全局队列类似，存放的也是等待运行的 G，存的数量有限，不超过 256 个。当某个正在运行的G 新建 G’时，G’优先加入到 P 的本地队列，如果队列满了，则会把本地队列中一半的 G 移动到全局队列。
+P 列表：所有的 P 都在程序启动时创建，并保存在数组中，最多有 GOMAXPROCS(可配置) 个。
+M(内核线程)：线程想运行任务就得获取 P，从 P 的本地队列获取 G，P 队列为空时，M 也会尝试从全局队列拿一批 G 放到 P 的本地队列，或从其他 P 的本地队列偷一半放到自己 P 的本地队列。M 运行 G，G 执行之后，M 会从 P 获取下一个 G，不断重复下去。
+</br>
+* P 的数量
+
+由 GOMAXPROCS() , 程序执行的任意时刻都只有 $GOMAXPROCS 个 goroutine 在同时运行
+
+* M 的数量
+
+go 语言本身的限制：go 程序启动时，会设置 M 的最大数量，默认 10000. 但是内核很难支持这么多的线程数，所以这个限制可以忽略。 runtime/debug 中的 SetMaxThreads 函数，设置 M 的最大数量 一个 M 阻塞了，会创建新的 M。M 与 P 的数量没有绝对关系，一个 M 阻塞，P 就会去创建或者切换另一个 M，所以，即使 P 的默认数量是 1，也有可能会创建很多个 M 出来
+
+### 可视化 GMP 编程
+有 2 种方式可以查看一个程序的 GMP 的数据。
+
+方式 1：go tool trace
+
+trace 记录了运行时的信息，能提供可视化的 Web 页面。
+
+### 一些调度器的设计策略
+
+1）work stealing 机制
+
+​ 当本线程无可运行的 G 时，尝试从其他线程绑定的 P 偷取 G，避免频繁的创建、销毁线程，而是对线程的复用
+
+2）hand off 机制
+
+​ 当本线程因为 G 进行系统调用阻塞时，线程释放绑定的 P，把 P 转移给其他空闲的线程执行。充分利用cpu
+
+### 创建一个goroutine 如何执行
+![image](https://github.com/user-attachments/assets/408947c5-598b-4fd3-8fc4-a4fcb00a2828)
+1. 创建一个G 时先放P 的本地队列, 本地队列放不下, 放全局队列
+2. 每个P和一个M绑定，M是真正的执行P中goroutine的实体(流程3)，M从绑定的P中的局部队列获取G来执行
+3. 当M绑定的P的局部队列为空时，M会从全局队列获取到本地队列来执行G(流程3.1)，当从全局队列中没有获取到可执行的G时候，M会从其他P的局部队列中偷取G来执行(流程3.2)，这种从其他P偷的方式称为work stealing
+4. 当G阻塞(因系统调用 syscall)时会阻塞M，此时P会和M解绑即hand off，并寻找新的idle的M，若没有idle的M就会新建一个M(流程5.1)。
+5. 这一点不说, 说不清楚和4 的区别, 当G 发生用户级别的阻塞时(channel或者network I/O阻塞)，不会阻塞M，M会寻找其他runnable的G；当阻塞的G恢复后会重新进入runnable进入P队列等待执行(流程5.3)
+
+### 为什么需要 P
+
+Go 1.1 之后才引入P, 
+Before Golang 1.1, there was no P component in the scheduler. The performance of the scheduler was still poor at this time. Dmitry Vyukov of the community summarized the problems in the current scheduler and designed to introduce the P component to solve the current problems ([Scalable Go Scheduler Design Doc](https://docs.google.com/document/d/1TTj4T2JO42uD5ID9e89oa0sLKhJYD0Y_kqxDv3I3XMw/edit#heading=h.mmq8lm48qfcw)), and introduced the P component in Go 1.1. The introduction of the P component not only solves several problems listed in the documentation, but also introduces some good mechanisms.
+
+* global queue lock
+
+之前没有p 的时候, 需要 global queue lock, 因为所有的 g 都在全局队列里, 引入了 p, 就可以大多数情况无锁访问 p 的 local G queue.</br>
+
+* 为什么不直接把本地队列挂在M 上呢 ?
+  
+一般来讲，M 的数量都会多于 P。像在 Go 中，M 的数量默认是 10000，P 的默认数量的 CPU 核数。另外由于 M 的属性，也就是如果存在系统阻塞调用，阻塞了 M，又不够用的情况下，M 会不断增加。
+M 不断增加的话，如果本地队列挂载在 M 上，那就意味着本地队列也会随之增加。这显然是不合理的
+
+* G 切换问题
+
+切换G 带来的开销, 如果没有P, 一个goroutine 里面创建的g' 会先放到全局g 的队列, 而不是直接被执行, 现在有了P 就直接放到P 的本地队列直接被执行
+
+* M’s memory cache (M.mcache) problem
+
+mcache 是一个 M object local cache 存放 G 的对象, 但是 M 有可能被 block by 系统调用, 所以 cache 就浪费了. 所以引入 P 之后 mcache 搬到了 P, 只有在运行的时候才会被占用, 不会造成空间浪费, 也避免了锁, 因为是没有其他线程去竞争的. 
+
+* Frequent thread blocking and wake-up problems ?(不说)
+
+In the original scheduler, the number of system threads is limited by runtime.GOMAXPROCS(). Only one system thread is opened by default. And since M performs operations such as system calls, when M blocks, it does not create a new M to perform other tasks, but waits for M to wake up, and M switches between blocking and waking frequently, which causes additional overhead. In the new scheduler, when M is in the system scheduling state, it will be disassociated from the bound P and will wake up the existing or create a new M to run other G bound to P.
+
+## 详细原理, 涉及代码
 
 ### P 的定义
 * 数量
@@ -137,60 +223,9 @@ GMP模型的阻塞可能发生在下面几种情况：
 #### 系统调用阻塞 
 当G被阻塞在某个系统调用上时，此时G会阻塞在_Gsyscall状态，M也处于 block on syscall 状态，此时的M可被抢占调度：执行该G的M会与P解绑，而P则尝试与其它idle的M绑定，继续执行其它G。如果没有其它idle的M，但P的Local队列中仍然有G需要执行，则创建一个新的M；当系统调用完成后，G会重新尝试获取一个idle的P进入它的Local队列恢复执行，如果没有idle的P，G会被标记为runnable加入到Global队列。
 
-## 为什么需要 gmp 模型
-### 高效的并发模型
-
-Goroutine 比系统线程更轻量，创建和销毁的开销更小。使用 GMP 模型，可以在单个进程内创建数十万甚至数百万个 Goroutine，而不会像线程那样引起过多的资源消耗和调度开销。
-### 调度灵活性
-
-GMP 模型允许在 P 上运行多个 Goroutine，并在不同的 M 线程之间切换。这样，Go 运行时可以更好地利用多核处理器的性能，最大限度地提高并发执行效率。
-### 阻塞操作处理
-
-当 Goroutine 执行阻塞操作（如 I/O 操作）时，Go 运行时会将其从当前的 M 线程中剥离出来，并分配另一个 Goroutine 到该 M 线程上继续执行。这种机制确保了阻塞操作不会阻塞整个线程，提高了程序的响应性和吞吐量。
-### 自动扩展和收：
-
-GMP 模型可以根据负载自动调整 M 线程的数量，以适应当前的工作量。它可以在需要时创建更多的 M 线程，或者在空闲时销毁不必要的 M 线程，从而高效地管理系统资源。
 
 
-### g , m , p 的关系
 
-![image](https://user-images.githubusercontent.com/20329409/234453413-4062b977-dc1e-4b5e-8952-4f4237818d57.png)
-
-* g 的 global queue 
-如果 p 的 groutine local queue 满了, 会把一部分 goroutine 放到 global queue
-
-* p local queue
-
-创建的 goroutine 会先放到 p local queue.
-
-* P list
-
-所有 p 都会按照 GOMAXPROCS 参数创建好, All P’s are created at program startup and stored in an array of up to GOMAXPROCS
-
-* M
-
-要跑的时候, 会先去拿 P, 再去 P 的 local queue 拿 G, 如果 local queue 空的, 会去 global 或者其他 p 的 local queue 去拿放到自己的 local queue .
-
-### 为什么需要 P
-Before Golang 1.1, there was no P component in the scheduler. The performance of the scheduler was still poor at this time. Dmitry Vyukov of the community summarized the problems in the current scheduler and designed to introduce the P component to solve the current problems ([Scalable Go Scheduler Design Doc](https://docs.google.com/document/d/1TTj4T2JO42uD5ID9e89oa0sLKhJYD0Y_kqxDv3I3XMw/edit#heading=h.mmq8lm48qfcw)), and introduced the P component in Go 1.1. The introduction of the P component not only solves several problems listed in the documentation, but also introduces some good mechanisms.
-
-* global queue lock
-
-之前没有p 的时候, 需要 global queue lock, 因为所有的 g 都在全局队列里, 引入了 p, 就可以大多数情况无锁访问 p 的 local G queue.</br>
-为什么不直接把本地队列挂在M 上呢 ? 
-一般来讲，M 的数量都会多于 P。像在 Go 中，M 的数量默认是 10000，P 的默认数量的 CPU 核数。另外由于 M 的属性，也就是如果存在系统阻塞调用，阻塞了 M，又不够用的情况下，M 会不断增加。
-M 不断增加的话，如果本地队列挂载在 M 上，那就意味着本地队列也会随之增加。这显然是不合理的
-* G 切换问题
-
-切换G 带来的开销, 如果没有P, 一个goroutine 里面创建的g 会先放到全局g 的队列, 而不是直接被执行, 现在有了P 就直接放到P 的本地队列直接被执行
-
-* M’s memory cache (M.mcache) problem
-
-mcache 是一个 M object local cache 存放 G 的对象, 但是 M 有可能被 block by 系统调用, 所以 cache 就浪费了. 而且 cache 绑定到 M 的一个好处是G 如果再次被调度到 M 就可以重用, 但实际几率很少, 所以引入 P 之后 mcache 搬到了 P, 只有在运行的时候才会被占用, 不会造成空间浪费, 也避免了锁, 因为是没有其他线程去竞争的. 
-
-* Frequent thread blocking and wake-up problems ?
-
-In the original scheduler, the number of system threads is limited by runtime.GOMAXPROCS(). Only one system thread is opened by default. And since M performs operations such as system calls, when M blocks, it does not create a new M to perform other tasks, but waits for M to wake up, and M switches between blocking and waking frequently, which causes additional overhead. In the new scheduler, when M is in the system scheduling state, it will be disassociated from the bound P and will wake up the existing or create a new M to run other G bound to P.
 
 # debug
 ### debug binary file in local machine
