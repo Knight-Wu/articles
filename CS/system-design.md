@@ -768,6 +768,51 @@ class User {
 }
 
 ```
+
+## 如何使用TCC ( try confirm cancel) 实现分布式事务
+通过TCC 的分布式中间件支持
+### 场景
+电商下订单之后, 需要对库存, 积分, 仓储服务做操作, 要么同时成功要么不操作
+![image](https://github.com/user-attachments/assets/1f7cd42a-a363-4abc-bb00-a9e71ad77611)
+
+### TRY 阶段
+![image](https://github.com/user-attachments/assets/6bf3664e-c050-4a2a-b9ed-90940857b6d9)
+
+### Confirm 阶段
+如果try 成功就都进入confirm
+![image](https://github.com/user-attachments/assets/fbf65c90-db51-45ef-9752-857666b0d0d2)
+
+### Cancel 阶段
+如果try 失败则都进入cancel
+![image](https://github.com/user-attachments/assets/ad414003-18d4-485c-98ba-adad3fc7168a)
+
+### 总结
+原本的一个接口，要改造为 3 个逻辑，Try-Confirm-Cancel：
+
+先是服务调用链路依次执行 Try 逻辑。
+如果都正常的话，TCC 分布式事务框架推进执行 Confirm 逻辑，完成整个事务。
+如果某个服务的 Try 逻辑有问题，TCC 分布式事务框架感知到之后就会推进执行各个服务的 Cancel 逻辑，撤销之前执行的各种操作。
+这就是所谓的 TCC 分布式事务。TCC 分布式事务的核心思想，说白了，就是当遇到下面这些情况时：
+
+某个服务的数据库宕机了。
+某个服务自己挂了。
+那个服务的 Redis、Elasticsearch、MQ 等基础设施故障了。
+某些资源不足了，比如说库存不够这些。
+先来 Try 一下，不要把业务逻辑完成，先试试看，看各个服务能不能基本正常运转，能不能先冻结我需要的资源。
+
+如果 Try 都 OK，也就是说，底层的数据库、Redis、Elasticsearch、MQ 都是可以写入数据的，并且你保留好了需要使用的一些资源（比如冻结了一部分库存）
+接着，再执行各个服务的 Confirm 逻辑，基本上 Confirm 就可以很大概率保证一个分布式事务的完成了。
+
+那如果 Try 阶段某个服务就失败了，比如说底层的数据库挂了，或者 Redis 挂了，等等。
+
+此时就自动执行各个服务的 Cancel 逻辑，把之前的 Try 逻辑都回滚，所有服务都不要执行任何设计的业务逻辑。保证大家要么一起成功，要么一起失败。
+
+* 某个服务的 Cancel 或者 Confirm 逻辑执行一直失败怎么办呢？
+
+TCC 事务框架会通过活动日志记录各个服务的状态。举个例子，比如发现某个服务的 Cancel 或者 Confirm 一直没成功，会不停的重试调用它的 Cancel 或者 Confirm 逻辑，务必要它成功
+
+## 最终一致性分布式事务
+TCC 事务是同步调用, 而基于MQ 的异步调用呢, 
 ## 对账两个订单表的方案
 * 要求
   
