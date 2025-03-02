@@ -517,7 +517,8 @@ COMMIT;
 ```
 
 ### 幻象读(Phantom reads)
-是不可重复读的特例, 相当于是前后两次范围读读到不同的行数
+是不可重复读的特例, 是前后两次范围读的结果不一样. 
+
 ```
     Transaction 1	                                        Transaction 2
 /* Query 1 */
@@ -534,13 +535,12 @@ COMMIT;
 
 ```
 
-### 快照读和当前读
+## 快照读和当前读
 ![image](https://github.com/user-attachments/assets/94f39f1d-2572-47d3-b1ca-698ff88df009)
 
-#### MVCC 在可重复读的隔离级别下, 使用快照读(一般select), 如何解决一般情况下的幻读的
-可重复读隔离级是由 MVCC（多版本并发控制）实现的，实现的方式是开始事务后（执行 begin 语句后），在执行第一个查询语句后，会创建一个 Read View，后续的查询语句利用这个 Read View，通过这个 Read View 就可以在 undo log 版本链找到事务开始时的数据，所以事务过程中每次查询的数据都是一样的，即使中途有其他事务插入了新纪录，是查询不出来这条数据的，所以就很好了避免幻读问题，但是有一定概率还是会出现幻读。
-
-#### MVCC 在可重复读的隔离级别下, 如何出现幻读的
+### MVCC 在可重复读的隔离级别下, 使用快照读(一般select), 如何解决一般情况下的幻读的
+可重复读隔离级是由 MVCC（多版本并发控制）实现的，
+### MVCC 在可重复读的隔离级别下, 如何出现幻读的
 * 出自https://xiaolincoding.com/mysql/transaction/phantom.html#%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8F%91%E7%94%9F%E5%B9%BB%E8%AF%BB%E7%8E%B0%E8%B1%A1%E7%9A%84%E5%9C%BA%E6%99%AF
 
 * 场景一, 普通select
@@ -549,8 +549,14 @@ COMMIT;
 * 场景二, 先select , 再select for update
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/f4135850-9095-4b5d-8f66-367a1bb2c7da)
 
-#### 如何彻底解决幻像读
-针对当前读（select ... for update 等语句），是通过 next-key lock（记录锁+间隙锁）方式解决了幻读，因为当执行 select ... for update 语句的时候，会加上 next-key lock，如果有其他事务在 next-key lock 锁范围内插入了一条记录，那么这个插入语句就会被阻塞，无法成功插入，所以就很好了避免幻读问题。
+### 如何彻底解决幻像读
+
+#### 如果在事务中只进行快照读, 例如简单select
+通过MVCC 即可, 实现的方式是开始事务后（执行 begin 语句后），在执行第一个查询语句后，会创建一个 Read View，后续的查询语句利用这个 Read View，通过这个 Read View 就可以在 undo log 版本链找到事务开始时的数据，所以事务过程中每次查询的数据都是一样的，即使中途有其他事务插入了新纪录，是查询不出来这条数据的，所以就很好了避免幻读问题
+
+#### 如果在事务中既有快照读(简单select), 又有当前读(select for update, upd, insert, del )
+事务一开始直接执行select ... for update ，通过 next-key lock（记录锁+间隙锁）方式解决了幻读，因为当执行 select ... for update 语句的时候，会加上 next-key lock，如果有其他事务在 next-key lock 锁范围内插入了一条记录，那么这个插入语句就会被阻塞，无法成功插入;
+否则如果一开始只是普通select , 后续又进行当前读, 然后又普通select 就会出现幻读. 
 
 
 * 防止幻读所引入的范围锁(gap lock) 引起的死锁的一道题目
