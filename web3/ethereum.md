@@ -95,3 +95,21 @@ Bob和Alice约定，要证明她有这个食谱，Alice会烤饼干，而Bob会�
 ## xlayer
 ### Architectural
 ![image](https://github.com/user-attachments/assets/5465ae04-9e8d-4d13-9b5c-8b50927ea4e7)
+
+
+# uniswap
+## uniswap v3 
+### 集中流动性降低了无偿损失(Impermanent Loss, IL)
+因为无偿损失出现在一个token 价格剧烈波动的时候, 因为x*y = k, x , y 数量呈比例变化, 但是当某个token 价格剧烈变化时, 但是另一个token 价格不变, 那么必然会产生价值的波动, 因为 number x * price x + number y * price y = total value, 
+只要某个token 价格出现变化, 不管是增加还是降低都会引起IL, 
+
+* eth, usdt, eth 价格增加
+
+![image](https://github.com/user-attachments/assets/e3fb47a1-213d-4592-bf83-3bafcfa18d8d)
+
+* eth, usdt, eth 价格降低
+
+![image](https://github.com/user-attachments/assets/323d9a35-d411-4738-a20e-fc7e18424547)
+
+
+
