@@ -41,7 +41,7 @@ https://solana.com/zh/docs/advanced/confirmation
 
 ## 选出leader 之后
 1. 接受交易请求，并将交易打包成区块，计算新的POH 链
-2. 将新的区块广播给其他validator 验证
+2. 将新的区块广播给其他validator 验证, 由于POH 链的验证可以并行, 所以相比单线程生成POH 会快很多.
 3. validator 通过tower BFT 进行共识，多数质押权重的validator 认可生成的新的POH 链，则该区块被确认；
 4. 如果链产生了多个分叉，哪个分叉得到的投票权重高则保留。
 
