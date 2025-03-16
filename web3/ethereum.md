@@ -1,6 +1,24 @@
 # Goal
 The intent of Ethereum is to create an alternative protocol for building decentralized applications, providing a different set of tradeoffs that we believe will be very useful for a large class of decentralized applications, with particular emphasis on situations where rapid development time, security for small and rarely used applications, and the ability of different applications to very efficiently interact, are important.
 
+# eth mempool
+## 为什么需要全局 Mempool
+去中心化交易广播: 不依赖特定验证者，任何交易可被全网任意节点接收和广播
+防止交易审查: 避免交易只能提交给单一验证者导致交易被拒绝或审查
+市场定价机制: Mempool 公开，Gas 费竞争公开，市场自由竞价，防止暗箱操作
+公平交易排序: 公开交易，机器人（如 MEV bot）、用户都能看到，促进公平参与（虽然引发抢跑）
+缓冲区: 当区块拥堵时，交易排队缓冲，避免用户交易丢失
+## 全局 Mempool 是如何实现的
+1. 节点接收交易
+用户将交易发送给任意以太坊节点（通过 JSON-RPC）。
+
+2. 节点 Gossip 广播
+节点收到交易后，通过 Gossip Protocol 将交易广播给其他邻居节点。
+最终达到全网同步，所有节点 mempool 都包含该交易。
+3. 区块提议者从 mempool 取交易
+下一轮出块的 proposer (验证者/矿工) 从 mempool 中选择交易打包。
+4. 有去重机制，避免无限广播。
+
 # Eth account
 Ethereum account contains four fields:
 
