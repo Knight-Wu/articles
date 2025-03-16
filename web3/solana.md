@@ -46,9 +46,12 @@ https://solana.com/zh/docs/advanced/confirmation
 4. 如果链产生了多个分叉，哪个分叉得到的投票权重高则保留。
 
 ## 交易请求如何发送到leader
-1. 某个slot 期间只有一个leader， 如果leader 没有及时生成新的区块，等到slot 超时（400ms）会转发到新的leader
-2. 交易请求先提交到validator， validator 通过Gossip 协议，类似P2P 协议互相交换信息，确保交易能找到当前slot 对应的leader，
-当前slot 对应的leader 是在epoch 开始的时候事先计算出来的
+1. 交易请求先提交到validator，validator 通过Gossip 协议，类似P2P 协议互相交换信息，确保交易能找到当前slot 对应的leader，某个slot 期间只有一个leader， 邻近 validator 会把交易转发给当前leader 以及未来leader.
+2. 当前slot 对应的leader 是在epoch 开始的时候事先计算出来的
+3. Solana，交易一般不会像以太坊那样广播给全网所有节点（即没有全局 Mempool），而是通过 Gossip 协议尽可能在部分节点中传播，但最终必须送达到当前 Leader 节点，才能被打包进区块。其他节点收到交易之后会尽可能把交易发往leader, 只有leader 能打包区块. 
+
+* leader 挂掉
+下一个slot leader 接着打包, 交易不会丢失会存于网络中的其他节点
 
 ## leader 生成新区块之后如何广播 ，具体 ？
 1. 使用turbine 协议，分片广播，让部分节点转发区块，减少带宽负担，避免全网广播
