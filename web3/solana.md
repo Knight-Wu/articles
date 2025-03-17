@@ -3,6 +3,8 @@
 
 ![image](https://github.com/user-attachments/assets/9edafe9d-6a1d-42be-84ac-9a50b04564d8)
 
+# solana 为什么没有类似eth 的mempool
+1. 追求低延迟, 交易直接通过P2P 网络发送给leader, 避免全局mempool 带来的广播延迟. 
 
 # solana 如何判断某个交易是否过期，过期时间是多少
 https://solana.com/zh/docs/advanced/confirmation
