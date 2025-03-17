@@ -69,9 +69,11 @@ POH 是一个链式结构，前面hash 的输出是后面hash 的输入，只要
 因为当验证时已经获得了每个index 的hash output，只需要根据input 和data，计算是否output 是符合预期的，所以在多核cpu 上可以并行运行，验证的时间会比生成POH 链的时间大幅降低。 
 
 
-# why solana transaction is low latency
-1. 校验POH 链很快, 可以并行去做, 因为已经知道每个POH 节点的输入和输出了
-# why solana can support high transaction QPS
+# 为什么solana 交易这么快
+1. POH 的机制下, 避免了交易排序的共识时间, eth 下的交易排序需要共识, 交易插入POH 链即有了顺序.
+2. 没有类似eth 的mempool, 维护一个全局共识的mempool 虽然增加了交易的透明性也会增加延迟, solana 的交易直接通过p2p 网络发往leader.
+3. 校验POH 链很快, 可以并行去做, 因为已经知道每个POH 节点的输入和输出了, 单线程生成POH 多线程验证
+4. Solana 的 Sealevel 引擎允许 多个交易同时执行，如果它们不冲突（即不同时操作同一账户）; 基于账户依赖图分析，自动调度交易执行顺序; 相比以太坊单线程顺序执行，极大提升并发。
 
 # why fee in solana is low
 
@@ -158,7 +160,14 @@ Solana 网络有数百个活跃验证者，确保了足够的去中心化程度�
 
 在Solana区块链中，PDA指的是“程序派生地址”（Program Derived Address）。这是一种特殊类型的地址，由 Solana 的程序生成，而不是由用户的私钥直接派生。PDA的主要目的是允许程序拥有和控制某些数据或资产，而不需要传统的私钥签名。
 
- 
+# solana 如何保证交易能买到meme token, 如何设置computer unit
+1. 查询链上meme token, CU 的分布, 得到通常的出价情况, 因为设置了CU 的指令是能在交易历史中看到的
+2. 然后给用户几种选项, 例如90 分位值大概率能抢到, 这个价位是否划算由用户自行判断. 
+
+# Solana交易的确认级别
+1. (最近的confirmed block 和 最近finalized的block 差了32 个slot, 大约13 秒) The tradeoff is that there is typically at least a 32 slot difference between the most recent confirmed block and the most recent finalized block. This tradeoff is pretty severe and effectively reduces the expiration of your transactions by about 13 seconds but this could be even more during unstable cluster conditions.
+2. processed 的区块可能有百分之五不会变为 finalized. 
+
 
 ## 为什么需要 PDA？
 
