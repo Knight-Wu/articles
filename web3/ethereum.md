@@ -1,6 +1,32 @@
 # Goal
 The intent of Ethereum is to create an alternative protocol for building decentralized applications, providing a different set of tradeoffs that we believe will be very useful for a large class of decentralized applications, with particular emphasis on situations where rapid development time, security for small and rarely used applications, and the ability of different applications to very efficiently interact, are important.
 
+# POS 的演进
+## chain based proof of stake
+![image](https://github.com/user-attachments/assets/ddf55967-5676-43a4-86e6-4ce22f09fdf2)
+### 问题
+* 随机种子难以真正随机
+
+很难找到一个完全真正随机的随机种子 r, 因为受prevblock 的影响, 假设prevblock 是我出块, 我可以调整交易的顺序, 穷举, 使得r 计算出来下一个proposer 还是我. 可以用事先计算的方式, 都算好, 避免受上一个区块的影响. 
+* 其他问题
+![image](https://github.com/user-attachments/assets/b8085a11-e435-402f-9574-0da16ca62b2b)
+
+## BFT based POS
+### goal
+能够正常的出块, 所有诚实节点达成一致, 表现好像一个中心化系统, 
+![image](https://github.com/user-attachments/assets/5d8ea96a-2441-4306-be84-30310b262b30)
+
+![image](https://github.com/user-attachments/assets/f8e8d8e9-7c2d-4082-a024-a1da9b01ce40)
+
+### 如何达成共识
+![image](https://github.com/user-attachments/assets/a69c732f-60b1-486a-b28b-dfcf0b8a3397)
+多轮投票让三分之二的节点都同意
+
+* 发生异常
+
+会由下一轮的proposer 再去投票, 每轮的proposer 是事先由block 高度选出来的, 如果没有异常就很快走绿色, 达到三分之二即可达成一致. 
+![image](https://github.com/user-attachments/assets/88bd9de1-7415-4f7a-a3f5-667639e3fdb0)
+
 # eth mempool
 ## 为什么需要全局 Mempool
 去中心化交易广播: 不依赖特定验证者，任何交易可被全网任意节点接收和广播
