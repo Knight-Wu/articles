@@ -162,6 +162,7 @@ bitcoin POW 通过计算数学题来竞争出块，类似一个概率题，谁�
 
 ### POS
 每个validator 都必须质押32 eth， 出块的时候从所有的validator 中随机选出一个作为提出者（proposer），并选取128 个validator 作为委员会， 广播到所有validator， proposer 把交易打包成区块，广播给委员会，委员会中多数把区块验证通过后就加入到区块链中。
+还会有惩罚机制, 惩罚按照质押的比例. 
 </br>
 出块时间：平均 15 秒，TPS 目前约 15-30 TPS（和 PoW 时代差不多）。
 
