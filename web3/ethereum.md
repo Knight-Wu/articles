@@ -1,6 +1,11 @@
 # Goal
 The intent of Ethereum is to create an alternative protocol for building decentralized applications, providing a different set of tradeoffs that we believe will be very useful for a large class of decentralized applications, with particular emphasis on situations where rapid development time, security for small and rarely used applications, and the ability of different applications to very efficiently interact, are important.
 
+# 交易进入区块的流程
+1. 用户提交交易, 用私钥签名, 发送到就近的validator, 然后p2p 广播到所有节点的mempool
+2. proposer 从mempool 按照gas 高低, 时间先后顺序, 挑选交易进行打包.
+3. 打包后的区块得到其他节点验证后成为区块链的一部分, 并且其他节点会把这个区块的交易在本地执行一遍, 保证各个节点的本地数据状态的一致.
+
 # POS 的演进
 ## chain based proof of stake
 ![image](https://github.com/user-attachments/assets/ddf55967-5676-43a4-86e6-4ce22f09fdf2)
