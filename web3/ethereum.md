@@ -163,4 +163,49 @@ Bob和Alice约定，要证明她有这个食谱，Alice会烤饼干，而Bob会�
 ![image](https://github.com/user-attachments/assets/323d9a35-d411-4738-a20e-fc7e18424547)
 
 
+# 永续合约
+## 一种dex 的实现方式
+* 开仓
+![image](https://github.com/user-attachments/assets/7edd5b28-208a-4889-b85a-c3debe6ca55e)
 
+Cleaninghouse 在 Alice 开仓时做了以下操作：
+
+Mint virtual tokens Alice 做多，所以 mint vUSDC，如果她做空，mint vETH
+Store a cost basis cost basis 是计算 Alice 实际损益情况的一个重要概念
+Swap tokens Clearinghouse 将相应的 virtual tokens 进行 swap (from vUSDC to vETH)
+此时 Alice 拥有：
+
+1.96 vETH (由 Clearinghouse 保管)
+Cost basis 200 vUSDC (开仓的基础成本 vToken)
+Vault 中存入了 100 USDC (真正投入的 token)
+
+* 平仓
+
+![image](https://github.com/user-attachments/assets/3806f0c9-e153-448e-b0ab-4472913a2e06)
+最终 Alice 的 PnL (Profit and Loss) 是她持有的 vUSDC 减去她在 vUSDC 中的 cost basis 。最后，Vault 将她的抵押品连同她的 PnL 转回 Alice：
+
+PnL = vUSDC - cost basis = 220 - 200 = 20
+Alice receives = collateral + PnL = 100 + 20 = 120
+
+## 为什么需要资金费率
+永续合约（Perpetual Futures）没有固定交割日，为了让它的价格尽可能接近现货市场价格（Spot Price），交易所设计了**资金费率（Funding Rate）**机制来调节多空双方的持仓成本，使合约价格趋向现货价格。
+
+如果合约价格 > 现货价格（正溢价）：
+
+说明多头（做多）力量强势，市场情绪看涨。
+资金费率为 正，多头 支付 资金费率给空头，鼓励空头入场，使合约价格回落。
+如果合约价格 < 现货价格（负溢价）：
+
+说明空头（做空）力量强势，市场情绪看跌。
+资金费率为 负，空头 支付 资金费率给多头，鼓励多头入场，使合约价格回升。
+
+* 如果没有资金费率
+
+BTC 现货市场价格 = 50,000 USDT
+BTC 永续合约市场价格 = 52,000 USDT（正溢价）
+如果市场允许这种价格长期存在，可能出现以下问题：
+
+投机交易者过度涌入合约市场：
+
+多头交易者愿意支付更高的价格（52,000 USDT）买入 BTC 永续合约，而不是在现货市场买 BTC（50,000 USDT）。
+这会进一步推高合约价格，使市场脱离真实供需关系。
