@@ -1,5 +1,9 @@
 # 永续合约
 ## GMX
+* 价格由chainlink 决定, 可以设置limit order. 如何实现limit order ?
+* 用户杠杆的钱通过LP 池子借, 需要付借款利息, 对手方是LP, 这个LP 池子由多个币种组成, 每个币种按照价格乘数量计算在池子里面的比重, 这样流动性深度就比较深. 
+
+* LP 存入和提现都收手续费, 通过调整手续费的高低来平衡池子里面各个token 的比重, 同样swap 的时候也调整手续费来影响池子里面的权重. 
 ### contract for difference
 CFD(差价合同), 合规要求保证金由机构补足, 
 ![image](https://github.com/user-attachments/assets/46266c46-63ca-4fbf-bea0-0f62ec011113)
