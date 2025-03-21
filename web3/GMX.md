@@ -4,10 +4,11 @@
 CFD(差价合同), 合规要求保证金由机构补足, 
 ![image](https://github.com/user-attachments/assets/46266c46-63ca-4fbf-bea0-0f62ec011113)
 
-### 交易规则
-![image](https://github.com/user-attachments/assets/87585dbb-7f5a-4fce-82cf-e3cce6521d0f)
+
 
 ### 混币池的设计
+![image](https://github.com/user-attachments/assets/d093cbdb-5195-481a-aeca-e012aa1e38aa)
+
 ![image](https://github.com/user-attachments/assets/b19ecb7b-7793-479d-8e96-4e93948b16a9)
 
 ### LP 提供流动性
