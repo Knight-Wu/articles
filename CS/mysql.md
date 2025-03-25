@@ -206,6 +206,9 @@ B+树是多叉树结构，每个结点都是一个16k的数据页，能存放较
 而针对写操作，B+树需要拆分合并索引数据页，跳表则独立插入，并根据随机函数确定层数，没有旋转和维持平衡的开销，因此跳表的写入性能会比B+树要好。
 # INNODB 索引
 
+## 索引失效的情况
+![db84afae3224b1292c05b9ea056ad71](https://github.com/user-attachments/assets/01052524-ff62-4b6d-9ae6-ec14e5ef3427)
+
 
 ## B+ tree index structure in INNODB 
 * 手画B+ 树
@@ -439,6 +442,8 @@ select * from T1 where b = 12 and c = 14 and d = 3; </br>
 索引的第一列也就是b列可以说是从左到右单调递增的，但我们看c列和d列并没有这个特性，它们只能在b列值相等的情况下这个小范围内递增，
 
 ##### 什么情况多列索引失效
+联合索引的最左匹配原则会一直向右匹配直到遇到「范围查询」就会停止匹配。也就是范围查询的字段可以用到联合索引，但是在范围查询字段的后面的字段无法用到联合索引。
+</br>
 select * from T1 where b = 12 and c = 14 and d = 3;-- 全值索引匹配 三列都用到
 select * from T1 where b = 12 and c = 14 and e = 'xml';-- 应用到两列索引
 select * from T1 where b = 12 and e = 'xml';-- 应用到一列索引
@@ -454,6 +459,9 @@ select * from T1 where c = 14  and d = 3;-- 无法应用索引，违背最左匹
 
 ![image](https://github.com/user-attachments/assets/ddcce5fe-f5ee-4911-8575-db36439ce886)
 
+#### 创建多列索引的原则
+建立联合索引时的字段顺序，对索引效率也有很大影响。越靠前的字段被用于索引过滤的概率越高，实际开发工作中建立联合索引时，要把区分度大的字段排在前面，
+区分度= distinct(column) / count(*)
 ### 多个单列索引
 适用场景
 查询条件独立使用各列（OR 条件或分散查询）
@@ -525,6 +533,9 @@ using_index 和using_where 区别: https://stackoverflow.com/questions/25672552/
 
 ## 事务隔离级别（定义了一个事务可能受其他并发事务影响的程度）
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/691021cc-8803-47e6-94cd-2b9cff58b961)
+### 如何实现四种隔离级别
+![image](https://github.com/user-attachments/assets/e825a4b7-dae1-4b19-87c3-3c05da9d4d38)
+
 ## 事务解决的问题
 ### 脏读(dirty read)
 A事务读到了B事务尚未提交的数据, 可理解为读到了脏数据, 若此时B事务回滚, 则会产生数据不一致的情况.
@@ -652,6 +663,8 @@ https://dev.mysql.com/doc/refman/8.4/en/innodb-locking.html#:~:text=A%20gap%20lo
 ![enter image description here](https://drive.google.com/uc?id=1NdpnXgkU7Q3TW0G73P0WPR_ejiUgf-Qp)
 
 ## MVCC 多版本并发控制
+### 可重复读隔离级别下，A事务提交的数据，在B事务能看见吗
+可重复读隔离级是由 MVCC(多版本并发控制)实现的，实现的方式是开始事务后(执行 begin语句后)，在执行第一个查询语句后，会创建一个Read View，后续的查询语句利用这个 ReadView，通过这个 Read View 就可以在 undo log版本链找到事务开始时的数据，所以事务过程中每次查询的数据都是一样的，即使中途有其他事务插入了新纪录，是查询不出来这条数据的。
 ### 如何实现
 三个主体的交互, 一是当前事务所属id, 二是当前事务所操作的数据的事务id, 三是readView 
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/8b4248ac-e1a3-48d4-be0d-a46d89120f26)
