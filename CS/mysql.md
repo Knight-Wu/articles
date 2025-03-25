@@ -374,7 +374,7 @@ where a="A" and b in ('b','B') and c = 'C' , (a,b,c) 的索引仍然有效.
 最好设计索引的时候覆盖查询和排序两种任务, 只有当索引列的顺序和order by 的列顺序一致时, 且所有列的排序方向也跟索引是一致时(索引是正序, order by 也是正序), 具体参考"高性能 mysql 5.3.7"
  
 ## 多列索引和多个单列索引
-1. 多列索引（联合索引）
+### 多列索引（联合索引）
 适用场景
 查询条件包含多个列（AND 条件）
 
@@ -382,31 +382,79 @@ where a="A" and b in ('b','B') and c = 'C' , (a,b,c) 的索引仍然有效.
 
 多列索引 (col1, col2) 可高效定位数据，避免多次回表扫描。
 
-覆盖索引（Covering Index）
+* 覆盖索引（Covering Index）
 
-若索引包含查询所需的所有字段（如 SELECT col1, col2），可直接从索引返回数据，无需访问表数据页。
+若索引包含查询所需的所有字段, 如非聚簇索引, 只查询索引列和主键, 可直接从索引返回数据，无需访问表数据页。
 
 排序或分组操作
 
 如 ORDER BY col1, col2 或 GROUP BY col1, col2，联合索引能避免额外排序步骤。
 
-最左前缀匹配
-
-若查询仅使用索引的最左前缀（如 WHERE col1 = A），仍可利用索引。但若跳过前缀（如 WHERE col2 = B），索引可能失效。
-
-优势
+* 优势
 减少 I/O 次数：单次索引扫描即可满足复合条件。
 
 高效排序/分组：避免临时表或文件排序。
 
 覆盖查询优化：直接通过索引返回数据。
 
-缺点
+* 缺点
 维护成本高：插入、更新时需维护更多列的组合。
 
 灵活性低：若查询条件不固定（如不同列组合），需创建多个联合索引。
 
-2. 多个单列索引
+#### 最左前缀匹配
+若查询仅使用索引的最左前缀（如 WHERE col1 = A），仍可利用索引。但若跳过前缀（如 WHERE col2 = B），索引可能失效。
+
+* 为什么有这个最左前缀匹配规则
+
+  为什么不符合最左匹配不能查找, 因为只有第一列是完全有序的, 后面的列是在前面列的基础上部分有序, 必须要找到第一列, 然后接着找才是有序的, 否则直接找第二列是无序的, 就需要全表扫描, 相当于索引失效
+  
+##### 举例
+
+```
+CREATE TABLE `t1`  (
+  `a` int(11) NOT NULL AUTO_INCREMENT,
+  `b` int(11) NULL DEFAULT NULL,
+  `c` int(11) NULL DEFAULT NULL,
+  `d` int(11) NULL DEFAULT NULL,
+  `e` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`a`) USING BTREE,
+  INDEX `index_bcd`(`b`, `c`, `d`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+```
+
+![image](https://github.com/user-attachments/assets/76121769-23ba-487e-90b3-9f5973b03bcc)
+第一行是b, 第二行是c, 第三行是d, 叶子节点最后一行是主键.
+
+select * from T1 where b = 12 and c = 14 and d = 3; </br>
+也就是T1表中a列为4的这条记录。存储引擎首先从根节点（一般常驻内存）开始查找，第一个索引的第一个索引列为1,12大于1，第二个索引的第一个索引列为56,12小于56，于是从这俩索引的中间读到下一个节点的磁盘文件地址，从磁盘上Load这个节点，通常伴随一次磁盘IO，然后在内存里去查找。当Load叶子节点的第二个节点时又是一次磁盘IO，比较第一个元素，b=12,c=14,d=3完全符合，于是找到该索引下的data元素即ID值，再从主键索引树上找到最终数据。
+
+![image](https://github.com/user-attachments/assets/36d0f44b-45ca-4ccd-a6b4-48c0deb5cac9)
+
+首先我们创建的index_bcd(b,c,d)索引，相当于创建了(b)、（b、c）（b、c、d）三个索引.
+</br>
+我们看，联合索引是首先使用多列索引的第一列构建的索引树，用上面idx_t1_bcd(b,c,d)的例子就是优先使用b列构建，当b列值相等时再以c列排序，若c列的值也相等则以d列排序。我们可以取出索引树的叶子节点看一下。
+![image](https://github.com/user-attachments/assets/6d5d15c3-f946-4828-aba3-b2f3bdbefd52)
+索引的第一列也就是b列可以说是从左到右单调递增的，但我们看c列和d列并没有这个特性，它们只能在b列值相等的情况下这个小范围内递增，
+
+##### 什么情况多列索引失效
+select * from T1 where b = 12 and c = 14 and d = 3;-- 全值索引匹配 三列都用到
+select * from T1 where b = 12 and c = 14 and e = 'xml';-- 应用到两列索引
+select * from T1 where b = 12 and e = 'xml';-- 应用到一列索引
+select * from T1 where b = 12  and c >= 14 and e = 'xml';-- 应用到bc两列列索引及索引条件下推优化
+select * from T1 where b = 12  and d = 3;-- 应用到一列索引  因为不能跨列使用索引 没有c列 连不上
+select * from T1 where c = 14  and d = 3;-- 无法应用索引，违背最左匹配原则
+
+#### 索引下推(Index Condition Pushdown，简称ICP)
+索引下推的目的是为了减少回表次数，也就是要减少IO操作。对于InnoDB的聚簇索引来说，数据和索引是在一起的，不存在回表这一说。
+
+引用了子查询的条件不能下推；
+引用了存储函数的条件不能下推，因为存储引擎无法调用存储函数。
+
+![image](https://github.com/user-attachments/assets/ddcce5fe-f5ee-4911-8575-db36439ce886)
+
+### 多个单列索引
 适用场景
 查询条件独立使用各列（OR 条件或分散查询）
 
@@ -541,6 +589,10 @@ COMMIT;
 ### MVCC 在可重复读的隔离级别下, 使用快照读(一般select), 如何解决一般情况下的幻读的
 可重复读隔离级是由 MVCC（多版本并发控制）实现的，
 ### MVCC 在可重复读的隔离级别下, 如何出现幻读的
+* 总结
+
+  MVCC 不能完全解决幻读问题, 如果你在事务当中只用快照读(普通select) 那不会发生幻读, 但是如果中间插入当前读(select for update, insert , update, del) 那么就会读最新数据, 从而发生第二次读到第一次不存在的数据发生幻读, 如果是这种情况, 那么第一次读就直接select for update, 就加入了间隙锁, 从而就不会发生幻读.
+  
 * 出自https://xiaolincoding.com/mysql/transaction/phantom.html#%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%8F%91%E7%94%9F%E5%B9%BB%E8%AF%BB%E7%8E%B0%E8%B1%A1%E7%9A%84%E5%9C%BA%E6%99%AF
 
 * 场景一, 普通select
