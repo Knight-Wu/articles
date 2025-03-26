@@ -650,7 +650,15 @@ time4： insert into t1(id, name, score) value (26, 'tommy', 90);
 
 </br>
 答案:</br>
-先是t1 id 25 有行锁, 然后 t2 行锁, t3 从20-30 的gap lock, 就等事务A释放行锁, t4 等 事务b 的gap lock 就互相等待, 造成死锁
+关键是 time1 和 time2 都执行了对不存在的 id（25 和 26）进行 update，这两个操作都会触发 InnoDB 的 Gap Lock。
+
+由于 t1 的主键是 id，主键索引是有序的，id 介于 20（rose）和 37（james）之间不存在值，因此：
+
+id=25 和 id=26 实际都落在 (20, 37) 这个区间内的同一个 gap
+
+InnoDB RR 下，update ... where id=25 会对这个 gap 加锁
+
+![image](https://github.com/user-attachments/assets/3a6fde74-7130-4935-aaa5-c6572c18cc9f)
 
 </br> 参考:
 https://dev.mysql.com/doc/refman/8.4/en/innodb-locking.html#:~:text=A%20gap%20lock%20is%20a,of%2015%20into%20column%20t.
