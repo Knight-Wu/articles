@@ -18,10 +18,12 @@ EIP-1559 是以太坊于 2021 年 伦敦硬分叉中引入的一项协议变更�
 
 实现部分 ETH 销毁（让 ETH 变得更稀缺）
 * gas fee
+  
 Total Fee = Base Fee + Priority Fee (Tip)
 </br>
 
 * base fee
+
 Base Fee 是协议自动设定的 每单位 Gas 的最小价格, 不由用户设定，也不会给到矿工，而是 销毁（burn）掉, 体现的是网络拥堵程度
 
 默认 目标值为 15,000,000 gas
@@ -55,6 +57,7 @@ Base Fee 增加最多 12.5%（因为这是调整上限）
 
 ## searcher
 是一个角色, 不是一个组件或者service
+
 ## builder
 通过提供rpc service 来将交易直接发往特定的builder, 相当于交易完全私有, 不通过公开的mempool.
 builder 执行一系列的算法来决定一个区块中应该包含哪些bundles和交易来最大化该区块的最大利润，
@@ -77,8 +80,7 @@ builder 执行一系列的算法来决定一个区块中应该包含哪些bundle
 * 利润来源
 
 builder 可以拿到gas 费的一部分, 例如priority fee(tip), 然后在区块中构建最后一笔交易直接打给builder 代码配置的地址
-### 优势
-用更优秀的排序交易算法使矿工能拿到更多的收益, 使用户的交易不透明避免MEV 攻击.
+
 
 ## relayer 
 ![image](https://github.com/user-attachments/assets/f6b6cdce-13e6-4c09-9990-cb0fd6b055c5)
@@ -97,18 +99,18 @@ builder 通过relayer 给validator 的交易只包含交易头, 防止validator 
 
 ## 优势
 * 安全性提升
+  
 Validator 不需要知道交易具体内容，防止作弊
-
 Builder 和 Validator 相互不信任也能合作（通过中继）
 
 * 效率提升
+  
 Builder 可以专注做极致利润排序（用自定义策略、MEV bot）
-
 Validator 只需选“出价最高的 block”，不需关心排序算法
 
 * 市场竞争 + 去中心化
-多个 Builder 竞争，提高整体收益(但实际上目前市面上builder 的集中在几家上面, 其他小的builder 拿不到一些私有订单, 赚不到钱)
 
+多个 Builder 竞争，提高整体收益(但实际上目前市面上builder 的集中在几家上面, 其他小的builder 拿不到一些私有订单, 赚不到钱)
 多个 Relay 转发，避免中心化控制
 
 ## 流程
