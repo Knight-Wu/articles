@@ -1,3 +1,33 @@
+# 分布式限流
+```
+-- token_bucket.lua
+local key = KEYS[1]
+local now = tonumber(ARGV[1])
+local refill_rate = tonumber(ARGV[2])
+local capacity = tonumber(ARGV[3])
+local requested = tonumber(ARGV[4])
+
+-- 获取现有 token 状态
+local last_tokens = tonumber(redis.call("HGET", key, "tokens") or capacity)
+local last_time = tonumber(redis.call("HGET", key, "timestamp") or now)
+
+-- 补充token 到令牌桶: 现在到上次获取token 的时间间隔 * 每单位时间间隔需要新增的token(refill_rate)
+local delta = math.max(0, now - last_time)
+local refill = math.floor(delta * refill_rate)
+local current_tokens = math.min(capacity, last_tokens + refill)
+
+-- 没超过限流, 返回 0
+if current_tokens < requested then 
+  return 0
+else
+  redis.call("HSET", key, "tokens", current_tokens - requested)
+  redis.call("HSET", key, "timestamp", now)
+  redis.call("EXPIRE", key, 2)
+  return 1
+end
+
+```
+实际上还可以请求的token 计算下次不被限流的时间, 思路: 时间间隔 = 请求的token / 单位时间的产生的token , 下次时间 = 时间间隔 + now
 # 分布式锁
 SET lock_key client_id NX PX 30000
 
