@@ -80,7 +80,8 @@ B: 输出 1
 C: 程序hang住
 D: panic
 ```
-选D, 因为go 1 一开始先获取读锁, 然后sleep 5, 此时main go 获取写锁, 等待 go1 释放读锁, 此时 go 1 继续获取读锁, 因为之前有写锁等待, 所以go 1 等待main 释放写锁, 互相等待, 导致死锁. 
+选D, 因为go 1 一开始先获取读锁, 然后sleep 5s, 此时main go 获取写锁, 等待 go1 释放读锁, 此时 go 1 继续获取读锁, 因为之前有写锁等待, 所以go 1 等待main 释放写锁, 互相等待, 导致死锁. 
+</br>
 官方原话: If any goroutine calls RWMutex.Lock while the lock is already held by one or more readers, concurrent calls to RWMutex.RLock will block until the writer has acquired (and released) the lock, to ensure that the lock eventually becomes available to the writer
 https://pkg.go.dev/sync#RWMutex.Lock
 
@@ -113,6 +114,41 @@ D: 可以编译，但是程序运行会panic
 
 选C, o.done 不能保证多个线程间的可见性, 除非使用atomic package 类似java 的volatile 关键字, mutex不像java 的synchronize 能保证内存可见性.
 
+## mutex 在使用之后不能复制
+```
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+type MyMutex struct {
+	count int
+	sync.Mutex
+}
+
+func main() {
+	var mu MyMutex
+	mu.Lock()
+	var mu2 = mu
+	mu.count++
+	mu.Unlock()
+	mu2.Lock()
+	mu2.count++
+	mu2.Unlock()
+	fmt.Println(mu.count, mu2.count)
+}
+A: 不能编译
+B: 输出 1, 1
+C: 输出 1, 2
+D: panic
+```
+选D, var mu2 = mu 会做值拷贝, mutex 在使用之后不能复制, 
+
+* 解决办法
+
+var mu2 = &mu 这样就不会做值拷贝, 指向同一个对象 
 ## 内存池Pool
 ```
 package main
