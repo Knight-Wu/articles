@@ -1,4 +1,146 @@
+# golang 经典编程问题
+## 内存池Pool
+```
+package main
+import (
+	"bytes"
+	"fmt"
+	"runtime"
+	"sync"
+	"time"
+)
+var pool = sync.Pool{New: func() interface{} { return new(bytes.Buffer) }}
+func main() {
+	go func() {
+		for {
+			processRequest(1 << 28) // 256MiB
+		}
+	}()
+	for i := 0; i < 1000; i++ {
+		go func() {
+			for {
+				processRequest(1 << 10) // 1KiB
+			}
+		}()
+	}
+	var stats runtime.MemStats
+	for i := 0; ; i++ {
+		runtime.ReadMemStats(&stats)
+		fmt.Printf("Cycle %d: %dB\n", i, stats.Alloc)
+		time.Sleep(time.Second)
+		runtime.GC()
+	}
+}
+func processRequest(size int) {
+	b := pool.Get().(*bytes.Buffer)
+	time.Sleep(500 * time.Millisecond)
+	b.Grow(size)
+	pool.Put(b)
+	time.Sleep(1 * time.Millisecond)
+}
 
+A: 不能编译
+B: 可以编译，运行时正常，内存稳定
+C: 可以编译，运行时内存可能暴涨
+D: 可以编译，运行时内存先暴涨，但是过一会会回收掉
+
+```
+选C, 因为Pool 的size 只增不减, 只要单个buffer 申请过 256MB 就算后续grow 到 1KB 实际也会占用 256MB, 并且因为在 processRequest 函数中, 每个goroutine 都会sleep 500ms 就算此时GC 也没法回收goroutine 持有的buffer, 所以大量buffer 是无法在GC 时回收的, 经过测试很快就OOM. 
+
+### 解决办法
+#### Pool 对象大小只增不减
+所以通常大对象是不会进入pool 的, 或者大对象进入大pool , 小对象进入小pool
+
+#### 限制并发
+```
+sem := make(chan struct{}, 1) // 并发1
+func processLimitConcurrency() {
+    sem <- struct{}{}
+    defer func() { <-sem }()
+
+    processRequest(1 << 28)
+}
+```
+
+## 读nil chan 和并发问题
+```
+package main
+import (
+	"fmt"
+	"runtime"
+	"time"
+)
+func main() {
+	var ch chan int
+	go func() {
+		ch = make(chan int, 1)
+		ch <- 1
+	}()
+	go func(ch chan int) {
+		time.Sleep(time.Second)
+		<-ch
+	}(ch)
+	c := time.Tick(1 * time.Second)
+	for range c {
+		fmt.Printf("#goroutines: %d\n", runtime.NumGoroutine())
+	}
+}
+
+A: 不能编译
+B: 一段时间后总是输出 #goroutines: 1
+C: 一段时间后总是输出 #goroutines: 2
+D: panic
+```
+
+选C, 有main 和第二个goroutine, 第一个go 在发送完成后就退出了, 由于第二个go 初始化的时候并没有等待第一个go 对ch 的初始化, 并且goroutine 的参数是值传递, 所以就算等待第一个go 初始化完成, 第二个go 拿到的chan 还是nil, 所以一直会block
+### 解决办法
+一开始就初始化 ch 或者ch 不要作为参数传递到goroutine, 作为全局变量传递
+
+## close nil chan
+```
+package main
+import "fmt"
+func main() {
+	var ch chan int
+	var count int
+	go func() {
+		ch <- 1
+	}()
+	go func() {
+		count++
+		close(ch)
+	}()
+	<-ch
+	fmt.Println(count)
+}
+A: 不能编译
+B: 输出 1
+C: 输出 0
+D: panic
+```
+选d, close nil chan 会直接panic, send 和receive nil chan 会block. 
+
+## chan happen before
+```
+package main
+var c = make(chan int)
+var a int
+func f() {
+	a = 1
+	<-c
+}
+func main() {
+	go f()
+	c <- 0
+	print(a)
+}
+A: 不能编译
+B: 输出 1
+C: 输出 0
+D: panic
+
+```
+选B, 无缓冲chan 的HB 原则是receive hb send 所以时序是 a = 1, <-c, c<- 0, print(1), 如果是有缓冲chan, send HB receive
 # GMP model 
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/1051e364-079a-4cda-8e9b-c2e384f0286f)
 
