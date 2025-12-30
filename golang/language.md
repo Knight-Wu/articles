@@ -1,4 +1,118 @@
+# 理解golang happen before
+* 博客
+
+  https://studygolang.com/articles/34209
+  
+* 官方链接
+
+https://go.dev/ref/mem?utm_source=chatgpt.com
+
 # golang 经典编程问题
+## mutex 是不可重入的
+```
+package main
+import (
+	"fmt"
+	"sync"
+)
+var mu sync.Mutex
+var chain string
+func main() {
+	chain = "main"
+	A()
+	fmt.Println(chain)
+}
+func A() {
+	mu.Lock()
+	defer mu.Unlock()
+	chain = chain + " --> A"
+	B()
+}
+func B() {
+	chain = chain + " --> B"
+	C()
+}
+func C() {
+	mu.Lock()
+	defer mu.Unlock()
+	chain = chain + " --> C"
+}
+A: 不能编译
+B: 输出 main --> A --> B --> C
+C: 输出 main
+D: panic
+```
+选D, mutex 不能重入, 不能同一个go 调用两次lock, 
+
+## RWMutex read lock must wait write lock to acquire first
+```
+package main
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+var mu sync.RWMutex
+var count int
+func main() {
+	go A()
+	time.Sleep(2 * time.Second)
+	mu.Lock()
+	defer mu.Unlock()
+	count++
+	fmt.Println(count)
+}
+func A() {
+	mu.RLock()
+	defer mu.RUnlock()
+	B()
+}
+func B() {
+	time.Sleep(5 * time.Second)
+	C()
+}
+func C() {
+	mu.RLock()
+	defer mu.RUnlock()
+}
+A: 不能编译
+B: 输出 1
+C: 程序hang住
+D: panic
+```
+选D, 因为go 1 一开始先获取读锁, 然后sleep 5, 此时main go 获取写锁, 等待 go1 释放读锁, 此时 go 1 继续获取读锁, 因为之前有写锁等待, 所以go 1 等待main 释放写锁, 互相等待, 导致死锁. 
+官方原话: If any goroutine calls RWMutex.Lock while the lock is already held by one or more readers, concurrent calls to RWMutex.RLock will block until the writer has acquired (and released) the lock, to ensure that the lock eventually becomes available to the writer
+https://pkg.go.dev/sync#RWMutex.Lock
+
+## 双检查实现单例, 内存可见性问题
+```
+package doublecheck
+import (
+	"sync"
+)
+type Once struct {
+	m    sync.Mutex
+	done uint32
+}
+func (o *Once) Do(f func()) {
+	if o.done == 1 {
+		return
+	}
+	o.m.Lock()
+	defer o.m.Unlock()
+	if o.done == 0 {
+		o.done = 1
+		f()
+	}
+}
+A: 不能编译
+B: 可以编译，正确实现了单例
+C: 可以编译，有并发问题，f函数可能会被执行多次
+D: 可以编译，但是程序运行会panic
+```
+
+选C, o.done 不能保证多个线程间的可见性, 除非使用atomic package 类似java 的volatile 关键字, mutex不像java 的synchronize 能保证内存可见性.
+
 ## 内存池Pool
 ```
 package main
@@ -140,7 +254,9 @@ C: 输出 0
 D: panic
 
 ```
-选B, 无缓冲chan 的HB 原则是receive hb send 所以时序是 a = 1, <-c, c<- 0, print(1), 如果是有缓冲chan, send HB receive
+选B, 无缓冲chan 的HB 原则是receive hb send 所以时序是 a = 1, <-c, c<- 0, print(1), 如果是有缓冲chan, send HB receive; 如果是有缓冲chan, The closing of a channel is synchronized before a receive that returns a zero value; 在单个goroutine 内, 代码顺序在前的代码 HB 在后的代码; 
+HB 有传递原则, a HB b, b HB c, 那么 a HB c.
+
 # GMP model 
 ![image](https://github.com/Knight-Wu/articles/assets/20329409/1051e364-079a-4cda-8e9b-c2e384f0286f)
 
