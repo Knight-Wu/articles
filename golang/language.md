@@ -337,11 +337,15 @@ GMP 模型可以根据负载自动调整 M 线程的数量，以适应当前的�
 ![image](https://github.com/user-attachments/assets/03f5ce90-4691-4e12-91cd-ad6f82f24d39)
 
 #### G(goroutine)
-每次 go func 就会创建一个 G, 保存函数、栈和上下文, 每个占用内存 2KB(初始栈大小), 如果 G 里面工作很简单, 数量很多也没关系, 如果是需要网络连接和创建文件, 则太多的 G 会导致too many files open or Resource temporarily unavailable 
+每次 go func 就会创建一个 G, 保存函数、栈和上下文, 如果 G 里面工作很简单, 数量很多也没关系, 如果是需要网络连接和创建文件, 则太多的 G 会导致too many files open or Resource temporarily unavailable 
 
 G 需要绑定 M 来跑, M 需要绑定 P 来跑. 
 G is bound to M to run, and M needs to be bound to P to run, so theoretically the number of running G at the same time is equal to the number of P
 
+* G占用得内存
+
+ 每个占用内存 2KB(初始栈大小), 连续内存, 按需增长（2KB → 4KB → 8KB → …）, 通过 栈拷贝 扩容, 1 万个 goroutine ≈ 20 MB 栈空间
+ 
 * G的内部结构中重要字段如下，完全结构参见源码
 
 ```
@@ -376,7 +380,7 @@ GMP模型的阻塞可能发生在下面几种情况：
   
 当G被阻塞在某个系统调用上时，此时G会阻塞在_Gsyscall状态，M也处于 block on syscall 状态，此时的M可被抢占调度：执行该G的M会与P解绑，而P则尝试与其它idle的M绑定，继续执行其它G。如果没有其它idle的M，但P的Local队列中仍然有G需要执行，则创建一个新的M；当系统调用完成后，G会重新尝试获取一个idle的P进入它的Local队列恢复执行，如果没有idle的P，G会被标记为runnable加入到Global队列。
 #### M（Machine）
-每个M 代表一个操作系统线程，负责真正执行指令. 每个M 占用 8MB 内存.  一个 M 阻塞了，会创建新的 M。
+每个M 代表一个操作系统线程，负责真正执行指令. 每个M 占用 8MB 内存(栈空间), 由操作系统分配.  一个 M 阻塞了，会创建新的 M。
 </br>
 线程想运行任务就得获取 P，从 P 的本地队列获取 G，P 队列为空时，M 也会尝试从全局队列拿一批 G 放到 P 的本地队列，或从其他 P 的本地队列偷一半放到自己 P 的本地队列。M 运行 G，G 执行之后，M 会从 P 获取下一个 G，不断重复下去。
 
